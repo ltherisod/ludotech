@@ -1,0 +1,16 @@
+/frontend/node_modules
+/backend/node_modules
+/backend/.env
+/mobile/node_modules
+/mobile/.expo/
+/mobile/npm-debug.*
+/mobile/*.jks
+/mobile/*.p8
+/mobile/*.p12
+/mobile/*.key
+/mobile/*.mobileprovision
+/mobile/*.orig.*
+/mobile/web-build/
+
+# macOS
+/mobile/.DS_Store
