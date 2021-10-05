@@ -84,10 +84,11 @@ body {
 
 .logoUser {
    background-position: center;
-   width: 3em;
-   height: 3em;
+   width: 2.3em;
+   height: 2.3em;
    background-size: cover;
    border-radius: 100%;
+   margin-right: 15px;
 }
 
 /* ESTILOS */
@@ -264,8 +265,52 @@ main h2 {
    background-position: center;
    height: 14rem;
    background-size: cover;
+   display: flex;
+   align-items: flex-start;
 }
 
 .priceArticle {
    display: flex;
+}
+
+.iconsNav {
+   color: rgba(216, 16, 133, 0.664);
+   font-size: 22px;
+   margin: 0px 10px;
+   cursor: pointer;
+}
+
+.iconsNav:hover {
+   color: rgb(216, 16, 133);
+   font-size: 22px;
+   margin-left: 10px;
+   cursor: pointer;
+}
+
+.backFavArticle {
+   display: flex;
+   justify-content: space-between;
+}
+
+.circleFav {
+   background-color: rgba(173, 169, 169, 0.301);
+   border-radius: 100%;
+   height: 45px;
+   width: 45px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   left: 25px;
+   cursor: pointer;
+}
+
+.favArticle {
+   font-size: 25px;
+   color: rgba(155, 7, 93, 0.664);
+   cursor: pointer;
+}
+
+.favArticle:hover {
+   color: rgb(247, 51, 165);
 }

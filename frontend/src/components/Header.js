@@ -1,5 +1,7 @@
 import React from "react"
 import { Link, NavLink } from "react-router-dom"
+import { FaShoppingCart, FaBell, FaHeart } from "react-icons/fa"
+
 const iconUser = "https://i.postimg.cc/m2r0DtY5/iconuser1.png"
 
 const Header = (props) => {
@@ -84,6 +86,9 @@ const Header = (props) => {
                      }}
                   ></div>
                </div>
+               <FaBell className="iconsNav" />
+               <FaHeart className="iconsNav" />
+               <FaShoppingCart className="iconsNav" />
             </div>
          </div>
       </nav>
