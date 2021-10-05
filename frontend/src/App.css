@@ -12,6 +12,14 @@ body {
   justify-content: space-between;
   text-align: center;
 }
+
+.cardArticle {
+   height: 500px;
+   width: 30%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
 .body {
   background-position: center;
   background-size: cover;
@@ -144,4 +152,24 @@ background-position: center;
   border: none;
   color: white;
   font-weight: bold;
+}
+
+/*Pagina Articulos*/
+
+.containerArticles {
+   display: flex;
+   flex-wrap: wrap;
+   margin: 0px 3rem;
+   justify-content: space-around;
+}
+
+.imgArticle {
+   width: 100%;
+   background-position: center;
+   height: 14rem;
+   background-size: cover;
+}
+
+.priceArticle {
+   display: flex;
 }
