@@ -147,10 +147,11 @@ main h2 {
    color: white;
 }
 .cube {
-   background-position: center;
-   background-size: cover;
-   height: 400px;
-   width: 400px;
+background-position: center;
+  background-size: cover;
+  height: 530px;
+  width: 530px;
+  margin-bottom: 60px;
 }
 
 /* SEBA: Sign UP */
