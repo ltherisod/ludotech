@@ -1,8 +1,9 @@
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
 }
 
 body {
@@ -154,40 +155,75 @@ main h2 {
 
 /* SEBA: Sign UP */
 
+.flex,
 .headerLogo {
-   height: 10vh;
-   background-color: #8646d4;
-   border-bottom: 1px solid #3022428f;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   color: white;
-   font-size: 3vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerLogo {
+  height: 10vh;
+  background-color: #8646d4;
+  border-bottom: 1px solid #3022428f;
+  color: white;
+  font-size: 3vmin;
 }
 
 .main-sign {
-   /* background-color: aquamarine; */
-   margin: 5vh 35%;
-   display: grid;
-   grid-template-columns: repeat(1, 1fr);
-   gap: 3vmin;
+  width: 35%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3vmin;
+  margin: 4vh 0;
+}
+
+.main-sign h2 {
+  font-size: 4vmin;
+  font-weight: 600;
+  text-align: start;
+}
+
+.main-sign h2 + p {
+  text-align: start;
+}
+
+.errorSign {
+  color: #de4a34;
 }
 
 .buttonGoogle {
-   height: 40px;
+  height: 50px;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #de4a34;
+  color: white;
+  font-size: 2.5vmin;
+  display: flex;
+  align-items: center;
+  padding: 0 2vmin;
+}
+
+.buttonGoogle p {
+  width: 100%;
 }
 
 .signupEmailOption {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2.2vmin;
+  color: rgba(1, 1, 1, 0.8);
+}
+
+.signupEmailOption p {
+  margin: 0 3vmin;
 }
 
 .signupEmailOption div {
-   width: 30%;
-   height: 1px;
-   border-bottom: 1px solid rgba(1, 1, 1, 0.2);
-   /* margin: 3vmin 0; */
+  flex: 1;
+  height: 1px;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.2);
 }
 
 .inputContainer {
@@ -204,27 +240,36 @@ main h2 {
 }
 
 .main-sign label {
-   color: rgba(1, 1, 1, 0.8);
+  color: rgba(1, 1, 1, 0.8);
+  text-align: start;
+  font-size: 2.3vmin;
+  margin-bottom: 0.5vmin;
 }
 
-.signinButtonSignup {
-   font-weight: 500;
-   color: rgba(1, 1, 1, 0.8);
-   border: 1px solid rgba(1, 1, 1, 0.3);
+.adTerms {
+  font-size: 1.8vmin;
+  color: rgba(1, 1, 1, 0.8);
 }
 
 .signupButtonSignup,
 .signinButtonSignup {
-   font-size: 3vmin;
-   border-radius: 3px;
-   height: 50px;
+  width: 100%;
+  font-size: 2.5vmin;
+  border-radius: 3px;
+  height: 50px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.signinButtonSignup {
+  color: rgba(1, 1, 1, 0.8);
+  border: 1px solid rgba(1, 1, 1, 0.3);
 }
 
 .signupButtonSignup {
-   background-color: #8646d4;
-   border: none;
-   color: white;
-   font-weight: bold;
+  background-color: #8646d4;
+  border: none;
+  color: white;
 }
 
 /*Pagina Articulos*/
@@ -242,10 +287,10 @@ main h2 {
    padding: 0px 10vw;
 }
 .containerArticles {
-   display: flex;
-   flex-wrap: wrap;
-   margin: 0px 3rem;
-   justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 3rem;
+  justify-content: space-around;
 }
 
 .cardArticle {
@@ -270,7 +315,7 @@ main h2 {
 }
 
 .priceArticle {
-   display: flex;
+  display: flex;
 }
 
 .iconsNav {
