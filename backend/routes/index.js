@@ -2,23 +2,23 @@ const express = require("express")
 const router = express.Router()
 const passport = require("passport")
 const validators = require("../controllers/validators")
+const articleValidator = require("../controllers/articleValidator")
 const usersControllers = require("../controllers/usersControllers")
 const articlesControllers = require("../controllers/articlesControllers")
 
-router.route("/login").post(usersControllers.logIn)
-router
-  .route("/signup")
-  .post(validators.signUpValidator, usersControllers.signUp)
+// users routers
+router.route("/login")
+.post(usersControllers.logIn)
 
-router
-  .route("/user/:id")
-  .put(
-    passport.authenticate("jwt", { session: false }),
-    validators.updateAccountValidator,
-    usersControllers.updateAccount
-  )
+router.route("/signup")
+.post(validators.signUpValidator, usersControllers.signUp)
 
-router.route("/users").get(usersControllers.getAccounts)
+router.route("/user/:id")
+.put(passport.authenticate("jwt", { session: false }), validators.updateAccountValidator, usersControllers.updateAccount)
+
+router.route("/users")
+.get(usersControllers.getAccounts)
+
 
 // articles routers
 router.route('/articles')
@@ -26,10 +26,10 @@ router.route('/articles')
 
 router.route('/article/:id')
 .get(articlesControllers.getArticle)
-.put(articlesControllers.updateArticle)
+.put(articleValidator.articleUpdateValidator, articlesControllers.updateArticle)
 .delete(articlesControllers.deleteArticle)
 
 router.route('/article')
-.post(articlesControllers.addArticle)
+.post(articleValidator.articleValidator, articlesControllers.addArticle)
 
 module.exports = router
