@@ -9,6 +9,7 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <Switch>
+        {<Route path='/home' component={Home} />}
         {<Route path='/signin' component={SignIn} />}
         {<Route path='/signup' component={SignUp} />}
         <Redirect to='/'/>
