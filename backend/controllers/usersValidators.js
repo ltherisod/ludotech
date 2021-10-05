@@ -71,10 +71,74 @@ const updateAccountValidator = async (req, res, next) => {
 }
 
 const addDirectionsValidator = async (req, res, next) => {
-  console.log("Validar dirección...")
+  const schema = joi.object({
+    alias: joi.string().trim().min(2).required().messages({
+      "any.required": "Alias is required.",
+      "string.min": "Alias must have at least two characters.",
+    }),
+    receiver: joi.string().trim().min(2).messages({
+      "any.required": "Receiver name is required.",
+      "string.min": "Receiver must have at least two characters.",
+    }),
+    street: joi.string().required().messages({
+      "any.required": "Street is required.",
+    }),
+    number: joi.number().required().messages({
+      "any.required": "Number is required.",
+    }),
+    department: joi.string().required().messages({
+      "any.required": "Department is required.",
+    }),
+    zipCode: joi.string().required().messages({
+      "any.required": "Zip Code is required.",
+    }),
+    city: joi.string().required().messages({
+      "any.required": "City is required.",
+    }),
+    state: joi.string().required().messages({
+      "any.required": "State is required.",
+    }),
+  })
+  try {
+    await schema.validateAsync(req.body, { abortEarly: false })
+    next()
+  } catch (e) {
+    res.json({ success: false, response: null, error: e.details })
+  }
+}
+
+const updateDirectionsValidator = async (req, res, next) => {
+  const schema = joi.object({
+    alias: joi.string().trim().min(2).messages({
+      "string.min": "Alias must have at least two characters.",
+    }),
+    receiver: joi.string().trim().min(2).messages({
+      "string.min": "Receiver must have at least two characters.",
+    }),
+    street: joi.string().min(2).messages({
+      "string.min": "Street must have at least two characters.",
+    }),
+    number: joi.number(),
+    department: joi.string(),
+    zipCode: joi.string(),
+    city: joi.string().min(2).messages({
+      "string.min": "City must have at least two characters.",
+    }),
+    state: joi.string().min(2).messages({
+      "string.min": "State must have at least two characters.",
+    }),
+  })
+  try {
+    await schema.validateAsync(req.body, { abortEarly: false })
+    next()
+  } catch (e) {
+    res.json({ success: false, response: null, error: e.details })
+  }
 }
 
 module.exports = {
   signUpValidator,
   updateAccountValidator,
+  addDirectionsValidator,
+  updateDirectionsValidator,
 }
