@@ -3,25 +3,24 @@ const router = express.Router()
 const passport = require("passport")
 const usersValidators = require("../controllers/usersValidators")
 const isAdmin = require("../controllers/isAdmin")
+const articleValidator = require("../controllers/articleValidator")
 const usersControllers = require("../controllers/usersControllers")
 const articlesControllers = require("../controllers/articlesControllers")
 const articlesUtilitiesControllers = require("../controllers/articlesUtilitiesControllers")
 
-// USERS ROUTES
-router.route("/login").post(usersControllers.logIn)
-router
-  .route("/signup")
-  .post(usersValidators.signUpValidator, usersControllers.signUp)
+// users routers
+router.route("/login")
+.post(usersControllers.logIn)
 
-router
-  .route("/user/:id")
-  .put(
-    passport.authenticate("jwt", { session: false }),
-    usersValidators.updateAccountValidator,
-    usersControllers.updateAccount
-  )
+router.route("/signup")
+.post(validators.signUpValidator, usersControllers.signUp)
 
-router.route("/users").get(usersControllers.getAccounts)
+router.route("/user/:id")
+.put(passport.authenticate("jwt", { session: false }), validators.updateAccountValidator, usersControllers.updateAccount)
+
+router.route("/users")
+.get(usersControllers.getAccounts)
+
 
 // USER DIRECTIONS ROUTES
 router
@@ -76,5 +75,12 @@ router
     // isAdmin,
     articlesUtilitiesControllers.deleteArticlesUtility
   )
+router.route('/article/:id')
+.get(articlesControllers.getArticle)
+.put(articleValidator.articleUpdateValidator, articlesControllers.updateArticle)
+.delete(articlesControllers.deleteArticle)
+
+router.route('/article')
+.post(articleValidator.articleValidator, articlesControllers.addArticle)
 
 module.exports = router
