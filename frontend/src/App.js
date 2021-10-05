@@ -6,13 +6,13 @@ import SignUp from './pages/SignUp';
 const App = (props) => {
 
   return (
-    // <BrowserRouter>
-    //   <Switch>
-    //     {<Route path='/signin' component={SignIn} />}
-    //     {<Route path='/signup' component={SignUp} />}
-    //     <Redirect to='/'/>
-    //   </Switch>
-    // </BrowserRouter>
+    <BrowserRouter>
+      <Switch>
+        {<Route path='/signin' component={SignIn} />}
+        {<Route path='/signup' component={SignUp} />}
+        <Redirect to='/'/>
+      </Switch>
+    </BrowserRouter>
   )
 }
 
