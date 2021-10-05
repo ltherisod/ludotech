@@ -1,6 +1,7 @@
 const User = require("../models/User")
 const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const nodemailer = require("nodemailer")
 
 const usersControllers = {
   logIn: async (req, res) => {
