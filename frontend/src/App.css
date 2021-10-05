@@ -70,3 +70,78 @@ background-position: center;
   height: 400px;
   width: 400px;
 }
+
+/* SEBA: Sign UP */
+
+.headerLogo {
+  height: 10vh;
+  background-color: #8646d4;
+  border-bottom: 1px solid #3022428f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 3vmin;
+}
+
+.main-sign {
+  /* background-color: aquamarine; */
+  margin: 5vh 35%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3vmin;
+}
+
+.buttonGoogle {
+  height: 40px;
+}
+
+.signupEmailOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signupEmailOption div {
+  width: 30%;
+  height: 1px;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.2);
+  /* margin: 3vmin 0; */
+}
+
+.inputContainer {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.main-sign input {
+  height: 40px;
+  padding-left: 1vmin;
+  outline: none;
+  border: 1px solid rgba(1, 1, 1, 0.3);
+  border-radius: 3px;
+}
+
+.main-sign label {
+  color: rgba(1, 1, 1, 0.8);
+}
+
+.signinButtonSignup {
+  font-weight: 500;
+  color: rgba(1, 1, 1, 0.8);
+  border: 1px solid rgba(1, 1, 1, 0.3);
+}
+
+.signupButtonSignup,
+.signinButtonSignup {
+  font-size: 3vmin;
+  border-radius: 3px;
+  height: 50px;
+}
+
+.signupButtonSignup {
+  background-color: #8646d4;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
