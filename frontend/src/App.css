@@ -1,161 +1,246 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: "Poppins", sans-serif;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  justify-content: space-between;
-  text-align: center;
-}
-
-.cardArticle {
-   height: 500px;
-   width: 30%;
    display: flex;
    flex-direction: column;
+   min-height: 100vh;
+   justify-content: space-between;
+   text-align: center;
+}
+
+/* HEADER */
+
+#mainNav {
+   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+   background-color: #fff;
+   transition: background-color 0.2s ease;
+}
+#mainNav .navbar-brand {
+   font-weight: 600;
+   color: #212529;
+}
+#mainNav .navbar-nav .nav-item .nav-link {
+   color: #666363;
+   font-weight: 600;
+   font-size: 1rem;
+   padding: 0.75rem 0;
+}
+#mainNav .navbar-nav .nav-item .nav-link:hover,
+#mainNav .navbar-nav .nav-item .nav-link:active {
+   color: #f43ad5;
+}
+#mainNav .navbar-nav .nav-item .nav-link.active {
+   color: #f046cb !important;
+}
+@media (min-width: 992px) {
+   #mainNav {
+      box-shadow: none;
+      background-color: transparent;
+   }
+   #mainNav .navbar-brand {
+      color: rgba(255, 255, 255, 0.9);
+   }
+   #mainNav .navbar-brand:hover {
+      color: #fff;
+   }
+   #mainNav .navbar-nav .nav-item .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+      padding: 0 1rem;
+   }
+   #mainNav .navbar-nav .nav-item .nav-link:hover {
+      color: #fff;
+   }
+   #mainNav .navbar-nav .nav-item:last-child .nav-link {
+      padding-right: 0;
+   }
+   #mainNav.navbar-shrink {
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      background-color: #fff;
+   }
+   #mainNav.navbar-shrink .navbar-brand {
+      color: #212529;
+   }
+   #mainNav.navbar-shrink .navbar-brand:hover {
+      color: #f4623a;
+   }
+   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
+      color: #212529;
+   }
+   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
+      color: #f4623a;
+   }
+}
+
+.containerLogoUser {
+   display: flex;
+   justify-content: center;
    align-items: center;
 }
+
+.logoUser {
+   background-position: center;
+   width: 2.3em;
+   height: 2.3em;
+   background-size: cover;
+   border-radius: 100%;
+   margin-right: 15px;
+}
+
+/* ESTILOS */
+
 .body {
-  background-position: center;
-  background-size: cover;
+   background-position: center;
+   background-size: cover;
 }
 header {
-  width: 100%;
-  background-color: transparent;
+   width: 100%;
+   background-color: transparent;
 }
 footer {
-  width: 100%;
-  height: 50px;
-  background-color: transparent;
-  color: white
+   width: 100%;
+   height: 50px;
+   background-color: transparent;
+   color: white;
 }
 .hero {
-  width: 100%;
-  height: 100vh;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-position: bottom;
-  background-size: cover;
-  margin-bottom: 20px;
-  padding: 0px 10vw;
+   width: 100%;
+   height: 100vh;
+   color: white;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background-position: bottom;
+   background-size: cover;
+   margin-bottom: 20px;
+   padding: 0px 10vw;
 }
 .heroDescription {
-  text-align: left;
+   text-align: left;
 }
 button {
-  padding: 5px 10px;
-  border-radius: 50px;
-  border: none;
-  margin-top: 20px;
+   padding: 5px 10px;
+   border-radius: 50px;
+   border: none;
+   margin-top: 20px;
 }
 .wanted {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 20px 220px;
-  justify-content: center;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   padding: 20px 220px;
+   justify-content: center;
 }
 .wantedCards {
-  width: 100%;
-  height: 320px;
-  margin-bottom: 50px;
-  background-position: center;
-  background-size: cover;
+   width: 100%;
+   height: 320px;
+   margin-bottom: 50px;
+   background-position: center;
+   background-size: cover;
 }
 main h2 {
-  color: white;
+   color: white;
 }
 .cube {
-background-position: center;
-  background-size: cover;
-  height: 400px;
-  width: 400px;
+   background-position: center;
+   background-size: cover;
+   height: 400px;
+   width: 400px;
 }
 
 /* SEBA: Sign UP */
 
 .headerLogo {
-  height: 10vh;
-  background-color: #8646d4;
-  border-bottom: 1px solid #3022428f;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 3vmin;
+   height: 10vh;
+   background-color: #8646d4;
+   border-bottom: 1px solid #3022428f;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: white;
+   font-size: 3vmin;
 }
 
 .main-sign {
-  /* background-color: aquamarine; */
-  margin: 5vh 35%;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 3vmin;
+   /* background-color: aquamarine; */
+   margin: 5vh 35%;
+   display: grid;
+   grid-template-columns: repeat(1, 1fr);
+   gap: 3vmin;
 }
 
 .buttonGoogle {
-  height: 40px;
+   height: 40px;
 }
 
 .signupEmailOption {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
 
 .signupEmailOption div {
-  width: 30%;
-  height: 1px;
-  border-bottom: 1px solid rgba(1, 1, 1, 0.2);
-  /* margin: 3vmin 0; */
+   width: 30%;
+   height: 1px;
+   border-bottom: 1px solid rgba(1, 1, 1, 0.2);
+   /* margin: 3vmin 0; */
 }
 
 .inputContainer {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
+   display: grid;
+   grid-template-columns: repeat(1, 1fr);
 }
 
 .main-sign input {
-  height: 40px;
-  padding-left: 1vmin;
-  outline: none;
-  border: 1px solid rgba(1, 1, 1, 0.3);
-  border-radius: 3px;
+   height: 40px;
+   padding-left: 1vmin;
+   outline: none;
+   border: 1px solid rgba(1, 1, 1, 0.3);
+   border-radius: 3px;
 }
 
 .main-sign label {
-  color: rgba(1, 1, 1, 0.8);
+   color: rgba(1, 1, 1, 0.8);
 }
 
 .signinButtonSignup {
-  font-weight: 500;
-  color: rgba(1, 1, 1, 0.8);
-  border: 1px solid rgba(1, 1, 1, 0.3);
+   font-weight: 500;
+   color: rgba(1, 1, 1, 0.8);
+   border: 1px solid rgba(1, 1, 1, 0.3);
 }
 
 .signupButtonSignup,
 .signinButtonSignup {
-  font-size: 3vmin;
-  border-radius: 3px;
-  height: 50px;
+   font-size: 3vmin;
+   border-radius: 3px;
+   height: 50px;
 }
 
 .signupButtonSignup {
-  background-color: #8646d4;
-  border: none;
-  color: white;
-  font-weight: bold;
+   background-color: #8646d4;
+   border: none;
+   color: white;
+   font-weight: bold;
 }
 
 /*Pagina Articulos*/
 
+.heroArticles {
+   width: 100%;
+   height: 60vh;
+   color: white;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background-position: bottom;
+   background-size: cover;
+   margin-bottom: 20px;
+   padding: 0px 10vw;
+}
 .containerArticles {
    display: flex;
    flex-wrap: wrap;
@@ -163,13 +248,69 @@ background-position: center;
    justify-content: space-around;
 }
 
-.imgArticle {
+.cardArticle {
+   height: 500px;
+   width: 21%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: white;
+   padding: 0px 10px;
+   margin: 10px;
+   border-radius: 12px;
+}
+
+.photosArticle {
    width: 100%;
    background-position: center;
    height: 14rem;
    background-size: cover;
+   display: flex;
+   align-items: flex-start;
 }
 
 .priceArticle {
    display: flex;
+}
+
+.iconsNav {
+   color: rgba(216, 16, 133, 0.664);
+   font-size: 22px;
+   margin: 0px 10px;
+   cursor: pointer;
+}
+
+.iconsNav:hover {
+   color: rgb(216, 16, 133);
+   font-size: 22px;
+   margin-left: 10px;
+   cursor: pointer;
+}
+
+.backFavArticle {
+   display: flex;
+   justify-content: space-between;
+}
+
+.circleFav {
+   background-color: rgba(173, 169, 169, 0.301);
+   border-radius: 100%;
+   height: 45px;
+   width: 45px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   left: 25px;
+   cursor: pointer;
+}
+
+.favArticle {
+   font-size: 25px;
+   color: rgba(155, 7, 93, 0.664);
+   cursor: pointer;
+}
+
+.favArticle:hover {
+   color: rgb(247, 51, 165);
 }
