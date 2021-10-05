@@ -3,7 +3,7 @@ import React from "react"
 const Article = (props) => {
    const {
       name,
-      img,
+      photos,
       price,
       hasDiscount,
       discountPrice,
@@ -17,9 +17,9 @@ const Article = (props) => {
    return (
       <div className="cardArticle">
          <div
-            className="imgArticle"
+            className="photosArticle"
             style={{
-               backgroundImage: `url('${img}')`,
+               backgroundImage: `url('${photos}')`,
             }}
          >
             {hasDiscount === false ? (
@@ -36,14 +36,15 @@ const Article = (props) => {
          <div className="price">
             <h2>{name}</h2>
             <h4>Stock: {stock}</h4>
-            <p>{genres}</p>
+            <p>Gender: {genres}</p>
             <div>
-               <p>{gameType}</p>
-               <p>{minAge}</p>
+               <p>Game type: {gameType}</p>
+               <p>Minimum age: {minAge}</p>
             </div>
             <div>
-               <p>{minPlayers}</p>
-               <p>{maxPlayers}</p>
+               <p>
+                  Players: {minPlayers} - {maxPlayers}
+               </p>
             </div>
          </div>
       </div>
