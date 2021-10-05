@@ -8,7 +8,6 @@ const usersControllers = {
     try {
       const { email, password, google } = req.body
       const user = await User.findOne({ email })
-      console.log(user)
       if (!user) throw new Error("Invalid credentials")
       if (user.google && !google)
         throw new Error(
@@ -110,7 +109,7 @@ const usersControllers = {
       res.json({ success: false, response: null, error: e.message })
     }
   },
-  directionsManager: async (req, res) => {
+  addDirection: async (req, res) => {
     try {
       const {
         alias,
@@ -121,42 +120,91 @@ const usersControllers = {
         zipCode,
         city,
         state,
-        action,
       } = req.body
-      switch (action) {
-        case "add":
-          if (
-            req.user.directions.find(
-              (d) =>
-                d.street === street &&
-                d.number === number &&
-                d.department === department &&
-                d.zipCode === zipCode &&
-                d.city === city &&
-                d.state === state
-            )
-          ) {
-            throw new Error("Direction already saved.")
-          }
-          const user = await User.findOneAndUpdate(
-            { _id: req.user._id },
-            {
-              $push: {
-                directions: {
-                  alias,
-                  receiver,
-                  street,
-                  number,
-                  department,
-                  zipCode,
-                  city,
-                  state,
-                },
-              },
-            },
-            { new: true }
-          )
+      if (
+        req.user.directions.find(
+          (d) =>
+            d.street === street &&
+            d.number === number &&
+            d.department === department &&
+            d.zipCode === zipCode &&
+            d.city === city &&
+            d.state === state
+        )
+      ) {
+        throw new Error("Direction already saved.")
       }
+      const user = await User.findOneAndUpdate(
+        { _id: req.user._id },
+        {
+          $push: {
+            directions: {
+              alias,
+              receiver,
+              street,
+              number,
+              department,
+              zipCode,
+              city,
+              state,
+            },
+          },
+        },
+        { new: true }
+      )
+      res.json({ success: true, response: user.directions, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  updateDirection: async (req, res) => {
+    // mandar token y validar con passport. mandar el id de la dirección por params
+    try {
+      const {
+        alias,
+        receiver,
+        street,
+        number,
+        department,
+        zipCode,
+        city,
+        state,
+      } = req.body
+      const currentDirection = req.user.directions.find(
+        (d) => d._id.toString() === req.params.id
+      )
+      const user = await User.findOneAndUpdate(
+        { "directions._id": req.params.id },
+        {
+          $set: {
+            "directions.$": {
+              alias: alias || currentDirection.alias,
+              receiver: receiver || currentDirection.receiver,
+              street: street || currentDirection.receiver,
+              number: number || currentDirection.number,
+              department: department || currentDirection.department,
+              zipCode: zipCode || currentDirection.zipCode,
+              city: city || currentDirection.city,
+              state: state || currentDirection.state,
+            },
+          },
+        },
+        { new: true }
+      )
+      res.json({ success: true, response: user.directions, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  deleteDirection: async (req, res) => {
+    // mandar id de la dirección por params.
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.user._id },
+        { $pull: { directions: { _id: req.params.id } } },
+        { new: true }
+      )
+      res.json({ success: true, response: user.directions, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
@@ -167,7 +215,6 @@ const usersControllers = {
       const users = await User.find()
       res.json({ success: true, response: users, error: null })
     } catch (e) {
-      console.log("Estoy acá en el controlador...")
       res.json({ success: false, response: null, error: e.message })
     }
   },

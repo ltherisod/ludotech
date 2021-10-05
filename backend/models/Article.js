@@ -2,13 +2,17 @@ const mongoose = require("mongoose")
 
 const articleSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  brand: { type: String, required: true },
+  brand: {
+    type: mongoose.Types.ObjectId,
+    ref: "articles_utilitie",
+    required: true,
+  },
   price: { type: Number, required: true },
   hasDiscount: { type: Boolean, default: false },
   discountPrice: { type: Number, required: false },
   photos: [{ type: String }], // revisar. quizá cambiar a File
-  genres: [{ type: String }],
-  gameType: { type: String }, // de rol, de mesa, etc. Revisar otros tipos de artículos: mangas, dados, muñecos, etc.
+  genres: [{ type: mongoose.Types.ObjectId, ref: "articles_utilitie" }],
+  gameType: { type: mongoose.Types.ObjectId, ref: "articles_utilitie" }, // de rol, de mesa, etc. Revisar otros tipos de artículos: mangas, dados, muñecos, etc.
   minPlayers: { type: Number },
   maxPlayers: { type: Number },
   minAge: { type: Number },
