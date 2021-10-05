@@ -38,7 +38,6 @@ const SignUp = () => {
             email: res.profileObj.email,
             photo: res.profileObj.imageUrl,
             password: res.profileObj.googleId,
-            phone: '1111',
             google: true
         }
 

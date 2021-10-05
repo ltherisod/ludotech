@@ -31,10 +31,10 @@ const SignIn = () => {
         }
 
         try {
-            axios.post('http://localhost:4000/login', userGoogle)
+            axios.post('http://localhost:4000/api/login', userGoogle)
                 .then(res => {
                     console.log(res.data)
-                    localStorage.setItem('token', res.data.response.token)
+                    // localStorage.setItem('token', res.data.response.token)
                 })
                 .catch(e => {
                     console.log(e)
