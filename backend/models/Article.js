@@ -14,7 +14,7 @@ const articleSchema = new mongoose.Schema({
   minAge: { type: Number },
   stock: { type: Number, required: true },
   size: { type: String, required: false }, // revisar
-  weight: { type: String, required: false },
+  weight: { type: Number, required: false },
 })
 
 const Article = mongoose.model("article", articleSchema)
