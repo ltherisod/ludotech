@@ -1,3 +1,5 @@
+import MostWanted from "../components/MostWanted"
+import Footer from "../components/Footer"
 const Home = () => {
     return (
       <div className='body' style={{ backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")` }}>
@@ -14,16 +16,9 @@ const Home = () => {
           </div>
           <div className='cube' style={{backgroundImage: "url('/assets/rubik.png')"}}></div>
         </div>
-        <h2 >Most wanted products</h2>
-        <div className='wanted'>
-            <div className='wantedCards' style={{backgroundImage: "url('/assets/Juego1.png')"}}></div>
-            <div className='wantedCards' style={{backgroundImage: "url('/assets/Juego2.png')"}}></div>
-            <div className='wantedCards' style={{backgroundImage: "url('/assets/Juego1.png')"}}></div>
-        </div>
+      <MostWanted/>
       </main>
-      <footer>
-          <p>© Copyright 2021 | Ludotech</p>
-      </footer>
+      <Footer/>
       </div>
     );
   };

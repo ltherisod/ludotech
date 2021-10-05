@@ -173,3 +173,52 @@ background-position: center;
 .priceArticle {
    display: flex;
 }
+
+/*Most Wanted*/
+
+.mostWantedConteiner{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mostWantedCard{
+  align-self: center;
+  width: 85%;
+  min-height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mostWantedGame, .mostWantedGameBrand{
+ 
+  width: 50%;
+  height: 40vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-self:flex-end;
+}
+
+.mostWantedGameConteiner{
+  margin-top: 5rem;
+  align-self: center;
+  width: 70%;
+  min-height: 50vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/*Footer*/
+
+.footerContainer{
+  width: 100%;
+  height: 69vh;
+  background-size: cover;
+  background-position: bottom;
+}
