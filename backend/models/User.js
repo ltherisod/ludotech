@@ -10,6 +10,8 @@ const userSchema = new mongoose.Schema({
   google: { type: Boolean, default: false },
   directions: [
     {
+      alias:{type:String},
+      receiver:{type:String, required:true},
       street: { type: String, required: true },
       number: { type: Number, required: true },
       department: { type: String, required: true },

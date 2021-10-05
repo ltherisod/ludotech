@@ -7,9 +7,8 @@ const articleSchema = new mongoose.Schema({
   hasDiscount: { type: Boolean, default: false },
   discountPrice: { type: Number, required: false },
   photos: [{ type: String }], // revisar. quizá cambiar a File
-  categories: [{ type: String }],
+  genres: [{ type: String }],
   gameType: { type: String }, // de rol, de mesa, etc. Revisar otros tipos de artículos: mangas, dados, muñecos, etc.
-  languages: [{ type: String }], // revisar mañana. array o un solo valor?
   minPlayers: { type: Number },
   maxPlayers: { type: Number },
   minAge: { type: Number },
