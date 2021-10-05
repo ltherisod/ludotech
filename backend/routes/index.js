@@ -6,12 +6,10 @@ const usersControllers = require("../controllers/usersControllers")
 const articlesControllers = require("../controllers/articlesControllers")
 
 router.route("/login").post(usersControllers.logIn)
-router
-  .route("/signup")
-  .post(validators.signUpValidator, usersControllers.signUp)
 
-router
-  .route("/user/:id")
+router.route("/signup").post(validators.signUpValidator, usersControllers.signUp)
+
+router.route("/user/:id")
   .put(
     passport.authenticate("jwt", { session: false }),
     validators.updateAccountValidator,
