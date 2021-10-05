@@ -1,38 +1,80 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* SEBA: Sign UP */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.headerLogo {
+  height: 10vh;
+  background-color: #8646d4;
+  border-bottom: 1px solid #3022428f;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
   color: white;
+  font-size: 3vmin;
 }
 
-.App-link {
-  color: #61dafb;
+.main-sign {
+  /* background-color: aquamarine; */
+  margin: 5vh 35%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3vmin;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.buttonGoogle {
+  height: 40px;
+}
+
+.signupEmailOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signupEmailOption div {
+  width: 30%;
+  height: 1px;
+  border-bottom: 1px solid rgba(1, 1, 1, 0.2);
+  /* margin: 3vmin 0; */
+}
+
+.inputContainer {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.main-sign input {
+  height: 40px;
+  padding-left: 1vmin;
+  outline: none;
+  border: 1px solid rgba(1, 1, 1, 0.3);
+  border-radius: 3px;
+}
+
+.main-sign label {
+  color: rgba(1, 1, 1, 0.8);
+}
+
+.signinButtonSignup {
+  font-weight: 500;
+  color: rgba(1, 1, 1, 0.8);
+  border: 1px solid rgba(1, 1, 1, 0.3);
+}
+
+.signupButtonSignup,
+.signinButtonSignup {
+  font-size: 3vmin;
+  border-radius: 3px;
+  height: 50px;
+}
+
+.signupButtonSignup {
+  background-color: #8646d4;
+  border: none;
+  color: white;
+  font-weight: bold;
 }

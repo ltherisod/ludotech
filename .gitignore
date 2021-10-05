@@ -1,6 +1,7 @@
 /frontend/node_modules
 /backend/node_modules
 /backend/.env
+/frontend/.env
 /mobile/node_modules
 /mobile/.expo/
 /mobile/npm-debug.*
@@ -11,7 +12,7 @@
 /mobile/*.mobileprovision
 /mobile/*.orig.*
 /mobile/web-build/
+.env
 
 # macOS
 /mobile/.DS_Store
-a
