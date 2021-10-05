@@ -18,7 +18,9 @@ module.exports = passport.use(
             return done(null, respuesta)
           }
         })
-        .catch((error) => done(error, false))
+        .catch((error) => {
+          done(error, false)
+        })
     }
   )
 )
