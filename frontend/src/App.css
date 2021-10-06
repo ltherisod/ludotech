@@ -129,6 +129,10 @@ button {
    border: none;
    margin-top: 20px;
 }
+.logo {
+   font-family: 'Fredoka One', cursive;
+   font-size: 3rem;
+}
 .wanted {
    width: 100%;
    display: flex;
