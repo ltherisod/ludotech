@@ -1,25 +1,18 @@
-import { useState } from "react"
+// import { useState } from "react"
 import { useFormik } from "formik"
 import { GoogleLogin } from "react-google-login"
 import { Link } from "react-router-dom"
-import axios from "axios"
+import { connect } from "react-redux"
+
+import usersActions from "../redux/actions/usersActions"
 import Header from "../components/Header"
 
-const SignIn = () => {
-   const [error, setError] = useState("")
+const SignIn = (props) => {
 
    let formik = useFormik({
       initialValues: { email: "", password: "", google: false },
       onSubmit: (values) => {
-         console.log(values)
-         axios
-            .post("http://localhost:4000/api/login", values)
-            .then((res) => {
-               console.log(res.data)
-            })
-            .catch((e) => {
-               console.log(e)
-            })
+         props.loginUser(values, 'login')
       },
    })
 
@@ -29,30 +22,12 @@ const SignIn = () => {
          password: res.profileObj.googleId,
          google: true,
       }
-
-      try {
-         axios
-            .post("http://localhost:4000/api/login", userGoogle)
-            .then((res) => {
-               console.log(res.data)
-               // localStorage.setItem('token', res.data.response.token)
-            })
-            .catch((e) => {
-               console.log(e)
-               setError(e)
-            })
-      } catch (error) {
-         console.log(error)
-         setError(error)
-      }
+      props.loginUser(userGoogle, 'login')
    }
 
    return (
       <>
          <Header />
-         <div className="headerLogo">
-            <h1>Ludotech</h1>
-         </div>
          <div className="flex">
             <div className="main-sign">
                <div>
@@ -116,7 +91,7 @@ const SignIn = () => {
                      onBlur={formik.handleBlur("password")}
                   />
                </div>
-               {error && <p>{error}</p>}
+               {/* {error && <p>{error}</p>} */}
                <div
                   className="signupButtonSignup flex"
                   onClick={formik.handleSubmit}
@@ -137,4 +112,14 @@ const SignIn = () => {
    )
 }
 
-export default SignIn
+const mapStateToProps = (state) => {
+    return {
+        
+    }
+}
+
+const mapDispatchToProps = {
+    loginUser: usersActions.logInOrSignUp
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
