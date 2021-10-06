@@ -58,6 +58,24 @@ const usersActions = {
       }
     }
   },
+  toggleWishList: (articleId) => {
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.put(
+          `${HOST}/api/user/wish-list/${articleId}`,
+          {},
+          {
+            headers: { Authorization: `Bearer ${getState().users.user.token}` },
+          }
+        )
+        if (!res.data.success) throw new Error(res.data.error)
+        dispatch({ type: "WISH_LIST", payload: res.data.response })
+        return { success: true, error: null }
+      } catch (e) {
+        return { success: false, error: e.message }
+      }
+    }
+  },
 }
 
 export default usersActions

@@ -1,51 +1,59 @@
-const Article = require('../models/Article')
+const Article = require("../models/Article")
 
 const articlesControllers = {
-  
-  addArticle: async (req,res) => {
+  addArticle: async (req, res) => {
     try {
       let article = new Article({ ...req.body })
       let newArticle = article.save()
       if (newArticle) {
-        res.json({ success: true, response: newArticle, error: null})
+        res.json({ success: true, response: newArticle, error: null })
       } else {
-        throw new Error('Couldn´t save the new article')
+        throw new Error("Couldn´t save the new article")
       }
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
   },
 
-  getArticle: async (req,res) => {
+  getArticle: async (req, res) => {
     try {
-      let getArticle = await Article.find({ _id: req.params.id})
+      let getArticle = await Article.find({ _id: req.params.id })
       if (getArticle) {
         res.json({ success: true, response: getArticle, error: null })
       } else {
-        throw new Error('Couldn´t get the article')
+        throw new Error("Couldn´t get the article")
       }
     } catch (e) {
-      res.json({ success: false, response: null, error: e.message })    
+      res.json({ success: false, response: null, error: e.message })
     }
   },
 
   // se requiere filtros como {filters} en el body; puede venir vacio
-  getAllArticles: async (req,res) => {
+  getAllArticles: async (req, res) => {
     try {
-      if (Object.keys(req.body.filters).length === 0) {
+      if (req.body.filters && Object.keys(req.body.filters).length === 0) {
         let getArticles = await Article.find()
 
         if (getArticles) {
           res.json({ success: true, response: getArticles, error: null })
         } else {
-          throw new Error('Couldn´t get all articles')
+          throw new Error("Couldn´t get all articles")
         }
       } else {
-        let getFilteredArticles = await Article.find({ ...req.body.filters, minPlayers: { $gte: req.body.filters.minPlayers || 0 }, maxPlayers: { $lte: req.body.filters.maxPlayers || 0 }, minAge: { $gte: req.body.filters.minAge || 0 } }) 
+        let getFilteredArticles = await Article.find({
+          ...req.body.filters,
+          minPlayers: { $gte: req.body.filters?.minPlayers || 0 },
+          maxPlayers: { $lte: req.body.filters?.maxPlayers || 0 },
+          minAge: { $gte: req.body.filters?.minAge || 0 },
+        })
         if (getFilteredArticles) {
-          res.json({ success: true, response: getFilteredArticles, error: null })
+          res.json({
+            success: true,
+            response: getFilteredArticles,
+            error: null,
+          })
         } else {
-          throw new Error('Couldn´t get the filtered articles')
+          throw new Error("Couldn´t get the filtered articles")
         }
       }
     } catch (e) {
@@ -53,34 +61,41 @@ const articlesControllers = {
     }
   },
 
-  updateArticle: async (req,res) => {
+  updateArticle: async (req, res) => {
     try {
-      let updateArticle = await Article.findOneAndUpdate({ _id: req.params.id }, { ...req.body }, { new: true })
+      let updateArticle = await Article.findOneAndUpdate(
+        { _id: req.params.id },
+        { ...req.body },
+        { new: true }
+      )
       if (updateArticle) {
         res.json({ success: true, response: updateArticle, error: null })
       } else {
-        throw new Error('Couldn´t update the article')
+        throw new Error("Couldn´t update the article")
       }
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
   },
 
-  deleteArticle: async (req,res) => {
+  deleteArticle: async (req, res) => {
     try {
       let deleteArticle = await Article.findOneAndDelete({ _id: req.params.id })
       if (deleteArticle) {
         res.json({ success: true, response: deleteArticle, error: null })
       } else {
-        throw new Error('Couldn´t delete the article')
+        throw new Error("Couldn´t delete the article")
       }
     } catch (e) {
-      res.json({ success: false, response: null, error: e.message })    
+      res.json({ success: false, response: null, error: e.message })
     }
+  },
+  test: async (req, res) => {
+    const articles = await Article.find()
+    res.json({ success: true, response: articles, error: null })
   },
 }
 
 module.exports = articlesControllers
-
 
 // minPlayers: { $gte: req.body.filters.minPlayers || 0 }, maxPlayers: { $lte: req.body.filters.maxPlayers || 0 }, minAge: { $gte: req.body.filters.minAge || 0 }

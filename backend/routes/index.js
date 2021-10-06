@@ -7,6 +7,7 @@ const articleValidator = require("../controllers/articleValidator")
 const usersControllers = require("../controllers/usersControllers")
 const articlesControllers = require("../controllers/articlesControllers")
 const articlesUtilitiesControllers = require("../controllers/articlesUtilitiesControllers")
+const purchaseControllers = require("../controllers/purchaseControllers")
 
 // USERS ROUTES
 router.route("/login").post(usersControllers.logIn)
@@ -21,6 +22,21 @@ router
     passport.authenticate("jwt", { session: false }),
     usersControllers.verifyToken
   )
+
+router
+  .route("/user/wish-list/:articleId")
+  .put(
+    passport.authenticate("jwt", { session: false }),
+    usersControllers.toggleWishList
+  )
+
+router
+  .route("/user/shopping-cart/:articleId")
+  .post(
+    passport.authenticate("jwt", { session: false }),
+    usersControllers.shoppingCartHandler
+  )
+
 router
   .route("/user/:id")
   .put(
@@ -29,8 +45,21 @@ router
     usersControllers.updateAccount
   )
 
-router.route("/users").get(usersControllers.getAccounts)
+router
+  .route("/users")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    usersControllers.getAccounts
+  )
 
+router
+  .route("/user/purchase")
+  .post(
+    passport.authenticate("jwt", { session: false }),
+    purchaseControllers.handlePurchase
+  )
+
+router.route("/user/purchase/:id").delete(purchaseControllers.deletePurchase) // only dev stage!
 // USER DIRECTIONS ROUTES
 router
   .route("/user/directions")
@@ -97,9 +126,14 @@ router
   .route("/article")
   .post(articleValidator.articleValidator, articlesControllers.addArticle)
 
+// SEND EMAIL
+router.route("/welcomeemail").get(usersControllers.sendWelcomeEmail)
 
-  // SEND EMAIL
-router.route('/welcomeemail')
-.get(usersControllers.sendWelcomeEmail)
+//admin routes
+router
+  .route("/admin")
+  .get(usersControllers.getAdmins)
+  .post(usersControllers.getUserByEmail)
+router.route("/admin/set-admin").post(usersControllers.setAdmin)
 
 module.exports = router

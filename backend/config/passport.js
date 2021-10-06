@@ -11,6 +11,7 @@ module.exports = passport.use(
     },
     (payload, done) => {
       User.findOne({ _id: payload._id })
+        .populate({ path: "shoppingCart.article", select: "stock" })
         .then((respuesta) => {
           if (!respuesta) {
             return done(null, false)
