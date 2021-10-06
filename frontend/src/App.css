@@ -134,6 +134,13 @@ button {
    font-size: 3rem;
 }
 
+.logoNav {
+  width: 150px;
+  height: 40px;
+  background-position: center;
+  background-size: cover;
+}
+
 main h2 {
   color: white;
 }

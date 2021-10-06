@@ -21,6 +21,7 @@ const Home = () => {
                >
                   <div className="heroDescription">
                      <div>
+                        <h1 className="logo">ludotech</h1>
                         <h1>Welcome to the land of the game</h1>
                         <button>
                            <h4>Let´s go there</h4>
