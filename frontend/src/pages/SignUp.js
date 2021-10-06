@@ -5,6 +5,7 @@ import { GoogleLogin } from 'react-google-login'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import {connect} from 'react-redux'
+import Header from '../components/Header'
 
 import usersActions from '../redux/actions/usersActions'
 
@@ -46,9 +47,6 @@ const SignUp = (props) => {
    return (
       <>
          <Header />
-         <div className="headerLogo">
-            <h1>Ludotech</h1>
-         </div>
          <div className="flex">
             <div className="main-sign">
                <div>

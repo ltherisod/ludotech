@@ -50,9 +50,6 @@ const SignIn = () => {
    return (
       <>
          <Header />
-         <div className="headerLogo">
-            <h1>Ludotech</h1>
-         </div>
          <div className="flex">
             <div className="main-sign">
                <div>
