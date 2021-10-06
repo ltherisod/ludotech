@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Header from '../components/Header'
 
-import Header from '../components/Header';
 import usersActions from '../redux/actions/usersActions'
 
 const SignUp = (props) => {
