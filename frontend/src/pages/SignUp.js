@@ -59,9 +59,9 @@ const SignUp = (props) => {
               onChange={formik.handleChange("firstname")}
               onBlur={formik.handleBlur("firstname")}
             />
-            {formik.touched.firstname && formik.errors.firstname && (
-              <p>{formik.errors.firstname}</p>
-            )}
+            {formik.touched.firstname && formik.errors.firstname ? (
+              <small className="signErrors">{formik.errors.firstname}</small>
+            ) : (<small className="signNoErrors">NoErrors</small>)}
           </div>
           <div className="inputContainer">
             <label className="labelSign" htmlFor="lastname">
@@ -75,9 +75,9 @@ const SignUp = (props) => {
               onChange={formik.handleChange("lastname")}
               onBlur={formik.handleBlur("lastname")}
             />
-            {formik.touched.lastname && formik.errors.lastname && (
-              <p>{formik.errors.lastname}</p>
-            )}
+            {formik.touched.lastname && formik.errors.lastname ? (
+              <small className="signErrors">{formik.errors.lastname}</small>
+            ) : (<small className="signNoErrors">NoErrors</small>)}
           </div>
           {/* <div className='inputContainer'>
                     <label className='labelSign' htmlFor='photo'>Photo</label>
@@ -105,9 +105,25 @@ const SignUp = (props) => {
               onChange={formik.handleChange("email")}
               onBlur={formik.handleBlur("email")}
             />
-            {formik.touched.email && formik.errors.email && (
-              <p>{formik.errors.email}</p>
-            )}
+            {formik.touched.email && formik.errors.email ? (
+              <small className="signErrors">{formik.errors.email}</small>
+            ) : (<small className="signNoErrors">NoErrors</small>)}
+          </div>
+          <div className="inputContainer">
+            <label className="labelSign" htmlFor="email">
+              Profile Photo
+            </label>
+            <input
+              placeholder="Profile Photo"
+              name="photo"
+              type="filename"
+              value={formik.values.photo}
+              onChange={formik.handleChange("photo")}
+              onBlur={formik.handleBlur("photo")}
+            />
+            {formik.touched.email && formik.errors.email ? (
+              <small className="signErrors">{formik.errors.email}</small>
+            ) : (<small className="signNoErrors">NoErrors</small>)}
           </div>
           <div className="inputContainer">
             <label className="labelSign" htmlFor="password">
@@ -121,9 +137,9 @@ const SignUp = (props) => {
               onChange={formik.handleChange("password")}
               onBlur={formik.handleBlur("password")}
             />
-            {formik.touched.password && formik.errors.password && (
-              <p>{formik.errors.password}</p>
-            )}
+            {formik.touched.password && formik.errors.password ? (
+              <small className="signErrors">{formik.errors.password}</small>
+            ) : (<small className="signNoErrors">NoErrors</small>)}
           </div>
           <button
             type="button"
@@ -138,8 +154,8 @@ const SignUp = (props) => {
             By registering you are accepting our Terms and Conditions and our
             Privacy Policies
           </p>
-          <Link className="accountLink" to="/signup"  onClick={() => window.scrollTo(0, 0)}>
-            <p className="signinButtonSignupText">Don't have an account? <span> Sign up Here!</span> </p>
+          <Link className="accountLink" to="/signin"  onClick={() => window.scrollTo(0, 0)}>
+            <p className="signinButtonSignupText">Don't have an account? <span> Sign up Here!</span></p>
          </Link>
         </div>
       </div>

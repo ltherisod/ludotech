@@ -291,7 +291,25 @@ main h2 {
 .accountLink{
   text-decoration: none;
 }
+.signNoErrors, .signErrors {
+  margin-top: .5px;
+  text-align: center;
+  font-size: 2vmin;
+  letter-spacing: 2px;
+  margin-bottom: -.5em;
+}
+.main-sign input {
+  padding: 1em;
+  height: 3em;
+}
 
+.signNoErrors{
+  color: transparent;
+}
+
+.signErrors{
+  color: red;
+}
 /*Pagina Articulos*/
 
 .heroArticles {
@@ -394,8 +412,10 @@ main h2 {
 .mostWantedCard {
   align-self: center;
   width: 80%;
-  min-height: 100vh;
-  background-size: cover;
+  min-height: 60vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -403,7 +423,7 @@ main h2 {
 
 .mostWantedGame {
   width: 36%;
-  height: 35vh;
+  height: 30vh;
   background-size: contain;
   background-repeat: no-repeat;
   align-self: flex-end;
@@ -412,10 +432,9 @@ main h2 {
 .mostWantedGameConteiner,
 .mostWantedGameConteinerLeft {
   padding: 1rem;
-  margin-top: 5rem;
   align-self: center;
   width: 90%;
-  min-height: 30vh;
+  min-height: 20vh;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -471,4 +490,62 @@ main h2 {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
+}
+
+/* Article Page */
+
+.bodyArticle{
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+.articleData{
+  align-self: center;
+  width: 50%;
+  height: 50vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.articlePhoto{
+  width: 40%;
+  height: 50vh;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.articleName p{
+font-size: 6vmin;
+text-transform: uppercase;
+font-weight: bold;
+letter-spacing: -3px;
+color: #16054b;
+}
+.articleDecoUp{
+  width: 80%;
+  align-self: center;
+  display: flex;
+  height: 30vh;
+}
+
+.articleDescription{
+  align-self: center;
+  width: 40%;
+  text-align: justify;
+  color:gray;
+  font-weight: bold;
+  font-size: 3vmin;
+}
+.articleDeco{
+  width: 12%;
+  height: 18vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }

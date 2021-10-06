@@ -6,6 +6,7 @@ import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
 import { useLoginLS } from "./hooks/usersHooks"
 import { useSelector } from "react-redux"
+import Article from "./pages/Article"
 
 const App = (props) => {
   useLoginLS()
@@ -14,7 +15,8 @@ const App = (props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/articles" component={Articles} />
+        <Route exact path="/articles" component={Articles} />
+        <Route path = "/article" component={Article}/>
         {!user && <Route path="/signin" component={SignIn} />}
         {!user && <Route path="/signup" component={SignUp} />}
         <Redirect to="/" />

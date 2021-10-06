@@ -4,7 +4,6 @@ import { GoogleLogin } from "react-google-login"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import HeroPages from "../components/HeroPages"
-import Footer from "../components/Footer"
 import usersActions from "../redux/actions/usersActions"
 import Header from "../components/Header"
 
@@ -79,6 +78,7 @@ const SignIn = (props) => {
                      onChange={formik.handleChange("email")}
                      onBlur={formik.handleBlur("email")}
                   />
+                  <small className="signNoErrors">NoErrors</small>
                </div>
                <div className="inputContainer">
                   <label className="labelSign" htmlFor="password">
@@ -92,8 +92,8 @@ const SignIn = (props) => {
                      onChange={formik.handleChange("password")}
                      onBlur={formik.handleBlur("password")}
                   />
+                  <small className="signNoErrors">NoErrors</small>
                </div>
-               {/* {error && <p>{error}</p>} */}
                <div 
                   className="signupButtonSignup flex"
                   onClick={formik.handleSubmit}
@@ -106,7 +106,6 @@ const SignIn = (props) => {
                </Link>
             </div>
          </div>
-         <Footer/>
       </div>
    )
 }
