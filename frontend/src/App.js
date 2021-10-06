@@ -1,23 +1,44 @@
-import './App.css';
-import Home from './pages/Home'
-import Articles from './pages/Articles'
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom'
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
+import "./App.css"
+import { useEffect } from "react"
+import { connect } from "react-redux"
+import Home from "./pages/Home"
+import Articles from "./pages/Articles"
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
+import SignIn from "./pages/SignIn"
+import SignUp from "./pages/SignUp"
+import usersActions from "./redux/actions/usersActions"
 
 const App = (props) => {
 
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path='/' component={Home}/>
-        <Route path='/articles' component={Articles} />
-        {<Route path='/signin' component={SignIn} />}
-        {<Route path='/signup' component={SignUp} />}
-        <Redirect to='/'/>
-      </Switch>
-    </BrowserRouter>
-  )
+   useEffect( () => {
+      if(localStorage.getItem('token')) {
+        props.logInLS(localStorage.getItem('token'))
+      }
+      console.log(props.user)
+    }, [])
+
+   return (
+      <BrowserRouter>
+         <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/articles" component={Articles} />
+            {!props.token && <Route path="/signin" component={SignIn} />}
+            {!props.token && <Route path="/signup" component={SignUp} />}
+            <Redirect to="/" />
+         </Switch>
+      </BrowserRouter>
+   )
 }
 
-export default App
+const mapStateToProps = (state) => {
+   return {
+      token: state.users.user.token,
+      user: state.users.user
+   }
+}
+
+const mapDispatchToProps = {
+  logInLS: usersActions.logInLS
+}
+  
+export default connect(mapStateToProps, mapDispatchToProps)(App)

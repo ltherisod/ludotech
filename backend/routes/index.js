@@ -8,7 +8,7 @@ const usersControllers = require("../controllers/usersControllers")
 const articlesControllers = require("../controllers/articlesControllers")
 const articlesUtilitiesControllers = require("../controllers/articlesUtilitiesControllers")
 
-// users routers
+// USERS ROUTES
 router.route("/login").post(usersControllers.logIn)
 
 router
@@ -45,7 +45,7 @@ router
     usersControllers.deleteDirection
   )
 
-// articles routers
+// ARTICLES ROUTES
 router.route("/articles").get(articlesControllers.getAllArticles)
 
 router
@@ -90,5 +90,12 @@ router
 router
   .route("/article")
   .post(articleValidator.articleValidator, articlesControllers.addArticle)
+
+
+  // SEND EMAIL
+// router.route('/welcomeemail')
+// .get(usersControllers.sendWelcomeEmail)
+
+
 
 module.exports = router

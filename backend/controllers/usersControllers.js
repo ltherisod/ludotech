@@ -1,8 +1,39 @@
 const User = require("../models/User")
 const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+// const nodemailer = require("nodemailer")
+
+// let transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     type: 'OAuth2',
+//     user: process.env.USEREMAIL,
+//     password: process.env.USERPASSWORD,
+//     clientId: process.env.CLIENID,
+//     clientSecret: process.env.CLIENTSECRET,
+//     refreshToken: process.env.REFRESHTOKEN
+//   }
+// })
 
 const usersControllers = {
+  // sendWelcomeEmail: (req,res) => {
+  //   let message = `<div><h3>WELCOME</h3></div>`
+  //   let mailOptions = {
+  //     from: 'Ludotehc <ludotechweb@gmail.com>',
+  //     to: '<jc.venepro@gmail.com>',
+  //     subject: 'Welcome',
+  //     text: message,
+  //     html: message,
+  //   }
+  //   transporter.sendMail(mailOptions, (e, data) => {
+  //     if (!e) {
+  //       res.json({ success: true, response: data, error: null })
+  //     } else {
+  //       res.json({ success: false, response: null, error: e })
+  //       console.log(e)
+  //     }
+  //   })
+  // },
   logIn: async (req, res) => {
     try {
       const { email, password, google } = req.body
@@ -17,7 +48,8 @@ const usersControllers = {
       }
       const isValidPassword = await bcryptjs.compare(password, user.password)
       if (!isValidPassword) throw new Error("Invalid credentials")
-      const { _id, firstname, lastname, photo, isAdmin, directions } = user
+      const { _id, firstname, lastname, photo, phone, isAdmin, directions } =
+        user
       const token = jwt.sign({ _id, email }, process.env.SECRETKEY)
       res.json({
         success: true,
@@ -27,6 +59,7 @@ const usersControllers = {
           firstname,
           lastname,
           photo,
+          phone,
           isAdmin,
           directions,
           token,
@@ -39,7 +72,8 @@ const usersControllers = {
   },
   signUp: async (req, res) => {
     try {
-      const { firstname, lastname, email, password, photo, google } = req.body
+      const { firstname, lastname, email, password, photo, google, phone } =
+        req.body
       const emailInUse = await User.findOne({ email })
       if (emailInUse) throw new Error("Email in use.")
       const hashedPass = await bcryptjs.hash(password, 10)
@@ -49,13 +83,11 @@ const usersControllers = {
         email,
         password: hashedPass,
         photo,
+        phone,
         google,
       })
       await user.save()
-      const token = await jwt.sign(
-        { _id: user._id, email },
-        process.env.SECRETKEY
-      )
+      const token = jwt.sign({ _id: user._id, email }, process.env.SECRETKEY)
       res.json({
         success: true,
         response: {
@@ -64,6 +96,7 @@ const usersControllers = {
           lastname,
           email,
           photo,
+          phone: user.phone,
           isAdmin: user.isAdmin,
           directions: user.directions,
           token,
@@ -99,9 +132,23 @@ const usersControllers = {
         },
         { new: true }
       )
+      const token = jwt.sign(
+        { _id: user._id, email: user.email },
+        process.env.SECRETKEY
+      )
       res.json({
         success: true,
-        response: user,
+        response: {
+          _id: user._id,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          email: user.email,
+          photo: user.photo,
+          phone: user.phone,
+          isAdmin: user.isAdmin,
+          directions: user.directions,
+          token,
+        },
         error: null,
       })
     } catch (e) {
