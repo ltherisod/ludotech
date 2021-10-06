@@ -65,8 +65,8 @@ const Filter = () => {
     
     // console.log(filter)
     return(
-        <>
-            <form onSubmit={submitFilter} style={{width: "90%", display: "flex", color: "white", margin: "30px"}}>
+        <div className='form'>
+            <form onSubmit={submitFilter} style={{width: "80%", display: "flex", color: "white", margin: "30px"}}>
                 <div>
                     <label htmlFor="name">Search a product:</label>
                     <input type="text" id="name" name="name" onChange={inputHandle}/>
@@ -134,7 +134,7 @@ const Filter = () => {
             <button onClick={() => {setRenderDropDown(!renderDropDown)}}>
                 {renderDropDown ? "View less filters" : "View more filters"}
             </button>
-        </>
+        </div>
     )
 }
 
