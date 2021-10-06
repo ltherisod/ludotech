@@ -3,7 +3,8 @@ import { useFormik } from "formik"
 import { GoogleLogin } from "react-google-login"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
-
+import HeroPages from "../components/HeroPages"
+import Footer from "../components/Footer"
 import usersActions from "../redux/actions/usersActions"
 import Header from "../components/Header"
 
@@ -26,13 +27,13 @@ const SignIn = (props) => {
    }
 
    return (
-      <>
+      <div className="signInBody" style={{backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`}}>
+         <HeroPages/>
          <Header />
          <div className="flex">
             <div className="main-sign">
                <div>
-                  <h2>Sign in</h2>
-                  <p>Enter in your account to buy</p>
+                  <h2>Sign <span>in!</span></h2>
                </div>
                <GoogleLogin
                   clientId="459150618424-3jfl8j0539f5fj34h0e3utqvao05ib8m.apps.googleusercontent.com"
@@ -46,6 +47,7 @@ const SignIn = (props) => {
                         className="buttonGoogle"
                         onClick={renderProps.onClick}
                         disabled={renderProps.disabled}
+                        style={{backgroundImage: `url("https://i.postimg.cc/L6km2Sc6/back-Google.png")`}}
                      >
                         <svg
                            xmlns="http://www.w3.org/2000/svg"
@@ -92,23 +94,20 @@ const SignIn = (props) => {
                   />
                </div>
                {/* {error && <p>{error}</p>} */}
-               <div
+               <div 
                   className="signupButtonSignup flex"
                   onClick={formik.handleSubmit}
+                  style={{backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`}}
                >
                   Sign in
                </div>
-               <div className="signupEmailOption">
-                  <div></div>
-                  <p>Create an account</p>
-                  <div></div>
-               </div>
-               <Link to="/signup">
-                  <div className="flex signinButtonSignup">Sign up</div>
+               <Link className="accountLink" to="/signup"  onClick={() => window.scrollTo(0, 0)}>
+                  <p className="signinButtonSignupText">Don't have an account? <span> Sign up Here!</span> </p>
                </Link>
             </div>
          </div>
-      </>
+         <Footer/>
+      </div>
    )
 }
 

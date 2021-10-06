@@ -1,63 +1,26 @@
-import { useFormik } from "formik"
-// import {useState} from 'react'
-import * as Yup from "yup"
 import { GoogleLogin } from "react-google-login"
 import { Link } from "react-router-dom"
-import { connect } from "react-redux"
 import Header from "../components/Header"
-import usersActions from "../redux/actions/usersActions"
+import { useSignup } from "../hooks/usersHooks"
+import HeroPages from "../components/HeroPages"
 
 const SignUp = (props) => {
-   // const [error, setError] = useState('')
-
-   let formik = useFormik({
-      initialValues: {
-         firstname: "",
-         lastname: "",
-         email: "",
-         password: "",
-         photo: "default",
-         google: false,
-      },
-      onSubmit: (values) => {
-         props.addNewUser(values, "signup")
-      },
-      validationSchema: Yup.object({
-         firstname: Yup.string()
-            .min(2, "Firstname must have 2+ characters")
-            .required("Required"),
-         lastname: Yup.string()
-            .min(2, "Lastname must have 2+ characters")
-            .required("Required"),
-         email: Yup.string().email("Invalid email").required("Required"),
-         password: Yup.string()
-            .min(4, "Password must have 4+ characters")
-            .required("Required"),
-         // photo: Yup.string().required('Required')
-      }),
-   })
-
-   const responseGoogle = (res) => {
-      let newUserGoogle = {
-         firstname: res.profileObj.givenName,
-         lastname: res.profileObj.familyName,
-         email: res.profileObj.email,
-         photo: res.profileObj.imageUrl,
-         password: res.profileObj.googleId,
-         google: true,
-      }
-
-      props.addNewUser(newUserGoogle, "signup")
-   }
-
+   const [formik, responseGoogle, loading, error] = useSignup()
    return (
-      <>
+      <div
+         className="signInBody"
+         style={{
+            backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`,
+         }}
+      >
+         <HeroPages />
          <Header />
          <div className="flex">
             <div className="main-sign">
                <div>
-                  <h2>Sign up</h2>
-                  <p>Create an account to buy today</p>
+                  <h2>
+                     Sign <span>in!</span>
+                  </h2>
                </div>
                <GoogleLogin
                   clientId="459150618424-3jfl8j0539f5fj34h0e3utqvao05ib8m.apps.googleusercontent.com"
@@ -71,6 +34,9 @@ const SignUp = (props) => {
                         className="buttonGoogle"
                         onClick={renderProps.onClick}
                         disabled={renderProps.disabled}
+                        style={{
+                           backgroundImage: `url("https://i.postimg.cc/L6km2Sc6/back-Google.png")`,
+                        }}
                      >
                         <svg
                            xmlns="http://www.w3.org/2000/svg"
@@ -168,36 +134,34 @@ const SignUp = (props) => {
                      <p>{formik.errors.password}</p>
                   )}
                </div>
-               <div
+               <button
+                  type="button"
                   className="flex signupButtonSignup"
+                  disabled={loading}
                   onClick={formik.handleSubmit}
+                  style={{
+                     backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                  }}
                >
                   Sign up
-               </div>
+               </button>
                <p className="adTerms">
                   By registering you are accepting our Terms and Conditions and
                   our Privacy Policies
                </p>
-               <div className="signupEmailOption">
-                  <div></div>
-                  <p>Already have an account?</p>
-                  <div></div>
-               </div>
-               <Link to="/signin">
-                  <div className="flex signinButtonSignup">Sign In</div>
+               <Link
+                  className="accountLink"
+                  to="/signup"
+                  onClick={() => window.scrollTo(0, 0)}
+               >
+                  <p className="signinButtonSignupText">
+                     Don't have an account? <span> Sign up Here!</span>{" "}
+                  </p>
                </Link>
             </div>
          </div>
-      </>
+      </div>
    )
 }
 
-const mapStateToProps = (state) => {
-   return {}
-}
-
-const mapDispatchToProps = {
-   addNewUser: usersActions.logInOrSignUp,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default SignUp

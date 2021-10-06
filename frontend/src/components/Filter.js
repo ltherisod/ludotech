@@ -21,7 +21,7 @@ const Filter = () => {
 
     const submitFilter = (e) => {
         e.preventDefault()
-        console.log("register: ", filter)
+        console.log("Filter: ", filter)
     }
 
     const inputHandle = (e) => {
@@ -63,15 +63,16 @@ const Filter = () => {
         )
     }
     
-    console.log(filter)
+    // console.log(filter)
     return(
         <>
-            {renderDropDown &&
-                <form onSubmit={submitFilter}>
-                    <div>
-                        <label htmlFor="name">Search a product:</label>
-                        <input type="text" id="name" name="name" onChange={inputHandle}/>
-                    </div>
+            <form onSubmit={submitFilter} style={{width: "90%", display: "flex", color: "white", margin: "30px"}}>
+                <div>
+                    <label htmlFor="name">Search a product:</label>
+                    <input type="text" id="name" name="name" onChange={inputHandle}/>
+                </div>
+                {renderDropDown &&
+                <div style={{display: "flex", flexWrap: "wrap", marginLeft: "10px"}}>
                     <div>
                         <label htmlFor="minPrice">Min price:</label>
                         <input type="number" min={0} id="minPrice" name="minPrice" onChange={(e) => inputNumber(e, 0)}/>
@@ -126,10 +127,10 @@ const Filter = () => {
                             {renderOptions(gameTypes)}
                         </select>
                     </div>
-
-                    <input type="submit" value="Filter"/>
-                </form>
-            }
+                </div>
+                }
+                <input type="submit" value="Filter"/>
+            </form>
             <button onClick={() => {setRenderDropDown(!renderDropDown)}}>
                 {renderDropDown ? "View less filters" : "View more filters"}
             </button>

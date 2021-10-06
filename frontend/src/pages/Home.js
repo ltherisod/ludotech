@@ -21,6 +21,7 @@ const Home = () => {
                >
                   <div className="heroDescription">
                      <div>
+                        <h1 className="logo">ludotech</h1>
                         <h1>Welcome to the land of the game</h1>
                         <button>
                            <h4>Let´s go there</h4>
@@ -34,7 +35,7 @@ const Home = () => {
                </div>
                <MostWanted />
             </main>
-            <ScrollUpButton style={{backgroundColor: '#5ccfd8', fill: 'white', paddingBottom: '3px', paddingLeft: '3px', paddingRight: '3px', borderRadius: '50%'}}/>
+            <ScrollUpButton style={{backgroundColor: '#5ccfd8', fill: 'white', paddingBottom: '3px', paddingLeft: '3px', paddingRight: '3px', borderRadius: '50%'}} AnimationDuration={500} EasingType='easeOutCubic' StopPosition={0}/>
             <Footer />
          </div>
       </>
