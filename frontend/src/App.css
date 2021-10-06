@@ -153,7 +153,7 @@ main h2 {
 
 .headerLogo {
   height: 10vh;
-  background-color: #8646d4;
+  /* background-color: #8646d4; */
   border-bottom: 1px solid #3022428f;
   color: white;
   font-size: 3vmin;
@@ -168,13 +168,15 @@ main h2 {
 }
 
 .main-sign h2 {
-  font-size: 4vmin;
+  font-size: 6vmin;
   font-weight: 600;
-  text-align: start;
+  text-align: center;
+  color:white;
 }
 
 .main-sign h2 + p {
   text-align: start;
+  color:white;
 }
 
 .errorSign {
@@ -185,7 +187,6 @@ main h2 {
   height: 50px;
   border-radius: 3px;
   cursor: pointer;
-  background-color: #de4a34;
   color: white;
   font-size: 2.5vmin;
   display: flex;
@@ -204,7 +205,7 @@ main h2 {
   align-items: center;
   justify-content: space-between;
   font-size: 2.2vmin;
-  color: rgba(1, 1, 1, 0.8);
+  color: white;
 }
 
 .signupEmailOption p {
@@ -214,7 +215,7 @@ main h2 {
 .signupEmailOption div {
   flex: 1;
   height: 1px;
-  border-bottom: 1px solid rgba(1, 1, 1, 0.2);
+  border-bottom: 1px solid white;
 }
 
 .inputContainer {
@@ -226,20 +227,22 @@ main h2 {
   height: 40px;
   padding-left: 1vmin;
   outline: none;
-  border: 1px solid rgba(1, 1, 1, 0.3);
+  border: 1px solid white;
   border-radius: 3px;
 }
 
 .main-sign label {
-  color: rgba(1, 1, 1, 0.8);
+  color: white;
   text-align: start;
   font-size: 2.3vmin;
   margin-bottom: 0.5vmin;
+  font-weight: bolder;
+  letter-spacing: 1px;
 }
 
 .adTerms {
   font-size: 1.8vmin;
-  color: rgba(1, 1, 1, 0.8);
+  color:white;
 }
 
 .signupButtonSignup,
@@ -251,16 +254,32 @@ main h2 {
   font-weight: 600;
   cursor: pointer;
 }
+.signinButtonSignupText{
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.5vmin;
+}
 
-.signinButtonSignup {
-  color: rgba(1, 1, 1, 0.8);
-  border: 1px solid rgba(1, 1, 1, 0.3);
+.signinButtonSignup, .signinButtonSignupText {
+  color: white;
+}
+
+.signinButtonSignupText span,  h2 span {
+  color: #67f2cb;
 }
 
 .signupButtonSignup {
-  background-color: #8646d4;
   border: none;
   color: white;
+}
+.signUpBody, .signInBody{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.accountLink{
+  text-decoration: none;
 }
 
 /*Pagina Articulos*/
@@ -433,4 +452,13 @@ main h2 {
 
 .footerInsta, .footerFace, .footerTwit {
    width: 3em;
+}
+
+/*Hero Pages*/
+.heroPageCont{
+  width: 100%;
+  min-height: 40vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
 }

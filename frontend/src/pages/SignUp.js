@@ -5,9 +5,9 @@ import { GoogleLogin } from 'react-google-login'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Header from '../components/Header'
-
-import Header from '../components/Header';
 import usersActions from '../redux/actions/usersActions'
+import HeroPages from '../components/HeroPages'
+import Footer from '../components/Footer';
 
 const SignUp = (props) => {
     // const [error, setError] = useState('')
@@ -40,13 +40,13 @@ const SignUp = (props) => {
     }
 
    return (
-      <>
+      <div className="signUpBody" style={{backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`}}>
          <Header />
-         <div className="flex">
+         <HeroPages/>
+         <div className="flex SignUpBody" >
             <div className="main-sign">
                <div>
-                  <h2>Sign up</h2>
-                  <p>Create an account to buy today</p>
+                  <h2>Sign <span>up!</span></h2>
                </div>
                <GoogleLogin
                   clientId="459150618424-3jfl8j0539f5fj34h0e3utqvao05ib8m.apps.googleusercontent.com"
@@ -60,6 +60,7 @@ const SignUp = (props) => {
                         className="buttonGoogle"
                         onClick={renderProps.onClick}
                         disabled={renderProps.disabled}
+                        style={{backgroundImage: `url("https://i.postimg.cc/L6km2Sc6/back-Google.png")`}}
                      >
                         <svg
                            xmlns="http://www.w3.org/2000/svg"
@@ -160,6 +161,7 @@ const SignUp = (props) => {
                <div
                   className="flex signupButtonSignup"
                   onClick={formik.handleSubmit}
+                  style={{backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`}}
                >
                   Sign up
                </div>
@@ -167,17 +169,13 @@ const SignUp = (props) => {
                   By registering you are accepting our Terms and Conditions and
                   our Privacy Policies
                </p>
-               <div className="signupEmailOption">
-                  <div></div>
-                  <p>Already have an account?</p>
-                  <div></div>
-               </div>
-               <Link to="/signin">
-                  <div className="flex signinButtonSignup">Sign In</div>
+               <Link className="accountLink" to="/signin"  onClick={() => window.scrollTo(0, 0)}>
+                  <p className="signinButtonSignupText">Already have an account? <span> Sign In Here!</span> </p>
                </Link>
             </div>
          </div>
-      </>
+         <Footer/>
+      </div>
    )
 }
 
