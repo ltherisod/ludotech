@@ -294,7 +294,25 @@ h2 span {
 .accountLink {
    text-decoration: none;
 }
+.signNoErrors, .signErrors {
+  margin-top: .5px;
+  text-align: center;
+  font-size: 2vmin;
+  letter-spacing: 2px;
+  margin-bottom: -.5em;
+}
+.main-sign input {
+  padding: 1em;
+  height: 3em;
+}
 
+.signNoErrors{
+  color: transparent;
+}
+
+.signErrors{
+  color: red;
+}
 /*Pagina Articulos*/
 
 .heroArticles {
@@ -395,33 +413,34 @@ h2 span {
 }
 
 .mostWantedCard {
-   align-self: center;
-   width: 80%;
-   min-height: 100vh;
-   background-size: cover;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  align-self: center;
+  width: 80%;
+  min-height: 60vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mostWantedGame {
-   width: 36%;
-   height: 35vh;
-   background-size: contain;
-   background-repeat: no-repeat;
-   align-self: flex-end;
+  width: 36%;
+  height: 30vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  align-self: flex-end;
 }
 
 .mostWantedGameConteiner,
 .mostWantedGameConteinerLeft {
-   padding: 1rem;
-   margin-top: 5rem;
-   align-self: center;
-   width: 90%;
-   min-height: 30vh;
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-end;
+  padding: 1rem;
+  align-self: center;
+  width: 90%;
+  min-height: 20vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .mostWantedGameConteinerLeft {
@@ -568,11 +587,6 @@ th {
   font-weight: bold;
 }
 
-.searchUserTeam {
-  display: flex;
-  flex-direction: column;
-}
-
 .searchbarTeam {
   width: 50%;
   height: 40px;
@@ -705,4 +719,62 @@ th {
 
 .detailsCardTeam span {
   font-size: 2vmin;
+}
+
+/* Article Page */
+
+.bodyArticle{
+   width: 100%;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   display: flex;
+   flex-direction: column;
+ }
+ 
+.articleData{
+  align-self: center;
+  width: 50%;
+  height: 50vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.articlePhoto{
+  width: 40%;
+  height: 50vh;
+  background-size:contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.articleName p{
+font-size: 6vmin;
+text-transform: uppercase;
+font-weight: bold;
+letter-spacing: -3px;
+color: #16054b;
+}
+.articleDecoUp{
+  width: 80%;
+  align-self: center;
+  display: flex;
+  height: 30vh;
+}
+
+.articleDescription{
+  align-self: center;
+  width: 40%;
+  text-align: justify;
+  color:gray;
+  font-weight: bold;
+  font-size: 3vmin;
+}
+.articleDeco{
+  width: 12%;
+  height: 18vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
