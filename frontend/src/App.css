@@ -129,20 +129,8 @@ button {
   border: none;
   margin-top: 20px;
 }
-.wanted {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 20px 220px;
-  justify-content: center;
-}
-.wantedCards {
-  width: 100%;
-  height: 320px;
-  margin-bottom: 50px;
-  background-position: center;
-  background-size: cover;
-}
+
+
 main h2 {
   color: white;
 }
@@ -407,12 +395,12 @@ main h2 {
 .mostWantedGameConteinerLeft {
   width: 80%;
 }
-.mostWantedGameBrand {
-  margin: 1em;
-  align-self: center;
-  font-size: 7vmin;
-  font-weight: bold;
-  color: black;
+.mostWantedGameBrand{
+   margin:1em;
+   align-self: center;
+   font-size: 7vmin;
+   font-weight: bold;
+   color:#120045;
 }
 /*Footer*/
 
@@ -421,4 +409,28 @@ main h2 {
   height: 69vh;
   background-size: cover;
   background-position: bottom;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.socialMediaContainer{
+   padding: 2em;
+   width: 20%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.footerRights{
+   font-weight: bolder;
+   word-spacing: 3px;
+   letter-spacing: .5px;
+   font-size: 2.5vmin;
+   padding-bottom: 1em;
+}
+
+.footerInsta, .footerFace, .footerTwit {
+   width: 3em;
 }
