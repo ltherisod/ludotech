@@ -255,6 +255,32 @@ const usersControllers = {
       res.json({ success: false, response: null, error: e.message })
     }
   },
+  verifyToken: async (req, res) => {
+    const {
+      _id,
+      email,
+      firstname,
+      lastname,
+      photo,
+      phone,
+      isAdmin,
+      directions,
+    } = req.user
+    res.json({
+      success: true,
+      response: {
+        _id,
+        email,
+        firstname,
+        lastname,
+        photo,
+        phone,
+        isAdmin,
+        directions,
+      },
+      error: null,
+    })
+  },
   getAccounts: async (req, res) => {
     // dev stage only!
     try {

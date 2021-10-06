@@ -16,6 +16,12 @@ router
   .post(usersValidators.signUpValidator, usersControllers.signUp)
 
 router
+  .route("/user/verifyToken")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    usersControllers.verifyToken
+  )
+router
   .route("/user/:id")
   .put(
     passport.authenticate("jwt", { session: false }),
@@ -91,11 +97,8 @@ router
   .route("/article")
   .post(articleValidator.articleValidator, articlesControllers.addArticle)
 
-
-  // SEND EMAIL
+// SEND EMAIL
 // router.route('/welcomeemail')
 // .get(usersControllers.sendWelcomeEmail)
-
-
 
 module.exports = router

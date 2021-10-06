@@ -30,7 +30,10 @@ const usersActions = {
           headers: { Authorization: `Bearer ${token}` },
         })
         if (!response.data.success) throw new Error(response.data.error)
-        dispatch({ type: "LOGIN_OR_SIGNUP", payload: response.data.response })
+        dispatch({
+          type: "LOGIN_OR_SIGNUP",
+          payload: { ...response.data.response, token },
+        })
       } catch (e) {
         localStorage.removeItem("token")
         return { success: false, error: e.message }
