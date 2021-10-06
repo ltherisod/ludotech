@@ -374,7 +374,7 @@ background-position: center;
 
 .mostWantedCard{
   align-self: center;
-  width: 85%;
+  width: 80%;
   min-height: 100vh;
   background-size: cover;
   display: flex;
@@ -382,25 +382,35 @@ background-position: center;
   align-items: center;
 }
 
-.mostWantedGame, .mostWantedGameBrand{
- 
-  width: 50%;
-  height: 40vh;
+.mostWantedGame{ 
+  width: 36%;
+  height: 35vh;
   background-size: contain;
   background-repeat: no-repeat;
   align-self:flex-end;
 }
 
-.mostWantedGameConteiner{
+.mostWantedGameConteiner, .mostWantedGameConteinerLeft{
+  padding:1rem;
   margin-top: 5rem;
   align-self: center;
-  width: 70%;
-  min-height: 50vh;
+  width: 90%;
+  min-height: 30vh;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
 
+.mostWantedGameConteinerLeft{
+   width: 80%;
+}
+.mostWantedGameBrand{
+   margin:1em;
+   align-self: center;
+   font-size: 7vmin;
+   font-weight: bold;
+   color: black;
+}
 /*Footer*/
 
 .footerContainer{
