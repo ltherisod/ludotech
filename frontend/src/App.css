@@ -1,127 +1,127 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-  text-decoration: none;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: "Poppins", sans-serif;
+   text-decoration: none;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  justify-content: space-between;
-  text-align: center;
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+   justify-content: space-between;
+   text-align: center;
 }
 
 /* HEADER */
 
 #mainNav {
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-  background-color: #fff;
-  transition: background-color 0.2s ease;
+   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+   background-color: #fff;
+   transition: background-color 0.2s ease;
 }
 #mainNav .navbar-brand {
-  font-weight: 600;
-  color: #212529;
+   font-weight: 600;
+   color: #212529;
 }
 #mainNav .navbar-nav .nav-item .nav-link {
-  color: #666363;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.75rem 0;
+   color: #666363;
+   font-weight: 600;
+   font-size: 1rem;
+   padding: 0.75rem 0;
 }
 #mainNav .navbar-nav .nav-item .nav-link:hover,
 #mainNav .navbar-nav .nav-item .nav-link:active {
-  color: #f43ad5;
+   color: #f43ad5;
 }
 #mainNav .navbar-nav .nav-item .nav-link.active {
-  color: #f046cb !important;
+   color: #f046cb !important;
 }
 @media (min-width: 992px) {
-  #mainNav {
-    box-shadow: none;
-    background-color: transparent;
-  }
-  #mainNav .navbar-brand {
-    color: rgba(255, 255, 255, 0.9);
-  }
-  #mainNav .navbar-brand:hover {
-    color: #fff;
-  }
-  #mainNav .navbar-nav .nav-item .nav-link {
-    color: rgba(255, 255, 255, 0.9);
-    padding: 0 1rem;
-  }
-  #mainNav .navbar-nav .nav-item .nav-link:hover {
-    color: #fff;
-  }
-  #mainNav .navbar-nav .nav-item:last-child .nav-link {
-    padding-right: 0;
-  }
-  #mainNav.navbar-shrink {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    background-color: #fff;
-  }
-  #mainNav.navbar-shrink .navbar-brand {
-    color: #212529;
-  }
-  #mainNav.navbar-shrink .navbar-brand:hover {
-    color: #f4623a;
-  }
-  #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
-    color: #212529;
-  }
-  #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
-    color: #f4623a;
-  }
+   #mainNav {
+      box-shadow: none;
+      background-color: transparent;
+   }
+   #mainNav .navbar-brand {
+      color: rgba(255, 255, 255, 0.9);
+   }
+   #mainNav .navbar-brand:hover {
+      color: #fff;
+   }
+   #mainNav .navbar-nav .nav-item .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+      padding: 0 1rem;
+   }
+   #mainNav .navbar-nav .nav-item .nav-link:hover {
+      color: #fff;
+   }
+   #mainNav .navbar-nav .nav-item:last-child .nav-link {
+      padding-right: 0;
+   }
+   #mainNav.navbar-shrink {
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      background-color: #fff;
+   }
+   #mainNav.navbar-shrink .navbar-brand {
+      color: #212529;
+   }
+   #mainNav.navbar-shrink .navbar-brand:hover {
+      color: #f4623a;
+   }
+   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
+      color: #212529;
+   }
+   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
+      color: #f4623a;
+   }
 }
 
 .containerLogoUser {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .logoUser {
-  background-position: center;
-  width: 2.3em;
-  height: 2.3em;
-  background-size: cover;
-  border-radius: 100%;
-  margin-right: 15px;
+   background-position: center;
+   width: 2.3em;
+   height: 2.3em;
+   background-size: cover;
+   border-radius: 100%;
+   margin-right: 15px;
 }
 
 /* ESTILOS */
 
 .body {
-  background-position: center;
-  background-size: cover;
+   background-position: center;
+   background-size: cover;
 }
 header {
-  width: 100%;
-  background-color: transparent;
+   width: 100%;
+   background-color: transparent;
 }
 footer {
-  width: 100%;
-  height: 50px;
-  background-color: transparent;
-  color: white;
+   width: 100%;
+   height: 50px;
+   background-color: transparent;
+   color: white;
 }
 .hero {
-  width: 100%;
-  height: 100vh;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-position: bottom;
-  background-size: cover;
-  margin-bottom: 20px;
-  padding: 0px 10vw;
+   width: 100%;
+   height: 100vh;
+   color: white;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background-position: bottom;
+   background-size: cover;
+   margin-bottom: 20px;
+   padding: 0px 10vw;
 }
 .heroDescription {
-  text-align: left;
+   text-align: left;
 }
 button {
    padding: 5px 10px;
@@ -130,321 +130,324 @@ button {
    margin-top: 20px;
 }
 .logo {
-   font-family: 'Fredoka One', cursive;
+   font-family: "Fredoka One", cursive;
    font-size: 3rem;
 }
 
 .logoNav {
-  width: 150px;
-  height: 40px;
-  background-position: center;
-  background-size: cover;
+   width: 150px;
+   height: 40px;
+   background-position: center;
+   background-size: cover;
 }
 
 main h2 {
-  color: white;
+   color: white;
 }
 .cube {
-  background-position: center;
-  background-size: cover;
-  height: 530px;
-  width: 530px;
-  margin-bottom: 60px;
+   background-position: center;
+   background-size: cover;
+   height: 530px;
+   width: 530px;
+   margin-bottom: 60px;
 }
 
 /* SEBA: Sign UP */
 
 .flex,
 .headerLogo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .headerLogo {
-  height: 10vh;
-  /* background-color: #8646d4; */
-  border-bottom: 1px solid #3022428f;
-  color: white;
-  font-size: 3vmin;
+   height: 10vh;
+   /* background-color: #8646d4; */
+   border-bottom: 1px solid #3022428f;
+   color: white;
+   font-size: 3vmin;
 }
 
 .main-sign {
-  width: 35%;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 3vmin;
-  margin: 4vh 0;
+   width: 35%;
+   display: grid;
+   grid-template-columns: repeat(1, 1fr);
+   gap: 3vmin;
+   margin: 4vh 0;
 }
 
 .main-sign h2 {
-  font-size: 6vmin;
-  font-weight: 600;
-  text-align: center;
-  color:white;
+   font-size: 6vmin;
+   font-weight: 600;
+   text-align: center;
+   color: white;
 }
 
 .main-sign h2 + p {
-  text-align: start;
-  color:white;
+   text-align: start;
+   color: white;
 }
 
 .errorSign {
-  color: #de4a34;
+   color: #de4a34;
 }
 
 .buttonGoogle {
-  height: 50px;
-  border-radius: 3px;
-  cursor: pointer;
-  color: white;
-  font-size: 2.5vmin;
-  display: flex;
-  align-items: center;
-  padding: 0 2vmin;
+   height: 50px;
+   border-radius: 3px;
+   cursor: pointer;
+   color: white;
+   font-size: 2.5vmin;
+   display: flex;
+   align-items: center;
+   padding: 0 2vmin;
 }
 
 .buttonGoogle p {
-  width: 100%;
-  margin-left: 16.5vmin;
-  margin-bottom: 0;
+   width: 100%;
+   margin-left: 16.5vmin;
+   margin-bottom: 0;
 }
 
 .signupEmailOption {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 2.2vmin;
-  color: white;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   font-size: 2.2vmin;
+   color: white;
 }
 
 .signupEmailOption p {
-  margin: 0 3vmin;
+   margin: 0 3vmin;
 }
 
 .signupEmailOption div {
-  flex: 1;
-  height: 1px;
-  border-bottom: 1px solid white;
+   flex: 1;
+   height: 1px;
+   border-bottom: 1px solid white;
 }
 
 .inputContainer {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
+   display: grid;
+   grid-template-columns: repeat(1, 1fr);
 }
 
 .main-sign input {
-  height: 40px;
-  padding-left: 1vmin;
-  outline: none;
-  border: 1px solid white;
-  border-radius: 3px;
+   height: 40px;
+   padding-left: 1vmin;
+   outline: none;
+   border: 1px solid white;
+   border-radius: 3px;
 }
 
 .main-sign label {
-  color: white;
-  text-align: start;
-  font-size: 2.3vmin;
-  margin-bottom: 0.5vmin;
-  font-weight: bolder;
-  letter-spacing: 1px;
+   color: white;
+   text-align: start;
+   font-size: 2.3vmin;
+   margin-bottom: 0.5vmin;
+   font-weight: bolder;
+   letter-spacing: 1px;
 }
 
 .adTerms {
-  font-size: 1.8vmin;
-  color:white;
+   font-size: 1.8vmin;
+   color: white;
 }
 
 .signupButtonSignup,
 .signinButtonSignup {
-  width: 100%;
-  font-size: 2.5vmin;
-  border-radius: 3px;
-  height: 50px;
-  font-weight: 600;
-  cursor: pointer;
+   width: 100%;
+   font-size: 2.5vmin;
+   border-radius: 3px;
+   height: 50px;
+   font-weight: 600;
+   cursor: pointer;
 }
-.signinButtonSignupText{
-  text-align: center;
-  font-weight: bold;
-  font-size: 2.5vmin;
-}
-
-.signinButtonSignup, .signinButtonSignupText {
-  color: white;
+.signinButtonSignupText {
+   text-align: center;
+   font-weight: bold;
+   font-size: 2.5vmin;
 }
 
-.signinButtonSignupText span,  h2 span {
-  color: #67f2cb;
+.signinButtonSignup,
+.signinButtonSignupText {
+   color: white;
+}
+
+.signinButtonSignupText span,
+h2 span {
+   color: #67f2cb;
 }
 
 .signupButtonSignup {
-  border: none;
-  color: white;
+   border: none;
+   color: white;
 }
-.signUpBody, .signInBody{
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.signUpBody,
+.signInBody {
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
 }
 
-.accountLink{
-  text-decoration: none;
+.accountLink {
+   text-decoration: none;
 }
 
 /*Pagina Articulos*/
 
 .heroArticles {
-  width: 100%;
-  height: 60vh;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-position: bottom;
-  background-size: cover;
-  margin-bottom: 20px;
-  padding: 0px 10vw;
+   width: 100%;
+   height: 60vh;
+   color: white;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background-position: bottom;
+   background-size: cover;
+   margin-bottom: 20px;
+   padding: 0px 10vw;
 }
 .containerArticles {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0px 3rem;
-  justify-content: space-around;
+   display: flex;
+   flex-wrap: wrap;
+   margin: 0px 3rem;
+   justify-content: space-around;
 }
 
 .cardArticle {
-  height: 500px;
-  width: 21%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  padding: 0px 10px;
-  margin: 10px;
-  border-radius: 12px;
+   height: 500px;
+   width: 21%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   background-color: white;
+   padding: 0px 10px;
+   margin: 10px;
+   border-radius: 12px;
 }
 
 .photosArticle {
-  width: 100%;
-  background-position: center;
-  height: 14rem;
-  background-size: cover;
-  display: flex;
-  align-items: flex-start;
+   width: 100%;
+   background-position: center;
+   height: 14rem;
+   background-size: cover;
+   display: flex;
+   align-items: flex-start;
 }
 
 .priceArticle {
-  display: flex;
+   display: flex;
 }
 
 .iconsNav {
-  color: rgba(216, 16, 133, 0.664);
-  font-size: 22px;
-  margin: 0px 10px;
-  cursor: pointer;
+   color: rgba(216, 16, 133, 0.664);
+   font-size: 22px;
+   margin: 0px 10px;
+   cursor: pointer;
 }
 
 .iconsNav:hover {
-  color: rgb(216, 16, 133);
-  font-size: 22px;
-  margin-left: 10px;
-  cursor: pointer;
+   color: rgb(216, 16, 133);
+   font-size: 22px;
+   margin-left: 10px;
+   cursor: pointer;
 }
 
 .backFavArticle {
-  display: flex;
-  justify-content: space-between;
+   display: flex;
+   justify-content: space-between;
 }
 
 .circleFav {
-  background-color: rgba(173, 169, 169, 0.301);
-  border-radius: 100%;
-  height: 45px;
-  width: 45px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  left: 25px;
-  cursor: pointer;
+   background-color: rgba(173, 169, 169, 0.301);
+   border-radius: 100%;
+   height: 45px;
+   width: 45px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   left: 25px;
+   cursor: pointer;
 }
 
 .favArticle {
-  font-size: 25px;
-  color: rgba(155, 7, 93, 0.664);
-  cursor: pointer;
+   font-size: 25px;
+   color: rgba(155, 7, 93, 0.664);
+   cursor: pointer;
 }
 
 .favArticle:hover {
-  color: rgb(247, 51, 165);
+   color: rgb(247, 51, 165);
 }
 
 /*Most Wanted*/
 
 .mostWantedConteiner {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+   width: 100%;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
 }
 
 .mostWantedCard {
-  align-self: center;
-  width: 80%;
-  min-height: 100vh;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+   align-self: center;
+   width: 80%;
+   min-height: 100vh;
+   background-size: cover;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .mostWantedGame {
-  width: 36%;
-  height: 35vh;
-  background-size: contain;
-  background-repeat: no-repeat;
-  align-self: flex-end;
+   width: 36%;
+   height: 35vh;
+   background-size: contain;
+   background-repeat: no-repeat;
+   align-self: flex-end;
 }
 
 .mostWantedGameConteiner,
 .mostWantedGameConteinerLeft {
-  padding: 1rem;
-  margin-top: 5rem;
-  align-self: center;
-  width: 90%;
-  min-height: 30vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+   padding: 1rem;
+   margin-top: 5rem;
+   align-self: center;
+   width: 90%;
+   min-height: 30vh;
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-end;
 }
 
 .mostWantedGameConteinerLeft {
-  width: 80%;
+   width: 80%;
 }
-.mostWantedGameBrand{
-   margin:1em;
+.mostWantedGameBrand {
+   margin: 1em;
    align-self: center;
    font-size: 7vmin;
    font-weight: bold;
-   color:#120045;
+   color: #120045;
 }
 /*Footer*/
 
 .footerContainer {
-  width: 100%;
-  height: 69vh;
-  background-size: cover;
-  background-position: bottom;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-direction: column;
+   width: 100%;
+   height: 69vh;
+   background-size: cover;
+   background-position: bottom;
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   flex-direction: column;
 }
 
-.socialMediaContainer{
+.socialMediaContainer {
    padding: 2em;
    width: 20%;
    display: flex;
@@ -452,23 +455,59 @@ main h2 {
    align-items: center;
 }
 
-.footerRights{
+.footerRights {
    font-weight: bolder;
    word-spacing: 3px;
-   letter-spacing: .5px;
+   letter-spacing: 0.5px;
    font-size: 2.5vmin;
    padding-bottom: 1em;
 }
 
-.footerInsta, .footerFace, .footerTwit {
+.footerInsta,
+.footerFace,
+.footerTwit {
    width: 3em;
 }
 
 /*Hero Pages*/
-.heroPageCont{
-  width: 100%;
-  min-height: 40vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
+.heroPageCont {
+   width: 100%;
+   min-height: 40vh;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: top;
+}
+
+/* ADMIN  */
+
+.adminPanel {
+   display: flex;
+   flex-direction: column;
+}
+
+.adminPanelButton {
+   padding: 20px 40px;
+   margin: 10px 0px;
+}
+
+.containerArticlesAdmin {
+   display: flex;
+   flex-direction: column;
+   align-self: flex-start;
+   margin-top: 20vh;
+}
+
+.buttonsAdminArticles {
+   width: 45vw;
+   display: flex;
+   justify-content: space-around;
+}
+
+.buttonsAdmin {
+   margin-right: 10px;
+}
+
+th {
+   color: white;
+   font-size: 25px;
 }
