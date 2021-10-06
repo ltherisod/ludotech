@@ -10,7 +10,7 @@ const articlesUtilitiesControllers = {
       utilities.forEach((utility) => {
         switch (utility.type) {
           case "brand":
-            if (!brands.some((brand) => b.name === utility.name)) {
+            if (!brands.some((brand) => brand.name === utility.name)) {
               brands.push(utility)
             }
             break

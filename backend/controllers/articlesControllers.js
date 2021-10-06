@@ -33,7 +33,7 @@ const articlesControllers = {
   getAllArticles: async (req,res) => {
     try {
       if (Object.keys(req.body.filters).length === 0) {
-        let getArticles = await Article.find()
+        let getArticles = await Article.find().populate({ path: 'brand', select: 'name' }).populate({ path: 'genres', select: 'name' }).populate({ path: 'gameType', select: 'name' })
 
         if (getArticles) {
           res.json({ success: true, response: getArticles, error: null })
@@ -41,7 +41,7 @@ const articlesControllers = {
           throw new Error('Couldn´t get all articles')
         }
       } else {
-        let getFilteredArticles = await Article.find({ ...req.body.filters, minPlayers: { $gte: req.body.filters.minPlayers || 0 }, maxPlayers: { $lte: req.body.filters.maxPlayers || 0 }, minAge: { $gte: req.body.filters.minAge || 0 } }) 
+        let getFilteredArticles = await Article.find({ ...req.body.filters,  minPlayers: { $gte: req.body.filters.minPlayers || 0 }, maxPlayers: { $lte: req.body.filters.maxPlayers || Number.MAX_VALUE }, minAge: { $gte: req.body.filters.minAge || 0 }, price: { $gte: req.body.filters.minPrice || 0, $lte: req.body.filters.maxPrice || Number.MAX_VALUE }})
         if (getFilteredArticles) {
           res.json({ success: true, response: getFilteredArticles, error: null })
         } else {
