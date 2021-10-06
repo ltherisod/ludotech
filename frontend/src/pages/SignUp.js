@@ -1,43 +1,54 @@
-import {useFormik } from 'formik';
+import { useFormik } from "formik"
 // import {useState} from 'react'
 import * as Yup from "yup"
-import { GoogleLogin } from 'react-google-login'
-import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
-import Header from '../components/Header'
-
-import Header from '../components/Header';
-import usersActions from '../redux/actions/usersActions'
+import { GoogleLogin } from "react-google-login"
+import { Link } from "react-router-dom"
+import { connect } from "react-redux"
+import Header from "../components/Header"
+import usersActions from "../redux/actions/usersActions"
 
 const SignUp = (props) => {
-    // const [error, setError] = useState('')
+   // const [error, setError] = useState('')
 
-    let formik = useFormik({
-        initialValues: {firstname: '', lastname: '', email: '', password: '', photo: 'default', google: false},
-        onSubmit: (values) => {
-            props.addNewUser(values, 'signup')
-        },
-        validationSchema: Yup.object({
-            firstname: Yup.string().min(2, 'Firstname must have 2+ characters').required('Required'),
-            lastname: Yup.string().min(2, 'Lastname must have 2+ characters').required('Required'),
-            email: Yup.string().email('Invalid email').required('Required'),
-            password: Yup.string().min(4, 'Password must have 4+ characters').required('Required'),
-            // photo: Yup.string().required('Required')
-        })
-    })
+   let formik = useFormik({
+      initialValues: {
+         firstname: "",
+         lastname: "",
+         email: "",
+         password: "",
+         photo: "default",
+         google: false,
+      },
+      onSubmit: (values) => {
+         props.addNewUser(values, "signup")
+      },
+      validationSchema: Yup.object({
+         firstname: Yup.string()
+            .min(2, "Firstname must have 2+ characters")
+            .required("Required"),
+         lastname: Yup.string()
+            .min(2, "Lastname must have 2+ characters")
+            .required("Required"),
+         email: Yup.string().email("Invalid email").required("Required"),
+         password: Yup.string()
+            .min(4, "Password must have 4+ characters")
+            .required("Required"),
+         // photo: Yup.string().required('Required')
+      }),
+   })
 
-    const responseGoogle = res => {
-        let newUserGoogle = {
-            firstname: res.profileObj.givenName,
-            lastname: res.profileObj.familyName,
-            email: res.profileObj.email,
-            photo: res.profileObj.imageUrl,
-            password: res.profileObj.googleId,
-            google: true
-        }
+   const responseGoogle = (res) => {
+      let newUserGoogle = {
+         firstname: res.profileObj.givenName,
+         lastname: res.profileObj.familyName,
+         email: res.profileObj.email,
+         photo: res.profileObj.imageUrl,
+         password: res.profileObj.googleId,
+         google: true,
+      }
 
-        props.addNewUser(newUserGoogle, 'signup')
-    }
+      props.addNewUser(newUserGoogle, "signup")
+   }
 
    return (
       <>
@@ -182,13 +193,11 @@ const SignUp = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    return {
-        
-    }
+   return {}
 }
 
 const mapDispatchToProps = {
-    addNewUser: usersActions.logInOrSignUp
+   addNewUser: usersActions.logInOrSignUp,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
