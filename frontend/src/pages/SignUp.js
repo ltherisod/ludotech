@@ -1,26 +1,21 @@
 import {useFormik } from 'formik';
-import {useState} from 'react'
+// import {useState} from 'react'
 import * as Yup from "yup"
 import { GoogleLogin } from 'react-google-login'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+import {connect} from 'react-redux'
 
-const SignUp = () => {
-    const [error, setError] = useState('')
+import usersActions from '../redux/actions/usersActions'
+
+const SignUp = (props) => {
+    // const [error, setError] = useState('')
 
     let formik = useFormik({
         initialValues: {firstname: '', lastname: '', email: '', password: '', photo: 'default'},
         onSubmit: (values) => {
             console.log(values)
-            axios.post('http://localhost:4000/api/signup', values)
-            .then(res => {
-                console.log(res.data)
-                localStorage.setItem('token', res.data.response.token)
-            })
-            .catch(e => {
-                console.log(e)
-                setError(e)
-            })
+            props.addNewUser(values)
         },
         validationSchema: Yup.object({
             firstname: Yup.string().min(2, 'Firstname must have 2+ characters').required('Required'),
@@ -36,19 +31,15 @@ const SignUp = () => {
             firstname: res.profileObj.givenName,
             lastname: res.profileObj.familyName,
             email: res.profileObj.email,
-            photo: res.profileObj.imageUrl,
+            // photo: res.profileObj.imageUrl,
             password: res.profileObj.googleId,
             google: true
         }
 
-        axios.post('http://localhost:4000/api/signup', newUserGoogle)
-            .then(res => {
-                console.log(res.data)
-                localStorage.setItem('token', res.data.response.token)
-            })
+        props.addNewUser(newUserGoogle)
             .catch(e => {
                 console.log(e)
-                setError(e)
+                // setError(e)
             })
     }
 
@@ -174,4 +165,14 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+const mapStateToProps = (state) => {
+    return ({
+        
+    })
+}
+
+const mapDispatchToProps = {
+    addNewUser: usersActions.addNewUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
