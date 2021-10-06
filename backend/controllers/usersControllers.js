@@ -17,7 +17,8 @@ const usersControllers = {
       }
       const isValidPassword = await bcryptjs.compare(password, user.password)
       if (!isValidPassword) throw new Error("Invalid credentials")
-      const { _id, firstname, lastname, photo, isAdmin, directions } = user
+      const { _id, firstname, lastname, photo, phone, isAdmin, directions } =
+        user
       const token = jwt.sign({ _id, email }, process.env.SECRETKEY)
       res.json({
         success: true,
@@ -27,6 +28,7 @@ const usersControllers = {
           firstname,
           lastname,
           photo,
+          phone,
           isAdmin,
           directions,
           token,
@@ -39,7 +41,8 @@ const usersControllers = {
   },
   signUp: async (req, res) => {
     try {
-      const { firstname, lastname, email, password, photo, google } = req.body
+      const { firstname, lastname, email, password, photo, google, phone } =
+        req.body
       const emailInUse = await User.findOne({ email })
       if (emailInUse) throw new Error("Email in use.")
       const hashedPass = await bcryptjs.hash(password, 10)
@@ -49,13 +52,11 @@ const usersControllers = {
         email,
         password: hashedPass,
         photo,
+        phone,
         google,
       })
       await user.save()
-      const token = await jwt.sign(
-        { _id: user._id, email },
-        process.env.SECRETKEY
-      )
+      const token = jwt.sign({ _id: user._id, email }, process.env.SECRETKEY)
       res.json({
         success: true,
         response: {
@@ -64,6 +65,7 @@ const usersControllers = {
           lastname,
           email,
           photo,
+          phone: user.phone,
           isAdmin: user.isAdmin,
           directions: user.directions,
           token,
@@ -99,9 +101,23 @@ const usersControllers = {
         },
         { new: true }
       )
+      const token = jwt.sign(
+        { _id: user._id, email: user.email },
+        process.env.SECRETKEY
+      )
       res.json({
         success: true,
-        response: user,
+        response: {
+          _id: user._id,
+          firstname: user.firstname,
+          lastname: user.lastname,
+          email: user.email,
+          photo: user.photo,
+          phone: user.phone,
+          isAdmin: user.isAdmin,
+          directions: user.directions,
+          token,
+        },
         error: null,
       })
     } catch (e) {
