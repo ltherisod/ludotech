@@ -1,7 +1,8 @@
-const express = require('express')
+const express = require("express")
 const cors = require("cors")
 
 const passport = require("passport")
+const fileupload = require("express-fileupload")
 require("dotenv").config()
 require("./config/passport")
 require("./config/database")
@@ -13,6 +14,8 @@ const router = require("./routes/index")
 
 app.use(cors())
 app.use(express.json())
+app.use(fileupload())
+
 app.use("/api", router)
 
 if (process.env.NODE_ENV === "production") {

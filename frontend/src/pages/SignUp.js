@@ -1,55 +1,10 @@
-import { useFormik } from "formik"
-// import {useState} from 'react'
-import * as Yup from "yup"
 import { GoogleLogin } from "react-google-login"
 import { Link } from "react-router-dom"
-import { connect } from "react-redux"
 import Header from "../components/Header"
-import usersActions from "../redux/actions/usersActions"
+import { useSignup } from "../hooks/usersHooks"
 
 const SignUp = (props) => {
-  // const [error, setError] = useState('')
-
-  let formik = useFormik({
-    initialValues: {
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-      photo: "default",
-      google: false,
-    },
-    onSubmit: (values) => {
-      props.addNewUser(values, "signup")
-    },
-    validationSchema: Yup.object({
-      firstname: Yup.string()
-        .min(2, "Firstname must have 2+ characters")
-        .required("Required"),
-      lastname: Yup.string()
-        .min(2, "Lastname must have 2+ characters")
-        .required("Required"),
-      email: Yup.string().email("Invalid email").required("Required"),
-      password: Yup.string()
-        .min(4, "Password must have 4+ characters")
-        .required("Required"),
-      // photo: Yup.string().required('Required')
-    }),
-  })
-
-  const responseGoogle = (res) => {
-    let newUserGoogle = {
-      firstname: res.profileObj.givenName,
-      lastname: res.profileObj.familyName,
-      email: res.profileObj.email,
-      photo: res.profileObj.imageUrl,
-      password: res.profileObj.googleId,
-      google: true,
-    }
-
-    props.addNewUser(newUserGoogle, "signup")
-  }
-
+  const [formik, responseGoogle, loading, error] = useSignup()
   return (
     <>
       <Header />
@@ -168,12 +123,14 @@ const SignUp = (props) => {
               <p>{formik.errors.password}</p>
             )}
           </div>
-          <div
+          <button
+            type="button"
             className="flex signupButtonSignup"
+            disabled={loading}
             onClick={formik.handleSubmit}
           >
             Sign up
-          </div>
+          </button>
           <p className="adTerms">
             By registering you are accepting our Terms and Conditions and our
             Privacy Policies
@@ -192,12 +149,4 @@ const SignUp = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {}
-}
-
-const mapDispatchToProps = {
-  addNewUser: usersActions.logInOrSignUp,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
+export default SignUp

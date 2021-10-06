@@ -8,7 +8,6 @@ export const useSignup = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const dispatch = useDispatch()
-
   const formik = useFormik({
     initialValues: {
       firstname: "",
@@ -40,7 +39,20 @@ export const useSignup = () => {
     setLoading(false)
   }
 
-  return [formik, loading, error]
+  const responseGoogle = (res) => {
+    let newUserGoogle = {
+      firstname: res.profileObj.givenName,
+      lastname: res.profileObj.familyName,
+      email: res.profileObj.email,
+      photo: res.profileObj.imageUrl,
+      password: res.profileObj.googleId,
+      google: true,
+    }
+
+    dispatch(usersActions.logInOrSignUp(newUserGoogle, "signup"))
+  }
+
+  return [formik, responseGoogle, loading, error]
 }
 
 export const useLogin = async () => {
@@ -72,7 +84,7 @@ export const useLoginLS = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const token = localStorage.getItem("token")
-
+  const dispatch = useDispatch()
   useEffect(() => {
     loginLS()
   }, [])
@@ -90,7 +102,7 @@ export const useLoginLS = () => {
   return [loading, error]
 }
 
-const useAddDirection = () => {
+export const useAddDirection = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
@@ -129,7 +141,7 @@ const useAddDirection = () => {
   return [formik, loading, error]
 }
 
-const useUpdateDirection = (direction) => {
+export const useUpdateDirection = (direction) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
