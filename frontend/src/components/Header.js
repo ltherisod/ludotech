@@ -12,8 +12,19 @@ const Header = (props) => {
       >
          <div className="container px-4 px-lg-5">
             <a className="navbar-brand" href="#top">
-               LudoTech
-            </a>
+{/*                <img id='logo' src="assets/ludotech.png"/>               
+ */}            </a>
+            {window.scrollY === 0 ? <div
+                     className="logoNav"
+                     style={{
+                        backgroundImage: 'url("assets/ludotech.png")',
+                     }}
+                  ></div> : <div
+                  className="logoNav"
+                  style={{
+                     backgroundImage: 'url("assets/ludotechwhite.png")',
+                  }}
+               ></div>}
             <button
                className="navbar-toggler navbar-toggler-right"
                type="button"

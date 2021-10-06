@@ -124,12 +124,22 @@ footer {
   text-align: left;
 }
 button {
-  padding: 5px 10px;
-  border-radius: 50px;
-  border: none;
-  margin-top: 20px;
+   padding: 5px 10px;
+   border-radius: 50px;
+   border: none;
+   margin-top: 20px;
+}
+.logo {
+   font-family: 'Fredoka One', cursive;
+   font-size: 3rem;
 }
 
+.logoNav {
+  width: 150px;
+  height: 40px;
+  background-position: center;
+  background-size: cover;
+}
 
 main h2 {
   color: white;
