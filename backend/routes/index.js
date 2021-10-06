@@ -97,8 +97,9 @@ router
   .route("/article")
   .post(articleValidator.articleValidator, articlesControllers.addArticle)
 
-// SEND EMAIL
-// router.route('/welcomeemail')
-// .get(usersControllers.sendWelcomeEmail)
+
+  // SEND EMAIL
+router.route('/welcomeemail')
+.get(usersControllers.sendWelcomeEmail)
 
 module.exports = router
