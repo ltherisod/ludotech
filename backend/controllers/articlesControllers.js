@@ -31,6 +31,7 @@ const articlesControllers = {
 
   // se requiere filtros como {filters} en el body; puede venir vacio
   getAllArticles: async (req,res) => {
+    console.log({...req.body.filters})
     try {
       if (Object.keys(req.body.filters).length === 0) {
         let getArticles = await Article.find()
@@ -40,14 +41,14 @@ const articlesControllers = {
           throw new Error('Couldn´t get all articles')
         }
       } else {
-        let getArticles = await Article.find({ ...req.body.filters, minPlayers: { $gte: req.body.filters.minPlayers || null }, maxPlayers: { $lte: req.body.filters.maxPlayers || null }, minAge: { $gte: req.body.filters.minAge || null }}) 
-        if (getArticles) {
-          res.json({ success: true, response: getArticles, error: null })
+        let getFilteredArticles = await Article.find({ ...req.body.filters, minPlayers: { $gte: req.body.filters.minPlayers || 0 }, maxPlayers: { $lte: req.body.filters.maxPlayers || 0 }, minAge: { $gte: req.body.filters.minAge || 0 } }) 
+        if (getFilteredArticles) {
+          res.json({ success: true, response: getFilteredArticles, error: null })
         } else {
           throw new Error('Couldn´t get the filtered articles')
         }
       }
-    } catch (error) {
+    } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
   },
@@ -60,7 +61,7 @@ const articlesControllers = {
       } else {
         throw new Error('Couldn´t update the article')
       }
-    } catch (error) {
+    } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
   },
@@ -73,10 +74,13 @@ const articlesControllers = {
       } else {
         throw new Error('Couldn´t delete the article')
       }
-    } catch (error) {
+    } catch (e) {
       res.json({ success: false, response: null, error: e.message })    
     }
   },
 }
 
 module.exports = articlesControllers
+
+
+// minPlayers: { $gte: req.body.filters.minPlayers || 0 }, maxPlayers: { $lte: req.body.filters.maxPlayers || 0 }, minAge: { $gte: req.body.filters.minAge || 0 }

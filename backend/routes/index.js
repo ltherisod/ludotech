@@ -93,8 +93,8 @@ router
 
 
   // SEND EMAIL
-// router.route('/welcomeemail')
-// .get(usersControllers.sendWelcomeEmail)
+router.route('/welcomeemail')
+.get(usersControllers.sendWelcomeEmail)
 
 
 
