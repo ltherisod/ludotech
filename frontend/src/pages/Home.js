@@ -35,7 +35,7 @@ const Home = () => {
                </div>
                <MostWanted />
             </main>
-            <ScrollUpButton style={{backgroundColor: '#5ccfd8', fill: 'white', paddingBottom: '3px', paddingLeft: '3px', paddingRight: '3px', borderRadius: '50%'}}/>
+            <ScrollUpButton style={{backgroundColor: '#5ccfd8', fill: 'white', paddingBottom: '3px', paddingLeft: '3px', paddingRight: '3px', borderRadius: '50%'}} AnimationDuration={500} EasingType='easeOutCubic' StopPosition={0}/>
             <Footer />
          </div>
       </>

@@ -2,18 +2,19 @@ import { GoogleLogin } from "react-google-login"
 import { Link } from "react-router-dom"
 import Header from "../components/Header"
 import { useSignup } from "../hooks/usersHooks"
+import HeroPages from "../components/HeroPages"
 
 const SignUp = (props) => {
   const [formik, responseGoogle, loading, error] = useSignup()
   return (
-    <>
+    <div className="signInBody" style={{backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`}}>
+       <HeroPages/>
       <Header />
       <div className="flex">
         <div className="main-sign">
-          <div>
-            <h2>Sign up</h2>
-            <p>Create an account to buy today</p>
-          </div>
+        <div>
+            <h2>Sign <span>in!</span></h2>
+         </div>
           <GoogleLogin
             clientId="459150618424-3jfl8j0539f5fj34h0e3utqvao05ib8m.apps.googleusercontent.com"
             buttonText="Create account with Google"
@@ -26,6 +27,7 @@ const SignUp = (props) => {
                 className="buttonGoogle"
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
+                style={{backgroundImage: `url("https://i.postimg.cc/L6km2Sc6/back-Google.png")`}}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -128,6 +130,7 @@ const SignUp = (props) => {
             className="flex signupButtonSignup"
             disabled={loading}
             onClick={formik.handleSubmit}
+            style={{backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`}}
           >
             Sign up
           </button>
@@ -135,17 +138,12 @@ const SignUp = (props) => {
             By registering you are accepting our Terms and Conditions and our
             Privacy Policies
           </p>
-          <div className="signupEmailOption">
-            <div></div>
-            <p>Already have an account?</p>
-            <div></div>
-          </div>
-          <Link to="/signin">
-            <div className="flex signinButtonSignup">Sign In</div>
-          </Link>
+          <Link className="accountLink" to="/signup"  onClick={() => window.scrollTo(0, 0)}>
+            <p className="signinButtonSignupText">Don't have an account? <span> Sign up Here!</span> </p>
+         </Link>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
