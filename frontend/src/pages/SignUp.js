@@ -1,71 +1,47 @@
-import { useFormik } from "formik"
-import { useState } from "react"
+import {useFormik } from 'formik';
+// import {useState} from 'react'
 import * as Yup from "yup"
-import { GoogleLogin } from "react-google-login"
-import { Link } from "react-router-dom"
-import axios from "axios"
-import Header from "../components/Header"
+import { GoogleLogin } from 'react-google-login'
+import {Link} from 'react-router-dom'
+import axios from 'axios'
+import {connect} from 'react-redux'
 
-const SignUp = () => {
-   const [error, setError] = useState("")
+import usersActions from '../redux/actions/usersActions'
 
-   let formik = useFormik({
-      initialValues: {
-         firstname: "",
-         lastname: "",
-         email: "",
-         password: "",
-         photo: "default",
-      },
-      onSubmit: (values) => {
-         console.log(values)
-         axios
-            .post("http://localhost:4000/api/signup", values)
-            .then((res) => {
-               console.log(res.data)
-               localStorage.setItem("token", res.data.response.token)
+const SignUp = (props) => {
+    // const [error, setError] = useState('')
+
+    let formik = useFormik({
+        initialValues: {firstname: '', lastname: '', email: '', password: '', photo: 'default'},
+        onSubmit: (values) => {
+            console.log(values)
+            props.addNewUser(values)
+        },
+        validationSchema: Yup.object({
+            firstname: Yup.string().min(2, 'Firstname must have 2+ characters').required('Required'),
+            lastname: Yup.string().min(2, 'Lastname must have 2+ characters').required('Required'),
+            email: Yup.string().email('Invalid email').required('Required'),
+            password: Yup.string().min(4, 'Password must have 4+ characters').required('Required'),
+            // photo: Yup.string().required('Required')
+        })
+    })
+
+    const responseGoogle = res => {
+        let newUserGoogle = {
+            firstname: res.profileObj.givenName,
+            lastname: res.profileObj.familyName,
+            email: res.profileObj.email,
+            // photo: res.profileObj.imageUrl,
+            password: res.profileObj.googleId,
+            google: true
+        }
+
+        props.addNewUser(newUserGoogle)
+            .catch(e => {
+                console.log(e)
+                // setError(e)
             })
-            .catch((e) => {
-               console.log(e)
-               setError(e)
-            })
-      },
-      validationSchema: Yup.object({
-         firstname: Yup.string()
-            .min(2, "Firstname must have 2+ characters")
-            .required("Required"),
-         lastname: Yup.string()
-            .min(2, "Lastname must have 2+ characters")
-            .required("Required"),
-         email: Yup.string().email("Invalid email").required("Required"),
-         password: Yup.string()
-            .min(4, "Password must have 4+ characters")
-            .required("Required"),
-         // photo: Yup.string().required('Required')
-      }),
-   })
-
-   const responseGoogle = (res) => {
-      let newUserGoogle = {
-         firstname: res.profileObj.givenName,
-         lastname: res.profileObj.familyName,
-         email: res.profileObj.email,
-         photo: res.profileObj.imageUrl,
-         password: res.profileObj.googleId,
-         google: true,
-      }
-
-      axios
-         .post("http://localhost:4000/api/signup", newUserGoogle)
-         .then((res) => {
-            console.log(res.data)
-            localStorage.setItem("token", res.data.response.token)
-         })
-         .catch((e) => {
-            console.log(e)
-            setError(e)
-         })
-   }
+    }
 
    return (
       <>
@@ -212,4 +188,14 @@ const SignUp = () => {
    )
 }
 
-export default SignUp
+const mapStateToProps = (state) => {
+    return ({
+        
+    })
+}
+
+const mapDispatchToProps = {
+    addNewUser: usersActions.addNewUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)
