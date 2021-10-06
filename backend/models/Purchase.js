@@ -2,20 +2,42 @@ const mongoose = require("mongoose")
 
 const purchaseSchema = new mongoose.Schema({
   user: { type: mongoose.Types.ObjectId, ref: "user" },
-  articles: [{ type: mongoose.Types.ObjectId, ref: "article" }],
-  direction: 
+  articles: [
     {
-      receiver:{type:String, required:true},
-      street: { type: String, required: true },
-      number: { type: Number, required: true },
-      department: { type: String, required: true },
-      zipCode: { type: String, required: true },
-      city: { type: String, required: true },
-      state: { type: String, required: true },
+      _id: { type: mongoose.Types.ObjectId, ref: "article" },
+      name: { type: String, required: true },
+      brand: {
+        name: String,
+        type: String,
+      },
+      price: { type: Number, required: true },
+      hasDiscount: { type: Boolean, default: false },
+      discountPrice: { type: Number, required: false },
+      photos: [{ type: String }],
+      genres: [{ name: String, type: String }],
+      gameType: { name: String, type: String },
+      minPlayers: { type: Number },
+      maxPlayers: { type: Number },
+      minAge: { type: Number },
+      stock: { type: Number, required: true },
+      size: { type: String, required: false },
+      weight: { type: Number, required: false },
+      quantity: Number,
     },
+  ],
+  direction: {
+    receiver: { type: String, required: true },
+    street: { type: String, required: true },
+    number: { type: Number, required: true },
+    department: { type: String, required: true },
+    zipCode: { type: String, required: true },
+    city: { type: String, required: true },
+    state: { type: String, required: true },
+  },
+  total: { type: Number, required: true },
+  paymentMethod: { type: String, required: true },
   isConfirmed: { type: Boolean, default: false }, // revisar.
   wasDelivered: { type: Boolean, default: false },
-  paymentMethod: { type: String, required: true },
   logs: [{ type: String }],
   timestamp: { type: Date, default: Date.now() },
 })

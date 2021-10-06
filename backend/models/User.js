@@ -22,9 +22,20 @@ const userSchema = new mongoose.Schema({
     },
   ],
   wishList: [{ type: mongoose.Types.ObjectId, ref: "article" }],
-  purchaseHistory: [{ type: mongoose.Types.ObjectId, ref: "article" }],
+  shoppingCart: [
+    {
+      article: { type: mongoose.Types.ObjectId, ref: "article" },
+      quantity: {
+        type: Number,
+        default: 1,
+        min: 0,
+      },
+    },
+  ],
+  purchaseHistory: [{ type: mongoose.Types.ObjectId, ref: "purchase" }],
   createdAt: { type: Date, default: Date.now() },
   passwordChangesHistory: [
+    // lo haría volar jj
     { oldPassword: { type: String }, date: { type: Date } },
   ],
 })
