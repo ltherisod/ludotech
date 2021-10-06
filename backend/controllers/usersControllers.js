@@ -1,9 +1,39 @@
 const User = require("../models/User")
 const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
-const nodemailer = require("nodemailer")
+// const nodemailer = require("nodemailer")
+
+// let transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     type: 'OAuth2',
+//     user: process.env.USEREMAIL,
+//     password: process.env.USERPASSWORD,
+//     clientId: process.env.CLIENID,
+//     clientSecret: process.env.CLIENTSECRET,
+//     refreshToken: process.env.REFRESHTOKEN
+//   }
+// })
 
 const usersControllers = {
+  // sendWelcomeEmail: (req,res) => {
+  //   let message = `<div><h3>WELCOME</h3></div>`
+  //   let mailOptions = {
+  //     from: 'Ludotehc <ludotechweb@gmail.com>',
+  //     to: '<jc.venepro@gmail.com>',
+  //     subject: 'Welcome',
+  //     text: message,
+  //     html: message,
+  //   }
+  //   transporter.sendMail(mailOptions, (e, data) => {
+  //     if (!e) {
+  //       res.json({ success: true, response: data, error: null })
+  //     } else {
+  //       res.json({ success: false, response: null, error: e })
+  //       console.log(e)
+  //     }
+  //   })
+  // },
   logIn: async (req, res) => {
     try {
       const { email, password, google } = req.body
