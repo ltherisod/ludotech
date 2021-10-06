@@ -1,12 +1,7 @@
-const articlesReducer = (state = {listArticles: [], listFilteredArticles: []}, action) => {
-    switch (action.type) {
-        case "GET_ARTICLES":
-            return {
-                ...state,
-                listArticles: action.payload
-            }
-        default:
-            return state
-    }
+const articlesReducer = (state = { shoppingCart: [] }, action) => {
+  switch (action.type) {
+    default:
+      return state
+  }
 }
 export default articlesReducer
