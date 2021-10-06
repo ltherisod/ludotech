@@ -33,7 +33,7 @@ const articlesControllers = {
   getAllArticles: async (req,res) => {
     try {
       if (Object.keys(req.body.filters).length === 0) {
-        let getArticles = await Article.find().populate({ path: 'articles_utilitie', select: 'type' })
+        let getArticles = await Article.find()
 
         if (getArticles) {
           res.json({ success: true, response: getArticles, error: null })
