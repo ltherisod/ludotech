@@ -31,10 +31,10 @@ const articlesControllers = {
 
   // se requiere filtros como {filters} en el body; puede venir vacio
   getAllArticles: async (req,res) => {
-    console.log({...req.body.filters})
     try {
       if (Object.keys(req.body.filters).length === 0) {
-        let getArticles = await Article.find()
+        let getArticles = await Article.find().populate({ path: 'articles_utilitie', select: 'type' })
+
         if (getArticles) {
           res.json({ success: true, response: getArticles, error: null })
         } else {
