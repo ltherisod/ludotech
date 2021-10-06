@@ -17,12 +17,12 @@ const Header = (props) => {
             {window.scrollY === 0 ? <div
                      className="logoNav"
                      style={{
-                        backgroundImage: 'url("assets/ludotech.png")',
+                        backgroundImage: 'url("assets/ludotechwhite.png")',
                      }}
                   ></div> : <div
-                  className="logoNav"
+                  className="logoNav2"
                   style={{
-                     backgroundImage: 'url("assets/ludotechwhite.png")',
+                     backgroundImage: 'url("assets/ludotech.png")',
                   }}
                ></div>}
             <button
