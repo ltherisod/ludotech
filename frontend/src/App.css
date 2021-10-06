@@ -124,14 +124,14 @@ footer {
   text-align: left;
 }
 button {
-   padding: 5px 10px;
-   border-radius: 50px;
-   border: none;
-   margin-top: 20px;
+  padding: 5px 10px;
+  border-radius: 50px;
+  border: none;
+  margin-top: 20px;
 }
 .logo {
-   font-family: 'Fredoka One', cursive;
-   font-size: 3rem;
+  font-family: "Fredoka One", cursive;
+  font-size: 3rem;
 }
 
 .logoNav {
@@ -181,12 +181,12 @@ main h2 {
   font-size: 6vmin;
   font-weight: 600;
   text-align: center;
-  color:white;
+  color: white;
 }
 
 .main-sign h2 + p {
   text-align: start;
-  color:white;
+  color: white;
 }
 
 .errorSign {
@@ -252,7 +252,7 @@ main h2 {
 
 .adTerms {
   font-size: 1.8vmin;
-  color:white;
+  color: white;
 }
 
 .signupButtonSignup,
@@ -264,17 +264,19 @@ main h2 {
   font-weight: 600;
   cursor: pointer;
 }
-.signinButtonSignupText{
+.signinButtonSignupText {
   text-align: center;
   font-weight: bold;
   font-size: 2.5vmin;
 }
 
-.signinButtonSignup, .signinButtonSignupText {
+.signinButtonSignup,
+.signinButtonSignupText {
   color: white;
 }
 
-.signinButtonSignupText span,  h2 span {
+.signinButtonSignupText span,
+h2 span {
   color: #67f2cb;
 }
 
@@ -282,13 +284,14 @@ main h2 {
   border: none;
   color: white;
 }
-.signUpBody, .signInBody{
+.signUpBody,
+.signInBody {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-.accountLink{
+.accountLink {
   text-decoration: none;
 }
 
@@ -424,12 +427,12 @@ main h2 {
 .mostWantedGameConteinerLeft {
   width: 80%;
 }
-.mostWantedGameBrand{
-   margin:1em;
-   align-self: center;
-   font-size: 7vmin;
-   font-weight: bold;
-   color:#120045;
+.mostWantedGameBrand {
+  margin: 1em;
+  align-self: center;
+  font-size: 7vmin;
+  font-weight: bold;
+  color: #120045;
 }
 /*Footer*/
 
@@ -444,31 +447,223 @@ main h2 {
   flex-direction: column;
 }
 
-.socialMediaContainer{
-   padding: 2em;
-   width: 20%;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+.socialMediaContainer {
+  padding: 2em;
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.footerRights{
-   font-weight: bolder;
-   word-spacing: 3px;
-   letter-spacing: .5px;
-   font-size: 2.5vmin;
-   padding-bottom: 1em;
+.footerRights {
+  font-weight: bolder;
+  word-spacing: 3px;
+  letter-spacing: 0.5px;
+  font-size: 2.5vmin;
+  padding-bottom: 1em;
 }
 
-.footerInsta, .footerFace, .footerTwit {
-   width: 3em;
+.footerInsta,
+.footerFace,
+.footerTwit {
+  width: 3em;
 }
 
 /*Hero Pages*/
-.heroPageCont{
+.heroPageCont {
   width: 100%;
   min-height: 40vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
+}
+
+/* PANEL ADMIN */
+
+.navbarPanelContainer {
+  width: 20%;
+  min-height: 100vh;
+  background-color: #8165ff;
+  padding: 0 2vmin;
+  padding-top: 5vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.itemNavbarPanel {
+  display: flex;
+  color: white;
+  font-weight: 700;
+  padding: 1vmin 0;
+  /* align-items: center; */
+}
+
+.itemNavbarPanel svg {
+  width: 3.5vmin;
+  height: 3.5vmin;
+  margin: 0 2vmin;
+  cursor: pointer;
+}
+.itemNavbarPanel p {
+  cursor: pointer;
+}
+
+/* team panel admin seba */
+
+.mainTeamPanel {
+  width: 80%;
+  max-height: 100vh;
+  overflow-y: scroll;
+  padding: 3vmin;
+  background-color: #faf9ff;
+}
+
+.userFoundTeam p {
+  margin: 0;
+}
+
+.mainTeamPanel h2 {
+  font-size: 5vmin;
+  color: #3f323c;
+  font-weight: bold;
+}
+
+.searchUserTeam {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchbarTeam {
+  width: 50%;
+  height: 40px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+}
+
+.searchUserTeam input {
+  width: 92%;
+  height: 30px;
+  padding: 0 2vmin;
+  outline: none;
+  border: none;
+}
+
+.searchbarTeam svg {
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 8%;
+  height: 100%;
+  padding: 1vmin;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.userFoundTeam {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 1vmin;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin: 3vmin 0;
+}
+
+.userFoundTeam select {
+  width: 100%;
+  height: 4vmin;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 2vmin;
+}
+
+.userFoundTeam label {
+  font-weight: bold;
+  font-size: 2.2vmin;
+}
+
+.userPicFoundTeam {
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 15vh;
+  height: 15vh;
+  background-color: rgba(248, 0, 0, 0.3);
+  background-size: cover;
+  background-position: center;
+}
+
+.detailsUserFound {
+  flex: 1;
+  margin: 0 2vmin;
+  display: flex;
+  gap: 3vmin;
+  justify-content: space-between;
+}
+
+.userDontFoundTeam {
+  width: 50%;
+  height: 40px;
+  padding: 0 2vmin;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 1vmin;
+  color: rgba(248, 0, 0, 0.3);
+  border: 1px solid rgba(248, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+}
+
+.subtitleTeam {
+  font-size: 4vmin;
+  font-weight: bold;
+  margin-top: 3vmin;
+}
+
+.cardsTeam {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2vmin;
+}
+
+.cardTeam {
+  height: 37vh;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 10px rgba(105, 90, 205, 0.219);
+}
+
+.picCardTeam {
+  width: 100%;
+  height: 80%;
+  background-color: #3f323c;
+  border-radius: 5px 5px 0 0;
+  background-size: cover;
+  background-position: center;
+  padding: 1vmin;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.detailsCardTeam {
+  padding: 1vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.detailsCardTeam p {
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: -1.5vmin;
+}
+
+.detailsCardTeam span {
+  font-size: 2vmin;
 }
