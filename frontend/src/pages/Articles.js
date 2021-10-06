@@ -1,6 +1,7 @@
 import React from "react"
 import Article from "../components/Article"
 import Header from "../components/Header"
+import Filter from "../components/Filter"
 
 const Articles = () => {
    const articles = [
@@ -108,9 +109,7 @@ const Articles = () => {
                {/* Slice de fondo con productos */}
                <h1>Articles</h1>
             </div>
-            <h2 style={{ textAlign: "center", color: "white", padding: 10 }}>
-               ACA VA EL FILTRO
-            </h2>
+            <Filter/>
             <div className="containerArticles">
                {articles.map((article, id) => {
                   return <Article article={article} key={id} />
