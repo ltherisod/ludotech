@@ -1,12 +1,9 @@
 import "./App.css"
-import { useEffect } from "react"
-import { connect } from "react-redux"
 import Home from "./pages/Home"
 import Articles from "./pages/Articles"
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
-import usersActions from "./redux/actions/usersActions"
 import { useLoginLS } from "./hooks/usersHooks"
 
 const App = (props) => {
@@ -24,15 +21,4 @@ const App = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    token: state.users.user.token,
-    user: state.users.user,
-  }
-}
-
-const mapDispatchToProps = {
-  logInLS: usersActions.logInLS,
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default App
