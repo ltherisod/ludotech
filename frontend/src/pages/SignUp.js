@@ -3,19 +3,19 @@ import {useFormik } from 'formik';
 import * as Yup from "yup"
 import { GoogleLogin } from 'react-google-login'
 import {Link} from 'react-router-dom'
-import axios from 'axios'
 import {connect} from 'react-redux'
+import Header from '../components/Header'
 
+import Header from '../components/Header';
 import usersActions from '../redux/actions/usersActions'
 
 const SignUp = (props) => {
     // const [error, setError] = useState('')
 
     let formik = useFormik({
-        initialValues: {firstname: '', lastname: '', email: '', password: '', photo: 'default'},
+        initialValues: {firstname: '', lastname: '', email: '', password: '', photo: 'default', google: false},
         onSubmit: (values) => {
-            console.log(values)
-            props.addNewUser(values)
+            props.addNewUser(values, 'signup')
         },
         validationSchema: Yup.object({
             firstname: Yup.string().min(2, 'Firstname must have 2+ characters').required('Required'),
@@ -31,24 +31,17 @@ const SignUp = (props) => {
             firstname: res.profileObj.givenName,
             lastname: res.profileObj.familyName,
             email: res.profileObj.email,
-            // photo: res.profileObj.imageUrl,
+            photo: res.profileObj.imageUrl,
             password: res.profileObj.googleId,
             google: true
         }
 
-        props.addNewUser(newUserGoogle)
-            .catch(e => {
-                console.log(e)
-                // setError(e)
-            })
+        props.addNewUser(newUserGoogle, 'signup')
     }
 
    return (
       <>
          <Header />
-         <div className="headerLogo">
-            <h1>Ludotech</h1>
-         </div>
          <div className="flex">
             <div className="main-sign">
                <div>
@@ -189,13 +182,13 @@ const SignUp = (props) => {
 }
 
 const mapStateToProps = (state) => {
-    return ({
+    return {
         
-    })
+    }
 }
 
 const mapDispatchToProps = {
-    addNewUser: usersActions.addNewUser
+    addNewUser: usersActions.logInOrSignUp
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

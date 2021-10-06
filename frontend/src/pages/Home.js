@@ -1,6 +1,7 @@
 import MostWanted from "../components/MostWanted"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
+import {TinyButton as ScrollUpButton} from "react-scroll-up-button"
 const Home = () => {
    return (
       <>
@@ -33,6 +34,7 @@ const Home = () => {
                </div>
                <MostWanted />
             </main>
+            <ScrollUpButton style={{backgroundColor: '#5ccfd8', fill: 'white', paddingBottom: '3px', paddingLeft: '3px', paddingRight: '3px', borderRadius: '50%'}}/>
             <Footer />
          </div>
       </>
