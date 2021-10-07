@@ -3,10 +3,11 @@ import axios from "axios"
 const HOST = "http://localhost:4000"
 
 const articlesActions = {
-  getArticles: () => {
+  getArticles: (filters) => {
+    console.log(filters)
     return async (dispatch) => {
       try {
-        const response = await axios.get(`${HOST}/api/articles`)
+        const response = await axios.post(`${HOST}/api/articles`, {filters})
         if (!response.data.success) throw new Error(response.data.error)
         return { success: true, response: response.data.response, error: null }
       } catch (e) {
@@ -25,7 +26,7 @@ const articlesActions = {
       }
     }
   },
-  addArticle: (data) => {
+  addArticle: (data, articleId) => {
     return async (dispatch, getState) => {
       try {
         const response = await axios.post(
@@ -75,10 +76,19 @@ const articlesActions = {
       }
     }
   },
-  addToCart: () => {
+  addToCart: (action, articleId) => {
     return async (dispatch, getState) => {
       try {
-        console.log("uwu")
+        const response = await axios.post(
+          `${HOST}/api/user/shopping-card/${articleId}`,
+          {action},
+          {
+            headers: { Authorization: `Bearer ${getState().users.user.token}` },
+          }
+        )
+        if (!response.data.success) throw new Error(response.data.error)
+        dispatch({ type: "UPDATE_CART", payload: response.data.response })
+        return { success: true, error: null }
       } catch (e) {
         return { success: false, response: null, error: e.message }
       }

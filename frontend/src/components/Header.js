@@ -12,19 +12,9 @@ const Header = (props) => {
       >
          <div className="container px-4 px-lg-5">
             <a className="navbar-brand" href="#top">
-{/*                <img id='logo' src="assets/ludotech.png"/>               
- */}            </a>
-            {window.scrollY === 0 ? <div
-                     className="logoNav"
-                     style={{
-                        backgroundImage: 'url("assets/ludotechwhite.png")',
-                     }}
-                  ></div> : <div
-                  className="logoNav2"
-                  style={{
-                     backgroundImage: 'url("assets/ludotech.png")',
-                  }}
-               ></div>}
+            <h3 id="navLogo">ludotech</h3>
+            {/* {window.scrollY === 0 ? <h3>ludotech</h3> : <p>hola</p>} */}
+            </a>
             <button
                className="navbar-toggler navbar-toggler-right"
                type="button"
@@ -99,7 +89,7 @@ const Header = (props) => {
                </div>
                <FaBell className="iconsNav" />
                <FaHeart className="iconsNav" />
-               <FaShoppingCart className="iconsNav" />
+               <Link to="/cart"><FaShoppingCart className="iconsNav" /></Link>
             </div>
          </div>
       </nav>

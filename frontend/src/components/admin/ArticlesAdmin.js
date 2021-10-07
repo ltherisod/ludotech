@@ -1,4 +1,8 @@
+import { useArticles } from "../../hooks/articlesHooks"
+
 const ArticlesAdmin = () => {
+   const articles2 = useArticles()[0]
+   console.log(articles2)
    const articles = [
       {
          id: 1,
@@ -115,7 +119,7 @@ const ArticlesAdmin = () => {
             <tbody>
                {articles.map((article) => {
                   return (
-                     <tr>
+                     <tr key={article.id}>
                         <td>{article.name}</td>
                         <td>Brand</td>
                         <td>{article.price}</td>

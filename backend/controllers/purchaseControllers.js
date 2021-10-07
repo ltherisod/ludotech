@@ -9,18 +9,24 @@ const purchaseControllers = {
       const user = await User.findOne({ _id: req.user._id })
         .populate({
           path: "shoppingCart.article",
-          populate: { path: "brand gameType genres" },
+          populate: { path: "brand gameType genres", select: "-__v -_id" },
+          select: "-__v",
         })
         .select("shoppingCart")
-      console.log(
-        user.shoppingCart.map((item) => ({
-          ...item.article._doc,
-          quantity: item.quantity,
-        }))
-      )
-      // console.log(user.shoppingCart[0]._doc)
-      // const purchase = new Purchase({
+      // console.log(
+      //   user.shoppingCart.map((item) => ({
+      //     ...item.article._doc,
+      //     quantity: item.quantity,
+      //   }))
+      // )
 
+      // const purchase = new Purchase({
+      //   user: req.user._id,
+      //   articles: user.shoppingCart.map((item) => ({
+      //     ...item.article._doc,
+      //     quantity: item.quantity,
+      //   })),
+      //   direction: ,
       // })
       res.json({
         success: true,
