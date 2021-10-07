@@ -103,11 +103,11 @@ const articlesActions = {
          }
       }
    },
-   addToCart: (action, articleId) => {
+   updateCart: (action, articleId) => {
       return async (dispatch, getState) => {
          try {
             const response = await axios.post(
-               `${HOST}/api/user/shopping-card/${articleId}`,
+               `${HOST}/api/user/shopping-cart/${articleId}`,
                { action },
                {
                   headers: {
@@ -120,15 +120,6 @@ const articlesActions = {
             return { success: true, error: null }
          } catch (e) {
             return { success: false, response: null, error: e.message }
-         }
-      }
-   },
-   removeFromCart: () => {
-      return async (dispatch, getState) => {
-         try {
-            console.log("uwu")
-         } catch (e) {
-            return { success: false, error: e.message }
          }
       }
    },
