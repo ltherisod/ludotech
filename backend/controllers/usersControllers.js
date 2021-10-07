@@ -5,7 +5,6 @@ const path = require("path")
 const transporter = require("../config/sendMail")
 const welcomeMail = require("../config/welcomeMail")
 
-
 const usersControllers = {
   sendWelcomeEmail: (req, res) => {
     let mailOptions = {
@@ -93,13 +92,11 @@ const usersControllers = {
           photo.name.split(".")[photo.name.split(".").length - 1]
         }`
         user.photo = photoPath
-        console.log(path.join(__dirname, "..", "assets"))
         photo.mv(path.join(__dirname, "..", "assets", photoPath))
       } else {
         user.photo = req.body.photo
       }
       await user.save()
-      console.log(user)
       const token = jwt.sign({ _id: user._id, email }, process.env.SECRETKEY)
       res.json({
         success: true,
@@ -288,7 +285,6 @@ const usersControllers = {
       .select(
         "_id email firstname lastname photo phone isAdmin directions wishList shoppingCart"
       )
-    console.log(user)
     res.json({
       success: true,
       response: user,
@@ -339,21 +335,30 @@ const usersControllers = {
             { _id: req.user._id, "shoppingCart.article": articleId },
             { $inc: { "shoppingCart.$.quantity": 1 } },
             { new: true }
-          )
+          ).populate({
+            path: "shoppingCart.article",
+            populate: { path: "brand genres gameType", select: "_id name" },
+          })
         } else if (action === "decrement") {
           if (item.quantity > 1) {
             user = await User.findOneAndUpdate(
               { _id: req.user._id, "shoppingCart.article": articleId },
               { $inc: { "shoppingCart.$.quantity": -1 } },
               { new: true }
-            )
+            ).populate({
+              path: "shoppingCart.article",
+              populate: { path: "brand genres gameType", select: "_id name" },
+            })
           } else {
             // quitarlo con el botón de decrement también! en caso de que haya 1 solo
             user = await User.findOneAndUpdate(
               { _id: req.user._id, "shoppingCart.article": articleId },
               { $pull: { shoppingCart: { article: articleId } } },
               { new: true }
-            )
+            ).populate({
+              path: "shoppingCart.article",
+              populate: { path: "brand genres gameType", select: "_id name" },
+            })
           }
         } else if (action === "delete") {
           // quitarlo independiente de la cantidad que tenga.
@@ -361,7 +366,10 @@ const usersControllers = {
             { _id: req.user._id, "shoppingCart.article": articleId },
             { $pull: { shoppingCart: { article: articleId } } },
             { new: true }
-          )
+          ).populate({
+            path: "shoppingCart.article",
+            populate: { path: "brand genres gameType", select: "_id name" },
+          })
         } else {
           throw new Error(
             "Action not found. Valid actions are: increment, decrement, add and delete."
@@ -375,7 +383,10 @@ const usersControllers = {
           { _id: req.user._id },
           { $push: { shoppingCart: { article: articleId, quantity: 1 } } },
           { new: true }
-        )
+        ).populate({
+          path: "shoppingCart.article",
+          populate: { path: "brand genres gameType", select: "_id name" },
+        })
       }
       res.json({ success: true, response: user.shoppingCart, error: null })
     } catch (e) {
@@ -416,7 +427,6 @@ const usersControllers = {
   },
   getAccounts: async (req, res) => {
     // dev stage only!
-    console.log(req.user.shoppingCart)
     try {
       const users = await User.find().populate("wishList")
       res.json({ success: true, response: users, error: null })
