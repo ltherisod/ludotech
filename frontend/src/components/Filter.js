@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import {connect} from "react-redux"
 import articlesUtilitiesActions from "../redux/actions/articlesUtilitiesActions"
+import {useArticles} from "../hooks/articlesHooks"
 
 const Filter = (props) => {
     const [brands, setBrands] = useState([])
@@ -8,23 +9,19 @@ const Filter = (props) => {
     const [gameTypes, setGameTypes] = useState([])
     const [renderDropDown, setRenderDropDown] = useState(false)
     const [filters, setFilters] = useState({})
+    const [submit, setSubmit] = useState(false)
+
+
+    const [articles, loading, error] = useArticles(filters, submit)
+    console.log(articles, loading, error)
 
     useEffect(() => {
         props.getAllArticlesUtilities()
         .then(res => {
             if (res.success) {
-                let brandsArray = res.response.brands.map(brand => {
-                    return (brand.name)
-                })
-                setBrands([...brandsArray])
-                let genresArray = res.response.genres.map(genre => {
-                    return (genre.name)
-                })
-                setGenres([...genresArray])
-                let gameTypesArray = res.response.gameTypes.map(gameType => {
-                    return (gameType.name)
-                })
-                setGameTypes([...gameTypesArray])
+                setBrands([...res.response.brands])
+                setGenres([...res.response.genres])
+                setGameTypes([...res.response.gameTypes])
             } else {
                 throw new Error()
             }
@@ -176,7 +173,7 @@ const Filter = (props) => {
         return(
             options.map(option => {
                 return(
-                    <option key={option} value={option}>{option}</option>
+                    <option key={option._id} value={option._id}>{option.name}</option>
                 )
             })
         )
@@ -184,7 +181,8 @@ const Filter = (props) => {
 
     const submitFilters = (e) => {
         e.preventDefault()
-        console.log("Filters: ", filters)
+        // console.log("Filters: ", filters)
+        setSubmit(!submit)
     }
     
     return(
