@@ -860,8 +860,8 @@ th {
   background-position: center;
 }
 
-.articleName p {
-  font-size: 6vmin;
+.articleName h2 {
+  font-size: 6.5vmin;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: -3px;
@@ -897,6 +897,19 @@ th {
   justify-content: flex-end;
 }
 
+.articleQuantity{
+  width: 4em;
+  padding:.3em;
+}
+
+.articleShopCont{
+  align-self:center ;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 
 
 
@@ -904,11 +917,12 @@ th {
 
 .articleRelatedTittle{
   margin-left: 3rem;
-  margin-top: 1em;
+  margin-top: 2em;
   font-weight: bold;
   letter-spacing: -1px;
   color: #16054b;
   font-size: 5vmin;
+  text-align: center;
 
 }
 
@@ -950,3 +964,34 @@ th {
   display: flex;
   justify-content: space-between;
 }
+
+/*Swiper*/
+
+.swiperBox {
+  width: 50%;
+  height: 60vh;
+  background-color: blue;
+}
+
+.swiper {
+  width: 50%;
+  height: 100%;
+  color: #000;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.swiperSlide {
+  width: 50%;
+  height: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+.swiper-button-next,
+  .swiper-button-prev {
+    color: red !important;
+    transform: scale(1);
+  }

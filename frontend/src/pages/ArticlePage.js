@@ -2,6 +2,7 @@ import Header from "../components/Header"
 import HeroPages from "../components/HeroPages"
 import Footer from "../components/Footer"
 import ArticleRelated from "../components/ArticleRelated"
+import ArticleCaroulsel from "../components/ArticleCaroulsel"
 
 const ArticlePage = () => {
     const articles = [
@@ -49,7 +50,17 @@ const ArticlePage = () => {
             <div className="articleData" >
                 <div className="articlePhoto" style={{backgroundImage: `url("https://i.postimg.cc/gJvGymjx/codexBox.png")`}}>
                 </div>
-                <div className="articleName"><p>Codex naturalis</p></div>
+                <div className="articleName">
+                  <h2>Codex naturalis</h2>
+                  <p>Price: $500</p>
+                  <p>Players: 4-8</p>
+                  <p>Min Age: 8+</p>
+                  <p>Game Time: 2hrs</p>
+                  <div className="articleShopCont">
+                    <input className="articleQuantity"type="number" name="" placeholder="1" />
+                    <img id="buy" src="./assets/buy.png" alt="addCart"/>   
+                  </div>
+                </div>
             </div>
             <div className="articleDecoUp">
                 <div className="articleDeco" style={{backgroundImage: `url("https://i.postimg.cc/tRKpHcf4/codex-Deco2.png")`}}></div>
@@ -70,6 +81,7 @@ const ArticlePage = () => {
                 return <ArticleRelated article={article} key={id} />
               })}
             </div>
+            {/* <ArticleCaroulsel style={{width:"50%"}}/> */}
             <Footer/>
         </div>
     )

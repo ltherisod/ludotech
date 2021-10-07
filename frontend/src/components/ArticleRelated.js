@@ -34,7 +34,8 @@ const ArticleRelated = (props) => {
           </div>
             <div className="buyLineRelated">
                 <h3>{name}</h3>
-                <img id="buy" src="./assets/buy.png" /></div>       
+                <img id="buy" src="./assets/buy.png" alt="addCart" />
+            </div> 
           </div>
       </div>
     )  
