@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useFormik } from "formik"
 import Header from "../components/Header"
 import ArticlesAdmin from "../components/admin/ArticlesAdmin"
+import Team from "../components/admin/Team"
 
 const PanelAdmin = () => {
    const [showDashboard, setShowDashboard] = useState(false)
@@ -55,6 +56,7 @@ const PanelAdmin = () => {
                   </button>
                </div>
                {showArticle && <ArticlesAdmin />}
+               {showUsers && <Team />}
             </div>
          </div>
       </>
