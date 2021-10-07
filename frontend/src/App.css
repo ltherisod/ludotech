@@ -353,13 +353,23 @@ h2 span {
   align-items: center;
   text-align: center;
 }
+.filterBoxContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
 .search {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35%;
 }
 .search label {
   color: white;
   text-align: start;
-  font-size: 2vmin;
+  font-size: 2.3vmin;
   margin-bottom: 0.5vmin;
   font-weight: bolder;
   letter-spacing: 1px;
@@ -367,13 +377,60 @@ h2 span {
 }
 
 .search input {
-  height: 40px;
+  height: 3em;
+  width: 35vw;
   padding-left: 1vmin;
   outline: none;
   border: 1px solid white;
   border-radius: 3px;
 }
 
+.searchButton {
+  width: 100%;
+  font-size: 2.5vmin;
+  border-radius: 3px;
+  height: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  color: white;
+  width: 200px;
+  margin-top: 10px;
+}
+#searchButton text{
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.5vmin;
+}
+.filtersBox {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 10px;
+  justify-content: center;
+}
+.filterOption {
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filterOption select {
+  width: 120px;
+  border-radius: 3px;
+  padding-left: 6px;
+  color: gray
+}
+
+.filterDiscount label {
+  padding: 0px 10px
+}
+.filterView {
+  border: none;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #6AEFCF;
+}
 .bodyArticles {
   text-align: center;
 }
