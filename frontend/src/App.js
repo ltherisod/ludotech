@@ -7,8 +7,8 @@ import SignUp from "./pages/SignUp"
 import { useLoginLS } from "./hooks/usersHooks"
 import { useSelector } from "react-redux"
 import PanelAdmin from "./pages/PanelAdmin"
-import Article from "./pages/Article"
 import Cart from "./pages/Cart"
+import ArticlePage from "./pages/ArticlePage"
 
 const App = (props) => {
    useLoginLS()
@@ -18,7 +18,7 @@ const App = (props) => {
          <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/articles" component={Articles} />
-            <Route path = "/article" component={Article}/>
+            <Route path = "/article" component={ArticlePage}/>
             {!user && <Route path="/signin" component={SignIn} />}
             {!user && <Route path="/signup" component={SignUp} />}
             <Route path="/admin" component={PanelAdmin} />

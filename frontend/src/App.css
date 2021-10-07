@@ -874,3 +874,57 @@ th {
   display: flex;
   justify-content: flex-end;
 }
+
+
+
+
+/*Article Related */
+
+.articleRelatedTittle{
+  margin-left: 3rem;
+  margin-top: 1em;
+  font-weight: bold;
+  letter-spacing: -1px;
+  color: #16054b;
+  font-size: 5vmin;
+
+}
+
+.relatedArticles{
+  padding: 3rem;
+  width: 80%;
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardArticleRelated{
+  width: 320px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  background-position: bottom;
+  background-size: cover;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.photosArticleRelated{
+  background-position: center;
+  background-size: cover;
+  min-height: 250px;
+  width: 285px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 15px;
+}
+
+.buyLineRelated{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
