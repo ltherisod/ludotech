@@ -12,9 +12,7 @@ const purchaseControllers = require("../controllers/purchaseControllers")
 // USERS ROUTES
 router.route("/login").post(usersControllers.logIn)
 
-router
-  .route("/signup")
-  .post(usersValidators.signUpValidator, usersControllers.signUp)
+router.route("/signup").post(usersControllers.signUp)
 
 router
   .route("/user/verifyToken")

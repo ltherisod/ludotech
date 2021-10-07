@@ -25,7 +25,7 @@ const signUpValidator = async (req, res, next) => {
         // "string.pattern.base":
         //   "Must have at least one lowercase, one uppercase and one digit.",
       }),
-    photo: joi.string().required().messages({
+    photo: joi.any().required().messages({
       "any.required": "Photo is required.",
     }),
     google: joi.boolean().optional(),

@@ -7,6 +7,8 @@ const usersActions = {
     return async (dispatch) => {
       try {
         // action puede ser 'login' o 'signup'
+        console.log("data")
+        console.log(data)
         const response = await axios.post(`${HOST}/api/${action}`, data)
         if (!response.data.success) throw new Error(response.data.error)
         localStorage.setItem("token", response.data.response.token)
@@ -34,7 +36,7 @@ const usersActions = {
           type: "LOGIN_OR_SIGNUP",
           payload: { ...response.data.response, token },
         })
-        return {success: true, error: null}
+        return { success: true, error: null }
       } catch (e) {
         localStorage.removeItem("token")
         return { success: false, error: e.message }

@@ -7,6 +7,7 @@ import * as Yup from "yup"
 export const useSignup = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [fieldValue, setFieldValue] = useState({ photo: null })
   const dispatch = useDispatch()
   const formik = useFormik({
     initialValues: {
@@ -14,7 +15,6 @@ export const useSignup = () => {
       lastname: "",
       email: "",
       password: "",
-      photo: "default",
     },
     onSubmit: (values) => submitHandler(values),
     validationSchema: Yup.object({
@@ -28,13 +28,20 @@ export const useSignup = () => {
       password: Yup.string()
         .min(4, "Password must have at least 4 characters")
         .required("Required"),
-      // photo: Yup.string().required('Required')
     }),
   })
 
   const submitHandler = async (values) => {
+    const formData = new FormData()
+    formData.append("firstname", values.firstname)
+    formData.append("lastname", values.lastname)
+    formData.append("email", values.email)
+    formData.append("password", values.password)
+    formData.append("photo", fieldValue.photo)
+    console.log(fieldValue)
     setLoading(true)
-    const res = await dispatch(usersActions.logInOrSignUp(values, "signup"))
+    const res = await dispatch(usersActions.logInOrSignUp(formData, "signup"))
+    console.log(res.error)
     if (!res.success) setError(res.error)
     setLoading(false)
   }
@@ -52,7 +59,7 @@ export const useSignup = () => {
     dispatch(usersActions.logInOrSignUp(newUserGoogle, "signup"))
   }
 
-  return [formik, responseGoogle, loading, error]
+  return [formik, responseGoogle, setFieldValue, loading, error]
 }
 
 export const useLogin = async () => {

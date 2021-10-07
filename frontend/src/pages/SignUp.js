@@ -5,16 +5,23 @@ import { useSignup } from "../hooks/usersHooks"
 import HeroPages from "../components/HeroPages"
 
 const SignUp = (props) => {
-  const [formik, responseGoogle, loading, error] = useSignup()
+  const [formik, responseGoogle, setFieldValue, loading, error] = useSignup()
   return (
-    <div className="signInBody" style={{backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`}}>
-       <HeroPages/>
+    <div
+      className="signInBody"
+      style={{
+        backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`,
+      }}
+    >
+      <HeroPages />
       <Header />
       <div className="flex">
         <div className="main-sign">
-        <div>
-            <h2>Sign <span>up!</span></h2>
-         </div>
+          <div>
+            <h2>
+              Sign <span>up!</span>
+            </h2>
+          </div>
           <GoogleLogin
             clientId="459150618424-3jfl8j0539f5fj34h0e3utqvao05ib8m.apps.googleusercontent.com"
             buttonText="Create account with Google"
@@ -27,7 +34,9 @@ const SignUp = (props) => {
                 className="buttonGoogle"
                 onClick={renderProps.onClick}
                 disabled={renderProps.disabled}
-                style={{backgroundImage: `url("https://i.postimg.cc/L6km2Sc6/back-Google.png")`}}
+                style={{
+                  backgroundImage: `url("https://i.postimg.cc/L6km2Sc6/back-Google.png")`,
+                }}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +70,9 @@ const SignUp = (props) => {
             />
             {formik.touched.firstname && formik.errors.firstname ? (
               <small className="signErrors">{formik.errors.firstname}</small>
-            ) : (<small className="signNoErrors">NoErrors</small>)}
+            ) : (
+              <small className="signNoErrors">NoErrors</small>
+            )}
           </div>
           <div className="inputContainer">
             <label className="labelSign" htmlFor="lastname">
@@ -77,7 +88,9 @@ const SignUp = (props) => {
             />
             {formik.touched.lastname && formik.errors.lastname ? (
               <small className="signErrors">{formik.errors.lastname}</small>
-            ) : (<small className="signNoErrors">NoErrors</small>)}
+            ) : (
+              <small className="signNoErrors">NoErrors</small>
+            )}
           </div>
           {/* <div className='inputContainer'>
                     <label className='labelSign' htmlFor='photo'>Photo</label>
@@ -107,7 +120,9 @@ const SignUp = (props) => {
             />
             {formik.touched.email && formik.errors.email ? (
               <small className="signErrors">{formik.errors.email}</small>
-            ) : (<small className="signNoErrors">NoErrors</small>)}
+            ) : (
+              <small className="signNoErrors">NoErrors</small>
+            )}
           </div>
           <div className="inputContainer">
             <label className="labelSign" htmlFor="email">
@@ -116,14 +131,14 @@ const SignUp = (props) => {
             <input
               placeholder="Profile Photo"
               name="photo"
-              type="filename"
-              value={formik.values.photo}
-              onChange={formik.handleChange("photo")}
-              onBlur={formik.handleBlur("photo")}
+              type="file"
+              onChange={(e) => setFieldValue({ photo: e.target.files[0] })}
             />
-            {formik.touched.email && formik.errors.email ? (
+            {/* {formik.touched.email && formik.errors.email ? (
               <small className="signErrors">{formik.errors.email}</small>
-            ) : (<small className="signNoErrors">NoErrors</small>)}
+            ) : (
+              <small className="signNoErrors">NoErrors</small>
+            )} */}
           </div>
           <div className="inputContainer">
             <label className="labelSign" htmlFor="password">
@@ -139,14 +154,18 @@ const SignUp = (props) => {
             />
             {formik.touched.password && formik.errors.password ? (
               <small className="signErrors">{formik.errors.password}</small>
-            ) : (<small className="signNoErrors">NoErrors</small>)}
+            ) : (
+              <small className="signNoErrors">NoErrors</small>
+            )}
           </div>
           <button
             type="button"
             className="flex signupButtonSignup"
             disabled={loading}
             onClick={formik.handleSubmit}
-            style={{backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`}}
+            style={{
+              backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+            }}
           >
             Sign up
           </button>
@@ -154,9 +173,15 @@ const SignUp = (props) => {
             By registering you are accepting our Terms and Conditions and our
             Privacy Policies
           </p>
-          <Link className="accountLink" to="/signin"  onClick={() => window.scrollTo(0, 0)}>
-            <p className="signinButtonSignupText">Don't have an account? <span> Sign up Here!</span></p>
-         </Link>
+          <Link
+            className="accountLink"
+            to="/signin"
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            <p className="signinButtonSignupText">
+              Don't have an account? <span> Sign up Here!</span>
+            </p>
+          </Link>
         </div>
       </div>
     </div>
@@ -164,4 +189,3 @@ const SignUp = (props) => {
 }
 
 export default SignUp
-

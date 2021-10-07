@@ -2,7 +2,7 @@ const User = require("../models/User")
 const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const nodemailer = require("nodemailer")
-const { findOneAndUpdate } = require("../models/User")
+const path = require("path")
 
 let transporter = nodemailer.createTransport({
   service: "gmail",
@@ -104,7 +104,6 @@ const usersControllers = {
   signUp: async (req, res) => {
     try {
       const { firstname, lastname, email, password, google, phone } = req.body
-      const { photo } = req.files
       const emailInUse = await User.findOne({ email })
       if (emailInUse) throw new Error("Email in use.")
       const hashedPass = await bcryptjs.hash(password, 10)
@@ -116,16 +115,19 @@ const usersControllers = {
         phone,
         google,
       })
-      if (!google) {
+      if (!google && req.files?.photo) {
+        const { photo } = req.files
         const photoPath = `${user._id}_${Date.now()}.${
-          photo.name.split(".")[photo.name.length - 1]
+          photo.name.split(".")[photo.name.split(".").length - 1]
         }`
         user.photo = photoPath
-        photo.mv(`${__dirname}/assets/${photoPath}`)
+        console.log(path.join(__dirname, "..", "assets"))
+        photo.mv(path.join(__dirname, "..", "assets", photoPath))
       } else {
         user.photo = req.body.photo
       }
       await user.save()
+      console.log(user)
       const token = jwt.sign({ _id: user._id, email }, process.env.SECRETKEY)
       res.json({
         success: true,
@@ -145,6 +147,7 @@ const usersControllers = {
         error: null,
       })
     } catch (e) {
+      console.log(e)
       res.json({ success: false, response: null, error: e.message })
     }
   },
