@@ -76,10 +76,19 @@ const articlesActions = {
       }
     }
   },
-  addToCart: () => {
+  addToCart: (action, articleId) => {
     return async (dispatch, getState) => {
       try {
-        console.log("uwu")
+        const response = await axios.post(
+          `${HOST}/api/user/shopping-card/${articleId}`,
+          {action},
+          {
+            headers: { Authorization: `Bearer ${getState().users.user.token}` },
+          }
+        )
+        if (!response.data.success) throw new Error(response.data.error)
+        dispatch({ type: "UPDATE_CART", payload: response.data.response })
+        return { success: true, error: null }
       } catch (e) {
         return { success: false, response: null, error: e.message }
       }

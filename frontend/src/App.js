@@ -8,6 +8,7 @@ import { useLoginLS } from "./hooks/usersHooks"
 import { useSelector } from "react-redux"
 import PanelAdmin from "./pages/PanelAdmin"
 import Article from "./components/Article"
+import Cart from "./pages/Cart"
 
 const App = (props) => {
    useLoginLS()
@@ -21,6 +22,7 @@ const App = (props) => {
             {!user && <Route path="/signin" component={SignIn} />}
             {!user && <Route path="/signup" component={SignUp} />}
             <Route path="/admin" component={PanelAdmin} />
+            <Route path="/cart" component={Cart} />
             <Redirect to="/" />
          </Switch>
       </BrowserRouter>

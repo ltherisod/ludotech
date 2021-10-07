@@ -99,7 +99,7 @@ const Header = (props) => {
                </div>
                <FaBell className="iconsNav" />
                <FaHeart className="iconsNav" />
-               <FaShoppingCart className="iconsNav" />
+               <Link to="/cart"><FaShoppingCart className="iconsNav" /></Link>
             </div>
          </div>
       </nav>
