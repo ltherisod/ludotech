@@ -27,15 +27,19 @@ export const useArticle = (id) => {
   const [error, setError] = useState(null)
   const dispatch = useDispatch()
 
-   const fetchArticle = async () => {
-      const res = await dispatch(articlesActions.getArticle(id))
-      if (!res.success) {
-         setError(res.error)
-      } else {
-         setArticle(res.response)
-      }
-      setLoading(false)
-   }
+  const fetchArticle = async () => {
+    const res = await dispatch(articlesActions.getArticle(id))
+    if (!res.success) {
+      setError(res.error)
+    } else {
+      setArticle(res.response)
+    }
+    setLoading(false)
+  }
 
-   return [article, loading, error]
+  useEffect(() => {
+    fetchArticle()
+  }, [])
+
+  return [article, loading, error]
 }

@@ -1,45 +1,60 @@
 import MostWanted from "../components/MostWanted"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
-import {TinyButton as ScrollUpButton} from "react-scroll-up-button"
+import { TinyButton as ScrollUpButton } from "react-scroll-up-button"
+import { useEffect } from "react"
+
 const Home = () => {
-   return (
-      <>
-         <Header />
-         <div
-            className="body"
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  return (
+    <>
+      <Header />
+      <div
+        className="body"
+        style={{
+          backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`,
+        }}
+      >
+        <main>
+          <div
+            className="hero"
             style={{
-               backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`,
+              backgroundImage: `url("https://i.postimg.cc/QdTXy2Wx/herofixed.png")`,
             }}
-         >
-            <main>
-               <div
-                  className="hero"
-                  style={{
-                     backgroundImage: `url("https://i.postimg.cc/QdTXy2Wx/herofixed.png")`,
-                  }}
-               >
-                  <div className="heroDescription">
-                     <div>
-                        <h1 className="logo">ludotech</h1>
-                        <h1 id="welcome">Welcome to the land of the game</h1>
-                        <button>
-                           Let´s go there
-                        </button>
-                     </div>
-                  </div>
-                  <div
-                     className="cube"
-                     style={{ backgroundImage: "url('/assets/rubik.png')" }}
-                  ></div>
-               </div>
-               <MostWanted />
-            </main>
-            <ScrollUpButton style={{backgroundColor: '#5ccfd8', fill: 'white', paddingBottom: '3px', paddingLeft: '3px', paddingRight: '3px', borderRadius: '50%'}} AnimationDuration={500} EasingType='easeOutCubic' StopPosition={0}/>
-            <Footer />
-         </div>
-      </>
-   )
+          >
+            <div className="heroDescription">
+              <div>
+                <h1 className="logo">ludotech</h1>
+                <h1 id="welcome">Welcome to the land of the game</h1>
+                <button>Let´s go there</button>
+              </div>
+            </div>
+            <div
+              className="cube"
+              style={{ backgroundImage: "url('/assets/rubik.png')" }}
+            ></div>
+          </div>
+          <MostWanted />
+        </main>
+        <ScrollUpButton
+          style={{
+            backgroundColor: "#5ccfd8",
+            fill: "white",
+            paddingBottom: "3px",
+            paddingLeft: "3px",
+            paddingRight: "3px",
+            borderRadius: "50%",
+          }}
+          AnimationDuration={500}
+          EasingType="easeOutCubic"
+          StopPosition={0}
+        />
+        <Footer />
+      </div>
+    </>
+  )
 }
 
 export default Home
