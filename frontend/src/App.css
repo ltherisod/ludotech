@@ -138,6 +138,7 @@ footer {
   border: none;
   font-weight: 700;
   color: #D12A74;
+  margin-top: 10px;
 }
 .logo {
   font-family: "Fredoka One", cursive;
@@ -352,6 +353,27 @@ h2 span {
   align-items: center;
   text-align: center;
 }
+.search {
+  padding: 10px;
+}
+.search label {
+  color: white;
+  text-align: start;
+  font-size: 2vmin;
+  margin-bottom: 0.5vmin;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  padding-right: 10px;
+}
+
+.search input {
+  height: 40px;
+  padding-left: 1vmin;
+  outline: none;
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
 .bodyArticles {
   text-align: center;
 }

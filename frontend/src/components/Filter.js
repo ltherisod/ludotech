@@ -187,16 +187,8 @@ const Filter = (props) => {
 
   return (
     <>
-      <form
-        onSubmit={submitFilters}
-        style={{
-          width: "90%",
-          display: "flex",
-          color: "white",
-          margin: "30px",
-        }}
-      >
-        <div>
+      <form className="filterContainer" onSubmit={submitFilters} style={{ width: "80%", display: "flex", color: "white", margin: "30px" }}>
+        <div className="search" >
           <label htmlFor="name">Search a product:</label>
           <input type="text" id="name" name="name" onChange={inputHandle} />
         </div>
