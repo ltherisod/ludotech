@@ -2,8 +2,8 @@ const User = require("../models/User")
 const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const path = require("path")
-const transporter = require("../config/sendMail")
-const welcomeMail = require("../config/welcomeMail")
+const transporter = require("../config/transporterEmail")
+const welcomeEmail = require("../config/emailsBody/Welcome")
 
 
 const usersControllers = {
@@ -12,8 +12,8 @@ const usersControllers = {
       from: "Ludotehc <ludotechweb@gmail.com>",
       to: "<jc.venepro@gmail.com>",
       subject: "Welcome",
-      text: welcomeMail,
-      html: welcomeMail,
+      text: welcomeEmail,
+      html: welcomeEmail,
     }
     transporter.sendMail(mailOptions, (e, data) => {
       if (!e) {
@@ -416,7 +416,7 @@ const usersControllers = {
   },
   getAccounts: async (req, res) => {
     // dev stage only!
-    console.log(req.user.shoppingCart)
+    // console.log(req.user.shoppingCart)
     try {
       const users = await User.find().populate("wishList")
       res.json({ success: true, response: users, error: null })

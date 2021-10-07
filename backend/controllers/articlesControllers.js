@@ -18,8 +18,9 @@ const articlesControllers = {
 
   getArticle: async (req,res) => {
     try {
-      let getArticle = await Article.find({ _id: req.params.id})
+      let getArticle = await Article.findOne({ _id: req.params.id})
       if (getArticle) {
+        await getArticle.updateOne({ $inc: { visitsCount: 1 }}, { new: true })
         res.json({ success: true, response: getArticle, error: null })
       } else {
         throw new Error('Couldn´t get the article')
@@ -83,6 +84,19 @@ const articlesControllers = {
       res.json({ success: false, response: null, error: e.message })    
     }
   },
+
+  getMostVisitArticles: async (req,res) => {
+    try { 
+      let getMostVisitArticles = await Article.find().sort( '-visitsCount' ).limit(3)
+      if (getMostVisitArticles) {
+        res.json({ success: true, response: getMostVisitArticles, error: null })
+      } else {
+        throw new Error('Couldn´t get most visit articles')
+      }
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })    
+    }
+  }
 }
 
 module.exports = articlesControllers
