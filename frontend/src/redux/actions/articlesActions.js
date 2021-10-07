@@ -35,11 +35,11 @@ const articlesActions = {
          }
       }
    },
-   addArticle: (data) => {
+   addArticle: (data, articleId) => {
       return async (dispatch, getState) => {
          try {
             const response = await axios.post(
-               `${HOST}/api/article`,
+               `${HOST}/api/article/${articleId}`,
                data,
                {
                   headers: {
@@ -115,6 +115,7 @@ const articlesActions = {
                   },
                }
             )
+            console.log(response.data.response)
             if (!response.data.success) throw new Error(response.data.error)
             dispatch({ type: "UPDATE_CART", payload: response.data.response })
             return { success: true, error: null }

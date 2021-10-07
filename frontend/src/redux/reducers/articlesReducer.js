@@ -1,11 +1,5 @@
-const articlesReducer = (state = { shoppingCart: [] }, action) => {
+const articlesReducer = (state = {}, action) => {
   switch (action.type) {
-    case "UPDATE_CART":
-      console.log(action.payload)
-      return {
-        state
-        
-      }
     default:
       return state
   }
