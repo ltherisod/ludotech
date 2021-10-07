@@ -19,6 +19,7 @@ const articleSchema = new mongoose.Schema({
   stock: { type: Number, required: true },
   size: { type: String, required: false }, // revisar
   weight: { type: Number, required: false },
+  visitsCount: { type: Number },
 })
 
 const Article = mongoose.model("article", articleSchema)
