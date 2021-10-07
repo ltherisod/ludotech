@@ -38,11 +38,15 @@ const articlesActions = {
    addArticle: (data) => {
       return async (dispatch, getState) => {
          try {
-            const response = await axios.post(`${HOST}/api/article`, data, {
-               headers: {
-                  Authorization: `Bearer ${getState().users.user.token}`,
-               },
-            })
+            const response = await axios.post(
+               `${HOST}/api/article`,
+               data,
+               {
+                  headers: {
+                     Authorization: `Bearer ${getState().users.user.token}`,
+                  },
+               }
+            )
             if (!response.data.success) throw new Error(response.data.error)
             return {
                success: true,

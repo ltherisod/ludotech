@@ -15,6 +15,7 @@ const router = require("./routes/index")
 app.use(cors())
 app.use(express.json())
 app.use(fileupload())
+app.use(express.static("assets"))
 
 app.use("/api", router)
 
