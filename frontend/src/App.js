@@ -7,7 +7,7 @@ import SignUp from "./pages/SignUp"
 import { useLoginLS } from "./hooks/usersHooks"
 import { useSelector } from "react-redux"
 import PanelAdmin from "./pages/PanelAdmin"
-import Article from "./components/Article"
+import Article from "./pages/Article"
 
 const App = (props) => {
    useLoginLS()

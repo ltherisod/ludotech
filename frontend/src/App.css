@@ -806,11 +806,10 @@ font-weight: bold;
 letter-spacing: -3px;
 color: #16054b;
 }
-.articleDecoUp{
-  width: 80%;
-  align-self: center;
-  display: flex;
-  height: 30vh;
+
+.articleDecoUp, .articleDecoDown{
+   padding-left: 5em;
+   display: flex;
 }
 
 .articleDescription{
@@ -819,12 +818,19 @@ color: #16054b;
   text-align: justify;
   color:gray;
   font-weight: bold;
-  font-size: 3vmin;
+  font-size: 3.5vmin;
+  letter-spacing: 1px;
 }
 .articleDeco{
-  width: 12%;
-  height: 18vh;
+  width: 20%;
+  height: 25vh;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.articleDecoRight{
+   padding-right: 5em;
+   display: flex;
+   justify-content: flex-end;
 }
