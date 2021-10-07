@@ -22,9 +22,9 @@ const Home = () => {
                   <div className="heroDescription">
                      <div>
                         <h1 className="logo">ludotech</h1>
-                        <h1>Welcome to the land of the game</h1>
+                        <h1 id="welcome">Welcome to the land of the game</h1>
                         <button>
-                           <h4>Let´s go there</h4>
+                           <h5>Let´s go there</h5>
                         </button>
                      </div>
                   </div>
