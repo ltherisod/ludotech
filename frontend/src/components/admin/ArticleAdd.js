@@ -1,13 +1,17 @@
-import { useDispatch } from "react-redux"
-import { useFormik } from "formik"
+import { connect, useDispatch } from "react-redux"
+import { Field, Form, useFormik } from "formik"
 import * as Yup from "yup"
 import articlesActions from "../../redux/actions/articlesActions"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import UtilsAdd from "./Select"
+import articlesUtilitiesActions from "../../redux/actions/articlesUtilitiesActions"
+import Select from "./Select"
 
-const ArticleAdd = () => {
+const ArticleAdd = (props) => {
    const [loading, setLoading] = useState(false)
    const [error, setError] = useState(null)
    const dispatch = useDispatch()
+
    const formik = useFormik({
       initialValues: {
          name: "",
@@ -60,13 +64,27 @@ const ArticleAdd = () => {
       }),
    })
 
-   const submitHandler = (values) => {
+   const [utilities, setUtilities] = useState([])
+   useEffect(() => {
+      const traer = async () => {
+         const getUtilities = await props
+            .getUtilities()
+            .then((res) => setUtilities(res.response))
+      }
+      traer()
+   }, [])
+
+   const { brands, genres, gameTypes } = utilities
+
+   const submitHandler = async (values) => {
       setLoading(true)
-      const res = dispatch(articlesActions.addArticle(values))
+      const res = await dispatch(articlesActions.addArticle(values))
       console.log(res)
       if (!res.success) setError(res.error)
       setLoading(false)
    }
+
+   console.log(brands)
 
    return (
       <>
@@ -94,14 +112,21 @@ const ArticleAdd = () => {
                <label className="labelSign" htmlFor="brand">
                   Brand
                </label>
-               <input
-                  name="brand"
-                  type="text"
-                  placeholder="Must have 2+ characters"
-                  value={formik.values.brand}
+               <select as="select" name="brand">
+                  {/* {brands.map((brand) => console.log(brand))} */}
+                  <option>1</option>
+               </select>
+
+               {/* {brands.map((brand) => {
+                     return console.log(brand)
+                     <option key={brand._id} value={brand.name}>
+                        {brand.name}
+                     </option>
+                  })} */}
+
+               {/* value={formik.values.brand}
                   onChange={formik.handleChange("brand")}
-                  onBlur={formik.handleBlur("brand")}
-               />
+                  onBlur={formik.handleBlur("brand")} */}
                {formik.touched.brand && formik.errors.brand ? (
                   <small className="signErrors">{formik.errors.brand}</small>
                ) : (
@@ -361,4 +386,8 @@ const ArticleAdd = () => {
    )
 }
 
-export default ArticleAdd
+const mapDispatchToProps = {
+   getUtilities: articlesUtilitiesActions.getAllArticlesUtilities,
+}
+
+export default connect(null, mapDispatchToProps)(ArticleAdd)
