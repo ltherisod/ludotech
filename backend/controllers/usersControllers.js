@@ -322,32 +322,6 @@ const usersControllers = {
       res.json({ success: false, response: null, error: e.message })
     }
   },
-  addToShoppingCart: async (req, res) => {
-    try {
-      // viene un id del documento de shoppingCart por params (shoppingCart: [{_id (este _id), article, quantity},...{...}]), el token por headers, y por body la cantidad de artículos que voy a setear.
-      const user = await User.findOneAndUpdate(
-        { _id: req.user._id },
-        { $push: { "shoppingCart.$.quantity": req.body.quantity } },
-        { new: true }
-      )
-      res.json({ success: true, response: user.shoppingCart, error: null })
-    } catch (e) {
-      res.json({ success: false, response: null, error: e.message })
-    }
-  },
-  setShoppingCart: async (req, res) => {
-    try {
-      // viene un id del documento de shoppingCart por params (shoppingCart: [{_id (este _id), article, quantity},...{...}]), el token por headers, y por body la cantidad de artículos que voy a setear.
-      const user = await User.findOneAndUpdate(
-        { _id: req.user._id, "shoppingCart._id": req.params.id },
-        { $set: { "shoppingCart.$.quantity": req.body.quantity } },
-        { new: true }
-      )
-      res.json({ success: true, response: user.shoppingCart, error: null })
-    } catch (e) {
-      res.json({ success: false, response: null, error: e.message })
-    }
-  },
   shoppingCartHandler: async (req, res) => {
     try {
       // llega articleId por params, token por headers, y action por body
@@ -362,7 +336,7 @@ const usersControllers = {
         const item = shoppingCart.find(
           (item) => item.article._id.toString() === articleId
         )
-        if (action === "increment") {
+        if (action === "increment" || action === "add") {
           if (item.quantity === item.article.stock)
             throw new Error("Cannot add more of this item.")
           user = await User.findOneAndUpdate(
@@ -394,7 +368,7 @@ const usersControllers = {
           )
         } else {
           throw new Error(
-            "Action not found. Valid actions are: increment, decrement and delete."
+            "Action not found. Valid actions are: increment, decrement, add and delete."
           )
         }
       } else {

@@ -52,6 +52,7 @@ router
     usersControllers.getAccounts
   )
 
+router.route("/purchases").get(purchaseControllers.getPurchases)
 router
   .route("/user/purchase")
   .post(
