@@ -32,6 +32,7 @@ const articlesControllers = {
   // se requiere filtros como {filters} en el body; puede venir vacio
 
   readAllArticles: async (req, res) => {
+    console.log(req.body)
     try {
       if (Object.keys(req.body.filters).length === 0) {
         let getArticles = await Article.find().populate({ path: 'brand', select: 'name' }).populate({ path: 'genres', select: 'name' }).populate({ path: 'gameType', select: 'name' })
@@ -42,10 +43,11 @@ const articlesControllers = {
           throw new Error('Couldn´t get all articles')
         }
       } else {
-        const scapeString = () => {
+        let nameString = ( req.body.filters.name ? req.body.filters.name : '' )
+        const scapeString = (str) => {
           return String(str).replace(/([.*+?=^!:${}()|[\]\/\\])/g, '\\$1')
         }
-        let getFilteredArticles = await Article.find({ ...req.body.filters, name: { $regex: scapeString(req.body.filters.name), $options: 'i' }, minPlayers: { $gte: req.body.filters.minPlayers || 0 }, maxPlayers: { $lte: req.body.filters.maxPlayers || Number.MAX_VALUE }, minAge: { $gte: req.body.filters.minAge || 0 }, price: { $gte: req.body.filters.minPrice || 0, $lte: req.body.filters.maxPrice || Number.MAX_VALUE }})
+        let getFilteredArticles = await Article.find({ ...req.body.filters, name: { $regex: scapeString(nameString), $options: 'i' }, minPlayers: { $gte: req.body.filters.minPlayers || 0 }, maxPlayers: { $lte: req.body.filters.maxPlayers || Number.MAX_VALUE }, minAge: { $gte: req.body.filters.minAge || 0 }, price: { $gte: req.body.filters.minPrice || 0, $lte: req.body.filters.maxPrice || Number.MAX_VALUE }})
         if (getFilteredArticles) {
           res.json({ success: true, response: getFilteredArticles, error: null })
         } else {

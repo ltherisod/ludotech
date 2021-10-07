@@ -248,7 +248,7 @@ const Filter = (props) => {
                     </div>
                     <div>
                         <label htmlFor="genre">Genre:</label>
-                        <select name="genre" id="genre" onChange={inputHandle}>
+                        <select name="genres" id="genre" onChange={inputHandle}>
                             <option value="">all</option>
                             {renderOptions(genres)}
                         </select>
