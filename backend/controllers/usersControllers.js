@@ -364,21 +364,21 @@ const usersControllers = {
           if (item.quantity === item.article.stock)
             throw new Error("Cannot add more of this item.")
           user = await User.findOneAndUpdate(
-            { "shoppingCart.article": articleId },
+            { _id: req.user._id, "shoppingCart.article": articleId },
             { $inc: { "shoppingCart.$.quantity": 1 } },
             { new: true }
           )
         } else if (action === "decrement") {
           if (item.quantity > 1) {
             user = await User.findOneAndUpdate(
-              { "shoppingCart.article": articleId },
+              { _id: req.user._id, "shoppingCart.article": articleId },
               { $inc: { "shoppingCart.$.quantity": -1 } },
               { new: true }
             )
           } else {
             // quitarlo con el botón de decrement también! en caso de que haya 1 solo
             user = await User.findOneAndUpdate(
-              { "shoppingCart.article": articleId },
+              { _id: req.user._id, "shoppingCart.article": articleId },
               { $pull: { shoppingCart: { article: articleId } } },
               { new: true }
             )
@@ -386,7 +386,7 @@ const usersControllers = {
         } else if (action === "delete") {
           // quitarlo independiente de la cantidad que tenga.
           user = await User.findOneAndUpdate(
-            { "shoppingCart.article": articleId },
+            { _id: req.user._id, "shoppingCart.article": articleId },
             { $pull: { shoppingCart: { article: articleId } } },
             { new: true }
           )
