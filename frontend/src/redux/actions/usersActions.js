@@ -26,7 +26,7 @@ const usersActions = {
   logInLS: (token) => {
     return async (dispatch) => {
       try {
-        const response = await axios.get(`${HOST}/api/verifyToken`, {
+        const response = await axios.get(`${HOST}/api/user/verifyToken`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         if (!response.data.success) throw new Error(response.data.error)
@@ -34,6 +34,7 @@ const usersActions = {
           type: "LOGIN_OR_SIGNUP",
           payload: { ...response.data.response, token },
         })
+        return {success: true, error: null}
       } catch (e) {
         localStorage.removeItem("token")
         return { success: false, error: e.message }
