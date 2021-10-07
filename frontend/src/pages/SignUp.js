@@ -13,7 +13,7 @@ const SignUp = (props) => {
       <div className="flex">
         <div className="main-sign">
         <div>
-            <h2>Sign <span>in!</span></h2>
+            <h2>Sign <span>up!</span></h2>
          </div>
           <GoogleLogin
             clientId="459150618424-3jfl8j0539f5fj34h0e3utqvao05ib8m.apps.googleusercontent.com"
