@@ -19,6 +19,7 @@
     "react-scroll-up-button": "^1.6.4",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
+    "swiper": "^6.8.1",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.9"
   },
