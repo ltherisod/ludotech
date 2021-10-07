@@ -81,7 +81,7 @@ router
   )
 
 // ARTICLES ROUTES
-router.route("/articles").get(articlesControllers.getAllArticles)
+router.route("/articles").post(articlesControllers.readAllArticles)
 
 router
   .route("/article/:id")

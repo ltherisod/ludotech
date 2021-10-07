@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import articlesActions from "../redux/actions/articlesActions"
 
-export const useArticles = () => {
+export const useArticles = (filters, submit) => {
   const [articles, setArticles] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -10,10 +10,10 @@ export const useArticles = () => {
 
   useEffect(() => {
     fetchArticles()
-  }, [])
+  }, [submit])
 
   const fetchArticles = async () => {
-    const res = await dispatch(articlesActions.getArticles)
+    const res = await dispatch(articlesActions.getArticles(filters))
     if (!res.success) setError(res.error)
     setLoading(false)
     setArticles(res.response)
@@ -25,6 +25,7 @@ export const useArticle = (id) => {
   const [article, setArticle] = useState({})
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     setLoading(true)

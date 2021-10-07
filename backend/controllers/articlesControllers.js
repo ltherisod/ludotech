@@ -30,7 +30,8 @@ const articlesControllers = {
   },
 
   // se requiere filtros como {filters} en el body; puede venir vacio
-  getAllArticles: async (req,res) => {
+
+  readAllArticles: async (req, res) => {
     try {
       if (Object.keys(req.body.filters).length === 0) {
         let getArticles = await Article.find().populate({ path: 'brand', select: 'name' }).populate({ path: 'genres', select: 'name' }).populate({ path: 'gameType', select: 'name' })
