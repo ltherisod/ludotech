@@ -407,7 +407,7 @@ const usersControllers = {
           { new: true }
         )
       }
-      res.json({ success: true, response: user, error: null })
+      res.json({ success: true, response: user.shoppingCart, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
