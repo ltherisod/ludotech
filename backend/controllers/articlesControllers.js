@@ -1,4 +1,4 @@
-const Article = require('../models/Article')
+const Article = require('../models/Article');
 
 const articlesControllers = {
   
@@ -87,6 +87,3 @@ const articlesControllers = {
 }
 
 module.exports = articlesControllers
-
-
-// minPlayers: { $gte: req.body.filters.minPlayers || 0 }, maxPlayers: { $lte: req.body.filters.maxPlayers || 0 }, minAge: { $gte: req.body.filters.minAge || 0 }
