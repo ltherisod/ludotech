@@ -24,7 +24,7 @@ const Home = () => {
                         <h1 className="logo">ludotech</h1>
                         <h1 id="welcome">Welcome to the land of the game</h1>
                         <button>
-                           <h5>Let´s go there</h5>
+                           Let´s go there
                         </button>
                      </div>
                   </div>
