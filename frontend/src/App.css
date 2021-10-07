@@ -38,6 +38,11 @@ body {
 #mainNav .navbar-nav .nav-item .nav-link.active {
    color: #f046cb !important;
 }
+
+#navLogo {
+   font-family: "Fredoka One", cursive;
+   font-size: 2rem;
+}
 @media (min-width: 992px) {
    #mainNav {
       box-shadow: none;
@@ -123,22 +128,27 @@ footer {
 .heroDescription {
    text-align: left;
 }
-button {
-  padding: 5px 10px;
+#welcome {
+   font-weight: 700;
+   font-size: 45px;
+}
+.heroDescription button {
+  padding: 5px 20px 0px 20px;
   border-radius: 50px;
   border: none;
   margin-top: 20px;
+  font-size: smaller;
 }
 .logo {
    font-family: "Fredoka One", cursive;
-   font-size: 3rem;
+   font-size: 3.5rem;
 }
 
 .logoNav {
    width: 150px;
    height: 40px;
-   background-position: center;
-   background-size: cover;
+   /* background-position: center;
+   background-size: cover; */
 }
 
 main h2 {
@@ -460,6 +470,11 @@ h2 span {
    flex-direction: column;
    align-items: center;
    justify-content: center;
+}
+
+.mostWantedTittle {
+   font-weight: 700;
+   font-size: 45px;
 }
 
 .mostWantedCard {
