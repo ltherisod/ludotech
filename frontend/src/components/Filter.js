@@ -187,16 +187,16 @@ const Filter = (props) => {
 
   return (
     <>
-      <form className="filterContainer" onSubmit={submitFilters} style={{ width: "80%", display: "flex", color: "white", margin: "30px" }}>
+      <form className="filterBoxContainer" onSubmit={submitFilters} style={{ width: "80%", display: "flex", color: "white"}}>
         <div className="search" >
-          <label htmlFor="name">Search a product:</label>
+          <label htmlFor="name">Search a product</label>
           <input type="text" id="name" name="name" onChange={inputHandle} />
         </div>
         {renderDropDown && (
-          <div
-            style={{ display: "flex", flexWrap: "wrap", marginLeft: "10px" }}
-          >
-            <div>
+          <>
+          <div className="filtersBox">
+            
+            <div className="filterOption">
               <label htmlFor="price">Price:</label>
               <select name="price" id="price" onChange={inputPrice}>
                 <option>all</option>
@@ -208,16 +208,7 @@ const Filter = (props) => {
                 <option value="8001orMore">8001 or more</option>
               </select>
             </div>
-            <div>
-              <label htmlFor="hasDiscount">With discount</label>
-              <input
-                type="checkbox"
-                id="hasDiscount"
-                name="hasDiscount"
-                onChange={inputBoolean}
-              />
-            </div>
-            <div>
+            <div className="filterOption">
               <label htmlFor="minAge">Min age:</label>
               <select name="minAge" id="minAge" onChange={inputMinAge}>
                 <option>all</option>
@@ -227,17 +218,17 @@ const Filter = (props) => {
                 <option value="12orMore">12 or more</option>
               </select>
             </div>
-            <div>
+            <div className="filterOption">
               <label htmlFor="players">Players:</label>
               <select name="players" id="players" onChange={inputPlayers}>
                 <option>all</option>
-                <option value="one">one player</option>
-                <option value="2-4">2 - 4 players</option>
-                <option value="5-8">5 - 8 players</option>
-                <option value="nineOrMore">9 or more players</option>
+                <option value="one">one</option>
+                <option value="2-4">2 - 4</option>
+                <option value="5-8">5 - 8</option>
+                <option value="nineOrMore">9 or more</option>
               </select>
             </div>
-            <div>
+            <div className="filterOption">
               <label htmlFor="size">Size:</label>
               <select name="size" id="size" onChange={inputHandle}>
                 <option value="">all</option>
@@ -246,21 +237,21 @@ const Filter = (props) => {
                 <option value="big">big</option>
               </select>
             </div>
-            <div>
+            <div className="filterOption">
               <label htmlFor="brand">Brand:</label>
               <select name="brand" id="brand" onChange={inputHandle}>
                 <option value="">all</option>
                 {renderOptions(brands)}
               </select>
             </div>
-            <div>
+            <div className="filterOption">
               <label htmlFor="genre">Genre:</label>
               <select name="genres" id="genre" onChange={inputHandle}>
                 <option value="">all</option>
                 {renderOptions(genres)}
               </select>
             </div>
-            <div>
+            <div className="filterOption">
               <label htmlFor="gameType">Game type:</label>
               <select name="gameType" id="gameType" onChange={inputHandle}>
                 <option value="">all</option>
@@ -268,15 +259,26 @@ const Filter = (props) => {
               </select>
             </div>
           </div>
+          <div className="filterDiscount">
+              <label htmlFor="hasDiscount">With discount</label>
+              <input
+                type="checkbox"
+                id="hasDiscount"
+                name="hasDiscount"
+                onChange={inputBoolean}
+              />
+            </div>
+          </>
+          
         )}
-        <input type="submit" value="Filter" />
+        <input className="searchButton" style={{backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`}} type="submit" value="Filter" />
       </form>
-      <button
+      <button className="filterView"
         onClick={() => {
           setRenderDropDown(!renderDropDown)
         }}
       >
-        {renderDropDown ? "View less filters" : "View more filters"}
+        {renderDropDown ? "- FILTERS" : "+ FILTERS"}
       </button>
     </>
   )
