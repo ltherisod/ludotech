@@ -133,11 +133,11 @@ footer {
   font-size: 45px;
 }
 .heroDescription button {
-  padding: 5px 20px 0px 20px;
+  padding: 10px 20px;
   border-radius: 50px;
   border: none;
-  margin-top: 20px;
-  font-size: smaller;
+  font-weight: 700;
+  color: #D12A74;
 }
 .logo {
   font-family: "Fredoka One", cursive;
