@@ -86,8 +86,8 @@ const usersControllers = {
   },
   signUp: async (req, res) => {
     try {
-      const { firstname, lastname, email, password, photo, google, phone } =
-        req.body
+      const { firstname, lastname, email, password, google, phone } = req.body
+      const { photo } = req.files
       const emailInUse = await User.findOne({ email })
       if (emailInUse) throw new Error("Email in use.")
       const hashedPass = await bcryptjs.hash(password, 10)
@@ -96,10 +96,18 @@ const usersControllers = {
         lastname,
         email,
         password: hashedPass,
-        photo,
         phone,
         google,
       })
+      if (!google) {
+        const photoPath = `${user._id}_${Date.now()}.${
+          photo.name.split(".")[photo.name.length - 1]
+        }`
+        user.photo = photoPath
+        photo.mv(`${__dirname}/assets/${photoPath}`)
+      } else {
+        user.photo = req.body.photo
+      }
       await user.save()
       const token = jwt.sign({ _id: user._id, email }, process.env.SECRETKEY)
       res.json({
@@ -109,11 +117,12 @@ const usersControllers = {
           firstname,
           lastname,
           email,
-          photo,
+          photo: user.photo,
           phone: user.phone,
           isAdmin: user.isAdmin,
           directions: user.directions,
           wishList: user.wishList,
+          shoppingCart: user.shoppingCart,
           token,
         },
         error: null,
@@ -124,7 +133,8 @@ const usersControllers = {
   },
   updateAccount: async (req, res) => {
     try {
-      const { firstname, lastname, email, password, photo, phone } = req.body
+      const { firstname, lastname, email, password, phone } = req.body
+      const { photo } = req.files
       const newEmailInUse = await User.findOne({ email })
       if (
         newEmailInUse &&
@@ -135,6 +145,13 @@ const usersControllers = {
       if (password) {
         hashedNewPassword = await bcryptjs.hash(password, 10)
       }
+      let photoPath
+      if (photo) {
+        photoPath = `${user._id}_${Date.now()}.${
+          photo.name.split(".")[photo.name.length - 1]
+        }`
+        photo.mv(`${__dirname}/assets/${photoPath}`)
+      }
       const user = await User.findOneAndUpdate(
         { _id: req.user._id },
         {
@@ -142,11 +159,12 @@ const usersControllers = {
           lastname,
           email,
           password: hashedNewPassword || req.user.password,
-          photo,
+          photo: photoPath ?? req.user.photo,
           phone,
         },
         { new: true }
-      ).populate("wishList")
+      ).populate("wishList shoppingCart.article")
+      // .select('_id firstname lastname email photo phone isAdmin directions directions wishList shoppingCart')
       const token = jwt.sign(
         { _id: user._id, email: user.email },
         process.env.SECRETKEY
@@ -163,6 +181,7 @@ const usersControllers = {
           isAdmin: user.isAdmin,
           directions: user.directions,
           wishList: user.wishList,
+          shoppingCart: user.shoppingCart,
           token,
         },
         error: null,
@@ -272,30 +291,15 @@ const usersControllers = {
     }
   },
   verifyToken: async (req, res) => {
-    const {
-      _id,
-      email,
-      firstname,
-      lastname,
-      photo,
-      phone,
-      isAdmin,
-      directions,
-      wishList,
-    } = req.user
+    const user = await User.findOne({ _id: req.user._id })
+      .populate("wishList shoppingCart.article")
+      .select(
+        "_id email firstname lastname photo phone isAdmin directions wishList shoppingCart"
+      )
+    console.log(user)
     res.json({
       success: true,
-      response: {
-        _id,
-        email,
-        firstname,
-        lastname,
-        photo,
-        phone,
-        isAdmin,
-        wishList,
-        directions,
-      },
+      response: user,
       error: null,
     })
   },

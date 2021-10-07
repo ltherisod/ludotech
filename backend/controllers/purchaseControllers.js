@@ -12,13 +12,14 @@ const purchaseControllers = {
         throw new Error("The shopping cart is empty.")
 
       // falta volver a validar si el stock alcanza!
+
       const user = await User.findOne({ _id: req.user._id })
         .populate({
           path: "shoppingCart.article",
           populate: { path: "brand gameType genres", select: "-__v -_id" },
           select: "-__v",
         })
-        .select("shoppingCart")
+        .select("shoppingCart wishList")
 
       const total = user.shoppingCart.reduce(
         (total, item) => total + item.quantity * item.article.price,
@@ -30,21 +31,21 @@ const purchaseControllers = {
         quantity: item.quantity,
       }))
 
-      const purchase = new Purchase({
+      const purchase = await new Purchase({
         user: req.user._id,
         articles: parsedShoppingCart,
         direction: req.body.direction,
         paymentMethod: req.body.paymentMethod,
         total,
-      })
-      await purchase.save()
+      }).save()
       await Promise.all(
-        user.shoppingCart.map((item) =>
+        user.shoppingCart.map((item) => {
           Article.findOneAndUpdate(
             { _id: item.article._id.toString() },
             { $inc: { stock: -item.quantity } }
           )
-        )
+          // if (user.wishList) {} // Quitar de la wishList!
+        })
       )
       await User.findOneAndUpdate(
         { _id: req.user._id },
