@@ -51,6 +51,7 @@ const ArticleAdd = () => {
          maxPlayers: Yup.number("Max Players must have a number").required(
             "Required"
          ),
+         minAge: Yup.number("Min Age must have a number").required("Required"),
          stock: Yup.number("Stock must have a number").required("Required"),
          size: Yup.string()
             .min(2, "Size must have at least 2 characters")
@@ -59,14 +60,9 @@ const ArticleAdd = () => {
       }),
    })
 
-   const submitHandler = async (values) => {
+   const submitHandler = (values) => {
       setLoading(true)
-      const res = await dispatch(
-         articlesActions.addArticle(
-            values,
-            "DE DONDE SACO EL articleId SI TODAVIA NO SE CREÓ ?"
-         )
-      )
+      const res = dispatch(articlesActions.addArticle(values))
       console.log(res)
       if (!res.success) setError(res.error)
       setLoading(false)
@@ -273,6 +269,24 @@ const ArticleAdd = () => {
                   <small className="signErrors">
                      {formik.errors.maxPlayers}
                   </small>
+               ) : (
+                  <small className="signNoErrors">NoErrors</small>
+               )}
+            </div>
+            <div className="inputContainer">
+               <label className="labelSign" htmlFor="minAge">
+                  Minimum Age
+               </label>
+               <input
+                  name="minAge"
+                  type="number"
+                  placeholder="Must have a number"
+                  value={formik.values.minAge}
+                  onChange={formik.handleChange("minAge")}
+                  onBlur={formik.handleBlur("minAge")}
+               />
+               {formik.touched.minAge && formik.errors.minAge ? (
+                  <small className="signErrors">{formik.errors.minAge}</small>
                ) : (
                   <small className="signNoErrors">NoErrors</small>
                )}
