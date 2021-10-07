@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import usersActions from "../../redux/actions/usersActions"
 
 const NavBar = ({render}) => {

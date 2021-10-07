@@ -24,6 +24,7 @@ const Team = () => {
                     setUserFound(res.data.response)
                     setNotFound(false)
                 } else {
+                    setUserFound(false)
                     setNotFound(true)
                 }
             })
@@ -37,6 +38,7 @@ const Team = () => {
         axios.post('http://localhost:4000/api/admin/set-admin', {email: userFound.email})
             .then(res => {
                 setUserFound(false)
+                setMembers([...members, res.data.response])
             })
             .catch(e => console.log(e))
     }
@@ -58,23 +60,16 @@ const Team = () => {
                     <div className='userPicFoundTeam' style={{backgroundImage: `url("${userFound.photo}")`}}></div>
                     <div className='detailsUserFound'>
                         <div>
-                            <label className='bold'>Fullname</label>
-                            <p>{userFound.firstname} {userFound.lastname}</p>
-                            <label className='bold'>Email</label>
+                            <p className='bold'>{userFound.firstname} {userFound.lastname}</p>
                             <p>{userFound.email}</p>
                         </div>
                         <div>
-                            <div>
-                                <label className='bold'>Current rol:</label>
-                                <p>Admin</p>
+                            <div  style={{display: 'flex', alignItems: 'center'}}>
+                                <label className='bold'>Rol: </label>
+                                <p>{userFound.isAdmin ? ' Admin' : ' User'}</p>
                             </div>
-                            <div>
-                                <label className='bold'>New rol:</label>
-                                <div style={{display: 'flex', alignItems: 'center'}}>
-                                    <select><option>Admin</option><option>User</option></select>
-                                    <div onClick={() => changeRol()} className='saveTeam'>Save</div>
-                                </div>
-                            </div>
+                            {!userFound.isAdmin && <div onClick={() => changeRol()} className='saveTeam'>Give admin</div>}
+                        {userFound.isAdmin && <div disabled className='saveTeam' style={{backgroundColor: 'rgba(0,0,0,0.3)', cursor: 'default'}}>Give admin</div>}
                         </div>
                     </div>
                 </div>}

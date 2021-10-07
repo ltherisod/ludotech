@@ -137,7 +137,7 @@ footer {
   border-radius: 50px;
   border: none;
   font-weight: 700;
-  color: #D12A74;
+  color: #d12a74;
   margin-top: 10px;
 }
 .logo {
@@ -680,7 +680,8 @@ th {
   height: 40px;
   background-color: white;
   border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  /* border: 1px solid rgba(0, 0, 0, 0.2); */
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
 }
@@ -709,33 +710,21 @@ th {
   align-items: center;
   padding: 1vmin;
   background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   margin: 3vmin 0;
 }
 
-.userFoundTeam select {
-  width: 100%;
-  height: 4vmin;
-  outline: none;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  font-size: 2vmin;
-}
-
-.userFoundTeam label {
+.userFoundTeam .bold {
   font-weight: lighter;
-  font-size: 2.2vmin;
+  font-size: 2.5vmin;
   margin: 0;
   padding: 0;
+  color: black;
 }
 
-.userFoundTeam svg,
 .saveTeam {
-  height: 4vmin;
-  /* width: 5vmin; */
   padding: 0.5vmin 1vmin;
-  margin-left: 1vmin;
   cursor: pointer;
   color: white;
   background-color: green;
@@ -749,13 +738,14 @@ th {
 .userFoundTeam p {
   font-weight: lighter;
   color: gray;
+  font-size: 2.5vmin;
 }
 
 .userPicFoundTeam {
-  border-radius: 5px;
+  border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  width: 15vh;
-  height: 15vh;
+  width: 8vh;
+  height: 8vh;
   background-color: rgba(248, 0, 0, 0.3);
   background-size: cover;
   background-position: center;
@@ -798,8 +788,7 @@ th {
   height: 37vh;
   background-color: #fff;
   border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 1px 1px 10px rgba(105, 90, 205, 0.219);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 .picCardTeam {
@@ -897,22 +886,18 @@ th {
   justify-content: flex-end;
 }
 
-
-
-
 /*Article Related */
 
-.articleRelatedTittle{
+.articleRelatedTittle {
   margin-left: 3rem;
   margin-top: 1em;
   font-weight: bold;
   letter-spacing: -1px;
   color: #16054b;
   font-size: 5vmin;
-
 }
 
-.relatedArticles{
+.relatedArticles {
   padding: 3rem;
   width: 80%;
   align-self: center;
@@ -921,7 +906,7 @@ th {
   align-items: center;
 }
 
-.cardArticleRelated{
+.cardArticleRelated {
   width: 320px;
   height: 350px;
   display: flex;
@@ -934,7 +919,7 @@ th {
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-.photosArticleRelated{
+.photosArticleRelated {
   background-position: center;
   background-size: cover;
   min-height: 250px;
@@ -945,7 +930,7 @@ th {
   padding: 15px;
 }
 
-.buyLineRelated{
+.buyLineRelated {
   width: 100%;
   display: flex;
   justify-content: space-between;
