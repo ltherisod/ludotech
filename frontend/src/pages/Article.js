@@ -4,7 +4,7 @@ import Footer from "../components/Footer"
 
 const Article = () => {
     return(
-        <div className="bodyArticle" style={{backgroundImage: `url("https://i.postimg.cc/137ZvRk4/fondoblancotest.png")`}}>
+        <div className="bodyArticle" style={{backgroundImage: `url("https://i.postimg.cc/zDhycDV6/fondoblanco2.png")`}}>
             <HeroPages/>
             <Header/>
             <div className="articleData" >
