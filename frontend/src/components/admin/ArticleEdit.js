@@ -3,7 +3,6 @@ import { useFormik } from "formik"
 import * as Yup from "yup"
 import articlesActions from "../../redux/actions/articlesActions"
 import { useEffect, useState } from "react"
-import { useArticles } from "../../hooks/articlesHooks"
 import articlesUtilitiesActions from "../../redux/actions/articlesUtilitiesActions"
 
 const ArticleEdit = (props) => {
@@ -11,8 +10,7 @@ const ArticleEdit = (props) => {
    const [error, setError] = useState(null)
    const dispatch = useDispatch()
    console.log(props)
-   const [articleSelected, setArticleSelected] = useState("")
-   const [newData, setNewData] = useState({})
+
    const {
       name,
       brand,
@@ -20,7 +18,6 @@ const ArticleEdit = (props) => {
       hasDiscount,
       discountPrice,
       photos,
-      genres,
       gameType,
       minPlayers,
       maxPlayers,
@@ -28,6 +25,7 @@ const ArticleEdit = (props) => {
       stock,
       size,
       weight,
+      _id,
    } = props.article
    console.log(name)
    const formik = useFormik({
@@ -38,7 +36,7 @@ const ArticleEdit = (props) => {
          hasDiscount,
          discountPrice,
          photos,
-         genres,
+         genres: props.genres,
          gameType,
          minPlayers,
          maxPlayers,
@@ -80,15 +78,9 @@ const ArticleEdit = (props) => {
       }),
    })
 
-   const artiss = useArticles({
-      name: "The Game of la Poronga",
-   })
-
-   // console.log(artiss)
-
    const [utilities, setUtilities] = useState({
       brands: [],
-      genres2: [],
+      genres: [],
       gameTypes: [],
    })
    useEffect(() => {
@@ -100,14 +92,15 @@ const ArticleEdit = (props) => {
       traer()
    }, [])
 
-   const { brands, genres2, gameTypes } = utilities
+   const { brands, genres, gameTypes } = utilities
+   console.log(utilities)
 
    const submitHandler = async (values) => {
-      //    setLoading(true)
-      //    const res = await dispatch(articlesActions.updateArticle(_id, values))
-      //    console.log(res)
-      //    if (!res.success) setError(res.error)
-      //    setLoading(false)
+      setLoading(true)
+      const res = await dispatch(articlesActions.updateArticle(_id, values))
+      console.log(res)
+      if (!res.success) setError(res.error)
+      setLoading(false)
    }
 
    return (
