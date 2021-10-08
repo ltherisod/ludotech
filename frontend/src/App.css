@@ -456,6 +456,7 @@ h2 span {
 .photosArticle {
    background-position: center;
    background-size: cover;
+   background-color: white;
    min-height: 250px;
    width: 285px;
    display: flex;
@@ -1144,12 +1145,52 @@ tr {
   .bodyCart {
     display: flex;
     flex-direction: column;
-
   }
-  .cartSection {
-    background-color: white;
-    width: 80vw;
+  .bodyCart h2 {
+     color: gray
+  }
+  .cartSection1 {
+    width: 70vw;
     text-align: center;
     align-self: center;
+    color: white;
   }
 
+  .cartSection1 tr {
+     background-color: transparent;
+     border-bottom: solid 1px rgb(204, 204, 204);
+     color: gray
+  }
+
+  .cartSection1 th {
+   color: gray;
+   background-color: transparent;
+   font-weight: 600;
+   font-size: large;
+}
+  .cartSection2 {
+   background-color: white;
+   width: 12vw;
+   text-align: center;
+   align-self: flex-end;
+   padding: 20px 0px;
+   color: gray;
+ }
+
+  .cartArticle {
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+  }
+  .quantity {
+     display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .cartContainer {
+     align-self: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-end;
+  }
+  
