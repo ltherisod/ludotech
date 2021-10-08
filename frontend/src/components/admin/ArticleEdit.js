@@ -36,7 +36,7 @@ const ArticleEdit = (props) => {
          hasDiscount,
          discountPrice,
          photos,
-         genres: props.genres,
+         genres: props.article.genres.map((genre) => genre._id),
          gameType,
          minPlayers,
          maxPlayers,
@@ -93,7 +93,9 @@ const ArticleEdit = (props) => {
    }, [])
 
    const { brands, genres, gameTypes } = utilities
-   console.log(utilities)
+
+   const abc = props.article.genres.map((genre) => genre._id)
+   console.log(abc)
 
    const submitHandler = async (values) => {
       setLoading(true)
@@ -257,6 +259,9 @@ const ArticleEdit = (props) => {
                         </label>
                         <input
                            name="genres"
+                           checked={formik.values.genres?.some(
+                              (id) => id === genre._id
+                           )}
                            type="checkbox"
                            placeholder="Must have 2+ characters"
                            value={genre._id}
