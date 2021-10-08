@@ -10,6 +10,7 @@ const Filter = (props) => {
    const [renderDropDown, setRenderDropDown] = useState(false)
    const [filters, setFilters] = useState({})
    const [submit, setSubmit] = useState(false)
+   const [values, setValues] = useState({})
 
    const [articles, loading, error] = useArticles(filters, submit)
    console.log(articles, loading, error)
@@ -58,45 +59,59 @@ const Filter = (props) => {
 
    const inputPrice = (e) => {
       switch (e.target.value) {
-         case "0-500":
+         case "0-10":
             setFilters({
                ...filters,
                minPrice: 0,
-               maxPrice: 500,
+               maxPrice: 10,
             })
             break
-         case "501-1000":
+         case "11-20":
             setFilters({
                ...filters,
-               minPrice: 501,
-               maxPrice: 1000,
+               minPrice: 11,
+               maxPrice: 20,
             })
             break
-         case "1001-2000":
+         case "21-40":
             setFilters({
                ...filters,
-               minPrice: 1001,
-               maxPrice: 2000,
+               minPrice: 21,
+               maxPrice: 40,
             })
             break
-         case "2001-4000":
+         case "41-60":
             setFilters({
                ...filters,
-               minPrice: 2001,
-               maxPrice: 4000,
+               minPrice: 41,
+               maxPrice: 60,
             })
             break
-         case "4001-8000":
+         case "61-80":
             setFilters({
                ...filters,
-               minPrice: 4001,
-               maxPrice: 8000,
+               minPrice: 61,
+               maxPrice: 80,
             })
             break
-         case "8001orMore":
+         case "81-100":
             setFilters({
                ...filters,
-               minPrice: 8001,
+               minPrice: 81,
+               maxPrice: 100,
+            })
+            break
+         case "101-120":
+            setFilters({
+               ...filters,
+               minPrice: 101,
+               maxPrice: 120,
+            })
+            break
+         case "121orMore":
+            setFilters({
+               ...filters,
+               minPrice: 121,
             })
             delete filters.maxPrice
             break
@@ -126,10 +141,16 @@ const Filter = (props) => {
                minAge: 9,
             })
             break
-         case "12orMore":
+         case "twelve":
             setFilters({
                ...filters,
                minAge: 12,
+            })
+            break
+         case "sexteenOrMore":
+            setFilters({
+               ...filters,
+               minAge: 16,
             })
             break
          default:
@@ -189,6 +210,7 @@ const Filter = (props) => {
       setSubmit(!submit)
    }
 
+   console.log(filters)
    return (
       <div className="filterUltracontainer">
          <form
@@ -205,19 +227,20 @@ const Filter = (props) => {
                   onChange={inputHandle}
                />
             </div>
-            {renderDropDown && (
                <>
-                  <div className="filtersBox">
+                  <div className="filtersBox" id={renderDropDown ? "visible" : "hidden"}>
                      <div className="filterOption">
                         <label htmlFor="price">Price:</label>
-                        <select name="price" id="price" onChange={inputPrice}>
+                        <select name="price" id="price" onChange={inputPrice} >
                            <option>all</option>
-                           <option value="0-500">0 - 500</option>
-                           <option value="501-1000">501 - 1000</option>
-                           <option value="1001-2000">1001 - 2000</option>
-                           <option value="2001-4000">2001 - 4000</option>
-                           <option value="4001-8000">4001 - 8000</option>
-                           <option value="8001orMore">8001 or more</option>
+                           <option value="0-10">0 - $10</option>
+                           <option value="11-20">$11 - $20</option>
+                           <option value="21-40">$21 - $40</option>
+                           <option value="41-60">$41 - $60</option>
+                           <option value="61-80">$61 - $80</option>
+                           <option value="81-100">$81 - $100</option>
+                           <option value="101-120">$101 - $120</option>
+                           <option value="121orMore">$121 or more</option>
                         </select>
                      </div>
                      <div className="filterOption">
@@ -231,7 +254,8 @@ const Filter = (props) => {
                            <option value="three">3</option>
                            <option value="six">6</option>
                            <option value="nine">9</option>
-                           <option value="12orMore">12 or more</option>
+                           <option value="twelve">12</option>
+                           <option value="sexteenOrMore">16 or more</option>
                         </select>
                      </div>
                      <div className="filterOption">
@@ -252,9 +276,9 @@ const Filter = (props) => {
                         <label htmlFor="size">Size:</label>
                         <select name="size" id="size" onChange={inputHandle}>
                            <option value="">all</option>
-                           <option value="small">small</option>
-                           <option value="medium">medium</option>
-                           <option value="big">big</option>
+                           <option value="Small">Small</option>
+                           <option value="Medium">Medium</option>
+                           <option value="Large">Large</option>
                         </select>
                      </div>
                      <div className="filterOption">
@@ -283,7 +307,7 @@ const Filter = (props) => {
                         </select>
                      </div>
                   </div>
-                  <div className="filterDiscount">
+                  <div className="filterDiscount" id={renderDropDown ? "visible" : "hidden"}>
                      <label htmlFor="hasDiscount">With discount</label>
                      <input
                         type="checkbox"
@@ -293,7 +317,7 @@ const Filter = (props) => {
                      />
                   </div>
                </>
-            )}
+
             <input
                className="searchButton"
                style={{
