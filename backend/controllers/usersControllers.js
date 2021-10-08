@@ -395,7 +395,7 @@ const usersControllers = {
   getUserByEmail: async (req, res) => {
     try {
       const user = await User.findOne({ email: req.body.email }).select(
-        "firstname lastname email photo"
+        "firstname lastname email photo isAdmin"
       )
       res.json({ success: true, response: user, error: null })
     } catch (e) {

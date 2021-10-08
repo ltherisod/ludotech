@@ -397,7 +397,7 @@ h2 span {
   width: 200px;
   margin-top: 10px;
 }
-#searchButton text{
+#searchButton text {
   text-align: center;
   font-weight: bold;
   font-size: 2.5vmin;
@@ -419,17 +419,17 @@ h2 span {
   width: 120px;
   border-radius: 3px;
   padding-left: 6px;
-  color: gray
+  color: gray;
 }
 
 .filterDiscount label {
-  padding: 0px 10px
+  padding: 0px 10px;
 }
 .filterView {
   border: none;
   padding: 10px 20px;
   background-color: transparent;
-  color: #6AEFCF;
+  color: #6aefcf;
 }
 .bodyArticles {
   text-align: center;
@@ -712,6 +712,52 @@ th {
   cursor: pointer;
 }
 
+.profileNavbarPanel {
+  background-color: white;
+  margin-bottom: 2vmin;
+  padding: 1vmin;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+.userProfileNavbarPanel {
+  display: flex;
+  align-items: center;
+}
+
+.buttonsProfileNavbarPanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.nameNavbarPanel {
+  margin: 0;
+  margin-left: 2vmin;
+}
+
+.picture {
+  height: 7vh;
+  width: 7vh;
+  background-color: rgba(155, 7, 93, 0.664);
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+
+.signoutPanel {
+  padding: 0.5vmin 1vmin;
+  background-color: rgb(190, 84, 84);
+  border-radius: 5px;
+  color: white;
+}
+
+.settingsButtonPanel {
+  padding: 0.5vmin 1vmin;
+  background-color: gray;
+  border-radius: 5px;
+}
+
 /* team panel admin seba */
 
 .mainTeamPanel {
@@ -943,21 +989,18 @@ th {
   justify-content: flex-end;
 }
 
-.articleQuantity{
+.articleQuantity {
   width: 4em;
-  padding:.3em;
+  padding: 0.3em;
 }
 
-.articleShopCont{
-  align-self:center ;
+.articleShopCont {
+  align-self: center;
   width: 30%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-
-
 
 /*Article Related */
 
@@ -969,7 +1012,6 @@ th {
   color: #16054b;
   font-size: 5vmin;
   text-align: center;
-
 }
 
 .relatedArticles {
@@ -1037,7 +1079,7 @@ th {
   border-bottom-left-radius: 0.5rem;
 }
 .swiper-button-next,
-  .swiper-button-prev {
-    color: red !important;
-    transform: scale(1);
-  }
+.swiper-button-prev {
+  color: red !important;
+  transform: scale(1);
+}
