@@ -1,6 +1,7 @@
 import MostWanted from "../components/MostWanted"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
+import { Link } from "react-router-dom"
 import { TinyButton as ScrollUpButton } from "react-scroll-up-button"
 import { useEffect } from "react"
 
@@ -28,7 +29,7 @@ const Home = () => {
               <div>
                 <h1 className="logo">ludotech</h1>
                 <h1 id="welcome">Welcome to the land of the game</h1>
-                <button>Let´s go there</button>
+                <Link to="/articles"><button>Let´s go there</button></Link>
               </div>
             </div>
             <div

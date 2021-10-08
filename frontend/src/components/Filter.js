@@ -15,6 +15,10 @@ const Filter = (props) => {
   console.log(articles, loading, error)
 
   useEffect(() => {
+    props.filterArticles(articles)
+  }, [articles])
+
+  useEffect(() => {
     props
       .getAllArticlesUtilities()
       .then((res) => {

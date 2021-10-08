@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Article from "../components/Article";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -6,7 +6,9 @@ import Filter from "../components/Filter";
 import HeroPages from "../components/HeroPages";
 
 const Articles = () => {
-  const articles = [
+
+  const [ articles, setArticles ] = useState([])
+  /* const articles = [
     {
       id: 1,
       name: "Pictionary",
@@ -91,8 +93,12 @@ const Articles = () => {
       minAge: 8,
       stock: 57,
     },
-  ];
+  ]; */
 
+  const filterArticles = (e) => {
+    console.log(e)
+    setArticles(e)
+  }
   return (
     <>
       <div className="signInBody" style={{ backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`, }}>
@@ -101,10 +107,10 @@ const Articles = () => {
         <div className="bodyArticles">
             <h2>Articles</h2>
           <div className="filterContainer">
-            <Filter />
+            <Filter filterArticles={(e) => filterArticles(e)}/>
             <div className="containerArticles">
-              {articles.map((article, id) => {
-                return <Article article={article} key={id} />;
+              {articles.map((article) => {
+                return <Article article={article} key={article._id} />;
               })}
             </div>
           </div>

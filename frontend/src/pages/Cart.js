@@ -1,6 +1,8 @@
 import React from "react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import HeroPages from "../components/HeroPages"
+
 import { connect } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
 
@@ -27,8 +29,11 @@ const Cart = (props) => {
 
     return (
         <>
-            {/* <Header/> */} 
-            <main>
+      <div className="signInBody" style={{ backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`, }}>
+        <HeroPages />
+        <Header />
+            <main className="bodyCart">
+            <h2>Cart</h2>
                 <section>
                     {
                     props.shoppingCart.map(article => {
@@ -49,7 +54,7 @@ const Cart = (props) => {
                     })
                     }
                 </section>
-                <section>
+                <section  className="cartSection">
                     <article>
                         <div>
                             <p>Total without discounts:</p>
@@ -64,6 +69,7 @@ const Cart = (props) => {
                 </section>
             </main>
             <Footer/>
+            </div>
         </>
     )
 }

@@ -434,7 +434,7 @@ h2 span {
 .bodyArticles {
   text-align: center;
 }
-.bodyArticles h2 {
+.bodyArticles h2, .bodyCart h2 {
   color: white;
   font-size: 6vmin;
   font-weight: 600;
@@ -883,8 +883,8 @@ th {
 .bodyArticle {
   width: 100%;
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-position: top;
+  background-size: contain;
   display: flex;
   flex-direction: column;
 }
@@ -1040,4 +1040,18 @@ th {
   .swiper-button-prev {
     color: red !important;
     transform: scale(1);
+  }
+
+  /* Cart */
+
+  .bodyCart {
+    display: flex;
+    flex-direction: column;
+
+  }
+  .cartSection {
+    background-color: white;
+    width: 80vw;
+    text-align: center;
+    align-self: center;
   }

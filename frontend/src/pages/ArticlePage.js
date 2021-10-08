@@ -44,7 +44,7 @@ const ArticlePage = () => {
         }, 
       ];
     return(
-        <div className="bodyArticle" style={{backgroundImage: `url("https://i.postimg.cc/zDhycDV6/fondoblanco2.png")`}}>
+        <div className="bodyArticle" style={{backgroundImage: "url('/assets/fondoblanco5.png')"}}>
             <HeroPages/>
             <Header/>
             <div className="articleData" >

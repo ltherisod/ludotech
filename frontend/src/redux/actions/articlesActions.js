@@ -115,7 +115,7 @@ const articlesActions = {
                   },
                }
             )
-            console.log(response.data.response)
+            console.log(response.data)
             if (!response.data.success) throw new Error(response.data.error)
             dispatch({ type: "UPDATE_CART", payload: response.data.response })
             return { success: true, error: null }

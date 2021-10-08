@@ -1,5 +1,7 @@
 import React from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { connect } from "react-redux"
+import articlesActions from "../redux/actions/articlesActions"
 
 const Article = (props) => {
   const {
@@ -7,14 +9,15 @@ const Article = (props) => {
     photos,
     price,
     hasDiscount,
-    discountPrice,
     genres,
     gameType,
-    minPlayers,
-    maxPlayers,
     minAge,
-    stock,
+    _id
   } = props.article;
+
+  const addToCart = (id) => {
+    props.updateCart("add", id)
+  }
 
   return (
     <div
@@ -36,30 +39,35 @@ const Article = (props) => {
             <p style={{ color: "green" }}>$ {price}</p>
           ) : (
             <div className="priceArticle">
-              <p style={{ textDecoration: "line-through", color: "red" }}>
+              <p style={{ textDecoration: "line-through", color: "red", padding: "0px 4px" }}>
                 ${price}
               </p>
-              <p style={{ color: "green" }}>${discountPrice}</p>
+              <p style={{ color: "green", padding: "0px 4px"  }}>${props.article.discountPrice}</p>
             </div>
           )}
         </div>
         <h3>{name}</h3>
         <div className="gameDetails">
           <p>
-            <img src="./assets/gener.png" /> {genres}
+            <img src="./assets/gener.png" /> {genres.map(genre => genre.name)}
           </p>
           <p>
-            <img src="./assets/type.png" /> {gameType}
+            <img src="./assets/type.png" /> {gameType.name}
           </p>
           <div className="buyLine">
           <p>
             <img src="./assets/age.png" /> {minAge}
           </p>
-          <img id="buy" src="./assets/buy.png" /></div>       
+          <img onClick={() => addToCart(_id)} id="buy" src="./assets/buy.png" />
+          </div>       
         </div>
       </div>
     </div>
   );
 };
 
-export default Article;
+const mapDispatchToProps = {
+  updateCart: articlesActions.updateCart,
+}
+
+export default connect(null, mapDispatchToProps)(Article)
