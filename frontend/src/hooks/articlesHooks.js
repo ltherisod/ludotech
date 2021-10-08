@@ -60,7 +60,6 @@ export const useUtils = () => {
       articlesUtilitiesActions.getAllArticlesUtilities()
     )
     if (!res.success) {
-      console.log(res)
       setError(res.error)
     } else {
       setUtils(res.response)

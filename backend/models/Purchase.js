@@ -36,8 +36,7 @@ const purchaseSchema = new mongoose.Schema({
   },
   total: { type: Number, required: true },
   paymentMethod: { type: String, required: true },
-  isConfirmed: { type: Boolean, default: false }, // revisar.
-  wasDelivered: { type: Boolean, default: false },
+  status: { type: String, default: "processing" },
   logs: [{ type: String }],
   timestamp: { type: Date, default: Date.now() },
 })

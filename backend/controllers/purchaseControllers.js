@@ -14,7 +14,7 @@ const purchaseControllers = {
       const user = await User.findOne({ _id: req.user._id })
         .populate({
           path: "shoppingCart.article",
-          populate: { path: "brand gameType genres", select: "-__v -_id" },
+          populate: { path: "brand gameType genres", select: "name -_id" },
           select: "-__v",
         })
         .select("shoppingCart wishList")
@@ -34,13 +34,19 @@ const purchaseControllers = {
 
       // calcular total (?)
       const total = user.shoppingCart.reduce(
-        (total, item) => total + item.quantity * item.article.price,
+        (total, item) =>
+          item.hasDiscount
+            ? total + item.quantity * item.article.discountPrice
+            : total + item.quantity * item.article.price,
         0
       )
 
       // parsear el shopping cart a la forma en que lo toma el modelo purchase.
       const parsedShoppingCart = user.shoppingCart.map((item) => ({
         ...item.article._doc,
+        genres: item.article.genres.map((g) => g.name),
+        brand: item.article.brand.name,
+        gameType: item.article.gameType.name,
         quantity: item.quantity,
       }))
 
@@ -103,6 +109,39 @@ const purchaseControllers = {
   getPurchaseById: async (req, res) => {
     try {
       const purchase = await Purchase.findOne({ _id: req.params.id })
+      res.json({ success: true, response: purchase, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  getPurchasesByUserId: async (req, res) => {
+    try {
+      const { userId } = req.params
+      const purchases = await Purchase.find({ user: userId })
+      res.json({ success: true, response: purchases, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  updateStatus: async (req, res) => {
+    try {
+      const { purchaseId } = req.params
+      const { status } = req.body
+      if (
+        ![
+          "completed",
+          "shipping",
+          "confirmed",
+          "processing",
+          "cancelled",
+        ].includes(status)
+      )
+        throw new Error("Invalid status.")
+      const purchase = await Purchase.findOneAndUpdate(
+        { _id: purchaseId },
+        { status },
+        { new: true }
+      )
       res.json({ success: true, response: purchase, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
