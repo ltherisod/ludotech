@@ -50,6 +50,15 @@ const Header = (props) => {
                 Articles
               </NavLink>
             </li>
+            {user.isAdmin && <li className="nav-item">
+              <NavLink
+                className="nav-link"
+                to="/admin"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Admin
+              </NavLink>
+            </li>}
 
             {!user ? (
               <>

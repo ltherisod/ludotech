@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux"
+import { Link } from "react-router-dom"
 import usersActions from "../../redux/actions/usersActions"
 
-const NavBar = ({render}) => {
+const NavBar = ({render, history}) => {
 
     const dispatch = useDispatch()
     const user = useSelector(state => state.users.user)
@@ -26,7 +27,7 @@ const NavBar = ({render}) => {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
                         <path fillRule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
                     </svg>
-                    <p>Sold</p>
+                    <p>Orders</p>
                 </div>
                 <div to="/admin/team" className='itemNavbarPanel'  onClick={() => render('team')}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
@@ -38,11 +39,17 @@ const NavBar = ({render}) => {
             <div className='profileNavbarPanel'>
                 <div className='userProfileNavbarPanel'>
                     <div className='picture' style={{backgroundImage: `url("${user.photo}")`}}></div>
+                    <div>
                     <p className='nameNavbarPanel'>{user.firstname} {user.lastname}</p>
+                    </div>
                 </div>
                 <div className='buttonsProfileNavbarPanel'>
                     <p className='settingsButtonPanel'>Settings</p>
-                    <p className='signoutPanel' onClick={() => dispatch()}>Sign out</p>
+                    <Link to='/'><p className='settingsButtonPanel' style={{backgroundColor: '#6AEFCF', color: 'black'}}>Home</p></Link>
+                    <Link to='/'><p className='signoutPanel' onClick={() => {
+                      window.scrollTo(0, 0)
+                      dispatch(usersActions.logOut())
+                    }}>Sign out</p></Link>
                 </div>
             </div>
         </div>
