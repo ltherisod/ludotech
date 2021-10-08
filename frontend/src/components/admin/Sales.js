@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import Purchase from './Purchase'
 
 const Sales = () => {
 
@@ -11,10 +12,7 @@ const Sales = () => {
 
     useEffect(() => {
         axios.get('http://localhost:4000/api/purchases')
-            .then(res=> {
-                setPurchases(res.data.response)
-                console.log(res.data.response)
-            })
+            .then(res=> setPurchases(res.data.response))
             .catch(e => console.log(e))
     },[])
 
@@ -53,39 +51,28 @@ const Sales = () => {
             <div className='purchasesContainerPanel'>
                 <div className='titlesPurchasesPanel'>
                     <div>
-                        <p>Photo</p>
+                        <p>Order ID</p>
                     </div>
                     <div>
-                        <p>Details</p>
+                        <p>Products</p>
+                    </div>
+                    <div>
+                        <p>Adress</p>
                     </div>
                     <div>
                         <p>Date</p>
                     </div>
                     <div>
-                        <p>Tracking</p>
+                        <p>Amount</p>
                     </div>
                     <div>
-                        <p>Amount</p>
+                        <p>Status</p>
                     </div>
                 </div>
                 <div className='purchasesPanel'>
                     {purchases.map(purchase => {
-                        console.log(purchase.articles[0].photos[0])
-                        return (
-                            <div key={purchase._id} className='purchaseContainerPanel'>
-                                <div className='purchasePhotoPanel' style={{backgroundImage: `url("${purchase.articles[0].photos[0]}")`}}></div>
-                                <div>
-
-                                </div>
-                                <div>
-                                    <p>{purchase.timestamp.split('T')[0]}</p>
-                                </div>
-                                <div>
-                                    <p></p>
-                                </div>
-                                <p>${purchase.total}</p>
-                            </div>
-                        )
+                        const {direction, articles, status} = purchase
+                        return <Purchase direction={direction} articles={articles} status={status} purchase={purchase} />
                     })}
                 </div>
             </div>
