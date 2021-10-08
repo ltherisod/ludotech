@@ -5,7 +5,7 @@ const articlesControllers = {
   addArticle: async (req,res) => {
     try {
       let article = new Article({ ...req.body })
-      let newArticle = article.save()
+      let newArticle = await article.save()
       if (newArticle) {
         res.json({ success: true, response: newArticle, error: null})
       } else {
@@ -18,7 +18,7 @@ const articlesControllers = {
 
   getArticle: async (req,res) => {
     try {
-      let getArticle = await Article.findOne({ _id: req.params.id})
+      let getArticle = await Article.findOne({ _id: req.params.id}).populate({ path: 'brand', select: 'name' }).populate({ path: 'genres', select: 'name' }).populate({ path: 'gameType', select: 'name' })
       if (getArticle) {
         await getArticle.updateOne({ $inc: { visitsCount: 1 }}, { new: true })
         res.json({ success: true, response: getArticle, error: null })
@@ -61,7 +61,7 @@ const articlesControllers = {
 
   updateArticle: async (req,res) => {
     try {
-      let updateArticle = await Article.findOneAndUpdate({ _id: req.params.id }, { ...req.body }, { new: true })
+      let updateArticle = await Article.findOneAndUpdate({ _id: req.params.id }, { ...req.body }, { new: true }).populate({ path: 'brand', select: 'name' }).populate({ path: 'genres', select: 'name' }).populate({ path: 'gameType', select: 'name' })
       if (updateArticle) {
         res.json({ success: true, response: updateArticle, error: null })
       } else {
@@ -87,7 +87,7 @@ const articlesControllers = {
 
   getMostVisitArticles: async (req,res) => {
     try { 
-      let getMostVisitArticles = await Article.find().sort( '-visitsCount' ).limit(3)
+      let getMostVisitArticles = await Article.find().sort( '-visitsCount' ).limit(3).populate({ path: 'brand', select: 'name' }).populate({ path: 'genres', select: 'name' }).populate({ path: 'gameType', select: 'name' })
       if (getMostVisitArticles) {
         res.json({ success: true, response: getMostVisitArticles, error: null })
       } else {

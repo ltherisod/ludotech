@@ -12,15 +12,15 @@ const articleSchema = new mongoose.Schema({
   minPlayers: { type: Number },
   maxPlayers: { type: Number },
   minAge: { type: Number },
-  playingTime: { type: String }, //revisar si es string o number
+  playingTime: { type: Number }, //revisar si es string o number
   stock: { type: Number, required: true },
   size: { type: String, required: false }, // revisar
   iconPhotos: { type: String },
-  decoPhotos: { type: String },
+  decoPhotos: [{ type: String }],
   video: { type: String },
   description: { type: String },
   weight: { type: Number, required: false },
-  visitsCount: { type: Number },
+  visitsCount: { type: Number, default: 0 },
 })
 
 const Article = mongoose.model("article", articleSchema)
