@@ -9,7 +9,6 @@ const ArticleEdit = (props) => {
    const [loading, setLoading] = useState(false)
    const [error, setError] = useState(null)
    const dispatch = useDispatch()
-   console.log(props)
 
    const {
       name,
@@ -27,7 +26,7 @@ const ArticleEdit = (props) => {
       weight,
       _id,
    } = props.article
-   console.log(name)
+
    const formik = useFormik({
       initialValues: {
          name,
@@ -97,13 +96,11 @@ const ArticleEdit = (props) => {
    const submitHandler = async (values) => {
       setLoading(true)
       const res = await dispatch(articlesActions.updateArticle(_id, values))
-      console.log(res)
       if (!res.success) setError(res.error)
       setLoading(false)
       props.setSection()
    }
 
-   console.log(formik.values.hasDiscount)
    return (
       <>
          <h2>Edit Article</h2>

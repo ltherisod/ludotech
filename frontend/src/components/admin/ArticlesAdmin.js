@@ -4,11 +4,14 @@ import ArticleAdd from "./ArticleAdd"
 import ArticleEdit from "./ArticleEdit"
 import { useDispatch } from "react-redux"
 import articlesActions from "../../redux/actions/articlesActions"
+import Filter from "../Filter"
 
 const ArticlesAdmin = () => {
    const [typeAction, setTypeAction] = useState("")
+   const [search, setSearch] = useState([])
    const articlesArray = useArticles({}, typeAction)
    const [articles, loading, error] = articlesArray
+
    const [articleSelected, setArticleSelected] = useState("")
    // const [error, setError] = useState(null)
    const dispatch = useDispatch()
@@ -19,6 +22,12 @@ const ArticlesAdmin = () => {
       console.log(res)
       setTypeAction(typeAction + "r")
    }
+
+   const filterArticles = (e) => {
+      console.log(e)
+      setSearch(e)
+   }
+
    switch (typeAction) {
       case "add":
          return <ArticleAdd setSection={setTypeAction} />
@@ -28,17 +37,25 @@ const ArticlesAdmin = () => {
          )
       default:
          return (
-            <div className="containerArticlesAdmin">
-               <div className="buttonsAdminArticles">
-                  <button
-                     type="button"
-                     className="buttonsAdmin"
-                     onClick={() => setTypeAction("add")}
-                  >
-                     ADD
-                  </button>
-                  <input type="text" placeholder="ACA VA EL FILTRO" />
+            <div
+               className="containerArticlesAdmin"
+               style={{
+                  backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`,
+               }}
+            >
+               <div className="containerButtonFilter">
+                  <div className="buttonAdd">
+                     <button
+                        type="button"
+                        className="buttonsAdmin"
+                        onClick={() => setTypeAction("add")}
+                     >
+                        ADD NEW GAME
+                     </button>
+                  </div>
+                  <Filter filterArticles={(e) => filterArticles(e)} />
                </div>
+
                {loading ? (
                   <h2>Loading...</h2>
                ) : (
@@ -55,7 +72,7 @@ const ArticlesAdmin = () => {
                         </tr>
                      </thead>
                      <tbody>
-                        {articles.map((article) => {
+                        {search.map((article) => {
                            return (
                               <tr key={article._id}>
                                  <td>{article.name}</td>
