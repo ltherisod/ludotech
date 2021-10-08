@@ -393,6 +393,18 @@ const usersControllers = {
       res.json({ success: false, response: null, error: e.message })
     }
   },
+  resetShoppingCart: async (req, res) => {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.user._id },
+        { $set: { shoppingCart: [] } },
+        { new: true }
+      )
+      res.json({ success: true, response: user.shoppingCart, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
   getAdmins: async (req, res) => {
     try {
       const admins = await User.find({ isAdmin: true }).select(

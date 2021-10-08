@@ -29,8 +29,18 @@ router
   )
 
 router
+  .route("/user/shopping-cart/reset")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    usersControllers.resetShoppingCart
+  )
+
+router
   .route("/user/shopping-cart/:articleId")
-  .post(passport.authenticate("jwt", { session: false }),usersControllers.shoppingCartHandler)
+  .post(
+    passport.authenticate("jwt", { session: false }),
+    usersControllers.shoppingCartHandler
+  )
 
 router
   .route("/user/:id")
@@ -47,15 +57,16 @@ router
     usersControllers.getAccounts
   )
 
-router.route("/purchases")
-.get(purchaseControllers.getPurchases)
+router.route("/purchases").get(purchaseControllers.getPurchases)
 
-router.route("/user/purchase")
-.post(passport.authenticate("jwt", { session: false }), purchaseControllers.handlePurchase)
+router
+  .route("/user/purchase")
+  .post(
+    passport.authenticate("jwt", { session: false }),
+    purchaseControllers.handlePurchase
+  )
 
-router.route("/user/purchase/:id")
-.delete(purchaseControllers.deletePurchase) // only dev stage!
-
+router.route("/user/purchase/:id").delete(purchaseControllers.deletePurchase) // only dev stage!
 
 // USER DIRECTIONS ROUTES
 router
@@ -86,8 +97,7 @@ router
   .put(articlesControllers.updateArticle)
   .delete(articlesControllers.deleteArticle)
 
-router.route("/mostvisitarticles")
-.get(articlesControllers.getMostVisitArticles)
+router.route("/mostvisitarticles").get(articlesControllers.getMostVisitArticles)
 
 router.route("/article").post(articlesControllers.addArticle)
 

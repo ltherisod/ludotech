@@ -759,7 +759,6 @@ tr {
 }
 
 .buttonsProfileNavbarPanel {
-<<<<<<< HEAD
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1vmin;
@@ -773,11 +772,6 @@ tr {
 .buttonsProfileNavbarPanel a {
   margin: 0;
   text-decoration: none;
-=======
-   display: flex;
-   align-items: center;
-   justify-content: space-around;
->>>>>>> origin/franco
 }
 
 .nameNavbarPanel {
@@ -795,7 +789,6 @@ tr {
 }
 
 .signoutPanel {
-<<<<<<< HEAD
   padding: 0.5vmin 1vmin;
   background-color: rgb(190, 84, 84);
   border-radius: 5px;
@@ -810,18 +803,6 @@ tr {
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
-=======
-   padding: 0.5vmin 1vmin;
-   background-color: rgb(190, 84, 84);
-   border-radius: 5px;
-   color: white;
-}
-
-.settingsButtonPanel {
-   padding: 0.5vmin 1vmin;
-   background-color: gray;
-   border-radius: 5px;
->>>>>>> origin/franco
 }
 
 /* team panel admin seba */
@@ -1176,7 +1157,6 @@ tr {
    border-bottom-left-radius: 0.5rem;
 }
 .swiper-button-next,
-<<<<<<< HEAD
   .swiper-button-prev {
     color: red !important;
     transform: scale(1);
@@ -1237,22 +1217,3 @@ tr {
      justify-content: flex-end;
   }
   
-=======
-.swiper-button-prev {
-   color: red !important;
-   transform: scale(1);
-}
-
-/* Cart */
-
-.bodyCart {
-   display: flex;
-   flex-direction: column;
-}
-.cartSection {
-   background-color: white;
-   width: 80vw;
-   text-align: center;
-   align-self: center;
-}
->>>>>>> origin/franco
