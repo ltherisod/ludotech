@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import articlesActions from "../redux/actions/articlesActions"
+import articlesUtilitiesActions from "../redux/actions/articlesUtilitiesActions"
 
 export const useArticles = (filters, submit) => {
   const [articles, setArticles] = useState([])
@@ -42,4 +43,29 @@ export const useArticle = (id) => {
   }, [])
 
   return [article, loading, error]
+}
+
+export const useUtils = () => {
+  const [utils, setUtils] = useState({ brands: [], gameTypes: [], genres: [] })
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    getUtils()
+  }, [])
+
+  const getUtils = async () => {
+    const res = await dispatch(
+      articlesUtilitiesActions.getAllArticlesUtilities()
+    )
+    if (!res.success) {
+      console.log(res)
+      setError(res.error)
+    } else {
+      setUtils(res.response)
+    }
+    setLoading(false)
+  }
+  return [utils, loading, error]
 }
