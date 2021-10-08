@@ -2,8 +2,8 @@ const User = require("../models/User")
 const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const path = require("path")
-const transporter = require("../config/sendMail")
-const welcomeMail = require("../config/welcomeMail")
+const transporter = require("../config/transporterEmail")
+const welcomeEmail = require("../config/emailsBody/Welcome")
 
 const usersControllers = {
   sendWelcomeEmail: (req, res) => {
@@ -11,8 +11,8 @@ const usersControllers = {
       from: "Ludotehc <ludotechweb@gmail.com>",
       to: "<jc.venepro@gmail.com>",
       subject: "Welcome",
-      text: welcomeMail,
-      html: welcomeMail,
+      text: welcomeEmail,
+      html: welcomeEmail,
     }
     transporter.sendMail(mailOptions, (e, data) => {
       if (!e) {
