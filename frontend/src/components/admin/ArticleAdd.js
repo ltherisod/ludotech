@@ -1,11 +1,9 @@
 import { connect, useDispatch } from "react-redux"
-import { Field, Form, useFormik } from "formik"
+import { useFormik } from "formik"
 import * as Yup from "yup"
 import articlesActions from "../../redux/actions/articlesActions"
 import { useEffect, useState } from "react"
-import UtilsAdd from "./Select"
 import articlesUtilitiesActions from "../../redux/actions/articlesUtilitiesActions"
-import Select from "./Select"
 
 const ArticleAdd = (props) => {
    const [loading, setLoading] = useState(false)
@@ -17,8 +15,8 @@ const ArticleAdd = (props) => {
          name: "",
          brand: "",
          price: "",
-         hasDiscount: false,
-         discountPrice: false,
+         hasDiscount: "false",
+         discountPrice: 0,
          photos: [],
          genres: [],
          gameType: "",
@@ -38,14 +36,12 @@ const ArticleAdd = (props) => {
             .min(2, "Brand must have at least 2 characters")
             .required("Required"),
          price: Yup.number("Price must have a number").required("Required"),
-         hasDiscount: Yup.boolean(),
+         hasDiscount: Yup.boolean("NADAAAA"),
          discountPrice: Yup.number(),
          photos: Yup.string("Photos must have a valid URL")
             .url("Photos must have a valid URL")
             .required("Required"),
-         genres: Yup.string()
-            .min(2, "Genres must have at least 2 characters")
-            .required("Required"),
+         genres: Yup.array().of(Yup.string()).required("Required"),
          gameType: Yup.string()
             .min(2, "Game Type must have at least 2 characters")
             .required("Required"),
@@ -64,7 +60,11 @@ const ArticleAdd = (props) => {
       }),
    })
 
-   const [utilities, setUtilities] = useState([])
+   const [utilities, setUtilities] = useState({
+      brands: [],
+      genres: [],
+      gameTypes: [],
+   })
    useEffect(() => {
       const traer = async () => {
          const getUtilities = await props
@@ -83,8 +83,6 @@ const ArticleAdd = (props) => {
       if (!res.success) setError(res.error)
       setLoading(false)
    }
-
-   console.log(brands)
 
    return (
       <>
@@ -112,21 +110,22 @@ const ArticleAdd = (props) => {
                <label className="labelSign" htmlFor="brand">
                   Brand
                </label>
-               <select as="select" name="brand">
-                  {/* {brands.map((brand) => console.log(brand))} */}
-                  <option>1</option>
-               </select>
-
-               {/* {brands.map((brand) => {
-                     return console.log(brand)
-                     <option key={brand._id} value={brand.name}>
-                        {brand.name}
-                     </option>
-                  })} */}
-
-               {/* value={formik.values.brand}
+               <select
+                  name="brand"
                   onChange={formik.handleChange("brand")}
-                  onBlur={formik.handleBlur("brand")} */}
+                  defaultValue=""
+               >
+                  <option value="">Select brand</option>
+                  {!brands.length ? (
+                     <h2>Loading</h2>
+                  ) : (
+                     brands.map((brand) => (
+                        <option key={brand._id} value={brand._id}>
+                           {brand.name}
+                        </option>
+                     ))
+                  )}
+               </select>
                {formik.touched.brand && formik.errors.brand ? (
                   <small className="signErrors">{formik.errors.brand}</small>
                ) : (
@@ -156,24 +155,30 @@ const ArticleAdd = (props) => {
                <label className="labelSign" htmlFor="hasDiscount">
                   Has Discount ?
                </label>
+               <label className="labelSign" htmlFor="hasDiscount">
+                  Yes
+               </label>
                <input
                   name="hasDiscount"
                   type="radio"
-                  placeholder="Must have 2+ characters"
-                  value={formik.values.hasDiscount}
+                  value={true}
                   onChange={formik.handleChange("hasDiscount")}
                   onBlur={formik.handleBlur("hasDiscount")}
                />
-               Yes
+               <label className="labelSign" htmlFor="hasDiscount">
+                  No
+               </label>
                <input
                   name="hasDiscount"
                   type="radio"
-                  placeholder="Must have 2+ characters"
-                  value={formik.values.hasDiscount}
+                  value={false}
                   onChange={formik.handleChange("hasDiscount")}
                   onBlur={formik.handleBlur("hasDiscount")}
+                  onClick={() =>
+                     formik.setFieldValue("discountPrice", undefined)
+                  }
                />
-               No
+
                {formik.touched.hasDiscount && formik.errors.hasDiscount ? (
                   <small className="signErrors">
                      {formik.errors.hasDiscount}
@@ -187,6 +192,7 @@ const ArticleAdd = (props) => {
                   Discount Price
                </label>
                <input
+                  disabled={formik.values.hasDiscount === "false"}
                   name="discountPrice"
                   type="number"
                   placeholder="Must have a number"
@@ -224,14 +230,24 @@ const ArticleAdd = (props) => {
                <label className="labelSign" htmlFor="genres">
                   Genres
                </label>
-               <input
-                  name="genres"
-                  type="text"
-                  placeholder="Must have 2+ characters"
-                  value={formik.values.genres}
-                  onChange={formik.handleChange("genres")}
-                  onBlur={formik.handleBlur("genres")}
-               />
+               {genres.map((genre) => {
+                  return (
+                     <div key={genre._id}>
+                        <label className="labelSign" htmlFor="genres">
+                           {genre.name}
+                        </label>
+                        <input
+                           name="genres"
+                           type="checkbox"
+                           placeholder="Must have 2+ characters"
+                           value={genre._id}
+                           onChange={formik.handleChange("genres")}
+                           onBlur={formik.handleBlur("genres")}
+                        />
+                     </div>
+                  )
+               })}
+
                {formik.touched.genres && formik.errors.genres ? (
                   <small className="signErrors">{formik.errors.genres}</small>
                ) : (
@@ -244,14 +260,19 @@ const ArticleAdd = (props) => {
                <label className="labelSign" htmlFor="gameType">
                   Game Type
                </label>
-               <input
+               <select
                   name="gameType"
-                  type="text"
-                  placeholder="Must have 2+ characters"
-                  value={formik.values.gameType}
                   onChange={formik.handleChange("gameType")}
-                  onBlur={formik.handleBlur("gameType")}
-               />
+                  defaultValue=""
+                  id="gameType"
+               >
+                  <option value="">Select Game Type</option>
+                  {gameTypes.map((gameType) => (
+                     <option key={gameType._id} value={gameType._id}>
+                        {gameType.name}
+                     </option>
+                  ))}
+               </select>
                {formik.touched.gameType && formik.errors.gameType ? (
                   <small className="signErrors">{formik.errors.gameType}</small>
                ) : (
