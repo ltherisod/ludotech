@@ -1,14 +1,24 @@
 import { useState } from "react"
 import { useArticles } from "../../hooks/articlesHooks"
 import ArticleAdd from "./ArticleAdd"
-import ArticleDelete from "./ArticleDelete"
 import ArticleEdit from "./ArticleEdit"
+import { useDispatch } from "react-redux"
+import articlesActions from "../../redux/actions/articlesActions"
 
 const ArticlesAdmin = () => {
-   const articlesArray = useArticles({})
-   const [articles, loading, error] = articlesArray
    const [typeAction, setTypeAction] = useState("")
+   const articlesArray = useArticles({}, typeAction)
+   const [articles, loading, error] = articlesArray
    const [articleSelected, setArticleSelected] = useState("")
+   // const [error, setError] = useState(null)
+   const dispatch = useDispatch()
+   const deleteHandler = async (id) => {
+      const res = await dispatch(articlesActions.deleteArticle(id))
+      // if (!res.success) setError(res.error)
+      // setLoading(false)
+      console.log(res)
+      setTypeAction(typeAction + "r")
+   }
    switch (typeAction) {
       case "add":
          return <ArticleAdd setSection={setTypeAction} />
@@ -16,8 +26,6 @@ const ArticlesAdmin = () => {
          return (
             <ArticleEdit setSection={setTypeAction} article={articleSelected} />
          )
-      case "delete":
-         return <ArticleDelete setSection={setTypeAction} />
       default:
          return (
             <div className="containerArticlesAdmin">
@@ -72,7 +80,9 @@ const ArticlesAdmin = () => {
                                     <span
                                        type="button"
                                        className="buttonsAdminB"
-                                       onClick={() => setTypeAction("delete")}
+                                       onClick={() =>
+                                          deleteHandler(article._id)
+                                       }
                                     >
                                        DELETE
                                     </span>

@@ -31,13 +31,13 @@ const ArticleEdit = (props) => {
    const formik = useFormik({
       initialValues: {
          name,
-         brand,
+         brand: brand._id,
          price,
-         hasDiscount,
+         hasDiscount: hasDiscount ? "true" : "false",
          discountPrice,
-         photos,
+         photos: photos[0],
          genres: props.article.genres.map((genre) => genre._id),
-         gameType,
+         gameType: gameType._id,
          minPlayers,
          maxPlayers,
          minAge,
@@ -94,17 +94,16 @@ const ArticleEdit = (props) => {
 
    const { brands, genres, gameTypes } = utilities
 
-   const abc = props.article.genres.map((genre) => genre._id)
-   console.log(abc)
-
    const submitHandler = async (values) => {
       setLoading(true)
       const res = await dispatch(articlesActions.updateArticle(_id, values))
       console.log(res)
       if (!res.success) setError(res.error)
       setLoading(false)
+      props.setSection()
    }
 
+   console.log(formik.values.hasDiscount)
    return (
       <>
          <h2>Edit Article</h2>
@@ -134,7 +133,7 @@ const ArticleEdit = (props) => {
                <select
                   name="brand"
                   onChange={formik.handleChange("brand")}
-                  defaultValue=""
+                  value={formik.values.brand}
                >
                   <option value="">Select brand</option>
                   {!brands.length ? (
@@ -180,6 +179,7 @@ const ArticleEdit = (props) => {
                   Yes
                </label>
                <input
+                  checked={formik.values.hasDiscount === "true"}
                   name="hasDiscount"
                   type="radio"
                   value={true}
@@ -190,6 +190,7 @@ const ArticleEdit = (props) => {
                   No
                </label>
                <input
+                  checked={formik.values.hasDiscount === "false"}
                   name="hasDiscount"
                   type="radio"
                   value={false}
@@ -287,7 +288,7 @@ const ArticleEdit = (props) => {
                <select
                   name="gameType"
                   onChange={formik.handleChange("gameType")}
-                  defaultValue=""
+                  value={formik.values.gameType}
                   id="gameType"
                >
                   <option value="">Select Game Type</option>
