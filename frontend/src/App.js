@@ -13,6 +13,7 @@ import ArticlePage from "./pages/ArticlePage"
 const App = (props) => {
    useLoginLS()
    const user = useSelector((state) => state.users.user)
+   
    return (
       <BrowserRouter>
          <Switch>
@@ -21,7 +22,7 @@ const App = (props) => {
             <Route path = "/article" component={ArticlePage}/>
             {!user && <Route path="/signin" component={SignIn} />}
             {!user && <Route path="/signup" component={SignUp} />}
-            <Route path="/admin" component={PanelAdmin} />
+            {<Route path="/admin" component={PanelAdmin} />}
             <Route path="/cart" component={Cart} />
             <Redirect to="/" />
          </Switch>
