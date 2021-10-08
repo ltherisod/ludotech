@@ -77,6 +77,32 @@ const usersActions = {
       }
     }
   },
+  purchaseHandler: (data) => {
+    // data es un objeto así:
+    // data = {
+    //// direction: {
+    ////// "receiver": "a",
+    ////// "street": "",
+    ////// "number": "",
+    ////// "department": "",
+    ////// "zipCode": "",
+    ////// "city": "",
+    ////// "state": ""
+    //// },
+    //// paymentMethod: 'Paypal'
+    // } (de momento sólo está Paypal (?)) si el objeto no va tal cual, lo para Joi.
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.post(`${HOST}/api/user/purchase`, data, {
+          headers: { Authorization: `Bearer ${getState().users.user.token}` },
+        })
+        if (!res.data.success) throw new Error(res.data.error)
+        return { success: true, response: res.data.response, error: null }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
 }
 
 export default usersActions

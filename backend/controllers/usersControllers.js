@@ -65,6 +65,7 @@ const usersControllers = {
           token,
           wishList,
           shoppingCart,
+          google: user.google,
         },
         error: null,
       })
@@ -111,6 +112,7 @@ const usersControllers = {
           directions: user.directions,
           wishList: user.wishList,
           shoppingCart: user.shoppingCart,
+          google: user.google,
           token,
         },
         error: null,
@@ -171,6 +173,7 @@ const usersControllers = {
           directions: user.directions,
           wishList: user.wishList,
           shoppingCart: user.shoppingCart,
+          google: user.google,
           token,
         },
         error: null,
@@ -283,7 +286,7 @@ const usersControllers = {
     const user = await User.findOne({ _id: req.user._id })
       .populate("wishList shoppingCart.article")
       .select(
-        "_id email firstname lastname photo phone isAdmin directions wishList shoppingCart"
+        "_id email firstname lastname photo phone isAdmin directions wishList shoppingCart google"
       )
     res.json({
       success: true,
@@ -427,15 +430,25 @@ const usersControllers = {
   },
   setAdmin: async (req, res) => {
     try {
-      const user = await User.findOneAndUpdate(
-        { email: req.body.email },
-        { isAdmin: true },
-        { new: true }
-      ).select("firstname lastname email photo isAdmin")
+      const user = await User.findOne({ email: req.body.email }).select(
+        "firstname lastname email photo isAdmin"
+      )
+      user.isAdmin = !user.isAdmin
+      await user.save()
       res.json({ success: true, response: user, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
+  },
+  getPaypalCredentials: (req, res) => {
+    res.json({
+      success: true,
+      response: {
+        username: process.env.PAYPAL_CLIENTID,
+        password: process.env.PAYPAL_SECRET,
+      },
+      error: null,
+    })
   },
   getAccounts: async (req, res) => {
     // dev stage only!

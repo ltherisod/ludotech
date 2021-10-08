@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from "react-redux"
 import usersActions from "../redux/actions/usersActions"
 const iconUser = "https://i.postimg.cc/pd1gvVR7/iconuser1.png"
 
+const HOST = "http://localhost:4000"
+
 const Header = (props) => {
   const user = useSelector((state) => state.users.user)
   const dispatch = useDispatch()
@@ -50,15 +52,17 @@ const Header = (props) => {
                 Articles
               </NavLink>
             </li>
-            {user.isAdmin && <li className="nav-item">
-              <NavLink
-                className="nav-link"
-                to="/admin"
-                onClick={() => window.scrollTo(0, 0)}
-              >
-                Admin
-              </NavLink>
-            </li>}
+            {user.isAdmin && (
+              <li className="nav-item">
+                <NavLink
+                  className="nav-link"
+                  to="/admin"
+                  onClick={() => window.scrollTo(0, 0)}
+                >
+                  Admin
+                </NavLink>
+              </li>
+            )}
 
             {!user ? (
               <>
@@ -102,7 +106,13 @@ const Header = (props) => {
             <div
               className="logoUser"
               style={{
-                backgroundImage: `url('${user ? user.photo : iconUser}')`,
+                backgroundImage: `url('${
+                  user
+                    ? user.google
+                      ? user.photo
+                      : `${HOST}/${user.photo}`
+                    : iconUser
+                }')`,
               }}
             ></div>
           </div>

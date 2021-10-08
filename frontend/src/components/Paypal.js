@@ -6,7 +6,6 @@ import { useSelector } from "react-redux"
 
 const Paypal = (props) => {
   const shoppingCart = useSelector((state) => state.users.shoppingCart)
-  console.log(shoppingCart)
   const paypal = useRef()
   useEffect(() => {
     window.paypal
@@ -14,24 +13,18 @@ const Paypal = (props) => {
         createOrder: (data, actions, err) => {
           return actions.order.create({
             intent: "CAPTURE",
-            purchase_units: [
-              {
-                description: "Compra test",
-                reference_id: 1,
+            purchase_units: shoppingCart.map((item) => {
+              return {
+                description: `${item.quantity}x ${item.article.name}`,
+                reference_id: item.article._id,
                 amount: {
-                  value: 10,
+                  value: item.article.hasDiscount
+                    ? item.article.discountPrice * item.quantity
+                    : item.article.price * item.quantity,
                   currency_code: "USD",
                 },
-              },
-              {
-                description: "Compra test 2",
-                reference_id: 2,
-                amount: {
-                  value: 20,
-                  currency_code: "USD",
-                },
-              },
-            ],
+              }
+            }),
           })
         },
         onApprove: async (data, actions) => {
