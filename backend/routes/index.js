@@ -2,8 +2,9 @@ const express = require("express")
 const router = express.Router()
 const passport = require("passport")
 const usersValidators = require("../controllers/usersValidators")
-const isAdmin = require("../controllers/isAdmin")
 const articleValidator = require("../controllers/articleValidator")
+const purchaseValidator = require("../controllers/purchaseValidator")
+const isAdmin = require("../controllers/isAdmin")
 const usersControllers = require("../controllers/usersControllers")
 const articlesControllers = require("../controllers/articlesControllers")
 const articlesUtilitiesControllers = require("../controllers/articlesUtilitiesControllers")
@@ -63,6 +64,7 @@ router
   .route("/user/purchase")
   .post(
     passport.authenticate("jwt", { session: false }),
+    purchaseValidator,
     purchaseControllers.handlePurchase
   )
 
@@ -144,6 +146,20 @@ router
   .route("/admin")
   .get(usersControllers.getAdmins)
   .post(usersControllers.getUserByEmail)
-router.route("/admin/set-admin").post(usersControllers.setAdmin)
+router
+  .route("/admin/set-admin")
+  .post(
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    usersControllers.setAdmin
+  )
+
+router
+  .route("/admin/paypal-credentials")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    usersControllers.getPaypalCredentials
+  )
 
 module.exports = router

@@ -92,6 +92,7 @@ const purchaseControllers = {
   },
   deletePurchase: async (req, res) => {
     try {
+      // no deberíamos usar esto, esta para pruebas.
       const purchase = await Purchase.findOneAndDelete({ _id: req.params.id })
       res.json({ success: true, response: purchase, error: null })
     } catch (e) {
@@ -100,7 +101,7 @@ const purchaseControllers = {
   },
   getPurchases: async (req, res) => {
     try {
-      const purchases = await Purchase.find()
+      const purchases = await Purchase.find().populate("user", "-password -__v")
       res.json({ success: true, response: purchases, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
@@ -108,7 +109,10 @@ const purchaseControllers = {
   },
   getPurchaseById: async (req, res) => {
     try {
-      const purchase = await Purchase.findOne({ _id: req.params.id })
+      const purchase = await Purchase.findOne({ _id: req.params.id }).populate(
+        "user",
+        "-password -__v"
+      )
       res.json({ success: true, response: purchase, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
@@ -117,7 +121,10 @@ const purchaseControllers = {
   getPurchasesByUserId: async (req, res) => {
     try {
       const { userId } = req.params
-      const purchases = await Purchase.find({ user: userId })
+      const purchases = await Purchase.find({ user: userId }).populate(
+        "user",
+        "-password -__v"
+      )
       res.json({ success: true, response: purchases, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
@@ -141,7 +148,7 @@ const purchaseControllers = {
         { _id: purchaseId },
         { status },
         { new: true }
-      )
+      ).populate("user", "-password -__v")
       res.json({ success: true, response: purchase, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })

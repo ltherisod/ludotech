@@ -1,4 +1,7 @@
-const usersReducer = (state = { user: false, shoppingCart: [] }, action) => {
+const usersReducer = (
+  state = { user: false, shoppingCart: [], wishList: [] },
+  action
+) => {
   switch (action.type) {
     case "LOGIN_OR_SIGNUP":
       return {
@@ -15,6 +18,11 @@ const usersReducer = (state = { user: false, shoppingCart: [] }, action) => {
       return {
         ...state,
         shoppingCart: action.payload,
+      }
+    case "WISH_LIST":
+      return {
+        ...state,
+        wishList: action.payload,
       }
     default:
       return state
