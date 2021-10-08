@@ -11,8 +11,6 @@ const purchaseControllers = {
       if (!req.user.shoppingCart.length)
         throw new Error("The shopping cart is empty.")
 
-      // falta volver a validar si el stock alcanza!
-
       const user = await User.findOne({ _id: req.user._id })
         .populate({
           path: "shoppingCart.article",
@@ -21,16 +19,32 @@ const purchaseControllers = {
         })
         .select("shoppingCart wishList")
 
+      // validar stock.
+      user.shoppingCart.forEach((item) => {
+        if (item.article.stock < item.quantity) {
+          throw new Error(
+            `Error. The article ${item.article.name} ${
+              item.article.stock
+                ? `only has ${item.article.stock} units, and you tried to buy ${item.quantity}`
+                : "is out of stock."
+            }`
+          )
+        }
+      })
+
+      // calcular total (?)
       const total = user.shoppingCart.reduce(
         (total, item) => total + item.quantity * item.article.price,
         0
       )
 
+      // parsear el shopping cart a la forma en que lo toma el modelo purchase.
       const parsedShoppingCart = user.shoppingCart.map((item) => ({
         ...item.article._doc,
         quantity: item.quantity,
       }))
 
+      // crear la compra
       const purchase = await new Purchase({
         user: req.user._id,
         articles: parsedShoppingCart,
@@ -38,21 +52,29 @@ const purchaseControllers = {
         paymentMethod: req.body.paymentMethod,
         total,
       }).save()
+
+      // actualizar stock
       await Promise.all(
-        user.shoppingCart.map((item) => {
+        user.shoppingCart.map((item) =>
           Article.findOneAndUpdate(
             { _id: item.article._id.toString() },
             { $inc: { stock: -item.quantity } }
           )
-          // if (user.wishList) {} // Quitar de la wishList!
-        })
-      )
-      await User.findOneAndUpdate(
-        { _id: req.user._id },
-        { $set: { shoppingCart: [] } }
+        )
       )
 
+      // actualizar wish list y shopping cart.
+      user.wishList = user.wishList.filter((wishItem) =>
+        user.shoppingCart.every(
+          (cartItem) =>
+            cartItem.article._id.toString() !== wishItem._id.toString()
+        )
+      )
+      user.shoppingCart = []
+      await user.save()
+
       // enviar mail, generar la factura, etc.
+
       res.json({
         success: true,
         response: purchase,
