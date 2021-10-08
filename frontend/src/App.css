@@ -386,21 +386,21 @@ h2 span {
 }
 
 .searchButton {
-  width: 100%;
-  font-size: 2.5vmin;
-  border-radius: 3px;
-  height: 50px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-  color: white;
-  width: 200px;
-  margin-top: 10px;
+   width: 100%;
+   font-size: 2.5vmin;
+   border-radius: 3px;
+   height: 50px;
+   font-weight: 600;
+   cursor: pointer;
+   border: none;
+   color: white;
+   width: 200px;
+   margin-top: 10px;
 }
 #searchButton text {
-  text-align: center;
-  font-weight: bold;
-  font-size: 2.5vmin;
+   text-align: center;
+   font-weight: bold;
+   font-size: 2.5vmin;
 }
 .filtersBox {
    padding: 10px;
@@ -416,30 +416,40 @@ h2 span {
 }
 
 .filterOption select {
-  width: 120px;
-  border-radius: 3px;
-  padding-left: 6px;
-  color: gray;
+   width: 120px;
+   border-radius: 3px;
+   padding-left: 6px;
+   color: gray;
 }
 
 .filterDiscount label {
-  padding: 0px 10px;
+   padding: 0px 10px;
 }
+
+.filterUltracontainer {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+}
+
 .filterView {
-  border: none;
-  padding: 10px 20px;
-  background-color: transparent;
-  color: #6aefcf;
+   border: none;
+   padding: 10px 20px;
+   background-color: transparent;
+   color: #6aefcf;
 }
 .bodyArticles {
    text-align: center;
 }
-.bodyArticles h2, .bodyCart h2 {
-  color: white;
-  font-size: 6vmin;
-  font-weight: 600;
-  text-align: center;
-  color: white;
+.bodyArticles h2,
+.bodyCart h2 {
+   color: white;
+   font-size: 6vmin;
+   font-weight: 600;
+   text-align: center;
+   color: white;
 }
 .cardArticle {
    width: 320px;
@@ -656,39 +666,52 @@ h2 span {
 }
 
 .containerArticlesAdmin {
+   background-color: yellow;
+   width: 100%;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: top;
    display: flex;
    flex-direction: column;
-   align-self: flex-start;
-   margin-top: 20vh;
+   align-items: center;
+   justify-content: flex-start;
 }
 
-.buttonsAdminArticles {
-   width: 45vw;
+.containerButtonFilter {
+   width: 100%;
    display: flex;
-   justify-content: space-around;
+   justify-content: center;
+   align-items: center;
 }
 
 .buttonsAdmin {
-   margin-right: 10px;
+   padding: 1rem 2rem;
+}
+
+.buttonAdd {
+   width: 30%;
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
 }
 
 .buttonsAdminB {
    background-color: rgb(163, 5, 255);
-   padding: 5px;
-   margin: 5px;
+   padding: 5px 15px;
+   margin: 4px;
    color: white;
 }
 
 th {
    font-size: 25px;
-   width: 10vw;
-   background-color: rgb(252, 164, 1);
+   width: 11vw;
+   color: whitesmoke;
 }
 
 tr {
    text-align: center;
-   background-color: rgb(79, 241, 79);
    height: 5vh;
+   color: rgb(238, 129, 241);
 }
 
 /* PANEL ADMIN */
@@ -723,19 +746,20 @@ tr {
 }
 
 .profileNavbarPanel {
-  background-color: white;
-  margin-bottom: 2vmin;
-  padding: 1vmin;
-  border-radius: 5px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+   background-color: white;
+   margin-bottom: 2vmin;
+   padding: 1vmin;
+   border-radius: 5px;
+   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
 }
 
 .userProfileNavbarPanel {
-  display: flex;
-  align-items: center;
+   display: flex;
+   align-items: center;
 }
 
 .buttonsProfileNavbarPanel {
+<<<<<<< HEAD
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1vmin;
@@ -749,23 +773,29 @@ tr {
 .buttonsProfileNavbarPanel a {
   margin: 0;
   text-decoration: none;
+=======
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+>>>>>>> origin/franco
 }
 
 .nameNavbarPanel {
-  margin: 0;
-  margin-left: 2vmin;
+   margin: 0;
+   margin-left: 2vmin;
 }
 
 .picture {
-  height: 7vh;
-  width: 7vh;
-  background-color: rgba(155, 7, 93, 0.664);
-  border-radius: 50%;
-  background-size: cover;
-  background-position: center;
+   height: 7vh;
+   width: 7vh;
+   background-color: rgba(155, 7, 93, 0.664);
+   border-radius: 50%;
+   background-size: cover;
+   background-position: center;
 }
 
 .signoutPanel {
+<<<<<<< HEAD
   padding: 0.5vmin 1vmin;
   background-color: rgb(190, 84, 84);
   border-radius: 5px;
@@ -780,6 +810,18 @@ tr {
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
+=======
+   padding: 0.5vmin 1vmin;
+   background-color: rgb(190, 84, 84);
+   border-radius: 5px;
+   color: white;
+}
+
+.settingsButtonPanel {
+   padding: 0.5vmin 1vmin;
+   background-color: gray;
+   border-radius: 5px;
+>>>>>>> origin/franco
 }
 
 /* team panel admin seba */
@@ -982,12 +1024,12 @@ tr {
 /* Article Page */
 
 .bodyArticle {
-  width: 100%;
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: contain;
-  display: flex;
-  flex-direction: column;
+   width: 100%;
+   background-repeat: no-repeat;
+   background-position: top;
+   background-size: contain;
+   display: flex;
+   flex-direction: column;
 }
 
 .articleData {
@@ -1000,11 +1042,11 @@ tr {
 }
 
 .articlePhoto {
-  width: 42%;
-  height: 50vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+   width: 42%;
+   height: 50vh;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
 }
 
 .articleName h2 {
@@ -1045,28 +1087,28 @@ tr {
 }
 
 .articleQuantity {
-  width: 4em;
-  padding: 0.3em;
+   width: 4em;
+   padding: 0.3em;
 }
 
 .articleShopCont {
-  align-self: center;
-  width: 30%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+   align-self: center;
+   width: 30%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
 
 /*Article Related */
 
 .articleRelatedTittle {
-  margin-left: 3rem;
-  margin-top: 2em;
-  font-weight: bold;
-  letter-spacing: -1px;
-  color: #16054b;
-  font-size: 5vmin;
-  text-align: center;
+   margin-left: 3rem;
+   margin-top: 2em;
+   font-weight: bold;
+   letter-spacing: -1px;
+   color: #16054b;
+   font-size: 5vmin;
+   text-align: center;
 }
 
 .relatedArticles {
@@ -1134,6 +1176,7 @@ tr {
    border-bottom-left-radius: 0.5rem;
 }
 .swiper-button-next,
+<<<<<<< HEAD
   .swiper-button-prev {
     color: red !important;
     transform: scale(1);
@@ -1194,3 +1237,22 @@ tr {
      justify-content: flex-end;
   }
   
+=======
+.swiper-button-prev {
+   color: red !important;
+   transform: scale(1);
+}
+
+/* Cart */
+
+.bodyCart {
+   display: flex;
+   flex-direction: column;
+}
+.cartSection {
+   background-color: white;
+   width: 80vw;
+   text-align: center;
+   align-self: center;
+}
+>>>>>>> origin/franco

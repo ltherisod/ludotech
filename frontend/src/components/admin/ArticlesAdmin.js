@@ -1,14 +1,33 @@
 import { useState } from "react"
 import { useArticles } from "../../hooks/articlesHooks"
 import ArticleAdd from "./ArticleAdd"
-import ArticleDelete from "./ArticleDelete"
 import ArticleEdit from "./ArticleEdit"
+import { useDispatch } from "react-redux"
+import articlesActions from "../../redux/actions/articlesActions"
+import Filter from "../Filter"
 
 const ArticlesAdmin = () => {
-   const articlesArray = useArticles({})
-   const [articles, loading, error] = articlesArray
    const [typeAction, setTypeAction] = useState("")
+   const [search, setSearch] = useState([])
+   const articlesArray = useArticles({}, typeAction)
+   const [articles, loading, error] = articlesArray
+
    const [articleSelected, setArticleSelected] = useState("")
+   // const [error, setError] = useState(null)
+   const dispatch = useDispatch()
+   const deleteHandler = async (id) => {
+      const res = await dispatch(articlesActions.deleteArticle(id))
+      // if (!res.success) setError(res.error)
+      // setLoading(false)
+      console.log(res)
+      setTypeAction(typeAction + "r")
+   }
+
+   const filterArticles = (e) => {
+      console.log(e)
+      setSearch(e)
+   }
+
    switch (typeAction) {
       case "add":
          return <ArticleAdd setSection={setTypeAction} />
@@ -16,21 +35,27 @@ const ArticlesAdmin = () => {
          return (
             <ArticleEdit setSection={setTypeAction} article={articleSelected} />
          )
-      case "delete":
-         return <ArticleDelete setSection={setTypeAction} />
       default:
          return (
-            <div className="containerArticlesAdmin">
-               <div className="buttonsAdminArticles">
-                  <button
-                     type="button"
-                     className="buttonsAdmin"
-                     onClick={() => setTypeAction("add")}
-                  >
-                     ADD
-                  </button>
-                  <input type="text" placeholder="ACA VA EL FILTRO" />
+            <div
+               className="containerArticlesAdmin"
+               style={{
+                  backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`,
+               }}
+            >
+               <div className="containerButtonFilter">
+                  <div className="buttonAdd">
+                     <button
+                        type="button"
+                        className="buttonsAdmin"
+                        onClick={() => setTypeAction("add")}
+                     >
+                        ADD NEW GAME
+                     </button>
+                  </div>
+                  <Filter filterArticles={(e) => filterArticles(e)} />
                </div>
+
                {loading ? (
                   <h2>Loading...</h2>
                ) : (
@@ -47,7 +72,7 @@ const ArticlesAdmin = () => {
                         </tr>
                      </thead>
                      <tbody>
-                        {articles.map((article) => {
+                        {search.map((article) => {
                            return (
                               <tr key={article._id}>
                                  <td>{article.name}</td>
@@ -72,7 +97,9 @@ const ArticlesAdmin = () => {
                                     <span
                                        type="button"
                                        className="buttonsAdminB"
-                                       onClick={() => setTypeAction("delete")}
+                                       onClick={() =>
+                                          deleteHandler(article._id)
+                                       }
                                     >
                                        DELETE
                                     </span>
