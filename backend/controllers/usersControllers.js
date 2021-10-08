@@ -3,26 +3,9 @@ const bcryptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const path = require("path")
 const transporter = require("../config/transporterEmail")
-const welcomeEmail = require("../config/emailsBody/Welcome")
+const indexEmail = require("../config/emailsBody/indexEmail")
 
 const usersControllers = {
-  sendWelcomeEmail: (req, res) => {
-    let mailOptions = {
-      from: "Ludotehc <ludotechweb@gmail.com>",
-      to: "<jc.venepro@gmail.com>",
-      subject: "Welcome",
-      text: welcomeEmail,
-      html: welcomeEmail,
-    }
-    transporter.sendMail(mailOptions, (e, data) => {
-      if (!e) {
-        res.json({ success: true, response: data, error: null })
-      } else {
-        res.json({ success: false, response: null, error: e })
-        console.log(e)
-      }
-    })
-  },
   logIn: async (req, res) => {
     try {
       const { email, password, google } = req.body
@@ -446,6 +429,42 @@ const usersControllers = {
       res.json({ success: false, response: null, error: e.message })
     }
   },
+  sendConfirmationEmail: async (req, res) => {
+    console.log("controller", req.body)
+    let mailOptions = {
+      from: "Ludotehc <ludotechweb@gmail.com>",
+      to: `<${req.body.email}`,
+      subject: `Welcome ${req.body.name}`,
+      text: indexEmail.Welcome(req.body),
+      html: indexEmail.Welcome(req.body),
+    }
+    transporter.sendMail(mailOptions, (e, data) => {
+      if (!e) {
+        res.json({ success: true, response: data, error: null })
+      } else {
+        res.json({ success: false, response: null, error: e.message })
+        console.log(e)
+      }
+    })
+  },
+  sendWelcomeEmail: (req, res) => {
+    let mailOptions = {
+      from: "Ludotehc <ludotechweb@gmail.com>",
+      to: "<jc.venepro@gmail.com>",
+      subject: "Welcome ",
+      text: welcomeEmail,
+      html: welcomeEmail,
+    }
+    transporter.sendMail(mailOptions, (e, data) => {
+      if (!e) {
+        res.json({ success: true, response: data, error: null })
+      } else {
+        res.json({ success: false, response: null, error: e.message })
+        console.log(e)
+      }
+    })
+  },
+  
 }
 
 module.exports = usersControllers

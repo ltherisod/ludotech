@@ -1216,4 +1216,12 @@ tr {
      flex-direction: column;
      justify-content: flex-end;
   }
+
+  #hidden {
+   visibility: hidden;
+  }
+
+  #visible {
+   visibility: visible;
+  }
   

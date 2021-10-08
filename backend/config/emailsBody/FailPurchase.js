@@ -1,5 +1,5 @@
-const welcomeMail = 
-  `<body style="margin: 0;padding: 0;box-sizing: border-box;font-family:Poppins,sans-serif;text-decoration: none;background-color:#8646d4">
+const FailPurchase = (data) => {
+  return `<body style="margin: 0;padding: 0;box-sizing: border-box;font-family:Poppins,sans-serif;text-decoration: none;background-color:#8646d4">
     <header style="width: 100vw;">
       <div style="width:100vw;height:40vh;background-image:url(https://i.postimg.cc/L2XVbY6Q/hero-Pages.png);background-position:top;background-size:cover;background-repeat:no-repeat;display:flex;justify-content:center;align-items:flex-end; ">
         <h2 style="background-color:transparent;">LUDOTECH</h2>
@@ -17,4 +17,6 @@ const welcomeMail =
     </footer>
   </body>`
 
-module.exports = welcomeMail
+}
+  
+module.exports = FailPurchase

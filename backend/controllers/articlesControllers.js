@@ -47,7 +47,7 @@ const articlesControllers = {
         const scapeString = (str) => {
           return String(str).replace(/([.*+?=^!:${}()|[\]\/\\])/g, '\\$1')
         }
-        let getFilteredArticles = await Article.find({ ...req.body.filters, name: { $regex: scapeString(nameString), $options: 'i' }, minPlayers: { $gte: req.body.filters.minPlayers || 0 }, maxPlayers: { $lte: req.body.filters.maxPlayers || Number.MAX_VALUE }, minAge: { $gte: req.body.filters.minAge || 0 }, price: { $gte: req.body.filters.minPrice || 0, $lte: req.body.filters.maxPrice || Number.MAX_VALUE }, weight: { $gte: req.body.filters.weight || 0 }})
+        let getFilteredArticles = await Article.find({ ...req.body.filters, name: { $regex: scapeString(nameString), $options: 'i' }, minPlayers: { $gte: req.body.filters.minPlayers || 0 }, maxPlayers: { $lte: req.body.filters.maxPlayers || Number.MAX_VALUE }, minAge: { $gte: req.body.filters.minAge || 0 }, price: { $gte: req.body.filters.minPrice || 0, $lte: req.body.filters.maxPrice || Number.MAX_VALUE }, weight: { $gte: req.body.filters.weight || 0 }}).populate({ path: 'brand', select: 'name' }).populate({ path: 'genres', select: 'name' }).populate({ path: 'gameType', select: 'name' })
         if (getFilteredArticles) {
           res.json({ success: true, response: getFilteredArticles, error: null })
         } else {
