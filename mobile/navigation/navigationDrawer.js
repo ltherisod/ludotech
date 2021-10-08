@@ -1,6 +1,8 @@
 import React from "react"
 import {createDrawerNavigator} from "@react-navigation/drawer"
 import navigationStack from "./navigationStack"
+import Articles from "../screens/Articles"
+import Cart from "../screens/Cart"
 import SignIn from "../screens/SignIn"
 import SignUp from "../screens/SignUp"
 // import LogOut from "../components/LogOut"
@@ -16,6 +18,8 @@ const Navigator = (props) => {
             drawerActiveBackgroundColor: "#171717"
         }}>
             <Drawer.Screen name="Home" component={navigationStack} options={{headerShown: false}}/>
+            <Drawer.Screen name="Articles" component={Articles} options={{headerShown: false}}/>
+            <Drawer.Screen name="Cart" component={Cart} options={{headerShown: false}}/>
             <Drawer.Screen name="Sign In" component={SignIn} options={{headerShown: false}}/>
             <Drawer.Screen name="Sign Up" component={SignUp} options={{headerShown: false}}/>
             {/* {props.userToken && <Drawer.Screen name="Log Out" component={LogOut} options={{headerShown: false}}/>} */}
