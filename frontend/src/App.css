@@ -297,9 +297,9 @@ h2 span {
 }
 .signUpBody,
 .signInBody {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+   background-position: top;
+   background-repeat: no-repeat;
+   background-size: cover;
 }
 
 .accountLink {
@@ -483,6 +483,7 @@ h2 span {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
+
 .price {
   text-align: center;
   margin-top: 10px;
@@ -492,9 +493,10 @@ h2 span {
   justify-content: center;
 }
 .gameInfo {
-  position: relative;
-  bottom: 40px;
-  color: gray;
+   position: relative;
+   bottom: 40px;
+   color: gray;
+   width: 80%;
 }
 
 .iconsNav {
@@ -1317,25 +1319,33 @@ tr {
 
 /* Cart */
 
-.bodyCart {
-   display: flex;
-   flex-direction: column;
-}
-.bodyCart h2 {
-   color: gray;
-}
-.cartSection1 {
-   width: 70vw;
-   text-align: center;
-   align-self: center;
-   color: white;
-}
+  .bodyCart {
+    display: flex;
+    flex-direction: column;
+  }
 
-.cartSection1 tr {
-   background-color: transparent;
-   border-bottom: solid 1px rgb(204, 204, 204);
-   color: gray;
+  .bodyCart h2 {
+     color: gray
+  }
+  .cartSection1 {
+    width: 70vw;
+    text-align: center;
+    align-self: center;
+    color: white;
+  }
+  .product {
+     text-align: left;
+     padding-left: 10px
+  }
+  .subtotal {
+   text-align: right;
+   padding-right: 5%
 }
+  .cartSection1 tr {
+     background-color: transparent;
+     border-bottom: solid 1px rgb(204, 204, 204);
+     color: gray
+  }
 
 .cartSection1 th {
    color: gray;
@@ -1343,28 +1353,89 @@ tr {
    font-weight: 600;
    font-size: large;
 }
-.cartSection2 {
-   background-color: white;
-   width: 12vw;
-   text-align: center;
-   align-self: flex-end;
+  .cartSection2 {
+   text-align: right;
+   display: flex;
+   justify-content: flex-end;
    padding: 20px 0px;
    color: gray;
+   width: 100%;
+ }
+ .cartSection2 div {
+   display: flex;
+   justify-content: flex-end;
+  padding-right: 20px;
+}
+ .cartSection2 p {
+   text-align: right;
+   font-weight: 600;
+   padding-left: 10px;
+}
+  .cartArticle {
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+  }
+  .quantity {
+     display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .quantity div {
+     margin: 0px 10px
+  }
+  .cartContainer {
+     align-self: center;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-end;
+  }
+  .cartSection1 tbody tr td:first-child {
+     width: 15%;
+     padding-left: 20px;
+  }
+  .cartSection1 tbody tr td:nth-child(2) {
+   width: 30%;
+   text-align: left;
+   padding-left: 10px;
+}
+.cartSection1 tbody tr td:nth-child(3) {
+   width: 10%;
+}
+.cartSection1 tbody tr td:nth-child(4) {
+   width: 20%;
+}
+.cartSection1 tbody tr td:nth-child(4) p {
+   margin-bottom: 0px;
+}
+.cartSection1 tbody tr td:nth-child(5) {
+   width: 20%;
+   text-align: right;
+   padding-right: 5%;
 }
 
-.cartArticle {
-   display: flex;
-   justify-content: flex-start;
-   align-items: center;
+.quantity button{
+   padding: 0px 7px;
+   background-color: #6aefcf;
+   border: none;
+   border-radius: 50px;
+   text-align: center;
+   color: white;
 }
-.quantity {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+.delete button{
+   padding: 2px 7px;
+   background-color: rgb(160, 160, 160);
+   border: none;
+   border-radius: 20px;
+   color: white;
+   font-size: small;
 }
-.cartContainer {
-   align-self: center;
-   display: flex;
-   flex-direction: column;
-   justify-content: flex-end;
+.totalsCard {
+   background-color: white;
+   align-self: flex-end;
+   width: 20vw;
+   border-radius: 0px 0px 20px 20px;
+   padding: 15px;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }

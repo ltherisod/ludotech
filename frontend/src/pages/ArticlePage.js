@@ -43,7 +43,7 @@ const ArticlePage = (props) => {
          ) : (
             <div
                className="bodyArticle"
-               style={{ backgroundImage: "url('/assets/fondoblanco5.png')" }}
+               style={{ backgroundImage: "url('/assets/fondoblanco.png')" }}
             >
                <HeroPages />
                <Header />
