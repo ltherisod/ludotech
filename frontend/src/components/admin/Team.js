@@ -9,7 +9,7 @@ const Team = () => {
     const [userFound, setUserFound] = useState(false)
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/admin')
+        axios.get('http://localhost:4000/api/admin',{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
             .then(res=> {
                 setMembers(res.data.response)
             })
@@ -17,7 +17,7 @@ const Team = () => {
     },[])
 
     const getUser = () => {
-        axios.post('http://localhost:4000/api/admin', {email: search})
+        axios.post('http://localhost:4000/api/admin', {email: search},{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
             .then(res => {
                 console.log(res.data)
                 if(res.data.response) {
@@ -35,7 +35,11 @@ const Team = () => {
     }
 
     const changeRol = () => {
-        axios.post('http://localhost:4000/api/admin/set-admin', {email: userFound.email})
+        axios.post(
+            'http://localhost:4000/api/admin/set-admin', 
+            {email: userFound.email},
+            {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}} 
+        )
             .then(res => {
                 setUserFound(false)
                 setMembers([...members, res.data.response])
@@ -68,8 +72,7 @@ const Team = () => {
                                 <label className='bold'>Rol: </label>
                                 <p>{userFound.isAdmin ? ' Admin' : ' User'}</p>
                             </div>
-                            {!userFound.isAdmin && <div onClick={() => changeRol()} className='saveTeam'>Give admin</div>}
-                        {userFound.isAdmin && <div disabled className='saveTeam' style={{backgroundColor: 'rgba(0,0,0,0.3)', cursor: 'default'}}>Give admin</div>}
+                            <div onClick={() => changeRol()} className='saveTeam'>Give admin</div>
                         </div>
                     </div>
                 </div>}
