@@ -44,7 +44,7 @@ const ArticlePage = () => {
         }, 
       ];
     return(
-        <div className="bodyArticle" style={{backgroundImage: "url('/assets/fondoblanco5.png')"}}>
+        <div className="bodyArticle" style={{backgroundImage: "url('/assets/fondoblanco.png')"}}>
             <HeroPages/>
             <Header/>
             <div className="articleData" >

@@ -39,14 +39,14 @@ const Article = (props) => {
             <p style={{ color: "green" }}>$ {price}</p>
           ) : (
             <div className="priceArticle">
-              <p style={{ textDecoration: "line-through", color: "red", padding: "0px 4px" }}>
+              <p style={{ textDecoration: "line-through", color: "gray", padding: "0px 4px" }}>
                 ${price}
               </p>
               <p style={{ color: "green", padding: "0px 4px"  }}>${props.article.discountPrice}</p>
             </div>
           )}
         </div>
-        <h3>{name}</h3>
+        <h4>{name}</h4>
         <div className="gameDetails">
           <p>
             <img src="./assets/gener.png" /> {genres.map(genre => genre.name)}
