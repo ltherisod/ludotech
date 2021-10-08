@@ -81,7 +81,7 @@ const ArticlePage = () => {
                 return <ArticleRelated article={article} key={id} />
               })}
             </div>
-            {/* <ArticleCaroulsel style={{width:"50%"}}/> */}
+            {/* <ArticleCaroulsel style={{width:"500px" height: "500px" }}/> */}
             <Footer/>
         </div>
     )

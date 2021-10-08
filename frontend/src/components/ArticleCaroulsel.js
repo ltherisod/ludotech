@@ -13,13 +13,13 @@ const ArticleCaroulsel = () => {
         <div className="swiperBox">
             <Swiper effect={'flip'} grabCursor={true} pagination={true} navigation={true} className="swiper"autoplay={true}>
                 <SwiperSlide>
-                    <div className="swiperSlide"style={{backgroundImage:"url('https://i.postimg.cc/vmHGJNnx/king-of-tokyo.png')"}}></div>
+                    <div className="swiperSlide"style={{backgroundImage:"url('https://i.postimg.cc/vTZ2khjn/attackontitans-Photo1.png')"}}></div>
                 </SwiperSlide>
                 <SwiperSlide>
-                <div className="swiperSlide"style={{backgroundImage:"url('https://i.postimg.cc/vmHGJNnx/king-of-tokyo.png')"}}></div>
+                <div className="swiperSlide"style={{backgroundImage:"url('https://i.postimg.cc/x8jj7rnP/attackontitans-Photo2.png')"}}></div>
                 </SwiperSlide>
                 <SwiperSlide>
-                <div className="swiperSlide"style={{backgroundImage:"url('https://i.postimg.cc/vmHGJNnx/king-of-tokyo.png')"}}></div>
+                <div className="swiperSlide"style={{backgroundImage:"url('https://i.postimg.cc/NFRV1FWJ/attackontitans-Photo3.png')"}}></div>
                 </SwiperSlide> 
             </Swiper>
         </div>
