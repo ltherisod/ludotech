@@ -899,9 +899,9 @@ th {
 }
 
 .articlePhoto {
-  width: 40%;
+  width: 42%;
   height: 50vh;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }

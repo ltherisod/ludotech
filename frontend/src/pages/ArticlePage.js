@@ -48,7 +48,7 @@ const ArticlePage = () => {
             <HeroPages/>
             <Header/>
             <div className="articleData" >
-                <div className="articlePhoto" style={{backgroundImage: `url("https://i.postimg.cc/gJvGymjx/codexBox.png")`}}>
+                <div className="articlePhoto" style={{backgroundImage: `url("https://i.postimg.cc/3xNLkPN0/codextest.png")`}}>
                 </div>
                 <div className="articleName">
                   <h2>Codex naturalis</h2>
