@@ -2,11 +2,7 @@ const mongoose = require("mongoose")
 
 const articleSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  brand: {
-    type: mongoose.Types.ObjectId,
-    ref: "articles_utilitie",
-    required: true,
-  },
+  brand: { type: mongoose.Types.ObjectId, ref: "articles_utilitie", required: true },
   price: { type: Number, required: true },
   hasDiscount: { type: Boolean, default: false },
   discountPrice: { type: Number, required: false },
@@ -16,8 +12,13 @@ const articleSchema = new mongoose.Schema({
   minPlayers: { type: Number },
   maxPlayers: { type: Number },
   minAge: { type: Number },
+  playingTime: { type: String }, //revisar si es string o number
   stock: { type: Number, required: true },
   size: { type: String, required: false }, // revisar
+  iconPhotos: { type: String },
+  decoPhotos: { type: String },
+  video: { type: String },
+  description: { type: String },
   weight: { type: Number, required: false },
   visitsCount: { type: Number },
 })
