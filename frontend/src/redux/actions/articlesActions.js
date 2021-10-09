@@ -3,11 +3,12 @@ import axios from "axios"
 const HOST = "http://localhost:4000"
 
 const articlesActions = {
-  getArticles: (filters) => {
+  getArticles: (filters, page) => {
     return async (dispatch) => {
       try {
         const response = await axios.post(`${HOST}/api/articles`, {
           filters,
+          page: page || 1,
         })
         if (!response.data.success) throw new Error(response.data.error)
         return {

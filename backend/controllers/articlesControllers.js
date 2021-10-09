@@ -36,16 +36,22 @@ const articlesControllers = {
 
   readAllArticles: async (req, res) => {
     try {
+      const { page } = req.body
+      const limitPerPage = 12
       if (Object.keys(req.body.filters).length === 0) {
         let getArticles = await Article.find()
           .populate({ path: "brand", select: "name" })
           .populate({ path: "genres", select: "name" })
           .populate({ path: "gameType", select: "name" })
+          .skip((page - 1) * limitPerPage)
+          .limit(limitPerPage)
         const totalCount = await Article.find().countDocuments()
+        const totalPages = Math.ceil(totalCount / limitPerPage)
         if (getArticles) {
           res.json({
             success: true,
-            response: getArticles,
+            response: { articles: getArticles, page, totalCount, totalPages },
+            // response: getArticles,
             error: null,
           })
         } else {
@@ -71,10 +77,30 @@ const articlesControllers = {
           .populate({ path: "brand", select: "name" })
           .populate({ path: "genres", select: "name" })
           .populate({ path: "gameType", select: "name" })
+          .skip((page - 1) * limitPerPage)
+          .limit(limitPerPage)
+        const totalCount = await Article.find({
+          ...req.body.filters,
+          name: { $regex: scapeString(nameString), $options: "i" },
+          minPlayers: { $gte: req.body.filters.minPlayers || 0 },
+          maxPlayers: { $lte: req.body.filters.maxPlayers || Number.MAX_VALUE },
+          minAge: { $gte: req.body.filters.minAge || 0 },
+          price: {
+            $gte: req.body.filters.minPrice || 0,
+            $lte: req.body.filters.maxPrice || Number.MAX_VALUE,
+          },
+          weight: { $gte: req.body.filters.weight || 0 },
+        }).countDocuments()
+        const totalPages = Math.ceil(totalCount / limitPerPage)
         if (getFilteredArticles) {
           res.json({
             success: true,
-            response: getFilteredArticles,
+            response: {
+              articles: getFilteredArticles,
+              page,
+              totalCount,
+              totalPages,
+            },
             error: null,
           })
         } else {

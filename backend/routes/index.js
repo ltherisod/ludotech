@@ -68,7 +68,10 @@ router
     purchaseControllers.handlePurchase
   )
 
-router.route("/user/purchase/:id").delete(purchaseControllers.deletePurchase) // only dev stage!
+router
+  .route("/user/purchase/:id")
+  .put(purchaseControllers.updateStatus)
+  .delete(purchaseControllers.deletePurchase) // only dev stage!
 
 // USER DIRECTIONS ROUTES
 router
@@ -139,11 +142,9 @@ router
   .post(articleValidator.articleValidator, articlesControllers.addArticle)
 
 // SEND EMAIL
-router.route("/confirmation-email")
-.post(usersControllers.sendConfirmationEmail)
+router.route("/confirmation-email").post(usersControllers.sendConfirmationEmail)
 
-router.route("/welcome-email")
-.get(usersControllers.sendWelcomeEmail)
+router.route("/welcome-email").get(usersControllers.sendWelcomeEmail)
 
 //admin routes
 router
