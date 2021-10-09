@@ -68,7 +68,10 @@ router
     purchaseControllers.handlePurchase
   )
 
-router.route("/user/purchase/:id").delete(purchaseControllers.deletePurchase) // only dev stage!
+router.route("/user/purchase/:id")
+    .get(purchaseControllers.getPurchaseById)
+    .put(purchaseControllers.updateStatus)
+    .delete(purchaseControllers.deletePurchase) // only dev stage!
 
 // USER DIRECTIONS ROUTES
 router

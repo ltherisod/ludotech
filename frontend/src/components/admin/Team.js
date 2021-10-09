@@ -19,7 +19,6 @@ const Team = () => {
     const getUser = () => {
         axios.post('http://localhost:4000/api/admin', {email: search},{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
             .then(res => {
-                console.log(res.data)
                 if(res.data.response) {
                     setUserFound(res.data.response)
                     setNotFound(false)
@@ -35,6 +34,7 @@ const Team = () => {
     }
 
     const changeRol = () => {
+        console.log(members)
         axios.post(
             'http://localhost:4000/api/admin/set-admin', 
             {email: userFound.email},
@@ -42,7 +42,15 @@ const Team = () => {
         )
             .then(res => {
                 setUserFound(false)
-                setMembers([...members, res.data.response])
+                if(!userFound.isAdmin) {
+                    setMembers([...members, res.data.response])
+                } else {
+                    let membersFiltered = members.filter(member => {
+                        return member.email !== userFound.email
+                    })
+                    console.log(membersFiltered)
+                    setMembers(membersFiltered)
+                }
             })
             .catch(e => console.log(e))
     }
@@ -72,7 +80,8 @@ const Team = () => {
                                 <label className='bold'>Rol: </label>
                                 <p>{userFound.isAdmin ? ' Admin' : ' User'}</p>
                             </div>
-                            <div onClick={() => changeRol()} className='saveTeam'>Give admin</div>
+                            {!userFound.isAdmin && <div onClick={() => changeRol()} className='saveTeam'>Give admin</div>}
+                            {userFound.isAdmin && <div onClick={() => changeRol()} className='deleteTeam'>Remove admin</div>}
                         </div>
                     </div>
                 </div>}
