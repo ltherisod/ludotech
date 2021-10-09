@@ -48,12 +48,13 @@ const ArticlePage = (props) => {
                <HeroPages />
                <Header />
                <div className="articleData">
-                  <div
+               <ArticleCaroulsel/> 
+                  {/* <div
                      className="articlePhoto"
                      style={{
                         backgroundImage: `url(${photos ? photos[0] : []})`,
                      }}
-                  ></div>
+                  ></div> */}
 
                   <div className="containerData">
                      <h2>{name}</h2>
@@ -186,7 +187,7 @@ const ArticlePage = (props) => {
                return <ArticleRelated article={article} key={id} />
             })}
          </div> */}
-                <ArticleCaroulsel/> 
+               
                <Footer />
             </div>
          )}
