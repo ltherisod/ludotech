@@ -15,7 +15,7 @@ const Article = (props) => {
       gameType,
       minAge,
       _id,
-      discountPrice,
+      discountPrice
    } = props.article
 
    const addToCart = (e, id) => {
