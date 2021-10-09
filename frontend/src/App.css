@@ -1395,35 +1395,36 @@ h2.articles {
    justify-content: space-between;
 }
 
-/*Swiper*/
+/* Swiper */
 
 .swiperBox {
-   width: 50%;
-   height: 60vh;
-   color: blue;
+  width: 400px;
+  height: 400px;
 }
 
 .swiper {
-   width: 50%;
-   height: 100%;
-   color: #000;
-   border-top-left-radius: 0.5rem;
-   border-bottom-left-radius: 0.5rem;
+  width: 100%;
+  height: 100%;
+  color: #000;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  text-align: center;
 }
 
 .swiperSlide {
-   width: 50%;
-   height: 100%;
-   background-position: center;
-   background-size: contain;
-   background-repeat: no-repeat;
-   border-top-left-radius: 0.5rem;
-   border-bottom-left-radius: 0.5rem;
+  width: 400px;
+  height: 100%;
+  background-position: center;
+  background-size: contain;
+  align-self: center;
 }
 .swiper-button-next,
 .swiper-button-prev {
-   color: red !important;
-   transform: scale(1);
+   color: gray !important;
+   padding: 20px;
+   padding-top: 238px;
+   width: 30px;
+   transform: scale(0.65);
 }
 
 /* Cart */

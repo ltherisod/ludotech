@@ -48,7 +48,7 @@ const ArticlePage = (props) => {
                <HeroPages />
                <Header />
                <div className="articleData">
-               <ArticleCaroulsel/> 
+               <div className="divCarousel"><ArticleCaroulsel/> </div>
                   {/* <div
                      className="articlePhoto"
                      style={{
