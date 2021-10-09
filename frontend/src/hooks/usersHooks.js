@@ -5,210 +5,224 @@ import { useFormik } from "formik"
 import * as Yup from "yup"
 
 export const useSignup = () => {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const [fieldValue, setFieldValue] = useState({ photo: null })
-  const dispatch = useDispatch()
-  const formik = useFormik({
-    initialValues: {
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-    },
-    onSubmit: (values) => submitHandler(values),
-    validationSchema: Yup.object({
-      firstname: Yup.string()
-        .min(2, "Firstname must have at least 2 characters")
-        .required("Required"),
-      lastname: Yup.string()
-        .min(2, "Lastname must have at least 2 characters")
-        .required("Required"),
-      email: Yup.string().email("Invalid email").required("Required"),
-      password: Yup.string()
-        .min(4, "Password must have at least 4 characters")
-        .required("Required"),
-    }),
-  })
+   const [loading, setLoading] = useState(false)
+   const [error, setError] = useState(null)
+   const [fieldValue, setFieldValue] = useState({ photo: null })
+   const dispatch = useDispatch()
+   const formik = useFormik({
+      initialValues: {
+         firstname: "",
+         lastname: "",
+         email: "",
+         password: "",
+      },
+      onSubmit: (values) => submitHandler(values),
+      validationSchema: Yup.object({
+         firstname: Yup.string()
+            .min(2, "Firstname must have at least 2 characters")
+            .required("Required"),
+         lastname: Yup.string()
+            .min(2, "Lastname must have at least 2 characters")
+            .required("Required"),
+         email: Yup.string().email("Invalid email").required("Required"),
+         password: Yup.string()
+            .min(4, "Password must have at least 4 characters")
+            .required("Required"),
+      }),
+   })
 
-  const submitHandler = async (values) => {
-    const formData = new FormData()
-    formData.append("firstname", values.firstname)
-    formData.append("lastname", values.lastname)
-    formData.append("email", values.email)
-    formData.append("password", values.password)
-    formData.append("photo", fieldValue.photo)
-    setLoading(true)
-    const res = await dispatch(usersActions.logInOrSignUp(formData, "signup"))
-    if (!res.success) setError(res.error)
-    setLoading(false)
-  }
+   const submitHandler = async (values) => {
+      const formData = new FormData()
+      formData.append("firstname", values.firstname)
+      formData.append("lastname", values.lastname)
+      formData.append("email", values.email)
+      formData.append("password", values.password)
+      formData.append("photo", fieldValue.photo)
+      setLoading(true)
+      const res = await dispatch(usersActions.logInOrSignUp(formData, "signup"))
+      if (!res.success) setError(res.error)
+      setLoading(false)
+   }
 
-  const responseGoogle = (res) => {
-    let newUserGoogle = {
-      firstname: res.profileObj.givenName,
-      lastname: res.profileObj.familyName,
-      email: res.profileObj.email,
-      photo: res.profileObj.imageUrl,
-      password: res.profileObj.googleId,
-      google: true,
-    }
+   const responseGoogle = (res) => {
+      let newUserGoogle = {
+         firstname: res.profileObj.givenName,
+         lastname: res.profileObj.familyName,
+         email: res.profileObj.email,
+         photo: res.profileObj.imageUrl,
+         password: res.profileObj.googleId,
+         google: true,
+      }
 
-    dispatch(usersActions.logInOrSignUp(newUserGoogle, "signup"))
-  }
+      dispatch(usersActions.logInOrSignUp(newUserGoogle, "signup"))
+   }
 
-  return [formik, responseGoogle, setFieldValue, loading, error]
+   return [formik, responseGoogle, setFieldValue, loading, error]
 }
 
 export const useLogin = async () => {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
-  const dispatch = useDispatch()
+   const [loading, setLoading] = useState(false)
+   const [error, setError] = useState(null)
+   const dispatch = useDispatch()
 
-  let formik = useFormik({
-    initialValues: { email: "", password: "", google: false },
-    onSubmit: (values) => loginHandler(values),
-    validationSchema: Yup.object({
-      email: Yup.string().email("Invalid email").required("Required"),
-      password: Yup.string()
-        .min(4, "Password must have at least 4 characters.")
-        .required("required"),
-    }),
-  })
+   let formik = useFormik({
+      initialValues: { email: "", password: "", google: false },
+      onSubmit: (values) => loginHandler(values),
+      validationSchema: Yup.object({
+         email: Yup.string().email("Invalid email").required("Required"),
+         password: Yup.string()
+            .min(4, "Password must have at least 4 characters.")
+            .required("required"),
+      }),
+   })
 
-  const loginHandler = async (values) => {
-    const res = await dispatch(usersActions.logInOrSignUp(values, "login"))
-    if (!res.success) setError(res.error)
-    setLoading(false)
-  }
+   const loginHandler = async (values) => {
+      const res = await dispatch(usersActions.logInOrSignUp(values, "login"))
+      if (!res.success) setError(res.error)
+      setLoading(false)
+   }
 
-  return [formik, loading, error]
+   return [formik, loading, error]
 }
 
 export const useLoginLS = () => {
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const token = localStorage.getItem("token")
-  const dispatch = useDispatch()
-  useEffect(() => {
-    loginLS()
-  }, [])
+   const [loading, setLoading] = useState(true)
+   const [error, setError] = useState(null)
+   const token = localStorage.getItem("token")
+   const dispatch = useDispatch()
+   useEffect(() => {
+      loginLS()
+   }, [])
 
-  const loginLS = async () => {
-    if (token) {
-      const res = await dispatch(usersActions.logInLS(token))
-      if (!res.success) {
-        setError(res.error)
+   const loginLS = async () => {
+      if (token) {
+         const res = await dispatch(usersActions.logInLS(token))
+         if (!res.success) {
+            setError(res.error)
+         }
       }
-    }
-    setLoading(false)
-  }
+      setLoading(false)
+   }
 
-  return [loading, error]
+   return [loading, error]
 }
 
 export const useAddDirection = () => {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+   const [loading, setLoading] = useState(false)
+   const [error, setError] = useState(null)
+   const dispatch = useDispatch()
 
-  const formik = useFormik({
-    initialValues: {
-      alias: "",
-      receiver: "",
-      street: "",
-      number: "",
-      department: "",
-      zipCode: "",
-      city: "",
-      state: "",
-    },
-    onSubmit: (values) => addDirectionHandler(values),
-    validationSchema: Yup.object({
-      alias: Yup.string()
-        .min(2, "Alias must havee at least 2 characters.")
-        .required("Required"),
-      receiver: Yup.string()
-        .min(2, "Receiver must have at least 2 characters.")
-        .required("Required"),
-      street: Yup.string().required("Required"),
-      number: Yup.number().required("Required"),
-      department: Yup.string().required("Required"),
-      zipCode: Yup.string().required("Required"),
-      city: Yup.string().required("Required"),
-      state: Yup.string().required("Required"),
-    }),
-  })
+   const formik = useFormik({
+      initialValues: {
+         alias: "",
+         receiver: "",
+         street: "",
+         number: "",
+         department: "",
+         zipCode: "",
+         city: "",
+         state: "",
+      },
+      onSubmit: (values) => addDirectionHandler(values),
+      validationSchema: Yup.object({
+         alias: Yup.string()
+            .min(2, "Alias must havee at least 2 characters.")
+            .required("Required"),
+         receiver: Yup.string()
+            .min(2, "Receiver must have at least 2 characters.")
+            .required("Required"),
+         street: Yup.string().required("Required"),
+         number: Yup.number().required("Required"),
+         department: Yup.string().required("Required"),
+         zipCode: Yup.string().required("Required"),
+         city: Yup.string().required("Required"),
+         state: Yup.string().required("Required"),
+      }),
+   })
 
-  const addDirectionHandler = async (values) => {
-    console.log(values)
-  }
+   const addDirectionHandler = async (values) => {
+      setLoading(true)
+      const res = await dispatch(usersActions.addDirection(values))
+      console.log(res)
+      if (!res.success) setError(res.error)
+      setLoading(false)
+   }
 
-  return [formik, loading, error]
+   return [formik, loading, error]
 }
 
 export const useUpdateDirection = (direction) => {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+   const [loading, setLoading] = useState(false)
+   const [error, setError] = useState(null)
+   const dispatch = useDispatch()
 
-  const formik = useFormik({
-    initialValues: {
-      alias: direction?.alias,
-      receiver: direction?.receiver,
-      street: direction?.street,
-      number: direction?.number,
-      department: direction?.department,
-      zipCode: direction?.zipCode,
-      city: direction?.city,
-      state: direction?.state,
-    },
-    onSubmit: (values) => updateDirectionHandler(values),
-    validationSchema: Yup.object({
-      alias: Yup.string()
-        .min(2, "Alias must havee at least 2 characters.")
-        .required("Required"),
-      receiver: Yup.string()
-        .min(2, "Receiver must have at least 2 characters.")
-        .required("Required"),
-      street: Yup.string().required("Required"),
-      number: Yup.number().required("Required"),
-      department: Yup.string().required("Required"),
-      zipCode: Yup.string().required("Required"),
-      city: Yup.string().required("Required"),
-      state: Yup.string().required("Required"),
-    }),
-  })
+   const formik = useFormik({
+      initialValues: {
+         alias: direction?.alias,
+         receiver: direction?.receiver,
+         street: direction?.street,
+         number: direction?.number,
+         department: direction?.department,
+         zipCode: direction?.zipCode,
+         city: direction?.city,
+         state: direction?.state,
+      },
+      onSubmit: (values) => updateDirectionHandler(values),
+      validationSchema: Yup.object({
+         alias: Yup.string()
+            .min(2, "Alias must havee at least 2 characters.")
+            .required("Required"),
+         receiver: Yup.string()
+            .min(2, "Receiver must have at least 2 characters.")
+            .required("Required"),
+         street: Yup.string().required("Required"),
+         number: Yup.number().required("Required"),
+         department: Yup.string().required("Required"),
+         zipCode: Yup.string().required("Required"),
+         city: Yup.string().required("Required"),
+         state: Yup.string().required("Required"),
+      }),
+   })
 
-  const updateDirectionHandler = async (values) => {
-    console.log(values)
-  }
+   const updateDirectionHandler = async (values) => {
+      setLoading(true)
+      const res = await dispatch(
+         usersActions.updateDirection(values, direction?._id)
+      )
+      console.log(res)
+      if (!res.success) setError(res.error)
+      setLoading(false)
+   }
 
-  return [formik, loading, error]
+   return [formik, loading, error]
 }
 
 export const useDirectionsForm = (submitCallback, initialValues) => {
-  const formik = useFormik({
-    initialValues,
-    // {
-    //   alias: "",
-    //   receiver: "",
-    //   street: "",
-    //   number: "",
-    //   department: "",
-    //   zipCode: "",
-    //   city: "",
-    //   state: "",
-    // },
-    onSubmit: submitCallback,
-    validationSchema: Yup.object({
-      alias: Yup.string(),
-      receiver: Yup.string().required("Required"),
-      street: Yup.string().required("Required"),
-      number: Yup.number().required("Required"),
-      department: Yup.string().required("Required"),
-      zipCode: Yup.string().required("Required"),
-      city: Yup.string().required("Required"),
-      state: Yup.string().required("Required"),
-    }),
-  })
-  return formik
+   const [loading, setLoading] = useState(false)
+   const [error, setError] = useState(null)
+   const formik = useFormik({
+      initialValues,
+      // {
+      //   alias: "",
+      //   receiver: "",
+      //   street: "",
+      //   number: "",
+      //   department: "",
+      //   zipCode: "",
+      //   city: "",
+      //   state: "",
+      // },
+      onSubmit: submitCallback,
+      validationSchema: Yup.object({
+         alias: Yup.string(),
+         receiver: Yup.string().required("Required"),
+         street: Yup.string().required("Required"),
+         number: Yup.number().required("Required"),
+         department: Yup.string().required("Required"),
+         zipCode: Yup.string().required("Required"),
+         city: Yup.string().required("Required"),
+         state: Yup.string().required("Required"),
+      }),
+   })
+   return formik
 }
