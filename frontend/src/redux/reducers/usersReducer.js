@@ -27,7 +27,7 @@ const usersReducer = (
     case "UPDATE_DIRECTIONS":
       return {
         ...state,
-        user: { ...user, directions: action.payload },
+        user: { ...state.user, directions: action.payload },
       }
     default:
       return state
