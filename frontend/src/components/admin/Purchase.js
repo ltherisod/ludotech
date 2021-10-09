@@ -6,15 +6,15 @@ const Purchase = ({purchase, articles, direction}) => {
     // purchase.status==='confirmed' ? 'red' : purchase.status==='processing' ? 'orange' : 'green'
 
     return (
-        <div key={purchase._id} className='purchaseContainerPanel'>
-            <p>#33832042</p>
+        <div className='purchaseContainerPanel'>
+            <p>{purchase._id}</p>
             <div className={`numberArticlesPanel`} onClick={() => setSeeProducts(true)} onMouseLeave={() => setSeeProducts(false)}>
-                    <p>see {articles.length} products</p>
+                    <p>{articles.length} products</p>
                     {seeProducts && 
                     <div className='containerProductsPanel'>
                         {articles.map(article => {
                             return (
-                                <div className='productRow'>
+                                <div key={article._id} className='productRow'>
                                     <div className='productRowtPicture' style={{backgroundImage: `url("${article.photos[0]}")`}}></div>
                                     <div className='detailsProductPanel'>
                                         <p className='nameProductPanel'>{article.name}</p>
@@ -29,7 +29,7 @@ const Purchase = ({purchase, articles, direction}) => {
                     </div>}
             </div>
             <div className='addressPurchasePanel'>
-                <p>{direction.zipCode} {direction.street} {direction.number} {direction.department} {direction.city}, {direction.state}</p>
+                <p style={{flex: 1}}>{direction.zipCode} {direction.street} {direction.number} {direction.department} {direction.city}, {direction.state}</p>
             </div>
             <div className=''>
                 {purchase.timestamp && <p>{purchase.timestamp.split('T')[0]}</p>}

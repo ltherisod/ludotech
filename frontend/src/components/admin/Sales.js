@@ -17,9 +17,10 @@ const Sales = () => {
     },[])
 
     const getPurchase = () => {
-        axios.post('http://localhost:4000/api/admin', {_id: search},{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+        axios.get(`http://localhost:4000/api/user/purchase/${search}`
+        // {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+        )
             .then(res => {
-                console.log(res.data)
                 if(res.data.response) {
                     setPurchaseFound(res.data.response)
                     setNotFound(false)
@@ -53,7 +54,7 @@ const Sales = () => {
                         <Purchase direction={purchaseFound.direction} articles={purchaseFound.articles} status={purchaseFound.status} purchase={purchaseFound} />
                     </div>
                 </div>}
-                {notFound && <span className='userDontFoundTeam'>Dont exist an user with that email</span>}
+                {notFound && <span className='userDontFoundTeam'>Dont exist an purchase with that id</span>}
             </div>
             <div className='purchasesContainerPanel'>
                 <div className='titlesPurchasesPanel'>
@@ -67,7 +68,7 @@ const Sales = () => {
                 <div className='purchasesPanel'>
                     {purchases.map(purchase => {
                         const {direction, articles, status} = purchase
-                        return <Purchase direction={direction} articles={articles} status={status} purchase={purchase} />
+                        return <Purchase  key={purchase._id} direction={direction} articles={articles} status={status} purchase={purchase} />
                     })}
                 </div>
             </div>

@@ -297,9 +297,9 @@ h2 span {
 }
 .signUpBody,
 .signInBody {
-   background-position: top;
-   background-repeat: no-repeat;
-   background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .accountLink {
@@ -464,7 +464,7 @@ h2 span {
 }
 
 .cardArticle:hover {
-   box-shadow: rgba(255, 255, 255, 1) 0px 2px 8px 0px;
+  box-shadow: rgba(255, 255, 255, 1) 0px 2px 8px 0px;
 }
 
 .photosArticle {
@@ -493,10 +493,10 @@ h2 span {
   justify-content: center;
 }
 .gameInfo {
-   position: relative;
-   bottom: 40px;
-   color: gray;
-   width: 80%;
+  position: relative;
+  bottom: 40px;
+  color: gray;
+  width: 80%;
 }
 
 .iconsNav {
@@ -522,20 +522,20 @@ h2 span {
   background-color: red;
 }
 .circleFav {
-   background-color: rgba(223, 223, 223, 0.534);
-   border-radius: 100%;
-   height: 45px;
-   width: 45px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   cursor: pointer;
-   color: rgba(196, 29, 126, 0.616);
-   font-size: 25px;
+  background-color: rgba(223, 223, 223, 0.534);
+  border-radius: 100%;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: rgba(196, 29, 126, 0.616);
+  font-size: 25px;
 }
 
 .circleFav:hover {
-   color: rgb(247, 51, 165);
+  color: rgb(247, 51, 165);
 }
 
 .gameDetails {
@@ -713,19 +713,19 @@ h2 span {
 }
 
 .buttonsProfileNavbarPanel {
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 1vmin;
-   text-align: center;
-   margin-top: 1vmin;
-   font-size: 13px;
-   font-weight: bold;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1vmin;
+  text-align: center;
+  margin-top: 1vmin;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .buttonsProfileNavbarPanel p,
 .buttonsProfileNavbarPanel a {
-   margin: 0;
-   text-decoration: none;
+  margin: 0;
+  text-decoration: none;
 }
 
 .nameNavbarPanel {
@@ -743,20 +743,20 @@ h2 span {
 }
 
 .signoutPanel {
-   padding: 0.5vmin 1vmin;
-   background-color: rgb(190, 84, 84);
-   border-radius: 5px;
-   color: white;
-   cursor: pointer;
+  padding: 0.5vmin 1vmin;
+  background-color: rgb(190, 84, 84);
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
 }
 
 .settingsButtonPanel {
-   padding: 0.5vmin 1vmin;
-   background-color: #ff8924;
-   color: white;
-   border-radius: 5px;
-   cursor: pointer;
-   text-decoration: none;
+  padding: 0.5vmin 1vmin;
+  background-color: #ff8924;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 /* team panel admin seba */
@@ -832,7 +832,19 @@ h2 span {
   padding: 0.5vmin 1vmin;
   cursor: pointer;
   color: white;
-  background-color: green;
+  background-color: rgb(63, 189, 63);
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  align-items: center;
+  margin-right: -2vmin;
+}
+
+.deleteTeam {
+  padding: 0.5vmin 1vmin;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(194, 78, 63);
   border-radius: 5px;
   border: none;
   display: flex;
@@ -955,7 +967,7 @@ h2 span {
   display: flex;
   align-items: center;
   display: grid;
-  grid-template-columns: 10% 18% 30% 15% 10% 15%;
+  grid-template-columns: 25% 12% 30% 15% 10% 15%;
 }
 
 .purchasesPanel,
@@ -976,11 +988,11 @@ h2 span {
 }
 
 .purchasePhotoPanel {
-   border-radius: 5px;
-   width: 50%;
-   height: 10vmin;
-   background-size: cover;
-   background-position: center;
+  border-radius: 5px;
+  width: 50%;
+  height: 10vmin;
+  background-size: cover;
+  background-position: center;
 }
 
 .statusPurchasePanel {
@@ -1240,15 +1252,15 @@ h2.articles {
 }
 
 .containerData {
-   display: flex;
-   flex-direction: column;
-   align-content: space-around;
-   align-items: flex-end;
-   width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  align-items: flex-end;
+  width: 50%;
 }
 
 .containerData h2 {
-   text-align: center;
+  text-align: center;
 }
 
 .articleData {
@@ -1277,25 +1289,25 @@ h2.articles {
 }
 
 .articleNameContainer {
-   display: flex;
-   flex-direction: column;
-   justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .articlesNames {
-   display: flex;
+  display: flex;
 }
 
 .articleName {
-   width: 9vw;
-   display: flex;
-   flex-direction: column;
-   align-items: flex-end;
+  width: 9vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 .brandPrice {
-   display: flex;
-   justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .articleDecoUp,
@@ -1396,7 +1408,7 @@ h2.articles {
 .swiperBox {
   width: 50%;
   height: 60vh;
-  color:blue;
+  color: blue;
 }
 
 .swiper {
@@ -1418,138 +1430,137 @@ h2.articles {
 }
 .swiper-button-next,
 .swiper-button-prev {
-   color: red !important;
-   transform: scale(1);
+  color: red !important;
+  transform: scale(1);
 }
 
 /* Cart */
 
-  .bodyCart {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .bodyCart h2 {
-     color: gray
-  }
-  .cartSection1 {
-    width: 70vw;
-    text-align: center;
-    align-self: center;
-    color: white;
-  }
-  .product {
-     text-align: left;
-     padding-left: 10px
-  }
-  .subtotal {
-   text-align: right;
-   padding-right: 5%
+.bodyCart {
+  display: flex;
+  flex-direction: column;
 }
-  .cartSection1 tr {
-     background-color: transparent;
-     border-bottom: solid 1px rgb(204, 204, 204);
-     color: gray
-  }
+
+.bodyCart h2 {
+  color: gray;
+}
+.cartSection1 {
+  width: 70vw;
+  text-align: center;
+  align-self: center;
+  color: white;
+}
+.product {
+  text-align: left;
+  padding-left: 10px;
+}
+.subtotal {
+  text-align: right;
+  padding-right: 5%;
+}
+.cartSection1 tr {
+  background-color: transparent;
+  border-bottom: solid 1px rgb(204, 204, 204);
+  color: gray;
+}
 
 .cartSection1 th {
-   color: gray;
-   background-color: transparent;
-   font-weight: 600;
-   font-size: large;
+  color: gray;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: large;
 }
-  .cartSection2 {
-   text-align: right;
-   display: flex;
-   justify-content: flex-end;
-   padding: 20px 0px;
-   color: gray;
-   width: 100%;
- }
- .cartSection2 div {
-   display: flex;
-   justify-content: flex-end;
+.cartSection2 {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0px;
+  color: gray;
+  width: 100%;
+}
+.cartSection2 div {
+  display: flex;
+  justify-content: flex-end;
   padding-right: 20px;
 }
- .cartSection2 p {
-   text-align: right;
-   font-weight: 600;
-   padding-left: 10px;
+.cartSection2 p {
+  text-align: right;
+  font-weight: 600;
+  padding-left: 10px;
 }
-  .cartArticle {
-     display: flex;
-     justify-content: flex-start;
-     align-items: center;
-  }
-  .quantity {
-     display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .quantity div {
-     margin: 0px 10px
-  }
-  .cartContainer {
-     align-self: center;
-     display: flex;
-     flex-direction: column;
-     justify-content: flex-end;
-  }
-  .cartSection1 tbody tr td:first-child {
-     width: 15%;
-     padding-left: 20px;
-  }
-  .cartSection1 tbody tr td:nth-child(2) {
-   width: 30%;
-   text-align: left;
-   padding-left: 10px;
+.cartArticle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quantity div {
+  margin: 0px 10px;
+}
+.cartContainer {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.cartSection1 tbody tr td:first-child {
+  width: 15%;
+  padding-left: 20px;
+}
+.cartSection1 tbody tr td:nth-child(2) {
+  width: 30%;
+  text-align: left;
+  padding-left: 10px;
 }
 .cartSection1 tbody tr td:nth-child(3) {
-   width: 10%;
+  width: 10%;
 }
 .cartSection1 tbody tr td:nth-child(4) {
-   width: 20%;
+  width: 20%;
 }
 .cartSection1 tbody tr td:nth-child(4) p {
-   margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 .cartSection1 tbody tr td:nth-child(5) {
-   width: 20%;
-   text-align: right;
-   padding-right: 5%;
+  width: 20%;
+  text-align: right;
+  padding-right: 5%;
 }
 
-.quantity button{
-   padding: 0px 7px;
-   background-color: #6aefcf;
-   border: none;
-   border-radius: 50px;
-   text-align: center;
-   color: white;
+.quantity button {
+  padding: 0px 7px;
+  background-color: #6aefcf;
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  color: white;
 }
-.delete button{
-   padding: 2px 7px;
-   background-color: rgb(160, 160, 160);
-   border: none;
-   border-radius: 20px;
-   color: white;
-   font-size: small;
+.delete button {
+  padding: 2px 7px;
+  background-color: rgb(160, 160, 160);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: small;
 }
 .totalsCard {
-   background-color: white;
-   align-self: flex-end;
-   width: 20vw;
-   border-radius: 0px 0px 20px 20px;
-   padding: 15px;
-   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  background-color: white;
+  align-self: flex-end;
+  width: 20vw;
+  border-radius: 0px 0px 20px 20px;
+  padding: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-  #hidden {
-   visibility: hidden;
-  }
+#hidden {
+  visibility: hidden;
+}
 
-  #visible {
-   visibility: visible;
-  }
-  
+#visible {
+  visibility: visible;
+}
