@@ -37,7 +37,10 @@ const Cart = (props) => {
   }
 
   return (
-    <div className="signInBody" style={{ backgroundImage: "url('/assets/fondoblanco2.png')" }} >
+    <div
+      className="signInBody"
+      style={{ backgroundImage: "url('/assets/fondoblanco2.png')" }}
+    >
       <HeroPages />
       <Header />
       <div className="bodyCart">
@@ -73,28 +76,22 @@ const Cart = (props) => {
                     <td>{article.article.name}</td>
                     <td>
                       <div className="quantity">
-                      <button
-                            onClick={() => {
-                              updateCartFunction(
-                                "decrement",
-                                article.article._id
-                              )
-                            }}
-                          >
-                            {"<"}
-                          </button>
+                        <button
+                          onClick={() => {
+                            updateCartFunction("decrement", article.article._id)
+                          }}
+                        >
+                          {"<"}
+                        </button>
 
                         <div>{article.quantity}</div>
-                          <button
-                            onClick={() => {
-                              updateCartFunction(
-                                "increment",
-                                article.article._id
-                              )
-                            }}
-                          >
-                            {">"}
-                          </button>
+                        <button
+                          onClick={() => {
+                            updateCartFunction("increment", article.article._id)
+                          }}
+                        >
+                          {">"}
+                        </button>
                       </div>
                     </td>
                     <td>
@@ -121,24 +118,26 @@ const Cart = (props) => {
                     </td>
                     <td>
                       $
-                      {(article.quantity *
+                      {(
+                        article.quantity *
                         (article.article.hasDiscount
                           ? article.article.discountPrice
-                          : article.article.price)).toFixed(2)}
+                          : article.article.price)
+                      ).toFixed(2)}
                     </td>
                     <td>
                       <div className="delete">
-                      <button
-                        onClick={() => {
-                          updateCartFunction("delete", article.article._id);
-                        }}
-                      >
-                        X
-                      </button>
+                        <button
+                          onClick={() => {
+                            updateCartFunction("delete", article.article._id)
+                          }}
+                        >
+                          X
+                        </button>
                       </div>
                     </td>
                   </tr>
-                );
+                )
               })}
             </tbody>
           </table>
@@ -154,15 +153,17 @@ const Cart = (props) => {
                 <p>Total:</p>
                 <p style={{ color: "green" }}>${totalCost.toFixed(2)}</p>
               </div>
-              <div onClick={submitSell}>Buy with PayPal</div>
+              <div onClick={submitSell}>
+                <Link to="/paypal">Buy with PayPal</Link>
+              </div>
             </article>
           </section>
         </div>
       </div>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
 const mapStateToProps = (state) => {
   return {

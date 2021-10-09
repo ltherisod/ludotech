@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useSelector } from "react-redux"
+import DirectionsForm from "./DirectionsForm"
 // vendedor: sb-uomjv7984205@business.example.com, Yj6x|.ZF
 // comprador: sb-un4yq8067837@personal.example.com, l.-4VDs7
 // client id: AQLBli0myZ6MxdK2p_WiC1PHaS4ov9-6Sxcb10OBvFFimD5U80wTZlnbnXL21v-6nzIrxLALTqLKKSF6
@@ -29,7 +30,11 @@ const Paypal = (props) => {
         },
         onApprove: async (data, actions) => {
           const order = await actions.order.capture()
-          console.log(order)
+          const details = {
+            direction: {},
+            paymentDetails: { method: "PAYPAL", orderId: order.id },
+          }
+          // mandar esto al backend
         },
         onError: (err) => {
           console.log(err)
@@ -37,7 +42,26 @@ const Paypal = (props) => {
       })
       .render(paypal.current)
   }, [])
-  return <div ref={paypal}></div>
+  const initialValues = {
+    alias: "",
+    receiver: "",
+    street: "",
+    number: "",
+    department: "",
+    zipCode: "",
+    city: "",
+    state: "",
+  }
+  return (
+    <div>
+      <DirectionsForm
+        initialValues={initialValues}
+        buttonText="Submit"
+        submitCallback={(values) => console.log(values)}
+      />
+      <div ref={paypal}></div>
+    </div>
+  )
 }
 
 // const Test = () => {

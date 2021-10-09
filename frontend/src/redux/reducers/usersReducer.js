@@ -24,6 +24,11 @@ const usersReducer = (
         ...state,
         wishList: action.payload,
       }
+    case "UPDATE_DIRECTIONS":
+      return {
+        ...state,
+        user: { ...user, directions: action.payload },
+      }
     default:
       return state
   }

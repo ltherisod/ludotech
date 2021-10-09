@@ -81,7 +81,7 @@ const usersActions = {
     // data es un objeto así:
     // data = {
     //// direction: {
-    ////// "receiver": "a",
+    ////// "receiver": "",
     ////// "street": "",
     ////// "number": "",
     ////// "department": "",
@@ -89,7 +89,10 @@ const usersActions = {
     ////// "city": "",
     ////// "state": ""
     //// },
-    //// paymentMethod: 'Paypal'
+    //// paymentDetails: {
+    ////// method: 'PAYPAL',
+    ////// orderId: '',
+    //// }
     // } (de momento sólo está Paypal (?)) si el objeto no va tal cual, lo para Joi.
     return async (dispatch, getState) => {
       try {
@@ -100,6 +103,54 @@ const usersActions = {
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
         return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+  addDirection: (data) => {
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.post(`${HOST}/api/user/directions`, {
+          headers: { Authorization: `Bearer ${getState().users.user.token}` },
+        })
+        if (!res.data.success) throw new Error(res.data.error)
+        dispatch({ type: "UPDATE_DIRECTIONS", payload: res.data.response })
+        return { success: true, error: null }
+      } catch (e) {
+        return { success: false, error: e.message }
+      }
+    }
+  },
+  updateDirection: (data, directionId) => {
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.put(
+          `${HOST}/api/user/direction/${directionId}`,
+          {
+            headers: { Authorization: `Bearer ${getState().users.user.token}` },
+          }
+        )
+        if (!res.data.success) throw new Error(res.data.error)
+        dispatch({ type: "UPDATE_DIRECTIONS", payload: res.data.response })
+        return { success: true, error: null }
+      } catch (e) {
+        return { success: false, error: e.message }
+      }
+    }
+  },
+  deleteDirection: (directionId) => {
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.delete(
+          `${HOST}/api/user/direction/${directionId}`,
+          {
+            headers: { Authorization: `Bearer ${getState().users.user.token}` },
+          }
+        )
+        if (!res.data.success) throw new Error(res.data.error)
+        dispatch({ type: "UPDATE_DIRECTIONS", payload: res.data.response })
+        return { success: true, error: null }
+      } catch (e) {
+        return { success: false, error: e.message }
       }
     }
   },

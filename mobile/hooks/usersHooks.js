@@ -38,10 +38,8 @@ export const useSignup = () => {
     formData.append("email", values.email)
     formData.append("password", values.password)
     formData.append("photo", fieldValue.photo)
-    console.log(fieldValue)
     setLoading(true)
     const res = await dispatch(usersActions.logInOrSignUp(formData, "signup"))
-    console.log(res.error)
     if (!res.success) setError(res.error)
     setLoading(false)
   }

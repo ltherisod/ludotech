@@ -38,10 +38,8 @@ export const useSignup = () => {
     formData.append("email", values.email)
     formData.append("password", values.password)
     formData.append("photo", fieldValue.photo)
-    console.log(fieldValue)
     setLoading(true)
     const res = await dispatch(usersActions.logInOrSignUp(formData, "signup"))
-    console.log(res.error)
     if (!res.success) setError(res.error)
     setLoading(false)
   }
@@ -185,4 +183,32 @@ export const useUpdateDirection = (direction) => {
   }
 
   return [formik, loading, error]
+}
+
+export const useDirectionsForm = (submitCallback, initialValues) => {
+  const formik = useFormik({
+    initialValues,
+    // {
+    //   alias: "",
+    //   receiver: "",
+    //   street: "",
+    //   number: "",
+    //   department: "",
+    //   zipCode: "",
+    //   city: "",
+    //   state: "",
+    // },
+    onSubmit: submitCallback,
+    validationSchema: Yup.object({
+      alias: Yup.string(),
+      receiver: Yup.string().required("Required"),
+      street: Yup.string().required("Required"),
+      number: Yup.number().required("Required"),
+      department: Yup.string().required("Required"),
+      zipCode: Yup.string().required("Required"),
+      city: Yup.string().required("Required"),
+      state: Yup.string().required("Required"),
+    }),
+  })
+  return formik
 }

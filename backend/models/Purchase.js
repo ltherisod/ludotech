@@ -35,7 +35,10 @@ const purchaseSchema = new mongoose.Schema({
     state: { type: String, required: true },
   },
   total: { type: Number, required: true },
-  paymentMethod: { type: String, required: true },
+  paymentDetails: {
+    method: { type: String, required: true },
+    orderId: { type: String, required: true },
+  },
   status: { type: String, default: "processing" },
   logs: [{ type: String }],
   timestamp: { type: Date, default: Date.now() },
