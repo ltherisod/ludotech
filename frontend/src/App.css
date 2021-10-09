@@ -1579,3 +1579,22 @@ h2.articles {
    border-radius: 10%;
    background-size: cover;
 }
+
+
+/*Preloader*/
+
+.preloaderBack{
+   width: 100%;
+   height: 90vh;
+   background-size: cover;
+   background-position: top;
+   justify-content: center;
+   align-items: center;
+   display: flex;
+
+}
+
+.rubikPreloader{
+   align-self: center;
+   width: 40%;
+}
