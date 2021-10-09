@@ -48,19 +48,12 @@ const ArticlePage = (props) => {
                <HeroPages />
                <Header />
                <div className="articleData">
-               <div className="divCarousel"><ArticleCaroulsel/> </div>
-                  {/* <div
-                     className="articlePhoto"
-                     style={{
-                        backgroundImage: `url(${photos ? photos[0] : []})`,
-                     }}
-                  ></div> */}
-
+               <ArticleCaroulsel photos={photos}/>
                   <div className="containerData">
-                     <h2>{name}</h2>
+                     <h3>{name}</h3>
                      <div className="brandPrice">
                         <div>
-                           <h5>{brand ? brand.name : ""}</h5>
+                           <p>{brand ? brand.name.toUpperCase() : ""}</p>
                         </div>
                      </div>
                      {hasDiscount === false ? (
@@ -69,6 +62,7 @@ const ArticlePage = (props) => {
                               color: "lightgreen",
                               fontSize: 25,
                               fontWeight: "bold",
+                              textAlign: "center"
                            }}
                         >
                            ${price} USD
@@ -99,7 +93,7 @@ const ArticlePage = (props) => {
                      )}
                      {genres ? (
                         genres.map((genre) => (
-                           <p key={genre._id}>{genre.name}</p>
+                           <p style={{textAlign: "center"}} key={genre._id}>{genre.name}</p>
                         ))
                      ) : (
                         <p>No Genre</p>
@@ -112,26 +106,26 @@ const ArticlePage = (props) => {
                               <p>Weight: {weight} kg</p>
                               <p>Visits: {visitsCount}</p>
                            </div>
-                           <div className="articleName">
+                           <div>
+                              <p>|</p>
+                              <p>|</p>
+                              <p>|</p>
+                              <p>|</p>
+                           </div>
+                           <div className="articleName2">
                               <p>🕘 {playingTime} min</p>
                               <p>
                                  🎮 {minPlayers} - {maxPlayers}
                               </p>
                               <p>👦 {minAge}+</p>
-                              <p>STOCK: {stock}</p>
+                              <p>Stock: {stock}</p>
                            </div>
                         </div>
                         <div className="articleShopCont">
-                           <input
-                              className="articleQuantity"
-                              type="number"
-                              name="buy"
-                              placeholder="1"
-                           />
                            <img
                               id="buy"
                               onClick={() => addToCart(_id)}
-                              src="/assets/buy.png"
+                              src="/assets/buy2.png"
                               alt="addCart"
                            />
                         </div>
@@ -161,6 +155,16 @@ const ArticlePage = (props) => {
                      }}
                   ></div>
                </div>
+               <div className="articleVideo"><iframe
+                  width="580"
+                  height="325"
+                  src={video}
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoPlay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  style={{ alignSelf: "center" }}
+               ></iframe></div>
                <div className="articleDecoDown">
                   <div
                      className="articleDeco"
@@ -171,16 +175,6 @@ const ArticlePage = (props) => {
                      }}
                   ></div>
                </div>
-               <iframe
-                  width="580"
-                  height="325"
-                  src={video}
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoPlay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                  style={{ alignSelf: "center" }}
-               ></iframe>
                <h3 className="articleRelatedTittle">Products related</h3>
                {/* <div className="relatedArticles">
             {articles.map((article, id) => {
