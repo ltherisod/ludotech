@@ -9,7 +9,6 @@ const SuccessPurchase = require('./SuccessPurchase')
 const UserBillCheckout = require('./UserBillCheckout')
 const Welcome = require('./Welcome')
 
-
 module.exports = { 
   ConfirmationEmail, 
   DeleteAccount, 

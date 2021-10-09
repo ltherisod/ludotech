@@ -16,7 +16,6 @@ const FailPurchase = (data) => {
       <span style="font-size:0.8">Ludotech</span>
     </footer>
   </body>`
-
 }
   
 module.exports = FailPurchase
