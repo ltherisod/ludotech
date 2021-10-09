@@ -142,11 +142,9 @@ router
   .post(articleValidator.articleValidator, articlesControllers.addArticle)
 
 // SEND EMAIL
-router.route("/confirmation-email")
-.post(usersControllers.sendConfirmationEmail)
+router.route("/confirmation-email").post(usersControllers.sendConfirmationEmail)
 
-router.route("/welcome-email")
-.get(usersControllers.sendWelcomeEmail)
+router.route("/welcome-email").get(usersControllers.sendWelcomeEmail)
 
 //admin routes
 router

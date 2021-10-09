@@ -3,8 +3,13 @@ import { useState, useEffect } from "react"
 import articlesActions from "../redux/actions/articlesActions"
 import articlesUtilitiesActions from "../redux/actions/articlesUtilitiesActions"
 
-export const useArticles = (filters, submit) => {
-  const [articles, setArticles] = useState([])
+export const useArticles = (filters, submit, page) => {
+  const [articles, setArticles] = useState({
+    articles: [],
+    totalCounts: null,
+    page: 1,
+    totalPages: null,
+  })
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const dispatch = useDispatch()
@@ -14,7 +19,7 @@ export const useArticles = (filters, submit) => {
   }, [submit])
 
   const fetchArticles = async () => {
-    const res = await dispatch(articlesActions.getArticles(filters))
+    const res = await dispatch(articlesActions.getArticles(filters, page))
     if (!res.success) setError(res.error)
     setLoading(false)
     setArticles(res.response)
