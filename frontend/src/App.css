@@ -297,9 +297,10 @@ h2 span {
 }
 .signUpBody,
 .signInBody {
-   background-position: top;
-   background-repeat: no-repeat;
-   background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
 }
 
 .accountLink {
@@ -1259,30 +1260,40 @@ h2.articles {
    width: 100%;
    background-repeat: no-repeat;
    background-position: top;
-   background-size: contain;
+   background-size:cover;
    display: flex;
    flex-direction: column;
 }
 
 .containerData {
-   display: flex;
-   flex-direction: column;
-   align-content: space-around;
-   align-items: flex-end;
-   width: 50%;
+  width: 400px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-.containerData h2 {
-   text-align: center;
+.containerData p{
+   color: gray;
+   line-height: 1;
+}
+
+.containerData h3 {
+  text-align: center;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .articleData {
    align-self: center;
-   width: 50%;
-   height: 50vh;
+   width: 60%;
    display: flex;
    justify-content: space-around;
    align-items: center;
+   flex-wrap: wrap;
 }
 
 .articlePhoto {
@@ -1302,31 +1313,47 @@ h2.articles {
 }
 
 .articleNameContainer {
-   display: flex;
-   flex-direction: column;
-   justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .articlesNames {
-   display: flex;
+  display: flex;
+  align-self: center;
 }
 
 .articleName {
+  width: 9vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 20px;
+}
+.articleName2 {
    width: 9vw;
    display: flex;
    flex-direction: column;
-   align-items: flex-end;
-}
+   padding-left: 20px;
+ }
 
 .brandPrice {
    display: flex;
    justify-content: space-around;
 }
 
-.articleDecoUp,
 .articleDecoDown {
-   padding-left: 5em;
    display: flex;
+   position: relative;
+   bottom: 200px;
+}
+
+.articleDecoRight {
+   padding-right: 25em;
+   display: flex;
+   justify-content: flex-end;
+   position: relative;
+   bottom: 140px;
 }
 
 .articleDescription {
@@ -1335,21 +1362,24 @@ h2.articles {
    text-align: justify;
    color: gray;
    font-weight: bold;
-   font-size: 3.5vmin;
+   font-size: 3vmin;
    letter-spacing: 1px;
+   position: relative;
+   bottom: 130px
 }
 .articleDeco {
-   width: 20%;
-   height: 25vh;
+   width: 30%;
+   height: 30vh;
    background-size: contain;
    background-repeat: no-repeat;
    background-position: center;
 }
 
-.articleDecoRight {
-   padding-right: 5em;
-   display: flex;
-   justify-content: flex-end;
+
+.articleVideo {
+   align-self: center;
+   position: relative;
+   bottom: 100px;
 }
 
 .articleQuantity {
@@ -1359,10 +1389,7 @@ h2.articles {
 
 .articleShopCont {
    align-self: center;
-   width: 30%;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+   padding: 5px;
 }
 
 /*Article Related */
@@ -1375,6 +1402,8 @@ h2.articles {
    color: #16054b;
    font-size: 5vmin;
    text-align: center;
+   position: relative;
+   bottom: 180px;
 }
 
 .relatedArticles {
