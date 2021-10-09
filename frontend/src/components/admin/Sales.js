@@ -11,13 +11,13 @@ const Sales = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/purchases')
+        axios.get('https://lodotechgames.herokuapp.com/api/purchases')
             .then(res=> setPurchases(res.data.response))
             .catch(e => console.log(e))
     },[])
 
     const getPurchase = () => {
-        axios.get(`http://localhost:4000/api/user/purchase/${search}`
+        axios.get(`https://lodotechgames.herokuapp.com/api/user/purchase/${search}`
         // {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
         )
             .then(res => {
