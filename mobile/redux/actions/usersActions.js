@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const HOST = "http://192.168.1.83:4000"
+const HOST = "https://lodotechgames.herokuapp.com"
 
 const usersActions = {
   logInOrSignUp: (data, action) => {
