@@ -158,8 +158,8 @@ main h2 {
 .cube {
   background-position: center;
   background-size: cover;
-  height: 530px;
-  width: 530px;
+  height: 460px;
+  width: 460px;
   margin-bottom: 60px;
 }
 
@@ -491,6 +491,7 @@ h2 span {
 .priceArticle {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .gameInfo {
    position: relative;
@@ -547,7 +548,10 @@ h2 span {
   display: flex;
   justify-content: space-between;
 }
-
+.gameName{
+  width: 100%;
+  height: 70px;
+}
 #buy {
   cursor: pointer;
   width: 40x;
@@ -583,32 +587,32 @@ h2 span {
 }
 
 .mostWantedGame {
-  width: 36%;
-  height: 30vh;
-  background-size: contain;
+  width: 250px;
+  height: 250px;
+  background-size: cover;
   background-repeat: no-repeat;
   align-self: flex-end;
 }
 
 .mostWantedGameConteiner,
 .mostWantedGameConteinerLeft {
-  padding: 1rem;
+  padding-right: 3rem;
   align-self: center;
   width: 90%;
   min-height: 20vh;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: flex-end;
 }
 
 .mostWantedGameConteinerLeft {
-  width: 80%;
+  padding-left: 3rem;
 }
 .mostWantedGameBrand {
-  margin: 1em;
+  margin: 2em;
   align-self: center;
   font-size: 7vmin;
-  font-weight: bold;
+  font-weight: bolder;
   color: #120045;
 }
 /*Footer*/
