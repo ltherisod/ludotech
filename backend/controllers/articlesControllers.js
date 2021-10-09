@@ -45,7 +45,7 @@ const articlesControllers = {
         if (getArticles) {
           res.json({
             success: true,
-            response: { articles: getArticles, totalCount },
+            response: getArticles,
             error: null,
           })
         } else {
