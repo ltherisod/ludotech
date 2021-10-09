@@ -281,6 +281,7 @@ const usersControllers = {
     try {
       // /user/wish-list/:articleId es la ruta, y mandar el token en headers.
       const { articleId } = req.params
+      console.log(articleId)
       let user = await User.findOne({ _id: req.user._id })
       if (user.wishList.some((a) => a._id.toString() === articleId)) {
         user = await User.findOneAndUpdate(

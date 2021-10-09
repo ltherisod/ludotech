@@ -8,7 +8,6 @@ import HeroPages from "../components/HeroPages"
 const Articles = (props) => {
    const [articles, setArticles] = useState([])
    const filterArticles = (e) => {
-      console.log(e)
       setArticles(e)
    }
    return (

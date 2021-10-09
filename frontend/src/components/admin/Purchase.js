@@ -7,7 +7,7 @@ const Purchase = ({purchase, articles, direction}) => {
 
     return (
         <div className='purchaseContainerPanel'>
-            <p>{purchase._id}</p>
+            <p>3333333</p>
             <div className={`numberArticlesPanel`} onClick={() => setSeeProducts(true)} onMouseLeave={() => setSeeProducts(false)}>
                     <p>{articles.length} products</p>
                     {seeProducts && 

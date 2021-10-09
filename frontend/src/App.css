@@ -967,7 +967,7 @@ h2 span {
   display: flex;
   align-items: center;
   display: grid;
-  grid-template-columns: 25% 12% 30% 15% 10% 15%;
+  grid-template-columns: 8% 12% 30% 15% 10% 15%;
 }
 
 .purchasesPanel,
@@ -1238,6 +1238,15 @@ h2.articles {
 .inputEditProduct label.white {
   color: white;
   margin-right: 1vmin;
+}
+
+.purchaseFound {
+  margin-top: 3vmin;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  padding: 1vmin 2vmin;
+  border: none;
 }
 
 /* Article Page */
@@ -1563,4 +1572,36 @@ h2.articles {
 
 #visible {
   visibility: visible;
+}
+
+/* WISHLIST  seba */
+
+.mainWishlist {
+  min-height: 100vh;
+  margin-top: -10vmin;
+}
+
+.mainWishlist h2 {
+  font-weight: 900;
+  text-align: center;
+  font-size: 6vmin;
+}
+
+.searchbarWishlist {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  margin-bottom: 10vmin;
+}
+
+.searchbarWishlist input {
+  height: 40px;
+  outline: none;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  width: 50%;
+  padding: 0 2vmin;
+  border-radius: 5px;
+  border: none;
 }

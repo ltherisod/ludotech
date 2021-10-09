@@ -10,6 +10,7 @@ import PanelAdmin from "./pages/PanelAdmin"
 import Cart from "./pages/Cart"
 import ArticlePage from "./pages/ArticlePage"
 import Paypal from "./components/Paypal"
+import Wishlist from './pages/Wishlist'
 
 const App = (props) => {
    useLoginLS()
@@ -25,6 +26,7 @@ const App = (props) => {
             {!user && <Route path="/signup" component={SignUp} />}
             <Route path="/admin" component={PanelAdmin} />
             <Route path="/cart" component={Cart} />
+            {user && <Route path="/wishlist" component={Wishlist} />}
             <Redirect to="/" />
          </Switch>
       </BrowserRouter>

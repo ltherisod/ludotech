@@ -13,7 +13,7 @@ const Filter = (props) => {
    const [values, setValues] = useState({})
 
    const [articles, loading, error] = useArticles(filters, submit)
-   console.log(articles, loading, error)
+   // console.log(articles, loading, error)
 
    useEffect(() => {
       props.filterArticles(articles)
@@ -210,7 +210,7 @@ const Filter = (props) => {
       setSubmit(!submit)
    }
 
-   console.log(filters)
+   // console.log(filters)
    return (
       <div className="filterUltracontainer">
          <form

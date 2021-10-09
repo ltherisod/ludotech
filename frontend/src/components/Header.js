@@ -117,7 +117,7 @@ const Header = (props) => {
             ></div>
           </div>
           <FaBell className="iconsNav" />
-          <FaHeart className="iconsNav" />
+          <Link to='wishlist'><FaHeart className="iconsNav" /></Link>
           <Link to="/cart">
             <FaShoppingCart className="iconsNav" />
           </Link>
