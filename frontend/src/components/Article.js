@@ -54,7 +54,7 @@ const Article = (props) => {
                      <p
                         style={{
                            color: "lightgreen",
-                           fontSize: 25,
+                           fontSize: 21,
                            fontWeight: "bold",
                         }}
                      >
@@ -66,7 +66,7 @@ const Article = (props) => {
                            style={{
                               textDecoration: "line-through",
                               color: "lightgrey",
-                              fontSize: 25,
+                              fontSize: 21,
                               fontWeight: "bold",
                               paddingRight: "1.2rem",
                            }}
@@ -76,7 +76,7 @@ const Article = (props) => {
                         <p
                            style={{
                               color: "lightgreen",
-                              fontSize: 25,
+                              fontSize: 21,
                               fontWeight: "bold",
                            }}
                         >
@@ -85,7 +85,9 @@ const Article = (props) => {
                      </div>
                   )}
                </div>
-               <h3>{name}</h3>
+               <div className="gameName">
+               <h4>{name}</h4>         
+               </div>
                <div className="gameDetails">
                   <p>
                      <img src="./assets/gener.png" />{" "}
