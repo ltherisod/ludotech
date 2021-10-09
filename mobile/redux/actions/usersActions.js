@@ -1,17 +1,16 @@
 import axios from "axios"
 
-const HOST = "http://localhost:4000"
+const HOST = "http://192.168.1.83:4000"
 
 const usersActions = {
   logInOrSignUp: (data, action) => {
     return async (dispatch) => {
       try {
         // action puede ser 'login' o 'signup'
-        console.log("data")
-        console.log(data)
-        const response = await axios.post(`${HOST}/api/${action}`, data)
+        const response = await axios.post(`${HOST}/api/user/${action}`, data)
         if (!response.data.success) throw new Error(response.data.error)
         // localStorage.setItem("token", response.data.response.token)
+        console.log(response.data)
         dispatch({ type: "LOGIN_OR_SIGNUP", payload: response.data.response })
         return { success: true, error: null }
       } catch (e) {

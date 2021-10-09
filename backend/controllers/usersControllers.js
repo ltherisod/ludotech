@@ -7,11 +7,12 @@ const indexEmail = require("../config/emailsBody/indexEmail")
 
 const usersControllers = {
   logIn: async (req, res) => {
+    console.log("Llegó un login")
     try {
       const { email, password, google } = req.body
-      const user = await User.findOne({ email }).populate(
-        "wishList shoppingCart.article"
-      )
+      const user = await User.findOne({ email })
+        .populate("shoppingCart.article")
+        .populate({ path: "wishList", populate: "brand genres gameType" })
       if (!user) throw new Error("Invalid credentials")
       if (user.google && !google)
         throw new Error(
@@ -137,7 +138,9 @@ const usersControllers = {
           phone,
         },
         { new: true }
-      ).populate("wishList shoppingCart.article")
+      )
+        .populate("shoppingCart.article")
+        .populate({ path: "wishList", populate: "brand genres gameType" })
       // .select('_id firstname lastname email photo phone isAdmin directions directions wishList shoppingCart')
       const token = jwt.sign(
         { _id: user._id, email: user.email },
@@ -267,7 +270,8 @@ const usersControllers = {
   },
   verifyToken: async (req, res) => {
     const user = await User.findOne({ _id: req.user._id })
-      .populate("wishList shoppingCart.article")
+      .populate("shoppingCart.article")
+      .populate({ path: "wishList", populate: "brand genres gameType" })
       .select(
         "_id email firstname lastname photo phone isAdmin directions wishList shoppingCart google"
       )
@@ -287,7 +291,7 @@ const usersControllers = {
           { _id: req.user._id },
           { $pull: { wishList: articleId } },
           { new: true }
-        ).populate("wishList")
+        ).populate({ path: "wishList", populate: "brand genres gameType" })
       } else {
         user = await User.findOneAndUpdate(
           { _id: req.user._id },
@@ -477,7 +481,6 @@ const usersControllers = {
       }
     })
   },
-  
 }
 
 module.exports = usersControllers

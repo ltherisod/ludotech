@@ -60,7 +60,7 @@ export const useSignup = () => {
   return [formik, responseGoogle, setFieldValue, loading, error]
 }
 
-export const useLogin = async () => {
+export const useLogin = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const dispatch = useDispatch()
