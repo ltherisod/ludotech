@@ -657,63 +657,15 @@ h2 span {
 
 /* ADMIN  */
 
-.adminPanel {
-  display: flex;
-  flex-direction: column;
-}
-
-.adminPanelButton {
-  padding: 20px 40px;
-  margin: 10px 0px;
-}
-
-.containerArticlesAdmin {
-  background-color: yellow;
-  width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+.mainTeamPanel p {
+  margin: 0;
 }
 
 .containerButtonFilter {
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.buttonsAdmin {
-  padding: 1rem 2rem;
-}
-
-.buttonAdd {
-  width: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.buttonsAdminB {
-  background-color: rgb(163, 5, 255);
-  padding: 5px 15px;
-  margin: 4px;
-  color: white;
-}
-
-th {
-  font-size: 25px;
-  width: 11vw;
-  color: whitesmoke;
-}
-
-tr {
-  text-align: center;
-  height: 5vh;
-  color: rgb(238, 129, 241);
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 /* PANEL ADMIN */
@@ -991,7 +943,8 @@ tr {
   margin: 0;
 }
 
-.titlesPurchasesPanel {
+.titlesPurchasesPanel,
+.theadArticlesPanel {
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
   color: rgba(0, 0, 0, 0.5);
   padding-bottom: 3vmin;
@@ -1005,10 +958,11 @@ tr {
   grid-template-columns: 10% 18% 30% 15% 10% 15%;
 }
 
-.purchasesPanel {
-   display: grid;
-   grid-template-columns: repeat(1, 1fr);
-   gap: 1vmin;
+.purchasesPanel,
+.productsPanel {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1vmin;
 }
 
 .purchaseContainerPanel {
@@ -1059,6 +1013,7 @@ tr {
 
 .numberArticlesPanel {
   width: 80%;
+  padding: 1vmin 0;
   background-size: cover;
   background-position: center;
   color: white;
@@ -1067,7 +1022,7 @@ tr {
   align-items: center;
   justify-content: center;
   background-color: rgb(179, 135, 214);
-  border: 1px solid rgb(216, 174, 212);
+  /* border: 1px solid rgb(216, 174, 212); */
   border-radius: 5px;
   cursor: pointer;
   font-size: 2vmin;
@@ -1077,50 +1032,200 @@ tr {
   position: absolute;
   background-color: white;
   border-radius: 5px;
-  /* height: 8vh;
-  width: 35vh; */
-  padding: 1vh;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1vmin;
+  width: 50vmin;
+  padding: 1vmin;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   position: absolute;
   top: 100%;
   left: 0;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2vmin;
+}
+
+.productRow {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.productRowtPicture {
+  width: 7vh;
+  height: 7vh;
+  margin-right: 2vmin;
+  background-size: cover;
+  border-radius: 50%;
+  background-position: center;
+}
+
+.nameProductPanel {
+  font-weight: bold;
+  font-size: 2.5vmin;
+  margin: 0;
+  width: 100%;
+}
+
+.productRow span {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: gray;
+}
+.detailsProductPanel {
+  width: 100%;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+h2.articles {
+  color: white;
+  margin: 0;
 }
 
 .containerProductsPanel div {
-  width: 6vh;
-  border-radius: 50%;
-  background-color: rgba(50, 50, 93, 0.3);
-  height: 6vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
+  /* height: 7vh;
+  width: 35vh; */
+  background-color: white;
 }
 
-.cssarrow {
-  position: relative;
-  background: #ffffff;
-  z-index: 200;
+.textArticlesPanel {
+  border-top: 1px solid rgba(255, 255, 255, 0.596);
+  padding-top: 3vmin;
 }
-.cssarrow:after {
-  top: 100%;
-  /* left: 50%; */
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-color: rgba(136, 183, 213, 0);
-  border-bottom-color: #ffffff;
-  border-width: 15px;
-  margin-left: -31px;
-  z-index: 200;
+
+.theadArticlesPanel,
+.rowStockPanel {
+  display: grid;
+  grid-template-columns: 7% 20% 8% 8% 15% 15% 7% 17%;
+}
+
+.rowStockPanel p {
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: white;
+}
+
+.textPanell {
+  color: white;
+}
+
+.rowStockPanel {
+  border-bottom: 1px solid rgba(43, 42, 42, 0.466);
+  padding: 2vmin 0;
+}
+.theadArticlesPanel {
+  margin-top: 3vmin;
+  color: #ff8924;
+  font-weight: bold;
+  padding-bottom: 2vmin;
+}
+
+.buttonAdd {
+  margin-top: 5vmin;
+  margin-right: 5vmin;
+  width: 30%;
+  padding: 2vmin 5vmin;
+  border-radius: 5px;
+  background-color: rgba(83, 255, 83, 0.63);
+  border: 1px solid rgba(83, 255, 83, 0.63);
+  color: white;
+}
+
+.buttonsAdminB {
+  background-color: rgba(255, 94, 0, 0.822);
+  padding: 5px 15px;
+  margin: 4px;
+  border-radius: 5px;
+  color: white;
+}
+
+.buttonsAdminC {
+  background-color: rgba(255, 40, 40, 0.493);
+  padding: 5px 15px;
+  margin: 4px;
+  color: white;
+  border-radius: 5px;
+}
+
+/* // edit ARTICLE */
+
+.logoNavPanel {
+  width: 80%;
+  height: 7vh;
+  background-size: cover;
+}
+
+.inputEdit {
+  height: 40px;
+}
+
+.mainTeamPanel.edit h2 {
+  color: white;
+}
+
+.addProduct {
+  width: 30%;
+  padding: 1vmin 0;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-size: cover;
+  color: white;
+}
+
+.genresEditProduct {
+  display: flex;
+  gap: 4vmin;
+}
+
+.selectsEditProduct {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2vmin;
+}
+
+.numberOptions {
+  gap: 1vmin;
+  display: grid;
+  grid-template-columns: repeat(6, 15%);
+}
+
+.numberAddOptions {
+  gap: 1vmin;
+  display: grid;
+  grid-template-columns: repeat(6, 16%);
+}
+
+.inputEditProduct {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.inputEditProduct input,
+.inputEditProduct select {
+  background-color: white;
+  padding: 0 2vmin;
+  outline: none;
+  box-shadow: 1px 1px 5px rgba(163, 157, 157, 0.3);
+  border: none;
+  border-radius: 5px;
+}
+
+.inputEditProduct label {
+  color: #ff8924;
+}
+
+.inputEditProduct label.white {
+  color: white;
+  margin-right: 1vmin;
 }
 
 /* Article Page */

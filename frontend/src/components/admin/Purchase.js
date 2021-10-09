@@ -12,11 +12,20 @@ const Purchase = ({purchase, articles, direction}) => {
                     <p>see {articles.length} products</p>
                     {seeProducts && 
                     <div className='containerProductsPanel'>
-                        <div style={{backgroundImage: `url("${articles[0].photos[0]}")`}}></div>
-                        {articles.length > 1 && <div style={{backgroundImage: `url("${articles[1].photos[0]}")`}}></div>}
-                        {articles.length > 2 && <div style={{backgroundImage: `url("${articles[2].photos[0]}")`}}></div>}
-                        {articles.length > 3 && <div style={{backgroundImage: `url("${articles[3].photos[0]}")`}}></div>}
-                        <div>{articles.length < 5 ? articles.length : `+${articles.length-4}`}</div>
+                        {articles.map(article => {
+                            return (
+                                <div className='productRow'>
+                                    <div className='productRowtPicture' style={{backgroundImage: `url("${article.photos[0]}")`}}></div>
+                                    <div className='detailsProductPanel'>
+                                        <p className='nameProductPanel'>{article.name}</p>
+                                        <span>
+                                            <p style={{marginRight: '2vmin'}}>Price: ${article.price}</p>
+                                            <p>Quantity: {article.quantity}</p>
+                                        </span>
+                                    </div>
+                                </div>
+                            )
+                        })}
                     </div>}
             </div>
             <div className='addressPurchasePanel'>
