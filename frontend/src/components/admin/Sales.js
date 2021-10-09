@@ -7,7 +7,7 @@ const Sales = () => {
     const [purchases, setPurchases] = useState([])
     const [notFound, setNotFound] = useState(false)
     const [search, setSearch] = useState('')
-    const [userFound, setUserFound] = useState(false)
+    const [purchaseFound, setPurchaseFound] = useState(false)
 
 
     useEffect(() => {
@@ -15,6 +15,24 @@ const Sales = () => {
             .then(res=> setPurchases(res.data.response))
             .catch(e => console.log(e))
     },[])
+
+    const getPurchase = () => {
+        axios.post('http://localhost:4000/api/admin', {_id: search},{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+            .then(res => {
+                console.log(res.data)
+                if(res.data.response) {
+                    setPurchaseFound(res.data.response)
+                    setNotFound(false)
+                } else {
+                    setPurchaseFound(false)
+                    setNotFound(true)
+                }
+            })
+            .catch(e => {
+                console.log(e)
+                setNotFound(true)
+            })
+    }
 
     return (
         <div className='mainTeamPanel'>
@@ -24,50 +42,27 @@ const Sales = () => {
                 <div className='searchbarTeam'>
                     <input type='search' placeholder='AA919ADSJ' onChange={e => setSearch(e.target.value)} />
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
-
+                        onClick={getPurchase}
                     >
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                     </svg>
                 </div>
-                {userFound && <div className='userFoundTeam'>
-                    <div className='userPicFoundTeam' style={{backgroundImage: `url("${userFound.photo}")`}}></div>
+                {purchaseFound && <div className='userFoundTeam'>
+                    {/* <div className='userPicFoundTeam' style={{backgroundImage: `url("${userFound.photo}")`}}></div> */}
                     <div className='detailsUserFound'>
-                        <div>
-                            <p className='bold'>{userFound.firstname} {userFound.lastname}</p>
-                            <p>{userFound.email}</p>
-                        </div>
-                        <div>
-                            <div  style={{display: 'flex', alignItems: 'center'}}>
-                                <label className='bold'>Rol: </label>
-                                <p>{userFound.isAdmin ? ' Admin' : ' User'}</p>
-                            </div>
-                            {!userFound.isAdmin && <div onClick={() =>{}} className='saveTeam'>Give admin</div>}
-                        {userFound.isAdmin && <div disabled className='saveTeam' style={{backgroundColor: 'rgba(0,0,0,0.3)', cursor: 'default'}}>Give admin</div>}
-                        </div>
+                        <Purchase direction={purchaseFound.direction} articles={purchaseFound.articles} status={purchaseFound.status} purchase={purchaseFound} />
                     </div>
                 </div>}
                 {notFound && <span className='userDontFoundTeam'>Dont exist an user with that email</span>}
             </div>
             <div className='purchasesContainerPanel'>
                 <div className='titlesPurchasesPanel'>
-                    <div>
-                        <p>Order ID</p>
-                    </div>
-                    <div>
-                        <p>Products</p>
-                    </div>
-                    <div>
-                        <p>Adress</p>
-                    </div>
-                    <div>
-                        <p>Date</p>
-                    </div>
-                    <div>
-                        <p>Amount</p>
-                    </div>
-                    <div>
-                        <p>Status</p>
-                    </div>
+                    <p>Order ID</p>
+                    <p>Products</p>
+                    <p>Adress</p>
+                    <p>Date</p>
+                    <p>Amount</p>
+                    <p>Status</p>
                 </div>
                 <div className='purchasesPanel'>
                     {purchases.map(purchase => {

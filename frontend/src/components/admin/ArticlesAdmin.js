@@ -38,52 +38,54 @@ const ArticlesAdmin = () => {
       default:
          return (
             <div
-               className="containerArticlesAdmin"
+               className="mainTeamPanel articles"
                style={{
                   backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`,
                }}
             >
+               <h2 className='articles'>Orders</h2>
+               <p className='textPanell'>Add new products or search some added product to edit or delete</p>
                <div className="containerButtonFilter">
-                  <div className="buttonAdd">
+               <Filter className='filterStockPanel' filterArticles={(e) => filterArticles(e)} />
                      <button
                         type="button"
-                        className="buttonsAdmin"
+                        className="buttonAdd"
                         onClick={() => setTypeAction("add")}
                      >
                         ADD NEW GAME
                      </button>
-                  </div>
-                  <Filter filterArticles={(e) => filterArticles(e)} />
+                  
                </div>
 
                {loading ? (
                   <h2>Loading...</h2>
                ) : (
-                  <table>
-                     <thead>
-                        <tr>
-                           <th>Name</th>
-                           <th>Brand</th>
-                           <th>Price</th>
-                           <th>Genres</th>
-                           <th>Game Type</th>
-                           <th>STOCK</th>
-                           <th>-</th>
-                        </tr>
-                     </thead>
-                     <tbody>
+                  <>
+                     {/* <p  className='textArticlesPanel textPanell'>Find all products that you can sell in your store</p> */}
+                     <div class='theadArticlesPanel'>
+                        <p>Photo</p>
+                        <p>Name</p>
+                        <p>Brand</p>
+                        <p>Price</p>
+                        <p>Genres</p>
+                        <p>Game Type</p>
+                        <p>STOCK</p>
+                        <p>Actions</p>
+                     </div>
+                     <div className='productsPanel'>
                         {search.map((article) => {
                            return (
-                              <tr key={article._id}>
-                                 <td>{article.name}</td>
-                                 <td>Brand</td>
-                                 <td>{article.price}</td>
-                                 <td>
+                              <div key={article._id} className='rowStockPanel'>
+                                 <div className='picture' style={{backgroundImage: `url("${article.photos[0]}")`, width: '7vh', height: '7vh'}}></div>
+                                 <p>{article.name}</p>
+                                 <p>Brand</p>
+                                 <p>{article.price}</p>
+                                 <p>
                                     {article.genres.map((genre) => genre.name)}
-                                 </td>
-                                 <td>{article.gameType.name}</td>
-                                 <td>{article.stock}</td>
-                                 <td>
+                                 </p>
+                                 <p>{article.gameType.name}</p>
+                                 <p>{article.stock}</p>
+                                 <p>
                                     <span
                                        type="button"
                                        className="buttonsAdminB"
@@ -96,19 +98,19 @@ const ArticlesAdmin = () => {
                                     </span>
                                     <span
                                        type="button"
-                                       className="buttonsAdminB"
+                                       className="buttonsAdminC"
                                        onClick={() =>
                                           deleteHandler(article._id)
                                        }
                                     >
                                        DELETE
                                     </span>
-                                 </td>
-                              </tr>
+                                 </p>
+                              </div>
                            )
                         })}
-                     </tbody>
-                  </table>
+                     </div>
+                  </>
                )}
             </div>
          )
