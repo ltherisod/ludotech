@@ -209,6 +209,7 @@ const Filter = (props) => {
 
   const submitFilters = (e) => {
     e.preventDefault()
+    props.setCurrentPage(1)
     setSubmit(!submit)
   }
   // cómo carajos mandan los filtros? xd jiji

@@ -10,9 +10,9 @@ const Articles = (props) => {
     articles: [],
     page: 1,
     totalCounts: null,
-    totalPages: null,
+    totalPages: 1,
   })
-  const [currentPage, setCurrentPage] = useState(2)
+  const [currentPage, setCurrentPage] = useState(1)
   const filterArticles = (e) => {
     console.log(e)
     setArticles(e)
@@ -46,6 +46,33 @@ const Articles = (props) => {
                 )
               })}
             </div>
+            {articles.totalPages > 1 && (
+              <div
+                style={{ display: "flex", gap: "1rem", alignItems: "center" }}
+              >
+                {currentPage > 1 && (
+                  <button
+                    type="button"
+                    style={{ padding: ".3rem 1.2rem" }}
+                    onClick={() => setCurrentPage(currentPage - 1)}
+                  >
+                    Prev
+                  </button>
+                )}
+                <p style={{ margin: "0", fontSize: "1.2rem", color: "white" }}>
+                  Current page: {currentPage}/{articles.totalPages}
+                </p>
+                {currentPage < articles.totalPages && (
+                  <button
+                    style={{ padding: ".3rem 1.2rem" }}
+                    type="button"
+                    onClick={() => setCurrentPage(currentPage + 1)}
+                  >
+                    Next
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </div>
         <Footer />

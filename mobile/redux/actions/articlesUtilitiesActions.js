@@ -1,5 +1,5 @@
 import axios from "axios"
-const HOST = "http://localhost:4000"
+const HOST = "http://192.168.1.83:4000"
 
 const articlesUtilitiesActions = {
   getAllArticlesUtilities: () => {

@@ -60,12 +60,12 @@ export const useSignup = () => {
   return [formik, responseGoogle, setFieldValue, loading, error]
 }
 
-export const useLogin = async () => {
+export const useLogin = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const dispatch = useDispatch()
 
-  let formik = useFormik({
+  const formik = useFormik({
     initialValues: { email: "", password: "", google: false },
     onSubmit: (values) => loginHandler(values),
     validationSchema: Yup.object({
@@ -78,6 +78,7 @@ export const useLogin = async () => {
 
   const loginHandler = async (values) => {
     const res = await dispatch(usersActions.logInOrSignUp(values, "login"))
+    console.log(res)
     if (!res.success) setError(res.error)
     setLoading(false)
   }
