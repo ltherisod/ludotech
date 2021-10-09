@@ -17,7 +17,6 @@ const Articles = (props) => {
     console.log(e)
     setArticles(e)
   }
-  console.log(articles)
   return (
     <>
       <div

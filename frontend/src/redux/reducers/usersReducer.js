@@ -8,6 +8,7 @@ const usersReducer = (
         ...state,
         user: action.payload,
         shoppingCart: action.payload.shoppingCart,
+        wishList: action.payload.wishList
       }
     case "LOG_OUT":
       return {

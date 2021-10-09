@@ -11,6 +11,7 @@ import Cart from "./pages/Cart"
 import ArticlePage from "./pages/ArticlePage"
 import Paypal from "./components/Paypal"
 import UserProfile from "./pages/UserProfile"
+import Wishlist from './pages/Wishlist'
 
 const App = (props) => {
    useLoginLS()
@@ -27,6 +28,7 @@ const App = (props) => {
             <Route path="/admin" component={PanelAdmin} />
             <Route path="/profile" component={UserProfile} />
             <Route path="/cart" component={Cart} />
+            {user && <Route path="/wishlist" component={Wishlist} />}
             <Redirect to="/" />
          </Switch>
       </BrowserRouter>

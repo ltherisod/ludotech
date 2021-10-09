@@ -211,7 +211,7 @@ const Filter = (props) => {
     e.preventDefault()
     setSubmit(!submit)
   }
-  // cómo carajos mandan los filtros? xd
+  // cómo carajos mandan los filtros? xd jiji
   return (
     <div className="filterUltracontainer">
       <form

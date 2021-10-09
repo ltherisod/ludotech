@@ -1,11 +1,19 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { FaHeart, FaRegHeart } from "react-icons/fa"
 import { connect } from "react-redux"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
+import {useDispatch, useSelector} from 'react-redux'
 import articlesActions from "../redux/actions/articlesActions"
+import usersActions from '../redux/actions/usersActions'
 
 const Article = (props) => {
+
+   const wishlist = useSelector((state) => state.users.wishList)
+   const dispatch = useDispatch()
+
+   console.log(wishlist)
    const [fav, setFav] = useState(false)
+
    const {
       name,
       photos,
@@ -18,6 +26,21 @@ const Article = (props) => {
       discountPrice
    } = props.article
 
+   // useEffect(() => {
+   //    wishlist.find(article => {
+   //       return article._id ===
+   //    })
+   //       .then(res => {
+   //          if(res) {
+   //             setFav(true)
+   //          } else {
+   //             setFav(false)
+   //          }
+   //       })
+   //       .catch(e=>console.log(e))
+   // }, [])
+
+
    const addToCart = (e, id) => {
       e.stopPropagation()
       props.updateCart("add", id)
@@ -26,6 +49,7 @@ const Article = (props) => {
    const handleFav = (e) => {
       e.stopPropagation()
       setFav(!fav)
+      dispatch(usersActions.toggleWishList(_id))
    }
 
    return (
