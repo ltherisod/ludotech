@@ -153,10 +153,12 @@ const articlesActions = {
       }
     }
   },
-  getRelatedArticles: (genre) => {
-    return async () => {
+  getRelatedArticles: (genreId) => {
+    return async (dispatch) => {
       try {
-        const response = {data: {success: true, response: genre, error: "test error"}} //cambiar por axios
+        const response = await axios.get(
+          `${HOST}/api/article/related/${genreId}`
+        ) //cambiar por axios
         if (!response.data.success) throw new Error(response.data.error)
         return {
           success: true,
