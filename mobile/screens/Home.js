@@ -2,7 +2,6 @@ import React from "react";
 import {
   View,
   Text,
-  SafeAreaView,
   ScrollView,
   Platform,
   StatusBar,
@@ -11,22 +10,14 @@ import {
   ImageBackground,
   TouchableOpacity,
   Image,
-} from "react-native";
-import Header from "../components/Header";
+} from "react-native"
 import Footer from "../components/Footer";
 import MostWanted from "../components/MostWanted";
 
 
 const Home = (props) => {
   return (
-    <SafeAreaView
-      style={{
-        marginTop: Platform.OS === "android" && StatusBar.currentHeight,
-        flex: 1,
-      }}
-    >
       <ScrollView>
-        {/* <Header /> */}
         <View style={styles.homeMain}>
           <ImageBackground
             style={styles.mainImg}
@@ -65,7 +56,6 @@ const Home = (props) => {
           </ImageBackground>
         </View>
       </ScrollView>
-    </SafeAreaView>
   );
 };
 
