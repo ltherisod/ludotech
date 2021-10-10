@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { FaHeart, FaRegHeart } from "react-icons/fa"
 import { connect } from "react-redux"
-// import { Link } from "react-router-dom"
 import {useDispatch, useSelector} from 'react-redux'
 import articlesActions from "../redux/actions/articlesActions"
 import usersActions from '../redux/actions/usersActions'
