@@ -4,6 +4,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Filter from "../components/Filter"
 import HeroPages from "../components/HeroPages"
+import Preloader from "../components/Preloader"
 
 const Articles = (props) => {
   const [articles, setArticles] = useState({
@@ -12,6 +13,7 @@ const Articles = (props) => {
     totalCounts: null,
     totalPages: 1,
   })
+  // const [loading, setLoading] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const filterArticles = (e) => {
     console.log(e)
@@ -34,17 +36,23 @@ const Articles = (props) => {
               filterArticles={(e) => filterArticles(e)}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
+              // setLoading={setLoading}
             />
             <div className="containerArticles">
-              {articles.articles.map((article) => {
-                return (
-                  <Article
-                    history={props.history}
-                    article={article}
-                    key={article._id}
-                  />
-                )
-              })}
+              {
+                // loading ? (
+                //   <Preloader /> // cambiarlo acá, es de prueba jj
+                // ) :
+                articles.articles.map((article) => {
+                  return (
+                    <Article
+                      history={props.history}
+                      article={article}
+                      key={article._id}
+                    />
+                  )
+                })
+              }
             </div>
             {articles.totalPages > 1 && (
               <div

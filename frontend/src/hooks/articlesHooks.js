@@ -88,7 +88,9 @@ export const useRelatedArticles = (genres) => {
   }, [genres])
 
   const fetchRelatedArticles = async () => {
-    const res = await dispatch(articlesActions.getRelatedArticles(genres[0]._id))
+    const res = await dispatch(
+      articlesActions.getRelatedArticles(genres[0]._id)
+    )
     if (!res.success) {
       setError(res.error)
     } else {
@@ -98,4 +100,8 @@ export const useRelatedArticles = (genres) => {
   }
 
   return [relatedArticles, loadingRelated, error]
+}
+
+export const useFilters = () => {
+  const [filters, setFilters] = useState({})
 }
