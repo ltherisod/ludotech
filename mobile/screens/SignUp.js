@@ -24,38 +24,41 @@ const SignUp = (props) => {
   const [formik, setFieldValue, loading, error] = useSignup()
   const [fieldError, setFieldError] = useState(null)
   const [imageName, setImageName] = useState("")
-  // useEffect(() => {
-  //   ;(async () => {
-  //     if (Platform.OS !== "web") {
-  //       const { status } =
-  //         await ImagePicker.requestMediaLibraryPermissionsAsync()
-  //       if (status !== "granted") {
-  //         alert("Sorry, we need camera roll permissions to make this work!")
-  //       }
-  //     }
-  //   })
-  // }, [])
-  const permissionRequest = async () => {
+
+  const galleryPermissionRequest = async () => {
     if (Platform.OS !== "web") {
       const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync()
 
       return status
     }
   }
-  const pickImage = async () => {
-    const status = await permissionRequest()
-    console.log(status)
-    if (status !== "granted") {
-      alert("Sorry, we need camera roll permissions to make this work!")
-      return
+
+  const cameraPermissionRequest = async () => {
+    if (Platform.OS !== "web") {
+      const { status } = await ImagePicker.requestCameraPermissionsAsync()
+      return status
     }
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
+  }
+
+  const pickImage = async (from) => {
+    const options = {
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [1, 1],
       quality: 1,
-    })
-
+    }
+    let status =
+      from === "gallery"
+        ? await galleryPermissionRequest()
+        : await cameraPermissionRequest()
+    if (status !== "granted") {
+      alert("We need permissions to make this work.")
+      return
+    }
+    const result =
+      from === "gallery"
+        ? await ImagePicker.launchImageLibraryAsync(options)
+        : await ImagePicker.launchCameraAsync(options)
     if (!result.cancelled) {
       setFieldValue({ photo: result })
       setImageName(result.uri.split("/").pop())
@@ -65,10 +68,14 @@ const SignUp = (props) => {
   }
   return (
     <ScrollView>
-    <ImageBackground style={styles.signUpBack} source={require("../assets/fondoVioleta.png")} resizeMode="cover">
-      <HeroPages/>
+      <ImageBackground
+        style={styles.signUpBack}
+        source={require("../assets/fondoVioleta.png")}
+        resizeMode="cover"
+      >
+        <HeroPages />
         <View style={styles.SignUpMain}>
-          <View style={{flexDirection:"row"}}>
+          <View style={{ flexDirection: "row" }}>
             <Text style={styles.signUpTittle}>Sign</Text>
             <Text style={styles.signUpTittleIn}>up!</Text>
           </View>
@@ -126,8 +133,11 @@ const SignUp = (props) => {
             <Text style={styles.noErrorText}>Placeholder</Text>
           )}
           <Text style={styles.label}>Profile photo</Text>
-          <Text style={styles.imagePicker} onPress={pickImage}>
+          <Text style={styles.imagePicker} onPress={() => pickImage("gallery")}>
             Pick an image from gallery
+          </Text>
+          <Text style={styles.imagePicker} onPress={() => pickImage("camera")}>
+            Take a photo
           </Text>
           {imageName ? (
             <Text style={{ color: "black" }}>{imageName}</Text>
@@ -151,24 +161,34 @@ const SignUp = (props) => {
             onPress={formik.handleSubmit}
             style={styles.signupButtonContainer}
           >
-             <ImageBackground style={styles.signUpButton} source={{uri : "https://i.postimg.cc/mD7r09R8/button-Back.png"}} imageStyle={{borderRadius:5}}>
+            <ImageBackground
+              style={styles.signUpButton}
+              source={{ uri: "https://i.postimg.cc/mD7r09R8/button-Back.png" }}
+              imageStyle={{ borderRadius: 5 }}
+            >
               <Text style={styles.signupButtonText}>Sign up</Text>
             </ImageBackground>
           </TouchableOpacity>
           {error && <Text style={styles.errorText}>{error}</Text>}
           <View style={styles.dontHaveAccountContainer}>
-            <Text style={{ color: "white", fontFamily: "Poppins_700Bold", }}>Already have an account? </Text>
+            <Text style={{ color: "white", fontFamily: "Poppins_700Bold" }}>
+              Already have an account?{" "}
+            </Text>
             <Text
               onPress={() => props.navigation.navigate("signup")}
-              style={{ color: "#67f2cb", fontFamily: "Poppins_700Bold", marginBottom:-50}}
+              style={{
+                color: "#67f2cb",
+                fontFamily: "Poppins_700Bold",
+                marginBottom: -50,
+              }}
             >
               Sing Up
             </Text>
           </View>
         </View>
-          <Footer />
-    </ImageBackground>
-      </ScrollView>
+        <Footer />
+      </ImageBackground>
+    </ScrollView>
   )
 }
 
@@ -183,13 +203,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   signUpTittle: {
-    marginTop:-35,
+    marginTop: -35,
     color: "white",
     fontFamily: "Poppins_700Bold",
     fontSize: 35,
   },
   signUpTittleIn: {
-    marginTop:-35,
+    marginTop: -35,
     fontFamily: "Poppins_700Bold",
     marginLeft: 3,
     fontSize: 35,
@@ -202,9 +222,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingVertical: 12,
     paddingHorizontal: 10,
-    borderRadius:5,
-    backgroundColor:"white",
-    color:"gray"
+    borderRadius: 5,
+    backgroundColor: "white",
+    color: "gray",
   },
   inputText: {
     width: 250,
@@ -213,44 +233,42 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingVertical: 8,
     paddingHorizontal: 10,
-    borderRadius:5,
-    backgroundColor:"white"
+    borderRadius: 5,
+    backgroundColor: "white",
   },
   errorText: {
     fontSize: 10,
     color: "red",
   },
-  noErrorText: { color: "transparent",
-   fontSize: 10,
-   },
+  noErrorText: { color: "transparent", fontSize: 10 },
   signupButtonContainer: {
     alignItems: "center",
     width: "100%",
     marginVertical: 30,
   },
   signUpButton: {
-    alignSelf:"center",
+    alignSelf: "center",
     paddingVertical: 7,
     paddingHorizontal: 15,
     width: 150,
   },
-  signupButtonText: { 
-    color: "white", 
-    textAlign: "center", 
+  signupButtonText: {
+    color: "white",
+    textAlign: "center",
     fontFamily: "Poppins_700Bold",
-   },
+  },
   dontHaveAccountContainer: {
     width: "100%",
     alignItems: "center",
     marginVertical: 5,
   },
-  signUpBack:{
-    width:"100%",
-    alignItems:"center"
-},
-label:{
-  color: "white",
-  fontFamily: "Poppins_700Bold",
-  alignSelf:"flex-start"
-}
+  signUpBack: {
+    width: "100%",
+    alignItems: "center",
+  },
+  label: {
+    color: "white",
+    fontFamily: "Poppins_700Bold",
+    alignSelf: "flex-start",
+  },
 })
