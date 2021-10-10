@@ -4,11 +4,12 @@ const usersReducer = (
 ) => {
    switch (action.type) {
       case "LOGIN_OR_SIGNUP":
+         const { shoppingCart, wishList, ...user } = action.payload
          return {
             ...state,
-            user: action.payload,
-            shoppingCart: action.payload.shoppingCart,
-            wishList: action.payload.wishList,
+            user,
+            shoppingCart,
+            wishList,
          }
       case "LOG_OUT":
          return {
@@ -24,6 +25,12 @@ const usersReducer = (
          return {
             ...state,
             wishList: action.payload,
+         }
+      case "PURCHASE":
+         return {
+            ...state,
+            shoppingCart: action.payload.user.shoppingCart,
+            wishList: action.payload.user.wishList,
          }
       case "UPDATE_DIRECTIONS":
          return {
