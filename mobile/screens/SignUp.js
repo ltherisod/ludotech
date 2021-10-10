@@ -24,19 +24,31 @@ const SignUp = (props) => {
   const [formik, setFieldValue, loading, error] = useSignup()
   const [fieldError, setFieldError] = useState(null)
   const [imageName, setImageName] = useState("")
-  useEffect(() => {
-    ;(async () => {
-      if (Platform.OS !== "web") {
-        const { status } =
-          await ImagePicker.requestMediaLibraryPermissionsAsync()
-        if (status !== "granted") {
-          alert("Sorry, we need camera roll permissions to make this work!")
-        }
-      }
-    })()
-  }, [])
+  // useEffect(() => {
+  //   ;(async () => {
+  //     if (Platform.OS !== "web") {
+  //       const { status } =
+  //         await ImagePicker.requestMediaLibraryPermissionsAsync()
+  //       if (status !== "granted") {
+  //         alert("Sorry, we need camera roll permissions to make this work!")
+  //       }
+  //     }
+  //   })
+  // }, [])
+  const permissionRequest = async () => {
+    if (Platform.OS !== "web") {
+      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync()
 
+      return status
+    }
+  }
   const pickImage = async () => {
+    const status = await permissionRequest()
+    console.log(status)
+    if (status !== "granted") {
+      alert("Sorry, we need camera roll permissions to make this work!")
+      return
+    }
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
