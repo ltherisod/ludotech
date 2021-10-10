@@ -164,15 +164,14 @@ const articlesControllers = {
   },
   getRelated: async (req, res) => {
     try {
-      // console.log("genreId")
       const { genreId } = req.params
       const relatedArticles = await Article.find({ genres: genreId })
         .sort("-visitsCount")
         .limit(3)
         .populate("genres gameType brand")
-      res.json({ success: true, response: "relatedArticles", error: null })
+      res.json({ success: true, response: relatedArticles, error: null })
     } catch (e) {
-      res.json({ success: false, response: null, error: "e.message" })
+      res.json({ success: false, response: null, error: e.message })
     }
   },
 }
