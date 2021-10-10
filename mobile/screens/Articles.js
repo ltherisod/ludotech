@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import {View, Text, ScrollView, Platform, StatusBar, StyleSheet, Dimensions, ImageBackground} from "react-native"
+import {View, Text, ScrollView, Platform, StatusBar, StyleSheet, Dimensions, ImageBackground, TouchableOpacity} from "react-native"
 import Footer from "../components/Footer"
 import Article from "../components/Article"
 import Filter from "../components/Filter"
@@ -21,26 +21,28 @@ const Articles = (props) => {
             <ScrollView>
                 <ImageBackground style={{width:"100%"}}source={require("../assets/fondoVioleta.png")} resizeMode="cover">
                     <HeroPages/>
-                <View style={styles.articlesMain}>
-                    <Text style={styles.articlesTitle}>Articles</Text>
-                    <Filter
-                        filterArticles={(e) => filterArticles(e)}
-                        currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}
-                    /> 
-                    <View>
-                    {articles.articles.map((article) => {
-                        return (
-                            <Article
-                                history={props.history}
-                                article={article}
-                                key={article._id}
-                            />
-                        )
-                    })}
+                    <View style={styles.articlesMain}>
+                        <Text style={styles.articlesTitle}>Articles</Text>
+                        <Filter
+                            filterArticles={(e) => filterArticles(e)}
+                            currentPage={currentPage}
+                            setCurrentPage={setCurrentPage}
+                        /> 
+                        <View>
+                        {articles.articles.map((article) => {
+                            return (
+                                <TouchableOpacity onPress={() => props.navigation.navigate('ArticleStack', { id: article._id })}>
+                                    <Article
+                                        history={props.history}
+                                        article={article}
+                                        key={article._id}
+                                        />
+                                </TouchableOpacity>
+                            )
+                        })}
+                        </View>
                     </View>
-                </View>
-                <Footer/>
+                    <Footer/>
                 </ImageBackground>
             </ScrollView>
     )
