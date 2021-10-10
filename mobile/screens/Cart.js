@@ -34,7 +34,6 @@ const Cart = (props) => {
     }
     
     return (
-        <SafeAreaView style={{marginTop: Platform.OS === "android" && StatusBar.currentHeight, flex: 1}}>
             <ScrollView>
                 {/* <Header/> */}
                 <View>
@@ -115,7 +114,6 @@ const Cart = (props) => {
                 </View>
                 
             </ScrollView>
-        </SafeAreaView>
     )
 }
 

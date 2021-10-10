@@ -5,6 +5,8 @@ import Articles from "../screens/Articles"
 import Cart from "../screens/Cart"
 import SignIn from "../screens/SignIn"
 import SignUp from "../screens/SignUp"
+import Profile from "../screens/Profile"
+import WishList from "../screens/WishList"
 
 const Stack = createNativeStackNavigator()
 
@@ -16,6 +18,8 @@ const navigationStack = () => {
             <Stack.Screen name="CartStack" component={Cart} options={{headerShown: false}}/>
             <Stack.Screen name="SignInStack" component={SignIn} options={{headerShown: false}}/>
             <Stack.Screen name="SignUpStack" component={SignUp} options={{headerShown: false}}/>
+            <Stack.Screen name="ProfileStack" component={Profile} options={{headerShown: false}}/>
+            <Stack.Screen name="WishlistStack" component={WishList} options={{headerShown: false}}/>
         </Stack.Navigator>
     )
 }

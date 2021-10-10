@@ -9,6 +9,7 @@ import LogOut from "../screens/LogOut"
 import { connect, useSelector } from "react-redux"
 import { useLoginLS } from "../hooks/usersHooks"
 import{Image, ImageBackground, StyleSheet} from "react-native"
+import navigationBottom from "./navigationBottom"
 const Drawer = createDrawerNavigator()
 
 const Navigator = (props) => {
@@ -42,7 +43,7 @@ const Navigator = (props) => {
     >
       <Drawer.Screen
         name="Home"
-        component={navigationStack}
+        component={navigationBottom}
         options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
       />
       <Drawer.Screen
@@ -50,11 +51,11 @@ const Navigator = (props) => {
         component={Articles}
         options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
       />
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Cart"
         component={Cart}
         options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
-      />
+      /> */}
       {!user && (
         <>
           <Drawer.Screen
