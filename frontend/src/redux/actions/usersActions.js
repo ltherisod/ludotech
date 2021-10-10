@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const HOST = "https://lodotechgames.herokuapp.com"
+const HOST = "http://localhost:4000"
 
 const usersActions = {
    logInOrSignUp: (data, action) => {
@@ -56,6 +56,7 @@ const usersActions = {
                   },
                }
             )
+            console.log(response)
             if (!response.data.success) throw new Error(response.data.error)
             dispatch({
                type: "LOGIN_OR_SIGNUP",

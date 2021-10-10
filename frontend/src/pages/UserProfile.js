@@ -7,11 +7,14 @@ import HeroPages from "../components/HeroPages"
 import usersActions from "../redux/actions/usersActions"
 import { useDispatch } from "react-redux"
 import Address from "../components/Address"
+import { useFormik } from "formik"
+import * as Yup from "yup"
 
 const UserProfile = () => {
    const user = useSelector((state) => state.users.user)
    const { directions, email, firstname, lastname, photo, phone } = user
    const [visibleDirectionForm, setVisibleDirectionForm] = useState(false)
+   const [visiblePhone, setVisiblePhone] = useState(false)
    const dispatch = useDispatch()
    const [loading, setLoading] = useState(false)
    const [error, setError] = useState(null)
@@ -22,7 +25,26 @@ const UserProfile = () => {
       console.log(res)
       if (!res.success) setError(res.error)
       setLoading(false)
+      setVisibleDirectionForm(false)
    }
+
+   const addPhone = async (values) => {
+      setLoading(true)
+      const res = await dispatch(usersActions.updateAccount(values))
+      console.log(res)
+      if (!res.success) setError(res.error)
+      setLoading(false)
+   }
+
+   let formik = useFormik({
+      initialValues: { phone: "" },
+      onSubmit: (values) => {
+         addPhone(values)
+      },
+      validationSchema: Yup.object({
+         phone: Yup.number("Only numbers").required("Required"),
+      }),
+   })
 
    const initialValues = {
       alias: "",
@@ -34,6 +56,8 @@ const UserProfile = () => {
       city: "",
       state: "",
    }
+
+   console.log(user)
 
    return (
       <>
@@ -61,8 +85,25 @@ const UserProfile = () => {
                      </h2>
                      <p>{email}</p>
                      <div className="d-flex">
-                        <p>{phone ? phone : "No phone added"}</p>
-                        <button type="button">Add here</button>
+                        <p>{phone ? phone : "No phone number added"}</p>
+                        <input
+                           placeholder="+234 455 5353"
+                           name="phone"
+                           type="number"
+                           value={formik.values.phone}
+                           onChange={formik.handleChange("phone")}
+                           onBlur={formik.handleBlur("phone")}
+                        />
+                        {formik.touched.phone && formik.errors.phone ? (
+                           <small className="signErrors">
+                              {formik.errors.phone}
+                           </small>
+                        ) : (
+                           <small className="signNoErrors">NoErrors</small>
+                        )}{" "}
+                        <button type="button" onClick={formik.handleSubmit}>
+                           Add phone number
+                        </button>
                      </div>
                   </div>
                   <div>
