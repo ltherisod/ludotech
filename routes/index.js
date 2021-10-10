@@ -145,9 +145,35 @@ router
   .post(articleValidator.articleValidator, articlesControllers.addArticle)
 
 // SEND EMAIL
-router.route("/confirmation-email").post(usersControllers.sendConfirmationEmail)
+router.route("/confirmation-email")
+.post(usersControllers.sendConfirmationEmail)
 
-router.route("/welcome-email").get(usersControllers.sendWelcomeEmail)
+router.route("/resend-confirmation-email")
+.post(usersControllers.sendReSendConfirmationEmail)
+
+router.route("/welcome-email")
+.post(passport.authenticate("jwt", { session: false }), usersControllers.sendWelcomeEmail)
+
+router.route("/reset-password-confirmation")
+.post(passport.authenticate("jwt", { session: false }), usersControllers.sendResetPaswordConfirmation)
+
+router.route("/new-password")
+.post(passport.authenticate("jwt", { session: false }), usersControllers.sendNewPassword)
+
+router.route("/fail-purchase")
+.post(passport.authenticate("jwt", { session: false }), usersControllers.sendFailPurchase)
+
+router.route("/success-purchase")
+.post(passport.authenticate("jwt", { session: false }), usersControllers.sendSuccessPurchase)
+
+router.route("/user-bill-checkout")
+.post(passport.authenticate("jwt", { session: false }), usersControllers.sendUserBillCheckout)
+
+router.route("/delete-account-confirmation")
+.post(passport.authenticate("jwt", { session: false }), usersControllers.sendDeleteAccountConfirmation)
+
+router.route("/delete-account")
+.post(passport.authenticate("jwt", { session: false }), usersControllers.sendDeleteAccount)
 
 //admin routes
 router

@@ -6,11 +6,11 @@ const UserBillCheckout = (data) => {
       </div>
     </header>
     <main style="width:80vw;margin:0 auto;">
-      <h3>Hello {name}</h3>
-      <p style="font-size:1.2rem">Welcome to <span style="font-size:1.5rem">Ludotech</span> where you will find all the game you desire.</p>
-      <p>Please click here to <span style="font-size:1.2rem;color:#542b86;text-decoration:underline;">Confirm your e-mail</span> for your account.</p>
+      <h3>Hello ${data.name}</h3>
+      <p style="font-size:1.2rem">We are sending you the bill of the purchase Nº{numero de compra con link a la compra en user settings??}.</p>
       <br/>
-      <p>We´re glad to have in our comunu¡ity to find and share opinions about the games.</p>
+      <p>Thank you for your purchase.</p>
+      <p>Please click <span style="font-size:1.2rem;color:#542b86;text-decoration:underline;"><a href="http://localhost:3000">here</a> to go back to your user account.</p>
     </main>
     <footer style="">
       <span style="font-size:0.8">Ludotech</span>
