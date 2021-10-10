@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 import Header from "../components/Header"
 import HeroPages from "../components/HeroPages"
 import Footer from "../components/Footer"
@@ -36,15 +36,10 @@ const ArticlePage = (props) => {
 
    const [articlesRelated, setArticlesRelated] = useState([])
    useEffect(() => {
-      // !loading && props.getRelatedArticles(genres[0]._id)
-      // .then(res => {
-      //    console.log(res.response)
-      //    setArticlesRelated(res.response)
-      // })
-      // .catch(e => console.log(e))
       !loading && setArticlesRelated([article]) //provisional, se debe quitar
    }, [loading])
 
+   console.log(articlesRelated)
 
    const addToCart = (id) => {
       props.updateCart("add", id)
@@ -53,7 +48,7 @@ const ArticlePage = (props) => {
    return (
       <>
          {loading ? (
-            <Preloader/>
+            <Preloader />
          ) : (
             <div
                className="bodyArticle"
@@ -62,7 +57,7 @@ const ArticlePage = (props) => {
                <HeroPages />
                <Header />
                <div className="articleData">
-               <ArticleCaroulsel photos={photos}/>
+                  <ArticleCaroulsel photos={photos} />
                   <div className="containerData">
                      <h3>{name}</h3>
                      <div className="brandPrice">
@@ -76,7 +71,7 @@ const ArticlePage = (props) => {
                               color: "lightgreen",
                               fontSize: 25,
                               fontWeight: "bold",
-                              textAlign: "center"
+                              textAlign: "center",
                            }}
                         >
                            ${price} USD
@@ -107,7 +102,9 @@ const ArticlePage = (props) => {
                      )}
                      {genres ? (
                         genres.map((genre) => (
-                           <p style={{textAlign: "center"}} key={genre._id}>{genre.name}</p>
+                           <p style={{ textAlign: "center" }} key={genre._id}>
+                              {genre.name}
+                           </p>
                         ))
                      ) : (
                         <p>No Genre</p>
@@ -169,16 +166,18 @@ const ArticlePage = (props) => {
                      }}
                   ></div>
                </div>
-               <div className="articleVideo"><iframe
-                  width="580"
-                  height="325"
-                  src={video}
-                  title="YouTube video player"
-                  frameborder="0"
-                  allow="accelerometer; autoPlay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                  style={{ alignSelf: "center" }}
-               ></iframe></div>
+               <div className="articleVideo">
+                  <iframe
+                     width="580"
+                     height="325"
+                     src={video}
+                     title="YouTube video player"
+                     frameborder="0"
+                     allow="accelerometer; autoPlay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                     allowfullscreen
+                     style={{ alignSelf: "center" }}
+                  ></iframe>
+               </div>
                <div className="articleDecoDown">
                   <div
                      className="articleDeco"
@@ -191,9 +190,15 @@ const ArticlePage = (props) => {
                </div>
                <h3 className="articleRelatedTittle">Products related</h3>
                <div className="relatedArticles">
-               {articlesRelated.map(article => {
-                  return <ArticleRelated history={props.history} article={article} key={_id} />
-               })}
+                  {articlesRelated.map((article) => {
+                     return (
+                        <ArticleRelated
+                           history={props.history}
+                           article={article}
+                           key={_id}
+                        />
+                     )
+                  })}
                </div>
                <Footer />
             </div>
@@ -204,7 +209,7 @@ const ArticlePage = (props) => {
 
 const mapDispatchToProps = {
    updateCart: articlesActions.updateCart,
-   getRelatedArticles: articlesActions.getRelatedArticles
+   getRelatedArticles: articlesActions.getRelatedArticles,
 }
 
 export default connect(null, mapDispatchToProps)(ArticlePage)
