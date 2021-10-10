@@ -34,13 +34,6 @@ const ArticlePage = (props) => {
       _id,
    } = article
 
-   const [articlesRelated, setArticlesRelated] = useState([])
-   useEffect(() => {
-      !loading && setArticlesRelated([article]) //provisional, se debe quitar
-   }, [loading])
-
-   console.log(articlesRelated)
-
    const addToCart = (id) => {
       props.updateCart("add", id)
    }
@@ -190,15 +183,9 @@ const ArticlePage = (props) => {
                </div>
                <h3 className="articleRelatedTittle">Products related</h3>
                <div className="relatedArticles">
-                  {articlesRelated.map((article) => {
-                     return (
-                        <ArticleRelated
-                           history={props.history}
-                           article={article}
-                           key={_id}
-                        />
-                     )
-                  })}
+               {/* {articlesRelated.map(article => {
+                  return <ArticleRelated history={props.history} article={article} key={_id} />
+               })} */}
                </div>
                <Footer />
             </div>
@@ -209,7 +196,7 @@ const ArticlePage = (props) => {
 
 const mapDispatchToProps = {
    updateCart: articlesActions.updateCart,
-   getRelatedArticles: articlesActions.getRelatedArticles,
+   
 }
 
 export default connect(null, mapDispatchToProps)(ArticlePage)

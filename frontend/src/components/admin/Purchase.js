@@ -2,32 +2,12 @@ import React, {useState} from 'react'
 
 const Purchase = ({purchase, articles, direction}) => {
 
-    const [seeProducts, setSeeProducts] = useState(false)
     // purchase.status==='confirmed' ? 'red' : purchase.status==='processing' ? 'orange' : 'green'
 
     return (
         <div className='purchaseContainerPanel'>
-            <p>3333333</p>
-            <div className={`numberArticlesPanel`} onClick={() => setSeeProducts(true)} onMouseLeave={() => setSeeProducts(false)}>
-                    <p>{articles.length} products</p>
-                    {seeProducts && 
-                    <div className='containerProductsPanel'>
-                        {articles.map(article => {
-                            return (
-                                <div key={article._id} className='productRow'>
-                                    <div className='productRowtPicture' style={{backgroundImage: `url("${article.photos[0]}")`}}></div>
-                                    <div className='detailsProductPanel'>
-                                        <p className='nameProductPanel'>{article.name}</p>
-                                        <span>
-                                            <p style={{marginRight: '2vmin'}}>Price: ${article.price}</p>
-                                            <p>Quantity: {article.quantity}</p>
-                                        </span>
-                                    </div>
-                                </div>
-                            )
-                        })}
-                    </div>}
-            </div>
+            <p>...{purchase._id.substring(18, 24 )}</p>
+            <p style={{textAlign: 'center'}}>{articles.length < 10 ? `0${articles.length}` : articles.length}</p>
             <div className='addressPurchasePanel'>
                 <p style={{flex: 1}}>{direction.zipCode} {direction.street} {direction.number} {direction.department} {direction.city}, {direction.state}</p>
             </div>

@@ -4,7 +4,6 @@ import usersActions from "../redux/actions/usersActions"
 import {
   View,
   Text,
-  SafeAreaView,
   ScrollView,
   Platform,
   StatusBar,
@@ -14,29 +13,42 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native"
 import * as ImagePicker from "expo-image-picker"
-import Header from "../components/Header"
 import Footer from "../components/Footer"
+import HeroPages from "../components/HeroPages"
 import { useSignup } from "../hooks/usersHooks"
 
 const SignUp = (props) => {
   const [formik, setFieldValue, loading, error] = useSignup()
   const [fieldError, setFieldError] = useState(null)
   const [imageName, setImageName] = useState("")
-  useEffect(() => {
-    ;(async () => {
-      if (Platform.OS !== "web") {
-        const { status } =
-          await ImagePicker.requestMediaLibraryPermissionsAsync()
-        if (status !== "granted") {
-          alert("Sorry, we need camera roll permissions to make this work!")
-        }
-      }
-    })()
-  }, [])
+  // useEffect(() => {
+  //   ;(async () => {
+  //     if (Platform.OS !== "web") {
+  //       const { status } =
+  //         await ImagePicker.requestMediaLibraryPermissionsAsync()
+  //       if (status !== "granted") {
+  //         alert("Sorry, we need camera roll permissions to make this work!")
+  //       }
+  //     }
+  //   })
+  // }, [])
+  const permissionRequest = async () => {
+    if (Platform.OS !== "web") {
+      const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync()
 
+      return status
+    }
+  }
   const pickImage = async () => {
+    const status = await permissionRequest()
+    console.log(status)
+    if (status !== "granted") {
+      alert("Sorry, we need camera roll permissions to make this work!")
+      return
+    }
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -52,16 +64,9 @@ const SignUp = (props) => {
     }
   }
   return (
-    <SafeAreaView
-      style={{
-        marginTop: Platform.OS === "android" && StatusBar.currentHeight,
-        flex: 1,
-        alignItems: "center",
-        width: "100%",
-      }}
-    >
-      <ScrollView>
-        <Header />
+    <ScrollView>
+    <ImageBackground style={styles.signUpBack} source={require("../assets/fondoVioleta.png")} resizeMode="cover">
+      <HeroPages/>
         <View style={styles.SignUpMain}>
           <Text style={styles.title}>Sign Up</Text>
           <TextInput
@@ -158,8 +163,8 @@ const SignUp = (props) => {
           </View>
           <Footer />
         </View>
+    </ImageBackground>
       </ScrollView>
-    </SafeAreaView>
   )
 }
 
@@ -169,12 +174,9 @@ const mapDispatchToProps = {
 
 export default connect(null, mapDispatchToProps)(SignUp)
 
-const { height, width } = Dimensions.get("window")
 const styles = StyleSheet.create({
   SignUpMain: {
-    minHeight: height * 0.5,
     alignItems: "center",
-    width,
   },
   title: {
     fontSize: 20,
@@ -220,4 +222,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 5,
   },
+  signUpBack:{
+    width:"100%",
+    alignItems:"center"
+},
 })

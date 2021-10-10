@@ -5,9 +5,6 @@ const Footer = () => {
     return(
         <ImageBackground source={require('../assets/footer1.png')} style={styles.footerContainer}>
             <View style={styles.socialMediaContainer} >
-                    <Image style={styles.footerIcon} source={require('../assets/instagram.png')} />
-                    <Image style={styles.footerIcon} source={require('../assets/facebook.png')} />
-                    <Image style={styles.footerIcon} source={require('../assets/twitter.png')} />
             </View>
             <Text style={styles.footerRights}>LudoTech © All rights reserved  || Mindhub 2021</Text>
         </ImageBackground>

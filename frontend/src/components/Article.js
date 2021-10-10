@@ -23,7 +23,8 @@ const Article = (props) => {
       gameType,
       minAge,
       _id,
-      discountPrice
+      discountPrice,
+      iconPhotos,
    } = props.article
 
    useEffect(() => {
@@ -60,7 +61,7 @@ const Article = (props) => {
          >
             <div
                className="photosArticle"
-               style={{ backgroundImage: `url('${photos}')` }}
+               style={{ backgroundImage: `url('${iconPhotos}')` }}
             >
                <div className="circleFav" onClick={(e) => handleFav(e)}>
                   {wishlist.some(i => {
