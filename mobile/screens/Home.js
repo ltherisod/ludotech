@@ -3,6 +3,7 @@ import {View, Text, SafeAreaView, ScrollView, Platform, StatusBar, StyleSheet, D
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 
+
 const Home = () => {
     return (
         <SafeAreaView style={{marginTop: Platform.OS === "android" && StatusBar.currentHeight, flex: 1}}>

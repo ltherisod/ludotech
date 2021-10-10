@@ -1,9 +1,10 @@
 import React, { useState } from "react"
-import {View, Text, SafeAreaView, ScrollView, Platform, StatusBar, StyleSheet, Dimensions} from "react-native"
+import {View, Text, ScrollView, Platform, StatusBar, StyleSheet, Dimensions, ImageBackground} from "react-native"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Article from "../components/Article"
 import Filter from "../components/Filter"
+import HeroPages from "../components/HeroPages"
 
 const Articles = (props) => {
     const [articles, setArticles] = useState({
@@ -14,24 +15,22 @@ const Articles = (props) => {
     })
     const [currentPage, setCurrentPage] = useState(2)
     const filterArticles = (e) => {
-        console.log(e)
         setArticles(e)
     }
-    console.log(articles)
     
     return (
-        <SafeAreaView style={{marginTop: Platform.OS === "android" && StatusBar.currentHeight, flex: 1}}>
             <ScrollView>
-                <Header/>
+                <ImageBackground style={{width:"100%"}}source={require("../assets/fondoVioleta.png")} resizeMode="cover">
+                    <HeroPages/>
                 <View style={styles.articlesMain}>
-                    <Text>Articles</Text>
+                    <Text style={styles.articlesTitle}>Articles</Text>
                     <Filter
                         filterArticles={(e) => filterArticles(e)}
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
                     />
                     <View>
-                    {/* {articles.articles.map((article) => {
+                    {articles.articles.map((article) => {
                         return (
                             <Article
                                 history={props.history}
@@ -39,20 +38,26 @@ const Articles = (props) => {
                                 key={article._id}
                             />
                         )
-                    })} */}
+                    })}
                     </View>
                 </View>
                 <Footer/>
+                </ImageBackground>
             </ScrollView>
-        </SafeAreaView>
     )
 }
 
 export default Articles
 
-const {height} = Dimensions.get("window")
 const styles = StyleSheet.create({
     articlesMain: {
-        minHeight: height-StatusBar.currentHeight,
+       minHeight:130
     },
+
+    articlesTitle:{
+        color:"white",
+        fontFamily:"Poppins_700Bold",
+        fontSize:25,
+        textAlign:"center",
+    }
 })

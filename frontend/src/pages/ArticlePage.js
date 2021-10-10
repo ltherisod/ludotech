@@ -6,6 +6,7 @@ import ArticleCaroulsel from "../components/ArticleCaroulsel"
 import { useArticle } from "../hooks/articlesHooks"
 import { connect } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
+import Preloader from "../components/Preloader"
 
 const ArticlePage = (props) => {
    const [articles, loading, error] = useArticle(props.match.params.id)
@@ -39,7 +40,7 @@ const ArticlePage = (props) => {
    return (
       <>
          {loading ? (
-            <h1>Loading</h1>
+            <Preloader/>
          ) : (
             <div
                className="bodyArticle"
