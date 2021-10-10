@@ -7,10 +7,11 @@ import SignIn from "../screens/SignIn"
 import SignUp from "../screens/SignUp"
 import LogOut from "../screens/LogOut"
 import { connect, useSelector } from "react-redux"
-
+import { useLoginLS } from "../hooks/usersHooks"
 const Drawer = createDrawerNavigator()
 
 const Navigator = (props) => {
+  useLoginLS()
   const user = useSelector((state) => state.users.user)
   return (
     <Drawer.Navigator

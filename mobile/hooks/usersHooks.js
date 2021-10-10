@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import { useFormik } from "formik"
 import * as Yup from "yup"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 export const useSignup = () => {
   const [loading, setLoading] = useState(false)
@@ -30,16 +31,23 @@ export const useSignup = () => {
         .required("Required"),
     }),
   })
-
   const submitHandler = async (values) => {
+    const filename = fieldValue.photo.uri.split("/").pop()
+    const match = /\.(\w+)$/.exec(filename)
+    const type = match ? `image/${match[1]}` : `image`
     const formData = new FormData()
     formData.append("firstname", values.firstname)
     formData.append("lastname", values.lastname)
     formData.append("email", values.email)
     formData.append("password", values.password)
-    formData.append("photo", fieldValue.photo)
+    formData.append("photo", {
+      uri: fieldValue.photo.uri,
+      name: filename,
+      type,
+    })
     setLoading(true)
     const res = await dispatch(usersActions.logInOrSignUp(formData, "signup"))
+    console.log(res)
     if (!res.success) setError(res.error)
     setLoading(false)
   }
@@ -57,7 +65,7 @@ export const useSignup = () => {
     dispatch(usersActions.logInOrSignUp(newUserGoogle, "signup"))
   }
 
-  return [formik, responseGoogle, setFieldValue, loading, error]
+  return [formik, setFieldValue, loading, error]
 }
 
 export const useLogin = () => {
@@ -72,7 +80,7 @@ export const useLogin = () => {
       email: Yup.string().email("Invalid email").required("Required"),
       password: Yup.string()
         .min(4, "Password must have at least 4 characters.")
-        .required("required"),
+        .required("Required"),
     }),
   })
 
@@ -89,13 +97,16 @@ export const useLogin = () => {
 export const useLoginLS = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const token = localStorage.getItem("token")
   const dispatch = useDispatch()
   useEffect(() => {
     loginLS()
   }, [])
 
   const loginLS = async () => {
+    const token = await AsyncStorage.getItem(
+      "token",
+      (e) => e && console.log(e)
+    )
     if (token) {
       const res = await dispatch(usersActions.logInLS(token))
       if (!res.success) {

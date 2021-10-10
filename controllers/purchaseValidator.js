@@ -27,7 +27,14 @@ const purchaseValidator = async (req, res, next) => {
         }),
       })
       .required(),
-    paymentMethod: joi.string().required(),
+    paymentDetails: joi.object({
+      method: joi.string().required().messages({
+        "any.required": "method is required",
+      }),
+      orderId: joi.string().required().messages({
+        "any.required": "orderId is required",
+      }),
+    }),
   })
 
   try {
