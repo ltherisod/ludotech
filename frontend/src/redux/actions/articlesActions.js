@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const HOST = "https://lodotechgames.herokuapp.com"
+const HOST = "http://localhost:4000"
 
 const articlesActions = {
   getArticles: (filters, page) => {
@@ -159,7 +159,6 @@ const articlesActions = {
         const response = await axios.get(
           `${HOST}/api/article/related/${genreId}`
         )
-        console.log(response)
         if (!response.data.success) throw new Error(response.data.error)
         return {
           success: true,

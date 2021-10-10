@@ -81,9 +81,11 @@ export const useRelatedArticles = (genres) => {
   const dispatch = useDispatch()
   useEffect(() => {
     if (genres) {
-      setError(null)
-      setLoadingRelated(true)
-      fetchRelatedArticles()
+      if (genres.length !== 0) {
+        setError(null)
+        setLoadingRelated(true)
+        fetchRelatedArticles()
+      }
     }
   }, [genres])
 

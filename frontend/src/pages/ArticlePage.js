@@ -34,14 +34,8 @@ const ArticlePage = (props) => {
       _id,
    } = article
 
-   // const [relatedArticles, loadingRelated] = useRelatedArticles(genres)
-//    let relatedArticles
-//    let loadingRelated
-//    useEffect(() => {
-//       !loading && ([relatedArticles, loadingRelated] = useRelatedArticles(genres[0]._id))
-
-//    }, [loading])
-// console.log(relatedArticles, loadingRelated)
+   const [relatedArticles, loadingRelated] = useRelatedArticles(genres)
+console.log(relatedArticles, loadingRelated)
 
    const addToCart = (id) => {
       props.updateCart("add", id)
@@ -192,9 +186,9 @@ const ArticlePage = (props) => {
                </div>
                <h3 className="articleRelatedTittle">Products related</h3>
                <div className="relatedArticles">
-               {/* {articlesRelated.map(article => {
+               {!loadingRelated && relatedArticles.map(article => {
                   return <ArticleRelated history={props.history} article={article} key={_id} />
-               })} */}
+               })}
                </div>
                <Footer />
             </div>
