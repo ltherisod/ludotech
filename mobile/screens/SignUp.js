@@ -146,17 +146,6 @@ const SignUp = (props) => {
           ) : (
             <Text style={styles.noErrorText}>Placeholder</Text>
           )}
-          {/* <Text
-            style={{ color: imageName ? "black" : "white" }}
-            onBlur={() => !imageName && setFieldError("Image is required.")}
-          >
-            {imageName || "Placeholder"}
-          </Text>
-          {fieldError ? (
-            <Text style={styles.errorText}>{fieldError}</Text>
-          ) : (
-            <Text style={styles.noErrorText}>Placeholder</Text>
-          )} */}
           <TouchableOpacity
             onPress={formik.handleSubmit}
             style={styles.signupButtonContainer}
@@ -182,7 +171,7 @@ const SignUp = (props) => {
                 marginBottom: -50,
               }}
             >
-              Sing Up
+              Sign In
             </Text>
           </View>
         </View>
