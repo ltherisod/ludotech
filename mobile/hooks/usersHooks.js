@@ -47,7 +47,6 @@ export const useSignup = () => {
     })
     setLoading(true)
     const res = await dispatch(usersActions.logInOrSignUp(formData, "signup"))
-    console.log(res)
     if (!res.success) setError(res.error)
     setLoading(false)
   }

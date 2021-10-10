@@ -17,7 +17,6 @@ const Cart = (props) => {
   const user = useSelector((state) => state.users.user)
 
   const { directions } = user
-  console.log(user)
 
   let formik = useFormik({
     initialValues: {
@@ -65,10 +64,6 @@ const Cart = (props) => {
       .catch((e) => console.log(e))
   }
 
-  const submitSell = () => {
-    console.log("sell!")
-  }
-  console.log({ user })
   return (
     <div
       className="signInBody"

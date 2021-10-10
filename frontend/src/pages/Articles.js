@@ -16,7 +16,6 @@ const Articles = (props) => {
   const [loadingArticles, setLoadingArticles] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const filterArticles = (e) => {
-    console.log(e)
     setArticles(e)
   }
   return (
