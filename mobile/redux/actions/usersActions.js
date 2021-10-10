@@ -1,4 +1,5 @@
 import axios from "axios"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 const HOST = "https://lodotechgames.herokuapp.com"
 
@@ -7,11 +8,17 @@ const usersActions = {
     return async (dispatch) => {
       try {
         // action puede ser 'login' o 'signup'
-        const response = await axios.post(`${HOST}/api/user/${action}`, data)
+        const response = await axios.post(`${HOST}/api/${action}`, data)
         if (!response.data.success) throw new Error(response.data.error)
-        // localStorage.setItem("token", response.data.response.token)
-        console.log(response.data)
-        dispatch({ type: "LOGIN_OR_SIGNUP", payload: response.data.response })
+        await AsyncStorage.setItem(
+          "token",
+          response.data.response.token,
+          (e) => e && console.log(e)
+        )
+        dispatch({
+          type: "LOGIN_OR_SIGNUP",
+          payload: response.data.response,
+        })
         return { success: true, error: null }
       } catch (e) {
         return { success: false, error: e.message }
@@ -19,8 +26,8 @@ const usersActions = {
     }
   },
   logOut: () => {
-    return (dispatch) => {
-      // localStorage.removeItem("token")
+    return async (dispatch) => {
+      await AsyncStorage.removeItem("token", (e) => e && console.log(e))
       dispatch({ type: "LOG_OUT" })
     }
   },
@@ -37,7 +44,7 @@ const usersActions = {
         })
         return { success: true, error: null }
       } catch (e) {
-        // localStorage.removeItem("token")
+        await AsyncStorage.removeItem("token", (e) => e && console.log(e))
         return { success: false, error: e.message }
       }
     }
@@ -49,11 +56,16 @@ const usersActions = {
           `${HOST}/api/user/${getState().users.user._id}`,
           data,
           {
-            headers: { Authorization: `Bearer ${getState().users.user.token}` },
+            headers: {
+              Authorization: `Bearer ${getState().users.user.token}`,
+            },
           }
         )
         if (!response.data.success) throw new Error(response.data.error)
-        dispatch({ type: "LOGIN_OR_SIGNUP", payload: response.data.response })
+        dispatch({
+          type: "LOGIN_OR_SIGNUP",
+          payload: response.data.response,
+        })
         return { success: true, error: null }
       } catch (e) {
         return { success: false, error: e.message }
@@ -67,11 +79,99 @@ const usersActions = {
           `${HOST}/api/user/wish-list/${articleId}`,
           {},
           {
-            headers: { Authorization: `Bearer ${getState().users.user.token}` },
+            headers: {
+              Authorization: `Bearer ${getState().users.user.token}`,
+            },
           }
         )
         if (!res.data.success) throw new Error(res.data.error)
         dispatch({ type: "WISH_LIST", payload: res.data.response })
+        return { success: true, error: null }
+      } catch (e) {
+        return { success: false, error: e.message }
+      }
+    }
+  },
+  purchaseHandler: (data) => {
+    // data es un objeto así:
+    // data = {
+    //// direction: {
+    ////// "receiver": "",
+    ////// "street": "",
+    ////// "number": "",
+    ////// "department": "",
+    ////// "zipCode": "",
+    ////// "city": "",
+    ////// "state": ""
+    //// },
+    //// paymentDetails: {
+    ////// method: 'PAYPAL',
+    ////// orderId: '',
+    //// }
+    // } (de momento sólo está Paypal (?)) si el objeto no va tal cual, lo para Joi.
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.post(`${HOST}/api/user/purchase`, data, {
+          headers: {
+            Authorization: `Bearer ${getState().users.user.token}`,
+          },
+        })
+        if (!res.data.success) throw new Error(res.data.error)
+        return { success: true, response: res.data.response, error: null }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+  addDirection: (data) => {
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.post(`${HOST}/api/user/directions`, data, {
+          headers: {
+            Authorization: `Bearer ${getState().users.user.token}`,
+          },
+        })
+        if (!res.data.success) throw new Error(res.data.error)
+        dispatch({ type: "UPDATE_DIRECTIONS", payload: res.data.response })
+        return { success: true, error: null }
+      } catch (e) {
+        return { success: false, error: e.message }
+      }
+    }
+  },
+  updateDirection: (data, directionId) => {
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.put(
+          `${HOST}/api/user/direction/${directionId}`,
+          data,
+          {
+            headers: {
+              Authorization: `Bearer ${getState().users.user.token}`,
+            },
+          }
+        )
+        if (!res.data.success) throw new Error(res.data.error)
+        dispatch({ type: "UPDATE_DIRECTIONS", payload: res.data.response })
+        return { success: true, error: null }
+      } catch (e) {
+        return { success: false, error: e.message }
+      }
+    }
+  },
+  deleteDirection: (directionId) => {
+    return async (dispatch, getState) => {
+      try {
+        const res = await axios.delete(
+          `${HOST}/api/user/direction/${directionId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${getState().users.user.token}`,
+            },
+          }
+        )
+        if (!res.data.success) throw new Error(res.data.error)
+        dispatch({ type: "UPDATE_DIRECTIONS", payload: res.data.response })
         return { success: true, error: null }
       } catch (e) {
         return { success: false, error: e.message }
