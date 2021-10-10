@@ -16,6 +16,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import MostWanted from "../components/MostWanted";
 
+
 const Home = () => {
   return (
     <SafeAreaView

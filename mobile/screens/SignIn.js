@@ -12,26 +12,25 @@ import {
   Dimensions,
   TextInput,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native"
-import Header from "../components/Header"
-import Footer from "../components/Footer"
 import { useLogin } from "../hooks/usersHooks"
+import HeroPages from "../components/HeroPages"
+import Footer from "../components/Footer"
 
 const SignIn = (props) => {
   const [formik, loading, error] = useLogin()
   console.log(formik.handleSubmit)
   return (
-    <SafeAreaView
-    // style={{
-    //   marginTop: Platform.OS === "android" && StatusBar.currentHeight,
-    //   flex: 1,
-    // }}
-    >
-      <ScrollView>
-        <Header />
-        <View style={styles.SignInMain}>
-          <Text style={styles.title}>Sign In</Text>
-          <View style={{ width: "100%", alignItems: "center" }}>
+    
+    <ScrollView>
+        <ImageBackground style={styles.signInBack} source={require("../assets/fondoVioleta.png")} resizeMode="cover">
+          <HeroPages/>
+          <View style={styles.SignInMain}>
+            <View style={{flexDirection:"row", alignItems:"center" , justifyContent:"center"}}>
+            <Text style={styles.SignInTittle}>Sign</Text>
+            <Text style={styles.SignInTittleIn}>in!</Text>
+            </View>
             <TextInput
               onChangeText={formik.handleChange("email")}
               onBlur={formik.handleBlur("email")}
@@ -76,16 +75,15 @@ const SignIn = (props) => {
               </Text>
             </View>
           </View>
-        </View>
-        <Footer />
-      </ScrollView>
-    </SafeAreaView>
+          <Footer/>
+      </ImageBackground>
+    </ScrollView>
   )
 }
 
 export default SignIn
 
-const { height } = Dimensions.get("window")
+
 const styles = StyleSheet.create({
   SignInMain: {
     minHeight: height * 0.5,
@@ -124,5 +122,20 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     marginVertical: 5,
+  },
+  signInBack:{
+    width:"100%",
+    alignItems:"center"
+},
+  SignInTittle: {
+    color:"white",
+    fontFamily:"Poppins_700Bold",
+    fontSize:25,
+  },
+  SignInTittleIn:{
+    fontFamily:"Poppins_700Bold",
+    marginLeft:3,
+    fontSize:25,
+    color:"#67f2cb",
   },
 })

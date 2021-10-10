@@ -3,17 +3,11 @@ import {View, Text, ImageBackground, Image, TouchableOpacity, StyleSheet, Dimens
 
 const Footer = () => {
     return(
-        <ImageBackground source={{uri: "https://i.postimg.cc/90sJmPWq/footer.png"}} style={styles.footerContainer}>
+        <ImageBackground source={require('../assets/footer1.png')} style={styles.footerContainer}>
             <View style={styles.socialMediaContainer} >
-                <TouchableOpacity style={styles.socialMediaButtom} onPress={() => {Linking.openURL("https://www.instagram.com")}}>
-                    <Image style={styles.footerInsta} source={{uri: "instagram.png"}} />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.socialMediaButtom} onPress={() => {Linking.openURL("https://www.facebook.com")}}>
-                    <Image style={styles.footerFace} source={{uri: "facebook.png"}} />
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.socialMediaButtom} onPress={() => {Linking.openURL("https://www.twitter.com")}}>
-                    <Image style={styles.footerTwit} source={{uri: "twitter.png"}} />
-                </TouchableOpacity>
+                    <Image style={styles.footerIcon} source={require('../assets/instagram.png')} />
+                    <Image style={styles.footerIcon} source={require('../assets/facebook.png')} />
+                    <Image style={styles.footerIcon} source={require('../assets/twitter.png')} />
             </View>
             <Text style={styles.footerRights}>LudoTech © All rights reserved  || Mindhub 2021</Text>
         </ImageBackground>
@@ -22,28 +16,29 @@ const Footer = () => {
 
 export default Footer
 
-const {height} = Dimensions.get("window")
+
 const styles = StyleSheet.create({
     footerContainer: {
         width: "100%",
-        height: height*0.69,
+        height: 300,
+        resizeMode:"cover",
+        justifyContent:"flex-end"
+
     },
     socialMediaContainer: {
-
+        alignSelf:"center",
+        flexDirection:"row"
     },
     footerRights: {
-
+        paddingVertical:10,
+        fontSize:12,
+        textAlign:"center",
+        color:"white",
+        fontFamily:"Poppins_700Bold"
     },
-    socialMediaButtom: {
-
-    },
-    footerInsta: {
-
-    },
-    footerFace: {
-
-    },
-    footerTwit: {
-
+    footerIcon:{
+        width:28,
+        height:28,
+        marginLeft:10,
     }
 })
