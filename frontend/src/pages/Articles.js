@@ -13,7 +13,7 @@ const Articles = (props) => {
     totalCounts: null,
     totalPages: 1,
   })
-  // const [loading, setLoading] = useState(true)
+  const [loadingArticles, setLoadingArticles] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const filterArticles = (e) => {
     console.log(e)
@@ -36,13 +36,12 @@ const Articles = (props) => {
               filterArticles={(e) => filterArticles(e)}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
-              // setLoading={setLoading}
+              setLoadingArticles={setLoadingArticles} // esto es nuevo! para un preloader se puede mandar esto. es opcional.
             />
             <div className="containerArticles">
-              {
-                // loading ? (
-                //   <Preloader /> // cambiarlo acá, es de prueba jj
-                // ) :
+              {loadingArticles ? (
+                <Preloader /> // cambiarlo acá, es de prueba jj
+              ) : (
                 articles.articles.map((article) => {
                   return (
                     <Article
@@ -52,7 +51,7 @@ const Articles = (props) => {
                     />
                   )
                 })
-              }
+              )}
             </div>
             {articles.totalPages > 1 && (
               <div
