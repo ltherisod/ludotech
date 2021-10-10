@@ -226,3 +226,17 @@ export const useDirectionsForm = (submitCallback, initialValues) => {
    })
    return formik
 }
+
+export const usePurchase = () => {
+   const [loading, setLoading] = useState(false)
+   const [error, setError] = useState(null)
+   const dispatch = useDispatch()
+   const purchase = async (data) => {
+      setLoading(true)
+      setError(null)
+      const res = await dispatch(usersActions.purchaseHandler(data))
+      if (!res.success) setError(res.error)
+      setLoading(false)
+   }
+   return [purchase, loading, error]
+}

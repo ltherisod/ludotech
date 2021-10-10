@@ -26,7 +26,9 @@ const ArticleAdd = (props) => {
          stock: "",
          size: "",
          weight: "",
-         decoPhotos: [],
+         decoPhotos0: "",
+         decoPhotos1: "",
+         decoPhotos2: "",
          video: "",
          iconPhotos: "",
          description: "",
@@ -42,16 +44,24 @@ const ArticleAdd = (props) => {
          price: Yup.number("Price must have a number").required("Required"),
          hasDiscount: Yup.boolean("NADAAAA"),
          discountPrice: Yup.number(),
-         photos: Yup.array().of(
-            Yup.string()
-               .url("Photos must have a valid URL")
-               .required("Required")
-         ),
-         decoPhotos: Yup.array().of(
-            Yup.string()
-               .url("Photos must have a valid URL")
-               .required("Required")
-         ),
+         photos0: Yup.string()
+            .url("Photos must have a valid URL")
+            .required("Required"),
+         photos1: Yup.string()
+            .url("Photos must have a valid URL")
+            .required("Required"),
+         photos2: Yup.string()
+            .url("Photos must have a valid URL")
+            .required("Required"),
+         decoPhotos0: Yup.string()
+            .url("Photos must have a valid URL")
+            .required("Required"),
+         decoPhotos1: Yup.string()
+            .url("Photos must have a valid URL")
+            .required("Required"),
+         decoPhotos2: Yup.string()
+            .url("Photos must have a valid URL")
+            .required("Required"),
          video: Yup.string()
             .url("Photos must have a valid URL")
             .required("Required"),
@@ -94,9 +104,23 @@ const ArticleAdd = (props) => {
 
    const { brands, genres, gameTypes } = utilities
 
-   const submitHandler = async (values) => {
+   const submitHandler = async ({
+      decoPhotos0,
+      decoPhotos1,
+      decoPhotos2,
+      photos0,
+      photos1,
+      photos2,
+      ...values
+   }) => {
       setLoading(true)
-      const res = await dispatch(articlesActions.addArticle(values))
+      const res = await dispatch(
+         articlesActions.addArticle({
+            ...values,
+            decoPhotos: [decoPhotos0, decoPhotos1, decoPhotos2],
+            photos: [photos0, photos1, photos2],
+         })
+      )
       console.log(res)
       if (!res.success) setError(res.error)
       setLoading(false)
@@ -469,76 +493,108 @@ const ArticleAdd = (props) => {
                )}
             </div>
             <div className="inputEditProduct">
-               <label className="labelSign" htmlFor="photos">
-                  General photos
+               <label className="labelSign" htmlFor="photos0">
+                  General Photos
                </label>
                <input
-                  name="photos"
+                  name="photos0"
                   type="text"
                   className="inputEdit"
                   placeholder="Must have a valid Url"
-                  value={formik.values.photos}
-                  onChange={formik.handleChange("photos")}
-                  onBlur={formik.handleBlur("photos")}
+                  value={formik.values.photos0}
+                  onChange={formik.handleChange("photos0")}
+                  onBlur={formik.handleBlur("photos0")}
                />
-               <input
-                  name="photos"
-                  type="text"
-                  className="inputEdit"
-                  placeholder="Must have a valid Url"
-                  value={formik.values.photos}
-                  onChange={formik.handleChange("photos")}
-                  onBlur={formik.handleBlur("photos")}
-               />
-               <input
-                  name="photos"
-                  type="text"
-                  className="inputEdit"
-                  placeholder="Must have a valid Url"
-                  value={formik.values.photos}
-                  onChange={formik.handleChange("photos")}
-                  onBlur={formik.handleBlur("photos")}
-               />
-               {formik.touched.photos && formik.errors.photos ? (
-                  <small className="signErrors">{formik.errors.photos}</small>
+               {formik.touched.photos0 && formik.errors.photos0 ? (
+                  <small className="signErrors">{formik.errors.photos0}</small>
                ) : (
                   <small className="signNoErrors">NoErrors</small>
                )}
             </div>
             <div className="inputEditProduct">
-               <label className="labelSign" htmlFor="decoPhotos">
+               <input
+                  name="photos1"
+                  type="text"
+                  className="inputEdit"
+                  placeholder="Must have a valid Url"
+                  value={formik.values.photos1}
+                  onChange={formik.handleChange("photos1")}
+                  onBlur={formik.handleBlur("photos1")}
+               />
+               {formik.touched.photos1 && formik.errors.photos1 ? (
+                  <small className="signErrors">{formik.errors.photos1}</small>
+               ) : (
+                  <small className="signNoErrors">NoErrors</small>
+               )}
+            </div>
+            <div className="inputEditProduct">
+               <input
+                  name="photos2"
+                  type="text"
+                  className="inputEdit"
+                  placeholder="Must have a valid Url"
+                  value={formik.values.photos2}
+                  onChange={formik.handleChange("photos2")}
+                  onBlur={formik.handleBlur("photos2")}
+               />
+               {formik.touched.photos2 && formik.errors.photos2 ? (
+                  <small className="signErrors">{formik.errors.photos2}</small>
+               ) : (
+                  <small className="signNoErrors">NoErrors</small>
+               )}
+            </div>
+            <div className="inputEditProduct">
+               <label className="labelSign" htmlFor="decoPhotos0">
                   Decoration Photos
                </label>
                <input
-                  name="decoPhotos"
+                  name="decoPhotos0"
                   type="text"
                   className="inputEdit"
                   placeholder="Must have a valid Url"
-                  value={formik.values.decoPhotos}
-                  onChange={formik.handleChange("decoPhotos")}
-                  onBlur={formik.handleBlur("decoPhotos")}
+                  value={formik.values.decoPhotos0}
+                  onChange={formik.handleChange("decoPhotos0")}
+                  onBlur={formik.handleBlur("decoPhotos0")}
                />
-               <input
-                  name="decoPhotos"
-                  type="text"
-                  className="inputEdit"
-                  placeholder="Must have a valid Url"
-                  value={formik.values.decoPhotos}
-                  onChange={formik.handleChange("decoPhotos")}
-                  onBlur={formik.handleBlur("decoPhotos")}
-               />
-               <input
-                  name="decoPhotos"
-                  type="text"
-                  className="inputEdit"
-                  placeholder="Must have a valid Url"
-                  value={formik.values.decoPhotos}
-                  onChange={formik.handleChange("decoPhotos")}
-                  onBlur={formik.handleBlur("decoPhotos")}
-               />
-               {formik.touched.decoPhotos && formik.errors.decoPhotos ? (
+               {formik.touched.decoPhotos0 && formik.errors.decoPhotos0 ? (
                   <small className="signErrors">
-                     {formik.errors.decoPhotos}
+                     {formik.errors.decoPhotos0}
+                  </small>
+               ) : (
+                  <small className="signNoErrors">NoErrors</small>
+               )}
+            </div>
+            <div className="inputEditProduct">
+               <input
+                  name="decoPhotos1"
+                  type="text"
+                  className="inputEdit"
+                  placeholder="Must have a valid Url"
+                  value={formik.values.decoPhotos1}
+                  onChange={formik.handleChange("decoPhotos1")}
+                  onBlur={formik.handleBlur("decoPhotos1")}
+               />
+               {formik.touched.decoPhotos1 && formik.errors.decoPhotos1 ? (
+                  <small className="signErrors">
+                     {formik.errors.decoPhotos1}
+                  </small>
+               ) : (
+                  <small className="signNoErrors">NoErrors</small>
+               )}
+            </div>
+            <div className="inputEditProduct">
+               <input
+                  name="decoPhotos2"
+                  type="text"
+                  className="inputEdit"
+                  placeholder="Must have a valid Url"
+                  value={formik.values.decoPhotos2}
+                  onChange={formik.handleChange("decoPhotos2")}
+                  onBlur={formik.handleBlur("decoPhotos2")}
+               />
+               {formik.touched.decoPhotos2 && formik.errors.decoPhotos2 ? (
+                  <small className="signErrors">
+                     {formik.errors.decoPhotos2}
                   </small>
                ) : (
                   <small className="signNoErrors">NoErrors</small>
