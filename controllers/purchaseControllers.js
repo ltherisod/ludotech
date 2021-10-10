@@ -55,7 +55,7 @@ const purchaseControllers = {
         user: req.user._id,
         articles: parsedShoppingCart,
         direction: req.body.direction,
-        paymentMethod: req.body.paymentMethod,
+        paymentDetails: req.body.paymentDetails,
         total,
       }).save()
 

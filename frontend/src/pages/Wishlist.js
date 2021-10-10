@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 import {useSelector} from 'react-redux'
 import Article from '../components/Article'
 import HeroPages from '../components/HeroPages'
 
 const Wishlist = (props) => {
     document.title = 'My wishlist'
-
-    const [search, setSearch] = useState('')
 
     const wishlist = useSelector((state) => state.users.wishList)
     const [searched, setSearched] = useState([])
@@ -38,6 +37,7 @@ const Wishlist = (props) => {
                     })}
                 </div>
             </main>
+            <Footer />
         </div>
     )
 }
