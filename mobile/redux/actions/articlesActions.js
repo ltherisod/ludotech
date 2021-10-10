@@ -138,6 +138,38 @@ const articlesActions = {
       }
     }
   },
+  getMostVisitArticles: () => {
+    return async () => {
+      try {
+        const response = await axios.get(`https://lodotechgames.herokuapp.com/api/mostvisitarticles`)
+        if (!response.data.success) throw new Error(response.data.error)
+        return {
+          success: true,
+          response: response.data.response,
+          error: null,
+        }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+  getRelatedArticles: (genreId) => {
+    return async (dispatch) => {
+      try {
+        const response = await axios.get(
+          `https://lodotechgames.herokuapp.com/api/article/related/${genreId}`
+        ) //cambiar por axios
+        if (!response.data.success) throw new Error(response.data.error)
+        return {
+          success: true,
+          response: response.data.response,
+          error: null,
+        }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
 }
 
 export default articlesActions
