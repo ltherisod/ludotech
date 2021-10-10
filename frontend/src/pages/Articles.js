@@ -4,6 +4,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Filter from "../components/Filter"
 import HeroPages from "../components/HeroPages"
+import Preloader from "../components/Preloader"
 
 const Articles = (props) => {
   const [articles, setArticles] = useState({
@@ -12,11 +13,12 @@ const Articles = (props) => {
     totalCounts: null,
     totalPages: 1,
   })
+  const [loadingArticles, setLoadingArticles] = useState(true)
   const [currentPage, setCurrentPage] = useState(1)
   const filterArticles = (e) => {
-    console.log(e)
     setArticles(e)
   }
+
   return (
     <>
       <div
@@ -34,17 +36,22 @@ const Articles = (props) => {
               filterArticles={(e) => filterArticles(e)}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
+              setLoadingArticles={setLoadingArticles} // esto es nuevo! para un preloader se puede mandar esto. es opcional.
             />
-            <div className="containerArticles">
-              {articles.articles.map((article) => {
-                return (
-                  <Article
-                    history={props.history}
-                    article={article}
-                    key={article._id}
-                  />
-                )
-              })}
+            <div className="containerArticles" id="containerArticles">
+              {loadingArticles ? (
+                <Preloader /> // cambiarlo acá, es de prueba jj
+              ) : (
+                articles.articles.map((article) => {
+                  return (
+                    <Article
+                      history={props.history}
+                      article={article}
+                      key={article._id}
+                    />
+                  )
+                })
+              )}
             </div>
             {articles.totalPages > 1 && (
               <div
@@ -54,7 +61,15 @@ const Articles = (props) => {
                   <button
                     type="button"
                     style={{ padding: ".3rem 1.2rem" }}
-                    onClick={() => setCurrentPage(currentPage - 1)}
+                    onClick={() => {
+                      window.scrollBy({
+                        top: -document.getElementById("containerArticles")
+                          .offsetHeight,
+                        // left: 0,
+                        behavior: "smooth",
+                      }) // mover esto, es test.
+                      setCurrentPage(currentPage - 1)
+                    }}
                   >
                     Prev
                   </button>
@@ -66,7 +81,15 @@ const Articles = (props) => {
                   <button
                     style={{ padding: ".3rem 1.2rem" }}
                     type="button"
-                    onClick={() => setCurrentPage(currentPage + 1)}
+                    onClick={() => {
+                      window.scrollBy({
+                        top: -document.getElementById("containerArticles")
+                          .clientHeight,
+                        left: 0,
+                        behavior: "smooth",
+                      }) // esto igual, mover después a algo decente jaja.
+                      setCurrentPage(currentPage + 1)
+                    }}
                   >
                     Next
                   </button>
