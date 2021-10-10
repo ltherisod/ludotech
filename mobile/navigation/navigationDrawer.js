@@ -1,5 +1,5 @@
 import React from "react"
-import { createDrawerNavigator } from "@react-navigation/drawer"
+import { createDrawerNavigator , DrawerContentScrollView, DrawerItem, DrawerItemList  } from '@react-navigation/drawer'
 import navigationStack from "./navigationStack"
 import Articles from "../screens/Articles"
 import Cart from "../screens/Cart"
@@ -8,49 +8,64 @@ import SignUp from "../screens/SignUp"
 import LogOut from "../screens/LogOut"
 import { connect, useSelector } from "react-redux"
 import { useLoginLS } from "../hooks/usersHooks"
+import{Image, ImageBackground, StyleSheet} from "react-native"
 const Drawer = createDrawerNavigator()
 
 const Navigator = (props) => {
   useLoginLS()
   const user = useSelector((state) => state.users.user)
+  function LogoTitle() {
+    return (
+      <Image
+        style={{ width: 130, height: 90, resizeMode:'contain' }}
+        source={require('../assets/ludotech.png')}
+      />
+    )
+  }
+
+  const CustomDrawerContent = (props) => {
+    return (
+            <ImageBackground source={{uri: "https://i.postimg.cc/g07bvLSL/drawer-Test.png" }} style={styles.drawerCustom}>
+              <DrawerContentScrollView {...props}>
+                <Image  source={require('../assets/rubik_solo.png')} style={{width:90, height:90, alignSelf:"center", marginVertical:15}}/>
+                <DrawerItemList {...props} />
+                </DrawerContentScrollView>
+            </ImageBackground>
+            
+    )
+}
   return (
     <Drawer.Navigator
-      screenOptions={{
-        drawerStyle: { backgroundColor: "#444444" },
-        drawerLabelStyle: {
-          color: "#EDEDED",
-          fontWeight: "bold",
-          fontSize: 40,
-        },
-        drawerActiveBackgroundColor: "#171717",
-      }}
+    screenOptions={{drawerLabelStyle:{fontFamily:"Poppins_700Bold", fontSize:20, marginTop:15}, drawerActiveBackgroundColor:'#3fced341', drawerActiveTintColor:'#2ab6bb'}}
+
+      drawerContent={props => <CustomDrawerContent {...props} />}
     >
       <Drawer.Screen
         name="Home"
         component={navigationStack}
-        // options={{ headerShown: false }}
+        options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
       />
       <Drawer.Screen
         name="Articles"
         component={Articles}
-        // options={{ headerShown: false }}
+        options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
       />
       <Drawer.Screen
         name="Cart"
         component={Cart}
-        // options={{ headerShown: false }}
+        options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
       />
       {!user && (
         <>
           <Drawer.Screen
             name="Sign In"
             component={SignIn}
-            // options={{ headerShown: false }}
+            options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
           />
           <Drawer.Screen
             name="Sign Up"
             component={SignUp}
-            // options={{ headerShown: false }}
+            options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
           />
         </>
       )}
@@ -58,11 +73,18 @@ const Navigator = (props) => {
         <Drawer.Screen
           name="Log Out"
           component={LogOut}
-          // options={{ headerShown: false }}
         />
       )}
     </Drawer.Navigator>
   )
 }
+
+const styles = StyleSheet.create({
+  drawerCustom:{
+      flex:1,
+  }
+
+})
+
 
 export default Navigator

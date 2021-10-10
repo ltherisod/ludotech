@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     heroPagesBody:{
         width:"100%",
         resizeMode:"cover",
-        minHeight:180,
+        height:210,
         
     }
 })

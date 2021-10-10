@@ -68,7 +68,11 @@ const SignUp = (props) => {
     <ImageBackground style={styles.signUpBack} source={require("../assets/fondoVioleta.png")} resizeMode="cover">
       <HeroPages/>
         <View style={styles.SignUpMain}>
-          <Text style={styles.title}>Sign Up</Text>
+          <View style={{flexDirection:"row"}}>
+            <Text style={styles.signUpTittle}>Sign</Text>
+            <Text style={styles.signUpTittleIn}>up!</Text>
+          </View>
+          <Text style={styles.label}>Firstname</Text>
           <TextInput
             onChangeText={formik.handleChange("firstname")}
             onBlur={formik.handleBlur("firstname")}
@@ -81,7 +85,7 @@ const SignUp = (props) => {
           ) : (
             <Text style={styles.noErrorText}>Placeholder</Text>
           )}
-
+          <Text style={styles.label}>Lastname</Text>
           <TextInput
             onChangeText={formik.handleChange("lastname")}
             onBlur={formik.handleBlur("lastname")}
@@ -94,7 +98,7 @@ const SignUp = (props) => {
           ) : (
             <Text style={styles.noErrorText}>Placeholder</Text>
           )}
-
+          <Text style={styles.label}>Email</Text>
           <TextInput
             onChangeText={formik.handleChange("email")}
             onBlur={formik.handleBlur("email")}
@@ -107,7 +111,7 @@ const SignUp = (props) => {
           ) : (
             <Text style={styles.noErrorText}>Placeholder</Text>
           )}
-
+          <Text style={styles.label}>Password</Text>
           <TextInput
             secureTextEntry={true}
             placeholder="Password"
@@ -121,7 +125,7 @@ const SignUp = (props) => {
           ) : (
             <Text style={styles.noErrorText}>Placeholder</Text>
           )}
-
+          <Text style={styles.label}>Profile photo</Text>
           <Text style={styles.imagePicker} onPress={pickImage}>
             Pick an image from gallery
           </Text>
@@ -147,22 +151,22 @@ const SignUp = (props) => {
             onPress={formik.handleSubmit}
             style={styles.signupButtonContainer}
           >
-            <View style={styles.signupButton}>
-              <Text style={styles.signupButtonText}>SIGN UP</Text>
-            </View>
+             <ImageBackground style={styles.signUpButton} source={{uri : "https://i.postimg.cc/mD7r09R8/button-Back.png"}} imageStyle={{borderRadius:5}}>
+              <Text style={styles.signupButtonText}>Sign up</Text>
+            </ImageBackground>
           </TouchableOpacity>
           {error && <Text style={styles.errorText}>{error}</Text>}
           <View style={styles.dontHaveAccountContainer}>
-            <Text>Already have an account? </Text>
+            <Text style={{ color: "white", fontFamily: "Poppins_700Bold", }}>Already have an account? </Text>
             <Text
               onPress={() => props.navigation.navigate("signup")}
-              style={{ textDecorationLine: "underline" }}
+              style={{ color: "#67f2cb", fontFamily: "Poppins_700Bold", marginBottom:-50}}
             >
-              Log In
+              Sing Up
             </Text>
           </View>
-          <Footer />
         </View>
+          <Footer />
     </ImageBackground>
       </ScrollView>
   )
@@ -178,45 +182,63 @@ const styles = StyleSheet.create({
   SignUpMain: {
     alignItems: "center",
   },
-  title: {
-    fontSize: 20,
-    marginVertical: 40,
+  signUpTittle: {
+    marginTop:-35,
+    color: "white",
+    fontFamily: "Poppins_700Bold",
+    fontSize: 35,
+  },
+  signUpTittleIn: {
+    marginTop:-35,
+    fontFamily: "Poppins_700Bold",
+    marginLeft: 3,
+    fontSize: 35,
+    color: "#67f2cb",
   },
   imagePicker: {
-    width: "70%",
+    width: 250,
     borderColor: "lightgray",
     marginBottom: 2,
     borderWidth: 1,
-    paddingVertical: 10,
+    paddingVertical: 12,
     paddingHorizontal: 10,
-    // fontSize: 16,
-    color: "gray",
+    borderRadius:5,
+    backgroundColor:"white",
+    color:"gray"
   },
   inputText: {
-    width: "70%",
+    width: 250,
     borderColor: "lightgray",
     marginBottom: 2,
     borderWidth: 1,
     paddingVertical: 8,
     paddingHorizontal: 10,
+    borderRadius:5,
+    backgroundColor:"white"
   },
   errorText: {
     fontSize: 10,
     color: "red",
   },
-  noErrorText: { color: "white", fontSize: 10 },
+  noErrorText: { color: "transparent",
+   fontSize: 10,
+   },
   signupButtonContainer: {
     alignItems: "center",
     width: "100%",
     marginVertical: 30,
   },
-  signupButton: {
+  signUpButton: {
+    alignSelf:"center",
     paddingVertical: 7,
     paddingHorizontal: 15,
-    backgroundColor: "black",
-    width: "70%",
+    width: 150,
   },
-  signupButtonText: { color: "white", textAlign: "center" },
+  signupButtonText: { 
+    color: "white", 
+    textAlign: "center", 
+    fontFamily: "Poppins_700Bold",
+   },
   dontHaveAccountContainer: {
     width: "100%",
     alignItems: "center",
@@ -226,4 +248,9 @@ const styles = StyleSheet.create({
     width:"100%",
     alignItems:"center"
 },
+label:{
+  color: "white",
+  fontFamily: "Poppins_700Bold",
+  alignSelf:"flex-start"
+}
 })

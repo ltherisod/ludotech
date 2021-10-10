@@ -1,7 +1,13 @@
 import React from "react"
-import {View, Text, ImageBackground, Image, TouchableOpacity, StyleSheet} from "react-native"
-
+import {View, Text, ImageBackground, Image, TouchableOpacity, StyleSheet, Pressable} from "react-native"
+import { connect } from "react-redux"
+import articlesActions from "../redux/actions/articlesActions"
+import Icon from 'react-native-vector-icons/FontAwesome'
 const Article = (props) => {
+    const addToCart = (e, id) => {
+        e.stopPropagation()
+        props.updateCart("add", id)
+     }
 
     const {
         name,
@@ -18,14 +24,25 @@ const Article = (props) => {
      
     return(
         <ImageBackground  style={styles.articleCard}source={{uri:"https://i.postimg.cc/sftdwcnd/article.png"}} imageStyle={{borderRadius:15}}>
+            <Pressable>
+                <Icon name='heart' style={{fontSize:30, color:"pink", alignSelf:"flex-end", margin:10}}/>
+            </Pressable>
             <Image source={{uri: iconPhotos }} resizeMode="cover" style={styles.articleIcon}/>
-            <Text>${price}</Text>
+            <Text style={styles.articlePrice}>${price} USD</Text>
             <Text style={styles.articleName}>{name}</Text>
+            <Pressable onPress={(e) => addToCart(e, _id) }>
+                <Image style={styles.cart} source={require("../assets/buy.png")}/>
+            </Pressable>
+            
         </ImageBackground>
     )
 }
 
-export default Article
+const mapDispatchToProps = {
+    updateCart: articlesActions.updateCart,
+ }
+ 
+ export default connect(null, mapDispatchToProps)(Article)
 
 const styles = StyleSheet.create({
     articleCard:{
@@ -44,6 +61,17 @@ const styles = StyleSheet.create({
         fontFamily:"Poppins_700Bold",
         textAlign:"center",
         fontSize:20,
-
+    },
+    articlePrice:{
+        fontFamily:"Poppins_700Bold",
+        alignSelf:"center",
+        color:"lightgreen",
+        fontSize:20
+    },
+    cart:{
+        marginRight:15,
+        alignSelf:"flex-end",
+        width:45,
+        height:45,
     }
 })
