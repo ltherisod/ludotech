@@ -5,6 +5,7 @@ import Articles from "../screens/Articles"
 import Cart from "../screens/Cart"
 import SignIn from "../screens/SignIn"
 import SignUp from "../screens/SignUp"
+import Article from "../screens/Article"
 
 const Stack = createNativeStackNavigator()
 
@@ -13,6 +14,7 @@ const navigationStack = () => {
         <Stack.Navigator>
             <Stack.Screen name="HomeStack" component={Home} options={{headerShown: false}}/>
             <Stack.Screen name="ArticlesStack" component={Articles} options={{headerShown: false}}/>
+            <Stack.Screen name="ArticleStack" component={Article} options={{headerShown: false}}/>
             <Stack.Screen name="CartStack" component={Cart} options={{headerShown: false}}/>
             <Stack.Screen name="SignInStack" component={SignIn} options={{headerShown: false}}/>
             <Stack.Screen name="SignUpStack" component={SignUp} options={{headerShown: false}}/>
