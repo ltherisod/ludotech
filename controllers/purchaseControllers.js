@@ -132,7 +132,7 @@ const purchaseControllers = {
   },
   updateStatus: async (req, res) => {
     try {
-      const { purchaseId } = req.params
+      const { id } = req.params
       const { status } = req.body
       if (
         ![
@@ -145,12 +145,14 @@ const purchaseControllers = {
       )
         throw new Error("Invalid status.")
       const purchase = await Purchase.findOneAndUpdate(
-        { _id: purchaseId },
+        { _id: id },
         { status },
         { new: true }
       ).populate("user", "-password -__v")
       res.json({ success: true, response: purchase, error: null })
+      console.log(purchase)
     } catch (e) {
+      console.log(e)
       res.json({ success: false, response: null, error: e.message })
     }
   },
