@@ -298,7 +298,7 @@ const usersControllers = {
           { _id: req.user._id },
           { $addToSet: { wishList: articleId } },
           { new: true }
-        ).populate("wishList")
+        ).populate({ path: "wishList", populate: "brand genres gameType" })
       }
       res.json({ success: true, response: user.wishList, error: null })
     } catch (e) {

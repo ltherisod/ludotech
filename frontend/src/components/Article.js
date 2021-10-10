@@ -12,7 +12,7 @@ const Article = (props) => {
    const dispatch = useDispatch()
 
    console.log(wishlist)
-   const [fav, setFav] = useState(false)
+   // const [fav, setFav] = useState(false)
 
    const {
       name,
@@ -26,21 +26,16 @@ const Article = (props) => {
       discountPrice
    } = props.article
 
-   // useEffect(() => {
-   //    wishlist.find(article => {
-   //       return article._id ===
-   //    })
-   //       .then(res => {
-   //          if(res) {
-   //             setFav(true)
-   //          } else {
-   //             setFav(false)
-   //          }
-   //       })
-   //       .catch(e=>console.log(e))
-   // }, [])
+   useEffect(() => {
+      // evaluate()
+   }, [])
 
+   // const evaluate = () => {
+   //    let found = wishlist.find(article => {return article._id === _id })
+   //       found ? setFav(true) : setFav(false)
+   // }
 
+   
    const addToCart = (e, id) => {
       e.stopPropagation()
       props.updateCart("add", id)
@@ -48,7 +43,7 @@ const Article = (props) => {
 
    const handleFav = (e) => {
       e.stopPropagation()
-      setFav(!fav)
+      // setFav(!fav)
       dispatch(usersActions.toggleWishList(_id))
    }
 
@@ -68,7 +63,9 @@ const Article = (props) => {
                style={{ backgroundImage: `url('${photos}')` }}
             >
                <div className="circleFav" onClick={(e) => handleFav(e)}>
-                  {!fav ? <FaRegHeart /> : <FaHeart />}
+                  {wishlist.some(i => {
+                     return i._id === _id
+                  }) ? <FaHeart /> : <FaRegHeart />}
                </div>
             </div>
             <div className="gameInfo">

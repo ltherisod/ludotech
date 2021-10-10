@@ -26,8 +26,15 @@ const purchaseValidator = async (req, res, next) => {
           "any.required": "State is required",
         }),
       })
-      .required(),
-    paymentMethod: joi.string().required(),
+      ,
+    paymentDetails: joi.object({
+      method: joi.string().required({
+        "any.required": "method is required",
+      }),
+      orderId: joi.string().required({
+        "any.required": "orderId is required",
+      })
+    }),
   })
 
   try {
