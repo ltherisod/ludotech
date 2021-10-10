@@ -18,6 +18,7 @@ const Articles = (props) => {
   const filterArticles = (e) => {
     setArticles(e)
   }
+
   return (
     <>
       <div
@@ -37,7 +38,7 @@ const Articles = (props) => {
               setCurrentPage={setCurrentPage}
               setLoadingArticles={setLoadingArticles} // esto es nuevo! para un preloader se puede mandar esto. es opcional.
             />
-            <div className="containerArticles">
+            <div className="containerArticles" id="containerArticles">
               {loadingArticles ? (
                 <Preloader /> // cambiarlo acá, es de prueba jj
               ) : (
@@ -60,7 +61,15 @@ const Articles = (props) => {
                   <button
                     type="button"
                     style={{ padding: ".3rem 1.2rem" }}
-                    onClick={() => setCurrentPage(currentPage - 1)}
+                    onClick={() => {
+                      window.scrollBy({
+                        top: -document.getElementById("containerArticles")
+                          .offsetHeight,
+                        // left: 0,
+                        behavior: "smooth",
+                      }) // mover esto, es test.
+                      setCurrentPage(currentPage - 1)
+                    }}
                   >
                     Prev
                   </button>
@@ -72,7 +81,15 @@ const Articles = (props) => {
                   <button
                     style={{ padding: ".3rem 1.2rem" }}
                     type="button"
-                    onClick={() => setCurrentPage(currentPage + 1)}
+                    onClick={() => {
+                      window.scrollBy({
+                        top: -document.getElementById("containerArticles")
+                          .clientHeight,
+                        left: 0,
+                        behavior: "smooth",
+                      }) // esto igual, mover después a algo decente jaja.
+                      setCurrentPage(currentPage + 1)
+                    }}
                   >
                     Next
                   </button>

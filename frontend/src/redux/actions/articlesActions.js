@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const HOST = "https://lodotechgames.herokuapp.com"
+const HOST = "http://localhost:4000"
 
 const articlesActions = {
   getArticles: (filters, page) => {
