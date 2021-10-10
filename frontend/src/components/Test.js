@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 const fetchPaypalToken = async () => {
   try {
     const credentialsResponse = await axios.get(
-      "http://localhost:4000/api/admin/paypal-credentials",
+      "https://lodotechgames.herokuapp.com/api/admin/paypal-credentials",
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     )
     const params = new URLSearchParams()

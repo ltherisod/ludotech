@@ -9,7 +9,7 @@ const Team = () => {
     const [userFound, setUserFound] = useState(false)
 
     useEffect(() => {
-        axios.get('http://localhost:4000/api/admin',{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+        axios.get('https://lodotechgames.herokuapp.com/api/admin',{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
             .then(res=> {
                 setMembers(res.data.response)
             })
@@ -17,7 +17,7 @@ const Team = () => {
     },[])
 
     const getUser = () => {
-        axios.post('http://localhost:4000/api/admin', {email: search},{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+        axios.post('https://lodotechgames.herokuapp.com/api/admin', {email: search},{headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
             .then(res => {
                 if(res.data.response) {
                     setUserFound(res.data.response)
@@ -36,7 +36,7 @@ const Team = () => {
     const changeRol = () => {
         console.log(members)
         axios.post(
-            'http://localhost:4000/api/admin/set-admin', 
+            'https://lodotechgames.herokuapp.com/api/admin/set-admin', 
             {email: userFound.email},
             {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}} 
         )

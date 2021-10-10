@@ -11,7 +11,7 @@
 /mobile/*.mobileprovision
 /mobile/*.orig.*
 /mobile/web-build/
-
+.env
 
 # macOS
 /mobile/.DS_Store

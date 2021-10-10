@@ -56,6 +56,7 @@ const usersActions = {
                   },
                }
             )
+            console.log(response)
             if (!response.data.success) throw new Error(response.data.error)
             dispatch({
                type: "LOGIN_OR_SIGNUP",

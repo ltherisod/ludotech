@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux"
 import usersActions from "../redux/actions/usersActions"
 const iconUser = "https://i.postimg.cc/pd1gvVR7/iconuser1.png"
 
-const HOST = "http://localhost:4000"
+const HOST = "https://lodotechgames.herokuapp.com"
 
 const Header = (props) => {
    const user = useSelector((state) => state.users.user)
