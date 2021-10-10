@@ -959,21 +959,52 @@ h2 span {
 .changeStatus {
   display: flex;
   align-items: center;
-  padding: 2vmin 0;
-  gap: 2vmin;
+  width: 60%;
+}
+
+.containerChangeBuyer {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 2vmin;
+  display: flex;
+  align-items: center;
+  gap: 2vmin;
+  justify-content: space-between;
+}
+
+.buyer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 2vmin;
+}
+
+.buyer span {
+  font-size: 2vmin;
+  color: rgb(104, 101, 101);
+}
+
+.buyer p {
+  margin-bottom: 0;
+}
+
+.containerChangeBuyer p {
+  margin: 0;
 }
 
 .changeStatus select {
   outline: none;
   font-size: 2.2vmin;
   height: 30px;
+  width: 40%;
+  margin: 0 2vmin;
 }
 
 .articlesFoundPanel {
-  margin: 1vmin 0;
+  margin-top: 2vmin;
+  margin-bottom: 1vmin;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2vmin;
 }
 
@@ -996,6 +1027,16 @@ h2 span {
   grid-template-columns: 8% 8% 40% 15% 10% 15%;
 }
 
+.closePurchase {
+  position: absolute;
+  top: 2vmin;
+  right: 2vmin;
+  width: 3vmin;
+  height: 3vmin;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
 .purchasesPanel,
 .productsPanel {
   display: grid;
@@ -1010,7 +1051,12 @@ h2 span {
 
 .purchaseContainerPanel div {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.addressPurchasePanel {
+  align-items: flex-start;
 }
 
 .purchaseContainerPanel:hover {
@@ -1046,8 +1092,18 @@ h2 span {
 }
 
 .orange {
-  background-color: #faf4f0;
+  background-color: #ffd5b9;
   color: #ee9a37;
+}
+
+.blue {
+  background-color: #cac9fd;
+  color: #3768ee;
+}
+
+.purple {
+  background-color: #d6b6f3;
+  color: #7d37ee;
 }
 
 .statusPurchasePanel p {

@@ -136,7 +136,7 @@ const purchaseControllers = {
    },
    updateStatus: async (req, res) => {
       try {
-         const { purchaseId } = req.params
+         const { id } = req.params
          const { status } = req.body
          if (
             ![
@@ -149,7 +149,7 @@ const purchaseControllers = {
          )
             throw new Error("Invalid status.")
          const purchase = await Purchase.findOneAndUpdate(
-            { _id: purchaseId },
+            { _id: id },
             { status },
             { new: true }
          ).populate("user", "-password -__v")
