@@ -7,6 +7,7 @@ import {useFonts,Poppins_100Thin, Poppins_200ExtraLight, Poppins_300Light, Poppi
 import rootReducer from "./redux/reducers/rootReducer.js"
 import thunk from "redux-thunk"
 import AppLoading from 'expo-app-loading'
+import navigationBottom from "./navigation/navigationBottom"
 
 const globalStore = createStore(rootReducer, applyMiddleware(thunk))
 
