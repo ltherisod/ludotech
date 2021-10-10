@@ -4,7 +4,7 @@ import HeroPages from "../components/HeroPages"
 import Footer from "../components/Footer"
 import ArticleRelated from "../components/ArticleRelated"
 import ArticleCaroulsel from "../components/ArticleCaroulsel"
-import { useArticle } from "../hooks/articlesHooks"
+import { useArticle, useRelatedArticles } from "../hooks/articlesHooks"
 import { connect } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
 import Preloader from "../components/Preloader"
@@ -33,6 +33,15 @@ const ArticlePage = (props) => {
       weight,
       _id,
    } = article
+
+   // const [relatedArticles, loadingRelated] = useRelatedArticles(genres)
+//    let relatedArticles
+//    let loadingRelated
+//    useEffect(() => {
+//       !loading && ([relatedArticles, loadingRelated] = useRelatedArticles(genres[0]._id))
+
+//    }, [loading])
+// console.log(relatedArticles, loadingRelated)
 
    const addToCart = (id) => {
       props.updateCart("add", id)

@@ -74,26 +74,28 @@ export const useUtils = () => {
   return [utils, loading, error]
 }
 
-export const useRelatedArticles = (genreId) => {
+export const useRelatedArticles = (genres) => {
   const [relatedArticles, setRelatedArticles] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loadingRelated, setLoadingRelated] = useState(true)
   const [error, setError] = useState(null)
   const dispatch = useDispatch()
   useEffect(() => {
-    setError(null)
-    setLoading(true)
-    fetchRelatedArticles()
-  }, [genreId])
+    if (genres) {
+      setError(null)
+      setLoadingRelated(true)
+      fetchRelatedArticles()
+    }
+  }, [genres])
 
   const fetchRelatedArticles = async () => {
-    const res = await dispatch(articlesActions.getRelatedArticles(genreId))
+    const res = await dispatch(articlesActions.getRelatedArticles(genres[0]._id))
     if (!res.success) {
       setError(res.error)
     } else {
       setRelatedArticles(res.response)
     }
-    setLoading(false)
+    setLoadingRelated(false)
   }
 
-  return [relatedArticles, loading, error]
+  return [relatedArticles, loadingRelated, error]
 }

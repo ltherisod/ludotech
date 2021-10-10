@@ -154,11 +154,12 @@ const articlesActions = {
     }
   },
   getRelatedArticles: (genreId) => {
-    return async (dispatch) => {
+    return async () => {
       try {
         const response = await axios.get(
           `${HOST}/api/article/related/${genreId}`
-        ) //cambiar por axios
+        )
+        console.log(response)
         if (!response.data.success) throw new Error(response.data.error)
         return {
           success: true,
