@@ -6,6 +6,7 @@ import Cart from "../screens/Cart"
 import SignIn from "../screens/SignIn"
 import SignUp from "../screens/SignUp"
 import LogOut from "../screens/LogOut"
+import WishList from "../screens/WishList"
 import { connect, useSelector } from "react-redux"
 import { useLoginLS } from "../hooks/usersHooks"
 import{Image, ImageBackground, StyleSheet} from "react-native"
@@ -54,6 +55,11 @@ const Navigator = (props) => {
         name="Cart"
         component={Cart}
         options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
+      />
+      <Drawer.Screen 
+        name="Wish List"
+        component={WishList}
+        option={{ headerTitle: (props) => <LogoTitle {...props} /> }} 
       />
       {!user && (
         <>
