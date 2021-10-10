@@ -41,18 +41,26 @@ const Sales = () => {
             <div className='searchUserTeam'>
                 <label>Search a purchase to more info</label>
                 <div className='searchbarTeam'>
-                    <input type='search' placeholder='AA919ADSJ' onChange={e => setSearch(e.target.value)} />
+                    <input type='search' placeholder='6162577f766de90727eb542c' onChange={e => setSearch(e.target.value)} />
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
                         onClick={getPurchase}
                     >
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                     </svg>
-                    {/* 616232685ed22317525a698e */}
+                    {/* 6162577f766de90727eb542c */}
                 </div>
                 {purchaseFound && <div className='purchaseFound' style={{width: '100%'}}>
+                    <div className='titlesPurchasesPanel'>
+                        <p>Order ID</p>
+                        <p>Products</p>
+                        <p>Address</p>
+                        <p>Date</p>
+                        <p>Amount</p>
+                        <p>Status</p>
+                    </div>
                     <Purchase direction={purchaseFound.direction} articles={purchaseFound.articles} status={purchaseFound.status} purchase={purchaseFound} />
                     <div>
-                        <div style={{display: 'flex', alignItems: 'center', marginTop: '2vmin', gap: '2vmin'}}>
+                        <div className='changeStatus'>
                             <p>Change status of this purchase</p>
                             <select>
                                 <option value='confirmed'>Confirmed</option>
@@ -87,7 +95,7 @@ const Sales = () => {
                 <div className='titlesPurchasesPanel'>
                     <p>Order ID</p>
                     <p>Products</p>
-                    <p>Adress</p>
+                    <p>Address</p>
                     <p>Date</p>
                     <p>Amount</p>
                     <p>Status</p>

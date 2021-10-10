@@ -956,6 +956,20 @@ h2 span {
   width: 100%;
 }
 
+.changeStatus {
+  display: flex;
+  align-items: center;
+  padding: 2vmin 0;
+  gap: 2vmin;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.changeStatus select {
+  outline: none;
+  font-size: 2.2vmin;
+  height: 30px;
+}
+
 .articlesFoundPanel {
   margin: 1vmin 0;
   display: grid;
@@ -986,7 +1000,7 @@ h2 span {
 .productsPanel {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 1vmin;
+  /* gap: 1vmin; */
 }
 
 .purchaseContainerPanel {
@@ -997,6 +1011,11 @@ h2 span {
 .purchaseContainerPanel div {
   display: flex;
   align-items: center;
+}
+
+.purchaseContainerPanel:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .purchasePhotoPanel {

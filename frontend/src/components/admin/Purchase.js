@@ -6,7 +6,7 @@ const Purchase = ({purchase, articles, direction}) => {
 
     return (
         <div className='purchaseContainerPanel'>
-            <p>3333333</p>
+            <p>...{purchase._id.substring(18, 24 )}</p>
             <p style={{textAlign: 'center'}}>{articles.length < 10 ? `0${articles.length}` : articles.length}</p>
             <div className='addressPurchasePanel'>
                 <p style={{flex: 1}}>{direction.zipCode} {direction.street} {direction.number} {direction.department} {direction.city}, {direction.state}</p>
