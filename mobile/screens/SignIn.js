@@ -96,7 +96,6 @@ export default SignIn
 
 const styles = StyleSheet.create({
   SignInMain: {
-    minHeight: height * 0.5,
     alignItems: "center",
   },
   title: {

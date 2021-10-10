@@ -17,7 +17,7 @@ import Footer from "../components/Footer";
 import MostWanted from "../components/MostWanted";
 
 
-const Home = () => {
+const Home = (props) => {
   return (
     <SafeAreaView
       style={{
