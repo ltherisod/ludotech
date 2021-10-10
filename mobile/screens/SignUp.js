@@ -172,7 +172,6 @@ export default connect(null, mapDispatchToProps)(SignUp)
 const { height, width } = Dimensions.get("window")
 const styles = StyleSheet.create({
   SignUpMain: {
-    minHeight: height * 0.5,
     alignItems: "center",
     width,
   },
