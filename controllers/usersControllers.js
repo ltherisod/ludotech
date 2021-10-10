@@ -467,9 +467,26 @@ const usersControllers = {
       let mailOptions = {
          from: "Ludotehc <ludotechweb@gmail.com>",
          to: `<${req.body.email}`,
-         subject: `Welcome ${req.body.name}`,
+         subject: `Confirmation for ${req.body.name}`,
          text: indexEmail.Welcome(req.body),
          html: indexEmail.Welcome(req.body),
+      }
+      transporter.sendMail(mailOptions, (e, data) => {
+         if (!e) {
+            res.json({ success: true, response: data, error: null })
+         } else {
+            res.json({ success: false, response: null, error: e.message })
+            console.log(e)
+         }
+      })
+   },
+   sendReSendConfirmationEmail: (req, res) => {
+      let mailOptions = {
+         from: "Ludotehc <ludotechweb@gmail.com>",
+         to: `<${req.body.email}`,
+         subject: `Confirmation for ${req.body.name}`,
+         text: indexEmail.ReSendConfirmationEmail(req.body),
+         html: indexEmail.ReSendConfirmationEmail(req.body),
       }
       transporter.sendMail(mailOptions, (e, data) => {
          if (!e) {
@@ -483,10 +500,10 @@ const usersControllers = {
    sendWelcomeEmail: (req, res) => {
       let mailOptions = {
          from: "Ludotehc <ludotechweb@gmail.com>",
-         to: "<jc.venepro@gmail.com>",
-         subject: "Welcome ",
-         text: welcomeEmail,
-         html: welcomeEmail,
+         to: `<${req.body.email}`,
+         subject: `Welcome ${req.body.name}`,
+         text: indexEmail.Welcome(req.body),
+         html: indexEmail.Welcome(req.body),
       }
       transporter.sendMail(mailOptions, (e, data) => {
          if (!e) {
@@ -497,6 +514,125 @@ const usersControllers = {
          }
       })
    },
+   sendResetPaswordConfirmation: (req, res) => {
+      let mailOptions = {
+         from: "Ludotehc <ludotechweb@gmail.com>",
+         to: `<${req.body.email}`,
+         subject: `Confirm reset password`,
+         text: indexEmail.ResetPasswordConfirmation(req.body),
+         html: indexEmail.ResetPasswordConfirmation(req.body),
+      }
+      transporter.sendMail(mailOptions, (e, data) => {
+         if (!e) {
+            res.json({ success: true, response: data, error: null })
+         } else {
+            res.json({ success: false, response: null, error: e.message })
+            console.log(e)
+         }
+      })
+   },
+   sendNewPassword: (req, res) => {
+      let mailOptions = {
+         from: "Ludotehc <ludotechweb@gmail.com>",
+         to: `<${req.body.email}`,
+         subject: `Your password has been reset`,
+         text: indexEmail.NewPassword(req.body),
+         html: indexEmail.NewPassword(req.body),
+      }
+      transporter.sendMail(mailOptions, (e, data) => {
+         if (!e) {
+            res.json({ success: true, response: data, error: null })
+         } else {
+            res.json({ success: false, response: null, error: e.message })
+            console.log(e)
+         }
+      })
+   },
+   sendSuccessPurchase: (req, res) => {
+      let mailOptions = {
+         from: "Ludotehc <ludotechweb@gmail.com>",
+         to: `<${req.body.email}`,
+         subject: `Success purchase by ${req.body.name}`,
+         text: indexEmail.SuccessPurchase(req.body),
+         html: indexEmail.SuccessPurchase(req.body),
+      }
+      transporter.sendMail(mailOptions, (e, data) => {
+         if (!e) {
+            res.json({ success: true, response: data, error: null })
+         } else {
+            res.json({ success: false, response: null, error: e.message })
+            console.log(e)
+         }
+      })
+   },
+   sendFailPurchase: (req, res) => {
+      let mailOptions = {
+         from: "Ludotehc <ludotechweb@gmail.com>",
+         to: `<${req.body.email}`,
+         subject: `Fail purchase by ${req.body.name}`,
+         text: indexEmail.FailPurchase(req.body),
+         html: indexEmail.FailPurchase(req.body),
+      }
+      transporter.sendMail(mailOptions, (e, data) => {
+         if (!e) {
+            res.json({ success: true, response: data, error: null })
+         } else {
+            res.json({ success: false, response: null, error: e.message })
+            console.log(e)
+         }
+      })
+   },
+   sendUserBillCheckout: (req, res) => {
+      let mailOptions = {
+         from: "Ludotehc <ludotechweb@gmail.com>",
+         to: `<${req.body.email}`,
+         subject: `Hello ${req.body.name}. Purchase bill`,
+         text: indexEmail.UserBillCheckout(req.body),
+         html: indexEmail.UserBillCheckout(req.body),
+      }
+      transporter.sendMail(mailOptions, (e, data) => {
+         if (!e) {
+            res.json({ success: true, response: data, error: null })
+         } else {
+            res.json({ success: false, response: null, error: e.message })
+            console.log(e)
+         }
+      })
+   },
+   sendDeleteAccountConfirmation: (req, res) => {
+      let mailOptions = {
+         from: "Ludotehc <ludotechweb@gmail.com>",
+         to: `<${req.body.email}`,
+         subject: `Confirm delete user account`,
+         text: indexEmail.DeleteAccountConfirmation(req.body),
+         html: indexEmail.DeleteAccountConfirmation(req.body),
+      }
+      transporter.sendMail(mailOptions, (e, data) => {
+         if (!e) {
+            res.json({ success: true, response: data, error: null })
+         } else {
+            res.json({ success: false, response: null, error: e.message })
+            console.log(e)
+         }
+      })
+   },
+   sendDeleteAccount: (req, res) => {
+      let mailOptions = {
+         from: "Ludotehc <ludotechweb@gmail.com>",
+         to: `<${req.body.email}`,
+         subject: `Your account has been deleted`,
+         text: indexEmail.DeleteAccount(req.body),
+         html: indexEmail.DeleteAccount(req.body),
+      }
+      transporter.sendMail(mailOptions, (e, data) => {
+         if (!e) {
+            res.json({ success: true, response: data, error: null })
+         } else {
+            res.json({ success: false, response: null, error: e.message })
+            console.log(e)
+         }
+      })
+   }
 }
 
 module.exports = usersControllers

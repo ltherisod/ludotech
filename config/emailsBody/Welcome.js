@@ -11,7 +11,6 @@ const WelcomeMail = (data) => {
       <p>We´re glad to have you in our comunu¡ity to find and share opinions about the games.</p>
       <br/>
       <p>Now you can go and search for the best games we offers for you <a href="https://lodotechgames.herokuapp.com">here</a>
-
     </main>
     <footer style="">
       <span style="font-size:0.8">Ludotech</span>
