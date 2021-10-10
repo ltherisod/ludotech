@@ -72,4 +72,8 @@ const Header = (props) => {
 
 export default Header
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  mainNav: {
+    backgroundColor: 'transparent'
+  }
+})
