@@ -1756,3 +1756,55 @@ h2.articles {
   align-self: center;
   width: 40%;
 }
+
+/* DASHBOARD */
+
+.dashboardMain {
+  flex: 1;
+  padding: 3vmin;
+  background-color: #fafafa;
+  min-height: 100vh;
+  overflow-y: scroll;
+}
+
+.dashboardMain p {
+  margin: 0;
+  padding: 0;
+}
+
+.recentOrdersContainer {
+  width: 55%;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  padding: 2vmin;
+}
+
+.titlesRecentOrders,
+.recentOrder {
+  padding: 0 2vmin;
+  display: grid;
+  grid-template-columns: 17% 18% 22% 18% 24%;
+}
+
+.titlesRecentOrders {
+  padding-bottom: 2vmin;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.recentOrder {
+  padding: 2vmin 2vmin;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.recentOrder div {
+  display: flex;
+  align-items: center;
+}
+
+.articleDashboard {
+  height: 7vh;
+  width: 7vh;
+  background-size: cover;
+  background-position: center;
+}

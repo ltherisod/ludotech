@@ -2,13 +2,11 @@ import React, { useState } from "react"
 import ArticlesAdmin from "../components/admin/ArticlesAdmin"
 import NavBar from "../components/admin/NavBar"
 import Team from "../components/admin/Team"
-import { useSelector } from "react-redux"
 import Sales from "../components/admin/Sales"
+import Dashboard from "../components/admin/Dashboard"
 
 const PanelAdmin = (props) => {
    const [show, setShow] = useState('dashboard')
-
-   // const user = useSelector((state) => state.users.user)
 
    const render = (page) => {
       setShow(page)
@@ -20,6 +18,7 @@ const PanelAdmin = (props) => {
          {(show === 'articles') && <ArticlesAdmin />}
          {(show === 'sold') && <Sales />}
          {(show === 'team') && <Team />}
+         {(show === 'dashboard') && <Dashboard />}
       </div>
    )
 }
