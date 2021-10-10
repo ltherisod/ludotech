@@ -47,9 +47,39 @@ const Sales = () => {
                     >
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                     </svg>
+                    {/* 616232685ed22317525a698e */}
                 </div>
                 {purchaseFound && <div className='purchaseFound' style={{width: '100%'}}>
                     <Purchase direction={purchaseFound.direction} articles={purchaseFound.articles} status={purchaseFound.status} purchase={purchaseFound} />
+                    <div>
+                        <div style={{display: 'flex', alignItems: 'center', marginTop: '2vmin', gap: '2vmin'}}>
+                            <p>Change status of this purchase</p>
+                            <select>
+                                <option value='confirmed'>Confirmed</option>
+                                <option value='processing'>Processing</option>
+                                <option value='shipping'>Shipping</option>
+                                <option value='completed'>Completed</option>
+                                <option value='cancelled'>Canceled</option>
+                            </select>
+                            <button className='saveTeam'>Save</button>
+                        </div>
+                        <div className='articlesFoundPanel'>
+                            {purchaseFound.articles.map(article => {
+                                return (
+                                    <div key={article._id} className='productRow'>
+                                        <div className='productRowtPicture' style={{backgroundImage: `url("${article.photos[0]}")`}}></div>
+                                        <div className='detailsProductPanel'>
+                                            <p className='nameProductPanel'>{article.name}</p>
+                                            <span>
+                                                <p style={{marginRight: '2vmin'}}>Price: ${article.price}</p>
+                                                <p>Quantity: {article.quantity}</p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
                 </div>}
                 {notFound && <span className='userDontFoundTeam'>Dont exist an purchase with that id</span>}
             </div>
