@@ -16,7 +16,7 @@ export const useArticles = (filters, submit, page) => {
 
   useEffect(() => {
     fetchArticles()
-  }, [submit])
+  }, [page, submit])
 
   const fetchArticles = async () => {
     const res = await dispatch(articlesActions.getArticles(filters, page))

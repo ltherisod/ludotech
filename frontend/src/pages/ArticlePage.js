@@ -1,3 +1,4 @@
+import React, {useEffect, useState} from "react"
 import Header from "../components/Header"
 import HeroPages from "../components/HeroPages"
 import Footer from "../components/Footer"
@@ -6,9 +7,10 @@ import ArticleCaroulsel from "../components/ArticleCaroulsel"
 import { useArticle } from "../hooks/articlesHooks"
 import { connect } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
+import Preloader from "../components/Preloader"
 
 const ArticlePage = (props) => {
-   const [articles, loading, error] = useArticle(props.match.params.id)
+   const [article, loading] = useArticle(props.match.params.id)
    const {
       brand,
       decoPhotos,
@@ -30,7 +32,19 @@ const ArticlePage = (props) => {
       visitsCount,
       weight,
       _id,
-   } = articles
+   } = article
+
+   const [articlesRelated, setArticlesRelated] = useState([])
+   useEffect(() => {
+      // !loading && props.getRelatedArticles(genres[0]._id)
+      // .then(res => {
+      //    console.log(res.response)
+      //    setArticlesRelated(res.response)
+      // })
+      // .catch(e => console.log(e))
+      !loading && setArticlesRelated([article]) //provisional, se debe quitar
+   }, [loading])
+
 
    const addToCart = (id) => {
       props.updateCart("add", id)
@@ -39,7 +53,7 @@ const ArticlePage = (props) => {
    return (
       <>
          {loading ? (
-            <h1>Loading</h1>
+            <Preloader/>
          ) : (
             <div
                className="bodyArticle"
@@ -176,12 +190,11 @@ const ArticlePage = (props) => {
                   ></div>
                </div>
                <h3 className="articleRelatedTittle">Products related</h3>
-               {/* <div className="relatedArticles">
-            {articles.map((article, id) => {
-               return <ArticleRelated article={article} key={id} />
-            })}
-         </div> */}
-               
+               <div className="relatedArticles">
+               {articlesRelated.map(article => {
+                  return <ArticleRelated history={props.history} article={article} key={_id} />
+               })}
+               </div>
                <Footer />
             </div>
          )}
@@ -191,6 +204,7 @@ const ArticlePage = (props) => {
 
 const mapDispatchToProps = {
    updateCart: articlesActions.updateCart,
+   getRelatedArticles: articlesActions.getRelatedArticles
 }
 
 export default connect(null, mapDispatchToProps)(ArticlePage)

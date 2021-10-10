@@ -10,28 +10,26 @@ const Articles = (props) => {
         articles: [],
         page: 1,
         totalCounts: null,
-        totalPages: null,
+        totalPages: 1,
     })
-    const [currentPage, setCurrentPage] = useState(2)
+    const [currentPage, setCurrentPage] = useState(1)
     const filterArticles = (e) => {
-        console.log(e)
         setArticles(e)
     }
     console.log(articles)
-    
     return (
         <SafeAreaView style={{marginTop: Platform.OS === "android" && StatusBar.currentHeight, flex: 1}}>
             <ScrollView>
                 <Header/>
                 <View style={styles.articlesMain}>
                     <Text>Articles</Text>
-                    <Filter
+                    {/* <Filter
                         filterArticles={(e) => filterArticles(e)}
                         currentPage={currentPage}
                         setCurrentPage={setCurrentPage}
-                    />
+                    /> */}
                     <View>
-                    {/* {articles.articles.map((article) => {
+                    {articles.articles.map((article) => {
                         return (
                             <Article
                                 history={props.history}
@@ -39,7 +37,7 @@ const Articles = (props) => {
                                 key={article._id}
                             />
                         )
-                    })} */}
+                    })}
                     </View>
                 </View>
                 <Footer/>

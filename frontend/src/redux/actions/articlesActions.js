@@ -138,6 +138,36 @@ const articlesActions = {
       }
     }
   },
+  getMostVisitArticles: () => {
+    return async () => {
+      try {
+        const response = await axios.get(`${HOST}/api/mostvisitarticles`)
+        if (!response.data.success) throw new Error(response.data.error)
+        return {
+          success: true,
+          response: response.data.response,
+          error: null,
+        }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
+  getRelatedArticles: (genre) => {
+    return async () => {
+      try {
+        const response = {data: {success: true, response: genre, error: "test error"}} //cambiar por axios
+        if (!response.data.success) throw new Error(response.data.error)
+        return {
+          success: true,
+          response: response.data.response,
+          error: null,
+        }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  },
 }
 
 export default articlesActions

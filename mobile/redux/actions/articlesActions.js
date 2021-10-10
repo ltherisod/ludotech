@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const HOST = "http://192.168.1.83:4000"
+const HOST = "http://192.168.0.103:4000"
 
 const articlesActions = {
   getArticles: (filters, page) => {
