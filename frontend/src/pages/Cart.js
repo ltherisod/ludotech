@@ -215,7 +215,7 @@ const Cart = (props) => {
                 <p>Total:</p>
                 <p style={{ color: "green" }}>${totalCost.toFixed(2)}</p>
               </div>
-              <div onClick={submitSell}>
+              <div>
                 <button
                   type="button"
                   onClick={() => setViewPaypal(!viewPaypal)}
