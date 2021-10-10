@@ -4,6 +4,11 @@ import Header from "../components/Header"
 import { Link } from "react-router-dom"
 import { TinyButton as ScrollUpButton } from "react-scroll-up-button"
 import { useEffect } from "react"
+import Chatbot from 'react-chatbot-kit'
+import 'react-chatbot-kit/build/main.css'
+import config from '../components/bot/config.js'
+import MessageParser from '../components/bot/MessageParser.js'
+import ActionProvider from '../components/bot/ActionProvider.js'
 
 const Home = () => {
   useEffect(() => {
@@ -54,6 +59,11 @@ const Home = () => {
         />
         <Footer />
       </div>
+      {/* <Chatbot
+        config={config}
+        messageParser={MessageParser}
+        actionProvider={ActionProvider}
+      /> */}
     </>
   )
 }
