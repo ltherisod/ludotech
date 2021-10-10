@@ -83,10 +83,8 @@ const SignIn = (props) => {
 
 export default SignIn
 
-const { height } = Dimensions.get("screen")
 const styles = StyleSheet.create({
   SignInMain: {
-    minHeight: height * 0.5,
     alignItems: "center",
   },
   title: {

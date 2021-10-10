@@ -4,7 +4,6 @@ import usersActions from "../redux/actions/usersActions"
 import {
   View,
   Text,
-  SafeAreaView,
   ScrollView,
   Platform,
   StatusBar,
@@ -14,10 +13,11 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native"
 import * as ImagePicker from "expo-image-picker"
-import Header from "../components/Header"
 import Footer from "../components/Footer"
+import HeroPages from "../components/HeroPages"
 import { useSignup } from "../hooks/usersHooks"
 
 const SignUp = (props) => {
@@ -52,16 +52,9 @@ const SignUp = (props) => {
     }
   }
   return (
-    <SafeAreaView
-      style={{
-        marginTop: Platform.OS === "android" && StatusBar.currentHeight,
-        flex: 1,
-        alignItems: "center",
-        width: "100%",
-      }}
-    >
-      <ScrollView>
-        <Header />
+    <ScrollView>
+    <ImageBackground style={styles.signUpBack} source={require("../assets/fondoVioleta.png")} resizeMode="cover">
+      <HeroPages/>
         <View style={styles.SignUpMain}>
           <Text style={styles.title}>Sign Up</Text>
           <TextInput
@@ -158,8 +151,8 @@ const SignUp = (props) => {
           </View>
           <Footer />
         </View>
+    </ImageBackground>
       </ScrollView>
-    </SafeAreaView>
   )
 }
 
@@ -169,12 +162,9 @@ const mapDispatchToProps = {
 
 export default connect(null, mapDispatchToProps)(SignUp)
 
-const { height, width } = Dimensions.get("window")
 const styles = StyleSheet.create({
   SignUpMain: {
-    minHeight: height * 0.5,
     alignItems: "center",
-    width,
   },
   title: {
     fontSize: 20,
@@ -220,4 +210,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 5,
   },
+  signUpBack:{
+    width:"100%",
+    alignItems:"center"
+},
 })

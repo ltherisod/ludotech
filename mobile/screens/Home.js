@@ -10,7 +10,7 @@ import {
   ImageBackground,
   TouchableOpacity,
   Image,
-} from "react-native";
+} from "react-native"
 import Footer from "../components/Footer";
 import MostWanted from "../components/MostWanted";
 

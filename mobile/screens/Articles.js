@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import {View, Text, ScrollView, Platform, StatusBar, StyleSheet, Dimensions, ImageBackground} from "react-native"
-import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Article from "../components/Article"
 import Filter from "../components/Filter"
