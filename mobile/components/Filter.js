@@ -22,24 +22,23 @@ const Filter = (props) => {
     useEffect(() => {
       props.filterArticles(articles)
     }, [articles])
-  
-    useEffect(() => {
-        console.log(props)
-        // props.getAllArticlesUtilities()
-        // .then((res) => {
-        //     console.log(res)
-        //     if (res.success) {
-        //         setBrands([...res.response.brands])
-        //         setGenres([...res.response.genres])
-        //         setGameTypes([...res.response.gameTypes])
-        //     } else {
-        //         throw new Error()
-        //     }
-        // })
-        // .catch((e) => console.log(e))
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
     
+    useEffect(() => {
+        // props
+        //   .getAllArticlesUtilities()
+        //   .then((res) => {
+        //     if (res.success) {
+        //       setBrands([...res.response.brands])
+        //       setGenres([...res.response.genres])
+        //       setGameTypes([...res.response.gameTypes])
+        //     } else {
+        //       throw new Error()
+        //     }
+        //   })
+        //   .catch((e) => console.log(e))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [])
+        
     const inputHandle = (e) => {
         if (e.target.value !== "") {
           setFilters({
@@ -201,19 +200,20 @@ const Filter = (props) => {
     
     // const renderOptions = (options) => {
     //     return options.map((option) => {
-    //         return (
-    //             <option key={option._id} value={option._id}>
-    //                 {option.name}
-    //             </option>
-    //         )
+    //       return (
+    //         <option key={option._id} value={option._id}>
+    //           {option.name}
+    //         </option>
+    //       )
     //     })
     // }
-    
+
     const submitFilters = (e) => {
         e.preventDefault()
+        props.setCurrentPage(1)
         setSubmit(!submit)
     }
-    
+
     return(
         <View>
             <Text>Filtro WIP</Text>
