@@ -33,7 +33,10 @@ const Home = (props) => {
               />
               
             </ImageBackground>
-            <Text style={styles.logoText} >ludotech</Text>
+            <Image
+                style={styles.logo}
+                source={require("../assets/ludotechw.png")}
+              />
 
             <Text style={styles.mainText}>
                 Welcome to the land of the games
@@ -43,7 +46,7 @@ const Home = (props) => {
                   <Text
                     style={styles.buttonText}
                     onPress={() => {
-                      props.navigation.navigate("articles");
+                      props.navigation.navigate("Articles");
                     }}
                   >
                     Let´s go there
@@ -77,9 +80,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: '10%'
   },
-  logoText: {
-color: 'white',
-fontSize: 22,
+  logo: {
+maxHeight:200,
+marginTop: 5
   },
   rubik: {
     width: 300,
@@ -87,8 +90,11 @@ fontSize: 22,
   },
   mainText: {
     color: "white",
-    fontSize: 20, 
-    paddingVertical: 15
+    fontSize: 25, 
+    paddingVertical: 15,
+    fontFamily: 'Poppins_800ExtraBold',
+    paddingHorizontal: 15,
+    textAlign: 'center'
   },
   button: {
     backgroundColor: "white",
@@ -97,4 +103,9 @@ fontSize: 22,
     paddingVertical: 10,
     marginVertical: 10,
   },
+  buttonText: {
+    fontFamily: 'Poppins_700Bold',
+    fontSize: 16, 
+    color: '#660099'
+  }
 });

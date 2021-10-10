@@ -83,7 +83,8 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 18,
     paddingTop: 20,
-    alignSelf: 'center'
+    alignSelf: 'center',
+    fontFamily: 'Poppins_700Bold'
   },
   cardImg: {
     width: 300,
@@ -99,6 +100,7 @@ const styles = StyleSheet.create({
       fontSize: 20,
       fontWeight: 'bold',
       position: 'relative',
-      bottom: 43
+      bottom: 43,
+      fontFamily: 'Poppins_700Bold'
   }
 });

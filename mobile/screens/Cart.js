@@ -34,25 +34,17 @@ const Cart = (props) => {
     }
     
     return (
-        <SafeAreaView style={{marginTop: Platform.OS === "android" && StatusBar.currentHeight, flex: 1}}>
             <ScrollView>
-                {/* <Header/> */}
                 <View>
                     <ImageBackground style={styles.mainImg} source={{ uri: "https://i.postimg.cc/0Nz37Ydx/fondo-Blanco.png" }}>
                 <HeroPages />
                 <View style={styles.CartMain}>
                     <Text style={styles.cartTitle}>Cart</Text>
                     <View>
-                        {/* <View>
-                            
-                            <Text>Quantity</Text>
-                            <Text>Price</Text>
-                            <Text>Subtotal</Text>
-                        </View> */}
                         <View>
                         {props.shoppingCart.map((article) => {
                             return (
-                                <View key={article.article._id}>
+                                <View style={styles.productCard} key={article.article._id}>
                                     <View style={styles.firstLine}>
                                     <Image style={styles.productImg} source={{uri: article.article.photos[0]}}/>
                                     <Text style={styles.productName}>{article.article.name}</Text>
@@ -67,7 +59,7 @@ const Cart = (props) => {
                                         <TouchableOpacity style={styles.quantity} onPress={() => {updateCartFunction("decrement", article.article._id)}}>
                                             <Text style={styles.quantityText}>{'<'}</Text>
                                         </TouchableOpacity>
-                                        <Text>{article.quantity}</Text>
+                                        <Text style={styles.quantityNumber}>{article.quantity}</Text>
                                         <TouchableOpacity style={styles.quantity} onPress={() => {updateCartFunction("increment", article.article._id)}}>
                                             <Text style={styles.quantityText}>{'>'}</Text>
                                         </TouchableOpacity>
@@ -75,11 +67,11 @@ const Cart = (props) => {
                                     <View style={styles.secondLineView}>
                                     <Text style={styles.innerTitle}>Price:</Text>    
                                     {article.article.hasDiscount === false ? (
-                                        <Text>${article.article.price}</Text>
+                                        <Text style={styles.price}>${article.article.price}</Text>
                                     ) : (
                                         <>
-                                            <Text>${article.article.price}</Text>
-                                            <Text>${article.article.discountPrice}</Text>
+                                            <Text style={styles.discountPrice}>${article.article.discountPrice}</Text>
+                                            <Text style={styles.price}>${article.article.price}</Text>
                                         </>
                                     )}
                                     </View>
@@ -87,7 +79,7 @@ const Cart = (props) => {
                                     </View>
                                     <View style={styles.thirdLine}>
                                     <Text style={styles.innerTitle}>Subtotal:</Text>
-                                    <Text>${article.quantity*(article.article.hasDiscount ? article.article.discountPrice : article.article.price)}</Text>
+                                    <Text style={styles.subtotal}>${article.quantity*(article.article.hasDiscount ? article.article.discountPrice : article.article.price)}</Text>
                                     </View>
                                 </View>
                             )
@@ -98,11 +90,11 @@ const Cart = (props) => {
                         <View>
                             <View style={styles.totals}>
                                 <Text style={styles.totalsText}>Total without discounts:</Text>
-                                <Text>${totalWithoutDiscounts}</Text>
+                                <Text style={styles.discountPrice}>${totalWithoutDiscounts}</Text>
                             </View>
                             <View style={styles.totals}>
-                                <Text style={styles.totalsText}>Total with discounts:</Text>
-                                <Text>${totalCost}</Text>
+                                <Text style={styles.totalsText}>Total:</Text>
+                                <Text style={styles.price}>${totalCost}</Text>
                             </View>
                         </View>
                         <TouchableOpacity onClick={submitSell}>
@@ -115,7 +107,6 @@ const Cart = (props) => {
                 </View>
                 
             </ScrollView>
-        </SafeAreaView>
     )
 }
 
@@ -147,14 +138,16 @@ const styles = StyleSheet.create({
         fontFamily: "Poppins_700Bold",
         fontSize: 25,
       },
+      productCard: {
+        borderTopColor: 'rgb(204, 204, 204)',
+        borderTopWidth: 1,
+        paddingBottom: 6,
+        paddingTop: 12,
+        marginTop: 10
+      },
       productImg: {
           width: 100,
           height: 100
-      },
-      productTitle: {
-        paddingRight: 10,
-        fontSize: 18,
-        paddingTop: 15
       },
       firstLine: {
           flexDirection: 'row',
@@ -163,19 +156,22 @@ const styles = StyleSheet.create({
           alignItems: 'center',
       },
       productName: {
+        fontFamily: 'Poppins_600SemiBold',
+        color: 'gray',
         fontSize: 18,
         textAlign: 'left',
         width: '60%'
       },
       delete: {
           backgroundColor: 'rgb(160, 160, 160)',
-          paddingTop: 5,
-          paddingBottom: 7,
+          paddingTop: 3,
+          paddingBottom: 6,
           paddingHorizontal: 10,
           borderRadius: 100
       },
       deleteText: {
-          color: 'white'
+          color: 'white',
+          fontFamily: 'Poppins_600SemiBold'
       },
       secondLine: {
         flexDirection: 'row',
@@ -195,34 +191,69 @@ const styles = StyleSheet.create({
     quantity: {
         color: 'white',
         backgroundColor: '#6aefcf',
-        paddingTop: 5,
-        paddingBottom: 7,
+        paddingTop: 2,
+        paddingBottom: 3,
         paddingHorizontal: 10,
         borderRadius: 100,
         margin: 5
     },
     quantityText: {
-        color: 'white'
+        fontFamily: 'Poppins_600SemiBold',
+        color: 'white',
+        fontSize: 18
+
+    },
+    quantityNumber: {
+        fontFamily: 'Poppins_600SemiBold',
+
+        color: 'gray',
+        fontSize: 16
     },
     innerTitle: {
-        paddingRight: 10,
-        fontSize: 18
+        fontFamily: 'Poppins_600SemiBold',
+        color: 'gray',
+        paddingHorizontal: 10,
+        fontSize: 16
     },
     totalsCard: {
         marginTop: 30,
         alignItems: 'center',
         backgroundColor: 'white',
-        borderRadius: 20,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
         padding: 10,
         shadowColor: 'gray',
         shadowOpacity: 10,
+        shadowOffset: { width: 0, height: 5, },
         width: 380,
     },
     totals: {
         flexDirection: 'row',
-        padding: 5
+        padding: 5, 
+        alignSelf: 'center'
     },
     totalsText: {
-        paddingRight: 5
+        fontFamily: 'Poppins_600SemiBold',
+        color: 'gray',
+        paddingRight: 5,
+        fontSize: 16
+    }, 
+    price: {
+        color: 'green',
+        fontSize: 16,
+        fontFamily: 'Poppins_600SemiBold',
+
+    },
+    discountPrice: {
+        color: 'gray',
+        textDecorationLine: 'line-through',
+        marginRight: 10,
+        fontSize: 16,
+        fontFamily: 'Poppins_600SemiBold',
+    },
+    subtotal: {
+        color: 'gray',
+        fontSize: 16,
+        fontFamily: 'Poppins_600SemiBold',
     }
 })
