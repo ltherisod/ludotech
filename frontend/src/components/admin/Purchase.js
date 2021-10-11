@@ -13,11 +13,21 @@ const Purchase = ({purchase, articles, direction, showPurchase, purchaseFound}) 
     }, [purchaseFound])
 
     return (
-        <div onClick={() => showPurchase(purchase._id)} className='purchaseContainerPanel'>
+        <div 
+            onClick={(e) => {
+                showPurchase(purchase, e)
+
+            }} 
+            className='purchaseContainerPanel'>
             <div>
                 <p>...{purchase._id.substring(18, 24 )}</p>
             </div>
-            <p style={{textAlign: 'center'}}>{articles.length < 10 ? `0${articles.length}` : articles.length}</p>
+            <div>
+                <div style={{display: 'flex', alignItems: 'center'}}>
+                    <div className='articleDashboard' style={{backgroundImage: `url("${purchase.articles[0].photos[0]}")`}}></div>
+                    <p>{purchase.articles.length > 1 && `+${purchase.articles.length-1}`}</p>
+                </div>
+            </div>
             <div className='addressPurchasePanel'>
                 <p style={{flex: 1}}>{direction.zipCode} {direction.street} {direction.number} {direction.department}</p>
                 <p>{direction.city}, {direction.state}</p>

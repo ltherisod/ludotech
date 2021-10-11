@@ -12,6 +12,10 @@ const PanelAdmin = (props) => {
       setShow(page)
    }
 
+   const scrolear = () => {
+      window.scrollTo(0,0)
+   }
+
    return (
       <div style={{display: 'flex'}}>
          <NavBar render={render} />
