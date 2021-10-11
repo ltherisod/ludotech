@@ -7,6 +7,7 @@ import HeroPages from "../components/HeroPages"
 import usersActions from "../redux/actions/usersActions"
 import Header from "../components/Header"
 import * as Yup from "yup"
+import Bot from "../components/bot/Bot"
 
 const SignIn = (props) => {
   let formik = useFormik({
@@ -32,6 +33,8 @@ const SignIn = (props) => {
   }
 
   return (
+    <>
+    <Bot/>
     <div
       className="signInBody"
       style={{
@@ -138,6 +141,7 @@ const SignIn = (props) => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

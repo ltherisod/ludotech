@@ -8,6 +8,7 @@ import { useArticle, useRelatedArticles } from "../hooks/articlesHooks"
 import { connect } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
 import Preloader from "../components/Preloader"
+import Bot from "../components/bot/Bot"
 
 const ArticlePage = (props) => {
    const [article, loading] = useArticle(props.match.params.id)
@@ -46,6 +47,7 @@ const ArticlePage = (props) => {
 
    return (
       <>
+         <Bot/>
          {loading ? (
             <Preloader />
          ) : (

@@ -3,10 +3,14 @@ import { Link } from "react-router-dom"
 import Header from "../components/Header"
 import { useSignup } from "../hooks/usersHooks"
 import HeroPages from "../components/HeroPages"
+import Bot from "../components/bot/Bot"
 
 const SignUp = (props) => {
   const [formik, responseGoogle, setFieldValue, loading, error] = useSignup()
+
   return (
+    <>
+    <Bot/>
     <div
       className="signInBody"
       style={{
@@ -185,6 +189,7 @@ const SignUp = (props) => {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

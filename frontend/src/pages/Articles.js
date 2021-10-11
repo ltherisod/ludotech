@@ -5,6 +5,7 @@ import Footer from "../components/Footer"
 import Filter from "../components/Filter"
 import HeroPages from "../components/HeroPages"
 import PreloaderFilter from "../components/PreloaderFilter"
+import Bot from "../components/bot/Bot"
 
 const Articles = (props) => {
    const [articles, setArticles] = useState({
@@ -21,6 +22,7 @@ const Articles = (props) => {
 
    return (
       <>
+         <Bot/>
          <div
             className="signInBody"
             style={{

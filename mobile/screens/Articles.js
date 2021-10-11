@@ -34,12 +34,11 @@ const Articles = (props) => {
                     <View>
                     {articles.articles.map((article) => {
                         return (
-                            <TouchableOpacity onPress={() => props.navigation.navigate('ArticleStack', { id: article._id })}>
+                            <TouchableOpacity key={article._id} onPress={() => props.navigation.navigate('ArticleStack', { id: article._id })}>
                                 <Article
                                     history={props.history}
                                     article={article}
-                                    key={article._id}
-                                    />
+                                />
                             </TouchableOpacity>
                         )
                     })}

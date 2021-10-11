@@ -1,4 +1,4 @@
-// import Messages from "./Messages"
+import Messages from "./Messages"
 
 class MessageParser {
     constructor(actionProvider, state) {
@@ -7,19 +7,12 @@ class MessageParser {
     }
 
     parse(theMessage) {
-        // Messages.filter(message => message.command === theMessage.toLowerCase())
-        switch (theMessage.toLowerCase()) {
-            case "primero":
-                this.actionProvider.sendNewMessage("primera respuesta")
-            break
-            case "segundo":
-                this.actionProvider.sendNewMessage("segunda respuesta")
-            break
-            case "tercero":
-                this.actionProvider.sendNewMessage("tercera respuesta")
-            break
-            default:
-                this.actionProvider.defaultCase()
+        const filterMessage = Messages.filter(message => message.command === theMessage.toLowerCase())
+
+        if (filterMessage.length === 0) {
+            this.actionProvider.defaultCase()
+        } else {
+            this.actionProvider.sendNewMessage(filterMessage[0].response)
         }
     }
 }

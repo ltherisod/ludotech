@@ -11,6 +11,7 @@ import FormCart from "../components/FormCart"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import AddressCard from "../components/AddressCard"
+import Bot from "../components/bot/Bot"
 
 const Cart = (props) => {
    const [viewPaypal, setViewPaypal] = useState(false)
@@ -67,6 +68,8 @@ const Cart = (props) => {
    }
 
    return (
+      <>
+      <Bot/>
       <div
          className="signInBody"
          style={{ backgroundImage: "url('/assets/fondoblanco2.png')" }}
@@ -259,6 +262,7 @@ const Cart = (props) => {
          </div>
          <Footer />
       </div>
+      </>
    )
 }
 
