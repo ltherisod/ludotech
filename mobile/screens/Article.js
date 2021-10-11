@@ -6,7 +6,7 @@ import { useArticle, useRelatedArticles } from '../hooks/articlesHooks'
 
 const Article = (props) => {
 
-  console.log(props)
+  // console.log(props)
 
   const [article, loading] = useArticle(props.route.params.id)
   const {

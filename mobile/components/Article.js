@@ -2,12 +2,20 @@ import React from "react"
 import {View, Text, ImageBackground, Image, TouchableOpacity, StyleSheet, Pressable} from "react-native"
 import { connect } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
+import usersActions from "../redux/actions/usersActions"
 import Icon from 'react-native-vector-icons/FontAwesome'
+
 const Article = (props) => {
+
     const addToCart = (e, id) => {
         e.stopPropagation()
         props.updateCart("add", id)
      }
+
+    const addToWishlist = (e, id) => {
+        e.stopPropagation()
+        props.toggleWishList(id)
+    }
 
     const {
         name,
@@ -24,7 +32,7 @@ const Article = (props) => {
      
     return(
         <ImageBackground  style={styles.articleCard}source={{uri:"https://i.postimg.cc/sftdwcnd/article.png"}} imageStyle={{borderRadius:15}}>
-            <Pressable>
+            <Pressable onPress={(e) => addToWishlist(e, _id)} >
                 <Icon name='heart' style={{fontSize:30, color:"pink", alignSelf:"flex-end", margin:10}}/>
             </Pressable>
             <Image source={{uri: iconPhotos }} resizeMode="cover" style={styles.articleIcon}/>
@@ -40,6 +48,7 @@ const Article = (props) => {
 
 const mapDispatchToProps = {
     updateCart: articlesActions.updateCart,
+    toggleWishList: usersActions.toggleWishList,
  }
  
  export default connect(null, mapDispatchToProps)(Article)
