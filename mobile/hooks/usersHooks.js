@@ -53,18 +53,18 @@ export const useSignup = () => {
 
   const responseGoogle = (res) => {
     let newUserGoogle = {
-      firstname: res.profileObj.givenName,
-      lastname: res.profileObj.familyName,
-      email: res.profileObj.email,
-      photo: res.profileObj.imageUrl,
-      password: res.profileObj.googleId,
+      firstname: res.givenName,
+      lastname: res.familyName,
+      email: res.email,
+      photo: res.photoUrl,
+      password: res.id,
       google: true,
     }
 
     dispatch(usersActions.logInOrSignUp(newUserGoogle, "signup"))
   }
 
-  return [formik, setFieldValue, loading, error]
+  return [formik, setFieldValue, responseGoogle, loading, error]
 }
 
 export const useLogin = () => {
@@ -90,7 +90,16 @@ export const useLogin = () => {
     setLoading(false)
   }
 
-  return [formik, loading, error]
+  const responseGoogle = (res) => {
+    let userGoogle = {
+      email: res.email,
+      password: res.id,
+      google: true,
+    }
+    dispatch(usersActions.logInOrSignUp(userGoogle, "login"))
+  }
+
+  return [formik, responseGoogle, loading, error]
 }
 
 export const useLoginLS = () => {
