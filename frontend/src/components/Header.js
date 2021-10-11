@@ -108,7 +108,7 @@ const Header = (props) => {
                                  <p className="profileLogout">Profile</p>
                               </NavLink>
                            </li>
-                              <li className="nav-item">
+                           <li className="nav-item">
                               <NavLink
                                  className="nav-link"
                                  to="/mypurchases"
@@ -116,7 +116,7 @@ const Header = (props) => {
                               >
                                  Purchases
                               </NavLink>
-                        </li>
+                           </li>
                            <li>
                               <hr className="dropdown-divider" />
                            </li>
@@ -151,7 +151,10 @@ const Header = (props) => {
                      }}
                   ></div>
                </div>
-               <FaBell className="iconsNav" />
+               <div className='relative'>
+                  <FaBell className="iconsNav" />
+                  <div className='notification'>2</div>
+               </div>
                <Link to="wishlist">
                   <FaHeart className="iconsNav" />
                </Link>
