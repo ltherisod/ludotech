@@ -87,55 +87,45 @@ const Header = (props) => {
                         </li>
                      </>
                   ) : (
-                     <li className="nav-item">
-                        <Link to="/" style={{ textDecoration: "none" }}>
-                           <span
-                              className="nav-link me-4"
-                              onClick={() => {
-                                 window.scrollTo(0, 0)
-                                 dispatch(usersActions.logOut())
-                              }}
-                           >
-                              Log Out
-                           </span>
-                        </Link>
+                     <li className="nav-item dropdown">
+                        <a
+                           className="nav-link dropdown-toggle"
+                           data-bs-toggle="dropdown"
+                           href="#"
+                           role="button"
+                           aria-expanded="false"
+                        >
+                           Settings
+                        </a>
+                        <ul className="dropdown-menu">
+                           <li>
+                              <NavLink
+                                 className="nav-link"
+                                 to="/profile"
+                                 onClick={() => window.scrollTo(0, 0)}
+                              >
+                                 <p className="profileLogout">Profile</p>
+                              </NavLink>
+                           </li>
+                           <li>
+                              <hr className="dropdown-divider" />
+                           </li>
+                           <li>
+                              <NavLink
+                                 to="/"
+                                 style={{ textDecoration: "none" }}
+                                 className="nav-link"
+                                 onClick={() => {
+                                    window.scrollTo(0, 0)
+                                    dispatch(usersActions.logOut())
+                                 }}
+                              >
+                                 <p className="profileLogout">Log Out</p>
+                              </NavLink>
+                           </li>
+                        </ul>
                      </li>
                   )}
-                  <li class="nav-item dropdown">
-                     <a
-                        class="nav-link dropdown-toggle"
-                        data-bs-toggle="dropdown"
-                        href="#"
-                        role="button"
-                        aria-expanded="false"
-                     ></a>
-                     <ul class="dropdown-menu mt-3">
-                        <li>
-                           <NavLink 
-                              className="nav-link"
-                              to="/profile"
-                              onClick={() => window.scrollTo(0, 0)}
-                           >
-                              <p className="profileLogout">Profile</p>
-                           </NavLink>
-                        </li>
-                        <li>
-                           <hr class="dropdown-divider" />
-                        </li>
-
-                        <li>
-                           <NavLink to="/" style={{ textDecoration: "none" }}
-                               className="nav-link"
-                               onClick={() => {
-                                  window.scrollTo(0, 0)
-                                  dispatch(usersActions.logOut())
-                               }}
-                           >
-                              <p className="profileLogout">Log Out</p>
-                           </NavLink>
-                        </li>
-                     </ul>
-                  </li>
                </ul>
                <div className="d-flex justify-content-center align-items-center">
                   <div
@@ -152,7 +142,9 @@ const Header = (props) => {
                   ></div>
                </div>
                <FaBell className="iconsNav" />
-               <Link to='wishlist'><FaHeart className="iconsNav" /></Link>
+               <Link to="wishlist">
+                  <FaHeart className="iconsNav" />
+               </Link>
                <Link to="/cart" onClick={() => window.scrollTo(0, 0)}>
                   <FaShoppingCart className="iconsNav" />
                </Link>

@@ -3,8 +3,8 @@ import Header from "../components/Header"
 import HeroPages from "../components/HeroPages"
 
 const Checkout = (props) => {
-   const { purchase, user } = props.location.state.response
-   const { articles, direction, status } = purchase
+   const { purchase } = props.location.state.response
+   const { articles, direction, status, timestamp } = purchase
    console.log(purchase)
    return (
       <div
@@ -15,8 +15,11 @@ const Checkout = (props) => {
       >
          <HeroPages />
          <Header />
-         <div className="d-flex justify-content-center align-items-center">
+         <div className="d-flex flex-column justify-content-center align-items-center">
             <div className="checkoutContainer">
+               <h6 className="text-end">
+                  Date: {timestamp.slice(0, 10).replace(/-/g, " / ")}
+               </h6>
                <h1>Purchase Summary</h1>
                <hr style={{ height: "5px" }}></hr>
                <div>
@@ -70,8 +73,17 @@ const Checkout = (props) => {
                   <h3 className="text-center bold">Dowloand PDF</h3>
                </div>
             </div>
+            <button
+               type="button"
+               className="addProduct mt-5"
+               onClick={() => props.history.push("Home")}
+               style={{
+                  backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+               }}
+            >
+               BACK TO HOME
+            </button>
          </div>
-
          <Footer />
       </div>
    )

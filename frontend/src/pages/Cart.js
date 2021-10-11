@@ -13,6 +13,7 @@ import * as Yup from "yup"
 import AddressCard from "../components/AddressCard"
 
 const Cart = (props) => {
+   const [viewMethod, setViewMethod] = useState(false)
    const [viewPaypal, setViewPaypal] = useState(false)
    const user = useSelector((state) => state.users.user)
 
@@ -74,188 +75,220 @@ const Cart = (props) => {
          <HeroPages />
          <Header />
          <div className="bodyCart">
-            <h2>Cart</h2>
-            <div className="cartContainer">
-               <table className="cartSection1">
-                  <thead>
-                     <tr>
-                        <th></th>
-                        <th className="product">Product</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th className="subtotal">Subtotal</th>
-                        <th></th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     {props.shoppingCart.map((article) => {
-                        return (
-                           <tr key={article.article._id}>
-                              <td>
-                                 <div
-                                    style={{
-                                       backgroundImage: `url(${article.article.photos[0]})`,
-                                       backgroundPosition: "center",
-                                       backgroundSize: "cover",
-                                       width: "100px",
-                                       height: "100px",
-                                       margin: "10px",
-                                    }}
-                                 ></div>
-                              </td>
-                              <td>{article.article.name}</td>
-                              <td>
-                                 <div className="quantity">
-                                    <button
-                                       onClick={() => {
-                                          updateCartFunction(
-                                             "decrement",
-                                             article.article._id
-                                          )
-                                       }}
-                                    >
-                                       {"<"}
-                                    </button>
-
-                                    <div>{article.quantity}</div>
-                                    <button
-                                       onClick={() => {
-                                          updateCartFunction(
-                                             "increment",
-                                             article.article._id
-                                          )
-                                       }}
-                                    >
-                                       {">"}
-                                    </button>
-                                 </div>
-                              </td>
-                              <td>
-                                 {article.article.hasDiscount === false ? (
-                                    <p style={{ color: "green" }}>
-                                       $ {article.article.price.toFixed(2)}
-                                    </p>
-                                 ) : (
-                                    <div className="priceArticle">
-                                       <p
-                                          style={{
-                                             textDecoration: "line-through",
-                                             color: "gray",
-                                             padding: "0px 4px",
-                                          }}
-                                       >
-                                          ${article.article.price.toFixed(2)}
-                                       </p>
-                                       <p
-                                          style={{
-                                             color: "green",
-                                             padding: "0px 4px",
-                                          }}
-                                       >
-                                          $
-                                          {article.article.discountPrice.toFixed(
-                                             2
-                                          )}
-                                       </p>
-                                    </div>
-                                 )}
-                              </td>
-                              <td>
-                                 $
-                                 {(
-                                    article.quantity *
-                                    (article.article.hasDiscount
-                                       ? article.article.discountPrice
-                                       : article.article.price)
-                                 ).toFixed(2)}
-                              </td>
-                              <td>
-                                 <div className="delete">
-                                    <button
-                                       onClick={() => {
-                                          updateCartFunction(
-                                             "delete",
-                                             article.article._id
-                                          )
-                                       }}
-                                    >
-                                       X
-                                    </button>
-                                 </div>
-                              </td>
+            {props.shoppingCart.length === 0 ? (
+               <h2>Your cart is empty</h2>
+            ) : (
+               <>
+                  <h2>Cart</h2>
+                  <div className="cartContainer">
+                     <table className="cartSection1">
+                        <thead>
+                           <tr>
+                              <th></th>
+                              <th className="product">Product</th>
+                              <th>Quantity</th>
+                              <th>Price</th>
+                              <th className="subtotal">Subtotal</th>
+                              <th></th>
                            </tr>
-                        )
-                     })}
-                  </tbody>
-               </table>
-               <div className="d-flex flex-column col-5">
-                  {!directions || directions.length ? (
-                     <div>
-                        {!directions || directions.length === 0 ? (
-                           <p>There are no addresses added</p>
-                        ) : (
-                           directions.map((direction) => {
+                        </thead>
+                        <tbody>
+                           {props.shoppingCart.map((article) => {
                               return (
-                                 <AddressCard
-                                    direction={direction}
-                                    key={direction._id}
-                                    formik={formik}
-                                 />
+                                 <tr key={article.article._id}>
+                                    <td>
+                                       <div
+                                          style={{
+                                             backgroundImage: `url(${article.article.photos[0]})`,
+                                             backgroundPosition: "center",
+                                             backgroundSize: "cover",
+                                             width: "100px",
+                                             height: "100px",
+                                             margin: "10px",
+                                          }}
+                                       ></div>
+                                    </td>
+                                    <td>{article.article.name}</td>
+                                    <td>
+                                       <div className="quantity">
+                                          <button
+                                             onClick={() => {
+                                                updateCartFunction(
+                                                   "decrement",
+                                                   article.article._id
+                                                )
+                                             }}
+                                          >
+                                             {"<"}
+                                          </button>
+
+                                          <div>{article.quantity}</div>
+                                          <button
+                                             onClick={() => {
+                                                updateCartFunction(
+                                                   "increment",
+                                                   article.article._id
+                                                )
+                                             }}
+                                          >
+                                             {">"}
+                                          </button>
+                                       </div>
+                                    </td>
+                                    <td>
+                                       {article.article.hasDiscount ===
+                                       false ? (
+                                          <p style={{ color: "green" }}>
+                                             ${" "}
+                                             {article.article.price.toFixed(2)}
+                                          </p>
+                                       ) : (
+                                          <div className="priceArticle">
+                                             <p
+                                                style={{
+                                                   textDecoration:
+                                                      "line-through",
+                                                   color: "gray",
+                                                   padding: "0px 4px",
+                                                }}
+                                             >
+                                                $
+                                                {article.article.price.toFixed(
+                                                   2
+                                                )}
+                                             </p>
+                                             <p
+                                                style={{
+                                                   color: "green",
+                                                   padding: "0px 4px",
+                                                }}
+                                             >
+                                                $
+                                                {article.article.discountPrice.toFixed(
+                                                   2
+                                                )}
+                                             </p>
+                                          </div>
+                                       )}
+                                    </td>
+                                    <td>
+                                       $
+                                       {(
+                                          article.quantity *
+                                          (article.article.hasDiscount
+                                             ? article.article.discountPrice
+                                             : article.article.price)
+                                       ).toFixed(2)}
+                                    </td>
+                                    <td>
+                                       <div className="delete">
+                                          <button
+                                             onClick={() => {
+                                                updateCartFunction(
+                                                   "delete",
+                                                   article.article._id
+                                                )
+                                             }}
+                                          >
+                                             X
+                                          </button>
+                                       </div>
+                                    </td>
+                                 </tr>
                               )
-                           })
+                           })}
+                        </tbody>
+                     </table>
+                     <section className="cartSection2">
+                        <article className="totalsCard">
+                           <div></div>
+                           <div>
+                              <p>Total without discounts:</p>
+                              <p
+                                 style={{
+                                    textDecoration: "line-through",
+                                    color: "gray",
+                                 }}
+                              >
+                                 ${totalWithoutDiscounts.toFixed(2)}
+                              </p>
+                           </div>
+                           <div>
+                              <p>Total:</p>
+                              <p style={{ color: "yellowgreen" }}>
+                                 ${totalCost.toFixed(2)}
+                              </p>
+                           </div>
+                           <div>
+                              <button
+                                 type="button"
+                                 onClick={() => setViewMethod(!viewMethod)}
+                              >
+                                 Choose payment method
+                              </button>
+                           </div>
+                        </article>
+                     </section>
+                     <section className="d-flex justify-content-center align-items-center flex-column col-12">
+                        {viewMethod && (
+                           <>
+                              <button
+                                 type="button"
+                                 onClick={() => setViewPaypal(!viewPaypal)}
+                              >
+                                 Paypal
+                              </button>
+                              <button
+                                 type="button"
+                                 onClick={() => setViewMethod(!viewMethod)}
+                              >
+                                 Other
+                              </button>
+                              {viewPaypal && (
+                                 <>
+                                    <div className="d-flex justify-content-center align-items-center flex-column col-9">
+                                       {!directions || directions.length ? (
+                                          <div>
+                                             {!directions ||
+                                             directions.length === 0 ? (
+                                                <p>
+                                                   There are no addresses added
+                                                </p>
+                                             ) : (
+                                                directions.map((direction) => {
+                                                   return (
+                                                      <AddressCard
+                                                         direction={direction}
+                                                         key={direction._id}
+                                                         formik={formik}
+                                                      />
+                                                   )
+                                                })
+                                             )}
+                                             <h4>Or add a new address</h4>
+                                             <FormCart formik={formik} />
+                                          </div>
+                                       ) : (
+                                          <>
+                                             <h4>Add address</h4>
+                                             <FormCart formik={formik} />
+                                          </>
+                                       )}
+                                       <div></div>
+                                    </div>
+                                    <Paypal
+                                       user={user}
+                                       formik={formik}
+                                       history={props.history}
+                                    />
+                                 </>
+                              )}
+                           </>
                         )}
-                        <FormCart formik={formik} />
-                     </div>
-                  ) : (
-                     <FormCart formik={formik} />
-                  )}
-                  <div>
-                     {viewPaypal && (
-                        <Paypal
-                           user={user}
-                           formik={formik}
-                           history={props.history}
-                        />
-                     )}
+                     </section>
                   </div>
-               </div>
-               <section className="cartSection2">
-                  <article className="totalsCard">
-                     <div></div>
-                     <div>
-                        <p>Total without discounts:</p>
-                        <p
-                           style={{
-                              textDecoration: "line-through",
-                              color: "gray",
-                           }}
-                        >
-                           ${totalWithoutDiscounts.toFixed(2)}
-                        </p>
-                     </div>
-                     <div>
-                        <p>Total:</p>
-                        <p style={{ color: "green" }}>
-                           ${totalCost.toFixed(2)}
-                        </p>
-                     </div>
-                     <div>
-                        {/* <button
-                  type="button"
-                  onClick={() => setViewPaypal(!viewPaypal)}
-                >
-                  Buy
-                </button> */}
-                        <button
-                           type="button"
-                           onClick={() => setViewPaypal(!viewPaypal)}
-                        >
-                           Buy with PayPal
-                        </button>
-                     </div>
-                  </article>
-               </section>
-            </div>
+               </>
+            )}
          </div>
          <Footer />
       </div>
