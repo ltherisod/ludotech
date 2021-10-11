@@ -124,6 +124,7 @@ const ArticleAdd = (props) => {
       console.log(res)
       if (!res.success) setError(res.error)
       setLoading(false)
+      props.setSection()
    }
 
    return (
@@ -155,6 +156,58 @@ const ArticleAdd = (props) => {
                      <small className="signNoErrors">NoErrors</small>
                   )}
                </div>
+               <div className="selectsEditProduct">
+                  <div className="inputEditProduct">
+                     <label className="labelSign" htmlFor="gameType">
+                        Game Type
+                     </label>
+                     <select
+                        className="inputEdit"
+                        name="gameType"
+                        onChange={formik.handleChange("gameType")}
+                        defaultValue=""
+                        id="gameType"
+                     >
+                        <option value="">Select Game Type</option>
+                        {gameTypes.map((gameType) => (
+                           <option key={gameType._id} value={gameType._id}>
+                              {gameType.name}
+                           </option>
+                        ))}
+                     </select>
+                     {formik.touched.gameType && formik.errors.gameType ? (
+                        <small className="signErrors">
+                           {formik.errors.gameType}
+                        </small>
+                     ) : (
+                        <small className="signNoErrors">NoErrors</small>
+                     )}
+                  </div>
+                  <div className="inputEditProduct">
+                     <label className="labelSign" htmlFor="size">
+                        Size
+                     </label>
+                     <select
+                        className="inputEdit"
+                        name="size"
+                        onChange={formik.handleChange("size")}
+                        defaultValue=""
+                        id="size"
+                     >
+                        <option value="">Select Size</option>
+                        <option value="Small">Small</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Large">Large</option>
+                     </select>
+                     {formik.touched.size && formik.errors.size ? (
+                        <small className="signErrors">
+                           {formik.errors.size}
+                        </small>
+                     ) : (
+                        <small className="signNoErrors">NoErrors</small>
+                     )}
+                  </div>
+               </div>
                <div className="inputEditProduct">
                   <label className="labelSign" htmlFor="brand">
                      Brand
@@ -182,93 +235,111 @@ const ArticleAdd = (props) => {
                      <small className="signNoErrors">NoErrors</small>
                   )}
                </div>
-               <div className="inputEditProduct">
-                  <label className="labelSign" htmlFor="size">
-                     Size
-                  </label>
-                  <input
-                     className="inputEdit"
-                     name="size"
-                     type="text"
-                     placeholder="Must have 2+ characters"
-                     value={formik.values.size}
-                     onChange={formik.handleChange("size")}
-                     onBlur={formik.handleBlur("size")}
-                  />
-                  {formik.touched.size && formik.errors.size ? (
-                     <small className="signErrors">{formik.errors.size}</small>
-                  ) : (
-                     <small className="signNoErrors">NoErrors</small>
-                  )}
-               </div>
-               <div className="inputEditProduct">
-                  <label className="labelSign" htmlFor="gameType">
-                     Game Type
-                  </label>
-                  <select
-                     className="inputEdit"
-                     name="gameType"
-                     onChange={formik.handleChange("gameType")}
-                     defaultValue=""
-                     id="gameType"
-                  >
-                     <option value="">Select Game Type</option>
-                     {gameTypes.map((gameType) => (
-                        <option key={gameType._id} value={gameType._id}>
-                           {gameType.name}
-                        </option>
-                     ))}
-                  </select>
-                  {formik.touched.gameType && formik.errors.gameType ? (
-                     <small className="signErrors">
-                        {formik.errors.gameType}
-                     </small>
-                  ) : (
-                     <small className="signNoErrors">NoErrors</small>
-                  )}
-               </div>
-               <div className="inputEditProduct">
-                  <label className="labelSign" htmlFor="discountPrice">
-                     Discount Price
-                  </label>
-                  <input
-                     disabled={formik.values.hasDiscount === "false"}
-                     name="discountPrice"
-                     type="number"
-                     className="inputEdit"
-                     placeholder="Must have a number"
-                     value={formik.values.discountPrice}
-                     onChange={formik.handleChange("discountPrice")}
-                     onBlur={formik.handleBlur("discountPrice")}
-                  />
-                  {formik.touched.discountPrice &&
-                  formik.errors.discountPrice ? (
-                     <small className="signErrors">
-                        {formik.errors.discountPrice}
-                     </small>
-                  ) : (
-                     <small className="signNoErrors">NoErrors</small>
-                  )}
-               </div>
-               <div className="inputEditProduct">
-                  <label className="labelSign" htmlFor="price">
-                     Price
-                  </label>
-                  <input
-                     className="inputEdit"
-                     name="price"
-                     type="number"
-                     placeholder="
+               <div className="d-flex">
+                  <div className="inputEditProduct col-4">
+                     <label className="labelSign" htmlFor="price">
+                        Price
+                     </label>
+                     <input
+                        className="inputEdit"
+                        name="price"
+                        type="number"
+                        placeholder="
                   Only numbers"
-                     value={formik.values.price}
-                     onChange={formik.handleChange("price")}
-                     onBlur={formik.handleBlur("price")}
-                  />
-                  {formik.touched.price && formik.errors.price ? (
-                     <small className="signErrors">{formik.errors.price}</small>
-                  ) : (
-                     <small className="signNoErrors">NoErrors</small>
-                  )}
+                        value={formik.values.price}
+                        onChange={formik.handleChange("price")}
+                        onBlur={formik.handleBlur("price")}
+                     />
+                     {formik.touched.price && formik.errors.price ? (
+                        <small className="signErrors">
+                           {formik.errors.price}
+                        </small>
+                     ) : (
+                        <small className="signNoErrors">NoErrors</small>
+                     )}
+                  </div>
+                  <div className="inputEditProduct col-3 ms-4 me-4 align-self-start">
+                     <label className="labelSign" htmlFor="hasDiscount">
+                        {" "}
+                        Has Discount ?
+                     </label>
+                     <div
+                        style={{
+                           display: "flex",
+                           alignItems: "center",
+                           jusifyContent: "space-between",
+                           width: "100%",
+                        }}
+                     >
+                        <div style={{ marginRight: "4vmin" }}>
+                           <label
+                              className="labelSign white"
+                              htmlFor="hasDiscount"
+                           >
+                              Yes
+                           </label>
+                           <input
+                              name="hasDiscount"
+                              type="radio"
+                              value={true}
+                              onChange={formik.handleChange("hasDiscount")}
+                              onBlur={formik.handleBlur("hasDiscount")}
+                           />
+                        </div>
+                        <div>
+                           <label
+                              className="labelSign white"
+                              htmlFor="hasDiscount"
+                           >
+                              No
+                           </label>
+                           <input
+                              name="hasDiscount"
+                              type="radio"
+                              value={false}
+                              onChange={formik.handleChange("hasDiscount")}
+                              onBlur={formik.handleBlur("hasDiscount")}
+                              onClick={() =>
+                                 formik.setFieldValue(
+                                    "discountPrice",
+                                    undefined
+                                 )
+                              }
+                           />
+                        </div>
+                     </div>
+                     {formik.touched.hasDiscount &&
+                     formik.errors.hasDiscount ? (
+                        <small className="signErrors">
+                           {formik.errors.hasDiscount}
+                        </small>
+                     ) : (
+                        <small className="signNoErrors">NoErrors</small>
+                     )}
+                  </div>
+                  <div className="inputEditProduct col-4">
+                     <label className="labelSign" htmlFor="discountPrice">
+                        Discount
+                     </label>
+                     <input
+                        disabled={formik.values.hasDiscount === "false"}
+                        name="discountPrice"
+                        type="number"
+                        className="inputEdit"
+                        placeholder="Must have a number"
+                        value={formik.values.discountPrice}
+                        onChange={formik.handleChange("discountPrice")}
+                        onBlur={formik.handleBlur("discountPrice")}
+                     />
+                     {formik.touched.discountPrice &&
+                     formik.errors.discountPrice ? (
+                        <small className="signErrors">
+                           {formik.errors.discountPrice}
+                        </small>
+                     ) : (
+                        <small className="signNoErrors">NoErrors</small>
+                     )}
+                  </div>
                </div>
             </div>
             <div className="inputEditProduct">
@@ -301,7 +372,6 @@ const ArticleAdd = (props) => {
                      )
                   })}
                </div>
-
                {formik.touched.genres && formik.errors.genres ? (
                   <small className="signErrors">{formik.errors.genres}</small>
                ) : (
@@ -311,62 +381,6 @@ const ArticleAdd = (props) => {
          </div>
          <div>
             <div className="numberAddOptions">
-               <div className="inputEditProduct">
-                  <label className="labelSign" htmlFor="hasDiscount">
-                     {" "}
-                     Has Discount ?
-                  </label>
-                  <div
-                     style={{
-                        display: "flex",
-                        alignItems: "center",
-                        jusifyContent: "space-between",
-                        width: "100%",
-                     }}
-                  >
-                     <div style={{ marginRight: "4vmin" }}>
-                        <label
-                           className="labelSign white"
-                           htmlFor="hasDiscount"
-                        >
-                           Yes
-                        </label>
-                        <input
-                           name="hasDiscount"
-                           type="radio"
-                           value={true}
-                           onChange={formik.handleChange("hasDiscount")}
-                           onBlur={formik.handleBlur("hasDiscount")}
-                        />
-                     </div>
-                     <div>
-                        <label
-                           className="labelSign white"
-                           htmlFor="hasDiscount"
-                        >
-                           No
-                        </label>
-                        <input
-                           name="hasDiscount"
-                           type="radio"
-                           value={false}
-                           onChange={formik.handleChange("hasDiscount")}
-                           onBlur={formik.handleBlur("hasDiscount")}
-                           onClick={() =>
-                              formik.setFieldValue("discountPrice", undefined)
-                           }
-                        />
-                     </div>
-                  </div>
-
-                  {formik.touched.hasDiscount && formik.errors.hasDiscount ? (
-                     <small className="signErrors">
-                        {formik.errors.hasDiscount}
-                     </small>
-                  ) : (
-                     <small className="signNoErrors">NoErrors</small>
-                  )}
-               </div>
                <div className="inputEditProduct">
                   <label className="labelSign" htmlFor="minPlayers">
                      Min. players
@@ -640,6 +654,17 @@ const ArticleAdd = (props) => {
                   <small className="signNoErrors">NoErrors</small>
                )}
             </div>
+            <button
+               type="button"
+               className="addProduct"
+               disabled={loading}
+               onClick={() => props.setSection()}
+               style={{
+                  backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+               }}
+            >
+               CANCEL
+            </button>
             <button
                type="button"
                className="addProduct"
