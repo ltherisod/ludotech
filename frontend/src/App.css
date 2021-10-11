@@ -694,8 +694,8 @@ h2 span {
   display: flex;
   color: white;
   font-weight: 700;
-  padding: 1vmin 0;
-  /* align-items: center; */
+  padding: 2vmin;
+  margin: 3vmin 0;
 }
 
 .itemNavbarPanel svg {
@@ -706,6 +706,7 @@ h2 span {
 }
 .itemNavbarPanel p {
   cursor: pointer;
+  margin: 0;
 }
 
 .profileNavbarPanel {
@@ -1028,7 +1029,7 @@ h2 span {
   display: flex;
   align-items: center;
   display: grid;
-  grid-template-columns: 8% 8% 40% 15% 10% 15%;
+  grid-template-columns: 8% 10% 40% 15% 10% 15%;
 }
 
 .closePurchase {
@@ -1053,7 +1054,7 @@ h2 span {
   padding: 2vmin 0;
 }
 
-.purchaseContainerPanel div {
+.purchaseContainerPanel > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1810,6 +1811,9 @@ h2.articles {
   background-color: #fafafa;
   min-height: 100vh;
   overflow-y: scroll;
+  display: grid;
+  grid-template-columns: 60% 38%;
+  gap: 2%;
 }
 
 .dashboardMain p {
@@ -1818,11 +1822,12 @@ h2.articles {
 }
 
 .recentOrdersContainer {
-  width: 55%;
+  width: 100%;
   background-color: white;
   border-radius: 5px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
   padding: 2vmin;
+  margin-top: 4vmin;
 }
 
 .titlesRecentOrders,
@@ -1835,11 +1840,25 @@ h2.articles {
 .titlesRecentOrders {
   padding-bottom: 2vmin;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.recentOrders {
+  padding-top: 2vmin;
+  gap: 2vmin;
+  display: flex;
+  flex-direction: column;
 }
 
 .recentOrder {
+  color: rgba(0, 0, 0, 0.5);
   padding: 2vmin 2vmin;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.recentOrder:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .recentOrder div {
@@ -1852,4 +1871,62 @@ h2.articles {
   width: 7vh;
   background-size: cover;
   background-position: center;
+}
+
+.statistics {
+  margin-top: 1vmin;
+  width: 100%;
+  gap: 2vmin;
+  background-color: white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 1vmin;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.boxDash {
+  display: flex;
+  align-items: center;
+  gap: 2vmin;
+}
+
+.boxDash span {
+  font-size: 2.2vmin;
+  color: gray;
+}
+
+.boxDash p {
+  font-size: 3.5vmin;
+  font-weight: bold;
+}
+
+.miniboxDash {
+  /* background-color: blue; */
+  height: 8vh;
+  width: 8vh;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activePanel {
+  background-color: white;
+  border-radius: 5px;
+  color: #8165ff;
+}
+
+.miniboxDash svg {
+  width: 50%;
+  height: 50%;
+}
+
+.other {
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  padding: 2vmin;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  margin: 1vmin 0;
 }

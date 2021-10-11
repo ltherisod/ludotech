@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import Purchase from './Purchase'
 
-const Sales = () => {
+const Sales = ({scroll}) => {
 
     const [purchases, setPurchases] = useState([])
     const [notFound, setNotFound] = useState(false)
@@ -13,11 +13,11 @@ const Sales = () => {
     const [newStatus, setNewStatus] = useState('')
 
 
-    useEffect(() => {
-        axios.get('https://lodotechgames.herokuapp.com/api/purchases')
-            .then(res=> setPurchases(res.data.response.reverse()))
-            .catch(e => console.log(e))
-    },[])
+    // useEffect(() => {
+    //     axios.get('https://lodotechgames.herokuapp.com/api/purchases')
+    //         .then(res=> setPurchases(res.data.response.reverse()))
+    //         .catch(e => console.log(e))
+    // },[])
 
     useEffect(() => {
         axios.get('https://lodotechgames.herokuapp.com/api/purchases')
@@ -54,10 +54,9 @@ const Sales = () => {
         }
     }
 
-    const showPurchase = (id) => {
-        setSearch(id)
-        getPurchase()
-        window.scrollTo(0,0)
+    const showPurchase = (purchase, e) => {
+        setPurchaseFound(purchase)
+        console.log(e)
     }
 
     return (
