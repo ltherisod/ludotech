@@ -40,9 +40,9 @@ const Address = (props) => {
          {loading ? (
             <h1>LOADING PADREE!!!</h1>
          ) : (
-            <div>
+            <div className="addressAddedCard">
                {!edit && (
-                  <div>
+                  <div >
                      <p>Alias : {direction.alias}</p>
                      <p>Receiver : {direction.receiver}</p>
                      <p>Street : {direction.street}</p>
@@ -67,14 +67,14 @@ const Address = (props) => {
                )}
                {!edit && (
                   <button type="button" onClick={() => setEdit(!edit)}>
-                     Edit Address
+                     Edit
                   </button>
                )}
                <button
                   type="button"
                   onClick={() => deleteAddress(direction._id)}
                >
-                  Delete Address
+                  X
                </button>
             </div>
          )}

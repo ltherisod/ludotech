@@ -12,9 +12,9 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
             placeholder="Alias"
          />
          {formik.touched.alias && formik.errors.alias ? (
-            <small className="signErrors">{formik.errors.alias}</small>
+            <small className="signErrorsPhone">{formik.errors.alias}</small>
          ) : (
-            <small className="signNoErrors">NoErrors</small>
+            <small className="signNoErrorsPhone">NoErrors</small>
          )}
          <input
             name="receiver"
@@ -24,9 +24,9 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
             placeholder="Receiver"
          />
          {formik.touched.receiver && formik.errors.receiver ? (
-            <small className="signErrors">{formik.errors.receiver}</small>
+            <small className="signErrorsDir">{formik.errors.receiver}</small>
          ) : (
-            <small className="signNoErrors">NoErrors</small>
+            <small className="signNoErrorsDir">NoErrors</small>
          )}
          <input
             name="street"
@@ -36,9 +36,9 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
             placeholder="Street"
          />
          {formik.touched.street && formik.errors.street ? (
-            <small className="signErrors">{formik.errors.street}</small>
+            <small className="signErrorsDir">{formik.errors.street}</small>
          ) : (
-            <small className="signNoErrors">NoErrors</small>
+            <small className="signNoErrorsDir">NoErrors</small>
          )}
          <input
             name="number"
@@ -48,9 +48,9 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
             placeholder="Number"
          />
          {formik.touched.number && formik.errors.number ? (
-            <small className="signErrors">{formik.errors.number}</small>
+            <small className="signErrorsDir">{formik.errors.number}</small>
          ) : (
-            <small className="signNoErrors">NoErrors</small>
+            <small className="signNoErrorsDir">NoErrors</small>
          )}
          <input
             name="department"
@@ -60,9 +60,9 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
             placeholder="Department"
          />
          {formik.touched.department && formik.errors.department ? (
-            <small className="signErrors">{formik.errors.department}</small>
+            <small className="signErrorsDir">{formik.errors.department}</small>
          ) : (
-            <small className="signNoErrors">NoErrors</small>
+            <small className="signNoErrorsDir">NoErrors</small>
          )}
          <input
             name="zipCode"
@@ -72,9 +72,9 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
             placeholder="Zip Code"
          />
          {formik.touched.zipCode && formik.errors.zipCode ? (
-            <small className="signErrors">{formik.errors.zipCode}</small>
+            <small className="signErrorsDir">{formik.errors.zipCode}</small>
          ) : (
-            <small className="signNoErrors">NoErrors</small>
+            <small className="signNoErrorsDir">NoErrors</small>
          )}
          <input
             name="city"
@@ -84,9 +84,9 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
             placeholder="City"
          />
          {formik.touched.city && formik.errors.city ? (
-            <small className="signErrors">{formik.errors.city}</small>
+            <small className="signErrorsDir">{formik.errors.city}</small>
          ) : (
-            <small className="signNoErrors">NoErrors</small>
+            <small className="signNoErrorsDir">NoErrors</small>
          )}
          <input
             name="state"
@@ -96,11 +96,13 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
             placeholder="State"
          />
          {formik.touched.state && formik.errors.state ? (
-            <small className="signErrors">{formik.errors.state}</small>
+            <small className="signErrorsDir">{formik.errors.state}</small>
          ) : (
-            <small className="signNoErrors">NoErrors</small>
+            <small className="signNoErrorsDir">NoErrors</small>
          )}
+         <div>
          <button onClick={formik.handleSubmit}>{buttonText}</button>
+         </div>
       </div>
    )
 }
