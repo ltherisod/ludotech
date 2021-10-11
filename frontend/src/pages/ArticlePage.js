@@ -38,7 +38,7 @@ const ArticlePage = (props) => {
    const [relatedArticles, loadingRelated] = useRelatedArticles(genres)
 
    useEffect(() => {
-      window.scroll(0,0)
+      window.scroll(0, 0)
    }, [article])
 
    const addToCart = (id) => {
@@ -191,9 +191,14 @@ const ArticlePage = (props) => {
                </div>
                <h3 className="articleRelatedTittle">Products related</h3>
                <div className="relatedArticles">
-               {loadingRelated ? <Preloader/> :
-                  <ArticleRelated history={props.history} relatedArticles={relatedArticles}/>
-               }
+                  {loadingRelated ? (
+                     <Preloader />
+                  ) : (
+                     <ArticleRelated
+                        history={props.history}
+                        relatedArticles={relatedArticles}
+                     />
+                  )}
                </div>
                <Footer />
             </div>
