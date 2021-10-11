@@ -680,7 +680,7 @@ h2 span {
 /* PANEL ADMIN */
 
 .navbarPanelContainer {
-   width: 20%;
+   width: 20vw;
    min-height: 100vh;
    background-color: #8165ff;
    padding: 0 2vmin;
@@ -1372,6 +1372,20 @@ h2.articles {
    padding: 15px;
    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
       rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.checkoutContainer {
+   width: 60vw;
+   background-color: white;
+   border-radius: 20px;
+   padding: 3rem;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.textQuantity {
+   color: #f77903;
+   font-weight: bold;
 }
 
 .containerData p {
