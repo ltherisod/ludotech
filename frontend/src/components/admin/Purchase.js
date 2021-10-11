@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 
-const Purchase = ({purchase}) => {
+const Purchase = ({purchase, showPurchase}) => {
 
-    const {direction, showPurchase, purchaseFound, status} = purchase
+    const {direction, purchaseFound, status} = purchase
 
     const [color, setColor] = useState('red')
 
@@ -15,7 +15,7 @@ const Purchase = ({purchase}) => {
     }, [purchaseFound, status])
 
     return (
-        <div onClick={(e) => showPurchase(purchase, e)} className='purchaseContainerPanel'>
+        <div onClick={(e) => showPurchase(purchase)} className='purchaseContainerPanel'>
             <div>
                 <p>...{purchase._id.substring(18, 24 )}</p>
             </div>
