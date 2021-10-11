@@ -8,7 +8,9 @@ const usersActions = {
     return async (dispatch) => {
       try {
         // action puede ser 'login' o 'signup'
+        console.log(data)
         const response = await axios.post(`${HOST}/api/${action}`, data)
+        console.log(response.data)
         if (!response.data.success) throw new Error(response.data.error)
         await AsyncStorage.setItem(
           "token",

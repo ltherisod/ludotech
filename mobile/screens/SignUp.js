@@ -19,11 +19,29 @@ import * as ImagePicker from "expo-image-picker"
 import Footer from "../components/Footer"
 import HeroPages from "../components/HeroPages"
 import { useSignup } from "../hooks/usersHooks"
+import * as Google from "expo-google-app-auth"
 
 const SignUp = (props) => {
-  const [formik, setFieldValue, loading, error] = useSignup()
+  const [formik, setFieldValue, responseGoogle, loading, error] = useSignup()
   const [fieldError, setFieldError] = useState(null)
   const [imageName, setImageName] = useState("")
+
+  const signInAsync = async () => {
+    try {
+      const { type, user } = await Google.logInAsync({
+        iosClientId:
+          "546540605799-8836cs47f5tqdju4sssgdi7hu4d8b39h.apps.googleusercontent.com",
+        androidClientId:
+          "546540605799-fhplkieo1ls6prj4bdj0fu1n7c85io86.apps.googleusercontent.com",
+      })
+
+      if (type === "success") {
+        responseGoogle(user)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   const galleryPermissionRequest = async () => {
     if (Platform.OS !== "web") {

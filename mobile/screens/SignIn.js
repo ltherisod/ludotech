@@ -2,27 +2,40 @@ import React from "react"
 import { connect } from "react-redux"
 import usersActions from "../redux/actions/usersActions"
 import {
-   View,
-   Text,
-   SafeAreaView,
-   ScrollView,
-   Platform,
-   StatusBar,
-   StyleSheet,
-   Dimensions,
-   TextInput,
-   TouchableOpacity,
-   ImageBackground,
-   useWindowDimensions,
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  ImageBackground,
+  Button,
 } from "react-native"
 import { useLogin } from "../hooks/usersHooks"
 import HeroPages from "../components/HeroPages"
 import Footer from "../components/Footer"
-
-const { height } = Dimensions.get("screen")
+import * as Google from "expo-google-app-auth"
 
 const SignIn = (props) => {
-  const [formik, loading, error] = useLogin()
+  const [formik, responseGoogle, loading, error] = useLogin()
+  const signInAsync = async () => {
+    try {
+      const { type, user } = await Google.logInAsync({
+        iosClientId:
+          "546540605799-8836cs47f5tqdju4sssgdi7hu4d8b39h.apps.googleusercontent.com",
+        androidClientId:
+          "546540605799-fhplkieo1ls6prj4bdj0fu1n7c85io86.apps.googleusercontent.com",
+      })
+
+      if (type === "success") {
+        responseGoogle(user)
+        console.log(user)
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <ScrollView>
       <ImageBackground
@@ -73,20 +86,31 @@ const SignIn = (props) => {
             onPress={formik.handleSubmit}
             style={styles.loginButtonContainer}
           >
-            <ImageBackground style={styles.loginButton} source={{uri : "https://i.postimg.cc/mD7r09R8/button-Back.png"}} imageStyle={{borderRadius:5}}>
+            <ImageBackground
+              style={styles.loginButton}
+              source={{ uri: "https://i.postimg.cc/mD7r09R8/button-Back.png" }}
+              imageStyle={{ borderRadius: 5 }}
+            >
               <Text style={styles.loginButtonText}>Sign In</Text>
             </ImageBackground>
           </TouchableOpacity>
           {error && <Text style={styles.errorText}>{error}</Text>}
           <View style={styles.dontHaveAccountContainer}>
-            <Text style={{ color: "white", fontFamily: "Poppins_700Bold", }}>Don't have an account yet? </Text>
+            <Text style={{ color: "white", fontFamily: "Poppins_700Bold" }}>
+              Don't have an account yet?{" "}
+            </Text>
             <Text
               onPress={() => props.navigation.navigate("signup")}
-              style={{ color: "#67f2cb", fontFamily: "Poppins_700Bold", marginBottom:-50}}
+              style={{
+                color: "#67f2cb",
+                fontFamily: "Poppins_700Bold",
+                marginBottom: -50,
+              }}
             >
               Sign Up
             </Text>
           </View>
+          <Button title="Log In with Google" onPress={signInAsync} />
         </View>
         <Footer />
       </ImageBackground>
@@ -107,58 +131,55 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingVertical: 8,
     paddingHorizontal: 10,
-    borderRadius:5,
-    backgroundColor:"white"
+    borderRadius: 5,
+    backgroundColor: "white",
   },
   errorText: {
     fontSize: 10,
     color: "red",
   },
-  noErrorText: { color: "transparent",
-   fontSize: 10,
-   },
+  noErrorText: { color: "transparent", fontSize: 10 },
   loginButtonContainer: {
     alignItems: "center",
     width: "100%",
     marginVertical: 5,
   },
   loginButton: {
-    alignSelf:"center",
+    alignSelf: "center",
     paddingVertical: 7,
     paddingHorizontal: 15,
     width: 150,
   },
-  loginButtonText: { 
-    color: "white", 
-    textAlign: "center", 
+  loginButtonText: {
+    color: "white",
+    textAlign: "center",
     fontFamily: "Poppins_700Bold",
-     },
+  },
   dontHaveAccountContainer: {
     width: "100%",
     alignItems: "center",
     marginVertical: 5,
-   
   },
   signInBack: {
     width: "100%",
     alignItems: "center",
   },
   SignInTittle: {
-    marginTop:-35,
+    marginTop: -35,
     color: "white",
     fontFamily: "Poppins_700Bold",
     fontSize: 35,
   },
   SignInTittleIn: {
-    marginTop:-35,
+    marginTop: -35,
     fontFamily: "Poppins_700Bold",
     marginLeft: 3,
     fontSize: 35,
     color: "#67f2cb",
   },
-  label:{
+  label: {
     color: "white",
     fontFamily: "Poppins_700Bold",
-    alignSelf:"flex-start"
-  }
+    alignSelf: "flex-start",
+  },
 })
