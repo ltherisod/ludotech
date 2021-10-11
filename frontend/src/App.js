@@ -15,26 +15,26 @@ import Wishlist from "./pages/Wishlist"
 import Checkout from "./pages/Checkout"
 
 const App = (props) => {
-   useLoginLS()
-   const user = useSelector((state) => state.users.user)
-   return (
-      <BrowserRouter>
-         <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/paypal" component={Paypal} />
-            <Route path="/articles" component={Articles} />
-            <Route path="/article/:id" component={ArticlePage} />
-            {!user && <Route path="/signin" component={SignIn} />}
-            {!user && <Route path="/signup" component={SignUp} />}
-            <Route path="/admin" component={PanelAdmin} />
-            <Route path="/profile" component={UserProfile} />
-            <Route path="/cart" component={Cart} />
-            <Route path="/checkout" component={Checkout} />
-            {user && <Route path="/wishlist" component={Wishlist} />}
-            <Redirect to="/" />
-         </Switch>
-      </BrowserRouter>
-   )
+  useLoginLS()
+  const user = useSelector((state) => state.users.user)
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/paypal" component={Paypal} />
+        <Route path="/articles" component={Articles} />
+        <Route path="/article/:id" component={ArticlePage} />
+        {!user && <Route path="/signin" component={SignIn} />}
+        {!user && <Route path="/signup" component={SignUp} />}
+        <Route path="/admin" component={PanelAdmin} />
+        <Route path="/profile" component={UserProfile} />
+        <Route path="/cart" component={Cart} />
+        <Route path="/checkout" component={Checkout} />
+        {user && <Route path="/wishlist" component={Wishlist} />}
+        <Redirect to="/" />
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
 export default App
