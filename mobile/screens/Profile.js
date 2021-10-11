@@ -147,7 +147,7 @@ const Profile = () => {
                                 <DirectionsForm
                                 submitCallback={addDirectionHandler}
                                 initialValues={initialValues}
-                                buttonText="Add"
+                                buttonText="Add +"
                                 />
                             )}  
                         </View>
@@ -162,11 +162,10 @@ const Profile = () => {
 const styles = StyleSheet.create({
     profileTittle:{
         color: "white",
-        fontSize: 25, 
-        paddingVertical: 15,
+        fontSize: 35, 
         fontFamily: 'Poppins_800ExtraBold',
-        paddingHorizontal: 15,
-        textAlign: 'center'
+        textAlign: 'center',
+        marginTop:-50
     },
     userName:{
         textTransform:"capitalize",

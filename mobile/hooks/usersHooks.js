@@ -130,6 +130,7 @@ export const useLoginLS = () => {
 export const useAddDirection = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const dispatch = useDispatch()
 
   const formik = useFormik({
     initialValues: {
@@ -160,15 +161,18 @@ export const useAddDirection = () => {
   })
 
   const addDirectionHandler = async (values) => {
-    console.log(values)
-  }
+    setLoading(true)
+    const res = await dispatch(usersActions.addDirection(values))
+    if (!res.success) setError(res.error)
+    setLoading(false)
+ }
 
-  return [formik, loading, error]
+ return [formik, loading, error]
 }
-
 export const useUpdateDirection = (direction) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const dispatch = useDispatch()
 
   const formik = useFormik({
     initialValues: {
@@ -199,10 +203,15 @@ export const useUpdateDirection = (direction) => {
   })
 
   const updateDirectionHandler = async (values) => {
-    console.log(values)
-  }
+    setLoading(true)
+    const res = await dispatch(
+       usersActions.updateDirection(values, direction?._id)
+    )
+    if (!res.success) setError(res.error)
+    setLoading(false)
+ }
 
-  return [formik, loading, error]
+ return [formik, loading, error]
 }
 
 export const useDirectionsForm = (submitCallback, initialValues) => {
@@ -233,4 +242,19 @@ export const useDirectionsForm = (submitCallback, initialValues) => {
     }),
   })
   return formik
+}
+
+export const usePurchase = () => {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const dispatch = useDispatch()
+  const purchase = async (data) => {
+     setLoading(true)
+     setError(null)
+     const res = await dispatch(usersActions.purchaseHandler(data))
+     if (!res.success) setError(res.error)
+     setLoading(false)
+     return res
+  }
+  return [purchase, loading, error]
 }

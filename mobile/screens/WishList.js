@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, ScrollView, ImageBackground, TextInput, FlatLis
 import HeroPages from '../components/HeroPages'
 import Article from '../components/Article'
 
+
 const WishList = (props) => {
 
   const wishList = useSelector((state) => state.users.wishList)
@@ -14,20 +15,20 @@ const WishList = (props) => {
   }, [wishList])
 
   const inputFilterHandler = (e) => {
-    setSearched(wishList.filter(product => product.name.replace(/ /g, '').toUpperCase().startsWith(e.nativeEvent.text.replace(/ /g, '').toLowerCase())))
+    setSearched(wishList.filter(product => product.name.replace(/ /g, '').toUpperCase().startsWith(e.replace(/ /g, '').toLowerCase())))
   }
 
   return (
-    <View>
+    <ScrollView>
       <ImageBackground style={{width:"100%"}} source={require("../assets/fondoVioleta.png")} resizeMode="cover">
         <HeroPages />
+        <Text style={styles.wishlistTittle}>Wishlist</Text>
         <View style={styles.wishListContainer} >
-          <Text style={styles.wishListContainerTitle} >If you have a lot of products in your wishlist, you can search each one of them here</Text>
           <View style={styles.wishListContainerBox}>
             <TextInput
               style={styles.wishListContainerInput}
               onChange={inputFilterHandler}
-              placeholder='Search for products'
+              placeholder='Search for products...'
               />
           </View>
           <ScrollView>
@@ -46,13 +47,11 @@ const WishList = (props) => {
                     )
                 )}
               />
-
             </View>
           </ScrollView>
-          
         </View>
       </ImageBackground>
-    </View>
+    </ScrollView>
   )
 }
 
@@ -64,10 +63,22 @@ const styles = StyleSheet.create({
   },
 
   wishListContainerInput: {
-    width: '50%',
-    height: 20,
+    width: 280,
     backgroundColor: 'white',
+    alignSelf:"center",
+    paddingHorizontal:10,
+    paddingVertical:4,
+    borderRadius:5,
+    marginVertical:18,
+
   },
+  wishlistTittle:{
+    color: "white",
+    fontSize: 35, 
+    fontFamily: 'Poppins_800ExtraBold',
+    textAlign: 'center',
+    marginTop:-30
+},
 
 
 })
