@@ -26,7 +26,7 @@
 }
 
 .optionsBotButton {
-
+    padding: 5px;
 }
 
 /*custom class from chat*/
@@ -39,7 +39,7 @@
     height: 100%;
 }
 
-.react-chatbot-kit-chat-header {
+/* .react-chatbot-kit-chat-header {
 
 }
 
@@ -129,4 +129,4 @@
 
 .react-chatbot-kit-error-docs {
 
-}
+} */
