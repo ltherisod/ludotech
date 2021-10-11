@@ -1522,42 +1522,51 @@ h2.articles {
 }
 
 .relatedArticles {
-   padding: 3rem;
-   width: 80%;
-   align-self: center;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+  width: 80%;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardArticleRelated {
-   width: 320px;
-   height: 350px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   border-radius: 12px;
-   background-position: bottom;
-   background-size: cover;
-   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 320px;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  background-position: bottom;
+  background-size: cover;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    margin: 0px 40px
 }
 
 .photosArticleRelated {
-   background-position: center;
-   background-size: cover;
-   min-height: 250px;
-   width: 285px;
-   display: flex;
-   justify-content: flex-end;
-   align-items: flex-start;
-   padding: 15px;
+  background-position: center;
+  background-size: cover;
+  min-height: 230px;
+  width: 250px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 10px; 
 }
 
 .buyLineRelated {
-   width: 100%;
-   display: flex;
-   justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+.priceRelated {
+  text-align: center;
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Swiper */

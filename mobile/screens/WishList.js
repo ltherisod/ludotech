@@ -31,7 +31,7 @@ const WishList = (props) => {
               placeholder='Search for products...'
               />
           </View>
-          <ScrollView>
+          <View>
             <View style={styles.wishListArticles} >
               <FlatList 
                 data={searched}
@@ -48,7 +48,7 @@ const WishList = (props) => {
                 )}
               />
             </View>
-          </ScrollView>
+          </View>
         </View>
       </ImageBackground>
     </ScrollView>

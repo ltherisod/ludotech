@@ -13,6 +13,10 @@ const ArticleRelated = (props) => {
     {props.relatedArticles.map(article => {
       return (
         <div
+        style={{ textDecoration: "none", cursor: "pointer" }}
+        onClick={() => props.history.push(`/article/${article._id}`)}
+      >
+        <div
           className="cardArticleRelated"
           style={{
             backgroundImage: `url("https://i.postimg.cc/sftdwcnd/article.png")`,
@@ -22,24 +26,33 @@ const ArticleRelated = (props) => {
           <div onClick={() => props.history.push(`/article/${article._id}`)} className="photosArticleRelated" style={{ backgroundImage: `url('${article.photos[0]}')` }} >
           </div>
           <div className="gameInfo">
-            <div className="price">
+            <div className="priceRelated">
               {" "}
               {article.hasDiscount === false ? (
-                <p style={{ color: "green" }}>${article.price}</p>
+                <p style={{ color: "lightgreen",
+                fontSize: 21,
+                fontWeight: "bold", }}>${article.price}</p>
               ) : (
                 <div className="priceArticle">
-                  <p style={{ textDecoration: "line-through", color: "red" }}>
+                  <p style={{  textDecoration: "line-through",
+                    color: "lightgrey",
+                    fontSize: 21,
+                    fontWeight: "bold",
+                    paddingRight: "1.2rem", }}>
                     ${article.price}
                   </p>
-                  <p style={{ color: "green" }}>${article.discountPrice}</p>
+                  <p style={{ color: "lightgreen",
+                    fontSize: 21,
+                    fontWeight: "bold", }}>${article.discountPrice}</p>
                 </div>
               )}
             </div>
             <div className="buyLineRelated">
-                <h3>{article.name}</h3>
+                <h5>{article.name}</h5>
                 <img id="buy" src="/assets/buy.png" alt="addCart" onClick={(e) => addToCart(e, article._id)}/>
             </div> 
           </div>
+        </div>
         </div>
       )
     })}
