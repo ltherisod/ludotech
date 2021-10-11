@@ -21,7 +21,8 @@ const ArticleCaroulsel = (props) => {
         pagination={true}
         navigation={true}
         className="swiper"
-        autoplay={true}
+        autoplay={{"dealy": 3500, "disableOnInteraction": false, pauseOnMouseEnter: true}}
+        loop={true}
       >
         {props.photos.map((photo) => (
           <SwiperSlide>

@@ -47,7 +47,7 @@ export const useArticle = (id) => {
 
   useEffect(() => {
     fetchArticle()
-  }, [])
+  }, [id])
 
   return [article, loading, error]
 }
