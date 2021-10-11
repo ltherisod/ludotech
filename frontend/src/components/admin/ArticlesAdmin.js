@@ -5,15 +5,15 @@ import ArticleEdit from "./ArticleEdit"
 import { useDispatch } from "react-redux"
 import articlesActions from "../../redux/actions/articlesActions"
 import Filter from "../Filter"
+import PreloaderFilter from "../PreloaderFilter"
 
 const ArticlesAdmin = () => {
    const [typeAction, setTypeAction] = useState("")
-   const [search, setSearch] = useState([])
+   const [search, setSearch] = useState({ articles: [] })
    const articlesArray = useArticles({}, typeAction)
    const [articles, loading, error] = articlesArray
 
    const [articleSelected, setArticleSelected] = useState("")
-   // const [error, setError] = useState(null)
    const dispatch = useDispatch()
    const deleteHandler = async (id) => {
       const res = await dispatch(articlesActions.deleteArticle(id))
@@ -25,7 +25,6 @@ const ArticlesAdmin = () => {
 
    const [currentPage, setCurrentPage] = useState(1)
    const filterArticles = (e) => {
-      console.log(e)
       setSearch(e)
    }
 
@@ -37,6 +36,16 @@ const ArticlesAdmin = () => {
             <ArticleEdit setSection={setTypeAction} article={articleSelected} />
          )
       default:
+         if (loading) {
+            return (
+               <div
+                  style={{ width: "80vw" }}
+                  className="d-flex justify-content-center align-items-center"
+               >
+                  <PreloaderFilter />
+               </div>
+            )
+         }
          return (
             <div
                className="mainTeamPanel articles"
@@ -65,105 +74,96 @@ const ArticlesAdmin = () => {
                   </button>
                </div>
 
-               {loading ? (
-                  <h2>Loading...</h2>
-               ) : (
-                  <>
-                     {/* <p  className='textArticlesPanel textPanell'>Find all products that you can sell in your store</p> */}
-                     <div class="theadArticlesPanel">
-                        <p>Photo</p>
-                        <p>Name</p>
-                        <p>Brand</p>
-                        <p>Price</p>
-                        <p>Genres</p>
-                        <p>Game Type</p>
-                        <p>STOCK</p>
-                        <p>Actions</p>
-                     </div>
-                     <div className="productsPanel">
-                        {search.articles.map((article) => {
-                           return (
-                              <div key={article._id} className="rowStockPanel">
-                                 <div
-                                    className="picture"
-                                    style={{
-                                       backgroundImage: `url("${article.photos[0]}")`,
-                                       width: "7vh",
-                                       height: "7vh",
+               <>
+                  <div class="theadArticlesPanel">
+                     <p>Photo</p>
+                     <p>Name</p>
+                     <p>Brand</p>
+                     <p>Price</p>
+                     <p>Genres</p>
+                     <p>Game Type</p>
+                     <p>STOCK</p>
+                     <p>Actions</p>
+                  </div>
+                  <div className="productsPanel">
+                     {search.articles.map((article) => {
+                        return (
+                           <div key={article._id} className="rowStockPanel">
+                              <div
+                                 className="picture"
+                                 style={{
+                                    backgroundImage: `url("${article.photos[0]}")`,
+                                    width: "7vh",
+                                    height: "7vh",
+                                 }}
+                              ></div>
+                              <p>{article.name}</p>
+                              <p>Brand</p>
+                              <p>{article.price}</p>
+                              <p>{article.genres.map((genre) => genre.name)}</p>
+                              <p>{article.gameType.name}</p>
+                              <p>{article.stock}</p>
+                              <p>
+                                 <span
+                                    type="button"
+                                    className="buttonsAdminB"
+                                    onClick={() => {
+                                       setTypeAction("edit")
+                                       setArticleSelected(article)
                                     }}
-                                 ></div>
-                                 <p>{article.name}</p>
-                                 <p>Brand</p>
-                                 <p>{article.price}</p>
-                                 <p>
-                                    {article.genres.map((genre) => genre.name)}
-                                 </p>
-                                 <p>{article.gameType.name}</p>
-                                 <p>{article.stock}</p>
-                                 <p>
-                                    <span
-                                       type="button"
-                                       className="buttonsAdminB"
-                                       onClick={() => {
-                                          setTypeAction("edit")
-                                          setArticleSelected(article)
-                                       }}
-                                    >
-                                       EDIT
-                                    </span>
-                                    <span
-                                       type="button"
-                                       className="buttonsAdminC"
-                                       onClick={() =>
-                                          deleteHandler(article._id)
-                                       }
-                                    >
-                                       DELETE
-                                    </span>
-                                 </p>
-                              </div>
-                           )
-                        })}
-                     </div>
-                     {search.totalPages > 1 && (
-                        <div
+                                 >
+                                    EDIT
+                                 </span>
+                                 <span
+                                    type="button"
+                                    className="buttonsAdminC"
+                                    onClick={() => deleteHandler(article._id)}
+                                 >
+                                    DELETE
+                                 </span>
+                              </p>
+                           </div>
+                        )
+                     })}
+                  </div>
+                  {search.totalPages > 1 && (
+                     <div
+                        style={{
+                           display: "flex",
+                           gap: "1rem",
+                           alignItems: "center",
+                        }}
+                     >
+                        {currentPage > 1 && (
+                           <button
+                              type="button"
+                              style={{ padding: ".3rem 1.2rem" }}
+                              onClick={() => setCurrentPage(currentPage - 1)}
+                           >
+                              Prev
+                           </button>
+                        )}
+                        <p
                            style={{
-                              display: "flex",
-                              gap: "1rem",
-                              alignItems: "center",
+                              margin: "0",
+                              fontSize: "1.2rem",
+                              color: "white",
                            }}
                         >
-                           {currentPage > 1 && (
-                              <button
-                                 type="button"
-                                 style={{ padding: ".3rem 1.2rem" }}
-                                 onClick={() => setCurrentPage(currentPage - 1)}
-                              >
-                                 Prev
-                              </button>
-                           )}
-                           <p
-                              style={{
-                                 margin: "0",
-                                 fontSize: "1.2rem",
-                                 color: "white",
-                              }}
+                           Current page: {currentPage}/{search.totalPages}
+                        </p>
+                        {currentPage < search.totalPages && (
+                           <button
+                              style={{ padding: ".3rem 1.2rem" }}
+                              type="button"
+                              onClick={() => setCurrentPage(currentPage + 1)}
                            >
-                              Current page: {currentPage}/{search.totalPages}
-                           </p>
-                           {currentPage < search.totalPages && (
-                              <button
-                                 style={{ padding: ".3rem 1.2rem" }}
-                                 type="button"
-                                 onClick={() => setCurrentPage(currentPage + 1)}
-                              >
-                                 Next
-                              </button>
-                           )}
-                        </div>
-                     )}
-                  </>
-               )}
+                              Next
+                           </button>
+                        )}
+                     </div>
+                  )}
+               </>
             </div>
          )
    }
