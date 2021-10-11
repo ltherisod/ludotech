@@ -318,6 +318,7 @@ h2 span {
    letter-spacing: 2px;
    margin-bottom: -0.5em;
 }
+
 .main-sign input {
    padding: 1em;
    height: 3em;
@@ -1711,8 +1712,8 @@ h2.articles {
 
 .logoUserProfile {
    background-position: center;
-   width: 8em;
-   height: 8em;
+   width: 7em;
+   height: 7em;
    border-radius: 50%;
    background-size: cover;
    margin: 20px 50px 20px 5px;
@@ -1734,11 +1735,50 @@ h2.articles {
 }
 .phone {
    display: flex;
+   justify-content: space-between;
+}
+.profileTitles {
+   margin-bottom: 0;
+   margin-right: 10px;
+   font-weight: 600;
+   color: white;
 }
 .phone p {
    color: white;
    margin-right: 10px;
    font-size: larger;
+   margin-bottom: 0;
+}
+.addresses {
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+}
+.addresses p {
+   color: white;
+   margin-right: 10px;
+   margin-bottom: 0px;
+}
+.adressesAdded {
+   display: flex;
+   padding: 20px 0px;
+   flex-wrap: wrap;
+}
+.addressAddedCard {
+   padding-right: 10px;
+   padding-bottom: 10px;
+}
+.addressAddedCard input{
+   width: 100%;
+}
+.addressAddedCard button {
+   padding: 0px 7px;
+   background-color: #6aefcf;
+   border: none;
+   border-radius: 50px;
+   text-align: center;
+   color: white;
+   margin: 10px;
 }
 .profileButton {
    padding: 0px 20px;
@@ -1751,11 +1791,8 @@ h2.articles {
    height: 50px;
    align-self: center;
    margin-left: 20px;
-   margin-top: 17px;
 }
-.phoneProfile input {
-   width: 100%;
-}
+
 .addressInputs {
    margin: 10px;
 }
@@ -1765,7 +1802,38 @@ h2.articles {
 .phoneInput {
    display: flex;
    flex-direction: column;
-   width: 90%;
+   padding-top: 19px;
+}
+.inputsAddAddress {
+   padding-top: 20px;
+   text-align: center;
+}
+.inputsAddAddress input{
+   width: 100%;
+}
+.inputsAddAddress button{
+   padding: 0px 20px;
+   color: white;
+   border: none;
+   border-radius: 3px;
+   font-weight: 600;
+   cursor: pointer;
+   font-size: 2.5vmin;
+   height: 50px;
+   background-color: #E052C1;
+   margin-top: 10px;
+}
+.signNoErrorsDir {
+   color: transparent
+}
+.signErrorsDir {
+   color: red;
+}
+.signNoErrorsPhone {
+   color: transparent
+}
+.signErrorsPhone {
+   color: red;
 }
 /* WISHLIST  seba */
 
