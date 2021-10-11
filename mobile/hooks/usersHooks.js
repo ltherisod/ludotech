@@ -195,3 +195,33 @@ export const useUpdateDirection = (direction) => {
 
   return [formik, loading, error]
 }
+
+export const useDirectionsForm = (submitCallback, initialValues) => {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const formik = useFormik({
+    initialValues,
+    // {
+    //   alias: "",
+    //   receiver: "",
+    //   street: "",
+    //   number: "",
+    //   department: "",
+    //   zipCode: "",
+    //   city: "",
+    //   state: "",
+    // },
+    onSubmit: submitCallback,
+    validationSchema: Yup.object({
+      alias: Yup.string(),
+      receiver: Yup.string().required("Required"),
+      street: Yup.string().required("Required"),
+      number: Yup.number().required("Required"),
+      department: Yup.string().required("Required"),
+      zipCode: Yup.string().required("Required"),
+      city: Yup.string().required("Required"),
+      state: Yup.string().required("Required"),
+    }),
+  })
+  return formik
+}
