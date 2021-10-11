@@ -681,14 +681,14 @@ h2 span {
 /* PANEL ADMIN */
 
 .navbarPanelContainer {
-   width: 20vw;
-   min-height: 100vh;
-   background-color: #8165ff;
-   padding: 0 2vmin;
-   padding-top: 5vmin;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
+  width: 20vw;
+  min-height: 100vh;
+  background-color: #8165ff;
+  padding: 0 2vmin;
+  padding-top: 5vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .itemNavbarPanel {
@@ -1020,9 +1020,10 @@ h2 span {
 
 .titlesPurchasesPanel,
 .theadArticlesPanel {
-   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-   color: rgba(0, 0, 0, 0.5);
-   padding-bottom: 3vmin;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  padding-bottom: 3vmin;
 }
 
 .titlesPurchasesPanel,
@@ -1066,8 +1067,8 @@ h2 span {
 }
 
 .purchaseContainerPanel:hover {
-   background-color: rgba(0, 0, 0, 0.1);
-   cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
 }
 
 .purchasePhotoPanel {
@@ -1151,12 +1152,12 @@ h2 span {
 }
 
 .productRow {
-   width: 100%;
-   display: flex;
-   justify-content: flex-start;
-   background-color: rgba(0, 0, 0, 0.1);
-   border-radius: 5px;
-   padding: 1vmin;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  padding: 1vmin;
 }
 
 .productRowtPicture {
@@ -1376,17 +1377,17 @@ h2.articles {
 }
 
 .checkoutContainer {
-   width: 60vw;
-   background-color: white;
-   border-radius: 20px;
-   padding: 3rem;
-   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 60vw;
+  background-color: white;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .textQuantity {
-   color: #f77903;
-   font-weight: bold;
+  color: #f77903;
+  font-weight: bold;
 }
 
 .containerData p {
@@ -1725,12 +1726,12 @@ h2.articles {
 /* PROFILE  */
 
 .logoUserProfile {
-   background-position: center;
-   width: 7em;
-   height: 7em;
-   border-radius: 50%;
-   background-size: cover;
-   margin: 20px 50px 20px 5px;
+  background-position: center;
+  width: 7em;
+  height: 7em;
+  border-radius: 50%;
+  background-size: cover;
+  margin: 20px 50px 20px 5px;
 }
 .profileFirstData {
    display: flex;
@@ -1748,63 +1749,63 @@ h2.articles {
    align-items: center;
 }
 .phone {
-   display: flex;
-   justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .profileTitles {
-   margin-bottom: 0;
-   margin-right: 10px;
-   font-weight: 600;
-   color: white;
+  margin-bottom: 0;
+  margin-right: 10px;
+  font-weight: 600;
+  color: white;
 }
 .phone p {
-   color: white;
-   margin-right: 10px;
-   font-size: larger;
-   margin-bottom: 0;
+  color: white;
+  margin-right: 10px;
+  font-size: larger;
+  margin-bottom: 0;
 }
 .addresses {
-   display: flex;
-   flex-direction: column;
-   flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .addresses p {
-   color: white;
-   margin-right: 10px;
-   margin-bottom: 0px;
+  color: white;
+  margin-right: 10px;
+  margin-bottom: 0px;
 }
 .adressesAdded {
-   display: flex;
-   padding: 20px 0px;
-   flex-wrap: wrap;
+  display: flex;
+  padding: 20px 0px;
+  flex-wrap: wrap;
 }
 .addressAddedCard {
-   padding-right: 10px;
-   padding-bottom: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
 }
 .addressAddedCard input {
    width: 100%;
 }
 .addressAddedCard button {
-   padding: 0px 7px;
-   background-color: #6aefcf;
-   border: none;
-   border-radius: 50px;
-   text-align: center;
-   color: white;
-   margin: 10px;
+  padding: 0px 7px;
+  background-color: #6aefcf;
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  color: white;
+  margin: 10px;
 }
 .profileButton {
-   padding: 0px 20px;
-   color: white;
-   border: none;
-   border-radius: 3px;
-   font-weight: 600;
-   cursor: pointer;
-   font-size: 2.5vmin;
-   height: 50px;
-   align-self: center;
-   margin-left: 20px;
+  padding: 0px 20px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 2.5vmin;
+  height: 50px;
+  align-self: center;
+  margin-left: 20px;
 }
 
 .addressInputs {
@@ -1814,9 +1815,9 @@ h2.articles {
    display: flex;
 }
 .phoneInput {
-   display: flex;
-   flex-direction: column;
-   padding-top: 19px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 19px;
 }
 .inputsAddAddress {
    padding-top: 20px;
@@ -1841,13 +1842,13 @@ h2.articles {
    color: transparent;
 }
 .signErrorsDir {
-   color: red;
+  color: red;
 }
 .signNoErrorsPhone {
    color: transparent;
 }
 .signErrorsPhone {
-   color: red;
+  color: red;
 }
 /* WISHLIST  seba */
 
@@ -1953,7 +1954,7 @@ h2.articles {
 }
 
 .recentOrder:hover {
-   background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .recentOrder div {
@@ -2036,4 +2037,52 @@ h2.articles {
    border-radius: 5px;
    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
    padding: 2vmin;
+}
+
+/* PURCHASES USER */
+
+.userFoundPurchase {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  margin: 0 10%;
+  padding: 2vmin;
+  margin-top: -5vmin;
+}
+
+.containerPurchase {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 2vmin;
+  flex: 1;
+}
+
+.containerPurchase p {
+  margin: 0;
+}
+
+.titlesPurchasesUser,
+.detailsPurchaseUser {
+  display: grid;
+  grid-template-columns: 24% 35% 10% 10% 13%;
+}
+
+.titlesPurchasesUser {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 2vmin;
+}
+
+.detailsPurchaseUser > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.detailsPurchaseUser {
+  padding: 2vmin;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.detailsPurchaseUser:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }

@@ -63,6 +63,7 @@ const Header = (props) => {
                         </NavLink>
                      </li>
                   )}
+                
 
                   {!user ? (
                      <>
@@ -107,6 +108,15 @@ const Header = (props) => {
                                  <p className="profileLogout">Profile</p>
                               </NavLink>
                            </li>
+                              <li className="nav-item">
+                              <NavLink
+                                 className="nav-link"
+                                 to="/mypurchases"
+                                 onClick={() => window.scrollTo(0, 0)}
+                              >
+                                 Purchases
+                              </NavLink>
+                        </li>
                            <li>
                               <hr className="dropdown-divider" />
                            </li>
