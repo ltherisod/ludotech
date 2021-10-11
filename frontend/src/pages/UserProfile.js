@@ -118,7 +118,15 @@ const UserProfile = () => {
                  ✔
                </button>
                </>}
-           
+               {!visiblePhone && (
+                     <button
+                        className="profileButton"
+                        type="button"
+                        onClick={() => setVisiblePhone(!visiblePhone)}
+                     >
+                        {phone ? "Edit phone number" : "Add phone number"}
+                     </button>
+                  )}
           </div>
           <div>      
             <div className="phone">
