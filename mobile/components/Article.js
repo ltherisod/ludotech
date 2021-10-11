@@ -33,7 +33,13 @@ const Article = (props) => {
     return(
         <ImageBackground  style={styles.articleCard}source={{uri:"https://i.postimg.cc/sftdwcnd/article.png"}} imageStyle={{borderRadius:15}}>
             <Pressable onPress={(e) => addToWishlist(e, _id)} >
+            {props.wishList.some((i) => {
+                return i._id === _id
+            }) ? (
+                <Icon name='heart' style={{fontSize:30, color:"red", alignSelf:"flex-end", margin:10}}/>
+            ) : (
                 <Icon name='heart' style={{fontSize:30, color:"pink", alignSelf:"flex-end", margin:10}}/>
+            )}
             </Pressable>
             <Image source={{uri: iconPhotos }} resizeMode="cover" style={styles.articleIcon}/>
             <Text style={styles.articlePrice}>${price} USD</Text>
@@ -46,12 +52,18 @@ const Article = (props) => {
     )
 }
 
+const mapStateToProps = (state) => {
+    return {
+        wishList: state.users.wishList,
+    }
+}
+
 const mapDispatchToProps = {
     updateCart: articlesActions.updateCart,
     toggleWishList: usersActions.toggleWishList,
  }
  
- export default connect(null, mapDispatchToProps)(Article)
+ export default connect(mapStateToProps, mapDispatchToProps)(Article)
 
 const styles = StyleSheet.create({
     articleCard:{

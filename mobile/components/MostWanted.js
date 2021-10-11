@@ -91,24 +91,3 @@ const styles = StyleSheet.create({
       fontFamily: 'Poppins_700Bold'
   }
 });
-
-
-// <Text style={styles.mainText}>Most wanted products</Text>
-//       <View>
-//         <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card2.png" }}>
-//           <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[0].photos[0] }}></ImageBackground>
-//           <Text style={styles.gameName}>{mostVisitArticles[0].name}</Text>
-//         </ImageBackground>
-//       </View>
-//       <View>
-//         <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card1.png" }}>
-//           <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[1].photos[0] }}></ImageBackground>
-//           <Text style={styles.gameName}>{mostVisitArticles[1].name}</Text>
-//         </ImageBackground>
-//       </View>
-//       <View>
-//         <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card2.png" }}>
-//           <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[2].photos[0]}}></ImageBackground>
-//           <Text style={styles.gameName}>{mostVisitArticles[2].name}</Text>
-//         </ImageBackground>
-//       </View>

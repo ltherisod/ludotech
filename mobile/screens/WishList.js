@@ -37,7 +37,11 @@ const WishList = (props) => {
                 keyExtractor={(product) => product._id}
                 renderItem={( product => (
                     <TouchableOpacity onPress={() => props.navigation.navigate('ArticleStack', { id: product.item._id })}>
-                      <Article article={product} history={props.history} key={product.item._id} />
+                      {console.log("en la lsita", product)}
+                      <Article 
+                        article={product.item} 
+                        history={props.history} 
+                        key={product.item._id} />
                     </TouchableOpacity>
                     )
                 )}
@@ -64,5 +68,6 @@ const styles = StyleSheet.create({
     height: 20,
     backgroundColor: 'white',
   },
+
 
 })
