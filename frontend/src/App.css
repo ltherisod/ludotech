@@ -43,6 +43,10 @@ body {
   font-family: "Fredoka One", cursive;
   font-size: 2rem;
 }
+
+.profileLogout {
+  color: black !important;
+}
 @media (min-width: 992px) {
   #mainNav {
     box-shadow: none;
@@ -94,7 +98,7 @@ body {
   height: 2.3em;
   background-size: cover;
   border-radius: 100%;
-  margin-right: 15px;
+  margin: 0px 15px;
 }
 
 /* ESTILOS */
@@ -1693,21 +1697,62 @@ h2.articles {
 
 .logoUserProfile {
   background-position: center;
-  width: 10em;
-  height: 10em;
-  border-radius: 10%;
+  width: 8em;
+  height: 8em;
+  border-radius: 50%;
   background-size: cover;
+  margin: 20px 50px 20px 5px;
 }
-
-.backProfile {
-  min-height: 100vh;
-}
-
-.containerProfile {
+.profileFirstData {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
 }
-
+.profileFirstData h3 {
+  color: white;
+}
+.profileFirstData p {
+  color: orange;
+}
+.phoneProfile {
+  display: flex;
+  align-items: center;
+}
+.phone {
+  display: flex;
+}
+.phone p {
+  color: white;
+  margin-right: 10px;
+  font-size: larger;
+}
+.profileButton {
+  padding: 0px 20px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 2.5vmin;
+  height: 50px;
+  align-self: center;
+  margin-left: 20px;
+  margin-top: 17px;
+}
+.phoneProfile input {
+  width: 100%;
+}
+.addressInputs {
+  margin: 10px;
+}
+.inputContainer2 {
+  display: flex;
+}
+.phoneInput {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
 /* WISHLIST  seba */
 
 .mainWishlist {

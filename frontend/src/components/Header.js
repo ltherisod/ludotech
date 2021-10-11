@@ -109,33 +109,30 @@ const Header = (props) => {
                         role="button"
                         aria-expanded="false"
                      ></a>
-                     <ul class="dropdown-menu">
+                     <ul class="dropdown-menu mt-3">
                         <li>
-                           <NavLink
+                           <NavLink 
                               className="nav-link"
                               to="/profile"
                               onClick={() => window.scrollTo(0, 0)}
                            >
-                              Profile
+                              <p className="profileLogout">Profile</p>
                            </NavLink>
                         </li>
                         <li>
                            <hr class="dropdown-divider" />
                         </li>
+
                         <li>
-                           <a class="dropdown-item" href="#">
-                              <Link to="/" style={{ textDecoration: "none" }}>
-                                 <span
-                                    className="nav-link me-4"
-                                    onClick={() => {
-                                       window.scrollTo(0, 0)
-                                       dispatch(usersActions.logOut())
-                                    }}
-                                 >
-                                    Log Out
-                                 </span>
-                              </Link>
-                           </a>
+                           <NavLink to="/" style={{ textDecoration: "none" }}
+                               className="nav-link"
+                               onClick={() => {
+                                  window.scrollTo(0, 0)
+                                  dispatch(usersActions.logOut())
+                               }}
+                           >
+                              <p className="profileLogout">Log Out</p>
+                           </NavLink>
                         </li>
                      </ul>
                   </li>
