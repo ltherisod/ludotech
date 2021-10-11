@@ -15,7 +15,7 @@ import WishList from "../screens/WishList"
 import { connect, useSelector } from "react-redux"
 import { useLoginLS } from "../hooks/usersHooks"
 import { Image, ImageBackground, StyleSheet } from "react-native"
-import navigationBottom from "./navigationBottom"
+import NavigationBottom from "./navigationBottom"
 const Drawer = createDrawerNavigator()
 
 const Navigator = (props) => {
@@ -66,7 +66,7 @@ const Navigator = (props) => {
     >
       <Drawer.Screen
         name="Home"
-        component={navigationBottom}
+        component={navigationStack}
         options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
       />
       <Drawer.Screen
