@@ -6,6 +6,24 @@ const transporter = require("../config/transporterEmail")
 const indexEmail = require("../config/emailsBody/indexEmail")
 
 const usersControllers = {
+  getUsersCount: async (req, res) => {
+    try {
+       let usersCount = await User.find().countDocuments()
+      res.json({success: true, response: usersCount, error: null})
+    } catch(e) {
+      res.json({success: false, response: null, error: e.message})
+    }
+  },
+  getLastUsers: async (req, res) => {
+    try {
+      let users = await  User.find().sort('-_id').limit(3)
+        .select('firstname lastname email photo')
+      res.json({success: true, response: users, error: null})
+    } catch(e){
+      console.log(e)
+      res.json({success: false, response: null, error: e.message})
+    }
+  },
   logIn: async (req, res) => {
     try {
       const { email, password, google } = req.body

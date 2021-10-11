@@ -56,7 +56,7 @@ const Team = () => {
     }
 
     return (
-        <div className='mainTeamPanel' style={{ backgroundImage: "url('/assets/fondoblanco.png')" }}>
+        <div className='mainTeamPanel' style={{ backgroundImage: "url('https://i.postimg.cc/zDhycDV6/fondoblanco2.png')" }}>
             <h2>Ludotech team</h2>
             <div className='searchUserTeam'>
                 <label>Search an user to give it an admin rol</label>

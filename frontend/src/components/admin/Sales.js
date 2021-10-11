@@ -12,13 +12,6 @@ const Sales = ({scroll}) => {
 
     const [newStatus, setNewStatus] = useState('')
 
-
-    // useEffect(() => {
-    //     axios.get('https://lodotechgames.herokuapp.com/api/purchases')
-    //         .then(res=> setPurchases(res.data.response.reverse()))
-    //         .catch(e => console.log(e))
-    // },[])
-
     useEffect(() => {
         axios.get('https://lodotechgames.herokuapp.com/api/purchases')
         .then(res=> setPurchases(res.data.response.reverse()))
@@ -26,9 +19,8 @@ const Sales = ({scroll}) => {
     }, [purchaseFound])
 
     const getPurchase = () => {
-        axios.get(`https://lodotechgames.herokuapp.com/api/user/purchase/${search}`
-        // {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
-        )
+        axios.get(`https://lodotechgames.herokuapp.com/api/user/purchase/${search}`,
+            {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
             .then(res => {
                 if(res.data.response) {
                     setPurchaseFound(res.data.response)
@@ -49,7 +41,9 @@ const Sales = ({scroll}) => {
         console.log(newStatus)
         if(newStatus !== 'Select a new status') {
             axios.put(`http://localhost:4000/api/user/purchase/${purchaseFound._id}`,{status: newStatus})
-                .then(res => setPurchaseFound(res.data.response))
+                .then(res => {
+                    setPurchaseFound(res.data.response)
+                })
                 .catch(e => console.log(e))
         }
     }
@@ -60,7 +54,7 @@ const Sales = ({scroll}) => {
     }
 
     return (
-        <div className='mainTeamPanel' style={{ backgroundImage: "url('/assets/fondoblanco.png')" }}>
+        <div className='mainTeamPanel' style={{ backgroundImage: "url('https://i.postimg.cc/zDhycDV6/fondoblanco2.png')", backgroundSize: 'cover' }}>
             <h2>Purchases</h2>
             <div className='searchUserTeam'>
                 <label>Search a purchase to more info</label>
@@ -140,8 +134,7 @@ const Sales = ({scroll}) => {
                 </div>
                 <div className='purchasesPanel'>
                     {purchases.map(purchase => {
-                        const {direction, articles, status} = purchase
-                        return <Purchase purchaseFound={purchaseFound} showPurchase={showPurchase}  key={purchase._id} direction={direction} articles={articles} status={status} purchase={purchase} />
+                        return <Purchase purchaseFound={purchaseFound} showPurchase={showPurchase}  key={purchase._id} purchase={purchase}/>
                     })}
                 </div>
             </div>
