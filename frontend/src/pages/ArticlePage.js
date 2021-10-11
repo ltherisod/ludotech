@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import Header from "../components/Header"
 import HeroPages from "../components/HeroPages"
 import Footer from "../components/Footer"
@@ -35,7 +35,10 @@ const ArticlePage = (props) => {
    } = article
 
    const [relatedArticles, loadingRelated] = useRelatedArticles(genres)
-// console.log(relatedArticles, loadingRelated)
+
+   useEffect(() => {
+      window.scroll(0,0)
+   }, [article])
 
    const addToCart = (id) => {
       props.updateCart("add", id)
@@ -186,9 +189,9 @@ const ArticlePage = (props) => {
                </div>
                <h3 className="articleRelatedTittle">Products related</h3>
                <div className="relatedArticles">
-               {!loadingRelated && relatedArticles.map(article => {
-                  return <ArticleRelated history={props.history} article={article} key={_id} />
-               })}
+               {loadingRelated ? <Preloader/> :
+                  <ArticleRelated history={props.history} relatedArticles={relatedArticles}/>
+               }
                </div>
                <Footer />
             </div>
