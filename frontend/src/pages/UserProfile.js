@@ -34,6 +34,7 @@ const UserProfile = () => {
       console.log(res)
       if (!res.success) setError(res.error)
       setLoading(false)
+      setVisiblePhone(false)
    }
 
    let formik = useFormik({
@@ -86,24 +87,42 @@ const UserProfile = () => {
                      <p>{email}</p>
                      <div className="d-flex">
                         <p>{phone ? phone : "No phone number added"}</p>
-                        <input
-                           placeholder="+234 455 5353"
-                           name="phone"
-                           type="number"
-                           value={formik.values.phone}
-                           onChange={formik.handleChange("phone")}
-                           onBlur={formik.handleBlur("phone")}
-                        />
-                        {formik.touched.phone && formik.errors.phone ? (
-                           <small className="signErrors">
-                              {formik.errors.phone}
-                           </small>
-                        ) : (
-                           <small className="signNoErrors">NoErrors</small>
-                        )}{" "}
-                        <button type="button" onClick={formik.handleSubmit}>
-                           Add phone number
-                        </button>
+                        {visiblePhone && (
+                           <>
+                              {" "}
+                              <input
+                                 placeholder="+234 455 5353"
+                                 name="phone"
+                                 type="number"
+                                 value={formik.values.phone}
+                                 onChange={formik.handleChange("phone")}
+                                 onBlur={formik.handleBlur("phone")}
+                              />
+                              {formik.touched.phone && formik.errors.phone ? (
+                                 <small className="signErrors">
+                                    {formik.errors.phone}
+                                 </small>
+                              ) : (
+                                 <small className="signNoErrors">
+                                    NoErrors
+                                 </small>
+                              )}{" "}
+                              <button
+                                 type="button"
+                                 onClick={formik.handleSubmit}
+                              >
+                                 OK
+                              </button>
+                           </>
+                        )}
+                        {!visiblePhone && (
+                           <button
+                              type="button"
+                              onClick={() => setVisiblePhone(!visiblePhone)}
+                           >
+                              {phone ? "Edit phone number" : "Add phone number"}
+                           </button>
+                        )}
                      </div>
                   </div>
                   <div>
@@ -129,7 +148,9 @@ const UserProfile = () => {
                               setVisibleDirectionForm(!visibleDirectionForm)
                            }
                         >
-                           Add Address
+                           {!directions || directions.length === 0
+                              ? "Add Address"
+                              : "Add another address"}
                         </button>
                      </div>
                      {visibleDirectionForm && (
