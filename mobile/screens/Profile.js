@@ -60,7 +60,7 @@ const Profile = () => {
          <ImageBackground style={{width:"100%", minHeight:400}} source={{uri: "https://i.postimg.cc/3wVXYt59/back-Ludo3.png"}}>
             <HeroPages />
             <View>
-                <Image source={{uri: photo}}/>
+                {/* <Image source={{uri: photo}}/> */}
             </View>
             <View>
                 <View>

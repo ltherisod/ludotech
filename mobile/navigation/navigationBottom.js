@@ -27,7 +27,7 @@ const navigationBottom = (props) => {
 
   return (
     <bottom.Navigator
-      tabBarOptions={{
+      screenOptions={{
         showLabel: false,
         style: {
           position: "absolute",
