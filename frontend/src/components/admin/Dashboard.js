@@ -24,7 +24,7 @@ const Dashboard = () => {
 
 
     return (
-        <div className='dashboardMain'>
+        <div className='dashboardMain' style={{ backgroundImage: "url('/assets/fondoblanco.png')" }}>
             <div>
                 <div className='statistics'>
                         <div className='boxDash'>

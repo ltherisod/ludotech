@@ -60,7 +60,7 @@ const Sales = ({scroll}) => {
     }
 
     return (
-        <div className='mainTeamPanel'>
+        <div className='mainTeamPanel' style={{ backgroundImage: "url('/assets/fondoblanco.png')" }}>
             <h2>Purchases</h2>
             <div className='searchUserTeam'>
                 <label>Search a purchase to more info</label>
