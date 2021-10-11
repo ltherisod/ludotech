@@ -558,27 +558,10 @@ h2 span {
    width: 100%;
    height: 70px;
 }
-
-.divCart {
-   height: 45px;
-   width: 45px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   cursor: pointer;
-   color: rgba(147, 20, 206, 0.774);
-   font-size: 35px;
-}
-
-.divCart:hover {
-   color: rgb(203, 95, 253);
-}
-
 #buy {
    cursor: pointer;
-   width: 140x;
-   height: 140px;
-   color: violet;
+   width: 40x;
+   height: 40px;
 }
 
 /*Most Wanted*/

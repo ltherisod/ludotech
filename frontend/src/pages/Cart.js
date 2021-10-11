@@ -2,11 +2,10 @@ import React, { useState } from "react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import HeroPages from "../components/HeroPages"
-import { Link } from "react-router-dom"
 import { connect, useSelector } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
 import Paypal from "../components/Paypal"
-import Address from "../components/Address"
+import Stripe from "../components/Stripe"
 import FormCart from "../components/FormCart"
 import { useFormik } from "formik"
 import * as Yup from "yup"
@@ -14,7 +13,9 @@ import AddressCard from "../components/AddressCard"
 
 const Cart = (props) => {
    const [viewMethod, setViewMethod] = useState(false)
-   const [viewPaypal, setViewPaypal] = useState(false)
+   // const [viewPaypal, setViewPaypal] = useState(false)
+   // const [paymentMethod, setPaymentMethod] = useState("")
+   const [viewButtons, setViewButtons] = useState(false)
    const user = useSelector((state) => state.users.user)
 
    const { directions } = user
@@ -43,6 +44,15 @@ const Cart = (props) => {
          state: Yup.string().required("Required"),
       }),
    })
+
+   const validateForm = async () => {
+      const res = await formik.validateForm()
+      if (Object.values(res).length === 0) {
+         setViewButtons(true)
+      } else {
+         alert("You must choose an address or fill out the form to continue")
+      }
+   }
 
    let totalCost = props.shoppingCart.reduce((count, item) => {
       return (
@@ -224,7 +234,7 @@ const Cart = (props) => {
                                  type="button"
                                  onClick={() => setViewMethod(!viewMethod)}
                               >
-                                 Choose payment method
+                                 Buy
                               </button>
                            </div>
                         </article>
@@ -232,51 +242,68 @@ const Cart = (props) => {
                      <section className="d-flex justify-content-center align-items-center flex-column col-12">
                         {viewMethod && (
                            <>
-                              <button
-                                 type="button"
-                                 onClick={() => setViewPaypal(!viewPaypal)}
-                              >
-                                 Paypal
-                              </button>
-                              <button
-                                 type="button"
-                                 onClick={() => setViewMethod(!viewMethod)}
-                              >
-                                 Other
-                              </button>
-                              {viewPaypal && (
-                                 <>
-                                    <div className="d-flex justify-content-center align-items-center flex-column col-9">
-                                       {!directions || directions.length ? (
-                                          <div>
-                                             {!directions ||
-                                             directions.length === 0 ? (
-                                                <p>
-                                                   There are no addresses added
-                                                </p>
-                                             ) : (
-                                                directions.map((direction) => {
-                                                   return (
-                                                      <AddressCard
-                                                         direction={direction}
-                                                         key={direction._id}
-                                                         formik={formik}
-                                                      />
-                                                   )
-                                                })
-                                             )}
-                                             <h4>Or add a new address</h4>
-                                             <FormCart formik={formik} />
-                                          </div>
+                              <h2>Choose an address to continue</h2>
+                              <div className="d-flex justify-content-center align-items-center flex-column col-9">
+                                 {!directions || directions.length ? (
+                                    <div>
+                                       {!directions ||
+                                       directions.length === 0 ? (
+                                          <p>There are no addresses added</p>
                                        ) : (
-                                          <>
-                                             <h4>Add address</h4>
-                                             <FormCart formik={formik} />
-                                          </>
+                                          directions.map((direction) => {
+                                             return (
+                                                <AddressCard
+                                                   direction={direction}
+                                                   key={direction._id}
+                                                   formik={formik}
+                                                />
+                                             )
+                                          })
                                        )}
-                                       <div></div>
+                                       <h4>Or add a new address</h4>
+                                       <FormCart formik={formik} />
                                     </div>
+                                 ) : (
+                                    <div>
+                                       <h4>Add address</h4>
+                                       <FormCart formik={formik} />
+                                    </div>
+                                 )}
+                                 {!viewButtons && (
+                                    <button
+                                       type="button"
+                                       onClick={() => validateForm()}
+                                    >
+                                       Continue
+                                    </button>
+                                 )}
+                              </div>
+                              {viewButtons && (
+                                 <>
+                                    {/* <button
+                                       type="button"
+                                       onClick={() =>
+                                          setPaymentMethod("paypal")
+                                       }
+                                    >
+                                       Buy with PayPal
+                                    </button>
+                                    <button
+                                       type="button"
+                                       onClick={() =>
+                                          setPaymentMethod("stripe")
+                                       }
+                                    >
+                                       Buy with credit card
+                                    </button> */}
+                                    <h3>Buy with PayPal</h3>
                                     <Paypal
+                                       user={user}
+                                       formik={formik}
+                                       history={props.history}
+                                    />
+                                    <h3>Buy with credit card</h3>
+                                    <Stripe
                                        user={user}
                                        formik={formik}
                                        history={props.history}
