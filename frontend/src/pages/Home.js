@@ -4,19 +4,16 @@ import Header from "../components/Header"
 import { Link } from "react-router-dom"
 import { TinyButton as ScrollUpButton } from "react-scroll-up-button"
 import { useEffect } from "react"
-import Chatbot from 'react-chatbot-kit'
-import 'react-chatbot-kit/build/main.css'
-import config from '../components/bot/config.js'
-import MessageParser from '../components/bot/MessageParser.js'
-import ActionProvider from '../components/bot/ActionProvider.js'
-import validateInputBot from "../components/bot/validateInputBot"
+import Bot from "../components/bot/Bot"
 
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
   return (
     <>
+      <Bot/>
       <Header />
       <div
         className="body"
@@ -60,14 +57,6 @@ const Home = () => {
         />
         <Footer />
       </div>
-      {/* <Chatbot
-        config={config}
-        messageParser={MessageParser}
-        actionProvider={ActionProvider}
-        headerText='textoCabecera'
-        placeholderText='InputPlaceholder'
-        validator={(e) => {validateInputBot(e)}}
-      /> */}
     </>
   )
 }

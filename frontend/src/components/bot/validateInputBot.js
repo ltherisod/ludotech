@@ -1,8 +1,11 @@
 import React from "react"
 
 const validateInputBot = (e) => {
-    console.log(e)
-    return true
+    if (e === "") {
+        return false
+    } else {
+        return true
+    }
 }
 
 export default validateInputBot

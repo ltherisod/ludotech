@@ -5,8 +5,16 @@ class ActionProvider {
       this.createClientMessage = createClientMessage
     }
 
-    handleHello() {
-        const message = this.createChatbotMessage("Hi! Welcome to Ludotech")
+    sendNewMessage(mensaje) {
+        const message = this.createChatbotMessage(mensaje)
+        this.setState((prev) => ({
+            ...prev,
+            messages: [...prev.messages, message]
+        }))
+    }
+
+    defaultCase() {
+        const message = this.createChatbotMessage("I don't understand that, sorry :(")
         this.setState((prev) => ({
             ...prev,
             messages: [...prev.messages, message]
