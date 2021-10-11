@@ -4,7 +4,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Filter from "../components/Filter"
 import HeroPages from "../components/HeroPages"
-import Preloader from "../components/Preloader"
+import PreloaderFilter from "../components/PreloaderFilter"
 
 const Articles = (props) => {
   const [articles, setArticles] = useState({
@@ -40,7 +40,7 @@ const Articles = (props) => {
             />
             <div className="containerArticles" id="containerArticles">
               {loadingArticles ? (
-                <Preloader /> // cambiarlo acá, es de prueba jj
+                <PreloaderFilter /> // cambiarlo acá, es de prueba jj
               ) : (
                 articles.articles.map((article) => {
                   return (
