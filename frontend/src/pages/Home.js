@@ -9,6 +9,7 @@ import 'react-chatbot-kit/build/main.css'
 import config from '../components/bot/config.js'
 import MessageParser from '../components/bot/MessageParser.js'
 import ActionProvider from '../components/bot/ActionProvider.js'
+import validateInputBot from "../components/bot/validateInputBot"
 
 const Home = () => {
   useEffect(() => {
@@ -63,6 +64,9 @@ const Home = () => {
         config={config}
         messageParser={MessageParser}
         actionProvider={ActionProvider}
+        headerText='textoCabecera'
+        placeholderText='InputPlaceholder'
+        validator={(e) => {validateInputBot(e)}}
       /> */}
     </>
   )

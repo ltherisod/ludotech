@@ -35,7 +35,7 @@ const ArticlePage = (props) => {
    } = article
 
    const [relatedArticles, loadingRelated] = useRelatedArticles(genres)
-console.log(relatedArticles, loadingRelated)
+// console.log(relatedArticles, loadingRelated)
 
    const addToCart = (id) => {
       props.updateCart("add", id)
@@ -199,7 +199,6 @@ console.log(relatedArticles, loadingRelated)
 
 const mapDispatchToProps = {
    updateCart: articlesActions.updateCart,
-   
 }
 
 export default connect(null, mapDispatchToProps)(ArticlePage)
