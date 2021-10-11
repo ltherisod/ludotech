@@ -1,48 +1,68 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js"
+import { usePurchase } from "../hooks/usersHooks"
+import axios from "axios"
+const HOST = "http://localhost:4000"
 
-const Stripe = () => {
+const Stripe = ({ formik, user, history }) => {
   const stripe = useStripe()
   const elements = useElements()
-  console.log(stripe)
-  // useUtils()
+
+  const [purchase, loading, error] = usePurchase()
+
   const handleSubmit = async (event) => {
-    // Block native form submission.
     event.preventDefault()
 
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
       return
     }
 
-    // Get a reference to a mounted CardElement. Elements knows how
-    // to find your CardElement because there can only ever be one of
-    // each type of element.
     const cardElement = elements.getElement(CardElement)
 
-    // Use your card Element with other Stripe.js APIs
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: cardElement,
       billing_details: {
         address: {
-          city: "Concepcion",
-          country: "CL",
-          line1: "Mikasa",
-          line2: "kekeke",
-          postal_code: "234123",
-          state: "Por aquí",
+          city: formik.values.city,
+          country: "AR",
+          line1: `${formik.values.street.trim()} ${formik.values.number}`,
+          line2: formik.values.city,
+          postal_code: formik.values.zipCode,
+          state: formik.values.state,
         },
-        email: "jajaja@jajaja.com",
-        name: "JJ",
-        phone: "12341234",
+        email: user.email,
+        name: `${user.firstname} ${user.lastname}`,
+        phone: user.phone,
       },
     })
 
     if (error) {
       console.log("[error]", error)
     } else {
-      console.log("[PaymentMethod]", paymentMethod)
+      try {
+        const authorization = await axios.post(
+          `${HOST}/api/stripe/payment-intent`,
+          { id: paymentMethod.id },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        )
+        const details = {
+          direction: formik.values,
+          paymentDetails: {
+            method: "STRIPE",
+            orderId: paymentMethod.id,
+            receipt: authorization.data.response.charges.data[0].receipt_url,
+          },
+        }
+        const res = await purchase(details)
+        // aquí termina la compra... hacer checkout
+        history.push({ pathname: "/checkout", state: res })
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 
@@ -62,12 +82,12 @@ const Stripe = () => {
               },
             },
             invalid: {
-              color: "#9e2146",
+              color: "red",
             },
           },
         }}
       />
-      <button type="submit" disabled={!stripe}>
+      <button type="submit" disabled={!stripe || loading}>
         Pay
       </button>
     </form>

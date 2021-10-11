@@ -34,6 +34,7 @@ const purchaseValidator = async (req, res, next) => {
       orderId: joi.string().required().messages({
         "any.required": "orderId is required",
       }),
+      receipt: joi.string().optional(),
     }),
   })
 

@@ -2,18 +2,17 @@ import React, { useState } from "react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import HeroPages from "../components/HeroPages"
-import { Link } from "react-router-dom"
 import { connect, useSelector } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
 import Paypal from "../components/Paypal"
-import Address from "../components/Address"
+import Stripe from "../components/Stripe"
 import FormCart from "../components/FormCart"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import AddressCard from "../components/AddressCard"
 
 const Cart = (props) => {
-  const [viewPaypal, setViewPaypal] = useState(false)
+  const [paymentMethod, setPaymentMethod] = useState("")
   const user = useSelector((state) => state.users.user)
 
   const { directions } = user
@@ -195,7 +194,16 @@ const Cart = (props) => {
             ) : (
               <FormCart formik={formik} />
             )}
-            <div>{viewPaypal && <Paypal user={user} formik={formik} />}</div>
+            <div>
+              {paymentMethod === "paypal" && (
+                <Paypal user={user} formik={formik} />
+              )}
+            </div>
+            <div>
+              {paymentMethod === "stripe" && (
+                <Stripe user={user} formik={formik} />
+              )}
+            </div>
           </div>
           <section className="cartSection2">
             <article className="totalsCard">
@@ -218,9 +226,15 @@ const Cart = (props) => {
               <div>
                 <button
                   type="button"
-                  onClick={() => setViewPaypal(!viewPaypal)}
+                  onClick={() => setPaymentMethod("paypal")}
                 >
                   Buy with PayPal
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPaymentMethod("stripe")}
+                >
+                  Buy with credit card
                 </button>
               </div>
             </article>

@@ -65,6 +65,13 @@ router
   .get(purchaseControllers.stripeTest)
 
 router
+  .route("/stripe/payment-intent")
+  .post(
+    passport.authenticate("jwt", { session: false }),
+    purchaseControllers.stripePaymentIntent
+  )
+
+router
   .route("/user/purchase")
   .post(
     passport.authenticate("jwt", { session: false }),

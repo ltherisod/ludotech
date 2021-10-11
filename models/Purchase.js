@@ -38,6 +38,7 @@ const purchaseSchema = new mongoose.Schema({
   paymentDetails: {
     method: { type: String, required: true },
     orderId: { type: String, required: true },
+    receipt: String,
   },
   status: { type: String, default: "processing" },
   logs: [{ type: String }],

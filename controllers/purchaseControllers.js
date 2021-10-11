@@ -39,7 +39,7 @@ const purchaseControllers = {
       // calcular total (?)
       const total = user.shoppingCart.reduce(
         (total, item) =>
-          item.hasDiscount
+          item.article.hasDiscount
             ? total + item.quantity * item.article.discountPrice
             : total + item.quantity * item.article.price,
         0
@@ -163,6 +163,32 @@ const purchaseControllers = {
     try {
       const paymentMethod = await stripe.paymentMethods.retrieve(req.params.id)
       res.json({ success: true, response: paymentMethod, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  stripePaymentIntent: async (req, res) => {
+    try {
+      const { id } = req.body
+      const { shoppingCart } = await User.findOne({ _id: req.user._id })
+        .populate("shoppingCart.article")
+        .select("shoppingCart")
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount:
+          100 *
+          shoppingCart.reduce(
+            (total, item) =>
+              item.article.hasDiscount
+                ? total + item.article.discountPrice * item.quantity
+                : total + item.article.price * item.quantity,
+            0
+          ),
+        currency: "usd",
+        payment_method_types: ["card"],
+        payment_method: id,
+        confirm: true,
+      })
+      res.json({ success: true, response: paymentIntent, error: null })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }
