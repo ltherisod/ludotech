@@ -13,11 +13,11 @@ const Sales = ({scroll}) => {
     const [newStatus, setNewStatus] = useState('')
 
 
-    useEffect(() => {
-        axios.get('https://lodotechgames.herokuapp.com/api/purchases')
-            .then(res=> setPurchases(res.data.response.reverse()))
-            .catch(e => console.log(e))
-    },[])
+    // useEffect(() => {
+    //     axios.get('https://lodotechgames.herokuapp.com/api/purchases')
+    //         .then(res=> setPurchases(res.data.response.reverse()))
+    //         .catch(e => console.log(e))
+    // },[])
 
     useEffect(() => {
         axios.get('https://lodotechgames.herokuapp.com/api/purchases')

@@ -18,7 +18,7 @@ const PanelAdmin = (props) => {
 
    return (
       <div style={{display: 'flex'}}>
-         <NavBar render={render} />
+         <NavBar render={render} show={show} />
          {(show === 'articles') && <ArticlesAdmin />}
          {(show === 'sold') && <Sales />}
          {(show === 'team') && <Team />}

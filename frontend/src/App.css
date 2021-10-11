@@ -690,8 +690,8 @@ h2 span {
   display: flex;
   color: white;
   font-weight: 700;
-  padding: 1vmin 0;
-  /* align-items: center; */
+  padding: 2vmin;
+  margin: 3vmin 0;
 }
 
 .itemNavbarPanel svg {
@@ -702,6 +702,7 @@ h2 span {
 }
 .itemNavbarPanel p {
   cursor: pointer;
+  margin: 0;
 }
 
 .profileNavbarPanel {
@@ -1863,6 +1864,12 @@ h2.articles {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.activePanel {
+  background-color: white;
+  border-radius: 5px;
+  color: #8165ff;
 }
 
 .miniboxDash svg {
