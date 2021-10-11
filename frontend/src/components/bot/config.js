@@ -1,7 +1,16 @@
 import { createChatBotMessage } from 'react-chatbot-kit'
 
 const config = {
-  initialMessages: [createChatBotMessage(`Hello world`)],
+  botName: "nombreDelBot",
+  initialMessages: [createChatBotMessage(`mensajeInicial`)],
+  customStyles: {
+    botMessageBox: {
+      backgroundColor: "red"
+    },
+    chatButton: {
+      backgroundColor: "green"
+    } 
+  }
 }
 
 export default config
