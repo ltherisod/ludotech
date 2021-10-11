@@ -53,7 +53,7 @@ const Home = (props) => {
                   </Text>
                 </View>
               </TouchableOpacity>
-              <MostWanted/>
+              <MostWanted />
               <Footer />
 
           </ImageBackground>
@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
     paddingTop: '10%'
   },
   logo: {
-maxHeight:200,
-marginTop: 5
+    maxHeight:200,
+    marginTop: 5
   },
   rubik: {
     width: 300,

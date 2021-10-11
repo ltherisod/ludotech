@@ -143,6 +143,7 @@ const articlesActions = {
       try {
         const response = await axios.get(`https://lodotechgames.herokuapp.com/api/mostvisitarticles`)
         if (!response.data.success) throw new Error(response.data.error)
+        // console.log("actions", response.data.response)
         return {
           success: true,
           response: response.data.response,
