@@ -24,8 +24,14 @@ const ArticleEdit = (props) => {
       stock,
       size,
       weight,
+      decoPhotos,
+      video,
+      iconPhotos,
+      description,
       _id,
    } = props.article
+
+   console.log(props.article)
 
    const formik = useFormik({
       initialValues: {
@@ -34,7 +40,12 @@ const ArticleEdit = (props) => {
          price,
          hasDiscount: hasDiscount ? "true" : "false",
          discountPrice,
-         photos: photos[0],
+         photos0: photos[0],
+         photos1: photos[1],
+         photos2: photos[2],
+         decoPhotos0: decoPhotos[0],
+         decoPhotos1: decoPhotos[1],
+         decoPhotos2: decoPhotos[2],
          genres: props.article.genres.map((genre) => genre._id),
          gameType: gameType._id,
          minPlayers,
@@ -43,6 +54,9 @@ const ArticleEdit = (props) => {
          stock,
          size,
          weight,
+         video,
+         iconPhotos,
+         description,
       },
       onSubmit: (values) => submitHandler(values),
       validationSchema: Yup.object({
@@ -55,7 +69,28 @@ const ArticleEdit = (props) => {
          price: Yup.number("Price must have a number").required("Required"),
          hasDiscount: Yup.boolean("NADAAAA"),
          discountPrice: Yup.number(),
-         photos: Yup.string("Photos must have a valid URL")
+         photos0: Yup.string()
+            .url("Photos must have a valid URL")
+            .required("Required"),
+         photos1: Yup.string()
+            .url("Photos must have a valid URL")
+            .required("Required"),
+         photos2: Yup.string()
+            .url("Photos must have a valid URL")
+            .required("Required"),
+         decoPhotos0: Yup.string()
+            .url("Photos must have a valid URL")
+            .required("Required"),
+         decoPhotos1: Yup.string()
+            .url("Photos must have a valid URL")
+            .required("Required"),
+         decoPhotos2: Yup.string()
+            .url("Photos must have a valid URL")
+            .required("Required"),
+         video: Yup.string()
+            .url("Photos must have a valid URL")
+            .required("Required"),
+         iconPhotos: Yup.string()
             .url("Photos must have a valid URL")
             .required("Required"),
          genres: Yup.array().of(Yup.string()).required("Required"),
@@ -93,25 +128,46 @@ const ArticleEdit = (props) => {
 
    const { brands, genres, gameTypes } = utilities
 
-   const submitHandler = async (values) => {
+   const submitHandler = async ({
+      decoPhotos0,
+      decoPhotos1,
+      decoPhotos2,
+      photos0,
+      photos1,
+      photos2,
+      ...values
+   }) => {
       setLoading(true)
-      const res = await dispatch(articlesActions.updateArticle(_id, values))
+      const res = await dispatch(
+         articlesActions.updateArticle(_id, {
+            ...values,
+            decoPhotos: [decoPhotos0, decoPhotos1, decoPhotos2],
+            photos: [photos0, photos1, photos2],
+         })
+      )
       if (!res.success) setError(res.error)
       setLoading(false)
       props.setSection()
    }
 
    return (
-      <div className='mainTeamPanel edit' style={{backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`}}>
+      <div
+         className="mainTeamPanel edit"
+         style={{
+            backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`,
+         }}
+      >
          <h2>Edit Article</h2>
          <div>
-            <div className='selectsEditProduct'>
+            <div className="selectsEditProduct">
                <div className="inputEditProduct">
-                  <label className="labelSign" htmlFor="name">Name</label>
+                  <label className="labelSign" htmlFor="name">
+                     Name
+                  </label>
                   <input
                      name="name"
                      type="text"
-                     className='inputEdit'
+                     className="inputEdit"
                      placeholder="Must have 2+ characters"
                      value={formik.values.name}
                      onChange={formik.handleChange("name")}
@@ -123,12 +179,64 @@ const ArticleEdit = (props) => {
                      <small className="signNoErrors">NoErrors</small>
                   )}
                </div>
+               <div className="selectsEditProduct">
+                  <div className="inputEditProduct">
+                     <label className="labelSign" htmlFor="gameType">
+                        Game Type
+                     </label>
+                     <select
+                        name="gameType"
+                        className="inputEdit"
+                        onChange={formik.handleChange("gameType")}
+                        value={formik.values.gameType}
+                        id="gameType"
+                     >
+                        <option value="">Select Game Type</option>
+                        {gameTypes.map((gameType) => (
+                           <option key={gameType._id} value={gameType._id}>
+                              {gameType.name}
+                           </option>
+                        ))}
+                     </select>
+                     {formik.touched.gameType && formik.errors.gameType ? (
+                        <small className="signErrors">
+                           {formik.errors.gameType}
+                        </small>
+                     ) : (
+                        <small className="signNoErrors">NoErrors</small>
+                     )}
+                  </div>
+                  <div className="inputEditProduct">
+                     <label className="labelSign" htmlFor="size">
+                        Size
+                     </label>
+                     <select
+                        className="inputEdit"
+                        name="size"
+                        onChange={formik.handleChange("size")}
+                        value={formik.values.size}
+                        id="size"
+                     >
+                        <option value="">Select Size</option>
+                        <option value="Small">Small</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Large">Large</option>
+                     </select>
+                     {formik.touched.size && formik.errors.size ? (
+                        <small className="signErrors">
+                           {formik.errors.size}
+                        </small>
+                     ) : (
+                        <small className="signNoErrors">NoErrors</small>
+                     )}
+                  </div>
+               </div>
                <div className="inputEditProduct">
                   <label className="labelSign" htmlFor="brand">
                      Brand
                   </label>
                   <select
-                  className='inputEdit'
+                     className="inputEdit"
                      name="brand"
                      onChange={formik.handleChange("brand")}
                      value={formik.values.brand}
@@ -150,164 +258,165 @@ const ArticleEdit = (props) => {
                      <small className="signNoErrors">NoErrors</small>
                   )}
                </div>
-               <div className="inputEditProduct">
-                  <label className="labelSign" htmlFor="price">
-                     Price
-                  </label>
-                  <input
-                  className='inputEdit'
-                     name="price"
-                     type="number"
-                     placeholder="
+               <div className="d-flex">
+                  <div className="inputEditProduct col-4">
+                     <label className="labelSign" htmlFor="price">
+                        Price
+                     </label>
+                     <input
+                        className="inputEdit"
+                        name="price"
+                        type="number"
+                        placeholder="
                   Only numbers"
-                     value={formik.values.price}
-                     onChange={formik.handleChange("price")}
-                     onBlur={formik.handleBlur("price")}
-                  />
-                  {formik.touched.price && formik.errors.price ? (
-                     <small className="signErrors">{formik.errors.price}</small>
-                  ) : (
-                     <small className="signNoErrors">NoErrors</small>
-                  )}
-               </div>
-               <div className="inputEditProduct">
-                  <label className="labelSign" htmlFor="gameType">Game Type</label>
-                  <select
-                     name="gameType"
-                     className='inputEdit'
-                     onChange={formik.handleChange("gameType")}
-                     value={formik.values.gameType}
-                     id="gameType"
-                  >
-                     <option value="">Select Game Type</option>
-                     {gameTypes.map((gameType) => (
-                        <option key={gameType._id} value={gameType._id}>
-                           {gameType.name}
-                        </option>
-                     ))}
-                  </select>
-                  {formik.touched.gameType && formik.errors.gameType ? (
-                     <small className="signErrors">{formik.errors.gameType}</small>
-                  ) : (
-                     <small className="signNoErrors">NoErrors</small>
-                  )}
-               </div>
-               <div className="inputEditProduct">
-                  <label className="labelSign" htmlFor="size">Size</label>
-                  <input
-                     name="size"
-                     type="text"
-                     className='inputEdit'
-                     placeholder="Must have 2+ characters"
-                     value={formik.values.size}
-                     onChange={formik.handleChange("size")}
-                     onBlur={formik.handleBlur("size")}
-                  />
-                  {formik.touched.size && formik.errors.size ? (
-                     <small className="signErrors">{formik.errors.size}</small>
-                  ) : (
-                     <small className="signNoErrors">NoErrors</small>
-                  )}
-               </div>
-               <div className="inputEditProduct">
-                  <label className="labelSign" htmlFor="discountPrice">Discount</label>
-                  <input
-                     disabled={formik.values.hasDiscount === "false"}
-                     name="discountPrice"
-                     type="number"
-                     className='inputEdit'
-                     placeholder="Must have a number"
-                     value={formik.values.discountPrice}
-                     onChange={formik.handleChange("discountPrice")}
-                     onBlur={formik.handleBlur("discountPrice")}
-                  />
-                  {formik.touched.discountPrice && formik.errors.discountPrice ? (
-                     <small className="signErrors">
-                        {formik.errors.discountPrice}
-                     </small>
-                  ) : (
-                     <small className="signNoErrors">NoErrors</small>
-                  )}
+                        value={formik.values.price}
+                        onChange={formik.handleChange("price")}
+                        onBlur={formik.handleBlur("price")}
+                     />
+                     {formik.touched.price && formik.errors.price ? (
+                        <small className="signErrors">
+                           {formik.errors.price}
+                        </small>
+                     ) : (
+                        <small className="signNoErrors">NoErrors</small>
+                     )}
+                  </div>
+                  <div className="inputEditProduct col-3 ms-4 me-4 align-self-start">
+                     <label className="labelSign" htmlFor="hasDiscount">
+                        Has Discount ?
+                     </label>
+                     <div
+                        style={{
+                           display: "flex",
+                           alignItems: "center",
+                           jusifyContent: "space-between",
+                           width: "100%",
+                        }}
+                     >
+                        <div style={{ marginRight: "4vmin" }}>
+                           <label
+                              className="labelSign white"
+                              htmlFor="hasDiscount"
+                           >
+                              Yes
+                           </label>
+                           <input
+                              checked={formik.values.hasDiscount === "true"}
+                              name="hasDiscount"
+                              type="radio"
+                              value={true}
+                              onChange={formik.handleChange("hasDiscount")}
+                              onBlur={formik.handleBlur("hasDiscount")}
+                           />
+                        </div>
+                        <div>
+                           <label
+                              className="labelSign white"
+                              htmlFor="hasDiscount"
+                           >
+                              No
+                           </label>
+                           <input
+                              checked={formik.values.hasDiscount === "false"}
+                              name="hasDiscount"
+                              type="radio"
+                              value={false}
+                              onChange={formik.handleChange("hasDiscount")}
+                              onBlur={formik.handleBlur("hasDiscount")}
+                              onClick={() =>
+                                 formik.setFieldValue(
+                                    "discountPrice",
+                                    undefined
+                                 )
+                              }
+                           />
+                        </div>
+                     </div>
+                     {formik.touched.hasDiscount &&
+                     formik.errors.hasDiscount ? (
+                        <small className="signErrors">
+                           {formik.errors.hasDiscount}
+                        </small>
+                     ) : (
+                        <small className="signNoErrors">NoErrors</small>
+                     )}
+                  </div>
+                  <div className="inputEditProduct col-4">
+                     <label className="labelSign" htmlFor="discountPrice">
+                        Discount
+                     </label>
+                     <input
+                        disabled={formik.values.hasDiscount === "false"}
+                        name="discountPrice"
+                        type="number"
+                        className="inputEdit"
+                        placeholder="Must have a number"
+                        value={formik.values.discountPrice}
+                        onChange={formik.handleChange("discountPrice")}
+                        onBlur={formik.handleBlur("discountPrice")}
+                     />
+                     {formik.touched.discountPrice &&
+                     formik.errors.discountPrice ? (
+                        <small className="signErrors">
+                           {formik.errors.discountPrice}
+                        </small>
+                     ) : (
+                        <small className="signNoErrors">NoErrors</small>
+                     )}
+                  </div>
                </div>
             </div>
-            <div style={{display:'flex', jusifyContent: 'space-between'}}>
-               <div className="inputEditProduct">
-                  <label className="labelSign" htmlFor="genres">Genres</label>
-                  <div className='genresEditProduct'>
-                     {genres.map((genre) => {
-                        return (
-                           <div key={genre._id} style={{display: 'flex', alignItems: 'center', gap: '1vmin'}}>
-                              <p className="labelSign" htmlFor="genres">{genre.name}</p>
-                              <input
-                                 name="genres"
-                                 className='inputCheck'
-                                 checked={formik.values.genres?.some(
-                                    (id) => id === genre._id
-                                 )}
-                                 type="checkbox"
-                                 placeholder="Must have 2+ characters"
-                                 value={genre._id}
-                                 onChange={formik.handleChange("genres")}
-                                 onBlur={formik.handleBlur("genres")}
-                              />
-                           </div>
-                        )
-                     })}
-                  </div>
-                  {formik.touched.genres && formik.errors.genres ? (
-                     <small className="signErrors">{formik.errors.genres}</small>
-                  ) : (
-                     <small className="signNoErrors">NoErrors</small>
-                  )}
+            <div className="inputEditProduct">
+               <label className="labelSign" htmlFor="genres">
+                  Genres
+               </label>
+               <div className="genresEditProduct">
+                  {genres.map((genre) => {
+                     return (
+                        <div
+                           key={genre._id}
+                           style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "1vmin",
+                           }}
+                        >
+                           <p className="labelSign" htmlFor="genres">
+                              {genre.name}
+                           </p>
+                           <input
+                              name="genres"
+                              className="inputCheck"
+                              checked={formik.values.genres?.some(
+                                 (id) => id === genre._id
+                              )}
+                              type="checkbox"
+                              placeholder="Must have 2+ characters"
+                              value={genre._id}
+                              onChange={formik.handleChange("genres")}
+                              onBlur={formik.handleBlur("genres")}
+                           />
+                        </div>
+                     )
+                  })}
                </div>
+               {formik.touched.genres && formik.errors.genres ? (
+                  <small className="signErrors">{formik.errors.genres}</small>
+               ) : (
+                  <small className="signNoErrors">NoErrors</small>
+               )}
             </div>
          </div>
          <div>
-            <div className='numberOptions'>
+            <div className="numberAddOptions">
                <div className="inputEditProduct">
-                  <label className="labelSign" htmlFor="hasDiscount">Has Discount ?</label>
-                  <div style={{display: 'flex', alignItems: 'center', jusifyContent: 'space-between', width: '100%'}}>
-                     <div style={{marginRight: '2vmin'}}>
-                        <label className="labelSign" htmlFor="hasDiscount">Yes</label>
-                        <input
-                           checked={formik.values.hasDiscount === "true"}
-                           name="hasDiscount"
-                           type="radio"
-                           value={true}
-                           onChange={formik.handleChange("hasDiscount")}
-                           onBlur={formik.handleBlur("hasDiscount")}
-                        />
-                     </div>
-                     <div>
-                        <label className="labelSign" htmlFor="hasDiscount">No</label>
-                        <input
-                           checked={formik.values.hasDiscount === "false"}
-                           name="hasDiscount"
-                           type="radio"
-                           value={false}
-                           onChange={formik.handleChange("hasDiscount")}
-                           onBlur={formik.handleBlur("hasDiscount")}
-                           onClick={() =>
-                              formik.setFieldValue("discountPrice", undefined)
-                           }
-                        />
-                     </div>
-                  </div>
-
-                  {formik.touched.hasDiscount && formik.errors.hasDiscount ? (
-                     <small className="signErrors">
-                        {formik.errors.hasDiscount}
-                     </small>
-                  ) : (
-                     <small className="signNoErrors">NoErrors</small>
-                  )}
-               </div>
-                  <div className="inputEditProduct">
-                  <label className="labelSign" htmlFor="minPlayers">Min. players</label>
+                  <label className="labelSign" htmlFor="minPlayers">
+                     Min. players
+                  </label>
                   <input
                      name="minPlayers"
                      type="number"
-                     className='inputEdit'
+                     className="inputEdit"
                      placeholder="Must have a number"
                      value={formik.values.minPlayers}
                      onChange={formik.handleChange("minPlayers")}
@@ -320,91 +429,255 @@ const ArticleEdit = (props) => {
                   ) : (
                      <small className="signNoErrors">NoErrors</small>
                   )}
+               </div>
+               <div className="inputEditProduct">
+                  <label className="labelSign" htmlFor="maxPlayers">
+                     Max. players
+                  </label>
+                  <input
+                     name="maxPlayers"
+                     type="number"
+                     className="inputEdit"
+                     placeholder="Must have a number"
+                     value={formik.values.maxPlayers}
+                     onChange={formik.handleChange("maxPlayers")}
+                     onBlur={formik.handleBlur("maxPlayers")}
+                  />
+                  {formik.touched.maxPlayers && formik.errors.maxPlayers ? (
+                     <small className="signErrors">
+                        {formik.errors.maxPlayers}
+                     </small>
+                  ) : (
+                     <small className="signNoErrors">NoErrors</small>
+                  )}
+               </div>
+               <div className="inputEditProduct">
+                  <label className="labelSign" htmlFor="minAge">
+                     Min. Age
+                  </label>
+                  <input
+                     name="minAge"
+                     type="number"
+                     className="inputEdit"
+                     placeholder="Must have a number"
+                     value={formik.values.minAge}
+                     onChange={formik.handleChange("minAge")}
+                     onBlur={formik.handleBlur("minAge")}
+                  />
+                  {formik.touched.minAge && formik.errors.minAge ? (
+                     <small className="signErrors">
+                        {formik.errors.minAge}
+                     </small>
+                  ) : (
+                     <small className="signNoErrors">NoErrors</small>
+                  )}
+               </div>
+               <div className="inputEditProduct">
+                  <label className="labelSign" htmlFor="stock">
+                     Stock
+                  </label>
+                  <input
+                     name="stock"
+                     type="number"
+                     className="inputEdit"
+                     placeholder="Must have a number"
+                     value={formik.values.stock}
+                     onChange={formik.handleChange("stock")}
+                     onBlur={formik.handleBlur("stock")}
+                  />
+                  {formik.touched.stock && formik.errors.stock ? (
+                     <small className="signErrors">{formik.errors.stock}</small>
+                  ) : (
+                     <small className="signNoErrors">NoErrors</small>
+                  )}
+               </div>
+               <div className="inputEditProduct">
+                  <label className="labelSign" htmlFor="weight">
+                     Weight
+                  </label>
+                  <input
+                     name="weight"
+                     type="number"
+                     className="inputEdit"
+                     placeholder="Must have a number"
+                     value={formik.values.weight}
+                     onChange={formik.handleChange("weight")}
+                     onBlur={formik.handleBlur("weight")}
+                  />
+                  {formik.touched.weight && formik.errors.weight ? (
+                     <small className="signErrors">
+                        {formik.errors.weight}
+                     </small>
+                  ) : (
+                     <small className="signNoErrors">NoErrors</small>
+                  )}
+               </div>
             </div>
             <div className="inputEditProduct">
-               <label className="labelSign" htmlFor="maxPlayers">Max. players</label>
+               <label className="labelSign" htmlFor="iconPhotos">
+                  Cover photo
+               </label>
                <input
-                  name="maxPlayers"
-                  type="number"
-                  className='inputEdit'
-                  placeholder="Must have a number"
-                  value={formik.values.maxPlayers}
-                  onChange={formik.handleChange("maxPlayers")}
-                  onBlur={formik.handleBlur("maxPlayers")}
+                  name="iconPhotos"
+                  type="text"
+                  className="inputEdit"
+                  placeholder="Must have a valid Url"
+                  value={formik.values.iconPhotos}
+                  onChange={formik.handleChange("iconPhotos")}
+                  onBlur={formik.handleBlur("iconPhotos")}
                />
-               {formik.touched.maxPlayers && formik.errors.maxPlayers ? (
+               {formik.touched.iconPhotos && formik.errors.iconPhotos ? (
                   <small className="signErrors">
-                     {formik.errors.maxPlayers}
+                     {formik.errors.iconPhotos}
                   </small>
                ) : (
                   <small className="signNoErrors">NoErrors</small>
                )}
             </div>
             <div className="inputEditProduct">
-               <label className="labelSign" htmlFor="minAge">Min. Age</label>
+               <label className="labelSign" htmlFor="photos0">
+                  General Photos
+               </label>
                <input
-                  name="minAge"
-                  type="number"
-                  className='inputEdit'
-                  placeholder="Must have a number"
-                  value={formik.values.minAge}
-                  onChange={formik.handleChange("minAge")}
-                  onBlur={formik.handleBlur("minAge")}
-               />
-               {formik.touched.minAge && formik.errors.minAge ? (
-                  <small className="signErrors">{formik.errors.minAge}</small>
-               ) : (
-                  <small className="signNoErrors">NoErrors</small>
-               )}
-            </div>
-            <div className="inputEditProduct">
-               <label className="labelSign" htmlFor="stock">Stock</label>
-               <input
-                  name="stock"
-                  type="number"
-                  className='inputEdit'
-                  placeholder="Must have a number"
-                  value={formik.values.stock}
-                  onChange={formik.handleChange("stock")}
-                  onBlur={formik.handleBlur("stock")}
-               />
-               {formik.touched.stock && formik.errors.stock ? (
-                  <small className="signErrors">{formik.errors.stock}</small>
-               ) : (
-                  <small className="signNoErrors">NoErrors</small>
-               )}
-            </div>
-            <div className="inputEditProduct">
-               <label className="labelSign" htmlFor="weight">Weight</label>
-               <input
-                  name="weight"
-                  type="number"
-                  className='inputEdit'
-                  placeholder="Must have a number"
-                  value={formik.values.weight}
-                  onChange={formik.handleChange("weight")}
-                  onBlur={formik.handleBlur("weight")}
-               />
-               {formik.touched.weight && formik.errors.weight ? (
-                  <small className="signErrors">{formik.errors.weight}</small>
-               ) : (
-                  <small className="signNoErrors">NoErrors</small>
-               )}
-            </div>
-            </div>
-            <div className="inputEditProduct">
-               <label className="labelSign" htmlFor="photos">Photos</label>
-               <input
-                  name="photos"
+                  name="photos0"
                   type="text"
-                  className='inputEdit'
+                  className="inputEdit"
                   placeholder="Must have a valid Url"
-                  value={formik.values.photos}
-                  onChange={formik.handleChange("photos")}
-                  onBlur={formik.handleBlur("photos")}
+                  value={formik.values.photos0}
+                  onChange={formik.handleChange("photos0")}
+                  onBlur={formik.handleBlur("photos0")}
                />
-               {formik.touched.photos && formik.errors.photos ? (
-                  <small className="signErrors">{formik.errors.photos}</small>
+               {formik.touched.photos0 && formik.errors.photos0 ? (
+                  <small className="signErrors">{formik.errors.photos0}</small>
+               ) : (
+                  <small className="signNoErrors">NoErrors</small>
+               )}
+            </div>
+            <div className="inputEditProduct">
+               <input
+                  name="photos1"
+                  type="text"
+                  className="inputEdit"
+                  placeholder="Must have a valid Url"
+                  value={formik.values.photos1}
+                  onChange={formik.handleChange("photos1")}
+                  onBlur={formik.handleBlur("photos1")}
+               />
+               {formik.touched.photos1 && formik.errors.photos1 ? (
+                  <small className="signErrors">{formik.errors.photos1}</small>
+               ) : (
+                  <small className="signNoErrors">NoErrors</small>
+               )}
+            </div>
+            <div className="inputEditProduct">
+               <input
+                  name="photos2"
+                  type="text"
+                  className="inputEdit"
+                  placeholder="Must have a valid Url"
+                  value={formik.values.photos2}
+                  onChange={formik.handleChange("photos2")}
+                  onBlur={formik.handleBlur("photos2")}
+               />
+               {formik.touched.photos2 && formik.errors.photos2 ? (
+                  <small className="signErrors">{formik.errors.photos2}</small>
+               ) : (
+                  <small className="signNoErrors">NoErrors</small>
+               )}
+            </div>
+            <div className="inputEditProduct">
+               <label className="labelSign" htmlFor="decoPhotos0">
+                  Decoration Photos
+               </label>
+               <input
+                  name="decoPhotos0"
+                  type="text"
+                  className="inputEdit"
+                  placeholder="Must have a valid Url"
+                  value={formik.values.decoPhotos0}
+                  onChange={formik.handleChange("decoPhotos0")}
+                  onBlur={formik.handleBlur("decoPhotos0")}
+               />
+               {formik.touched.decoPhotos0 && formik.errors.decoPhotos0 ? (
+                  <small className="signErrors">
+                     {formik.errors.decoPhotos0}
+                  </small>
+               ) : (
+                  <small className="signNoErrors">NoErrors</small>
+               )}
+            </div>
+            <div className="inputEditProduct">
+               <input
+                  name="decoPhotos1"
+                  type="text"
+                  className="inputEdit"
+                  placeholder="Must have a valid Url"
+                  value={formik.values.decoPhotos1}
+                  onChange={formik.handleChange("decoPhotos1")}
+                  onBlur={formik.handleBlur("decoPhotos1")}
+               />
+               {formik.touched.decoPhotos1 && formik.errors.decoPhotos1 ? (
+                  <small className="signErrors">
+                     {formik.errors.decoPhotos1}
+                  </small>
+               ) : (
+                  <small className="signNoErrors">NoErrors</small>
+               )}
+            </div>
+            <div className="inputEditProduct">
+               <input
+                  name="decoPhotos2"
+                  type="text"
+                  className="inputEdit"
+                  placeholder="Must have a valid Url"
+                  value={formik.values.decoPhotos2}
+                  onChange={formik.handleChange("decoPhotos2")}
+                  onBlur={formik.handleBlur("decoPhotos2")}
+               />
+               {formik.touched.decoPhotos2 && formik.errors.decoPhotos2 ? (
+                  <small className="signErrors">
+                     {formik.errors.decoPhotos2}
+                  </small>
+               ) : (
+                  <small className="signNoErrors">NoErrors</small>
+               )}
+            </div>
+            <div className="inputEditProduct">
+               <label className="labelSign" htmlFor="video">
+                  Video
+               </label>
+               <input
+                  name="video"
+                  type="text"
+                  className="inputEdit"
+                  placeholder="Must have a valid Url"
+                  value={formik.values.video}
+                  onChange={formik.handleChange("video")}
+                  onBlur={formik.handleBlur("video")}
+               />
+               {formik.touched.video && formik.errors.video ? (
+                  <small className="signErrors">{formik.errors.video}</small>
+               ) : (
+                  <small className="signNoErrors">NoErrors</small>
+               )}
+            </div>
+            <div className="inputEditProduct">
+               <label className="labelSign" htmlFor="description">
+                  Description
+               </label>
+               <input
+                  name="description"
+                  type="text"
+                  className="inputEdit"
+                  placeholder="Write about the product"
+                  value={formik.values.description}
+                  onChange={formik.handleChange("description")}
+                  onBlur={formik.handleBlur("description")}
+               />
+               {formik.touched.description && formik.errors.description ? (
+                  <small className="signErrors">
+                     {formik.errors.description}
+                  </small>
                ) : (
                   <small className="signNoErrors">NoErrors</small>
                )}
@@ -413,10 +686,23 @@ const ArticleEdit = (props) => {
                type="button"
                className="addProduct"
                disabled={loading}
-               onClick={formik.handleSubmit}
-               style={{backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`}}
+               onClick={() => props.setSection()}
+               style={{
+                  backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+               }}
             >
-               ADD
+               CANCEL
+            </button>
+            <button
+               type="button"
+               className="addProduct"
+               disabled={loading}
+               onClick={formik.handleSubmit}
+               style={{
+                  backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+               }}
+            >
+               UPDATE
             </button>
          </div>
       </div>
