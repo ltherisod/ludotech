@@ -201,7 +201,6 @@ const styles = StyleSheet.create({
         fontFamily: 'Poppins_600SemiBold',
         color: 'white',
         fontSize: 18
-
     },
     quantityNumber: {
         fontFamily: 'Poppins_600SemiBold',

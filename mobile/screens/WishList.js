@@ -18,7 +18,7 @@ const WishList = (props) => {
   }
 
   return (
-    <View>
+    <ScrollView>
       <ImageBackground style={{width:"100%"}} source={require("../assets/fondoVioleta.png")} resizeMode="cover">
         <HeroPages />
         <View style={styles.wishListContainer} >
@@ -30,7 +30,7 @@ const WishList = (props) => {
               placeholder='Search for products'
               />
           </View>
-          <ScrollView>
+          <View>
             <View style={styles.wishListArticles} >
               <FlatList 
                 data={searched}
@@ -48,11 +48,11 @@ const WishList = (props) => {
               />
 
             </View>
-          </ScrollView>
+          </View>
           
         </View>
       </ImageBackground>
-    </View>
+    </ScrollView>
   )
 }
 
