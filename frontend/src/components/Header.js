@@ -63,6 +63,17 @@ const Header = (props) => {
                         </NavLink>
                      </li>
                   )}
+                  {user && (
+                     <li className="nav-item">
+                        <NavLink
+                           className="nav-link"
+                           to="/mypurchases"
+                           onClick={() => window.scrollTo(0, 0)}
+                        >
+                           Purchases
+                        </NavLink>
+                     </li>
+                  )}
 
                   {!user ? (
                      <>
@@ -103,7 +114,7 @@ const Header = (props) => {
                   )}
                   <li class="nav-item dropdown">
                      <a
-                        class="nav-link dropdown-toggle"
+                        className="nav-link dropdown-toggle"
                         data-bs-toggle="dropdown"
                         href="#"
                         role="button"

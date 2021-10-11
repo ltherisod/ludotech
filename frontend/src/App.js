@@ -13,6 +13,7 @@ import Paypal from "./components/Paypal"
 import UserProfile from "./pages/UserProfile"
 import Wishlist from "./pages/Wishlist"
 import Checkout from "./pages/Checkout"
+import Purchases from "./pages/Purchases"
 
 const App = (props) => {
    useLoginLS()
@@ -31,6 +32,7 @@ const App = (props) => {
             <Route path="/cart" component={Cart} />
             <Route path="/checkout" component={Checkout} />
             {user && <Route path="/wishlist" component={Wishlist} />}
+            {user && <Route path="/mypurchases" component={Purchases} />}
             <Redirect to="/" />
          </Switch>
       </BrowserRouter>
