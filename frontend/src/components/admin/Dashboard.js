@@ -1,30 +1,44 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
-const Dashboard = () => {
+const Dashboard = ({render}) => {
 
     const [purchases, setPurchases] = useState([])
     const [users, setUsers] = useState([])
+    const [customers, setCustomers] = useState(null)
     const [revenue, setRevenue] = useState(0)
+    const [articles, setArticles] = useState([])
+    const [registered, setRegistered] = useState([])
 
     useEffect(() => {
 
-        axios.get('https://lodotechgames.herokuapp.com/api/purchases')
+        axios.get('https://lodotechgames.herokuapp.com/api/purchases',
+            {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
             .then(res=> {
                 setPurchases(res.data.response.slice(0,4))
                 setRevenue(res.data.response.reduce((a,b) => (a+b.total), 0))
+                setCustomers(res.data.response.reduce((a,b)=> a.includes(b.user._id) ? a : [...a, b.user._id], []).length)
             })
             .catch(e => console.log(e))
 
-        axios.get('https://lodotechgames.herokuapp.com/api/users',
-        {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+        axios.get('http://localhost:4000/api/users-count',
+            {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
             .then(res=> setUsers(res.data.response))
+            .catch(e => console.log(e))
+
+        axios.get('http://localhost:4000/api/last-articles',
+            {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+            .then(res=> setArticles(res.data.response))
+            .catch(e => console.log(e))
+
+        axios.get('http://localhost:4000/api/last-registered',
+            {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+            .then(res=> setRegistered(res.data.response))
             .catch(e => console.log(e))
     },[])
 
-
     return (
-        <div className='dashboardMain'>
+        <div className='dashboardMain' style={{ backgroundImage: "url('https://i.postimg.cc/zDhycDV6/fondoblanco2.png)" }}>
             <div>
                 <div className='statistics'>
                         <div className='boxDash'>
@@ -35,7 +49,7 @@ const Dashboard = () => {
                             </div>
                             <div>
                                 <span>Customers</span>
-                                <p>{users.length}/{users.length}</p>
+                                <p>{customers}/<span style={{fontSize: '3.5vmin'}}>{users}</span></p>
                             </div>
                         </div>
                         <div className='boxDash'>
@@ -77,11 +91,48 @@ const Dashboard = () => {
                     <div className='recentOrders'>
                         {purchases.map(purchase => <Purchase key={purchase._id} purchase={purchase} />)}
                     </div>
-                    <p style={{textAlign: 'center', marginTop: '2vmin', cursor: 'pointer', fontSize: '2.3vmin'}}>See all orders</p>
+                    <p onClick={() => render('sold')} style={{textAlign: 'center', marginTop: '2vmin', cursor: 'pointer', fontSize: '2.3vmin'}}>See all orders</p>
                 </div>
             </div>
             <div className='other'>
-
+                <div className='lastAddedProducts' style={{marginBottom: '3vmin', }}>
+                    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <h5>Last added products</h5>
+                    </div>
+                    {articles.map(article => {
+                        return (
+                            <div key={article._id} className='productRow' style={{marginBottom: '2vmin'}}>
+                                <div className='productRowtPicture' style={{backgroundImage: `url("${article.photos[0]}")`}}></div>
+                                <div className='detailsProductPanel'>
+                                    <p className='nameProductPanel'>{article.name}</p>
+                                    <span>
+                                        <p style={{marginRight: '2vmin'}}>Price: ${article.price}</p>
+                                        <p>Stock: {article.stock}</p>
+                                    </span>
+                                </div>
+                            </div>
+                        )
+                    })}
+                    <p style={{textAlign: 'center', cursor: 'pointer', fontSize: '2.2vmin'}} onClick={() => render('articles')}>See all</p>
+                    
+                </div>
+                <div className='lastAddedProducts' style={{paddingBottom: '1vmin'}}>
+                    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <h5>Last registered</h5>
+                    </div>
+                    {registered.map(user => {
+                        console.log(user.photo)
+                        return (
+                            <div key={user._id} className='productRow' style={{marginBottom: '2vmin'}}>
+                                <div className='productRowtPicture' style={{backgroundImage: `url("${user.photo}")`, borderRadius: '50%'}}></div>
+                                <div className='detailsProductPanel'>
+                                    <p className='nameProductPanel'>{user.firstname} {user.lastname}</p>
+                                    <span style={{marginRight: '2vmin'}}>{user.email}</span>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )

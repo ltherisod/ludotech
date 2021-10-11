@@ -15,6 +15,10 @@ router.route("/login").post(usersControllers.logIn)
 
 router.route("/signup").post(usersControllers.signUp)
 
+router.route('/users-count').get(usersControllers.getUsersCount)
+
+router.route('/last-registered').get(usersControllers.getLastUsers)
+
 router
   .route("/user/verifyToken")
   .get(
@@ -96,6 +100,8 @@ router
 
 // ARTICLES ROUTES
 router.route("/articles").post(articlesControllers.readAllArticles)
+
+router.route("/last-articles").get(articlesControllers.getLastArticles)
 
 router
   .route("/article/:id")

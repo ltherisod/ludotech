@@ -32,6 +32,17 @@ const articlesControllers = {
     }
   },
 
+  getLastArticles: async (req, res) => {
+    try {
+      let articles = await  Article.find().sort('-_id').limit(3)
+        .select('name photos stock price')
+      res.json({success: true, response: articles, error: null})
+    } catch(e){
+      console.log(e)
+      res.json({success: false, response: null, error: e.message})
+    }
+  },
+
   // se requiere filtros como {filters} en el body; puede venir vacio
 
   readAllArticles: async (req, res) => {

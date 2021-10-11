@@ -53,7 +53,7 @@ const ArticlesAdmin = () => {
                   backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`,
                }}
             >
-               <h2 className="articles">Orders</h2>
+               <h2 className="articles">Products</h2>
                <p className="textPanell">
                   Add new products or search some added product to edit or
                   delete
