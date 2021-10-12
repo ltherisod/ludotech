@@ -1,10 +1,12 @@
-import React from 'react'
-import { StyleSheet, Text, View, ScrollView, ImageBackground, Image, TouchableOpacity, Alert } from 'react-native'
+import React, { useState, useCallback, useRef } from "react"
+import { StyleSheet, Text, View, ScrollView, ImageBackground, Image, TouchableOpacity, Alert, Button } from 'react-native'
 import HeroPages from '../components/HeroPages'
 import { useArticle, useRelatedArticles } from '../hooks/articlesHooks'
 import articlesActions from "../redux/actions/articlesActions"
 import usersActions from "../redux/actions/usersActions"
 import { connect } from "react-redux"
+import YoutubePlayer from "react-native-youtube-iframe"
+import ArticleCarousel from "../components/ArticleCarousel"
 const Article = (props) => {
 
   const [article, loading] = useArticle(props.route.params.id)
@@ -31,16 +33,26 @@ const Article = (props) => {
     _id,
  } = article
 
+ const [playing, setPlaying] = useState(false)
+
+ const onStateChange = useCallback((state) => {
+  if (state === "ended") {
+    setPlaying(false);
+    Alert.alert("video has finished playing!");
+  }
+}, []);
+
  const addToCart = (e, id) => {
   e.stopPropagation()
   props.updateCart("add", id)
 }
   return (
     <ScrollView>
-      <ImageBackground style={{width:"100%"}} source={{ uri: "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png" }} resizeMode="cover">
+      <ImageBackground style={{width:"100%", alignItems:"center"}} source={{ uri: "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png" }} resizeMode="cover">
         <HeroPages />
+        {/* <Image source={{uri: photos[0]}} style={{width:300, height:300}}/> */}
+          <ArticleCarousel photosArticle={photos}/>
         <View style={styles.articlePresentation} >
-          {/* photos carousel */}
           <View style={styles.articleCard} >
             <Text style={styles.articleCardTitle} >{name}</Text>
             <View style={styles.articleCardBrand} >
@@ -87,7 +99,7 @@ const Article = (props) => {
           </View>
         </View>
 
-        <View style={styles.articleDecoOne} >
+        <View style={{alignSelf:"flex-start", marginLeft:30}} >
           <ImageBackground style={styles.articleDecoImgOne} source={{ uri: `${decoPhotos ? decoPhotos[0] : [] }` }} >
           </ImageBackground>
         </View>
@@ -99,11 +111,17 @@ const Article = (props) => {
         </View>
         
 
-        <View style={styles.articleVideo} >
-          <Text style={styles.articleVideoText} >ACA VA EL VIDEO ???</Text>
+        <View style={{alignItems:"center", marginVertical:10}} >
+           <YoutubePlayer
+        height={300}
+        width={350}
+        play={playing}
+        videoId={"emlI43ZE9-c"}
+        onChangeState={onStateChange}
+      />
         </View>
 
-        <View style={styles.articleDecoThree} >
+        <View style={{alignSelf:"flex-start", marginTop:-50, marginLeft:30}} >
           <ImageBackground style={styles.articleDecoImgThree} source={{ uri: `${decoPhotos ? decoPhotos[2] : [] }` }} >
           </ImageBackground>
         </View>
@@ -147,7 +165,8 @@ const styles = StyleSheet.create({
   },
   articleDecoImgOne: {
     width: 100,
-    height: 100
+    height: 100,
+    alignSelf:"flex-start"
   },
   articleDecoImgTwo: {
     width: 100,
@@ -159,7 +178,8 @@ const styles = StyleSheet.create({
     height: 100
   },
   articlePresentation:{
-    flexDirection:"row"
+    flexDirection:"row",
+    alignItems:"center"
   },
   articleCardaddCartIcon:{
     width:80,
