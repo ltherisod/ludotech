@@ -76,10 +76,10 @@ const Stripe = ({ formik, user, history }) => {
         options={{
           style: {
             base: {
-              fontSize: "16px",
+              fontSize: "18px",
               color: "#424770",
               "::placeholder": {
-                color: "#aab7c4",
+                color: "gray",
               },
             },
             invalid: {
@@ -88,7 +88,10 @@ const Stripe = ({ formik, user, history }) => {
           },
         }}
       />
-      <button type="submit" disabled={!stripe || loading}>
+      <button className="profileButton"
+                                    style={{
+                                       backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                                     }}type="submit" disabled={!stripe || loading}>
         Pay
       </button>
     </form>

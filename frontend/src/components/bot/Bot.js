@@ -17,8 +17,8 @@ const Bot = () => {
                 config={config}
                 messageParser={MessageParser}
                 actionProvider={ActionProvider}
-                headerText='Chat with Ludo'
-                placeholderText='write...'
+                headerText='Chat with Ludo!'
+                placeholderText='Write a message...'
                 validator={validateInputBot}
             />
             }

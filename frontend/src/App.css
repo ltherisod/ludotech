@@ -1697,7 +1697,6 @@ h2.articles {
    text-align: right;
    padding-right: 5%;
 }
-
 .quantity button {
    padding: 0px 7px;
    background-color: #6aefcf;
@@ -1731,7 +1730,23 @@ h2.articles {
 #visible {
    visibility: visible;
 }
-
+.cartAddressInputs {
+   width: 600px;
+   text-align: center;
+}
+.cartAddressInputs input {
+   height: 40px;
+   outline: none;
+   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+   width: 100%;
+   padding: 0 2vmin;
+   border-radius: 5px;
+   border: none;
+}
+.chooseAnAddress {
+   color: gray;
+   font-weight: 600;
+}
 /* PROFILE  */
 
 .logoUserProfile {
