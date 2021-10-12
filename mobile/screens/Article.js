@@ -31,6 +31,7 @@ const Article = (props) => {
     visitsCount,
     weight,
     _id,
+    videoId,
  } = article
 
  const [playing, setPlaying] = useState(false)
@@ -116,7 +117,7 @@ const Article = (props) => {
         height={300}
         width={350}
         play={playing}
-        videoId={"emlI43ZE9-c"}
+        videoId={videoId}
         onChangeState={onStateChange}
       />
         </View>
