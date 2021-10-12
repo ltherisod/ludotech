@@ -511,6 +511,7 @@ const usersControllers = {
     })
   },
   sendWelcomeEmail: (req, res) => {
+    console.log(req.body)
     let mailOptions = {
       from: "Ludotehc <ludotechweb@gmail.com>",
       to: `<${req.body.email}`,
