@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
 import Preloader from "./Preloader"
 
+
 const MostWanted = (props) => {
     const [mostVisitArticles, setMostVisitArticles] = useState([])
     const [loading, setLoading] = useState(true)
