@@ -48,6 +48,5 @@ const styles = StyleSheet.create({
     slide:{
         width:"100%",
     },
-
 })
    

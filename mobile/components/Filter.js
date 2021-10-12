@@ -3,10 +3,8 @@ import {View, Text, TextInput, TouchableOpacity, StyleSheet} from "react-native"
 import { connect } from "react-redux"
 import articlesUtilitiesActions from "../redux/actions/articlesUtilitiesActions"
 import { useArticles, useFilters, useUtils } from "../hooks/articlesHooks"
-import CheckBox from '@react-native-community/checkbox'
 
 const Filter = (props) => {
-    const [toggleCheckBox, setToggleCheckBox] = useState(false)
     const [{ brands, genres, gameTypes }, loadingUtils, erroUtils] = useUtils()
     const [submit, setSubmit] = useState(false)
     const {
@@ -42,10 +40,10 @@ const Filter = (props) => {
     //     })
     // }
 
-    const checkboxHandler = (newValue) => {
-        setToggleCheckBox(newValue)
-        inputBoolean(newValue)
-    }
+    // const checkboxHandler = (newValue) => {
+    //     setToggleCheckBox(newValue)
+    //     inputBoolean(newValue)
+    // }
 
     const submitFilters = (e) => {
         e.preventDefault()
@@ -62,10 +60,10 @@ const Filter = (props) => {
                 </View>
                 <View style={styles.filterDiscount}>
                     <Text>With discount</Text>
-                    <CheckBox
+                    {/* <CheckBox
                         value={toggleCheckBox}
                         onValueChange={(newValue) => checkboxHandler(newValue)}
-                    />
+                    /> */}
                 </View>
                 <TouchableOpacity onPress={(e) => {submitFilters(e)}}><Text>Filter</Text></TouchableOpacity>
             </View>
