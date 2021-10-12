@@ -31,9 +31,9 @@ const Home = () => {
           >
             <div className="heroDescription">
               <div>
-                <h1 className="logo  animate__animated animate__fadeInUp">ludotech</h1>
-                <h1 className="animate__animated animate__fadeInUp" id="welcome">Welcome to the land of the game</h1>
-                <Link  to="/articles"><button className="animate__animated animate__fadeInUp">Let´s go there</button></Link>
+                <h1 className="logo  animate__animated animate__fadeInUp animate__delay-2s	">ludotech</h1>
+                <h1 className="animate__animated animate__fadeInUp animate__delay-3s	" id="welcome">Welcome to the land of the game</h1>
+                <Link  to="/articles"><button className="animate__animated animate__fadeInUp animate__delay-4s	">Let´s go there</button></Link>
               </div>
             </div>
             <div
