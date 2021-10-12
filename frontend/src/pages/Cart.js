@@ -151,7 +151,7 @@ const Cart = (props) => {
                                     <td>
                                        {article.article.hasDiscount ===
                                        false ? (
-                                          <p style={{ color: "green" }}>
+                                          <p style={{color: "yellowgreen"}}>
                                              ${" "}
                                              {article.article.price.toFixed(2)}
                                           </p>
@@ -172,7 +172,7 @@ const Cart = (props) => {
                                              </p>
                                              <p
                                                 style={{
-                                                   color: "green",
+                                                   color: "yellowgreen",
                                                    padding: "0px 4px",
                                                 }}
                                              >
@@ -233,7 +233,10 @@ const Cart = (props) => {
                               </p>
                            </div>
                            <div>
-                              <button
+                              <button className="profileButton"
+                              style={{
+                                 backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                               }}
                                  type="button"
                                  onClick={() => setViewMethod(!viewMethod)}
                               >
@@ -242,16 +245,16 @@ const Cart = (props) => {
                            </div>
                         </article>
                      </section>
-                     <section className="d-flex justify-content-center align-items-center flex-column col-12">
+                     <section className="d-flex justify-content-center align-items-center flex-column">
                         {viewMethod && (
                            <>
-                              <h2>Choose an address to continue</h2>
-                              <div className="d-flex justify-content-center align-items-center flex-column col-9">
+                              <h3 className="chooseAnAddress">Choose an address to continue</h3>
+                              <div className="cartAddressInputs">
                                  {!directions || directions.length ? (
                                     <div>
                                        {!directions ||
                                        directions.length === 0 ? (
-                                          <p>There are no addresses added</p>
+                                          <p className="chooseAnAddress">There are no addresses added</p>
                                        ) : (
                                           directions.map((direction) => {
                                              return (
@@ -263,17 +266,20 @@ const Cart = (props) => {
                                              )
                                           })
                                        )}
-                                       <h4>Or add a new address</h4>
+                                       <h4 className="chooseAnAddress">Or add a new address</h4>
                                        <FormCart formik={formik} />
                                     </div>
                                  ) : (
                                     <div>
-                                       <h4>Add address</h4>
+                                       <h4 className="chooseAnAddress">Add address</h4>
                                        <FormCart formik={formik} />
                                     </div>
                                  )}
                                  {!viewButtons && (
-                                    <button
+                                    <button className="profileButton"
+                                    style={{
+                                       backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                                     }}
                                        type="button"
                                        onClick={() => validateForm()}
                                     >
@@ -299,13 +305,13 @@ const Cart = (props) => {
                                     >
                                        Buy with credit card
                                     </button> */}
-                                    <h3>Buy with PayPal</h3>
+                                    <h4 className="chooseAnAddress">Pay with PayPal</h4>
                                     <Paypal
                                        user={user}
                                        formik={formik}
                                        history={props.history}
                                     />
-                                    <h3>Buy with credit card</h3>
+                                    <h4 className="chooseAnAddress">Pay with credit card</h4>
                                     <Stripe
                                        user={user}
                                        formik={formik}

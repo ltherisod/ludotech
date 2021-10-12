@@ -9,9 +9,9 @@ const FormCart = ({ formik }) => {
         placeholder="Receiver"
       />
       {formik.touched.receiver && formik.errors.receiver ? (
-        <small className="signErrors">{formik.errors.receiver}</small>
+        <small className="signErrorsDir">{formik.errors.receiver}</small>
       ) : (
-        <small className="signNoErrors">NoErrors</small>
+        <small className="signNoErrorsDir">NoErrors</small>
       )}
       <input
         name="street"
@@ -21,9 +21,9 @@ const FormCart = ({ formik }) => {
         placeholder="Street"
       />
       {formik.touched.street && formik.errors.street ? (
-        <small className="signErrors">{formik.errors.street}</small>
+        <small className="signErrorsDir">{formik.errors.street}</small>
       ) : (
-        <small className="signNoErrors">NoErrors</small>
+        <small className="signNoErrorsDir">NoErrors</small>
       )}
       <input
         name="number"
@@ -33,9 +33,9 @@ const FormCart = ({ formik }) => {
         placeholder="Number"
       />
       {formik.touched.number && formik.errors.number ? (
-        <small className="signErrors">{formik.errors.number}</small>
+        <small className="signErrorsDir">{formik.errors.number}</small>
       ) : (
-        <small className="signNoErrors">NoErrors</small>
+        <small className="signNoErrorsDir">NoErrors</small>
       )}
       <input
         name="department"
@@ -45,9 +45,9 @@ const FormCart = ({ formik }) => {
         placeholder="Department"
       />
       {formik.touched.department && formik.errors.department ? (
-        <small className="signErrors">{formik.errors.department}</small>
+        <small className="signErrorsDir">{formik.errors.department}</small>
       ) : (
-        <small className="signNoErrors">NoErrors</small>
+        <small className="signNoErrorsDir">NoErrors</small>
       )}
       <input
         name="zipCode"
@@ -57,9 +57,9 @@ const FormCart = ({ formik }) => {
         placeholder="Zip Code"
       />
       {formik.touched.zipCode && formik.errors.zipCode ? (
-        <small className="signErrors">{formik.errors.zipCode}</small>
+        <small className="signErrorsDir">{formik.errors.zipCode}</small>
       ) : (
-        <small className="signNoErrors">NoErrors</small>
+        <small className="signNoErrorsDir">NoErrors</small>
       )}
       <input
         name="city"
@@ -69,9 +69,9 @@ const FormCart = ({ formik }) => {
         placeholder="City"
       />
       {formik.touched.city && formik.errors.city ? (
-        <small className="signErrors">{formik.errors.city}</small>
+        <small className="signErrorsDir">{formik.errors.city}</small>
       ) : (
-        <small className="signNoErrors">NoErrors</small>
+        <small className="signNoErrorsDir">NoErrors</small>
       )}
       <input
         name="state"
@@ -81,9 +81,9 @@ const FormCart = ({ formik }) => {
         placeholder="State"
       />
       {formik.touched.state && formik.errors.state ? (
-        <small className="signErrors">{formik.errors.state}</small>
+        <small className="signErrorsDir">{formik.errors.state}</small>
       ) : (
-        <small className="signNoErrors">NoErrors</small>
+        <small className="signNoErrorsDir">NoErrors</small>
       )}
     </div>
   )

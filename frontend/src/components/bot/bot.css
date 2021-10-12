@@ -1,41 +1,101 @@
 .botContainer {
-    position: fixed;
-    bottom: 40px;
-    right: 40px;
-    z-index: 10;
-    display: flex;
-    align-items: flex-end;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
 }
 
 .buttonRenderBot {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin-left: 10px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-left: 10px;
 }
 
 .botGif {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .optionsBot {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .optionsBotButton {
-    padding: 5px;
+  padding: 5px;
+  background-color: #e052c1;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  width: 100px;
 }
 
 /*custom class from chat*/
 
 .react-chatbot-kit-chat-container {
-    height: 500px;
+  height: 480px;
 }
 
 .react-chatbot-kit-chat-inner-container {
-    height: 100%;
+  height: 100%;
+}
+.react-chatbot-kit-chat-header {
+  background-color: #e052c1;
+  color: white;
+}
+.react-chatbot-kit-chat-btn-send {
+  background-color: #e052c1;
+}
+
+.react-chatbot-kit-chat-bot-avatar-container {
+  background-color: #660099;
+}
+.react-chatbot-kit-user-avatar-container {
+  background-color: gray;
+}
+.react-chatbot-kit-user-chat-message {
+  background-color: rgba(231, 231, 231, 0.596);
+}
+
+.react-chatbot-kit-user-chat-message-arrow {
+  border-left: 8px solid rgba(231, 231, 231, 0.596);
+}
+
+.react-chatbot-kit-chat-bot-avatar-letter {
+  color: white;
+}
+.react-chatbot-kit-chat-bot-message {
+  background-color: #6aefcf;
+}
+
+.react-chatbot-kit-chat-bot-message-arrow {
+  border-right: 8px solid #6aefcf;
+}
+.react-chatbot-kit-chat-input {
+  border-top: none;
+  background-color: whitesmoke;
+  outline: none;
+}
+
+#chatbot-loader #chatbot-loader-dot2 {
+}
+
+#chatbot-loader #chatbot-loader-dot3 {
+}
+
+.react-chatbot-kit-error {
+}
+
+.react-chatbot-kit-error-container {
+}
+
+.react-chatbot-kit-error-header {
+}
+
+.react-chatbot-kit-error-docs {
 }
 
 /* .react-chatbot-kit-chat-header {
