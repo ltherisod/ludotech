@@ -47,7 +47,7 @@ const ArticlePage = (props) => {
 
    return (
       <>
-         <Bot/>
+         <Bot />
          {loading ? (
             <Preloader />
          ) : (
@@ -75,7 +75,7 @@ const ArticlePage = (props) => {
                               textAlign: "center",
                            }}
                         >
-                           ${price} USD
+                           ${price.toFixed(2)} USD
                         </p>
                      ) : (
                         <div className="priceArticle">
@@ -88,7 +88,7 @@ const ArticlePage = (props) => {
                                  paddingRight: "1.2rem",
                               }}
                            >
-                              ${price}
+                              ${price.toFixed(2)}
                            </p>
                            <p
                               style={{
@@ -97,7 +97,7 @@ const ArticlePage = (props) => {
                                  fontWeight: "bold",
                               }}
                            >
-                              ${discountPrice} USD
+                              ${discountPrice.toFixed(2)} USD
                            </p>
                         </div>
                      )}

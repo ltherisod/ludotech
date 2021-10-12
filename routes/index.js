@@ -15,9 +15,9 @@ router.route("/login").post(usersControllers.logIn)
 
 router.route("/signup").post(usersControllers.signUp)
 
-router.route('/users-count').get(usersControllers.getUsersCount)
+router.route("/users-count").get(usersControllers.getUsersCount)
 
-router.route('/last-registered').get(usersControllers.getLastUsers)
+router.route("/last-registered").get(usersControllers.getLastUsers)
 
 router
   .route("/user/verifyToken")
@@ -72,10 +72,9 @@ router
     passport.authenticate("jwt", { session: false }),
     purchaseControllers.stripePaymentIntent
   )
-
-// PURCHASES
-
-router.route("/user/purchase")
+router.route("/receipt/:id").get(purchaseControllers.createPurchasePDF)
+router
+  .route("/user/purchase")
   .post(
     passport.authenticate("jwt", { session: false }),
     purchaseValidator,

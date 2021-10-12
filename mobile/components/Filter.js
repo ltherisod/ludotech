@@ -40,6 +40,11 @@ const Filter = (props) => {
     //     })
     // }
 
+    // const checkboxHandler = (newValue) => {
+    //     setToggleCheckBox(newValue)
+    //     inputBoolean(newValue)
+    // }
+
     const submitFilters = (e) => {
         e.preventDefault()
         props.setCurrentPage(1)
@@ -50,6 +55,16 @@ const Filter = (props) => {
         <View style={styles.filterUltracontainer}>
             <View style={styles.filterBoxContainer}>
                 <TextInput placeholder="Search a product" style={styles.search} onChangeText={(e) => {inputHandle(e)}}/>
+                <View style={styles.filtersBox}>
+
+                </View>
+                <View style={styles.filterDiscount}>
+                    <Text>With discount</Text>
+                    {/* <CheckBox
+                        value={toggleCheckBox}
+                        onValueChange={(newValue) => checkboxHandler(newValue)}
+                    /> */}
+                </View>
                 <TouchableOpacity onPress={(e) => {submitFilters(e)}}><Text>Filter</Text></TouchableOpacity>
             </View>
         </View>
@@ -72,5 +87,10 @@ const styles = StyleSheet.create({
     search: {
 
     },
+    filterDiscount: {
 
+    },
+    filtersBox: {
+
+    },
 })

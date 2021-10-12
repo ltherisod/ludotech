@@ -63,7 +63,6 @@ const Header = (props) => {
                         </NavLink>
                      </li>
                   )}
-                
 
                   {!user ? (
                      <>
@@ -98,14 +97,14 @@ const Header = (props) => {
                         >
                            Settings
                         </a>
-                        <ul className="dropdown-menu">
+                        <ul className="dropdown-menu settings mt-3">
                            <li>
                               <NavLink
                                  className="nav-link"
                                  to="/profile"
                                  onClick={() => window.scrollTo(0, 0)}
                               >
-                                 <p className="profileLogout">Profile</p>
+                                 Profile
                               </NavLink>
                            </li>
                            <li className="nav-item">
@@ -121,7 +120,7 @@ const Header = (props) => {
                               <hr className="dropdown-divider" />
                            </li>
                            <li>
-                              <NavLink
+                              <Link
                                  to="/"
                                  style={{ textDecoration: "none" }}
                                  className="nav-link"
@@ -130,8 +129,8 @@ const Header = (props) => {
                                     dispatch(usersActions.logOut())
                                  }}
                               >
-                                 <p className="profileLogout">Log Out</p>
-                              </NavLink>
+                                 Log Out
+                              </Link>
                            </li>
                         </ul>
                      </li>

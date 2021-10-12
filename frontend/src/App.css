@@ -53,13 +53,13 @@ body {
     background-color: transparent;
   }
   #mainNav .navbar-brand {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.85);
   }
   #mainNav .navbar-brand:hover {
     color: #fff;
   }
   #mainNav .navbar-nav .nav-item .nav-link {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     padding: 0 1rem;
   }
   #mainNav .navbar-nav .nav-item .nav-link:hover {
@@ -76,14 +76,18 @@ body {
     color: #212529;
   }
   #mainNav.navbar-shrink .navbar-brand:hover {
-    color: #f4623a;
+    color: #6cdece;
   }
   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
     color: #212529;
   }
   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
-    color: #f4623a;
+    color: #6cdece;
   }
+}
+
+.settings {
+  background-color: #ff9424 !important;
 }
 
 .containerLogoUser {
@@ -1697,7 +1701,6 @@ h2.articles {
   text-align: right;
   padding-right: 5%;
 }
-
 .quantity button {
   padding: 0px 7px;
   background-color: #6aefcf;
@@ -1731,7 +1734,23 @@ h2.articles {
 #visible {
   visibility: visible;
 }
-
+.cartAddressInputs {
+  width: 600px;
+  text-align: center;
+}
+.cartAddressInputs input {
+  height: 40px;
+  outline: none;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  padding: 0 2vmin;
+  border-radius: 5px;
+  border: none;
+}
+.chooseAnAddress {
+  color: gray;
+  font-weight: 600;
+}
 /* PROFILE  */
 
 .logoUserProfile {

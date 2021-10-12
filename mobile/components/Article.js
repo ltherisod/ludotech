@@ -89,7 +89,7 @@ const Article = (props) => {
         <View style={styles.gameDataBox}>
           <View style={styles.gameDataLine}>
             <Image style={styles.icons} source={require("../assets/gener.png")} />
-            {genres.map((genre) => <Text style={styles.dataText}>{genre.name}</Text>)}
+            {genres.map((genre) => <Text key={genre._id} style={styles.dataText}>{genre.name}</Text>)}
           </View>
           <View style={styles.gameDataLine}>
             <Image style={styles.icons} source={require("../assets/type.png")} />
@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
     margin: 5,
     marginTop: 15,
     alignSelf: "center",
+    
   },
   heart: {
 backgroundColor: 'red'
@@ -140,7 +141,15 @@ backgroundColor: 'red'
     alignSelf: "center",
     borderRadius: 18,
     backgroundColor: "white",
-    padding: 10
+    padding: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+	    width: 0,
+	    height: 6,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 6.00,
+    elevation: 24,
   },
   articleName: {
     fontFamily: "Poppins_700Bold",
@@ -150,7 +159,7 @@ backgroundColor: 'red'
     marginTop: 5,
   },
   priceBox: {
-    marginTop: 5,
+    marginTop: 10,
     flexDirection: "row",
     alignSelf: "center",
   },

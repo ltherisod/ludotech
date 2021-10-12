@@ -38,6 +38,7 @@ const Articles = (props) => {
                                 <Article
                                     history={props.history}
                                     article={article}
+                                    key={article._id}
                                 />
                             </TouchableOpacity>
                         )

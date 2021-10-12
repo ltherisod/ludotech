@@ -22,15 +22,15 @@ const App = (props) => {
       <BrowserRouter>
          <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/paypal" component={Paypal} />
+            {user && <Route path="/paypal" component={Paypal} />}
             <Route path="/articles" component={Articles} />
             <Route path="/article/:id" component={ArticlePage} />
             {!user && <Route path="/signin" component={SignIn} />}
             {!user && <Route path="/signup" component={SignUp} />}
-            <Route path="/admin" component={PanelAdmin} />
-            <Route path="/profile" component={UserProfile} />
-            <Route path="/cart" component={Cart} />
-            <Route path="/checkout" component={Checkout} />
+            {user && <Route path="/admin" component={PanelAdmin} />}
+            {user && <Route path="/profile" component={UserProfile} />}
+            {user && <Route path="/cart" component={Cart} />}
+            {user && <Route path="/checkout" component={Checkout} />}
             {user && <Route path="/wishlist" component={Wishlist} />}
             {user && <Route path="/mypurchases" component={Purchases} />}
             <Redirect to="/" />
