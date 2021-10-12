@@ -3,7 +3,6 @@ import {View, Text, TextInput, TouchableOpacity, StyleSheet} from "react-native"
 import { connect } from "react-redux"
 import articlesUtilitiesActions from "../redux/actions/articlesUtilitiesActions"
 import { useArticles, useFilters, useUtils } from "../hooks/articlesHooks"
-// import CheckBox from '@react-native-community/checkbox'
 
 const Filter = (props) => {
     const [{ brands, genres, gameTypes }, loadingUtils, erroUtils] = useUtils()
