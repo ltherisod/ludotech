@@ -47,44 +47,6 @@ body {
 .profileLogout {
   color: black !important;
 }
-@media (min-width: 992px) {
-  #mainNav {
-    box-shadow: none;
-    background-color: transparent;
-  }
-  #mainNav .navbar-brand {
-    color: rgba(255, 255, 255, 0.85);
-  }
-  #mainNav .navbar-brand:hover {
-    color: #fff;
-  }
-  #mainNav .navbar-nav .nav-item .nav-link {
-    color: rgba(255, 255, 255, 0.95);
-    padding: 0 1rem;
-  }
-  #mainNav .navbar-nav .nav-item .nav-link:hover {
-    color: #fff;
-  }
-  #mainNav .navbar-nav .nav-item:last-child .nav-link {
-    padding-right: 0;
-  }
-  #mainNav.navbar-shrink {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    background-color: #fff;
-  }
-  #mainNav.navbar-shrink .navbar-brand {
-    color: #212529;
-  }
-  #mainNav.navbar-shrink .navbar-brand:hover {
-    color: #6cdece;
-  }
-  #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
-    color: #212529;
-  }
-  #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
-    color: #6cdece;
-  }
-}
 
 .settings {
   background-color: #ff9424 !important;
@@ -167,7 +129,7 @@ main h2 {
   background-position: center;
   background-size: cover;
   height: 460px;
-  width: 460px;
+  min-width: 460px;
   margin-bottom: 60px;
 }
 
@@ -564,10 +526,12 @@ h2 span {
 }
 #buy {
   cursor: pointer;
-  width: 40x;
-  height: 40px;
+  color: #660099;
+  font-size: 38px;
 }
-
+#buy:hover {
+  color: #a32bdf;
+}
 /*Most Wanted*/
 
 .mostWantedConteiner {
@@ -2143,4 +2107,95 @@ h2.articles {
   height: 16px;
   font-size: 11px;
   font-weight: lighter;
+}
+
+
+/* MEDIAQUERIES */
+
+@media (max-width: 992px) { 
+  .hero {
+    padding-top: 200px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .mostWantedTittle {
+    padding-top: 100px;
+  }
+  .mostWantedGame {
+    width: 180px;
+    height: 180px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-self: center;
+  }
+  
+  .mostWantedGameConteiner,
+  .mostWantedGameConteinerLeft {
+    padding-right: 3rem;
+    align-self: center;
+    width: 90%;
+    min-height: 20vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+  }
+  
+  .mostWantedGameConteinerLeft {
+    padding-left: 3rem;
+  }
+  .mostWantedGameBrand {
+    margin: 1em;
+    font-size: 5vmin;
+  }
+}
+
+@media (min-width: 992px) {
+  #mainNav {
+    box-shadow: none;
+    background-color: transparent;
+  }
+  #mainNav .navbar-brand {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  #mainNav .navbar-brand:hover {
+    color: #fff;
+  }
+  #mainNav .navbar-nav .nav-item .nav-link {
+    color: rgba(255, 255, 255, 0.95);
+    padding: 0 1rem;
+  }
+  #mainNav .navbar-nav .nav-item .nav-link:hover {
+    color: #fff;
+  }
+  #mainNav .navbar-nav .nav-item:last-child .nav-link {
+    padding-right: 0;
+  }
+  #mainNav.navbar-shrink {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+  }
+  #mainNav.navbar-shrink .navbar-brand {
+    color: #212529;
+  }
+  #mainNav.navbar-shrink .navbar-brand:hover {
+    color: #6cdece;
+  }
+  #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
+    color: #212529;
+  }
+  #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
+    color: #6cdece;
+  }
+}
+
+@media (min-width: 576px) { 
+
+
+
+}
+
+@media (min-width: 450px) { 
+
+
+
 }
