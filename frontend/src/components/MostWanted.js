@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { connect } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
-import Preloader from "./Preloader"
+import PreloaderFilter from "./PreloaderFilter"
 
 const MostWanted = (props) => {
   const [mostVisitArticles, setMostVisitArticles] = useState([])
@@ -16,7 +16,7 @@ const MostWanted = (props) => {
       .catch((e) => console.log(e))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  if (loading) return <Preloader />
+  if (loading) return <PreloaderFilter />
   if (!mostVisitArticles.length) return <p>Error...</p> // manejar esto!
   return (
     <>
