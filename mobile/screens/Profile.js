@@ -21,14 +21,14 @@ import { useFormik } from "formik"
 import * as Yup from "yup"
 import Icon from "react-native-vector-icons/FontAwesome"
 const Profile = () => {
+  const user = useSelector((state) => state.users.user)
+  const { directions, email, firstname, lastname, photo, phone } = user
   let userPhone = phone ? phone : "No phone number added"
   let editPhone = phone ? "Edit phone number" : "Add phone number"
   let addAddress =
     !directions || directions.length === 0
       ? "Add Address"
       : "Add another address"
-  const user = useSelector((state) => state.users.user)
-  const { directions, email, firstname, lastname, photo, phone } = user
   const [visibleDirectionForm, setVisibleDirectionForm] = useState(false)
   const [visiblePhone, setVisiblePhone] = useState(false)
   const dispatch = useDispatch()
@@ -45,9 +45,7 @@ const Profile = () => {
 
   const addPhone = async (values) => {
     setLoading(true)
-    console.log(values)
     const res = await dispatch(usersActions.updateAccount(values))
-    console.log(res)
     if (!res.success) setError(res.error)
     setLoading(false)
   }
@@ -130,6 +128,7 @@ const Profile = () => {
                   imageStyle={{ borderRadius: 5 }}
                 >
                   <Text
+                    onPress={() => setVisiblePhone(!visiblePhone)}
                     style={{
                       color: "white",
                       fontFamily: "Poppins_600SemiBold",
@@ -198,6 +197,7 @@ const Profile = () => {
                   imageStyle={{ borderRadius: 5 }}
                 >
                   <Text
+                    onPress={() => setVisiblePhone(!visiblePhone)}
                     style={{
                       color: "white",
                       fontFamily: "Poppins_600SemiBold",
