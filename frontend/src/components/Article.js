@@ -109,7 +109,7 @@ const Article = (props) => {
                         <img src="./assets/age.png" /> {minAge}
                      </p>
                      <div className="divCart">
-                     <img id='buy' src="./assets/buy.png" onClick={(e) => addToCart(e, _id)}/>
+                     <FaCartPlus id='buy' src="./assets/buy.png" onClick={(e) => addToCart(e, _id)}/>
                     </div>
                   </div>
                </div>
