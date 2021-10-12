@@ -150,7 +150,10 @@ const Header = (props) => {
                      }}
                   ></div>
                </div>
-               <FaBell className="iconsNav" />
+               <div className='relative'>
+                  <FaBell className="iconsNav" />
+                  <div className='notification'>2</div>
+               </div>
                <Link to="wishlist">
                   <FaHeart className="iconsNav" />
                </Link>

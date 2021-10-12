@@ -62,8 +62,6 @@ router
     usersControllers.getAccounts
   )
 
-router.route("/purchases").get(purchaseControllers.getPurchases)
-
 router
   .route("/stripe/get-payment-method/:id")
   .get(purchaseControllers.stripeTest)
@@ -83,11 +81,14 @@ router
     purchaseControllers.handlePurchase
   )
 
-router
-  .route("/user/purchase/:id")
+router.route("/purchases").get(purchaseControllers.getPurchases)
+
+router.route("/user/purchase/:id")
   .get(purchaseControllers.getPurchaseById)
   .put(purchaseControllers.updateStatus)
   .delete(purchaseControllers.deletePurchase) // only dev stage!
+
+router.route("/user/purchases/:userId").get(purchaseControllers.getPurchasesByUserId)
 
 // USER DIRECTIONS ROUTES
 router
