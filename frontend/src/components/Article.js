@@ -66,7 +66,7 @@ const Article = (props) => {
                            fontWeight: "bold",
                         }}
                      >
-                        ${price} USD
+                        ${price.toFixed(2)} USD
                      </p>
                   ) : (
                      <div className="priceArticle">
@@ -79,7 +79,7 @@ const Article = (props) => {
                               paddingRight: "1.2rem",
                            }}
                         >
-                           ${price}
+                           ${price.toFixed(2)}
                         </p>
                         <p
                            style={{
@@ -88,7 +88,7 @@ const Article = (props) => {
                               fontWeight: "bold",
                            }}
                         >
-                           ${discountPrice} USD
+                           ${discountPrice.toFixed(2)} USD
                         </p>
                      </div>
                   )}
