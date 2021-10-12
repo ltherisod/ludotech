@@ -29,55 +29,70 @@ const Checkout = (props) => {
                <div>
                   {articles.map((article) => {
                      return (
-                        <div
-                           key={article._id}
-                           className="d-flex justify-content-between"
-                        >
-                           <div className="leftCheckout">
-                              <h4>{article.name}</h4>
-                              <p>{article.brand}</p>
-                           </div>
-                           <div className="rightCheckout d-flex">
-                              <h4 className="pe-5">
-                                 x{" "}
-                                 <span className="textQuantity">
-                                    {article.quantity}
-                                 </span>
-                                 u
-                              </h4>
-                              {article.hasDiscount === false ? (
-                                 <h4>${article.price.toFixed(2)} USD</h4>
-                              ) : (
-                                 <div className="d-flex">
-                                    <h4
-                                       style={{
-                                          textDecoration: "line-through",
-                                          paddingRight: "1.2rem",
-                                       }}
-                                    >
-                                       ${article.price.toFixed(2)}
-                                    </h4>
-                                    <h4>
-                                       <span
+                        <>
+                           <div
+                              key={article._id}
+                              className="d-flex justify-content-between"
+                           >
+                              <div className="leftCheckout">
+                                 <h4>{article.name}</h4>
+                                 <p>{article.brand}</p>
+                              </div>
+                              <div className="rightCheckout d-flex">
+                                 <h4 className="pe-5">
+                                    x{" "}
+                                    <span className="textQuantity">
+                                       {article.quantity}
+                                    </span>
+                                    u
+                                 </h4>
+                                 {article.hasDiscount === false ? (
+                                    <h4>${article.price.toFixed(2)} USD</h4>
+                                 ) : (
+                                    <div className="d-flex">
+                                       <h4
                                           style={{
-                                             color: "green",
+                                             textDecoration: "line-through",
+                                             paddingRight: "1.2rem",
                                           }}
                                        >
-                                          ${article.discountPrice.toFixed(2)}
-                                       </span>{" "}
-                                       USD
-                                    </h4>
-                                 </div>
+                                          ${article.price.toFixed(2)}
+                                       </h4>
+                                       <h4>
+                                          <span
+                                             style={{
+                                                color: "green",
+                                             }}
+                                          >
+                                             ${article.discountPrice.toFixed(2)}
+                                          </span>{" "}
+                                          USD
+                                       </h4>
+                                    </div>
+                                 )}
+                              </div>
+                           </div>
+                           <hr style={{ height: "2px" }}></hr>
+                           <div className="d-flex justify-content-between">
+                              <h4>Total: </h4>
+                              {!article.hasDiscount ? (
+                                 <h4>${purchase.total.toFixed(2)} USD</h4>
+                              ) : (
+                                 <h4>
+                                    $
+                                    {(
+                                       article.quantity *
+                                       (article.hasDiscount
+                                          ? article.discountPrice
+                                          : article.price)
+                                    ).toFixed(2)}{" "}
+                                    USD
+                                 </h4>
                               )}
                            </div>
-                        </div>
+                        </>
                      )
                   })}
-                  <hr style={{ height: "2px" }}></hr>
-                  <div className="d-flex justify-content-between">
-                     <h4>Total: </h4>
-                     <h4>${purchase.total.toFixed(2)} USD</h4>
-                  </div>
                   <hr style={{ height: "5px" }}></hr>
                   <h3>Send to:</h3>
                   <div>
@@ -86,7 +101,7 @@ const Checkout = (props) => {
                         <span style={{ color: "gray", marginRight: "10px" }}>
                            {direction.street}
                         </span>{" "}
-                        NÂ°{" "}
+                        N°{" "}
                         <span style={{ color: "gray", marginRight: "10px" }}>
                            {direction.number}
                         </span>{" "}
@@ -134,17 +149,33 @@ const Checkout = (props) => {
                         alt="codeBar"
                         style={{ width: "12vw" }}
                      />
-                     <p>{paymentDetails.orderId}</p>
+                     {paymentDetails.method === "PAYPAL" && (
+                        <p>{paymentDetails.orderId}</p>
+                     )}
+                     {paymentDetails.method === "STRIPE" && (
+                        <>
+                           <p>
+                              {paymentDetails.orderId
+                                 .replace(/[a-zA-Z]/g, 0)
+                                 .slice(4, 23)}
+                           </p>
+                           <div className="bg}warning">
+                              <a href={paymentDetails.receipt}>
+                                 See additional receipt
+                              </a>
+                           </div>
+                        </>
+                     )}
                   </div>
                   <button
-               type="button"
-               className="text-center bold"
-               onClick={() => {
-                  dispatch(usersActions.getReceipt(purchase._id))
-               }}
-               >
-               Download PDF
-            </button>
+                     type="button"
+                     className="text-center bold"
+                     onClick={() => {
+                        dispatch(usersActions.getReceipt(purchase._id))
+                     }}
+                  >
+                     Download PDF
+                  </button>
                </div>
             </div>
             <button
