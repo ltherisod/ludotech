@@ -3,18 +3,31 @@ import { Link, NavLink } from "react-router-dom"
 import { FaShoppingCart, FaBell, FaHeart } from "react-icons/fa"
 import { useSelector, useDispatch } from "react-redux"
 import usersActions from "../redux/actions/usersActions"
+import toast, { Toaster } from "react-hot-toast"
+import { toastTest } from "./ToastTest"
 const iconUser = "https://i.postimg.cc/pd1gvVR7/iconuser1.png"
-
 const HOST = "https://lodotechgames.herokuapp.com"
 
 const Header = (props) => {
    const user = useSelector((state) => state.users.user)
    const dispatch = useDispatch()
+
    return (
       <nav
          className="navbar navbar-expand-lg navbar-light fixed-top py-3"
          id="mainNav"
       >
+         <Toaster
+            containerStyle={{
+               top: 80,
+               left: 20,
+               bottom: 20,
+               right: 20,
+            }}
+            toastOptions={{
+               duration: 1500,
+            }}
+         />
          <div className="container px-4 px-lg-5">
             <a className="navbar-brand" href="#top">
                <h3 id="navLogo">ludotech</h3>
@@ -150,13 +163,14 @@ const Header = (props) => {
                      }}
                   ></div>
                </div>
-               <div className='relative'>
+               <div className="relative">
                   <FaBell className="iconsNav" />
-                  <div className='notification'>2</div>
+                  <div className="notification">2</div>
                </div>
                <Link to="wishlist">
                   <FaHeart className="iconsNav" />
                </Link>
+               {/* <FaHeart className="iconsNav" onClick={toastTest()} /> */}
                <Link to="/cart" onClick={() => window.scrollTo(0, 0)}>
                   <FaShoppingCart className="iconsNav" />
                </Link>
