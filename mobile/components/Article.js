@@ -89,7 +89,7 @@ const Article = (props) => {
         <View style={styles.gameDataBox}>
           <View style={styles.gameDataLine}>
             <Image style={styles.icons} source={require("../assets/gener.png")} />
-            {genres.map((genre) => <Text style={styles.dataText}>{genre.name}</Text>)}
+            {genres.map((genre) => <Text key={genre._id} style={styles.dataText}>{genre.name}</Text>)}
           </View>
           <View style={styles.gameDataLine}>
             <Image style={styles.icons} source={require("../assets/type.png")} />

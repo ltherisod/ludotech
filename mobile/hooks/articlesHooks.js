@@ -122,7 +122,7 @@ export const useFilters = () => {
   }
 
   const inputBoolean = (e) => {
-    if (e.target.checked) {
+    if (e) {
       setFilters({
         ...filters,
         hasDiscount: true,
