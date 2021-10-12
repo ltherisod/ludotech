@@ -21,17 +21,17 @@ const Dashboard = ({render}) => {
             })
             .catch(e => console.log(e))
 
-        axios.get('http://localhost:4000/api/users-count',
+        axios.get('https://lodotechgames.herokuapp.com/api/users-count',
             {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
             .then(res=> setUsers(res.data.response))
             .catch(e => console.log(e))
 
-        axios.get('http://localhost:4000/api/last-articles',
+        axios.get('https://lodotechgames.herokuapp.com/api/last-articles',
             {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
             .then(res=> setArticles(res.data.response))
             .catch(e => console.log(e))
 
-        axios.get('http://localhost:4000/api/last-registered',
+        axios.get('https://lodotechgames.herokuapp.com/api/last-registered',
             {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
             .then(res=> setRegistered(res.data.response))
             .catch(e => console.log(e))

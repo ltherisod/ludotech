@@ -40,7 +40,7 @@ const Sales = ({scroll}) => {
     const changeStatus = () => {
         console.log(newStatus)
         if(newStatus !== 'Select a new status') {
-            axios.put(`http://localhost:4000/api/user/purchase/${purchaseFound._id}`,{status: newStatus})
+            axios.put(`https://lodotechgames.herokuapp.com/api/user/purchase/${purchaseFound._id}`,{status: newStatus})
                 .then(res => {
                     setPurchaseFound(res.data.response)
                 })

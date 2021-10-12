@@ -1,7 +1,7 @@
 import axios from "axios"
 import fileDownload from "js-file-download"
 
-const HOST = "http://localhost:4000"
+const HOST = "https://lodotechgames.herokuapp.com"
 
 const usersActions = {
   logInOrSignUp: (data, action) => {
