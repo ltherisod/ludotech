@@ -15,7 +15,8 @@ const WishList = (props) => {
   }, [wishList])
 
   const inputFilterHandler = (e) => {
-    setSearched(wishList.filter(product => product.name.replace(/ /g, '').toUpperCase().startsWith(e.replace(/ /g, '').toLowerCase())))
+    // console.log(e.nativeEvent.text)
+    setSearched(wishList.filter(product => product.name.replace(/ /g, '').toLowerCase().startsWith(e.nativeEvent.text.replace(/ /g, '').toLowerCase())))
   }
 
   return (
