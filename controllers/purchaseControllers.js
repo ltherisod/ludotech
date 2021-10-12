@@ -1,8 +1,6 @@
 const Purchase = require("../models/Purchase")
 const User = require("../models/User")
 const Article = require("../models/Article")
-const pdf = require("html-pdf")
-const billTemplate = require("../config/billTemplates/PurchaseBill")
 const pdfService = require("../services/pdf-service")
 const stripe = require("stripe")(process.env.STRIPE_SECRET)
 
@@ -89,33 +87,6 @@ const purchaseControllers = {
         success: true,
         response: { purchase, user },
         error: null,
-      })
-      /* prueba de factura */
-      // req.body.paymentDetails: { method: 'PAYPAL', orderId: '9CK75805B82770825' }
-      // console.log("antes de hacer el pedido",purchase)
-      // console.log(purchase.articles)
-      // console.log(purchase.total)
-      // console.log(purchase.paymentDetails)
-      // console.log(purchase.direction.street)
-      // console.log(purchase.timestamp)
-      // console.log(purchase._id)
-      // console.log(req.user)
-      const billBody = {
-        userName: req.user.firstname + " " + req.user.lastname,
-        userEmail: req.user.email,
-        purchaseId: purchase._id,
-        purchaseDate: purchase.timestamp,
-        paymentMethod: purchase.paymentDetails.method,
-        paymentId: purchase.paymentDetails.orderId,
-        billingAddress: purchase.direction,
-        articles: purchase.articles,
-        totalPayment: purchase.total,
-      }
-
-      pdf.create(billTemplate(billBody), {}).toFile("result.pdf", (e) => {
-        if (e) {
-          throw new Error("Something went wrong making the bill")
-        }
       })
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })

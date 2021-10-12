@@ -21,6 +21,7 @@ const articleSchema = new mongoose.Schema({
   description: { type: String },
   weight: { type: Number, required: false },
   visitsCount: { type: Number, default: 0 },
+  videoId: { type: String },
 })
 
 const Article = mongoose.model("article", articleSchema)
