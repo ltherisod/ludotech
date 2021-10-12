@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef } from "react"
-import { StyleSheet, Text, View, ScrollView, ImageBackground, Image, TouchableOpacity, Alert, Button } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, ImageBackground, Image, TouchableOpacity, Alert, Modal, Pressable } from 'react-native'
 import HeroPages from '../components/HeroPages'
 import { useArticle, useRelatedArticles } from '../hooks/articlesHooks'
 import articlesActions from "../redux/actions/articlesActions"
@@ -7,7 +7,10 @@ import usersActions from "../redux/actions/usersActions"
 import { connect } from "react-redux"
 import YoutubePlayer from "react-native-youtube-iframe"
 import ArticleCarousel from "../components/ArticleCarousel"
+
 const Article = (props) => {
+  const [modalVisible, setModalVisible] = useState(false)
+ 
 
   const [article, loading] = useArticle(props.route.params.id)
   const {
@@ -103,14 +106,37 @@ const Article = (props) => {
           <ImageBackground style={styles.articleDecoImgOne} source={{ uri: `${decoPhotos ? decoPhotos[0] : [] }` }} >
           </ImageBackground>
         </View>
-        
-        <View style={styles.articleDescription}>
-          <Text style={styles.articleDescriptionText} >{description}</Text>
+        <View style={styles.centeredView}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>{description}</Text>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <Text style={styles.textStyle}>Close</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
+      <Pressable
+        style={[styles.button, styles.buttonOpen]}
+        onPress={() => setModalVisible(true)}
+      >
+        <Text style={styles.textStyle}>Game Description</Text>
+      </Pressable>
+    </View>
           <ImageBackground style={styles.articleDecoImgTwo} source={{ uri: `${decoPhotos ? decoPhotos[1] : [] }` }} >
           </ImageBackground>
-        </View>
-        
-
         <View style={{alignItems:"center", marginVertical:10}} >
            <YoutubePlayer
         height={300}
@@ -125,7 +151,7 @@ const Article = (props) => {
           <ImageBackground style={styles.articleDecoImgThree} source={{ uri: `${decoPhotos ? decoPhotos[2] : [] }` }} >
           </ImageBackground>
         </View>
-        
+    
       </ImageBackground>
     </ScrollView>
   )
@@ -240,6 +266,49 @@ const styles = StyleSheet.create({
     marginHorizontal:25,
     fontSize:20
 
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  buttonOpen: {
+    backgroundColor: "#e561ae",
+  },
+  buttonClose: {
+    backgroundColor: "#7c51b0",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "justify",
+    fontFamily:"Poppins_600SemiBold",
+    color:"gray",
   }
 
   
