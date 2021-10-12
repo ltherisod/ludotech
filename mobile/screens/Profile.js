@@ -61,7 +61,7 @@ const Profile = () => {
 
    return (
         <ScrollView>
-         <ImageBackground style={{width:"100%", minHeight:400, alignItems:"center"}} source={{uri: "https://i.postimg.cc/3wVXYt59/back-Ludo3.png"}}>
+         <ImageBackground style={{width:"100%", minHeight:1000, alignItems:"center"}} source={{uri: "https://i.postimg.cc/3wVXYt59/back-Ludo3.png"}}>
             <HeroPages />
             <Text style={styles.profileTittle}>Profile</Text>
             <View style={{flexDirection:"row", justifyContent:"center", alignItems:"center", marginVertical:15}}>
