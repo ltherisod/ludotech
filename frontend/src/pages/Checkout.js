@@ -4,7 +4,7 @@ import HeroPages from "../components/HeroPages"
 
 const Checkout = (props) => {
    const { purchase } = props.location.state.response
-   const { articles, direction, status, timestamp } = purchase
+   const { articles, direction, status, timestamp, paymentDetails } = purchase
    console.log(purchase)
    return (
       <div
@@ -23,7 +23,7 @@ const Checkout = (props) => {
                <h1>Purchase Summary</h1>
                <hr style={{ height: "5px" }}></hr>
                <div>
-                  {articles.map((article, index) => {
+                  {articles.map((article) => {
                      return (
                         <div
                            key={article._id}
@@ -41,7 +41,30 @@ const Checkout = (props) => {
                                  </span>
                                  u
                               </h4>
-                              <h4>${article.price} USD</h4>
+                              {article.hasDiscount === false ? (
+                                 <h4>${article.price.toFixed(2)} USD</h4>
+                              ) : (
+                                 <div className="d-flex">
+                                    <h4
+                                       style={{
+                                          textDecoration: "line-through",
+                                          paddingRight: "1.2rem",
+                                       }}
+                                    >
+                                       ${article.price.toFixed(2)}
+                                    </h4>
+                                    <h4>
+                                       <span
+                                          style={{
+                                             color: "green",
+                                          }}
+                                       >
+                                          ${article.discountPrice.toFixed(2)}
+                                       </span>{" "}
+                                       USD
+                                    </h4>
+                                 </div>
+                              )}
                            </div>
                         </div>
                      )
@@ -49,27 +72,66 @@ const Checkout = (props) => {
                   <hr style={{ height: "2px" }}></hr>
                   <div className="d-flex justify-content-between">
                      <h4>Total: </h4>
-                     <h4>${purchase.total} USD</h4>
+                     <h4>${purchase.total.toFixed(2)} USD</h4>
                   </div>
                   <hr style={{ height: "5px" }}></hr>
                   <h3>Send to:</h3>
                   <div>
                      <p>
-                        Street: {direction.street} - State: {direction.state} -
-                        City: {direction.city}
+                        <span>Street:</span>{" "}
+                        <span style={{ color: "gray", marginRight: "10px" }}>
+                           {direction.street}
+                        </span>{" "}
+                        N°{" "}
+                        <span style={{ color: "gray", marginRight: "10px" }}>
+                           {direction.number}
+                        </span>{" "}
+                        Department:{" "}
+                        <span style={{ color: "gray", marginRight: "10px" }}>
+                           {direction.department}
+                        </span>
                      </p>
                      <p>
-                        Number: {direction.number} - Department:{" "}
-                        {direction.department} - Zip Code: {direction.zipCode}
+                        City:{" "}
+                        <span style={{ color: "gray", marginRight: "10px" }}>
+                           {direction.city}
+                        </span>{" "}
+                        State:{" "}
+                        <span style={{ color: "gray", marginRight: "10px" }}>
+                           {direction.state}
+                        </span>{" "}
+                        Zip Code:{" "}
+                        <span style={{ color: "gray", marginRight: "10px" }}>
+                           {direction.zipCode}
+                        </span>
                      </p>
-                     <p>Receiver: {direction.receiver}</p>
+                     <p>
+                        Receiver:{" "}
+                        <span style={{ color: "gray", marginRight: "10px" }}>
+                           {direction.receiver}
+                        </span>
+                     </p>
                   </div>
                   <hr style={{ height: "5px" }}></hr>
                   <div className="d-flex justify-content-between">
-                     <h4>STATUS: </h4>
+                     <h4>Status: </h4>
                      <h4 style={{ color: "orange" }}>{status}</h4>
                   </div>
                   <hr style={{ height: "5px" }}></hr>
+                  <p>
+                     Selected payment method:{" "}
+                     <span style={{ color: "darkgreen" }}>
+                        {paymentDetails.method}
+                     </span>
+                  </p>
+                  <div className="d-flex justify-content-center flex-column align-items-center">
+                     <img
+                        src="https://i.postimg.cc/xC3sq7tJ/pngkey-com-bar-code-png-131088.png"
+                        alt="codeBar"
+                        style={{ width: "12vw" }}
+                     />
+                     <p>{paymentDetails.orderId}</p>
+                  </div>
                   <h3 className="text-center bold">Dowloand PDF</h3>
                </div>
             </div>

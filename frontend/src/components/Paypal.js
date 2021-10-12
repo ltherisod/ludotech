@@ -9,6 +9,13 @@ const Paypal = ({ formik, user, history }) => {
    const shoppingCart = useSelector((state) => state.users.shoppingCart)
    const paypal = useRef()
    const [purchase, loading, error] = usePurchase()
+   const checkout = (res) => {
+      history.push({
+         pathname: "/checkout",
+         state: res,
+      })
+      window.scrollTo(0, 0)
+   }
    useEffect(() => {
       window.paypal
          .Buttons({
@@ -58,10 +65,7 @@ const Paypal = ({ formik, user, history }) => {
                const res = await purchase(details)
                console.log({ res, data, details })
                if (res.success) {
-                  history.push({
-                     pathname: "/checkout",
-                     state: res,
-                  })
+                  checkout(res)
                }
             },
             onError: (err) => {
