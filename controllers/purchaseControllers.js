@@ -7,83 +7,83 @@ const pdfService = require("../services/pdf-service")
 const stripe = require("stripe")(process.env.STRIPE_SECRET)
 
 const purchaseControllers = {
-   handlePurchase: async (req, res) => {
-      try {
-         // el token por headers. El carrito lo sacamos primeor de passport, luego de validar el token, para validar si no viene vacío.
-         // El carrito hay que buscarlo sí o sí después de eso, para poder parsearlo.
-         // Por post me manda el resto de la data: direction y payMethod.
-         if (!req.user.shoppingCart.length)
-            throw new Error("The shopping cart is empty.")
+  handlePurchase: async (req, res) => {
+    try {
+      // el token por headers. El carrito lo sacamos primeor de passport, luego de validar el token, para validar si no viene vacío.
+      // El carrito hay que buscarlo sí o sí después de eso, para poder parsearlo.
+      // Por post me manda el resto de la data: direction y payMethod.
+      if (!req.user.shoppingCart.length)
+        throw new Error("The shopping cart is empty.")
 
-         const user = await User.findOne({ _id: req.user._id })
-            .populate({
-               path: "shoppingCart.article wishList",
-               populate: { path: "brand gameType genres", select: "name -_id" },
-               select: "-__v",
-            })
-            .select("shoppingCart wishList")
+      const user = await User.findOne({ _id: req.user._id })
+        .populate({
+          path: "shoppingCart.article wishList",
+          populate: { path: "brand gameType genres", select: "name -_id" },
+          select: "-__v",
+        })
+        .select("shoppingCart wishList")
 
-         // validar stock.
-         user.shoppingCart.forEach((item) => {
-            if (item.article.stock < item.quantity) {
-               throw new Error(
-                  `Error. The article ${item.article.name} ${
-                     item.article.stock
-                        ? `only has ${item.article.stock} units, and you tried to buy ${item.quantity}`
-                        : "is out of stock."
-                  }`
-               )
-            }
-         })
+      // validar stock.
+      user.shoppingCart.forEach((item) => {
+        if (item.article.stock < item.quantity) {
+          throw new Error(
+            `Error. The article ${item.article.name} ${
+              item.article.stock
+                ? `only has ${item.article.stock} units, and you tried to buy ${item.quantity}`
+                : "is out of stock."
+            }`
+          )
+        }
+      })
 
-         // calcular total (?)
-         const total = user.shoppingCart.reduce(
-            (total, item) =>
-               item.hasDiscount
-                  ? total + item.quantity * item.article.discountPrice
-                  : total + item.quantity * item.article.price,
-            0
-         )
+      // calcular total (?)
+      const total = user.shoppingCart.reduce(
+        (total, item) =>
+          item.hasDiscount
+            ? total + item.quantity * item.article.discountPrice
+            : total + item.quantity * item.article.price,
+        0
+      )
 
-         // parsear el shopping cart a la forma en que lo toma el modelo purchase.
-         const parsedShoppingCart = user.shoppingCart.map((item) => ({
-            ...item.article._doc,
-            genres: item.article.genres.map((g) => g.name),
-            brand: item.article.brand.name,
-            gameType: item.article.gameType.name,
-            quantity: item.quantity,
-         }))
+      // parsear el shopping cart a la forma en que lo toma el modelo purchase.
+      const parsedShoppingCart = user.shoppingCart.map((item) => ({
+        ...item.article._doc,
+        genres: item.article.genres.map((g) => g.name),
+        brand: item.article.brand.name,
+        gameType: item.article.gameType.name,
+        quantity: item.quantity,
+      }))
 
-         // crear la compra
-         const purchase = await new Purchase({
-            user: req.user._id,
-            articles: parsedShoppingCart,
-            direction: req.body.direction,
-            paymentDetails: req.body.paymentDetails,
-            total,
-         }).save()
+      // crear la compra
+      const purchase = await new Purchase({
+        user: req.user._id,
+        articles: parsedShoppingCart,
+        direction: req.body.direction,
+        paymentDetails: req.body.paymentDetails,
+        total,
+      }).save()
 
-         // actualizar stock
-         await Promise.all(
-            user.shoppingCart.map((item) =>
-               Article.findOneAndUpdate(
-                  { _id: item.article._id.toString() },
-                  { $inc: { stock: -item.quantity } }
-               )
-            )
-         )
+      // actualizar stock
+      await Promise.all(
+        user.shoppingCart.map((item) =>
+          Article.findOneAndUpdate(
+            { _id: item.article._id.toString() },
+            { $inc: { stock: -item.quantity } }
+          )
+        )
+      )
 
-         // actualizar wish list y shopping cart.
-         user.wishList = user.wishList.filter((wishItem) =>
-            user.shoppingCart.every(
-               (cartItem) =>
-                  cartItem.article._id.toString() !== wishItem._id.toString()
-            )
-         )
-         user.shoppingCart = []
-         await user.save()
+      // actualizar wish list y shopping cart.
+      user.wishList = user.wishList.filter((wishItem) =>
+        user.shoppingCart.every(
+          (cartItem) =>
+            cartItem.article._id.toString() !== wishItem._id.toString()
+        )
+      )
+      user.shoppingCart = []
+      await user.save()
 
-         // enviar mail, generar la factura, etc.
+      // enviar mail, generar la factura, etc.
 
       res.json({
         success: true,
@@ -118,6 +118,8 @@ const purchaseControllers = {
         }
       })
     } catch (e) {
+      console.log(e.message)
+
       res.json({ success: false, response: null, error: e.message })
     }
   },
