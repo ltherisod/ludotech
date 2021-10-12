@@ -1,14 +1,14 @@
 import React from "react"
 import { StyleSheet, Text, View } from "react-native"
 
-const Paypal = () => {
+const Stripe = () => {
   return (
     <View>
-      <Text>Paypal</Text>
+      <Text>Stripe</Text>
     </View>
   )
 }
 
-export default Paypal
+export default Stripe
 
 const styles = StyleSheet.create({})

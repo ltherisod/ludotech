@@ -16,7 +16,7 @@ import { connect, useSelector } from "react-redux"
 import { useLoginLS } from "../hooks/usersHooks"
 import { Image, ImageBackground, StyleSheet } from "react-native"
 import NavigationBottom from "./navigationBottom"
-import Paypal from "../screens/Paypal"
+import Stripe from "../screens/Stripe"
 const Drawer = createDrawerNavigator()
 
 const Navigator = (props) => {
@@ -100,7 +100,7 @@ const Navigator = (props) => {
         </>
       )}
       {user && <Drawer.Screen name="Log Out" component={LogOut} />}
-      <Drawer.Screen name="Paypal" component={Paypal} />
+      <Drawer.Screen name="Stripe" component={Stripe} />
     </Drawer.Navigator>
   )
 }

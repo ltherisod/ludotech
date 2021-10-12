@@ -40,7 +40,8 @@
     "react-redux": "^7.2.5",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "@stripe/stripe-react-native": "0.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
