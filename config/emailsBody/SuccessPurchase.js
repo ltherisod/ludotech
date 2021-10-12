@@ -6,7 +6,7 @@ const SuccessPurchase = (data) => {
       </div>
     </header>
     <main style="width:80vw;margin:0 auto;">
-      <h3>Hello ${data.name}</h3>
+      <h3>Hello ${data.user.name}</h3>
       <p style="font-size:1.2rem">We´re glad to let you know that the purchase has been successfully completed.</p>
       <br/>
       <p>Thank you for your purchase.</p>
