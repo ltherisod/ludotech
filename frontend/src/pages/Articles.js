@@ -44,7 +44,7 @@ const Articles = (props) => {
                      {loadingArticles ? (
                         <PreloaderFilter />
                      ) : (
-                        articles.articles.map((article) => {
+                        (articles) && articles.articles.map((article) => {
                            return (
                               <Article
                                  history={props.history}
@@ -55,7 +55,7 @@ const Articles = (props) => {
                         })
                      )}
                   </div>
-                  {articles.totalPages > 1 && (
+                  {(articles && articles.totalPages > 1) && (
                      <div
                         style={{
                            display: "flex",

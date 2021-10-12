@@ -2109,10 +2109,76 @@ h2.articles {
   font-weight: lighter;
 }
 
+.notificationsHeader {
+  background-color: white;
+  /* box-shadow: 1px 1px 1px 5px rgba(0, 0, 0, 0.1); */
+  border-radius: 5px;
+  width: 30vw;
+  margin: 3vmin;
+  padding: 2vmin;
+  display: flex;
+  flex-direction: column;
+  gap: 2vmin;
+  position: absolute;
+  /* border: 3px solid #e3e3e3; */
+  top: 110%;
+  right: -500%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.notificationsHeader h5 {
+  margin: 0;
+}
+
+.notificationHeader {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1vmin;
+  gap: 2vmin;
+}
+
+.notificationsHeader p {
+  margin: 0;
+  flex: 1;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.iconNoti {
+  height: 4vw;
+  width: 4vw;
+  background-size: cover;
+  background-position: center;
+}
+
+.notificationsHeader:after,
+.notificationsHeader:before {
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.notificationsHeader:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #ffffff;
+  border-width: 16px;
+  margin-left: -21px;
+}
+.notificationsHeader:before {
+  border-color: rgba(194, 225, 245, 0);
+  border-bottom-color: #5a585815;
+  border-width: 20px;
+  margin-left: -25px;
+}
 
 /* MEDIAQUERIES */
 
-@media (max-width: 992px) { 
+@media (max-width: 992px) {
   .hero {
     padding-top: 200px;
     flex-wrap: wrap;
@@ -2128,7 +2194,7 @@ h2.articles {
     background-repeat: no-repeat;
     align-self: center;
   }
-  
+
   .mostWantedGameConteiner,
   .mostWantedGameConteinerLeft {
     padding-right: 3rem;
@@ -2139,7 +2205,7 @@ h2.articles {
     justify-content: space-around;
     align-items: flex-end;
   }
-  
+
   .mostWantedGameConteinerLeft {
     padding-left: 3rem;
   }
@@ -2188,14 +2254,8 @@ h2.articles {
   }
 }
 
-@media (min-width: 576px) { 
-
-
-
+@media (min-width: 576px) {
 }
 
-@media (min-width: 450px) { 
-
-
-
+@media (min-width: 450px) {
 }
