@@ -57,6 +57,9 @@ const Filter = (props) => {
         <View style={styles.filterUltracontainer}>
             <View style={styles.filterBoxContainer}>
                 <TextInput placeholder="Search a product" style={styles.search} onChangeText={(e) => {inputHandle(e)}}/>
+                <View style={styles.filtersBox}>
+
+                </View>
                 <View style={styles.filterDiscount}>
                     <Text>With discount</Text>
                     <CheckBox
@@ -89,5 +92,7 @@ const styles = StyleSheet.create({
     filterDiscount: {
 
     },
+    filtersBox: {
 
+    },
 })
