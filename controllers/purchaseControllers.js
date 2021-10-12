@@ -1,13 +1,10 @@
 const Purchase = require("../models/Purchase")
 const User = require("../models/User")
 const Article = require("../models/Article")
-const pdf = require('html-pdf')
-const billTemplate = require('../config/billTemplates/PurchaseBill')
-
-
-const stripe = require("stripe")(
-  "sk_test_51Ji6QGLXO1yt6E5Tp7svYzRvxp7om11E87t2NsjGtBMbwFREWsw66ikyifHgPetgQwHlXkS8WhmZ3aOiKvlT3aON007Q2ca3LK"
-)
+const pdf = require("html-pdf")
+const billTemplate = require("../config/billTemplates/PurchaseBill")
+const pdfService = require("../services/pdf-service")
+const stripe = require("stripe")(process.env.STRIPE_SECRET)
 
 const purchaseControllers = {
   handlePurchase: async (req, res) => {
@@ -92,19 +89,19 @@ const purchaseControllers = {
         success: true,
         response: { purchase, user },
         error: null,
-     })
-     /* prueba de factura */
-     // req.body.paymentDetails: { method: 'PAYPAL', orderId: '9CK75805B82770825' }
-     // console.log("antes de hacer el pedido",purchase)
-     // console.log(purchase.articles)
-     // console.log(purchase.total)
-     // console.log(purchase.paymentDetails)
-     // console.log(purchase.direction.street)
-     // console.log(purchase.timestamp)
-     // console.log(purchase._id)
-     // console.log(req.user)
-     const billBody = {
-        userName: req.user.firstname + ' ' + req.user.lastname,
+      })
+      /* prueba de factura */
+      // req.body.paymentDetails: { method: 'PAYPAL', orderId: '9CK75805B82770825' }
+      // console.log("antes de hacer el pedido",purchase)
+      // console.log(purchase.articles)
+      // console.log(purchase.total)
+      // console.log(purchase.paymentDetails)
+      // console.log(purchase.direction.street)
+      // console.log(purchase.timestamp)
+      // console.log(purchase._id)
+      // console.log(req.user)
+      const billBody = {
+        userName: req.user.firstname + " " + req.user.lastname,
         userEmail: req.user.email,
         purchaseId: purchase._id,
         purchaseDate: purchase.timestamp,
@@ -112,20 +109,18 @@ const purchaseControllers = {
         paymentId: purchase.paymentDetails.orderId,
         billingAddress: purchase.direction,
         articles: purchase.articles,
-        totalPayment: purchase.total
-     }
-     
-     pdf.create(billTemplate(billBody), {}).toFile('result.pdf', (e) => {
+        totalPayment: purchase.total,
+      }
+
+      pdf.create(billTemplate(billBody), {}).toFile("result.pdf", (e) => {
         if (e) {
-           throw new Error("Something went wrong making the bill")
+          throw new Error("Something went wrong making the bill")
         }
-     })
-
-
-  } catch (e) {
-     res.json({ success: false, response: null, error: e.message })
-  }
-},
+      })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
   deletePurchase: async (req, res) => {
     try {
       // no deberíamos usar esto, esta para pruebas.
@@ -221,6 +216,26 @@ const purchaseControllers = {
         confirm: true,
       })
       res.json({ success: true, response: paymentIntent, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
+    }
+  },
+  createPurchasePDF: async (req, res) => {
+    try {
+      const { id } = req.params
+      const purchase = await Purchase.findOne({ _id: id })
+      if (!purchase) throw new Error("Purchase not found.")
+      const stream = res.writeHead(200, {
+        "Content-Type": "application/pdf",
+        "Content-Disposition": `attachment;filename=${
+          purchase._id || "invoice"
+        }.pdf`,
+      })
+      pdfService.buildPDF(
+        (chunk) => stream.write(chunk),
+        () => stream.end(),
+        purchase
+      )
     } catch (e) {
       res.json({ success: false, response: null, error: e.message })
     }

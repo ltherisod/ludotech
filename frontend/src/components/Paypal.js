@@ -75,11 +75,11 @@ const Paypal = ({ formik, user, history }) => {
          .render(paypal.current)
    }, [])
 
-   return (
-      <div className="container d-flex flex-column align-items-center justify-content-center">
-         <div ref={paypal}></div>
-      </div>
-   )
+  return (
+    <div className="container d-flex flex-column align-items-center justify-content-center">
+      <div ref={paypal}></div>
+    </div>
+  )
 }
 
 export default Paypal

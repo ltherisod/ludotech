@@ -1,8 +1,12 @@
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 import HeroPages from "../components/HeroPages"
+import usersActions from "../redux/actions/usersActions"
+import { useDispatch } from "react-redux"
 
 const Checkout = (props) => {
+   const dispatch = useDispatch()
+
    const { purchase } = props.location.state.response
    const { articles, direction, status, timestamp, paymentDetails } = purchase
    console.log(purchase)
@@ -82,7 +86,7 @@ const Checkout = (props) => {
                         <span style={{ color: "gray", marginRight: "10px" }}>
                            {direction.street}
                         </span>{" "}
-                        N°{" "}
+                        NÂ°{" "}
                         <span style={{ color: "gray", marginRight: "10px" }}>
                            {direction.number}
                         </span>{" "}
@@ -132,7 +136,15 @@ const Checkout = (props) => {
                      />
                      <p>{paymentDetails.orderId}</p>
                   </div>
-                  <h3 className="text-center bold">Dowloand PDF</h3>
+                  <button
+               type="button"
+               className="text-center bold"
+               onClick={() => {
+                  dispatch(usersActions.getReceipt(purchase._id))
+               }}
+               >
+               Download PDF
+            </button>
                </div>
             </div>
             <button
