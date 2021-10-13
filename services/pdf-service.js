@@ -12,26 +12,31 @@ const buildPDF = (dataCallback, endCallback, data) => {
     align: 'right'
   })
   doc.fontSize(28).text(`Ludotech`, {
-    align: 'left'
+    align: 'left',
+    lineBreak: true,
   })
-  doc.text('')
+  doc.fillColor('lightgray').fontSize(17).text('_________________________________________________', { lineBreak: true })
+  // doc.save().lineTo(100,300)
   // pdf body
   
-  doc.fontSize(25).text(`Purchase Summary`, {
+  doc.fillColor('black').fontSize(25).text(`Purchase Summary`, {
     align: 'left'
   })
   // // va una linea aca
+  doc.fillColor('lightgray').fontSize(17).text('_________________________________________________', { lineBreak: true })
   data.articles.map(article => {
-    doc.fontSize(15).text(`${article.name}  x ${article.quantity}U  ${article.hasDiscount ? article.price : ''}   ${article.hasDiscount ? article.discountPrice : article.price}` , {
+    doc.fillColor('black').fontSize(15).text(`${article.name}  x ${article.quantity}U  $ ${article.hasDiscount ? article.price : ''}  $ ${article.hasDiscount ? article.discountPrice : article.price}` , {
       align: 'justify'
     })
   })
   // va una linea delgada
-  doc.fontSize(15).text(`Total: ${data.total}`, {
+  doc.fillColor('lightgray').fontSize(17).text('_________________________________________________', { lineBreak: true })
+  doc.fillColor('black').fontSize(15).text(`Total: $ ${data.total}`, {
     align: 'left'
   })
   // va una linea 
-  doc.fontSize(25).text(`Send to:`, { 
+  doc.fillColor('lightgray').fontSize(17).text('_________________________________________________', { lineBreak: true })
+  doc.fillColor('black').fontSize(25).text(`Send to:`, { 
     align: 'left'
   })
   doc.fontSize(12).text(`Street: ${data.direction.street}  Nº: ${data.direction.number} Department: ${data.direction.department}`, { 
@@ -44,11 +49,13 @@ const buildPDF = (dataCallback, endCallback, data) => {
     align: 'left'
   })
   // va una linea 
-  doc.fontSize(15).text(`Status: ${data.status}`, { 
+  doc.fillColor('lightgray').fontSize(17).text('_________________________________________________', { lineBreak: true })
+  doc.fillColor('black').fontSize(15).text(`Status: ${data.status}`, { 
     align: 'left'
   })
   // va una linea
-  doc.fontSize(12).text(`Selected payment method: ${data.paymentDetails.method}`, { 
+  doc.fillColor('lightgray').fontSize(17).text('_________________________________________________', { lineBreak: true })
+  doc.fillColor('black').fontSize(12).text(`Selected payment method: ${data.paymentDetails.method}`, { 
     align: 'left'
   })
   // va codigo de barras
