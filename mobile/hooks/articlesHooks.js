@@ -227,11 +227,11 @@ export const useFilters = () => {
         })
         break
       case "121orMore":
+        delete filters.maxPrice
         setFilters({
           ...filters,
           minPrice: 121,
         })
-        delete filters.maxPrice
         break
       default:
         delete filters.minPrice
@@ -300,11 +300,11 @@ export const useFilters = () => {
         })
         break
       case "nineOrMore":
+        delete filters.maxPlayers
         setFilters({
           ...filters,
           minPlayers: 9,
         })
-        delete filters.maxPlayers
         break
       default:
         delete filters.minPlayers
@@ -321,6 +321,7 @@ export const useFilters = () => {
     inputSize,
     inputBrand,
     inputGenre,
-    inputGameType
+    inputGameType,
+    setFilters
   }
 }
