@@ -563,10 +563,12 @@ const usersControllers = {
     })
   },
   sendSuccessPurchase: (req, res) => {
+    // console.log("success", req.body.user)
+    // console.log("success", req.body.purchase)
     let mailOptions = {
       from: "Ludotehc <ludotechweb@gmail.com>",
-      to: `<${req.body.email}`,
-      subject: `Success purchase by ${req.body.name}`,
+      to: `<${req.body.user.email}`,
+      subject: `Success purchase by ${req.body.user.name}`,
       text: indexEmail.SuccessPurchase(req.body),
       html: indexEmail.SuccessPurchase(req.body),
     }
@@ -580,21 +582,22 @@ const usersControllers = {
     })
   },
   sendFailPurchase: (req, res) => {
-    let mailOptions = {
-      from: "Ludotehc <ludotechweb@gmail.com>",
-      to: `<${req.body.email}`,
-      subject: `Fail purchase by ${req.body.name}`,
-      text: indexEmail.FailPurchase(req.body),
-      html: indexEmail.FailPurchase(req.body),
-    }
-    transporter.sendMail(mailOptions, (e, data) => {
-      if (!e) {
-        res.json({ success: true, response: data, error: null })
-      } else {
-        res.json({ success: false, response: null, error: e.message })
-        console.log(e)
-      }
-    })
+    console.log("fail", req.body)
+    // let mailOptions = {
+    //   from: "Ludotehc <ludotechweb@gmail.com>",
+    //   to: `<${req.body.email}`,
+    //   subject: `Fail purchase by ${req.body.name}`,
+    //   text: indexEmail.FailPurchase(req.body),
+    //   html: indexEmail.FailPurchase(req.body),
+    // }
+    // transporter.sendMail(mailOptions, (e, data) => {
+    //   if (!e) {
+    //     res.json({ success: true, response: data, error: null })
+    //   } else {
+    //     res.json({ success: false, response: null, error: e.message })
+    //     console.log(e)
+    //   }
+    // })
   },
   sendUserBillCheckout: (req, res) => {
     let mailOptions = {
@@ -647,6 +650,7 @@ const usersControllers = {
       }
     })
   },
+  
 }
 
 module.exports = usersControllers
