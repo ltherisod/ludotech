@@ -3,9 +3,12 @@ import { FaHeart, FaRegHeart, FaCartPlus } from "react-icons/fa"
 import { useDispatch, useSelector } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
 import usersActions from "../redux/actions/usersActions"
+import toast from "react-hot-toast"
 
 const Article = (props) => {
    const wishlist = useSelector((state) => state.users.wishList)
+   const user = useSelector((state) => state.users.user)
+   console.log(user)
    const dispatch = useDispatch()
    const {
       name,
@@ -20,9 +23,44 @@ const Article = (props) => {
       iconPhotos,
    } = props.article
 
-   const addToCart = (e, id) => {
+   const addToCart = (e, id, value) => {
       e.stopPropagation()
       dispatch(articlesActions.updateCart("add", id))
+      toast.custom((t) => (
+         <div
+            className={`${
+               t.visible ? "animate-enter" : "animate-leave"
+            } bg-white flex`}
+            style={{
+               display: "flex",
+               alignContent: "center",
+               alignItems: "center",
+               padding: "5px 10px",
+               borderRadius: "15px",
+               backgroundImage:
+                  "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+               backgroundPosition: "center right 50px",
+               backgroundSize: "cover",
+            }}
+         >
+            <img
+               style={{ width: "55px", height: "55px" }}
+               className="h-3 w-3 rounded-full"
+               src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+               alt=""
+            />
+            <p
+               className="text-sm"
+               style={{
+                  marginBottom: 0,
+                  color: "#ff9424",
+                  fontWeight: "bold",
+               }}
+            >
+               You have {value} to the shopping cart
+            </p>
+         </div>
+      ))
    }
 
    const handleFav = (e) => {
@@ -45,15 +83,62 @@ const Article = (props) => {
                className="photosArticle"
                style={{ backgroundImage: `url('${iconPhotos}')` }}
             >
-               <div className="circleFav" onClick={(e) => handleFav(e)}>
-                  {wishlist.some((i) => {
-                     return i._id === _id
-                  }) ? (
-                     <FaHeart />
-                  ) : (
+               {user ? (
+                  <div className="circleFav" onClick={(e) => handleFav(e)}>
+                     {wishlist.some((i) => {
+                        return i._id === _id
+                     }) ? (
+                        <FaHeart />
+                     ) : (
+                        <FaRegHeart />
+                     )}
+                  </div>
+               ) : (
+                  <div
+                     className="circleFav"
+                     onClick={(e) => {
+                        e.stopPropagation()
+                        toast.custom((t) => (
+                           <div
+                              className={`${
+                                 t.visible ? "animate-enter" : "animate-leave"
+                              } bg-white flex`}
+                              style={{
+                                 display: "flex",
+                                 alignContent: "center",
+                                 alignItems: "center",
+                                 padding: "5px 10px",
+                                 borderRadius: "15px",
+                                 backgroundImage:
+                                    "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+                                 backgroundPosition: "center right 50px",
+                                 backgroundSize: "cover",
+                              }}
+                           >
+                              <img
+                                 style={{ width: "55px", height: "55px" }}
+                                 className="h-3 w-3 rounded-full"
+                                 src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+                                 alt=""
+                              />
+                              <p
+                                 className="text-sm"
+                                 style={{
+                                    marginBottom: 0,
+                                    color: "#ff9424",
+                                    fontWeight: "bold",
+                                 }}
+                              >
+                                 You must be logged in to add an item to your
+                                 wish list
+                              </p>
+                           </div>
+                        ))
+                     }}
+                  >
                      <FaRegHeart />
-                  )}
-               </div>
+                  </div>
+               )}
             </div>
             <div className="gameInfo">
                <div className="price">
@@ -108,9 +193,67 @@ const Article = (props) => {
                      <p>
                         <img src="./assets/age.png" /> {minAge}
                      </p>
-                     <div className="divCart">
-                     <FaCartPlus id='buy' src="./assets/buy.png" onClick={(e) => addToCart(e, _id)}/>
-                    </div>
+                     {user ? (
+                        <div className="divCart">
+                           <FaCartPlus
+                              id="buy"
+                              src="./assets/buy.png"
+                              onClick={(e) => addToCart(e, _id, name)}
+                           />
+                        </div>
+                     ) : (
+                        <div className="divCart">
+                           <FaCartPlus
+                              id="buy"
+                              src="./assets/buy.png"
+                              onClick={(e) => {
+                                 e.stopPropagation()
+                                 toast.custom((t) => (
+                                    <div
+                                       className={`${
+                                          t.visible
+                                             ? "animate-enter"
+                                             : "animate-leave"
+                                       } bg-white flex`}
+                                       style={{
+                                          display: "flex",
+                                          alignContent: "center",
+                                          alignItems: "center",
+                                          padding: "5px 10px",
+                                          borderRadius: "15px",
+                                          backgroundImage:
+                                             "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+                                          backgroundPosition:
+                                             "center right 50px",
+                                          backgroundSize: "cover",
+                                       }}
+                                    >
+                                       <img
+                                          style={{
+                                             width: "55px",
+                                             height: "55px",
+                                          }}
+                                          className="h-3 w-3 rounded-full"
+                                          src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+                                          alt=""
+                                       />
+                                       <p
+                                          className="text-sm"
+                                          style={{
+                                             marginBottom: 0,
+                                             color: "#ff9424",
+                                             fontWeight: "bold",
+                                          }}
+                                       >
+                                          You must log in to add an item to the
+                                          shopping cart
+                                       </p>
+                                    </div>
+                                 ))
+                              }}
+                           />
+                        </div>
+                     )}
                   </div>
                </div>
             </div>

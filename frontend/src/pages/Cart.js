@@ -11,13 +11,15 @@ import { useFormik } from "formik"
 import * as Yup from "yup"
 import AddressCard from "../components/AddressCard"
 import Bot from "../components/bot/Bot"
+import toast from "react-hot-toast"
+import { useLoginLS } from "../hooks/usersHooks"
+import Preloader from "../components/PreloaderFilter"
 
 const Cart = (props) => {
    const [viewMethod, setViewMethod] = useState(false)
-   // const [viewPaypal, setViewPaypal] = useState(false)
-   // const [paymentMethod, setPaymentMethod] = useState("")
    const [viewButtons, setViewButtons] = useState(false)
    const user = useSelector((state) => state.users.user)
+   const [loading, error] = useLoginLS()
 
    const { directions } = user
 
@@ -51,7 +53,41 @@ const Cart = (props) => {
       if (Object.values(res).length === 0) {
          setViewButtons(true)
       } else {
-         alert("You must choose an address or fill out the form to continue")
+         toast.custom((t) => (
+            <div
+               className={`${
+                  t.visible ? "animate-enter" : "animate-leave"
+               } bg-white flex`}
+               style={{
+                  display: "flex",
+                  alignContent: "center",
+                  alignItems: "center",
+                  padding: "5px 10px",
+                  borderRadius: "15px",
+                  backgroundImage:
+                     "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+                  backgroundPosition: "center right 50px",
+                  backgroundSize: "cover",
+               }}
+            >
+               <img
+                  style={{ width: "55px", height: "55px" }}
+                  className="h-3 w-3 rounded-full"
+                  src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+                  alt=""
+               />
+               <p
+                  className="text-sm"
+                  style={{
+                     marginBottom: 0,
+                     color: "#ff9424",
+                     fontWeight: "bold",
+                  }}
+               >
+                  You must choose an address or fill out the form to continue
+               </p>
+            </div>
+         ))
       }
    }
 
@@ -80,254 +116,272 @@ const Cart = (props) => {
 
    return (
       <>
-      <Bot/>
-      <div
-         className="signInBody"
-         style={{ backgroundImage: "url('/assets/fondoblanco2.png')" }}
-      >
-         <HeroPages />
-         <Header />
-         <div className="bodyCart">
-            {props.shoppingCart.length === 0 ? (
-               <h2>Your cart is empty</h2>
-            ) : (
-               <>
-                  <h2>Cart</h2>
-                  <div className="cartContainer">
-                     <table className="cartSection1">
-                        <thead>
-                           <tr>
-                              <th></th>
-                              <th className="product">Product</th>
-                              <th>Quantity</th>
-                              <th>Price</th>
-                              <th className="subtotal">Subtotal</th>
-                              <th></th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                           {props.shoppingCart.map((article) => {
-                              return (
-                                 <tr key={article.article._id}>
-                                    <td>
-                                       <div
-                                          style={{
-                                             backgroundImage: `url(${article.article.photos[0]})`,
-                                             backgroundPosition: "center",
-                                             backgroundSize: "cover",
-                                             width: "100px",
-                                             height: "100px",
-                                             margin: "10px",
-                                          }}
-                                       ></div>
-                                    </td>
-                                    <td>{article.article.name}</td>
-                                    <td>
-                                       <div className="quantity">
-                                          <button
-                                             onClick={() => {
-                                                updateCartFunction(
-                                                   "decrement",
-                                                   article.article._id
-                                                )
-                                             }}
-                                          >
-                                             {"<"}
-                                          </button>
+         <Bot />
+         <div
+            className="signInBody"
+            style={{ backgroundImage: "url('/assets/fondoblanco2.png')" }}
+         >
+            <HeroPages />
+            <Header />
 
-                                          <div>{article.quantity}</div>
-                                          <button
-                                             onClick={() => {
-                                                updateCartFunction(
-                                                   "increment",
-                                                   article.article._id
-                                                )
-                                             }}
-                                          >
-                                             {">"}
-                                          </button>
-                                       </div>
-                                    </td>
-                                    <td>
-                                       {article.article.hasDiscount ===
-                                       false ? (
-                                          <p style={{color: "yellowgreen"}}>
-                                             ${" "}
-                                             {article.article.price.toFixed(2)}
-                                          </p>
+            {loading ? (
+               <Preloader />
+            ) : (
+               <div className="bodyCart">
+                  {props.shoppingCart.length === 0 ? (
+                     <h2>Your cart is empty</h2>
+                  ) : (
+                     <>
+                        <h2>Cart</h2>
+                        <div className="cartContainer">
+                           <table className="cartSection1">
+                              <thead>
+                                 <tr>
+                                    <th></th>
+                                    <th className="product">Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th className="subtotal">Subtotal</th>
+                                    <th></th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 {props.shoppingCart.map((article) => {
+                                    if (article.article.stock <= 0) {
+                                       updateCartFunction(
+                                          "delete",
+                                          article.article._id
+                                       )
+                                    }
+                                    return (
+                                       <tr key={article.article._id}>
+                                          <td>
+                                             <div
+                                                style={{
+                                                   backgroundImage: `url(${article.article.photos[0]})`,
+                                                   backgroundPosition: "center",
+                                                   backgroundSize: "cover",
+                                                   width: "100px",
+                                                   height: "100px",
+                                                   margin: "10px",
+                                                }}
+                                             ></div>
+                                          </td>
+                                          <td>{article.article.name}</td>
+                                          <td>
+                                             <div className="quantity">
+                                                <button
+                                                   onClick={() => {
+                                                      updateCartFunction(
+                                                         "decrement",
+                                                         article.article._id
+                                                      )
+                                                   }}
+                                                >
+                                                   {"<"}
+                                                </button>
+                                                <div>{article.quantity}</div>
+                                                <button
+                                                   onClick={() => {
+                                                      updateCartFunction(
+                                                         "increment",
+                                                         article.article._id
+                                                      )
+                                                   }}
+                                                >
+                                                   {">"}
+                                                </button>
+                                             </div>
+                                          </td>
+                                          <td>
+                                             {article.article.hasDiscount ===
+                                             false ? (
+                                                <p
+                                                   style={{
+                                                      color: "yellowgreen",
+                                                   }}
+                                                >
+                                                   ${" "}
+                                                   {article.article.price.toFixed(
+                                                      2
+                                                   )}
+                                                </p>
+                                             ) : (
+                                                <div className="priceArticle">
+                                                   <p
+                                                      style={{
+                                                         textDecoration:
+                                                            "line-through",
+                                                         color: "gray",
+                                                         padding: "0px 4px",
+                                                      }}
+                                                   >
+                                                      $
+                                                      {article.article.price.toFixed(
+                                                         2
+                                                      )}
+                                                   </p>
+                                                   <p
+                                                      style={{
+                                                         color: "yellowgreen",
+                                                         padding: "0px 4px",
+                                                      }}
+                                                   >
+                                                      $
+                                                      {article.article.discountPrice.toFixed(
+                                                         2
+                                                      )}
+                                                   </p>
+                                                </div>
+                                             )}
+                                          </td>
+                                          <td>
+                                             $
+                                             {(
+                                                article.quantity *
+                                                (article.article.hasDiscount
+                                                   ? article.article
+                                                        .discountPrice
+                                                   : article.article.price)
+                                             ).toFixed(2)}
+                                          </td>
+                                          <td>
+                                             <div className="delete">
+                                                <button
+                                                   onClick={() => {
+                                                      updateCartFunction(
+                                                         "delete",
+                                                         article.article._id
+                                                      )
+                                                   }}
+                                                >
+                                                   X
+                                                </button>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    )
+                                 })}
+                              </tbody>
+                           </table>
+                           <section className="cartSection2">
+                              <article className="totalsCard">
+                                 <div></div>
+                                 <div>
+                                    <p>Total without discounts:</p>
+                                    <p
+                                       style={{
+                                          textDecoration: "line-through",
+                                          color: "gray",
+                                       }}
+                                    >
+                                       ${totalWithoutDiscounts.toFixed(2)}
+                                    </p>
+                                 </div>
+                                 <div>
+                                    <p>Total:</p>
+                                    <p style={{ color: "yellowgreen" }}>
+                                       ${totalCost.toFixed(2)}
+                                    </p>
+                                 </div>
+                                 <div>
+                                    <button
+                                       className="profileButton"
+                                       style={{
+                                          backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                                       }}
+                                       type="button"
+                                       onClick={() =>
+                                          setViewMethod(!viewMethod)
+                                       }
+                                    >
+                                       Buy
+                                    </button>
+                                 </div>
+                              </article>
+                           </section>
+                           <section className="d-flex justify-content-center align-items-center flex-column">
+                              {viewMethod && (
+                                 <>
+                                    <h3 className="chooseAnAddress">
+                                       Choose an address to continue
+                                    </h3>
+                                    <div className="cartAddressInputs">
+                                       {!directions || directions.length ? (
+                                          <div>
+                                             {!directions ||
+                                             directions.length === 0 ? (
+                                                <p className="chooseAnAddress">
+                                                   There are no addresses added
+                                                </p>
+                                             ) : (
+                                                directions.map((direction) => {
+                                                   return (
+                                                      <AddressCard
+                                                         direction={direction}
+                                                         key={direction._id}
+                                                         formik={formik}
+                                                      />
+                                                   )
+                                                })
+                                             )}
+                                             <h4 className="chooseAnAddress">
+                                                Or add a new address
+                                             </h4>
+                                             <FormCart formik={formik} />
+                                          </div>
                                        ) : (
-                                          <div className="priceArticle">
-                                             <p
-                                                style={{
-                                                   textDecoration:
-                                                      "line-through",
-                                                   color: "gray",
-                                                   padding: "0px 4px",
-                                                }}
-                                             >
-                                                $
-                                                {article.article.price.toFixed(
-                                                   2
-                                                )}
-                                             </p>
-                                             <p
-                                                style={{
-                                                   color: "yellowgreen",
-                                                   padding: "0px 4px",
-                                                }}
-                                             >
-                                                $
-                                                {article.article.discountPrice.toFixed(
-                                                   2
-                                                )}
-                                             </p>
+                                          <div>
+                                             <h4 className="chooseAnAddress">
+                                                Add address
+                                             </h4>
+                                             <FormCart formik={formik} />
                                           </div>
                                        )}
-                                    </td>
-                                    <td>
-                                       $
-                                       {(
-                                          article.quantity *
-                                          (article.article.hasDiscount
-                                             ? article.article.discountPrice
-                                             : article.article.price)
-                                       ).toFixed(2)}
-                                    </td>
-                                    <td>
-                                       <div className="delete">
+                                       {!viewButtons && (
                                           <button
-                                             onClick={() => {
-                                                updateCartFunction(
-                                                   "delete",
-                                                   article.article._id
-                                                )
+                                             className="profileButton"
+                                             style={{
+                                                backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
                                              }}
+                                             type="button"
+                                             onClick={() => validateForm()}
                                           >
-                                             X
+                                             Continue
                                           </button>
-                                       </div>
-                                    </td>
-                                 </tr>
-                              )
-                           })}
-                        </tbody>
-                     </table>
-                     <section className="cartSection2">
-                        <article className="totalsCard">
-                           <div></div>
-                           <div>
-                              <p>Total without discounts:</p>
-                              <p
-                                 style={{
-                                    textDecoration: "line-through",
-                                    color: "gray",
-                                 }}
-                              >
-                                 ${totalWithoutDiscounts.toFixed(2)}
-                              </p>
-                           </div>
-                           <div>
-                              <p>Total:</p>
-                              <p style={{ color: "yellowgreen" }}>
-                                 ${totalCost.toFixed(2)}
-                              </p>
-                           </div>
-                           <div>
-                              <button className="profileButton"
-                              style={{
-                                 backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
-                               }}
-                                 type="button"
-                                 onClick={() => setViewMethod(!viewMethod)}
-                              >
-                                 Buy
-                              </button>
-                           </div>
-                        </article>
-                     </section>
-                     <section className="d-flex justify-content-center align-items-center flex-column">
-                        {viewMethod && (
-                           <>
-                              <h3 className="chooseAnAddress">Choose an address to continue</h3>
-                              <div className="cartAddressInputs">
-                                 {!directions || directions.length ? (
-                                    <div>
-                                       {!directions ||
-                                       directions.length === 0 ? (
-                                          <p className="chooseAnAddress">There are no addresses added</p>
-                                       ) : (
-                                          directions.map((direction) => {
-                                             return (
-                                                <AddressCard
-                                                   direction={direction}
-                                                   key={direction._id}
-                                                   formik={formik}
-                                                />
-                                             )
-                                          })
                                        )}
-                                       <h4 className="chooseAnAddress">Or add a new address</h4>
-                                       <FormCart formik={formik} />
                                     </div>
-                                 ) : (
-                                    <div>
-                                       <h4 className="chooseAnAddress">Add address</h4>
-                                       <FormCart formik={formik} />
-                                    </div>
-                                 )}
-                                 {!viewButtons && (
-                                    <button className="profileButton"
-                                    style={{
-                                       backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
-                                     }}
-                                       type="button"
-                                       onClick={() => validateForm()}
-                                    >
-                                       Continue
-                                    </button>
-                                 )}
-                              </div>
-                              {viewButtons && (
-                                 <>
-                                    {/* <button
-                                       type="button"
-                                       onClick={() =>
-                                          setPaymentMethod("paypal")
-                                       }
-                                    >
-                                       Buy with PayPal
-                                    </button>
-                                    <button
-                                       type="button"
-                                       onClick={() =>
-                                          setPaymentMethod("stripe")
-                                       }
-                                    >
-                                       Buy with credit card
-                                    </button> */}
-                                    <h4 className="chooseAnAddress">Pay with PayPal</h4>
-                                    <Paypal
-                                       user={user}
-                                       formik={formik}
-                                       history={props.history}
-                                    />
-                                    <h4 className="chooseAnAddress">Pay with credit card</h4>
-                                    <Stripe
-                                       user={user}
-                                       formik={formik}
-                                       history={props.history}
-                                    />
+                                    {viewButtons && (
+                                       <>
+                                          <h4 className="chooseAnAddress">
+                                             Pay with PayPal
+                                          </h4>
+                                          <Paypal
+                                             user={user}
+                                             formik={formik}
+                                             history={props.history}
+                                          />
+                                          <h4 className="chooseAnAddress">
+                                             Pay with credit card
+                                          </h4>
+                                          <Stripe
+                                             user={user}
+                                             formik={formik}
+                                             history={props.history}
+                                          />
+                                       </>
+                                    )}
                                  </>
                               )}
-                           </>
-                        )}
-                     </section>
-                  </div>
-               </>
+                           </section>
+                        </div>
+                     </>
+                  )}
+               </div>
             )}
+
+            <Footer />
          </div>
-         <Footer />
-      </div>
       </>
    )
 }
