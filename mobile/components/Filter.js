@@ -55,7 +55,6 @@ console.log(renderDiscountModal)
             <View style={styles.filterBoxContainer}>
                 <TextInput placeholder="Search a product" style={styles.search} onChangeText={(e) => {inputHandle(e)}}/>
                 <View style={styles.filtersBox}>
-
                 <View style={styles.filterDiscount}>
                     <Modal animationType="slide" transparent={true} visible={renderDiscountModal} onRequestClose={() => {setRenderDiscountModal(!renderDiscountModal)}}>
                         <Pressable style={styles.optionDiscount} onPress={() => {changeDiscount(true)}}>
