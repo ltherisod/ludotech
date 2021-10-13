@@ -40,7 +40,9 @@ const Stripe = ({ formik, user, history }) => {
       console.log("[error]", error)
     } else {
       try {
-        const authorization = await axios.post(
+        const {
+          data: { response },
+        } = await axios.post(
           `${HOST}/api/stripe/payment-intent`,
           { id: paymentMethod.id },
           {
@@ -49,12 +51,13 @@ const Stripe = ({ formik, user, history }) => {
             },
           }
         )
+        if (!data.success) throw new Error(data.error)
         const details = {
           direction: formik.values,
           paymentDetails: {
             method: "STRIPE",
             orderId: paymentMethod.id,
-            receipt: authorization.data.response.charges.data[0].receipt_url,
+            receipt: response.charges.data[0].receipt_url,
           },
         }
         const res = await purchase(details)
@@ -88,10 +91,14 @@ const Stripe = ({ formik, user, history }) => {
           },
         }}
       />
-      <button className="profileButton"
-                                    style={{
-                                       backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
-                                     }}type="submit" disabled={!stripe || loading}>
+      <button
+        className="profileButton"
+        style={{
+          backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+        }}
+        type="submit"
+        disabled={!stripe || loading}
+      >
         Pay
       </button>
     </form>
