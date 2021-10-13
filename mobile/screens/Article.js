@@ -7,11 +7,11 @@ import usersActions from "../redux/actions/usersActions"
 import { connect } from "react-redux"
 import YoutubePlayer from "react-native-youtube-iframe"
 import ArticleCarousel from "../components/ArticleCarousel"
+import MostRealted from "../components/MostRealted"
 
 const Article = (props) => {
   const [modalVisible, setModalVisible] = useState(false)
  
-
   const [article, loading] = useArticle(props.route.params.id)
   const {
     brand,
@@ -36,6 +36,8 @@ const Article = (props) => {
     _id,
     videoId,
  } = article
+
+ const [relatedArticles, loadingRelated] = useRelatedArticles(genres)
 
  const [playing, setPlaying] = useState(false)
 
@@ -152,6 +154,12 @@ const Article = (props) => {
           <ImageBackground style={styles.articleDecoImgThree} source={{ uri: `${decoPhotos ? decoPhotos[2] : [] }` }} >
           </ImageBackground>
         </View>
+
+        <MostRealted 
+          relatedArticles={relatedArticles}
+          articleId={props.route.params.id}
+          navigation={props.navigation}
+        />
     
       </ImageBackground>
     </ScrollView>

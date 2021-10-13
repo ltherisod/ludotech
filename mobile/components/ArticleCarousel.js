@@ -5,7 +5,7 @@ import Carousel from 'react-native-snap-carousel'
 const ArticleCarousel = (props) => {
     const {photosArticle} = props
     const HOST = "https://lodotechgames.herokuapp.com"
-    console.log(photosArticle)
+    // console.log(photosArticle)
     const renderItem = ({ item }) => {
         console.log(item)
         return (

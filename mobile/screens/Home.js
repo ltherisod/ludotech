@@ -53,7 +53,7 @@ const Home = (props) => {
                   </Text>
                 </View>
               </TouchableOpacity>
-              <MostWanted />
+              <MostWanted navigation={props.navigation} />
               <Footer />
 
           </ImageBackground>

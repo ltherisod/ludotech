@@ -47,9 +47,13 @@ const ArticleRelated = (props) => {
       ))
    }
 
+   // console.log(props.relatedArticles)
+
    const relatedArticlesNoRepeat = props.relatedArticles.filter(
-      (arti) => arti._id != props.match.params.id
+      (arti) => arti._id !== props.match.params.id
    )
+
+   // console.log(relatedArticlesNoRepeat)
 
    return (
       <>

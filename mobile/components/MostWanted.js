@@ -31,24 +31,24 @@ const MostWanted = (props) => {
   return (
     <>
       <Text style={styles.mainText}>Most wanted products</Text>
-      <View>
-        <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card2.png" }}>
-          <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[0].iconPhotos }}></ImageBackground>
-          <Text style={styles.gameName}>{mostVisitArticles[0].name}</Text>
-        </ImageBackground>
-      </View>
-      <View>
-        <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card1.png" }}>
-          <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[1].iconPhotos }}></ImageBackground>
-          <Text style={styles.gameName}>{mostVisitArticles[1].name}</Text>
-        </ImageBackground>
-      </View>
-      <View>
-        <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card2.png" }}>
-          <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[2].iconPhotos}}></ImageBackground>
-          <Text style={styles.gameName}>{mostVisitArticles[2].name}</Text>
-        </ImageBackground>
-      </View>
+      <TouchableOpacity onPress={() => props.navigation.navigate('ArticleStack', {id: mostVisitArticles[0]._id})}>
+          <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card2.png" }}>
+            <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[0].iconPhotos }}></ImageBackground>
+            <Text style={styles.gameName}>{mostVisitArticles[0].name}</Text>
+          </ImageBackground>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => props.navigation.navigate('ArticleStack', {id: mostVisitArticles[1]._id})}>
+          <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card1.png" }}>
+            <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[1].iconPhotos }}></ImageBackground>
+            <Text style={styles.gameName}>{mostVisitArticles[1].name}</Text>
+          </ImageBackground>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => props.navigation.navigate('ArticleStack', {id: mostVisitArticles[2]._id})}>
+          <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card2.png" }}>
+            <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[2].iconPhotos}}></ImageBackground>
+            <Text style={styles.gameName}>{mostVisitArticles[2].name}</Text>
+          </ImageBackground>
+      </TouchableOpacity>
     </>
   );
 };
@@ -67,8 +67,8 @@ export default connect(null,mapDispatchToProps)(MostWanted)
 
 const styles = StyleSheet.create({
   mainText: {
-    color: "white",
-    fontSize: 18,
+    color: "orange",
+    fontSize: 20,
     paddingTop: 20,
     alignSelf: 'center',
     fontFamily: 'Poppins_700Bold'

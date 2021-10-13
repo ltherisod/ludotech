@@ -18,21 +18,21 @@ const NavigationBottom = (props) => {
   useLoginLS()
   const userIcon = user ? (
     <Image
-      style={{ width: 35, height: 35, borderRadius: 35, marginTop:13 }}
+      style={{ width: 35, height: 35, borderRadius: 35}}
       source={{ uri: user.google ? user.photo : `${HOST}/${user.photo}` }}
     />
   ) : (
-    <Icon name="user-circle" size={35} color={"#6fdbd2"} style={{marginTop:13}} />
+    <Icon name="user-circle" size={35} color={"#6fdbd2"}  />
   )
 
   return (
-    <bottom.Navigator>
+    <bottom.Navigator screenOptions={{tabBarShowLabel: false}}>
       <bottom.Screen
         name="home"
         component={Navigator}
         options={{
           tabBarIcon: ({ color, size}) => (
-            <Icon name="home" size={35} color={"#ff9424"} style={{marginTop:13}}/>
+            <Icon name="home" size={35} color={"#ff9424"} />
           ),
           headerShown: false,
           title:""
@@ -53,7 +53,7 @@ const NavigationBottom = (props) => {
         component={WishList}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Icon name="heart" size={35} color={"#e561ae"} style={{marginTop:13}}/>
+            <Icon name="heart" size={35} color={"#e561ae"} />
           ),
           headerShown: false,
           title:""
@@ -64,7 +64,7 @@ const NavigationBottom = (props) => {
         component={Cart}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Icon name="cart-plus" size={35} color={"#7c51b0"} style={{marginTop:13}} />
+            <Icon name="cart-plus" size={35} color={"#7c51b0"}  />
           ),
           headerShown: false,
           title:""
