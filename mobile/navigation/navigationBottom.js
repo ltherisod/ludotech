@@ -10,6 +10,8 @@ import WishList from "../screens/WishList"
 import { useSelector } from "react-redux"
 import { useLoginLS } from "../hooks/usersHooks"
 import usersActions from "../redux/actions/usersActions"
+import NotProfile from "../screens/NotProfile"
+import NotWishlist from "../screens/NotWishlist"
 const bottom = createBottomTabNavigator()
 const HOST = "https://lodotechgames.herokuapp.com"
 
@@ -27,6 +29,7 @@ const NavigationBottom = (props) => {
 
   return (
     <bottom.Navigator screenOptions={{tabBarShowLabel: false}}>
+
       <bottom.Screen
         name="home"
         component={Navigator}
@@ -39,7 +42,7 @@ const NavigationBottom = (props) => {
         }}
       />
 
-      <bottom.Screen
+      {user && <bottom.Screen
         name="profile"
         component={Profile}
         options={{
@@ -47,8 +50,18 @@ const NavigationBottom = (props) => {
           headerShown: false,
           title:""
         }}
-      />
-      <bottom.Screen
+      />}
+      {!user && <bottom.Screen
+        name="profile"
+        component={NotProfile}
+        options={{
+          tabBarIcon: ({ color, size }) => userIcon,
+          headerShown: false,
+          title:""
+        }}
+      />}
+      
+      {user && <bottom.Screen
         name="wishlist"
         component={WishList}
         options={{
@@ -58,8 +71,21 @@ const NavigationBottom = (props) => {
           headerShown: false,
           title:""
         }}
-      />
-      <bottom.Screen
+      />}
+
+      {!user && <bottom.Screen
+        name="wishlist"
+        component={NotWishlist}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="heart" size={35} color={"#e561ae"} />
+          ),
+          headerShown: false,
+          title:""
+        }}
+      />}
+
+      {user && <bottom.Screen
         name="cart"
         component={Cart}
         options={{
@@ -69,7 +95,7 @@ const NavigationBottom = (props) => {
           headerShown: false,
           title:""
         }}
-      />
+      />}
     </bottom.Navigator>
   )
 }
