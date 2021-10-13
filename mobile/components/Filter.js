@@ -13,6 +13,10 @@ const Filter = (props) => {
     const [renderBrandModal, setRenderBrandModal] = useState(false)
     const [renderGenreModal, setRenderGenreModal] = useState(false)
     const [renderGameTypeModal, setRenderGameTypeModal] = useState(false)
+    const [renderBrandName, setRenderBrandName] = useState("all")
+    const [renderGenreName, setRenderGenreName] = useState("all")
+    const [renderGameTypeName, setRenderGameTypeName] = useState("all")
+
     const [prefilter, setPrefilter] = useState({})
 
     const [renderDiscountModal, setRenderDiscountModal] = useState(false)
@@ -85,18 +89,21 @@ const Filter = (props) => {
         inputSize(newValue)
     }
 
-    const changeBrand = (newValue) => {
+    const changeBrand = (newValue, name) => {
         setRenderBrandModal(!renderBrandModal)
+        setRenderBrandName(name)
         inputBrand(newValue)
     }
 
-    const changeGenre = (newValue) => {
+    const changeGenre = (newValue, name) => {
         setRenderGenreModal(!renderGenreModal)
+        setRenderGenreName(name)
         inputGenre(newValue)
     }
 
-    const changeGameType = (newValue) => {
+    const changeGameType = (newValue, name) => {
         setRenderGameTypeModal(!renderGameTypeModal)
+        setRenderGameTypeName(name)
         inputGameType(newValue)
     }
 
@@ -108,7 +115,7 @@ const Filter = (props) => {
     const renderOptionsBrands = () => {
         return brands.map(brand => {
             return (
-                <Pressable key={brand._id} style={[styles.button, styles.buttonClose]} onPress={() => {changeBrand(brand._id)}}>
+                <Pressable key={brand._id} style={[styles.button, styles.buttonClose]} onPress={() => {changeBrand(brand._id, brand.name)}}>
                     <Text style={styles.textStyle}>{brand.name}</Text>
                 </Pressable>
             )
@@ -118,7 +125,7 @@ const Filter = (props) => {
     const renderOptionsGenres = () => {
         return genres.map(genre => {
             return (
-                <Pressable key={genre._id} style={[styles.button, styles.buttonClose]} onPress={() => {changeGenre(genre._id)}}>
+                <Pressable key={genre._id} style={[styles.button, styles.buttonClose]} onPress={() => {changeGenre(genre._id, genre.name)}}>
                     <Text style={styles.textStyle}>{genre.name}</Text>
                 </Pressable>
             )
@@ -128,7 +135,7 @@ const Filter = (props) => {
     const renderOptionsGameTypes = () => {
         return gameTypes.map(gameType => {
             return (
-                <Pressable key={gameType._id} style={[styles.button, styles.buttonClose]} onPress={() => {changeGameType(gameType._id)}}>
+                <Pressable key={gameType._id} style={[styles.button, styles.buttonClose]} onPress={() => {changeGameType(gameType._id, gameType.name)}}>
                     <Text style={styles.textStyle}>{gameType.name}</Text>
                 </Pressable>
             )
@@ -275,7 +282,7 @@ const Filter = (props) => {
                                 <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => {setRenderBrandModal(!renderBrandModal)}}>
                                     <Text style={styles.textStyle}>Select brand</Text>
                                 </Pressable>
-                                <Text>{filters.brand !== undefined ? filters.brand : "all"}</Text>
+                                <Text>{filters.brand !== undefined ? renderBrandName : "all"}</Text>
                             </View>
                             <View style={styles.centeredView}>
                                 <Modal animationType="slide" transparent={true} visible={renderGenreModal} onRequestClose={() => {setRenderGenreModal(!renderGenreModal)}}>
@@ -291,7 +298,7 @@ const Filter = (props) => {
                                 <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => {setRenderGenreModal(!renderGenreModal)}}>
                                     <Text style={styles.textStyle}>Select genre</Text>
                                 </Pressable>
-                                <Text>{filters.genres !== undefined ? filters.genres : "all"}</Text>
+                                <Text>{filters.genres !== undefined ? renderGenreName : "all"}</Text>
                             </View>
                             <View style={styles.centeredView}>
                                 <Modal animationType="slide" transparent={true} visible={renderGameTypeModal} onRequestClose={() => {setRenderGameTypeModal(!renderGameTypeModal)}}>
@@ -307,7 +314,7 @@ const Filter = (props) => {
                                 <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => {setRenderGameTypeModal(!renderGameTypeModal)}}>
                                     <Text style={styles.textStyle}>Select type of game</Text>
                                 </Pressable>
-                                <Text>{filters.gameType !== undefined ? filters.gameType : "all"}</Text>
+                                <Text>{filters.gameType !== undefined ? renderGameTypeName : "all"}</Text>
                             </View>
                             <View style={styles.centeredView}>
                                 <Modal animationType="slide" transparent={true} visible={renderDiscountModal} onRequestClose={() => {setRenderDiscountModal(!renderDiscountModal)}}>
