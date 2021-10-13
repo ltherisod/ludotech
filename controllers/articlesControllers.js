@@ -40,7 +40,7 @@ const articlesControllers = {
          let articles = await Article.find()
             .sort("-_id")
             .limit(3)
-            .select("name photos stock price")
+            .select("name photos stock hasDiscount price discountPrice ")
          res.json({ success: true, response: articles, error: null })
       } catch (e) {
          console.log(e)
