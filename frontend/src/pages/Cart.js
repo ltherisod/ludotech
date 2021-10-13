@@ -319,7 +319,7 @@ const Cart = (props) => {
                                     </h3>
                                     <div className="cartAddressInputs">
                                        {!directions || directions.length ? (
-                                          <div>
+                                          <div className="orAdaAdress">
                                              {!directions ||
                                              directions.length === 0 ? (
                                                 <p className="chooseAnAddress">

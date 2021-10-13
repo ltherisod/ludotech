@@ -1938,6 +1938,13 @@ h2.articles {
    color: gray;
    margin-right: 7px;
 }
+
+.orAdaAdress {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
 .adressesAdded {
    display: flex;
    width: 100%;
