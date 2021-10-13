@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import { Link, NavLink } from "react-router-dom"
 import { FaShoppingCart, FaBell, FaHeart } from "react-icons/fa"
 import { useSelector, useDispatch } from "react-redux"
@@ -11,6 +11,8 @@ const HOST = "https://lodotechgames.herokuapp.com"
 const Header = (props) => {
    const user = useSelector((state) => state.users.user)
    const dispatch = useDispatch()
+
+   const [showNoti, setShowNoti] = useState(false)
 
    return (
       <nav
@@ -164,8 +166,9 @@ const Header = (props) => {
                   ></div>
                </div>
                <div className="relative">
-                  <FaBell className="iconsNav" />
+                  <FaBell className="iconsNav" onClick={() => setShowNoti(!showNoti)} />
                   <div className="notification">2</div>
+                  {showNoti && <Notifications show={setShowNoti} />}
                </div>
                <Link to="wishlist">
                   <FaHeart className="iconsNav" />
@@ -208,3 +211,23 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 export default Header
+
+
+const Notifications = (props) => {
+
+   const not =  [{src: 'https://hiperlibertad.vteximg.com.br/arquivos/ids/178443-1000-1000/MONOPOLY-CLASICO-1-9232.jpg?v=637560194297530000', text: 'Compraste Monopoly Millonaire'},{src: 'https://hiperlibertad.vteximg.com.br/arquivos/ids/178443-1000-1000/MONOPOLY-CLASICO-1-9232.jpg?v=637560194297530000', text: 'Compraste Monopoly Millonaire'},{src: 'https://hiperlibertad.vteximg.com.br/arquivos/ids/178443-1000-1000/MONOPOLY-CLASICO-1-9232.jpg?v=637560194297530000', text: 'Compraste Monopoly Millonaire'}]
+
+   return (
+       <div className='notificationsHeader' onMouseLeave={() => props.show(false)}>
+           <h5>Notifications</h5>
+           {not.map(o => {
+               return (
+                   <div className='notificationHeader'>
+                       <div className='iconNoti' style={{backgroundImage: `url("${o.src}")`}}></div>
+                       <p>{o.text}</p>
+                   </div>
+               )
+           })}
+       </div>
+   )
+}

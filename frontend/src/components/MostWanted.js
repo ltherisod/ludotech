@@ -19,9 +19,8 @@ const MostWanted = (props) => {
 
     return(
         <>
-        {loading ?
-        <Preloader/> :
-        <div className="mostWantedConteiner">
+        {loading && <Preloader/>}
+        {(!loading && mostVisitArticles) && <div className="mostWantedConteiner">
             <h2 className="mostWantedTittle">Most wanted products</h2>
             <div className="mostWantedCard" style={{backgroundImage: "url('https://i.postimg.cc/5yHSybcS/card-Style56left.png')"}}>
                 <div className="mostWantedGameConteiner" >
@@ -41,8 +40,7 @@ const MostWanted = (props) => {
                     <div className="mostWantedGame" style={{backgroundImage: `url('${mostVisitArticles[2].photos[0]}')`}}></div>
                 </div>
             </div>
-        </div>
-        }
+        </div>}
         </>
     )
 }

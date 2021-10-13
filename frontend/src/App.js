@@ -14,6 +14,7 @@ import UserProfile from "./pages/UserProfile"
 import Wishlist from "./pages/Wishlist"
 import Checkout from "./pages/Checkout"
 import Purchases from "./pages/Purchases"
+import Notifications from "./components/Notifications"
 
 const App = (props) => {
    useLoginLS()
@@ -33,6 +34,7 @@ const App = (props) => {
             {user && <Route path="/checkout" component={Checkout} />}
             {user && <Route path="/wishlist" component={Wishlist} />}
             {user && <Route path="/mypurchases" component={Purchases} />}
+            <Route path="/notifications" component={Notifications} />
             <Redirect to="/" />
          </Switch>
       </BrowserRouter>
