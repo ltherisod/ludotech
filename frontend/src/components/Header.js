@@ -6,11 +6,11 @@ import usersActions from "../redux/actions/usersActions"
 import toast from "react-hot-toast"
 
 const Header = (props) => {
-  const iconUser = "https://i.postimg.cc/pd1gvVR7/iconuser1.png"
-  const HOST = "https://lodotechgames.herokuapp.com"
-  const user = useSelector((state) => state.users.user)
-  const dispatch = useDispatch()
-  const [changeTitle, setChangeTitle] = useState(false)
+   const iconUser = "https://i.postimg.cc/pd1gvVR7/iconuser1.png"
+   const HOST = "https://lodotechgames.herokuapp.com"
+   const user = useSelector((state) => state.users.user)
+   const dispatch = useDispatch()
+   const [changeTitle, setChangeTitle] = useState(false)
 
   const toggleTitle = () => {
     const scrolled = document.documentElement.scrollTop

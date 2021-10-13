@@ -332,8 +332,7 @@ const Cart = (props) => {
                                     </h3>
                                     <div className="cartAddressInputs">
                                        {!directions || directions.length ? (
-                                          <div>
-                                             <div className="flex-wrap">
+                                          <div className="orAdaAdress">
                                              {!directions ||
                                              directions.length === 0 ? (
                                                 <p className="chooseAnAddress">
@@ -350,7 +349,7 @@ const Cart = (props) => {
                                                    )
                                                 })
                                              )}
-                                             </div>
+                                            
                                              <h3 className="chooseAnAddress">
                                                 Or add a{" "}
                                                 <span className="spanCeleste">

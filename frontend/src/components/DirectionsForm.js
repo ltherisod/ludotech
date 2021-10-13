@@ -3,7 +3,7 @@ import { useDirectionsForm } from "../hooks/usersHooks"
 const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
    const formik = useDirectionsForm(submitCallback, initialValues)
    return (
-      <div className="checkoutContainer">
+      <div className="inputsAdd">
          <input
             name="alias"
             value={formik.values.alias}
@@ -100,8 +100,16 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
          ) : (
             <small className="signNoErrorsDir">NoErrors</small>
          )}
-         <div>
-         <button onClick={formik.handleSubmit}>{buttonText}</button>
+         <div className="text-center">
+            <button
+               onClick={formik.handleSubmit}
+               className="profileButton"
+               style={{
+                  backgroundColor: "#45f0bf",
+               }}
+            >
+               {buttonText}
+            </button>
          </div>
       </div>
    )

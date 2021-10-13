@@ -5,7 +5,6 @@ import { FaHeart, FaRegHeart, FaCartPlus } from "react-icons/fa"
 import toast from "react-hot-toast"
 
 const ArticleRelated = (props) => {
-   // console.log(props)
    const user = useSelector((state) => state.users.user)
    const addToCart = (e, id, value) => {
       e.stopPropagation()

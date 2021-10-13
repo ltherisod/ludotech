@@ -22,7 +22,6 @@ const UserProfile = () => {
    const addDirectionHandler = async (values) => {
       setLoading(true)
       const res = await dispatch(usersActions.addDirection(values))
-      console.log(res)
       if (!res.success) setError(res.error)
       setLoading(false)
       setVisibleDirectionForm(false)
@@ -31,14 +30,13 @@ const UserProfile = () => {
    const addPhone = async (values) => {
       setLoading(true)
       const res = await dispatch(usersActions.updateAccount(values))
-      console.log(res)
       if (!res.success) setError(res.error)
       setLoading(false)
       setVisiblePhone(false)
    }
 
    let formik = useFormik({
-      initialValues: { phone: "" },
+      initialValues: { phone },
       onSubmit: (values) => {
          addPhone(values)
       },
@@ -58,21 +56,21 @@ const UserProfile = () => {
       state: "",
    }
 
-   console.log(user)
-
    return (
       <div
-         className="signInBody"
+         className="bodyArticle"
          style={{
-            backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`,
+            backgroundImage: `url("/assets/fondoblanco2.png")`,
          }}
       >
          <HeroPages />
          <Header />
-         <div className="flex">
-            <div className="main-sign">
-               <h2>Profile</h2>
-               <div className="profileFirstData">
+         <div className="flex mt-2">
+            <div className="divProfile">
+               <h1 className="titleProfile">
+                  Pro<span style={{ color: "violet" }}>file</span>
+               </h1>
+               <div className="profileFirstData mb-5">
                   <div
                      className="logoUserProfile"
                      style={{
@@ -86,15 +84,25 @@ const UserProfile = () => {
                      <p>{email}</p>
                   </div>
                </div>
-               <div className="phone">
-                  <div className="flex">
-                     <h5 className="profileTitles">Phone number:</h5>
-                     {!visiblePhone && (
-                        <p>{phone ? phone : "No phone number added."}</p>
-                     )}
-                  </div>
+               <div className="phone mb-5">
                   <div>
-                     <div className="inputContainer2">
+                     <h2 className="profileTitles">Phone number:</h2>
+                     <div className="containerDataProfile">
+                        {!visiblePhone && (
+                           <div className="d-flex align-items-center justify-content-around w-100">
+                              <p>{phone ? phone : "No phone number added."}</p>
+                              <button
+                                 className="profileButton"
+                                 type="button"
+                                 onClick={() => setVisiblePhone(!visiblePhone)}
+                                 style={{
+                                    backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                                 }}
+                              >
+                                 {phone ? "Edit" : "+"}
+                              </button>
+                           </div>
+                        )}
                         {visiblePhone && (
                            <>
                               <div className="phoneInput">
@@ -120,7 +128,17 @@ const UserProfile = () => {
                               <button
                                  className="profileButton"
                                  style={{
-                                    backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                                    backgroundColor: "#ce2a73",
+                                 }}
+                                 type="button"
+                                 onClick={() => setVisiblePhone(!visiblePhone)}
+                              >
+                                 X
+                              </button>
+                              <button
+                                 className="profileButton"
+                                 style={{
+                                    backgroundColor: "#45f0bf",
                                  }}
                                  type="button"
                                  onClick={formik.handleSubmit}
@@ -129,40 +147,39 @@ const UserProfile = () => {
                               </button>
                            </>
                         )}
-                        {!visiblePhone && (
-                           <button
-                              className="profileButton"
-                              type="button"
-                              onClick={() => setVisiblePhone(!visiblePhone)}
-                              style={{
-                                 backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
-                              }}
-                           >
-                              {phone ? "Edit" : "+"}
-                           </button>
-                        )}
                      </div>
                   </div>
                </div>
                <div className="addresses">
-                  <h5 className="profileTitles">Addresses:</h5>
-                  <div className="adressesAdded">
-                     {!directions || directions.length === 0 ? (
-                        <p>There are no addresses added.</p>
-                     ) : (
-                        directions.map((direction) => {
-                           return (
-                              <Address
-                                 direction={direction}
-                                 key={direction._id}
-                              />
-                           )
-                        })
-                     )}
+                  <h2 className="profileTitles">Addresses:</h2>
+                  <div className="containerDataProfile mb-5">
+                     <div className="adressesAdded">
+                        {!directions || directions.length === 0 ? (
+                           <p>There are no addresses added.</p>
+                        ) : (
+                           directions.map((direction) => {
+                              return (
+                                 <Address
+                                    direction={direction}
+                                    key={direction._id}
+                                 />
+                              )
+                           })
+                        )}
+                     </div>
                   </div>
-                  <div className="d-flex">
+                  <div className="d-flex flex-column">
+                     <div className="inputsAddAddress">
+                        {visibleDirectionForm && (
+                           <DirectionsForm
+                              submitCallback={addDirectionHandler}
+                              initialValues={initialValues}
+                              buttonText="✔"
+                           />
+                        )}
+                     </div>
                      <button
-                        className="signupButtonSignup"
+                        className="signupButtonSignup mt-2 ps-3"
                         style={{
                            backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
                         }}
@@ -171,19 +188,12 @@ const UserProfile = () => {
                            setVisibleDirectionForm(!visibleDirectionForm)
                         }
                      >
-                        {!directions || directions.length === 0
-                           ? "Add Address"
-                           : "Add another address"}
+                        {!visibleDirectionForm
+                           ? !directions || directions.length === 0
+                              ? "Add Address"
+                              : "Add another address"
+                           : "Cancel"}
                      </button>
-                  </div>
-                  <div className="inputsAddAddress">
-                     {visibleDirectionForm && (
-                        <DirectionsForm
-                           submitCallback={addDirectionHandler}
-                           initialValues={initialValues}
-                           buttonText="✔"
-                        />
-                     )}
                   </div>
                </div>
             </div>

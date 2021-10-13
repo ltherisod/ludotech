@@ -121,7 +121,6 @@ const ArticleAdd = (props) => {
             photos: [photos0, photos1, photos2],
          })
       )
-      console.log(res)
       if (!res.success) setError(res.error)
       setLoading(false)
       props.setSection()
