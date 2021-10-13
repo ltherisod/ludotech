@@ -51,7 +51,7 @@ const Cart = (props) => {
       <View>
         <ImageBackground
           style={styles.mainImg}
-          source={{ uri: "https://i.postimg.cc/0Nz37Ydx/fondo-Blanco.png" }}
+          source={{ uri: "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png" }}
         >
           <HeroPages />
           <View style={styles.CartMain}>
@@ -193,8 +193,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   cartTitle: {
-    fontFamily: "Poppins_700Bold",
-    fontSize: 25,
+    fontFamily: "Poppins_800ExtraBold",
+    fontSize: 35,
+    color:'purple'
   },
   productCard: {
     borderTopColor: "rgb(204, 204, 204)",

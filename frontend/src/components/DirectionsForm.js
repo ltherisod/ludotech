@@ -3,7 +3,7 @@ import { useDirectionsForm } from "../hooks/usersHooks"
 const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
    const formik = useDirectionsForm(submitCallback, initialValues)
    return (
-      <div>
+      <div className="checkoutContainer">
          <input
             name="alias"
             value={formik.values.alias}

@@ -1337,7 +1337,10 @@ h2.articles {
 .mainTeamPanel.edit h2 {
    color: white;
 }
-
+.inputsConrainerAdm{
+   display: flex;
+   flex-direction: column;
+}
 .addProduct,
 .addProduct2 {
    width: 30%;
@@ -1347,6 +1350,17 @@ h2.articles {
    cursor: pointer;
    background-size: cover;
    color: white;
+}
+
+.addProductButtonContainer{
+   align-self: center;
+   width: 80%;
+   display: flex;
+   justify-content: space-between;
+}
+.addProduct{
+   width: 11rem;
+    
 }
 
 .addProduct2 {
@@ -1388,6 +1402,7 @@ h2.articles {
    flex-direction: column;
    color: white;
    justify-content: center;
+   margin: 7px 0;
 }
 
 .divPrice {
@@ -1445,7 +1460,6 @@ h2.articles {
 }
 
 .checkoutContainer {
-   width: 60vw;
    background-color: white;
    border-radius: 20px;
    padding: 3rem;
@@ -1821,6 +1835,41 @@ h2.articles {
    font-weight: 600;
    margin: 2rem 0;
 }
+
+.emptyCart {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.buttonShop{
+   width:10rem;
+   padding: 1em;
+   border-radius: .5rem;
+   background-size: cover;
+   background-position: center;
+   justify-content: center;
+   align-items: center;
+}
+
+.shopLink{
+   text-align: center;
+   text-decoration: none;
+   color: white;
+   letter-spacing: 1px;
+   font-family:"Poppins", sans-serif ;
+   font-weight: bold;
+}
+
+.shopLink:hover {
+   color: white;
+}
+
+.ludoGif{
+   width: 25%;
+}
 /* PROFILE  */
 
 .logoUserProfile {
@@ -1893,6 +1942,33 @@ h2.articles {
    color: white;
    margin: 10px;
 }
+
+.dataCard{
+   text-align: start;
+}
+
+.dataCard p{
+   font-family: "Poppins", sans-serif;
+   color:gray;
+   font-weight:600;
+}
+.checkoutContainerCard{
+   width: 25vw;
+   background-color: white;
+   border-radius: 20px;
+   padding: 3rem;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.selectAddress{
+   width:12rem;
+   padding: .5em;
+   border-radius: .5em;
+   color: white;
+   font-family: "Poppins", sans-serif;
+   border: none;
+   
+}
 .profileButton {
    padding: 0px 20px;
    color: white;
@@ -1956,9 +2032,11 @@ h2.articles {
 }
 
 .mainWishlist h2 {
-   font-weight: 900;
+   font-weight: 700;
+   font-size: 70px;
+   padding-bottom: 5rem;
+   align-self: center;
    text-align: center;
-   font-size: 6vmin;
 }
 
 .searchbarWishlist {

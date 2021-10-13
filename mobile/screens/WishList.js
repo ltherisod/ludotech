@@ -23,7 +23,14 @@ const WishList = (props) => {
     <ScrollView>
       <ImageBackground style={{width:"100%"}} source={require("../assets/fondoVioleta.png")} resizeMode="cover">
         <HeroPages />
-        <Text style={styles.wishlistTittle}>Wishlist</Text>
+        <View style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
+        <Text style={styles.wishlistTittle}>Wish</Text>
+        <Text style={styles.wishlistTittleIn}>list</Text>
+        </View>
         <View style={styles.wishListContainer} >
           <View style={styles.wishListContainerBox}>
             <TextInput
@@ -75,11 +82,18 @@ const styles = StyleSheet.create({
   },
   wishlistTittle:{
     color: "white",
-    fontSize: 35, 
+    fontSize: 38, 
     fontFamily: 'Poppins_800ExtraBold',
     textAlign: 'center',
     marginTop:-30
 },
+  wishlistTittleIn:{
+    marginTop: -30,
+    fontFamily: "Poppins_800ExtraBold",
+    marginLeft: 3,
+    fontSize: 38,
+    color: "#67f2cb",
+  }
 
 
 })

@@ -52,7 +52,7 @@ const SignIn = (props) => {
               justifyContent: "center",
             }}
           >
-            <Text style={styles.SignInTittle}>Sign</Text>
+            <Text style={styles.SignInTittle}>Log</Text>
             <Text style={styles.SignInTittleIn}>in!</Text>
           </View>
           <Text style={styles.label}>Email</Text>
@@ -91,10 +91,22 @@ const SignIn = (props) => {
               source={{ uri: "https://i.postimg.cc/mD7r09R8/button-Back.png" }}
               imageStyle={{ borderRadius: 5 }}
             >
-              <Text style={styles.loginButtonText}>Sign In</Text>
+              <Text style={styles.loginButtonText}>Log In</Text>
             </ImageBackground>
           </TouchableOpacity>
           {error && <Text style={styles.errorText}>{error}</Text>}
+          <TouchableOpacity
+            onPress={signInAsync}
+            style={styles.loginButtonContainer}
+          >
+            <ImageBackground
+              style={styles.loginButtonGoogle}
+              source={{ uri: "https://i.postimg.cc/L6km2Sc6/back-Google.png" }}
+              imageStyle={{ borderRadius: 5 }}
+            >
+              <Text style={styles.loginButtonText}>Log In with Google</Text>
+            </ImageBackground>
+          </TouchableOpacity>
           <View style={styles.dontHaveAccountContainer}>
             <Text style={{ color: "white", fontFamily: "Poppins_700Bold" }}>
               Don't have an account yet?{" "}
@@ -110,7 +122,6 @@ const SignIn = (props) => {
               Sign Up
             </Text>
           </View>
-          <Button title="Log In with Google" onPress={signInAsync} />
         </View>
         <Footer />
       </ImageBackground>
@@ -148,7 +159,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     paddingVertical: 7,
     paddingHorizontal: 15,
-    width: 150,
+    width: 170,
   },
   loginButtonText: {
     color: "white",
@@ -182,4 +193,10 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_700Bold",
     alignSelf: "flex-start",
   },
+  loginButtonGoogle:{
+    alignSelf: "center",
+    paddingVertical: 7,
+    paddingHorizontal: 15,
+    width: 170,
+  }
 })

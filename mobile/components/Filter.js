@@ -337,7 +337,7 @@ const styles = StyleSheet.create({
 
     },
     principalModal: {
-        
+        backgroundColor:"white",
     },
     principalInternalModal: {
 
