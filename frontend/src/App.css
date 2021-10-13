@@ -527,13 +527,16 @@ h2 span {
 .gameName h4 {
   font-weight: 700;
 }
-#buy {
+.buyIcon {
   cursor: pointer;
   color: #660099;
   font-size: 38px;
 }
-#buy:hover {
+.buyIcon:hover {
   color: #a32bdf;
+}
+#buy {
+  width: 150px;
 }
 /*Most Wanted*/
 
