@@ -17,7 +17,6 @@ const Stripe = ({ formik, user, history }) => {
     }
 
     const cardElement = elements.getElement(CardElement)
-
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: cardElement,
@@ -35,7 +34,6 @@ const Stripe = ({ formik, user, history }) => {
         phone: user.phone,
       },
     })
-
     if (error) {
       console.log("[error]", error)
     } else {
@@ -49,6 +47,8 @@ const Stripe = ({ formik, user, history }) => {
             },
           }
         )
+        if (!authorization.data.success)
+          throw new Error(authorization.data.error)
         const details = {
           direction: formik.values,
           paymentDetails: {
@@ -66,17 +66,17 @@ const Stripe = ({ formik, user, history }) => {
       }
     }
   }
-
   return (
     <form
       onSubmit={handleSubmit}
-      style={{ display: "flex", flexDirection: "column", width: "30vw" }}
+      style={{ display: "flex", flexDirection: "column", width: "40vw" }}
     >
       <CardElement
+        className="mb-5"
         options={{
           style: {
             base: {
-              fontSize: "18px",
+              fontSize: "23px",
               color: "#424770",
               "::placeholder": {
                 color: "gray",
@@ -88,11 +88,15 @@ const Stripe = ({ formik, user, history }) => {
           },
         }}
       />
-      <button className="profileButton"
-                                    style={{
-                                       backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
-                                     }}type="submit" disabled={!stripe || loading}>
-        Pay
+      <button
+        className="profileButton"
+        style={{
+          backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+        }}
+        type="submit"
+        disabled={!stripe || loading}
+      >
+        Finalize purchase
       </button>
     </form>
   )

@@ -1,15 +1,30 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 import { FaShoppingCart, FaBell, FaHeart } from "react-icons/fa"
 import { useSelector, useDispatch } from "react-redux"
 import usersActions from "../redux/actions/usersActions"
-const iconUser = "https://i.postimg.cc/pd1gvVR7/iconuser1.png"
-
-const HOST = "https://lodotechgames.herokuapp.com"
+import toast from "react-hot-toast"
 
 const Header = (props) => {
+   const iconUser = "https://i.postimg.cc/pd1gvVR7/iconuser1.png"
+   const HOST = "https://lodotechgames.herokuapp.com"
    const user = useSelector((state) => state.users.user)
    const dispatch = useDispatch()
+   console.log(user)
+   const [changeTitle, setChangeTitle] = useState(false)
+
+   const toggleTitle = () => {
+      const scrolled = document.documentElement.scrollTop
+      if (scrolled > 1) {
+         setChangeTitle(true)
+      } else if (scrolled <= 1) {
+         setChangeTitle(false)
+      }
+   }
+   window.addEventListener("scroll", toggleTitle)
+
+   const [showNoti, setShowNoti] = useState(false)
+
    return (
       <nav
          className="navbar navbar-expand-lg navbar-light fixed-top py-3"
@@ -17,8 +32,17 @@ const Header = (props) => {
       >
          <div className="container px-4 px-lg-5">
             <a className="navbar-brand" href="#top">
-               <h3 id="navLogo">ludotech</h3>
-               {/* {window.scrollY === 0 ? <h3>ludotech</h3> : <p>hola</p>} */}
+               {changeTitle ? (
+                  <h3 id="navLogo">
+                     <span className="spanViolet">ludo</span>
+                     <span className="spanRed">t</span>
+                     <span className="spanGreen">e</span>
+                     <span className="spanOrangi">c</span>
+                     <span className="spanViolet2">h</span>
+                  </h3>
+               ) : (
+                  <h3 id="navLogo">ludotech</h3>
+               )}
             </a>
             <button
                className="navbar-toggler navbar-toggler-right"
@@ -82,7 +106,7 @@ const Header = (props) => {
                               to="/signin"
                               onClick={() => window.scrollTo(0, 0)}
                            >
-                              Sign In
+                              Log In
                            </NavLink>
                         </li>
                      </>
@@ -98,6 +122,8 @@ const Header = (props) => {
                            Settings
                         </a>
                         <ul className="dropdown-menu settings mt-3">
+                           <p className="text-white px-2 pt-1">{user.email}</p>
+                           <hr className="dropdown-divider" />
                            <li>
                               <NavLink
                                  className="nav-link"
@@ -150,16 +176,153 @@ const Header = (props) => {
                      }}
                   ></div>
                </div>
-               <div className='relative'>
-                  <FaBell className="iconsNav" />
-                  <div className='notification'>2</div>
-               </div>
-               <Link to="wishlist">
-                  <FaHeart className="iconsNav" />
-               </Link>
-               <Link to="/cart" onClick={() => window.scrollTo(0, 0)}>
-                  <FaShoppingCart className="iconsNav" />
-               </Link>
+               {user ? (
+                  <>
+                     <div className="relative">
+                        <FaBell
+                           className="iconsNav"
+                           onClick={() => setShowNoti(!showNoti)}
+                        />
+                        <div className="notification">2</div>
+                        {showNoti && <Notifications show={setShowNoti} />}
+                     </div>
+                     <Link to="/wishlist">
+                        <FaHeart className="iconsNav" />
+                     </Link>
+                     <Link to="/cart" onClick={() => window.scrollTo(0, 0)}>
+                        <FaShoppingCart className="iconsNav" />
+                     </Link>
+                  </>
+               ) : (
+                  <>
+                     <FaBell
+                        className="iconsNav"
+                        onClick={() =>
+                           toast.custom((t) => (
+                              <div
+                                 className={`${
+                                    t.visible
+                                       ? "animate-enter"
+                                       : "animate-leave"
+                                 } bg-white flex`}
+                                 style={{
+                                    display: "flex",
+                                    alignContent: "center",
+                                    alignItems: "center",
+                                    padding: "5px 10px",
+                                    borderRadius: "15px",
+                                    backgroundImage:
+                                       "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+                                    backgroundPosition: "center right 50px",
+                                    backgroundSize: "cover",
+                                 }}
+                              >
+                                 <img
+                                    style={{ width: "55px", height: "55px" }}
+                                    className="h-3 w-3 rounded-full"
+                                    src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+                                    alt=""
+                                 />
+                                 <p
+                                    className="text-sm"
+                                    style={{
+                                       marginBottom: 0,
+                                       color: "#ff9424",
+                                       fontWeight: "bold",
+                                    }}
+                                 >
+                                    You must log in to see your notifications
+                                 </p>
+                              </div>
+                           ))
+                        }
+                     />{" "}
+                     <FaHeart
+                        className="iconsNav"
+                        onClick={() =>
+                           toast.custom((t) => (
+                              <div
+                                 className={`${
+                                    t.visible
+                                       ? "animate-enter"
+                                       : "animate-leave"
+                                 } bg-white flex`}
+                                 style={{
+                                    display: "flex",
+                                    alignContent: "center",
+                                    alignItems: "center",
+                                    padding: "5px 10px",
+                                    borderRadius: "15px",
+                                    backgroundImage:
+                                       "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+                                    backgroundPosition: "center right 50px",
+                                    backgroundSize: "cover",
+                                 }}
+                              >
+                                 <img
+                                    style={{ width: "55px", height: "55px" }}
+                                    className="h-3 w-3 rounded-full"
+                                    src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+                                    alt=""
+                                 />
+                                 <p
+                                    className="text-sm"
+                                    style={{
+                                       marginBottom: 0,
+                                       color: "#ff9424",
+                                       fontWeight: "bold",
+                                    }}
+                                 >
+                                    You must log in to see your wish list
+                                 </p>
+                              </div>
+                           ))
+                        }
+                     />{" "}
+                     <FaShoppingCart
+                        className="iconsNav"
+                        onClick={() =>
+                           toast.custom((t) => (
+                              <div
+                                 className={`${
+                                    t.visible
+                                       ? "animate-enter"
+                                       : "animate-leave"
+                                 } bg-white flex`}
+                                 style={{
+                                    display: "flex",
+                                    alignContent: "center",
+                                    alignItems: "center",
+                                    padding: "5px 10px",
+                                    borderRadius: "15px",
+                                    backgroundImage:
+                                       "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+                                    backgroundPosition: "center right 50px",
+                                    backgroundSize: "cover",
+                                 }}
+                              >
+                                 <img
+                                    style={{ width: "55px", height: "55px" }}
+                                    className="h-3 w-3 rounded-full"
+                                    src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+                                    alt=""
+                                 />
+                                 <p
+                                    className="text-sm"
+                                    style={{
+                                       marginBottom: 0,
+                                       color: "#ff9424",
+                                       fontWeight: "bold",
+                                    }}
+                                 >
+                                    You must log in to see your shopping cart
+                                 </p>
+                              </div>
+                           ))
+                        }
+                     />
+                  </>
+               )}
             </div>
          </div>
       </nav>
@@ -194,3 +357,40 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 export default Header
+
+const Notifications = (props) => {
+   const not = [
+      {
+         src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/178443-1000-1000/MONOPOLY-CLASICO-1-9232.jpg?v=637560194297530000",
+         text: "Compraste Monopoly Millonaire",
+      },
+      {
+         src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/178443-1000-1000/MONOPOLY-CLASICO-1-9232.jpg?v=637560194297530000",
+         text: "Compraste Monopoly Millonaire",
+      },
+      {
+         src: "https://hiperlibertad.vteximg.com.br/arquivos/ids/178443-1000-1000/MONOPOLY-CLASICO-1-9232.jpg?v=637560194297530000",
+         text: "Compraste Monopoly Millonaire",
+      },
+   ]
+
+   return (
+      <div
+         className="notificationsHeader"
+         onMouseLeave={() => props.show(false)}
+      >
+         <h5>Notifications</h5>
+         {not.map((o) => {
+            return (
+               <div className="notificationHeader">
+                  <div
+                     className="iconNoti"
+                     style={{ backgroundImage: `url("${o.src}")` }}
+                  ></div>
+                  <p>{o.text}</p>
+               </div>
+            )
+         })}
+      </div>
+   )
+}

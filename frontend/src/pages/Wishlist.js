@@ -44,7 +44,7 @@ const Wishlist = (props) => {
                <h2>Wishlist</h2>
                <div className="searchbarWishlist">
                   <p>
-                     I you have a lot products in your wishlist, you can search
+                     If you have many products in your wishlist, you can search
                      each one of them here
                   </p>
                   <input

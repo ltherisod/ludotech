@@ -19,12 +19,29 @@ const Checkout = (props) => {
       >
          <HeroPages />
          <Header />
-         <div className="d-flex flex-column justify-content-center align-items-center">
+         <h2 className="purchaseTitle mt-5">
+            Purchase <span>Summary</span>
+         </h2>
+         <div className="d-flex flex-column justify-content-center align-items-center mt-5">
             <div className="checkoutContainer">
                <h6 className="text-end">
                   Date: {timestamp.slice(0, 10).replace(/-/g, " / ")}
                </h6>
-               <h1>Purchase Summary</h1>
+               <div className="d-flex align-items-center divlogoCheckout">
+                  <p className="logoCheckout">
+                     <span className="spanViolet">ludo</span>
+                     <span className="spanRed">t</span>
+                     <span className="spanGreen">e</span>
+                     <span className="spanOrangi">c</span>
+                     <span className="spanViolet2">h</span>
+                  </p>
+                  <img
+                     className="imgLogoCheckout"
+                     src="https://i.postimg.cc/FFjzhxf6/rubik-solo.png"
+                     alt="ludoLogo"
+                  ></img>
+               </div>
+
                <hr style={{ height: "5px" }}></hr>
                <div>
                   {articles.map((article) => {
@@ -140,7 +157,9 @@ const Checkout = (props) => {
                   <p>
                      Selected payment method:{" "}
                      <span style={{ color: "darkgreen" }}>
-                        {paymentDetails.method}
+                        {paymentDetails.method === "PAYPAL"
+                           ? "PAYPAL"
+                           : "CREDIT CARD"}
                      </span>
                   </p>
                   <div className="d-flex justify-content-center flex-column align-items-center">
@@ -167,15 +186,20 @@ const Checkout = (props) => {
                         </>
                      )}
                   </div>
-                  <button
-                     type="button"
-                     className="text-center bold"
-                     onClick={() => {
-                        dispatch(usersActions.getReceipt(purchase._id))
-                     }}
-                  >
-                     Download PDF
-                  </button>
+                  <div className="d-flex justify-content-center mt-4">
+                     <button
+                        type="button"
+                        className="addProduct"
+                        onClick={() => {
+                           dispatch(usersActions.getReceipt(purchase._id))
+                        }}
+                        style={{
+                           backgroundImage: `url("https://i.postimg.cc/GhMnJB8K/button-PDF.png")`,
+                        }}
+                     >
+                        Download PDF
+                     </button>
+                  </div>
                </div>
             </div>
             <button

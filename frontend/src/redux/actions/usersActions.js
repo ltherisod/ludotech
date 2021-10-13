@@ -11,6 +11,12 @@ const usersActions = {
         const response = await axios.post(`${HOST}/api/${action}`, data)
         if (!response.data.success) throw new Error(response.data.error)
         localStorage.setItem("token", response.data.response.token)
+        if (response.data.success) {
+          if (action === 'signup') {
+            let body = response.data.response
+            await axios.post(`${HOST}/api/welcome-email`,  body , { headers: { Authorization: 'Bearer '+response.data.response.token }})
+          } // falta cachear?? 
+        }
         dispatch({
           type: "LOGIN_OR_SIGNUP",
           payload: response.data.response,
@@ -113,11 +119,16 @@ const usersActions = {
             Authorization: `Bearer ${getState().users.user.token}`,
           },
         })
-        console.log(res.data)
+        // console.log(res.data)
         if (!res.data.success) throw new Error(res.data.error)
+        if (res.data.success) {
+          let body = { user: getState().users.user, purchase: res.data.response.purchase }
+          await axios.post(`${HOST}/api/success-purchase`,  body , { headers: { Authorization: 'Bearer '+ getState().users.user.token }})
+        }
         dispatch({ type: "PURCHASE", payload: res.data.response })
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
+        // await axios.post(`${HOST}/api/fail-purchase`,  body , { headers: { Authorization: 'Bearer '+ getState().users.user.token }})
         return { success: false, response: null, error: e.message }
       }
     }

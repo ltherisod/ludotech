@@ -8,6 +8,7 @@ import PreloaderFilter from "../components/PreloaderFilter"
 import Bot from "../components/bot/Bot"
 
 const Articles = (props) => {
+   console.log(props)
    const [articles, setArticles] = useState({
       articles: [],
       page: 1,
@@ -22,7 +23,7 @@ const Articles = (props) => {
 
    return (
       <>
-         <Bot/>
+         <Bot />
          <div
             className="signInBody"
             style={{
@@ -32,7 +33,9 @@ const Articles = (props) => {
             <HeroPages />
             <Header />
             <div className="bodyArticles">
-               <h2>Articles</h2>
+               <h2 className="pb-3">
+                  Art<span>i</span>cles
+               </h2>
                <div className="filterContainer">
                   <Filter
                      filterArticles={(e) => filterArticles(e)}
@@ -43,7 +46,7 @@ const Articles = (props) => {
                   <div className="containerArticles" id="containerArticles">
                      {loadingArticles ? (
                         <PreloaderFilter />
-                     ) : (
+                     ) : articles.articles.length ? (
                         articles.articles.map((article) => {
                            return (
                               <Article
@@ -53,9 +56,12 @@ const Articles = (props) => {
                               />
                            )
                         })
+                     ) : (
+                        <p>No articles found.</p>
+                        // dejar bonito acá también jjj
                      )}
                   </div>
-                  {articles.totalPages > 1 && (
+                  {articles?.totalPages > 1 && (
                      <div
                         style={{
                            display: "flex",
