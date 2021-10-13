@@ -14,6 +14,7 @@ import Bot from "../components/bot/Bot"
 import toast from "react-hot-toast"
 import { useLoginLS } from "../hooks/usersHooks"
 import Preloader from "../components/PreloaderFilter"
+import { FaMoneyCheck } from "react-icons/fa"
 
 const Cart = (props) => {
    const [viewMethod, setViewMethod] = useState(false)
@@ -284,9 +285,9 @@ const Cart = (props) => {
                                        ${totalCost.toFixed(2)}
                                     </p>
                                  </div>
-                                 <div>
+                                 <div className="d-flex justify-content-center">
                                     <button
-                                       className="profileButton"
+                                       className="profileButton "
                                        style={{
                                           backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
                                        }}
@@ -295,7 +296,13 @@ const Cart = (props) => {
                                           setViewMethod(!viewMethod)
                                        }
                                     >
-                                       Buy
+                                       <div className="d-flex align-items-center justify-content-around px-3">
+                                          <FaMoneyCheck
+                                             style={{ fontSize: "1.7rem" }}
+                                             className="moneyBuy me-3"
+                                          />{" "}
+                                          <span>Buy</span>
+                                       </div>
                                     </button>
                                  </div>
                               </article>
@@ -304,7 +311,11 @@ const Cart = (props) => {
                               {viewMethod && (
                                  <>
                                     <h3 className="chooseAnAddress">
-                                       Choose an address to continue
+                                       Choose an{" "}
+                                       <span className="spanCeleste">
+                                          address
+                                       </span>{" "}
+                                       to continue
                                     </h3>
                                     <div className="cartAddressInputs">
                                        {!directions || directions.length ? (
@@ -325,9 +336,13 @@ const Cart = (props) => {
                                                    )
                                                 })
                                              )}
-                                             <h4 className="chooseAnAddress">
-                                                Or add a new address
-                                             </h4>
+                                             <h3 className="chooseAnAddress">
+                                                Or add a{" "}
+                                                <span className="spanCeleste">
+                                                   new
+                                                </span>{" "}
+                                                address
+                                             </h3>
                                              <FormCart formik={formik} />
                                           </div>
                                        ) : (
@@ -353,17 +368,23 @@ const Cart = (props) => {
                                     </div>
                                     {viewButtons && (
                                        <>
-                                          <h4 className="chooseAnAddress">
-                                             Pay with PayPal
-                                          </h4>
+                                          <h3 className="chooseAnAddress">
+                                             Pay with{" "}
+                                             <span className="spanCeleste">
+                                                PayPal
+                                             </span>
+                                          </h3>
                                           <Paypal
                                              user={user}
                                              formik={formik}
                                              history={props.history}
                                           />
-                                          <h4 className="chooseAnAddress">
-                                             Pay with credit card
-                                          </h4>
+                                          <h3 className="chooseAnAddress">
+                                             Or pay with{" "}
+                                             <span className="spanCeleste">
+                                                Credit Card
+                                             </span>
+                                          </h3>
                                           <Stripe
                                              user={user}
                                              formik={formik}
