@@ -1,6 +1,6 @@
 const FormCart = ({ formik }) => {
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column" style={{ width:"60vw"}}>
       <input
         name="receiver"
         value={formik.values.receiver}

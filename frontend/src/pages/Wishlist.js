@@ -37,11 +37,11 @@ const Wishlist = (props) => {
          <Header />
          {searched.length === 0 ? (
             <main className="mainWishlist">
-               <h2>Your wishlist is empty</h2>
+               <h3>Your wishlist is empty</h3>
             </main>
          ) : (
             <main className="mainWishlist">
-               <h2>Wishlist</h2>
+               <h2>Wish<span>list</span></h2>
                <div className="searchbarWishlist">
                   <p>
                      If you have many products in your wishlist, you can search
@@ -49,7 +49,7 @@ const Wishlist = (props) => {
                   </p>
                   <input
                      type="search"
-                     placeholder="Search a product..."
+                     placeholder="🔍 Search a product..."
                      onChange={(e) => searchProduct(e.target.value)}
                   />
                </div>

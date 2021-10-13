@@ -15,6 +15,7 @@ import toast from "react-hot-toast"
 import { useLoginLS } from "../hooks/usersHooks"
 import Preloader from "../components/PreloaderFilter"
 import { FaMoneyCheck } from "react-icons/fa"
+import { Link } from "react-router-dom"
 
 const Cart = (props) => {
    const [viewMethod, setViewMethod] = useState(false)
@@ -66,7 +67,7 @@ const Cart = (props) => {
                   padding: "5px 10px",
                   borderRadius: "15px",
                   backgroundImage:
-                     "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+                     "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
                   backgroundPosition: "center right 50px",
                   backgroundSize: "cover",
                }}
@@ -130,7 +131,19 @@ const Cart = (props) => {
             ) : (
                <div className="bodyCart">
                   {props.shoppingCart.length === 0 ? (
-                     <h2>Your cart is empty</h2>
+                     <div className='emptyCart'>
+                        <div>
+                           <h2>Your cart is <span>empty</span></h2>
+                           <h2 style ={{fontSize:'5vmin', marginTop:'-.5em'}}>Let's <span>start</span> buying!</h2>
+                        </div>
+                          <Link className="shopLink" to="/articles" onClick={() => window.scrollTo(0, 0)}> 
+                           <div className="buttonShop"style={{backgroundImage:"url('https://i.postimg.cc/256ZjvPG/back-Button.png')"}}>
+                              Shop Now!
+                           </div>
+                          </Link>
+                           <img alt="ludoCel" className="ludoGif" src="/assets/mascotSelfie.gif"/>
+                     </div>
+                   
                   ) : (
                      <>
                         <h2>Cart</h2>
@@ -307,7 +320,7 @@ const Cart = (props) => {
                                  </div>
                               </article>
                            </section>
-                           <section className="d-flex justify-content-center align-items-center flex-column">
+                           <section className="d-flex justify-content-center align-items-center flex-column" style={{width:"90vw"}}>
                               {viewMethod && (
                                  <>
                                     <h3 className="chooseAnAddress">
@@ -320,6 +333,7 @@ const Cart = (props) => {
                                     <div className="cartAddressInputs">
                                        {!directions || directions.length ? (
                                           <div>
+                                             <div className="flex-wrap">
                                              {!directions ||
                                              directions.length === 0 ? (
                                                 <p className="chooseAnAddress">
@@ -336,6 +350,7 @@ const Cart = (props) => {
                                                    )
                                                 })
                                              )}
+                                             </div>
                                              <h3 className="chooseAnAddress">
                                                 Or add a{" "}
                                                 <span className="spanCeleste">

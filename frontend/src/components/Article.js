@@ -39,7 +39,7 @@ const Article = (props) => {
                padding: "5px 10px",
                borderRadius: "15px",
                backgroundImage:
-                  "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+                  "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
                backgroundPosition: "center right 50px",
                backgroundSize: "cover",
             }}
@@ -111,7 +111,7 @@ const Article = (props) => {
                                  padding: "5px 10px",
                                  borderRadius: "15px",
                                  backgroundImage:
-                                    "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+                                    "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
                                  backgroundPosition: "center right 50px",
                                  backgroundSize: "cover",
                               }}
@@ -223,7 +223,7 @@ const Article = (props) => {
                                           padding: "5px 10px",
                                           borderRadius: "15px",
                                           backgroundImage:
-                                             "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+                                             "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
                                           backgroundPosition:
                                              "center right 50px",
                                           backgroundSize: "cover",

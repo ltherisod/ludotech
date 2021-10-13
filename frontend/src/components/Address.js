@@ -42,7 +42,7 @@ const Address = (props) => {
          ) : (
             <div className="addressAddedCard">
                {!edit && (
-                  <div >
+                  <div style={{backgroundColor:"blue"}}>
                      <p>Alias : {direction.alias}</p>
                      <p>Receiver : {direction.receiver}</p>
                      <p>Street : {direction.street}</p>
@@ -54,7 +54,7 @@ const Address = (props) => {
                   </div>
                )}
                {edit && (
-                  <div>
+                  <div style={{width:"30vw"}}>
                      <DirectionsForm
                         submitCallback={updateDirectionHandler}
                         initialValues={initialValues}

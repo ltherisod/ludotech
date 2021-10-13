@@ -46,7 +46,7 @@ const Purchases = () => {
          <Header />
          <HeroPages />
          <div className="mainWishlist">
-            <h2 style={{ color: "white" }}>My purchases</h2>
+            <h2 style={{ color: "white" }}><span>My</span> Purchases</h2>
             <div className="searchbarWishlist">
                <p>
                   If you have a lot purchases, you can search each one of them
@@ -82,7 +82,7 @@ const Purchase = ({ purchase }) => {
    }, [])
 
    return (
-      <div className="userFoundPurchase">
+      <div className="userFoundPurchase" style={{backgroundImage:"url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')"}}>
          <div className="containerPurchase">
             <div className="titlesPurchasesUser">
                <p>Order ID</p>
