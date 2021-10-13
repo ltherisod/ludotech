@@ -165,9 +165,9 @@ export const useAddDirection = () => {
     const res = await dispatch(usersActions.addDirection(values))
     if (!res.success) setError(res.error)
     setLoading(false)
- }
+  }
 
- return [formik, loading, error]
+  return [formik, loading, error]
 }
 export const useUpdateDirection = (direction) => {
   const [loading, setLoading] = useState(false)
@@ -205,13 +205,13 @@ export const useUpdateDirection = (direction) => {
   const updateDirectionHandler = async (values) => {
     setLoading(true)
     const res = await dispatch(
-       usersActions.updateDirection(values, direction?._id)
+      usersActions.updateDirection(values, direction?._id)
     )
     if (!res.success) setError(res.error)
     setLoading(false)
- }
+  }
 
- return [formik, loading, error]
+  return [formik, loading, error]
 }
 
 export const useDirectionsForm = (submitCallback, initialValues) => {
@@ -234,7 +234,7 @@ export const useDirectionsForm = (submitCallback, initialValues) => {
       alias: Yup.string(),
       receiver: Yup.string().required("Required"),
       street: Yup.string().required("Required"),
-      number: Yup.number().required("Required"),
+      number: Yup.number().required("Required").typeError("Must be a number"),
       department: Yup.string().required("Required"),
       zipCode: Yup.string().required("Required"),
       city: Yup.string().required("Required"),
@@ -249,12 +249,12 @@ export const usePurchase = () => {
   const [error, setError] = useState(null)
   const dispatch = useDispatch()
   const purchase = async (data) => {
-     setLoading(true)
-     setError(null)
-     const res = await dispatch(usersActions.purchaseHandler(data))
-     if (!res.success) setError(res.error)
-     setLoading(false)
-     return res
+    setLoading(true)
+    setError(null)
+    const res = await dispatch(usersActions.purchaseHandler(data))
+    if (!res.success) setError(res.error)
+    setLoading(false)
+    return res
   }
   return [purchase, loading, error]
 }

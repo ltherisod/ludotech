@@ -8,22 +8,32 @@ import {
   ImageBackground,
   StyleSheet,
 } from "react-native"
-const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
+const DirectionsForm = ({
+  submitCallback,
+  initialValues,
+  buttonText,
+  alias = true,
+  children,
+}) => {
   const formik = useDirectionsForm(submitCallback, initialValues)
   return (
     <View>
-      <TextInput
-        name="alias"
-        value={formik.values.alias}
-        onChangeText={formik.handleChange("alias")}
-        onBlur={formik.handleBlur("alias")}
-        placeholder="Alias"
-        style={styles.inputText}
-      />
-      {formik.touched.alias && formik.errors.alias ? (
-        <Text style={{ color: "white" }}>{formik.errors.alias}</Text>
-      ) : (
-        <Text style={{ color: "transparent" }}>NoErrors</Text>
+      {alias && (
+        <>
+          <TextInput
+            name="alias"
+            value={formik.values.alias}
+            onChangeText={formik.handleChange("alias")}
+            onBlur={formik.handleBlur("alias")}
+            placeholder="Alias"
+            style={styles.inputText}
+          />
+          {formik.touched.alias && formik.errors.alias ? (
+            <Text style={styles.errorText}>{formik.errors.alias}</Text>
+          ) : (
+            <Text style={{ color: "transparent" }}>NoErrors</Text>
+          )}
+        </>
       )}
       <TextInput
         name="receiver"
@@ -34,7 +44,7 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
         style={styles.inputText}
       />
       {formik.touched.receiver && formik.errors.receiver ? (
-        <Text>{formik.errors.receiver}</Text>
+        <Text style={styles.errorText}>{formik.errors.receiver}</Text>
       ) : (
         <Text style={{ color: "transparent" }}>NoErrors</Text>
       )}
@@ -47,7 +57,7 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
         style={styles.inputText}
       />
       {formik.touched.street && formik.errors.street ? (
-        <Text>{formik.errors.street}</Text>
+        <Text style={styles.errorText}>{formik.errors.street}</Text>
       ) : (
         <Text style={{ color: "transparent" }}>NoErrors</Text>
       )}
@@ -60,7 +70,7 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
         style={styles.inputText}
       />
       {formik.touched.number && formik.errors.number ? (
-        <Text>{formik.errors.number}</Text>
+        <Text style={styles.errorText}>{formik.errors.number}</Text>
       ) : (
         <Text style={{ color: "transparent" }}>NoErrors</Text>
       )}
@@ -73,7 +83,7 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
         style={styles.inputText}
       />
       {formik.touched.department && formik.errors.department ? (
-        <Text>{formik.errors.department}</Text>
+        <Text style={styles.errorText}>{formik.errors.department}</Text>
       ) : (
         <Text style={{ color: "transparent" }}>NoErrors</Text>
       )}
@@ -86,7 +96,7 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
         style={styles.inputText}
       />
       {formik.touched.zipCode && formik.errors.zipCode ? (
-        <Text>{formik.errors.zipCode}</Text>
+        <Text style={styles.errorText}>{formik.errors.zipCode}</Text>
       ) : (
         <Text style={{ color: "transparent" }}>NoErrors</Text>
       )}
@@ -99,7 +109,7 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
         style={styles.inputText}
       />
       {formik.touched.city && formik.errors.city ? (
-        <Text>{formik.errors.city}</Text>
+        <Text style={styles.errorText}>{formik.errors.city}</Text>
       ) : (
         <Text style={{ color: "transparent" }}>NoErrors</Text>
       )}
@@ -112,10 +122,11 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
         style={styles.inputText}
       />
       {formik.touched.state && formik.errors.state ? (
-        <Text>{formik.errors.state}</Text>
+        <Text style={styles.errorText}>{formik.errors.state}</Text>
       ) : (
         <Text style={{ color: "transparent" }}>NoErrors</Text>
       )}
+      {children}
       <TouchableOpacity onPress={formik.handleSubmit}>
         <ImageBackground
           style={styles.userButtonCheck}
@@ -156,6 +167,9 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     paddingHorizontal: 11,
     width: 90,
+  },
+  errorText: {
+    color: "red",
   },
 })
 
