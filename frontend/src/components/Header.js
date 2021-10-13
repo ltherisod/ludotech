@@ -3,14 +3,14 @@ import { Link, NavLink } from "react-router-dom"
 import { FaShoppingCart, FaBell, FaHeart } from "react-icons/fa"
 import { useSelector, useDispatch } from "react-redux"
 import usersActions from "../redux/actions/usersActions"
-import toast, { Toaster } from "react-hot-toast"
-import { toastTest } from "./ToastTest"
-const iconUser = "https://i.postimg.cc/pd1gvVR7/iconuser1.png"
-const HOST = "https://lodotechgames.herokuapp.com"
+import toast from "react-hot-toast"
 
 const Header = (props) => {
+   const iconUser = "https://i.postimg.cc/pd1gvVR7/iconuser1.png"
+   const HOST = "https://lodotechgames.herokuapp.com"
    const user = useSelector((state) => state.users.user)
    const dispatch = useDispatch()
+   console.log(user)
 
    const [showNoti, setShowNoti] = useState(false)
 
@@ -19,17 +19,6 @@ const Header = (props) => {
          className="navbar navbar-expand-lg navbar-light fixed-top py-3"
          id="mainNav"
       >
-         <Toaster
-            containerStyle={{
-               top: 80,
-               left: 20,
-               bottom: 20,
-               right: 20,
-            }}
-            toastOptions={{
-               duration: 1500,
-            }}
-         />
          <div className="container px-4 px-lg-5">
             <a className="navbar-brand" href="#top">
                <h3 id="navLogo">ludotech</h3>
@@ -97,7 +86,7 @@ const Header = (props) => {
                               to="/signin"
                               onClick={() => window.scrollTo(0, 0)}
                            >
-                              Sign In
+                              Log In
                            </NavLink>
                         </li>
                      </>
@@ -113,6 +102,8 @@ const Header = (props) => {
                            Settings
                         </a>
                         <ul className="dropdown-menu settings mt-3">
+                           <p className="text-white px-2 pt-1">{user.email}</p>
+                           <hr className="dropdown-divider" />
                            <li>
                               <NavLink
                                  className="nav-link"
@@ -165,18 +156,150 @@ const Header = (props) => {
                      }}
                   ></div>
                </div>
-               <div className="relative">
+               {user ? (
+                  <>
+                    <div className="relative">
                   <FaBell className="iconsNav" onClick={() => setShowNoti(!showNoti)} />
                   <div className="notification">2</div>
                   {showNoti && <Notifications show={setShowNoti} />}
-               </div>
-               <Link to="wishlist">
-                  <FaHeart className="iconsNav" />
-               </Link>
-               {/* <FaHeart className="iconsNav" onClick={toastTest()} /> */}
-               <Link to="/cart" onClick={() => window.scrollTo(0, 0)}>
-                  <FaShoppingCart className="iconsNav" />
-               </Link>
+                     </div>
+                     <Link to="wishlist">
+                        <FaHeart className="iconsNav" />
+                     </Link>
+                     <Link to="/cart" onClick={() => window.scrollTo(0, 0)}>
+                        <FaShoppingCart className="iconsNav" />
+                     </Link>
+                  </>
+               ) : (
+                  <>
+                     <FaBell
+                        className="iconsNav"
+                        onClick={() =>
+                           toast.custom((t) => (
+                              <div
+                                 className={`${
+                                    t.visible
+                                       ? "animate-enter"
+                                       : "animate-leave"
+                                 } bg-white flex`}
+                                 style={{
+                                    display: "flex",
+                                    alignContent: "center",
+                                    alignItems: "center",
+                                    padding: "5px 10px",
+                                    borderRadius: "15px",
+                                    backgroundImage:
+                                       "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+                                    backgroundPosition: "center right 50px",
+                                    backgroundSize: "cover",
+                                 }}
+                              >
+                                 <img
+                                    style={{ width: "55px", height: "55px" }}
+                                    className="h-3 w-3 rounded-full"
+                                    src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+                                    alt=""
+                                 />
+                                 <p
+                                    className="text-sm"
+                                    style={{
+                                       marginBottom: 0,
+                                       color: "#ff9424",
+                                       fontWeight: "bold",
+                                    }}
+                                 >
+                                    You must log in to see your notifications
+                                 </p>
+                              </div>
+                           ))
+                        }
+                     />{" "}
+                     <FaHeart
+                        className="iconsNav"
+                        onClick={() =>
+                           toast.custom((t) => (
+                              <div
+                                 className={`${
+                                    t.visible
+                                       ? "animate-enter"
+                                       : "animate-leave"
+                                 } bg-white flex`}
+                                 style={{
+                                    display: "flex",
+                                    alignContent: "center",
+                                    alignItems: "center",
+                                    padding: "5px 10px",
+                                    borderRadius: "15px",
+                                    backgroundImage:
+                                       "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+                                    backgroundPosition: "center right 50px",
+                                    backgroundSize: "cover",
+                                 }}
+                              >
+                                 <img
+                                    style={{ width: "55px", height: "55px" }}
+                                    className="h-3 w-3 rounded-full"
+                                    src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+                                    alt=""
+                                 />
+                                 <p
+                                    className="text-sm"
+                                    style={{
+                                       marginBottom: 0,
+                                       color: "#ff9424",
+                                       fontWeight: "bold",
+                                    }}
+                                 >
+                                    You must log in to see your wish list
+                                 </p>
+                              </div>
+                           ))
+                        }
+                     />{" "}
+                     <FaShoppingCart
+                        className="iconsNav"
+                        onClick={() =>
+                           toast.custom((t) => (
+                              <div
+                                 className={`${
+                                    t.visible
+                                       ? "animate-enter"
+                                       : "animate-leave"
+                                 } bg-white flex`}
+                                 style={{
+                                    display: "flex",
+                                    alignContent: "center",
+                                    alignItems: "center",
+                                    padding: "5px 10px",
+                                    borderRadius: "15px",
+                                    backgroundImage:
+                                       "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+                                    backgroundPosition: "center right 50px",
+                                    backgroundSize: "cover",
+                                 }}
+                              >
+                                 <img
+                                    style={{ width: "55px", height: "55px" }}
+                                    className="h-3 w-3 rounded-full"
+                                    src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+                                    alt=""
+                                 />
+                                 <p
+                                    className="text-sm"
+                                    style={{
+                                       marginBottom: 0,
+                                       color: "#ff9424",
+                                       fontWeight: "bold",
+                                    }}
+                                 >
+                                    You must log in to see your shopping cart
+                                 </p>
+                              </div>
+                           ))
+                        }
+                     />
+                  </>
+               )}
             </div>
          </div>
       </nav>
