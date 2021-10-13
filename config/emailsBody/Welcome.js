@@ -3,6 +3,9 @@ const WelcomeMail = (data) => {
     <header style="width: 100vw;">
       <div style="width:100vw;height:40vh;background-image:url(https://i.postimg.cc/L2XVbY6Q/hero-Pages.png);background-position:top;background-size:cover;background-repeat:no-repeat;display:flex;justify-content:center;align-items:flex-end; ">
         <h2 style="background-color:transparent;">LUDOTECH</h2>
+
+        <div style="width:20vw;height:10vh;background-image:url('./assets/ludotech');background-position:center;background-size:cover;background-repeat:no-repeat:
+        <div style="width:10vw;height:10vh;background-image:url('./assets/rubik.png');background-position:center;background-size:cover;background-repeat:no-repeat:
       </div>
     </header>
     <main style="width:80vw;margin:0 auto;">
