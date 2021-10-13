@@ -5,12 +5,15 @@ import DirectionsForm from "../components/DirectionsForm"
 import axios from "axios"
 import { usePurchase } from "../hooks/usersHooks"
 import { useSelector } from "react-redux"
+import { ActivityIndicator, Colors } from "react-native-paper"
 
 const HOST = "https://lodotechgames.herokuapp.com"
 
 const Stripe = () => {
   const [cardDetails, setCardDetails] = useState()
-  const [purchase, loading, error] = usePurchase()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const [purchase, loadingPurchase, errorPurchase] = usePurchase()
   const initialValues = {
     street: "Calle",
     number: "123",
@@ -22,12 +25,17 @@ const Stripe = () => {
   }
   const user = useSelector((state) => state.users.user)
   const purchaseHandler = async (values) => {
-    console.log(cardDetails)
-    if (!cardDetails?.completed) {
+    setLoading(true)
+    setError(null)
+    return
+    if (!cardDetails?.complete) {
+      console.log("ola, estoy acá")
       console.log(cardDetails)
+      setError("You must complete all card details.")
+      setLoading(false)
+      return
     }
-    console.log(values)
-    const { error, paymentMethod } = await createPaymentMethod({
+    const { paymentError, paymentMethod } = await createPaymentMethod({
       type: "card",
       card: cardDetails,
       billingDetails: {
@@ -42,9 +50,11 @@ const Stripe = () => {
         phone: user.phone,
       },
     })
-    console.log({ error, paymentMethod })
-    if (error) {
-      console.log("[error]", error)
+    console.log({ paymentError, paymentMethod })
+    if (paymentError) {
+      console.log({ "[error]": paymentError })
+      setError(paymentError)
+      setLoading(false)
     } else {
       try {
         const authorization = await axios.post(
@@ -57,8 +67,10 @@ const Stripe = () => {
           }
         )
         console.log(authorization.data)
-        if (!authorization.data.success)
+        if (!authorization.data.success) {
+          console.log(authorization.data.error)
           throw new Error(authorization.data.error)
+        }
         const details = {
           direction: values,
           paymentDetails: {
@@ -71,10 +83,23 @@ const Stripe = () => {
         console.log(res)
         // aquí termina la compra... hacer checkout
       } catch (e) {
-        console.log(e)
+        console.log(e.message)
+        setError(e.message)
+      } finally {
+        setLoading(false)
       }
     }
   }
+  if (loading)
+    return (
+      <View style={{ alignItems: "center", justifyContent: "center" }}>
+        <ActivityIndicator
+          animating={true}
+          color={Colors.purple800}
+          size="large"
+        />
+      </View>
+    )
   return (
     <View>
       <ScrollView>
@@ -88,11 +113,18 @@ const Stripe = () => {
         >
           <CardField
             postalCodeEnabled={false}
-            // placeholder={{
-            //   number: "",
-            // }}
-            cardStyle={styles.card}
-            style={styles.cardField}
+            placeholder={{
+              number: "4242 4242 4242 4242",
+            }}
+            cardStyle={{
+              backgroundColor: "#FFFFFF",
+              textColor: "#000000",
+            }}
+            style={{
+              width: "100%",
+              height: 50,
+              marginVertical: 30,
+            }}
             onCardChange={(cardDetails) => {
               setCardDetails(cardDetails)
             }}
@@ -101,6 +133,11 @@ const Stripe = () => {
             }}
           />
         </DirectionsForm>
+        {error && (
+          <View>
+            <Text style={{ color: "red" }}>{error}</Text>
+          </View>
+        )}
       </ScrollView>
     </View>
   )
@@ -109,12 +146,15 @@ const Stripe = () => {
 export default Stripe
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: "#FFFFFF",
-    width: "100%",
-  },
-  cardField: {
-    width: "100%",
-    height: 50,
-  },
+  // card: {
+  //   // backgroundColor: "#FFFFFF",
+  //   width: "100%",
+  // },
+  // cardField: {
+  //   width: "100%",
+  //   height: 50,
+  //   color: "#000000",
+  //   backgroundColor: "#FFFFFF",
+  //   width: "100%",
+  // },
 })

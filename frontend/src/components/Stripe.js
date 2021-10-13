@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js"
 import { usePurchase } from "../hooks/usersHooks"
 import axios from "axios"
@@ -6,18 +7,28 @@ const HOST = "https://lodotechgames.herokuapp.com"
 const Stripe = ({ formik, user, history }) => {
   const stripe = useStripe()
   const elements = useElements()
-
-  const [purchase, loading, error] = usePurchase()
+  const [cardReady, setCardReady] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const [purchase, loadingPurchase, errorPurchase] = usePurchase()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-
+    setLoading(true)
+    setError(null)
     if (!stripe || !elements) {
+      setLoading(false)
       return
     }
-
     const cardElement = elements.getElement(CardElement)
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
+    if (!cardElement._complete) {
+      setError("You must fill all the credit card data.")
+      setLoading(false)
+      return
+    }
+    //  const cardElement = elements.getElement(CardElement)
+
+    const { paymentError, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: cardElement,
       billing_details: {
@@ -34,8 +45,10 @@ const Stripe = ({ formik, user, history }) => {
         phone: user.phone,
       },
     })
-    if (error) {
-      console.log("[error]", error)
+
+    if (paymentError || !paymentMethod) {
+      setError(paymentError)
+      setLoading(false)
     } else {
       try {
         const authorization = await axios.post(
@@ -58,11 +71,12 @@ const Stripe = ({ formik, user, history }) => {
           },
         }
         const res = await purchase(details)
-        console.log(res)
         // aquí termina la compra... hacer checkout
+        setLoading(false)
         history.push({ pathname: "/checkout", state: res })
       } catch (e) {
-        console.log(e)
+        setError(e.message)
+        setLoading(false)
       }
     }
   }
@@ -98,6 +112,8 @@ const Stripe = ({ formik, user, history }) => {
       >
         Finalize purchase
       </button>
+      {error && <p style={{ textAlign: "center", color: "red" }}>{error}</p>}
+      {/* Mostramos el error acá o lo manejamos con tostada? */}
     </form>
   )
 }
