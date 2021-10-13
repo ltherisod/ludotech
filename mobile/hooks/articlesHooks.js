@@ -110,7 +110,6 @@ export const useFilters = () => {
   const [filters, setFilters] = useState({})
 
   const inputHandle = (e) => {
-    console.log(e)
     if (e !== "") {
       setFilters({
         ...filters,
@@ -118,6 +117,50 @@ export const useFilters = () => {
       })
     } else {
       delete filters.name
+    }
+  }
+
+  const inputSize = (e) => {
+    if (e !== "") {
+      setFilters({
+        ...filters,
+        size: e,
+      })
+    } else {
+      delete filters.size
+    }
+  }
+
+  const inputBrand = (e) => {
+    if (e !== "") {
+      setFilters({
+        ...filters,
+        brand: e,
+      })
+    } else {
+      delete filters.brand
+    }
+  }
+
+  const inputGenre = (e) => {
+    if (e !== "") {
+      setFilters({
+        ...filters,
+        genres: e,
+      })
+    } else {
+      delete filters.genres
+    }
+  }
+
+  const inputGameType = (e) => {
+    if (e !== "") {
+      setFilters({
+        ...filters,
+        gameType: e,
+      })
+    } else {
+      delete filters.gameType
     }
   }
 
@@ -275,5 +318,9 @@ export const useFilters = () => {
     inputHandle,
     inputMinAge,
     inputPlayers,
+    inputSize,
+    inputBrand,
+    inputGenre,
+    inputGameType
   }
 }
