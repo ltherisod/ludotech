@@ -21,6 +21,10 @@ const AddressCard = ({ direction, formik }) => {
                </div>
                <button
                   type="button"
+                  className="addProduct"
+                  style={{
+                     backgroundImage: `url("https://i.postimg.cc/GhMnJB8K/button-PDF.png")`,
+                  }}
                   onClick={() => formik.setValues(directionNoAlias)}
                >
                   SELECT THIS ADDRESS

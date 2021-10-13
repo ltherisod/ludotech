@@ -14,6 +14,17 @@ body {
    text-align: center;
 }
 
+.scrollButton {
+   position: fixed;
+   width: 100%;
+   left: 96%;
+   bottom: 0.3rem;
+   font-size: 2.3rem;
+   z-index: 1;
+   cursor: pointer;
+   color: #5ccfd8;
+}
+
 /* HEADER */
 
 #mainNav {
@@ -44,12 +55,48 @@ body {
    font-size: 2rem;
 }
 
+.logoCheckout {
+   font-family: "Fredoka One", cursive;
+   font-size: 2.8rem;
+   padding-right: 25px;
+}
+
+.imgLogoCheckout {
+   height: 65px;
+   margin-bottom: 20px;
+}
+
+.spanViolet {
+   color: #4c0073;
+   font-family: "Fredoka One", cursive;
+}
+
+.spanRed {
+   color: #ce2a73;
+   font-family: "Fredoka One", cursive;
+}
+
+.spanGreen {
+   color: #6aefcf;
+   font-family: "Fredoka One", cursive;
+}
+
+.spanOrangi {
+   color: #ff8924;
+   font-family: "Fredoka One", cursive;
+}
+
+.spanViolet2 {
+   color: #660099;
+   font-family: "Fredoka One", cursive;
+}
+
 .profileLogout {
    color: black !important;
 }
 
 .settings {
-   background-color: #ff9424 !important;
+   background-color: #ce2a73 !important;
 }
 
 .containerLogoUser {
@@ -187,6 +234,13 @@ main h2 {
    width: 100%;
 }
 
+.purchaseTitle {
+   font-size: 6vmin;
+   font-weight: 600;
+   text-align: center;
+   color: white;
+}
+
 .buttonGoogle p {
    width: 100%;
    margin-bottom: 0;
@@ -261,6 +315,15 @@ main h2 {
 .signinButtonSignupText span,
 h2 span {
    color: #67f2cb;
+}
+
+.spanCeleste {
+   color: #67f2cb;
+}
+
+.spanOrange {
+   color: #ff9424;
+   font-size: 18px;
 }
 
 .signupButtonSignup {
@@ -417,13 +480,12 @@ h2 span {
 .bodyArticles {
    text-align: center;
 }
-.bodyArticles h2,
-.bodyCart h2 {
+.bodyArticles h2 {
    color: white;
    font-size: 6vmin;
    font-weight: 600;
    text-align: center;
-   color: white;
+   margin-top: 2rem;
 }
 .cardArticle {
    width: 320px;
@@ -472,6 +534,12 @@ h2 span {
    bottom: 40px;
    color: gray;
    width: 80%;
+}
+
+.gameInfoRelated {
+   width: 100%;
+   position: relative;
+   bottom: 40px;
 }
 
 .iconsNav {
@@ -531,6 +599,16 @@ h2 span {
    color: #660099;
    font-size: 38px;
 }
+#buy2 {
+   cursor: pointer;
+   color: rgba(255, 255, 255, 0.719);
+   font-size: 30px;
+}
+#buy2:hover {
+   cursor: pointer;
+   color: rgb(255, 255, 255);
+   font-size: 30px;
+}
 #buy:hover {
    color: #a32bdf;
 }
@@ -540,7 +618,7 @@ h2 span {
    font-size: 38px;
 }
 #buy {
-  width: 150px;
+   width: 150px;
 }
 /*Most Wanted*/
 
@@ -555,7 +633,8 @@ h2 span {
 
 .mostWantedTittle {
    font-weight: 700;
-   font-size: 45px;
+   font-size: 60px;
+   padding-bottom: 5rem;
 }
 
 .mostWantedCard {
@@ -1259,7 +1338,8 @@ h2.articles {
    color: white;
 }
 
-.addProduct {
+.addProduct,
+.addProduct2 {
    width: 30%;
    padding: 1vmin 0;
    border-radius: 5px;
@@ -1267,6 +1347,10 @@ h2.articles {
    cursor: pointer;
    background-size: cover;
    color: white;
+}
+
+.addProduct2 {
+   color: #67f2cb;
 }
 
 .genresEditProduct {
@@ -1494,15 +1578,11 @@ h2.articles {
 /*Article Related */
 
 .articleRelatedTittle {
-   margin-left: 3rem;
-   margin-top: 2em;
-   font-weight: bold;
-   letter-spacing: -1px;
-   color: #16054b;
-   font-size: 5vmin;
+   font-size: 6.5vmin;
+   font-weight: 600;
    text-align: center;
-   position: relative;
-   bottom: 180px;
+   color: #ff9424;
+   margin-bottom: 5rem;
 }
 
 .relatedArticles {
@@ -1536,18 +1616,25 @@ h2.articles {
    justify-content: flex-end;
    align-items: center;
    margin-top: 20px;
-   margin-bottom: 10px;
 }
 
 .buyLineRelated {
    width: 100%;
    display: flex;
-   justify-content: space-between;
-   padding: 0px 10px;
+   justify-content: center;
+   text-align: center;
+   padding-left: 20px;
+}
+
+.buyLineRelated h5 {
+   font-weight: 600;
+   font-size: 25px;
+   position: relative;
+   bottom: 10px;
 }
 .priceRelated {
    text-align: center;
-   margin-top: 35px;
+   margin-top: 40px;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -1594,6 +1681,10 @@ h2.articles {
 
 .bodyCart h2 {
    color: gray;
+   font-size: 7vmin;
+   font-weight: 600;
+   text-align: center;
+   margin: 2rem 0;
 }
 .cartSection1 {
    width: 70vw;
@@ -1632,7 +1723,6 @@ h2.articles {
 .cartSection2 div {
    display: flex;
    justify-content: flex-end;
-   padding-right: 20px;
 }
 .cartSection2 p {
    text-align: right;
@@ -1715,7 +1805,6 @@ h2.articles {
    visibility: visible;
 }
 .cartAddressInputs {
-   width: 600px;
    text-align: center;
 }
 .cartAddressInputs input {
@@ -1730,6 +1819,7 @@ h2.articles {
 .chooseAnAddress {
    color: gray;
    font-weight: 600;
+   margin: 2rem 0;
 }
 /* PROFILE  */
 
@@ -1812,7 +1902,7 @@ h2.articles {
    cursor: pointer;
    font-size: 2.5vmin;
    height: 50px;
-   align-self: center;
+   /* align-self: center; */
    margin-left: 20px;
 }
 
@@ -1894,7 +1984,7 @@ h2.articles {
 
 .preloaderBack {
    width: 100%;
-   height: 90vh;
+   height: 100vh;
    background-size: cover;
    background-position: top;
    justify-content: center;
@@ -2126,332 +2216,330 @@ h2.articles {
 }
 
 .notificationsHeader {
-  background-color: white;
-  /* box-shadow: 1px 1px 1px 5px rgba(0, 0, 0, 0.1); */
-  border-radius: 5px;
-  width: 30vw;
-  margin: 3vmin;
-  padding: 2vmin;
-  display: flex;
-  flex-direction: column;
-  gap: 2vmin;
-  position: absolute;
-  /* border: 3px solid #e3e3e3; */
-  top: 110%;
-  right: -500%;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+   background-color: white;
+   /* box-shadow: 1px 1px 1px 5px rgba(0, 0, 0, 0.1); */
+   border-radius: 5px;
+   width: 30vw;
+   margin: 3vmin;
+   padding: 2vmin;
+   display: flex;
+   flex-direction: column;
+   gap: 2vmin;
+   position: absolute;
+   /* border: 3px solid #e3e3e3; */
+   top: 110%;
+   right: -500%;
+   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .notificationsHeader h5 {
-  margin: 0;
+   margin: 0;
 }
 
 .notificationHeader {
-  display: flex;
-  align-items: center;
-  border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 1vmin;
-  gap: 2vmin;
+   display: flex;
+   align-items: center;
+   border-radius: 5px;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   padding: 1vmin;
+   gap: 2vmin;
 }
 
 .notificationsHeader p {
-  margin: 0;
-  flex: 1;
-  color: rgba(0, 0, 0, 0.7);
+   margin: 0;
+   flex: 1;
+   color: rgba(0, 0, 0, 0.7);
 }
 
 .iconNoti {
-  height: 4vw;
-  width: 4vw;
-  background-size: cover;
-  background-position: center;
+   height: 4vw;
+   width: 4vw;
+   background-size: cover;
+   background-position: center;
 }
 
 .notificationsHeader:after,
 .notificationsHeader:before {
-  bottom: 100%;
-  left: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
+   bottom: 100%;
+   left: 50%;
+   border: solid transparent;
+   content: " ";
+   height: 0;
+   width: 0;
+   position: absolute;
+   pointer-events: none;
 }
 .notificationsHeader:after {
-  border-color: rgba(136, 183, 213, 0);
-  border-bottom-color: #ffffff;
-  border-width: 16px;
-  margin-left: -21px;
+   border-color: rgba(136, 183, 213, 0);
+   border-bottom-color: #ffffff;
+   border-width: 16px;
+   margin-left: -21px;
 }
 .notificationsHeader:before {
-  border-color: rgba(194, 225, 245, 0);
-  border-bottom-color: #5a585815;
-  border-width: 20px;
-  margin-left: -25px;
+   border-color: rgba(194, 225, 245, 0);
+   border-bottom-color: #5a585815;
+   border-width: 20px;
+   margin-left: -25px;
 }
 
 /* MEDIAQUERIES */
 
 @media (max-width: 992px) {
-  .hero {
-    padding-top: 200px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .mostWantedTittle {
-    padding-top: 100px;
-  }
-  .mostWantedGame {
-    width: 180px;
-    height: 180px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    align-self: center;
-  }
-  .mostWantedGameBrand {
-    margin: 1em;
-    font-size: 5vmin;
-  }
-  .socialMediaContainer {
-    width: 25%;
-  }
-  .heroPageCont {
-    min-height: 30vh;
-  }
-  .main-sign {
-    width: 60%;
-  }
-  .signUpBody,
-.signInBody {
-  background-position: cover;
-}
+   .hero {
+      padding-top: 200px;
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+   .mostWantedTittle {
+      padding-top: 100px;
+   }
+   .mostWantedGame {
+      width: 180px;
+      height: 180px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      align-self: center;
+   }
+   .mostWantedGameBrand {
+      margin: 1em;
+      font-size: 5vmin;
+   }
+   .socialMediaContainer {
+      width: 25%;
+   }
+   .heroPageCont {
+      min-height: 30vh;
+   }
+   .main-sign {
+      width: 60%;
+   }
+   .signUpBody,
+   .signInBody {
+      background-position: cover;
+   }
 }
 
 @media (min-width: 992px) {
-  #mainNav {
-    box-shadow: none;
-    background-color: transparent;
-  }
-  #mainNav .navbar-brand {
-    color: rgba(255, 255, 255, 0.85);
-  }
-  #mainNav .navbar-brand:hover {
-    color: #fff;
-  }
-  #mainNav .navbar-nav .nav-item .nav-link {
-    color: rgba(255, 255, 255, 0.95);
-    padding: 0 1rem;
-  }
-  #mainNav .navbar-nav .nav-item .nav-link:hover {
-    color: #fff;
-  }
-  #mainNav .navbar-nav .nav-item:last-child .nav-link {
-    padding-right: 0;
-  }
-  #mainNav.navbar-shrink {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    background-color: #fff;
-  }
-  #mainNav.navbar-shrink .navbar-brand {
-    color: #212529;
-  }
-  #mainNav.navbar-shrink .navbar-brand:hover {
-    color: #6cdece;
-  }
-  #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
-    color: #212529;
-  }
-  #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
-    color: #6cdece;
-  }
+   #mainNav {
+      box-shadow: none;
+      background-color: transparent;
+   }
+   #mainNav .navbar-brand {
+      color: rgba(255, 255, 255, 0.85);
+   }
+   #mainNav .navbar-brand:hover {
+      color: #fff;
+   }
+   #mainNav .navbar-nav .nav-item .nav-link {
+      color: rgba(255, 255, 255, 0.95);
+      padding: 0 1rem;
+   }
+   #mainNav .navbar-nav .nav-item .nav-link:hover {
+      color: #fff;
+   }
+   #mainNav .navbar-nav .nav-item:last-child .nav-link {
+      padding-right: 0;
+   }
+   #mainNav.navbar-shrink {
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      background-color: #fff;
+   }
+   #mainNav.navbar-shrink .navbar-brand {
+      color: #212529;
+   }
+   #mainNav.navbar-shrink .navbar-brand:hover {
+      color: #6cdece;
+   }
+   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
+      color: #212529;
+   }
+   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
+      color: #6cdece;
+   }
 }
 
 @media (max-width: 576px) {
-  .hero {
-    padding-top: 180px;
-  }
-  .cube {
-    height: 400px;
-    width: 400px;
-    margin-bottom: 60px;
-  }
-  .mostWantedTittle {
-    padding-top: 60px;
-    padding-bottom: 50px;
-    font-size: 38px;
-  }
-  .mostWantedGame {
-    width: 300px;
-    height: 300px;
-    position: relative;
-    bottom: 55px;
-  }
-  .mostWantedGameBrand {
-    margin: 0em;
-    font-size: 6vmin;
-    text-align: center;
-    position: relative;
-    bottom: 75px;
-  }
-  .mostWantedCard {
-    width: 85%;
-  }
-  .mostWantedGameConteiner,
-  .mostWantedGameConteinerLeft {
-    padding-right: 0rem;
-    align-self: flex-start;
-    width: 90%;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: flex-start;
-  }
-  .mostWantedGameConteinerLeft {
-    padding-left: 0rem !important;
-    flex-direction: column !important;
-  }
-  .socialMediaContainer {
-    width: 50%;
-  }
+   .hero {
+      padding-top: 180px;
+   }
+   .cube {
+      height: 400px;
+      width: 400px;
+      margin-bottom: 60px;
+   }
+   .mostWantedTittle {
+      padding-top: 60px;
+      padding-bottom: 50px;
+      font-size: 38px;
+   }
+   .mostWantedGame {
+      width: 300px;
+      height: 300px;
+      position: relative;
+      bottom: 55px;
+   }
+   .mostWantedGameBrand {
+      margin: 0em;
+      font-size: 6vmin;
+      text-align: center;
+      position: relative;
+      bottom: 75px;
+   }
+   .mostWantedCard {
+      width: 85%;
+   }
+   .mostWantedGameConteiner,
+   .mostWantedGameConteinerLeft {
+      padding-right: 0rem;
+      align-self: flex-start;
+      width: 90%;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-start;
+   }
+   .mostWantedGameConteinerLeft {
+      padding-left: 0rem !important;
+      flex-direction: column !important;
+   }
+   .socialMediaContainer {
+      width: 50%;
+   }
 
-  .footerRights {
-    font-size: 3.3vmin;
-    padding-bottom: 1em;
-  }
+   .footerRights {
+      font-size: 3.3vmin;
+      padding-bottom: 1em;
+   }
 
-  /* Filter */
+   /* Filter */
 
-  .search {
-    width: 100%;
-  }
-  .search label {
-    text-align: center;
-    font-size: 4.5vmin;
-  }
-  
-  .search input {
-    height: 3em;
-    width: 100%;
-  }
-  
-  .searchButton {
-    font-size: 4.5vmin;
-    width: 250px;
-  }
-  .filtersBox {
-    margin-left: 0px;
-  }
-  
-  .filterOption select {
-    width: 180px;
-  }
-  .heroPageCont {
-    min-height: 20vh;
-  }
-  .main-sign {
-    width: 80%;
-  }
+   .search {
+      width: 100%;
+   }
+   .search label {
+      text-align: center;
+      font-size: 4.5vmin;
+   }
+
+   .search input {
+      height: 3em;
+      width: 100%;
+   }
+
+   .searchButton {
+      font-size: 4.5vmin;
+      width: 250px;
+   }
+   .filtersBox {
+      margin-left: 0px;
+   }
+
+   .filterOption select {
+      width: 180px;
+   }
+   .heroPageCont {
+      min-height: 20vh;
+   }
+   .main-sign {
+      width: 80%;
+   }
 }
 
 @media (max-width: 450px) {
-  .cube {
-    height: 350px;
-    min-width: 350px;
-    margin-top: 30px;
-    margin-bottom: 10px;
-  }
-  .mostWantedTittle {
-    padding-top: 35px;
-    padding-bottom: 50px;
-    font-size: 28px;
-  }
-  .mostWantedGame {
-    width: 290px;
-    height: 290px;
-    bottom: 55px;
-  }
-  .mostWantedGameBrand {
-    bottom: 62px;
-  }
-  .socialMediaContainer {
-    width: 60%;
-  }
-  
-  .search label {
-    font-size: 6vmin;
-  }
-  .searchButton {
-    font-size: 6vmin;
-    width: 100%;
-  }
-  
-  .filterOption select {
-    width: 250px;
-  }
-  .main-sign {
-    width: 85%;
-  }
+   .cube {
+      height: 350px;
+      min-width: 350px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+   }
+   .mostWantedTittle {
+      padding-top: 35px;
+      padding-bottom: 50px;
+      font-size: 28px;
+   }
+   .mostWantedGame {
+      width: 290px;
+      height: 290px;
+      bottom: 55px;
+   }
+   .mostWantedGameBrand {
+      bottom: 62px;
+   }
+   .socialMediaContainer {
+      width: 60%;
+   }
+
+   .search label {
+      font-size: 6vmin;
+   }
+   .searchButton {
+      font-size: 6vmin;
+      width: 100%;
+   }
+
+   .filterOption select {
+      width: 250px;
+   }
+   .main-sign {
+      width: 85%;
+   }
 }
 
 @media (max-width: 415px) {
-  .mostWantedTittle {
-    margin-top: 60px;
-  }
-  .mostWantedGame {
-    width: 270px;
-    height: 270px;
-  }
+   .mostWantedTittle {
+      margin-top: 60px;
+   }
+   .mostWantedGame {
+      width: 270px;
+      height: 270px;
+   }
 }
 
-
-
 @media (max-width: 415px) {
-  .mostWantedTittle {
-    margin-top: 70px;
-  }
-  .mostWantedGame {
-    width: 270px;
-    height: 270px;
-  }
+   .mostWantedTittle {
+      margin-top: 70px;
+   }
+   .mostWantedGame {
+      width: 270px;
+      height: 270px;
+   }
 }
 
 @media (max-width: 411px) {
-  .mostWantedTittle {
-    margin-top: 60px;
-  }
-  .mostWantedGame {
-    width: 260px;
-    height: 260px;
-  }
+   .mostWantedTittle {
+      margin-top: 60px;
+   }
+   .mostWantedGame {
+      width: 260px;
+      height: 260px;
+   }
 }
 
 @media (max-width: 375px) {
-  .cube {
-    height: 320px;
-    min-width: 320px;
-  }
-  .mostWantedTittle {
-    margin-top: 10px;
-  }
-  .mostWantedGame {
-    width: 220px;
-    height: 220px;
-    position: relative;
-    bottom: 0px;
-  }
-  .mostWantedGameBrand {
-    text-align: center;
-    position: relative;
-    bottom: 0px;
-  }
-  .socialMediaContainer {
-    width: 70%;
-  }
+   .cube {
+      height: 320px;
+      min-width: 320px;
+   }
+   .mostWantedTittle {
+      margin-top: 10px;
+   }
+   .mostWantedGame {
+      width: 220px;
+      height: 220px;
+      position: relative;
+      bottom: 0px;
+   }
+   .mostWantedGameBrand {
+      text-align: center;
+      position: relative;
+      bottom: 0px;
+   }
+   .socialMediaContainer {
+      width: 70%;
+   }
 
-  .footerRights {
-    font-size: 4vmin;
-    text-align: center;
-    padding: 0px 10px;
-  }
+   .footerRights {
+      font-size: 4vmin;
+      text-align: center;
+      padding: 0px 10px;
+   }
 }

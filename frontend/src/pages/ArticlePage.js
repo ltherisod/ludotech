@@ -11,6 +11,7 @@ import Preloader from "../components/Preloader"
 import Bot from "../components/bot/Bot"
 import { FaHeart, FaRegHeart, FaCartPlus } from "react-icons/fa"
 import toast from "react-hot-toast"
+import PreloaderFilter from "../components/PreloaderFilter"
 
 const ArticlePage = (props) => {
    const user = useSelector((state) => state.users.user)
@@ -44,8 +45,43 @@ const ArticlePage = (props) => {
       window.scroll(0, 0)
    }, [article])
 
-   const addToCart = (id) => {
+   const addToCart = (id, value) => {
       props.updateCart("add", id)
+      toast.custom((t) => (
+         <div
+            className={`${
+               t.visible ? "animate-enter" : "animate-leave"
+            } bg-white flex`}
+            style={{
+               display: "flex",
+               alignContent: "center",
+               alignItems: "center",
+               padding: "5px 10px",
+               borderRadius: "15px",
+               backgroundImage:
+                  "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+               backgroundPosition: "center right 50px",
+               backgroundSize: "cover",
+            }}
+         >
+            <img
+               style={{ width: "55px", height: "55px" }}
+               className="h-3 w-3 rounded-full"
+               src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+               alt=""
+            />
+            <p
+               className="text-sm"
+               style={{
+                  marginBottom: 0,
+                  color: "#ff9424",
+                  fontWeight: "bold",
+               }}
+            >
+               You have {value} to the shopping cart
+            </p>
+         </div>
+      ))
    }
 
    return (
@@ -138,7 +174,7 @@ const ArticlePage = (props) => {
                         </div>
                         {stock <= 0 ? (
                            <div>
-                              <p>
+                              <p className="text-center">
                                  Sorry, there is no stock for this product at
                                  this time. Come back later please
                               </p>
@@ -149,11 +185,17 @@ const ArticlePage = (props) => {
                         ) : (
                            <>
                               {user ? (
-                                 <div className="divCart">
+                                 <div
+                                    style={{
+                                       backgroundImage: `url("https://i.postimg.cc/GhMnJB8K/button-PDF.png")`,
+                                       backgroundPosition: "top",
+                                    }}
+                                    className="addProduct d-flex justify-content-center align-self-center"
+                                 >
                                     <FaCartPlus
-                                       id="buy"
+                                       id="buy2"
                                        src="./assets/buy.png"
-                                       onClick={() => addToCart(_id)}
+                                       onClick={() => addToCart(_id, name)}
                                     />
                                  </div>
                               ) : (
@@ -259,12 +301,15 @@ const ArticlePage = (props) => {
                      }}
                   ></div>
                </div>
-               <h3 className="articleRelatedTittle">Products related</h3>
+               <h3 className="articleRelatedTittle">
+                  Products <span className="spanCeleste">related</span> !
+               </h3>
                <div className="relatedArticles">
                   {loadingRelated ? (
-                     <Preloader />
+                     <PreloaderFilter />
                   ) : (
                      <ArticleRelated
+                        match={props.match}
                         history={props.history}
                         relatedArticles={relatedArticles}
                      />

@@ -10,6 +10,7 @@ import rootReducer from "./redux/reducers/rootReducer"
 import { Elements } from "@stripe/react-stripe-js"
 import { loadStripe } from "@stripe/stripe-js"
 import { Toaster } from "react-hot-toast"
+import ScrollButton from "./components/ScrollButton"
 
 const stripePromise = loadStripe(
    "pk_test_51Ji6QGLXO1yt6E5TrzSlNMus3jsfhpwkHVkVuoa8hyNm7T868IUnXyP3m23bba4GhdLRdHx2ZrGLvATupFy4Oa4N00bt9D3tFF"
@@ -35,6 +36,7 @@ ReactDOM.render(
             <App />
          </Elements>
       </Provider>
+      <ScrollButton />
    </React.StrictMode>,
    document.getElementById("root")
 )
