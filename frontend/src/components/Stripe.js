@@ -18,56 +18,39 @@ const Stripe = ({ formik, user, history }) => {
 
       const cardElement = elements.getElement(CardElement)
 
-      const { error, paymentMethod } = await stripe.createPaymentMethod({
-         type: "card",
-         card: cardElement,
-         billing_details: {
-            address: {
-               city: formik.values.city,
-               country: "AR",
-               line1: `${formik.values.street.trim()} ${formik.values.number}`,
-               line2: formik.values.city,
-               postal_code: formik.values.zipCode,
-               state: formik.values.state,
+    if (error) {
+      console.log("[error]", error)
+    } else {
+      try {
+        const {
+          data: { response },
+        } = await axios.post(
+          `${HOST}/api/stripe/payment-intent`,
+          { id: paymentMethod.id },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
-            email: user.email,
-            name: `${user.firstname} ${user.lastname}`,
-            phone: user.phone,
-         },
-      })
-
-      if (error) {
-         console.log("[error]", error)
-      } else {
-         try {
-            const authorization = await axios.post(
-               `${HOST}/api/stripe/payment-intent`,
-               { id: paymentMethod.id },
-               {
-                  headers: {
-                     Authorization: `Bearer ${localStorage.getItem("token")}`,
-                  },
-               }
-            )
-            const details = {
-               direction: formik.values,
-               paymentDetails: {
-                  method: "STRIPE",
-                  orderId: paymentMethod.id,
-                  receipt:
-                     authorization.data.response.charges.data[0].receipt_url,
-               },
-            }
-            const res = await purchase(details)
-            console.log(res)
-            // aquí termina la compra... hacer checkout
-            history.push({ pathname: "/checkout", state: res })
-         } catch (e) {
-            console.log(e)
-         }
+          }
+        )
+        if (!data.success) throw new Error(data.error)
+        const details = {
+          direction: formik.values,
+          paymentDetails: {
+            method: "STRIPE",
+            orderId: paymentMethod.id,
+            receipt: response.charges.data[0].receipt_url,
+          },
+        }
+        const res = await purchase(details)
+        console.log(res)
+        // aquí termina la compra... hacer checkout
+        history.push({ pathname: "/checkout", state: res })
+      } catch (e) {
+        console.log(e)
       }
    }
-
+   }
    return (
       <form
          onSubmit={handleSubmit}
