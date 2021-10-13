@@ -513,57 +513,79 @@ h2 span {
    text-align: center;
    margin-top: 2rem;
 }
+
 .cardArticle {
    width: 320px;
+   height: 465px;
    display: flex;
    flex-direction: column;
    align-items: center;
    background-color: #fefefe;
-   margin: 35px 28px;
-   border-radius: 12px;
+   border-radius: 20px;
    background-position: bottom left;
    background-size: cover;
+   box-shadow: rgb(85, 85, 85) 0px 3px 7px 0px;
 }
-
-.cardArticle:hover {
-   box-shadow: rgba(255, 255, 255, 1) 0px 2px 8px 0px;
+.cardArticleBorder {
+   background-color: rgb(212, 212, 212);
+   margin: 20px 28px;
+   display: flex;
+   justify-content: center;
+   align-items:center;
+   border-radius: 27px;
+   width: 350px;
+   height: 494px;
+}
+.cardArticleBorder:hover {
+   background-color: #e052c1;
 }
 
 .photosArticle {
-   background-position: center;
+   background-position:center ;
    background-size: cover;
-   background-color: white;
-   min-height: 250px;
-   width: 285px;
+   min-height: 248px;
+   width: 280px;
    display: flex;
    justify-content: flex-end;
    align-items: flex-start;
-   position: relative;
-   bottom: 40px;
-   border-radius: 20px;
-   padding: 15px;
-   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+   margin-top: 15px;
 }
 
 .price {
    text-align: center;
    margin-top: 10px;
 }
+.priceCard {
+   text-align: center;
+   margin-top: 4px;
+}
 .priceArticle {
    display: flex;
    justify-content: center;
    align-items: center;
+   
+}
+.priceArticleCard {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border-bottom: #d8d8d8 3px solid
+}
+.priceArticleCardDiscount {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: orange;
+   margin-top: 20px
 }
 .gameInfo {
-   position: relative;
-   bottom: 40px;
    color: gray;
-   width: 80%;
+   width: 100%;
 }
 
 .gameInfoRelated {
-   width: 100%;
+   width: 80%;
+   text-align: center;
    position: relative;
    bottom: 40px;
 }
@@ -591,7 +613,7 @@ h2 span {
    background-color: red;
 }
 .circleFav {
-   background-color: rgba(223, 223, 223, 0.534);
+   background-color: rgba(236, 236, 236, 0.877);
    border-radius: 100%;
    height: 45px;
    width: 45px;
@@ -609,7 +631,8 @@ h2 span {
 
 .gameDetails {
    text-align: start;
-   width: 230px;
+   width: 100;
+   padding: 0px 30px;
 }
 
 .buyLine {
@@ -618,12 +641,25 @@ h2 span {
 }
 .gameName {
    width: 100%;
-   height: 70px;
+   height: 65px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-bottom: 2px solid gray;
+   margin-bottom: 10px;
+   padding: 16px 15px 6px 15px;
+   border-bottom: #d8d8d8 3px solid
 }
+.gameName h4 {
+   font-weight: 700;
+}
+
 #buy {
    cursor: pointer;
    color: #660099;
    font-size: 38px;
+   align-self: flex-end;
+   padding-bottom: 5px;
 }
 #buy2 {
    cursor: pointer;
@@ -643,9 +679,14 @@ h2 span {
    color: #4d4d4d;
    font-size: 38px;
 }
-#buy {
-   width: 150px;
+.gameDetailsIcons {
+   margin: 3px;
+   border-radius: 20px;
+   width: 25px;
 }
+/* #buy {
+   width: 150px;
+} */
 /*Most Wanted*/
 
 .mostWantedConteiner {
@@ -1404,12 +1445,6 @@ h2.articles {
    gap: 2vmin;
 }
 
-/* .priceEditProduct {
-   display: grid;
-   grid-template-columns: repeat(4, 35%);
-   gap: 2vmin;
-} */
-
 .numberOptions {
    gap: 1vmin;
    display: grid;
@@ -1483,6 +1518,10 @@ h2.articles {
    padding: 15px;
    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
       rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.containerData h3 {
+color: gray;
+font-weight: 700;
 }
 
 .containerDataProfile {
@@ -1582,20 +1621,6 @@ h2.articles {
    justify-content: space-around;
 }
 
-.articleDecoDown {
-   display: flex;
-   position: relative;
-   bottom: 200px;
-}
-
-.articleDecoRight {
-   padding-right: 25em;
-   display: flex;
-   justify-content: flex-end;
-   position: relative;
-   bottom: 140px;
-}
-
 .articleDescription {
    align-self: center;
    width: 40%;
@@ -1614,11 +1639,31 @@ h2.articles {
    background-repeat: no-repeat;
    background-position: center;
 }
+.articleDeco2 {
+   width: 350px;
+   height: 30vh;
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+   margin: 0px 8vw;
+   position: relative;
+   top: 200px;
+}
+.articleDeco3 {
+   width: 350px;
+   height: 30vh;
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
+   margin: 0px 8vw;
+   position: relative;
+   bottom: 300px;
+}
 
 .articleVideo {
    align-self: center;
-   position: relative;
-   bottom: 100px;
+   display: flex;
+   padding-bottom: 120px;
 }
 
 .articleQuantity {
@@ -1650,7 +1695,7 @@ h2.articles {
 }
 
 .cardArticleRelated {
-   width: 320px;
+   width: 330px;
    height: 360px;
    display: flex;
    flex-direction: column;
@@ -1668,29 +1713,23 @@ h2.articles {
    background-size: cover;
    min-height: 230px;
    width: 250px;
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
    margin-top: 20px;
 }
 
 .buyLineRelated {
-   width: 100%;
    display: flex;
-   justify-content: center;
-   text-align: center;
-   padding-left: 20px;
+   justify-content: space-between;
+
 }
 
 .buyLineRelated h5 {
-   font-weight: 600;
-   font-size: 25px;
-   position: relative;
-   bottom: 10px;
+   font-weight: 700;
+   font-size: 21px;
+   color: gray
 }
 .priceRelated {
    text-align: center;
-   margin-top: 40px;
+   margin-top: 45px;
    display: flex;
    justify-content: center;
    align-items: center;

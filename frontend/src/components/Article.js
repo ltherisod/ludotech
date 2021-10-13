@@ -73,10 +73,11 @@ const Article = (props) => {
          style={{ textDecoration: "none", cursor: "pointer" }}
          onClick={() => props.history.push(`/article/${_id}`)}
       >
-         <div
+         <div className="cardArticleBorder">
+                     <div
             className="cardArticle"
             style={{
-               backgroundImage: `url("https://i.postimg.cc/sftdwcnd/article.png")`,
+               backgroundImage: `url("https://i.postimg.cc/59Rp3FW9/articlelast.png")`,
             }}
          >
             <div
@@ -141,10 +142,10 @@ const Article = (props) => {
                )}
             </div>
             <div className="gameInfo">
-               <div className="price">
+               <div className="priceCard">
                   {" "}
                   {hasDiscount === false ? (
-                     <p
+                     <div className="priceArticleCard"
                         style={{
                            color: "lightgreen",
                            fontSize: 21,
@@ -152,29 +153,29 @@ const Article = (props) => {
                         }}
                      >
                         ${price.toFixed(2)} USD
-                     </p>
+                     </div>
                   ) : (
-                     <div className="priceArticle">
-                        <p
+                     <div className="priceArticleCard">
+                        <div
                            style={{
                               textDecoration: "line-through",
-                              color: "lightgrey",
-                              fontSize: 21,
+                              color: "lightgray",
+                              fontSize: 20,
                               fontWeight: "bold",
                               paddingRight: "1.2rem",
                            }}
                         >
                            ${price.toFixed(2)}
-                        </p>
-                        <p
+                        </div>
+                        <div
                            style={{
                               color: "lightgreen",
-                              fontSize: 21,
+                              fontSize: 20,
                               fontWeight: "bold",
                            }}
                         >
                            ${discountPrice.toFixed(2)} USD
-                        </p>
+                        </div>
                      </div>
                   )}
                </div>
@@ -182,17 +183,15 @@ const Article = (props) => {
                   <h4>{name}</h4>
                </div>
                <div className="gameDetails">
-                  <p>
-                     <img src="./assets/gener.png" />{" "}
+                  <div>
+                     <img className="gameDetailsIcons" src="./assets/gener.png" />{" "}
                      {genres.map((genre) => genre.name)}
-                  </p>
-                  <p>
-                     <img src="./assets/type.png" /> {gameType.name}
-                  </p>
+                  </div>
+                  
                   <div className="buyLine">
-                     <p>
-                        <img src="./assets/age.png" /> {minAge}
-                     </p>
+                  <div>
+                     <img className="gameDetailsIcons" src="./assets/type.png" /> {gameType.name}
+                  </div>
                      {user ? (
                         <div className="divCart">
                            <FaCartPlus
@@ -257,6 +256,8 @@ const Article = (props) => {
                   </div>
                </div>
             </div>
+         </div>
+
          </div>
       </div>
    )

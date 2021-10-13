@@ -38,75 +38,93 @@ const Article = (props) => {
   } = props.article;
 
   return (
-    <ImageBackground
-      style={styles.articleCard}
-      source={{ uri: "https://i.postimg.cc/bN5SxYyB/articles-Card500.png" }}
-    >
+    <View style={styles.borderCard}>
       <ImageBackground
-        source={{ uri: iconPhotos }}
-        resizeMode="cover"
-        style={styles.articleIcon}
+        style={styles.articleCard}
+        source={{ uri: "https://i.postimg.cc/59Rp3FW9/articlelast.png" }}
       >
-        <Pressable onPress={(e) => addToWishlist(e, _id)}>
-          {props.wishList.some((i) => {
-            return i._id === _id;
-          }) ? (
-            <Icon 
-              name="heart"
-              style={{
-                fontSize: 30,
-                color: "red",
-                alignSelf: "flex-end",
-                margin: 10,
-              }}
-            />
+        <ImageBackground
+          source={{ uri: iconPhotos }}
+          resizeMode="cover"
+          style={styles.articleIcon}
+        >
+          <Pressable onPress={(e) => addToWishlist(e, _id)}>
+            {props.wishList.some((i) => {
+              return i._id === _id;
+            }) ? (
+              <Icon
+                name="heart"
+                style={{
+                  fontSize: 30,
+                  color: "red",
+                  alignSelf: "flex-end",
+                  margin: 10,
+                }}
+              />
+            ) : (
+              <Icon
+                name="heart"
+                style={{
+                  fontSize: 30,
+                  color: "pink",
+                  alignSelf: "flex-end",
+                  margin: 10,
+                }}
+              />
+            )}
+          </Pressable>
+        </ImageBackground>
+        <View style={styles.priceBox}>
+          {hasDiscount === false ? (
+            <Text style={styles.articlePrice}>${price} USD</Text>
           ) : (
-            <Icon
-              name="heart"
-              style={{
-                fontSize: 30,
-                color: "pink",
-                alignSelf: "flex-end",
-                margin: 10,
-              }}
-            />
+            <>
+              <Text style={styles.articlehasDiscountPrice}>${price}</Text>
+              <Text style={styles.articlePrice}>${discountPrice} USD</Text>
+            </>
           )}
-        </Pressable>
-      </ImageBackground>
-      <View style={styles.priceBox}>
-        {hasDiscount === false ? (
-          <Text style={styles.articlePrice}>${price} USD</Text>
-        ) : (
-          <>
-            <Text style={styles.articlehasDiscountPrice}>${price}</Text>
-            <Text style={styles.articlePrice}>${discountPrice} USD</Text>
-          </>
-        )}
-      </View>
-      <Text style={styles.articleName}>{name}</Text>
+        </View>
+        <Text style={styles.articleName}>{name}</Text>
 
-      <View>
-        <View style={styles.gameDataBox}>
-          <View style={styles.gameDataLine}>
-            <Image style={styles.icons} source={require("../assets/gener.png")} />
-            {genres.map((genre) => <Text key={genre._id} style={styles.dataText}>{genre.name}</Text>)}
-          </View>
-          <View style={styles.gameDataLine}>
-            <Image style={styles.icons} source={require("../assets/type.png")} />
-            <Text style={styles.dataText}>{gameType.name}</Text>
-          </View>
-          <View style={styles.gameDataLastLine}>
+        <View>
+          <View style={styles.gameDataBox}>
             <View style={styles.gameDataLine}>
-              <Image style={styles.icons} source={require("../assets/age.png")} /> 
-              <Text style={styles.dataText}>{minAge}</Text>
+              <Image
+                style={styles.icons}
+                source={require("../assets/gener.png")}
+              />
+              {genres.map((genre) => (
+                <Text key={genre._id} style={styles.dataText}>
+                  {genre.name}
+                </Text>
+              ))}
             </View>
-            <Pressable onPress={(e) => addToCart(e, _id)}>
-              <Image style={styles.cart} source={require("../assets/buy.png")}/>
-            </Pressable>            
+            <View style={styles.gameDataLine}>
+              <Image
+                style={styles.icons}
+                source={require("../assets/type.png")}
+              />
+              <Text style={styles.dataText}>{gameType.name}</Text>
+            </View>
+            <View style={styles.gameDataLastLine}>
+              <View style={styles.gameDataLine}>
+                <Image
+                  style={styles.icons}
+                  source={require("../assets/age.png")}
+                />
+                <Text style={styles.dataText}>{minAge}</Text>
+              </View>
+              <Pressable onPress={(e) => addToCart(e, _id)}>
+                <Image
+                  style={styles.cart}
+                  source={require("../assets/buy.png")}
+                />
+              </Pressable>
+            </View>
           </View>
         </View>
-      </View>
-    </ImageBackground>
+      </ImageBackground>
+    </View>
   );
 };
 
@@ -124,31 +142,40 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps, mapDispatchToProps)(Article);
 
 const styles = StyleSheet.create({
-  articleCard: {
-    width: 330,
-    height: 500,
+  borderCard: {
+    borderWidth: 10,
+    borderColor: "#e052c1",
+    width: 320,
+    height: 465,
+    alignSelf: "center",
+    borderRadius: 20,
     margin: 5,
     marginTop: 15,
+  },
+  articleCard: {
+    width: 320,
+    height: 465,
+    borderRadius: 20,
     alignSelf: "center",
-    
+    backgroundColor: "white",
   },
   heart: {
-backgroundColor: 'red'
+    backgroundColor: "red",
   },
   articleIcon: {
     width: 260,
     height: 260,
     alignSelf: "center",
-    borderRadius: 18,
+    /* borderRadius: 18,
     backgroundColor: "white",
-    padding: 10,
+    padding: 10, */
     shadowColor: "#000",
     shadowOffset: {
-	    width: 0,
-	    height: 6,
+      width: 0,
+      height: 6,
     },
     shadowOpacity: 0.3,
-    shadowRadius: 6.00,
+    shadowRadius: 6.0,
     elevation: 24,
   },
   articleName: {
@@ -173,7 +200,7 @@ backgroundColor: 'red'
   articlehasDiscountPrice: {
     fontFamily: "Poppins_700Bold",
     alignSelf: "center",
-    textDecorationLine: 'line-through',
+    textDecorationLine: "line-through",
     color: "#D3D3D3",
     fontSize: 20,
     marginHorizontal: 5,
@@ -187,30 +214,30 @@ backgroundColor: 'red'
     alignSelf: "flex-start",
   },
   gameDataBox: {
-      width: '75%',
-      alignSelf: 'center',
-      alignItems: 'flex-start',
+    width: "75%",
+    alignSelf: "center",
+    alignItems: "flex-start",
   },
   gameDataLine: {
-      marginVertical: 4,
-      flexDirection: 'row',
-      alignItems: 'center'
+    marginVertical: 4,
+    flexDirection: "row",
+    alignItems: "center",
   },
   gameDataLastLine: {
-      flexDirection: 'row',
-      marginVertical: 4,
-      width: '100%',
-      justifyContent: 'space-between',
-      alignItems: 'center'
-  }, 
+    flexDirection: "row",
+    marginVertical: 4,
+    width: "100%",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
   dataText: {
-    color: 'gray',
-        fontSize: 16,
-        fontFamily: 'Poppins_600SemiBold',
-},
-cart: {
+    color: "gray",
+    fontSize: 16,
+    fontFamily: "Poppins_600SemiBold",
+  },
+  cart: {
     marginRight: 10,
-   width: 45,
+    width: 45,
     height: 45,
   },
 });

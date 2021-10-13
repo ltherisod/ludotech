@@ -66,7 +66,7 @@ const ArticleRelated = (props) => {
                   <div
                      className="cardArticleRelated"
                      style={{
-                        backgroundImage: `url("https://i.postimg.cc/sftdwcnd/article.png")`,
+                        backgroundImage: `url("https://i.postimg.cc/59Rp3FW9/articlelast.png")`,
                      }}
                   >
                      <div

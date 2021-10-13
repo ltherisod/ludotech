@@ -69,9 +69,10 @@ const Articles = (props) => {
                         }}
                      >
                         {currentPage > 1 && (
-                           <button
+                           <button className="profileButton" style={{
+                              backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                           }}
                               type="button"
-                              style={{ padding: ".3rem 1.2rem" }}
                               onClick={() => {
                                  window.scrollBy({
                                     top: -document.getElementById(
@@ -96,8 +97,9 @@ const Articles = (props) => {
                            Current page: {currentPage}/{articles.totalPages}
                         </p>
                         {currentPage < articles.totalPages && (
-                           <button
-                              style={{ padding: ".3rem 1.2rem" }}
+                           <button className="profileButton" style={{
+                              backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                           }}
                               type="button"
                               onClick={() => {
                                  window.scrollBy({
