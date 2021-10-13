@@ -524,13 +524,19 @@ h2 span {
   width: 100%;
   height: 70px;
 }
-#buy {
+.gameName h4 {
+  font-weight: 700;
+}
+.buyIcon {
   cursor: pointer;
   color: #660099;
   font-size: 38px;
 }
-#buy:hover {
+.buyIcon:hover {
   color: #a32bdf;
+}
+#buy {
+  width: 150px;
 }
 /*Most Wanted*/
 
@@ -2194,25 +2200,23 @@ h2.articles {
     background-repeat: no-repeat;
     align-self: center;
   }
-
-  .mostWantedGameConteiner,
-  .mostWantedGameConteinerLeft {
-    padding-right: 3rem;
-    align-self: center;
-    width: 90%;
-    min-height: 20vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-  }
-
-  .mostWantedGameConteinerLeft {
-    padding-left: 3rem;
-  }
   .mostWantedGameBrand {
     margin: 1em;
     font-size: 5vmin;
   }
+  .socialMediaContainer {
+    width: 25%;
+  }
+  .heroPageCont {
+    min-height: 30vh;
+  }
+  .main-sign {
+    width: 60%;
+  }
+  .signUpBody,
+.signInBody {
+  background-position: cover;
+}
 }
 
 @media (min-width: 992px) {
@@ -2254,8 +2258,190 @@ h2.articles {
   }
 }
 
-@media (min-width: 576px) {
+@media (max-width: 576px) {
+  .hero {
+    padding-top: 180px;
+  }
+  .cube {
+    height: 400px;
+    width: 400px;
+    margin-bottom: 60px;
+  }
+  .mostWantedTittle {
+    padding-top: 60px;
+    padding-bottom: 50px;
+    font-size: 38px;
+  }
+  .mostWantedGame {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    bottom: 55px;
+  }
+  .mostWantedGameBrand {
+    margin: 0em;
+    font-size: 6vmin;
+    text-align: center;
+    position: relative;
+    bottom: 75px;
+  }
+  .mostWantedCard {
+    width: 85%;
+  }
+  .mostWantedGameConteiner,
+  .mostWantedGameConteinerLeft {
+    padding-right: 0rem;
+    align-self: flex-start;
+    width: 90%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .mostWantedGameConteinerLeft {
+    padding-left: 0rem !important;
+    flex-direction: column !important;
+  }
+  .socialMediaContainer {
+    width: 50%;
+  }
+
+  .footerRights {
+    font-size: 3.3vmin;
+    padding-bottom: 1em;
+  }
+
+  /* Filter */
+
+  .search {
+    width: 100%;
+  }
+  .search label {
+    text-align: center;
+    font-size: 4.5vmin;
+  }
+  
+  .search input {
+    height: 3em;
+    width: 100%;
+  }
+  
+  .searchButton {
+    font-size: 4.5vmin;
+    width: 250px;
+  }
+  .filtersBox {
+    margin-left: 0px;
+  }
+  
+  .filterOption select {
+    width: 180px;
+  }
+  .heroPageCont {
+    min-height: 20vh;
+  }
+  .main-sign {
+    width: 80%;
+  }
 }
 
-@media (min-width: 450px) {
+@media (max-width: 450px) {
+  .cube {
+    height: 350px;
+    min-width: 350px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  .mostWantedTittle {
+    padding-top: 35px;
+    padding-bottom: 50px;
+    font-size: 28px;
+  }
+  .mostWantedGame {
+    width: 290px;
+    height: 290px;
+    bottom: 55px;
+  }
+  .mostWantedGameBrand {
+    bottom: 62px;
+  }
+  .socialMediaContainer {
+    width: 60%;
+  }
+  
+  .search label {
+    font-size: 6vmin;
+  }
+  .searchButton {
+    font-size: 6vmin;
+    width: 100%;
+  }
+  
+  .filterOption select {
+    width: 250px;
+  }
+  .main-sign {
+    width: 85%;
+  }
+}
+
+@media (max-width: 415px) {
+  .mostWantedTittle {
+    margin-top: 60px;
+  }
+  .mostWantedGame {
+    width: 270px;
+    height: 270px;
+  }
+}
+
+
+
+@media (max-width: 415px) {
+  .mostWantedTittle {
+    margin-top: 70px;
+  }
+  .mostWantedGame {
+    width: 270px;
+    height: 270px;
+  }
+}
+
+@media (max-width: 411px) {
+  .mostWantedTittle {
+    margin-top: 60px;
+  }
+  .mostWantedGame {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 375px) {
+  .cube {
+    height: 320px;
+    min-width: 320px;
+  }
+  .mostWantedTittle {
+    margin-top: 10px;
+  }
+  .mostWantedGame {
+    width: 220px;
+    height: 220px;
+    position: relative;
+    bottom: 0px;
+  }
+  .mostWantedGameBrand {
+    text-align: center;
+    position: relative;
+    bottom: 0px;
+  }
+  .socialMediaContainer {
+    width: 70%;
+  }
+
+  .footerRights {
+    font-size: 4vmin;
+    text-align: center;
+    padding: 0px 10px;
+  }
 }
