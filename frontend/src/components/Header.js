@@ -186,7 +186,7 @@ const Header = (props) => {
                         <div className="notification">2</div>
                         {showNoti && <Notifications show={setShowNoti} />}
                      </div>
-                     <Link to="wishlist">
+                     <Link to="/wishlist">
                         <FaHeart className="iconsNav" />
                      </Link>
                      <Link to="/cart" onClick={() => window.scrollTo(0, 0)}>
