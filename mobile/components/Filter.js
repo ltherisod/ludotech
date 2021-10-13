@@ -3,8 +3,9 @@ import {View, Text, TextInput, TouchableOpacity, StyleSheet, Modal, Pressable} f
 import { useArticles, useFilters, useUtils } from "../hooks/articlesHooks"
 
 const Filter = (props) => {
-    const [{ brands, genres, gameTypes }, loadingUtils, erroUtils] = useUtils()
+    const [{ brands, genres, gameTypes }] = useUtils()
     const [submit, setSubmit] = useState(false)
+    const [renderAllFilters, setRenderAllFilters] = useState(false)
     const [renderPriceModal, setRenderPriceModal] = useState(false)
     const [renderMinAgeModal, setRenderMinAgeModal] = useState(false)
     const [renderPlayersModal, setRenderPlayersModal] = useState(false)
@@ -41,15 +42,16 @@ const Filter = (props) => {
         props.filterArticles(articles)
     }, [articles])
   
-    // const renderOptions = (options) => {
-    //     return options.map((option) => {
-    //        return (
-    //           <option key={option._id} value={option._id}>
-    //              {option.name}
-    //           </option>
-    //        )
-    //     })
-    // }
+    const submitFilters = (e) => {
+        e.preventDefault()
+        props.setCurrentPage(1)
+        setSubmit(!submit)
+    }
+
+    const changeAllFilters = (e) => {
+        setRenderAllFilters(!renderAllFilters)
+        submitFilters(e)
+    }
 
     const changePrice = (newValue) => {
         setRenderPriceModal(!renderPriceModal)
@@ -91,31 +93,43 @@ const Filter = (props) => {
         inputBoolean(newValue)
     }
 
-    const submitFilters = (e) => {
-        e.preventDefault()
-        props.setCurrentPage(1)
-        setSubmit(!submit)
+    const renderOptionsBrands = () => {
+        return brands.map(brand => {
+            return (
+                <Pressable key={brand._id} style={[styles.button, styles.buttonClose]} onPress={() => {changeBrand(brand._id)}}>
+                    <Text style={styles.textStyle}>{brand.name}</Text>
+                </Pressable>
+            )
+        })
     }
 
-    // const renderOptionsBrands = () => {
-    //     return (
-    //         brands.map(brand => {
-    //             return (
-    //                 <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeSize("Medium")}}>
-    //                     <Text style={styles.textStyle}>Medium</Text>
-    //                 </Pressable>
-    //             )
-    //         })
-    //     )
-    // }
-    // console.log(brands, genres, gameTypes, loadingUtils)
+    const renderOptionsGenres = () => {
+        return genres.map(genre => {
+            return (
+                <Pressable key={genre._id} style={[styles.button, styles.buttonClose]} onPress={() => {changeGenre(genre._id)}}>
+                    <Text style={styles.textStyle}>{genre.name}</Text>
+                </Pressable>
+            )
+        })
+    }
+
+    const renderOptionsGameTypes = () => {
+        return gameTypes.map(gameType => {
+            return (
+                <Pressable key={gameType._id} style={[styles.button, styles.buttonClose]} onPress={() => {changeGameType(gameType._id)}}>
+                    <Text style={styles.textStyle}>{gameType.name}</Text>
+                </Pressable>
+            )
+        })
+    }
+
     return(
         <View style={styles.filterUltracontainer}>
             <View style={styles.filterBoxContainer}>
                 <TextInput placeholder="Search a product" style={styles.search} onChangeText={(e) => {inputHandle(e)}}/>
-                {/* <View style={styles.principalModal}>
-                    <Modal> */}
-                        <View style={styles.principalModal}>
+                <View style={styles.principalModal}>
+                    <Modal animationType="slide" transparent={true} visible={renderAllFilters} onRequestClose={() => {setRenderAllFilters(!renderAllFilters)}}>
+                        <View style={styles.principalInternalModal}>
                             <View style={styles.centeredView}>
                                 <Modal animationType="slide" transparent={true} visible={renderPriceModal} onRequestClose={() => {setRenderPriceModal(!renderPriceModal)}}>
                                     <View style={styles.centeredView}>
@@ -239,7 +253,7 @@ const Filter = (props) => {
                                             <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeBrand("")}}>
                                                 <Text style={styles.textStyle}>All</Text>
                                             </Pressable>
-                                            {/* {renderOptionsBrands()} */}
+                                            {renderOptionsBrands()}
                                         </View>
                                     </View>
                                 </Modal>
@@ -254,7 +268,7 @@ const Filter = (props) => {
                                             <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeGenre("")}}>
                                                 <Text style={styles.textStyle}>All</Text>
                                             </Pressable>
-                                            {/* {renderOptionsGenres()} */}
+                                            {renderOptionsGenres()}
                                         </View>
                                     </View>
                                 </Modal>
@@ -269,7 +283,7 @@ const Filter = (props) => {
                                             <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeGameType("")}}>
                                                 <Text style={styles.textStyle}>All</Text>
                                             </Pressable>
-                                            {/* {renderOptionsGameTypes()} */}
+                                            {renderOptionsGameTypes()}
                                         </View>
                                     </View>
                                 </Modal>
@@ -294,10 +308,14 @@ const Filter = (props) => {
                                     <Text style={styles.textStyle}>With discount?</Text>
                                 </Pressable>
                             </View>
+                            <Pressable style={[styles.button, styles.buttonClose]} onPress={(e) => {changeAllFilters(e)}}>
+                                <Text style={styles.textStyle}>Filter</Text>
+                            </Pressable>
                         </View>
-                    {/* </Modal>
-                </View> */}
+                    </Modal>
+                </View>
                 <TouchableOpacity onPress={(e) => {submitFilters(e)}}><Text>Filter</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => {setRenderAllFilters(!renderAllFilters)}}><Text>More filters</Text></TouchableOpacity>
             </View>
         </View>
     )
@@ -320,6 +338,9 @@ const styles = StyleSheet.create({
     },
     principalModal: {
         
+    },
+    principalInternalModal: {
+
     },
     centeredView: {
         flex: 1,

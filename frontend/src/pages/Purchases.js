@@ -36,7 +36,7 @@ const Purchases = () => {
     console.log(purchases)
 
     return (
-        <div style={{ backgroundImage: "url('https://i.postimg.cc/3wVXYt59/back-Ludo3.png')", backgroundSize: 'cover', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <div style={{ backgroundImage: "url('https://i.postimg.cc/3wVXYt59/back-Ludo3.png')", backgroundSize: 'cover'}}>
             <Header />
             <HeroPages />
             <div className='mainWishlist'>
