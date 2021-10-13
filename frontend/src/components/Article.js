@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { FaHeart, FaRegHeart, FaCartPlus } from "react-icons/fa"
+
 import { useDispatch, useSelector } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
 import usersActions from "../redux/actions/usersActions"

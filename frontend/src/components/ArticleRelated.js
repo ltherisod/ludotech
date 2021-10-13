@@ -5,15 +5,55 @@ import { FaHeart, FaRegHeart, FaCartPlus } from "react-icons/fa"
 import toast from "react-hot-toast"
 
 const ArticleRelated = (props) => {
+   console.log(props)
    const user = useSelector((state) => state.users.user)
-   const addToCart = (e, id) => {
+   const addToCart = (e, id, value) => {
       e.stopPropagation()
       props.updateCart("add", id)
+      toast.custom((t) => (
+         <div
+            className={`${
+               t.visible ? "animate-enter" : "animate-leave"
+            } bg-white flex`}
+            style={{
+               display: "flex",
+               alignContent: "center",
+               alignItems: "center",
+               padding: "5px 10px",
+               borderRadius: "15px",
+               backgroundImage:
+                  "url('https://i.postimg.cc/D0zYct9S/card-Style56.png')",
+               backgroundPosition: "center right 50px",
+               backgroundSize: "cover",
+            }}
+         >
+            <img
+               style={{ width: "55px", height: "55px" }}
+               className="h-3 w-3 rounded-full"
+               src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+               alt=""
+            />
+            <p
+               className="text-sm"
+               style={{
+                  marginBottom: 0,
+                  color: "#ff9424",
+                  fontWeight: "bold",
+               }}
+            >
+               You have {value} to the shopping cart
+            </p>
+         </div>
+      ))
    }
+
+   const relatedArticlesNoRepeat = props.relatedArticles.filter(
+      (arti) => arti._id != props.match.params.id
+   )
 
    return (
       <>
-         {props.relatedArticles.map((article) => {
+         {relatedArticlesNoRepeat.slice(0, 3).map((article) => {
             return (
                <div
                   key={article._id}
@@ -35,7 +75,7 @@ const ArticleRelated = (props) => {
                            backgroundImage: `url('${article.photos[0]}')`,
                         }}
                      ></div>
-                     <div className="gameInfo">
+                     <div className="gameInfoRelated">
                         <div className="priceRelated">
                            {" "}
                            {article.hasDiscount === false ? (
@@ -46,7 +86,7 @@ const ArticleRelated = (props) => {
                                     fontWeight: "bold",
                                  }}
                               >
-                                 ${article.price}
+                                 ${article.price.toFixed(2)} USD
                               </p>
                            ) : (
                               <div className="priceArticle">
@@ -59,7 +99,7 @@ const ArticleRelated = (props) => {
                                        paddingRight: "1.2rem",
                                     }}
                                  >
-                                    ${article.price}
+                                    ${article.price.toFixed(2)}
                                  </p>
                                  <p
                                     style={{
@@ -68,7 +108,7 @@ const ArticleRelated = (props) => {
                                        fontWeight: "bold",
                                     }}
                                  >
-                                    ${article.discountPrice}
+                                    ${article.discountPrice.toFixed(2)} USD
                                  </p>
                               </div>
                            )}
@@ -79,7 +119,9 @@ const ArticleRelated = (props) => {
                               <FaCartPlus
                                  id="buy"
                                  src="./assets/buy.png"
-                                 onClick={(e) => addToCart(e, article._id)}
+                                 onClick={(e) =>
+                                    addToCart(e, article._id, article.name)
+                                 }
                               />
                            </div>
                         ) : (
