@@ -476,7 +476,7 @@ const usersControllers = {
     }
   },
   sendConfirmationEmail: async (req, res) => {
-    console.log("controller", req.body)
+    // console.log("controller", req.body)
     let mailOptions = {
       from: "Ludotehc <ludotechweb@gmail.com>",
       to: `<${req.body.email}`,
@@ -511,7 +511,7 @@ const usersControllers = {
     })
   },
   sendWelcomeEmail: (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     let mailOptions = {
       from: "Ludotehc <ludotechweb@gmail.com>",
       to: `<${req.body.email}`,
@@ -568,7 +568,7 @@ const usersControllers = {
     let mailOptions = {
       from: "Ludotehc <ludotechweb@gmail.com>",
       to: `<${req.body.user.email}`,
-      subject: `Success purchase by ${req.body.user.name}`,
+      subject: `Success purchase by ${req.body.user.firstname + ' ' + req.body.user.lastname}`,
       text: indexEmail.SuccessPurchase(req.body),
       html: indexEmail.SuccessPurchase(req.body),
     }
@@ -582,7 +582,7 @@ const usersControllers = {
     })
   },
   sendFailPurchase: (req, res) => {
-    console.log("fail", req.body)
+    // console.log("fail", req.body)
     // let mailOptions = {
     //   from: "Ludotehc <ludotechweb@gmail.com>",
     //   to: `<${req.body.email}`,

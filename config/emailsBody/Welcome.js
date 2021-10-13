@@ -6,11 +6,11 @@ const WelcomeMail = (data) => {
       </div>
     </header>
     <main style="width:80vw;margin:0 auto;">
-      <h3>Hello ${data.name}</h3>
+      <h3>Hello ${data.user.firstname + ' ' + data.user.lastname}</h3>
       <p style="font-size:1.2rem">Welcome to <span style="font-size:1.5rem">Ludotech</span> where you will find all the game you desire.</p>
       <p>We´re glad to have you in our comunu¡ity to find and share opinions about the games.</p>
       <br/>
-      <p>Now you can go and search for the best games we offers for you <a href="https://lodotechgames.herokuapp.com">here</a>
+      <p>Now you can go and search for the best games we offers for you <a href="http://localhost:3000/">here</a>
     </main>
     <footer style="">
       <span style="font-size:0.8">Ludotech</span>

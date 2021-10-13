@@ -172,6 +172,17 @@ const articlesActions = {
          }
       }
    },
+   getLastArticles: () => {
+      return async () => {
+         try {
+            let response = await axios.get(`${HOST}/api/last-articles`)
+            if (!response.data.success) throw new Error(response.data.error)
+            return { success: true, response: response.data.response, error: null }
+         } catch (e) {
+            return { success: false, response: null, error: e.message }
+         }
+      }
+   }
 }
 
 export default articlesActions

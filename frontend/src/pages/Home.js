@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import { useEffect } from "react"
 import Bot from "../components/bot/Bot"
 import "animate.css"
+import NewArticlesCarousel from "../components/NewArticlesCarousel"
 const Home = (props) => {
    useEffect(() => {
       window.scrollTo(0, 0)
@@ -51,6 +52,7 @@ const Home = (props) => {
                   ></div>
                </div>
                <MostWanted history={props.history} />
+               <NewArticlesCarousel history={props.history} />
             </main>
             <Footer />
          </div>
