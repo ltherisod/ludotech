@@ -1,8 +1,9 @@
 import React,{ useState } from "react"
-import { TouchableOpacity, View, Text } from "react-native"
+import { TouchableOpacity, View, Text, StyleSheet, ImageBackground } from "react-native"
 import { useDispatch } from "react-redux"
 import usersActions from "../redux/actions/usersActions"
 import DirectionsForm from "./DirectionsForm"
+import Preloader from "../components/Preloader"
 
 const Address = (props) => {
   const dispatch = useDispatch()
@@ -37,45 +38,111 @@ const Address = (props) => {
   }
 
   return (
-    <View>
+    <View style={styles.addressCard}>
       {loading ? (
-        <Text>LOADING </Text>
+        <Preloader/>
       ) : (
         <View>
           {!edit && (
-            <View>
-              <Text>Alias : {direction.alias}</Text>
-              <Text>Receiver : {direction.receiver}</Text>
-              <Text>Street : {direction.street}</Text>
-              <Text>Number : {direction.number}</Text>
-              <Text>Department : {direction.department}</Text>
-              <Text>Zip Code : {direction.zipCode}</Text>
-              <Text>City : {direction.city}</Text>
-              <Text>State : {direction.state}</Text>
+            <View style={styles.addressCardData}>
+              <View style={{flexDirection:'row'}}>
+                <Text style={styles.addressText1}>Alias :</Text>
+                <Text style={styles.addressText}> {direction.alias}</Text>
+              </View>
+             <View style={{flexDirection:'row'}} >
+                <Text style={styles.addressText1}>Receiver :</Text>
+                <Text style={styles.addressText}> {direction.receiver}</Text>
+             </View>
+             <View style={{flexDirection:'row'}}>
+                <Text style={styles.addressText1}>Street : </Text>
+                <Text style={styles.addressText}>{direction.street}</Text>
+             </View>
+              <View style={{flexDirection:'row'}}>
+                <Text style={styles.addressText1}>Number : </Text>
+                <Text style={styles.addressText}>{direction.number}</Text>
+              </View>
+              <View style={{flexDirection:'row'}}>
+                <Text style={styles.addressText1}>Department :</Text>
+                <Text style={styles.addressText}> {direction.department}</Text>
+              </View>
+              <View style={{flexDirection:'row'}}>
+                <Text style={styles.addressText1}>Zip Code : </Text>
+                <Text style={styles.addressText}>{direction.zipCode}</Text>
+              </View>
+              <View style={{flexDirection:'row'}} >
+                <Text style={styles.addressText1}>City : </Text>
+                <Text style={styles.addressText}>{direction.city}</Text>
+              </View>
+              <View style={{flexDirection:'row'}}>
+                <Text style={styles.addressText1}>State : </Text>
+                <Text style={styles.addressText}>{direction.state}</Text>
+              </View>
             </View>
           )}
           {edit && (
-            <View>
+            <View style={{marginBottom:20}}>
               <DirectionsForm
                 submitCallback={updateDirectionHandler}
                 initialValues={initialValues}
-                buttonText="Confirm"
+                buttonText="OK"
               />
-              <TouchableOpacity  onPress={() => setEdit(!edit)}>
-               <Text>Cancel</Text>
-              </TouchableOpacity>
+              <View>
+                <TouchableOpacity  onPress={() => setEdit(!edit)}>
+                <ImageBackground style={{width:30, padding:3}} source={{ uri: "https://i.postimg.cc/L6km2Sc6/back-Google.png",}} imageStyle={{ borderRadius: 5 }}>
+                    <Text style={{color:"white",fontFamily:'Poppins_700Bold', alignSelf:"center"}}>X</Text>
+                </ImageBackground>
+                </TouchableOpacity>
+              </View>
             </View>
           )}
-          <TouchableOpacity  onPress={() => setEdit(!edit)}>
-            <Text>Edit Address</Text>
-          </TouchableOpacity>
-          <TouchableOpacity  onClick={() => deleteAddress(direction._id)}>
-            <Text>Delete Address</Text>
-          </TouchableOpacity>
+          <View style={{flexDirection:'row', justifyContent:"space-around"}}>
+              <TouchableOpacity  onPress={() => setEdit(!edit)}>
+                  <ImageBackground style={{width:65, padding:5, marginHorizontal:10}} source={{ uri: "https://i.postimg.cc/256ZjvPG/back-Button.png",}} imageStyle={{ borderRadius: 5 }}>
+                <Text style={{color:"white",fontFamily:'Poppins_600SemiBold', alignSelf:"center", letterSpacing:1 }}>Edit</Text>
+                    </ImageBackground>
+              </TouchableOpacity>
+              <TouchableOpacity  onPress={() => deleteAddress(direction._id)}>
+                  <ImageBackground style={{width:65, padding:5,marginHorizontal:10}} source={{ uri: "https://i.postimg.cc/L6km2Sc6/back-Google.png",}} imageStyle={{ borderRadius: 5 }}>
+                      <Text style={{color:"white",fontFamily:'Poppins_600SemiBold', alignSelf:"center", letterSpacing:1 }}>Delete</Text>
+                  </ImageBackground>
+              </TouchableOpacity>
+          </View>
+          
         </View>
       )}
     </View>
   )
 }
+const styles = StyleSheet.create({
+  addressCard:{
+    width:"70%",
+    backgroundColor:"white",
+    minHeight: 130,
+    borderRadius:10,
+    padding:20,
+    shadowColor: "#000",
+    shadowOffset: {
+	    width: 0,
+	    height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 6.00,
+    elevation: 24,
+    alignItems:"center",
+    alignSelf:"center",
+    marginVertical:15
+  },
+  addressText:{
+    fontFamily:"Poppins_600SemiBold",
+    color:"gray",
+  },
+  addressText1:{
+    fontFamily:"Poppins_700Bold",
+    color:"gray",
+    marginLeft:-28
+  },
+  addressCardData:{
 
+  }
+})
 export default Address
