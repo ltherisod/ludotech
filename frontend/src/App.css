@@ -278,6 +278,25 @@ main h2 {
    border-radius: 3px;
 }
 
+.fifi {
+   width: 35vw;
+}
+
+.inputsAdd {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+}
+
+.inputsAdd input {
+   height: 40px;
+   padding-left: 1vmin;
+   outline: none;
+   border: 1px solid white;
+   border-radius: 3px;
+   box-shadow: 1px 1px 5px rgba(163, 157, 157, 0.3);
+}
+
 .main-sign label {
    color: white;
    text-align: start;
@@ -361,6 +380,13 @@ h2 span {
 
 .signErrors {
    color: red;
+}
+
+.titleProfile {
+   text-align: center;
+   font-size: 8vmin;
+   font-weight: 700;
+   color: #660099;
 }
 /*Pagina Articulos*/
 
@@ -1444,6 +1470,22 @@ h2.articles {
       rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
+.containerDataProfile {
+   width: 40vw;
+   background-color: white;
+   border-radius: 10px;
+   padding: 15px;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.containerDataProfile p {
+   font-size: 22px;
+}
+
 .checkoutContainer {
    width: 60vw;
    background-color: white;
@@ -1823,6 +1865,13 @@ h2.articles {
 }
 /* PROFILE  */
 
+.divProfile {
+   width: 70vw;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
 .logoUserProfile {
    background-position: center;
    width: 7em;
@@ -1835,12 +1884,17 @@ h2.articles {
    display: flex;
    justify-content: flex-start;
    align-items: center;
+   margin-top: 2rem;
 }
 .profileFirstData h3 {
-   color: white;
+   color: #660099;
+   font-weight: 600;
+   font-size: 3rem;
 }
 .profileFirstData p {
-   color: orange;
+   color: #45f0bf;
+   font-weight: 500;
+   font-size: 1.5rem;
 }
 .phoneProfile {
    display: flex;
@@ -1848,34 +1902,48 @@ h2.articles {
 }
 .phone {
    display: flex;
-   justify-content: space-between;
+   justify-content: center;
+   width: 50vw;
 }
 .profileTitles {
-   margin-bottom: 0;
-   margin-right: 10px;
+   margin: 1.5rem 0;
    font-weight: 600;
-   color: white;
+   color: #660099;
+   align-self: flex-start;
+   position: relative;
+   right: 5rem;
 }
-.phone p {
-   color: white;
+.phone p,
+.addressAddedCard p {
+   color: gray;
    margin-right: 10px;
    font-size: larger;
    margin-bottom: 0;
 }
+
 .addresses {
    display: flex;
    flex-direction: column;
    flex-wrap: wrap;
 }
 .addresses p {
-   color: white;
-   margin-right: 10px;
-   margin-bottom: 0px;
+   color: rgb(158, 157, 157);
+   font-size: 25px;
+   margin-bottom: 1rem;
+}
+
+.dataAddres {
+   font-weight: 600;
+   font-size: 30;
+   color: gray;
+   margin-right: 7px;
 }
 .adressesAdded {
    display: flex;
-   padding: 20px 0px;
-   flex-wrap: wrap;
+   width: 100%;
+   padding: 20px 0px 20px 20px;
+   align-content: flex-start;
+   justify-content: flex-start;
 }
 .addressAddedCard {
    padding-right: 10px;
@@ -1884,15 +1952,7 @@ h2.articles {
 .addressAddedCard input {
    width: 100%;
 }
-.addressAddedCard button {
-   padding: 0px 7px;
-   background-color: #6aefcf;
-   border: none;
-   border-radius: 50px;
-   text-align: center;
-   color: white;
-   margin: 10px;
-}
+
 .profileButton {
    padding: 0px 20px;
    color: white;
@@ -1902,7 +1962,6 @@ h2.articles {
    cursor: pointer;
    font-size: 2.5vmin;
    height: 50px;
-   /* align-self: center; */
    margin-left: 20px;
 }
 
@@ -1916,6 +1975,24 @@ h2.articles {
    display: flex;
    flex-direction: column;
    padding-top: 19px;
+   width: 60%;
+}
+
+.main-sign input {
+   height: 40px;
+   padding-left: 1vmin;
+   outline: none;
+   border: 1px solid white;
+   border-radius: 3px;
+}
+
+.phoneInput input {
+   height: 40px;
+   padding-left: 1vmin;
+   outline: none;
+   border: 1px solid white;
+   border-radius: 3px;
+   box-shadow: 1px 1px 5px rgba(163, 157, 157, 0.3);
 }
 .inputsAddAddress {
    padding-top: 20px;

@@ -130,7 +130,7 @@ const Cart = (props) => {
             ) : (
                <div className="bodyCart">
                   {props.shoppingCart.length === 0 ? (
-                     <h2>Your cart is empty</h2>
+                     <h2 className="pt-5">Your cart is empty</h2>
                   ) : (
                      <>
                         <h2>Cart</h2>

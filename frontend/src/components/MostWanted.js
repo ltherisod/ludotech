@@ -18,8 +18,6 @@ const MostWanted = (props) => {
    }, [])
    if (loading) return <PreloaderFilter />
    if (!mostVisitArticles.length) return <p>Error...</p> // manejar esto!
-   console.log(props)
-   console.log(mostVisitArticles)
    return (
       <>
          <div className="mostWantedConteiner">

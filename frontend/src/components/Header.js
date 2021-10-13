@@ -10,7 +10,6 @@ const Header = (props) => {
    const HOST = "https://lodotechgames.herokuapp.com"
    const user = useSelector((state) => state.users.user)
    const dispatch = useDispatch()
-   console.log(user)
    const [changeTitle, setChangeTitle] = useState(false)
 
    const toggleTitle = () => {

@@ -8,7 +8,6 @@ import PreloaderFilter from "../components/PreloaderFilter"
 import Bot from "../components/bot/Bot"
 
 const Articles = (props) => {
-   console.log(props)
    const [articles, setArticles] = useState({
       articles: [],
       page: 1,

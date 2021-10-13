@@ -31,8 +31,6 @@ const ArticleEdit = (props) => {
       _id,
    } = props.article
 
-   console.log(props.article)
-
    const formik = useFormik({
       initialValues: {
          name,

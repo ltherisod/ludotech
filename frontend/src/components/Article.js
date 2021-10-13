@@ -9,7 +9,6 @@ import toast from "react-hot-toast"
 const Article = (props) => {
    const wishlist = useSelector((state) => state.users.wishList)
    const user = useSelector((state) => state.users.user)
-   console.log(user)
    const dispatch = useDispatch()
    const {
       name,
