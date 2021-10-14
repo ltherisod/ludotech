@@ -86,32 +86,6 @@ const Navigator = (props) => {
             component={Articles}
             options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
          />
-         <Drawer.Screen
-            name="Checkout"
-            component={Checkout}
-            options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
-         />
-         {user && (
-            <Drawer.Screen
-               name="Cart"
-               component={Cart}
-               options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
-            />
-         )}
-         {user && (
-            <Drawer.Screen
-               name="Wish List"
-               component={WishList}
-               option={{ headerTitle: (props) => <LogoTitle {...props} /> }}
-            />
-         )}
-         {!user && (
-            <Drawer.Screen
-               name="Wish List"
-               component={NotWishList}
-               option={{ headerTitle: (props) => <LogoTitle {...props} /> }}
-            />
-         )}
          {!user && (
             <>
                <Drawer.Screen
@@ -126,7 +100,6 @@ const Navigator = (props) => {
                />
             </>
          )}
-         <Drawer.Screen name="Stripe" component={Stripe} />
       </Drawer.Navigator>
    )
 }

@@ -7,10 +7,11 @@ import { usePurchase } from "../hooks/usersHooks"
 import { useDispatch, useSelector } from "react-redux"
 import { ActivityIndicator, Button, Colors } from "react-native-paper"
 import usersActions from "../redux/actions/usersActions"
+import Preloader from "../components/Preloader"
 
 const HOST = "https://lodotechgames.herokuapp.com"
 
-const Stripe = () => {
+const Stripe = (props) => {
    const [cardDetails, setCardDetails] = useState()
    const [loading, setLoading] = useState(false)
    const [error, setError] = useState(null)
@@ -73,23 +74,26 @@ const Stripe = () => {
          const res = await purchase(details)
          console.log(res)
          setLoading(false) // en realidad, este setLoading no es necesario.
-         // aquí termina la compra... hacer checkout
+         props.navigation.navigate("Checkout", {
+            purchase: res.response.purchase,
+         })
       } catch (e) {
          console.log(e.message)
          setError(e.message)
          setLoading(false)
       }
    }
-   // if (loading)
-   //   return (
-   //     <View style={{ alignItems: "center", justifyContent: "center" }}>
-   //       <ActivityIndicator
-   //         animating={true}
-   //         color={Colors.purple800}
-   //         size="large"
-   //       />
-   //     </View>
-   //   )
+   if (loading)
+      return (
+         <View style={{ alignItems: "center", justifyContent: "center" }}>
+            {/* <ActivityIndicator
+               animating={true}
+               color={Colors.purple800}
+               size="large"
+            /> */}
+            <Preloader />
+         </View>
+      )
    return (
       <View>
          <ScrollView>
