@@ -95,6 +95,7 @@ export const useRelatedArticles = (genres) => {
     const res = await dispatch(
       articlesActions.getRelatedArticles(genres[0]._id)
     )
+    console.log(res)
     if (!res.success) {
       setError(res.error)
     } else {

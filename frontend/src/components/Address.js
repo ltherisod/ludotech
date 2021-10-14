@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import usersActions from "../redux/actions/usersActions"
 import DirectionsForm from "./DirectionsForm"
+import Preloader from "./Preloader"
 
 const Address = (props) => {
    const dispatch = useDispatch()
@@ -32,53 +33,96 @@ const Address = (props) => {
 
    const deleteAddress = async (id) => {
       const res = await dispatch(usersActions.deleteDirection(id))
-      console.log(res)
    }
 
    return (
-      <div>
+      <>
          {loading ? (
-            <h1>LOADING PADREE!!!</h1>
+            <Preloader />
          ) : (
             <div className="addressAddedCard">
                {!edit && (
-                  <div >
-                     <p>Alias : {direction.alias}</p>
-                     <p>Receiver : {direction.receiver}</p>
-                     <p>Street : {direction.street}</p>
-                     <p>Number : {direction.number}</p>
-                     <p>Department : {direction.department}</p>
-                     <p>Zip Code : {direction.zipCode}</p>
-                     <p>City : {direction.city}</p>
-                     <p>State : {direction.state}</p>
+                  <div>
+                     <p>
+                        <span className="dataAddres">Alias :</span>{" "}
+                        {direction.alias}
+                     </p>
+                     <p>
+                        <span className="dataAddres">Receiver :</span>{" "}
+                        {direction.receiver}
+                     </p>
+                     <p>
+                        <span className="dataAddres">Street :</span>{" "}
+                        {direction.street}
+                     </p>
+                     <p>
+                        <span className="dataAddres">Number :</span>{" "}
+                        {direction.number}
+                     </p>
+                     <p>
+                        <span className="dataAddres">Department :</span>{" "}
+                        {direction.department}
+                     </p>
+                     <p>
+                        <span className="dataAddres">Zip Code :</span>{" "}
+                        {direction.zipCode}
+                     </p>
+                     <p>
+                        <span className="dataAddres">City :</span>{" "}
+                        {direction.city}
+                     </p>
+                     <p>
+                        <span className="dataAddres">State :</span>{" "}
+                        {direction.state}
+                     </p>
                   </div>
                )}
                {edit && (
-                  <div>
+                  <div className="fifi d-flex flex-column align-items-center">
                      <DirectionsForm
                         submitCallback={updateDirectionHandler}
                         initialValues={initialValues}
-                        buttonText="Confirm"
+                        buttonText="✔"
                      />
-                     <button type="button" onClick={() => setEdit(!edit)}>
-                        Cancel
+                     <button
+                        className="profileButton"
+                        style={{
+                           backgroundColor: "#ce2a73",
+                           width: "3.53rem",
+                           marginTop: "1rem",
+                        }}
+                        type="button"
+                        onClick={() => setEdit(!edit)}
+                     >
+                        X
                      </button>
                   </div>
                )}
                {!edit && (
-                  <button type="button" onClick={() => setEdit(!edit)}>
+                  <button
+                     style={{
+                        backgroundImage: `url(" https://i.postimg.cc/256ZjvPG/back-Button.png")`,
+                     }}
+                     className="profileButton editProfile"
+                     type="button"
+                     onClick={() => setEdit(!edit)}
+                  >
                      Edit
                   </button>
                )}
                <button
+                  className="profileButton deleteProfile" 
+                  style={{
+                     backgroundImage: `url("https://i.postimg.cc/L6km2Sc6/back-Google.png")`,
+                  }}
                   type="button"
                   onClick={() => deleteAddress(direction._id)}
                >
-                  X
+                  Delete
                </button>
             </div>
          )}
-      </div>
+      </>
    )
 }
 

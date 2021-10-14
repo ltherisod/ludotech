@@ -13,6 +13,7 @@ import {
 } from "react-native"
 import Footer from "../components/Footer";
 import MostWanted from "../components/MostWanted";
+import NewArticlesCarousel from "../components/NewArticlesCarousel";
 
 
 const Home = (props) => {
@@ -53,7 +54,8 @@ const Home = (props) => {
                   </Text>
                 </View>
               </TouchableOpacity>
-              <MostWanted />
+              <MostWanted navigation={props.navigation} />
+              <NewArticlesCarousel navigation={props.navigation} />
               <Footer />
 
           </ImageBackground>

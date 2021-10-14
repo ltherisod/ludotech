@@ -119,6 +119,12 @@ const usersActions = {
           },
         })
         if (!res.data.success) throw new Error(res.data.error)
+        const body = {
+          user: getState().users.user,
+          purchase: res.data.response.purchase,
+        }
+        // await axios.post(`${HOST}/api/success-purchase`, body, { headers: { Authorization: `Bearer ${getState().users.user.token}`}})
+        dispatch({ type: "PURCHASE", payload: res.data.response })
         return { success: true, response: res.data.response, error: null }
       } catch (e) {
         return { success: false, response: null, error: e.message }
@@ -180,6 +186,25 @@ const usersActions = {
       }
     }
   },
+  getReceipt: (purchaseId) => {
+    return async (dispatch) => {
+       try {
+          const res = await axios({
+             url: `${HOST}/api/receipt/${purchaseId}`,
+             method: "GET",
+             responseType: "blob",
+          })
+          if (!res.data) {
+             throw new Error(res.data.error)
+          }
+
+          fileDownload(res.data, `${purchaseId}.pdf`)
+          return { success: true, response: "Todo bien", error: null }
+       } catch (e) {
+          return { success: false, response: null, error: e.message }
+       }
+    }
+ },
 }
 
 export default usersActions

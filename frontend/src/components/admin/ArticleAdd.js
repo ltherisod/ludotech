@@ -121,7 +121,6 @@ const ArticleAdd = (props) => {
             photos: [photos0, photos1, photos2],
          })
       )
-      console.log(res)
       if (!res.success) setError(res.error)
       setLoading(false)
       props.setSection()
@@ -379,7 +378,7 @@ const ArticleAdd = (props) => {
                )}
             </div>
          </div>
-         <div>
+         <div className="inputsConrainerAdm">
             <div className="numberAddOptions">
                <div className="inputEditProduct">
                   <label className="labelSign" htmlFor="minPlayers">
@@ -654,28 +653,30 @@ const ArticleAdd = (props) => {
                   <small className="signNoErrors">NoErrors</small>
                )}
             </div>
-            <button
-               type="button"
-               className="addProduct"
-               disabled={loading}
-               onClick={() => props.setSection()}
-               style={{
-                  backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
-               }}
-            >
-               CANCEL
-            </button>
-            <button
-               type="button"
-               className="addProduct"
-               disabled={loading}
-               onClick={formik.handleSubmit}
-               style={{
-                  backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
-               }}
-            >
-               ADD
-            </button>
+            <div className="addProductButtonContainer">
+               <button
+                  type="button"
+                  className="addProduct"
+                  disabled={loading}
+                  onClick={() => props.setSection()}
+                  style={{
+                     backgroundImage: `url("https://i.postimg.cc/L6km2Sc6/back-Google.png")`,
+                  }}
+               >
+                  CANCEL
+               </button>
+               <button
+                  type="button"
+                  className="addProduct"
+                  disabled={loading}
+                  onClick={formik.handleSubmit}
+                  style={{
+                     backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                  }}
+               >
+                  ADD
+               </button>     
+            </div>  
          </div>
       </div>
    )

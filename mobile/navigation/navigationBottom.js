@@ -10,6 +10,8 @@ import WishList from "../screens/WishList"
 import { useSelector } from "react-redux"
 import { useLoginLS } from "../hooks/usersHooks"
 import usersActions from "../redux/actions/usersActions"
+import NotProfile from "../screens/NotProfile"
+import NotWishlist from "../screens/NotWishlist"
 const bottom = createBottomTabNavigator()
 const HOST = "https://lodotechgames.herokuapp.com"
 
@@ -18,26 +20,16 @@ const NavigationBottom = (props) => {
   useLoginLS()
   const userIcon = user ? (
     <Image
-      style={{ width: 35, height: 35, borderRadius: 35 }}
+      style={{ width: 35, height: 35, borderRadius: 35}}
       source={{ uri: user.google ? user.photo : `${HOST}/${user.photo}` }}
     />
   ) : (
-    <Icon name="user-circle" size={35} color={"#6fdbd2"} />
+    <Icon name="user-circle" size={35} color={"#6fdbd2"}  />
   )
 
   return (
-    <bottom.Navigator
-      screenOptions={{
-        showLabel: false,
-        style: {
-          position: "absolute",
-          bottom: 0,
-          elevation: 0,
-          height: 60,
-          borderTopWidth: "none",
-        },
-      }}
-    >
+    <bottom.Navigator screenOptions={{tabBarShowLabel: false}}>
+
       <bottom.Screen
         name="home"
         component={Navigator}
@@ -50,7 +42,7 @@ const NavigationBottom = (props) => {
         }}
       />
 
-      <bottom.Screen
+      {user && <bottom.Screen
         name="profile"
         component={Profile}
         options={{
@@ -58,8 +50,18 @@ const NavigationBottom = (props) => {
           headerShown: false,
           title:""
         }}
-      />
-      <bottom.Screen
+      />}
+      {!user && <bottom.Screen
+        name="profile"
+        component={NotProfile}
+        options={{
+          tabBarIcon: ({ color, size }) => userIcon,
+          headerShown: false,
+          title:""
+        }}
+      />}
+      
+      {user && <bottom.Screen
         name="wishlist"
         component={WishList}
         options={{
@@ -69,18 +71,31 @@ const NavigationBottom = (props) => {
           headerShown: false,
           title:""
         }}
-      />
-      <bottom.Screen
-        name="cart"
-        component={Cart}
+      />}
+
+      {!user && <bottom.Screen
+        name="wishlist"
+        component={NotWishlist}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Icon name="cart-plus" size={35} color={"#7c51b0"} />
+            <Icon name="heart" size={35} color={"#e561ae"} />
           ),
           headerShown: false,
           title:""
         }}
-      />
+      />}
+
+      {user && <bottom.Screen
+        name="cart"
+        component={Cart}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Icon name="cart-plus" size={35} color={"#7c51b0"}  />
+          ),
+          headerShown: false,
+          title:""
+        }}
+      />}
     </bottom.Navigator>
   )
 }

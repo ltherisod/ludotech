@@ -5,12 +5,16 @@ import Footer from "../components/Footer"
 import ArticleRelated from "../components/ArticleRelated"
 import ArticleCaroulsel from "../components/ArticleCaroulsel"
 import { useArticle, useRelatedArticles } from "../hooks/articlesHooks"
-import { connect } from "react-redux"
+import { connect, useSelector } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
 import Preloader from "../components/Preloader"
 import Bot from "../components/bot/Bot"
+import { FaHeart, FaRegHeart, FaCartPlus } from "react-icons/fa"
+import toast from "react-hot-toast"
+import PreloaderFilter from "../components/PreloaderFilter"
 
 const ArticlePage = (props) => {
+   const user = useSelector((state) => state.users.user)
    const [article, loading] = useArticle(props.match.params.id)
    const {
       brand,
@@ -41,8 +45,43 @@ const ArticlePage = (props) => {
       window.scroll(0, 0)
    }, [article])
 
-   const addToCart = (id) => {
+   const addToCart = (id, value) => {
       props.updateCart("add", id)
+      toast.custom((t) => (
+         <div
+            className={`${
+               t.visible ? "animate-enter" : "animate-leave"
+            } bg-white flex`}
+            style={{
+               display: "flex",
+               alignContent: "center",
+               alignItems: "center",
+               padding: "5px 10px",
+               borderRadius: "15px",
+               backgroundImage:
+                  "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
+               backgroundPosition: "center right 50px",
+               backgroundSize: "cover",
+            }}
+         >
+            <img
+               style={{ width: "55px", height: "55px" }}
+               className="h-3 w-3 rounded-full"
+               src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+               alt=""
+            />
+            <p
+               className="text-sm"
+               style={{
+                  marginBottom: 0,
+                  color: "#ff9424",
+                  fontWeight: "bold",
+               }}
+            >
+               You have {value} to the shopping cart
+            </p>
+         </div>
+      ))
    }
 
    return (
@@ -133,14 +172,87 @@ const ArticlePage = (props) => {
                               <p>Stock: {stock}</p>
                            </div>
                         </div>
-                        <div className="articleShopCont">
-                           <img
-                              id="buy"
-                              onClick={() => addToCart(_id)}
-                              src="/assets/buy2.png"
-                              alt="addCart"
-                           />
-                        </div>
+                        {stock <= 0 ? (
+                           <div>
+                              <p className="text-center">
+                                 Sorry, there is no stock for this product at
+                                 this time. Come back later please
+                              </p>
+                              <div className="divCart">
+                                 <FaCartPlus id="buyNoStock" />
+                              </div>
+                           </div>
+                        ) : (
+                           <>
+                              {user ? (
+                                 <div
+                                    style={{
+                                       backgroundImage: `url("https://i.postimg.cc/GhMnJB8K/button-PDF.png")`,
+                                       backgroundPosition: "top",
+                                    }}
+                                    className="addProduct d-flex justify-content-center align-self-center"
+                                 >
+                                    <FaCartPlus
+                                       id="buy2"
+                                       src="./assets/buy.png"
+                                       onClick={() => addToCart(_id, name)}
+                                    />
+                                 </div>
+                              ) : (
+                                 <div className="divCart">
+                                    <FaCartPlus
+                                       id="buy"
+                                       src="./assets/buy.png"
+                                       onClick={(e) => {
+                                          e.stopPropagation()
+                                          toast.custom((t) => (
+                                             <div
+                                                className={`${
+                                                   t.visible
+                                                      ? "animate-enter"
+                                                      : "animate-leave"
+                                                } bg-white flex`}
+                                                style={{
+                                                   display: "flex",
+                                                   alignContent: "center",
+                                                   alignItems: "center",
+                                                   padding: "5px 10px",
+                                                   borderRadius: "15px",
+                                                   backgroundImage:
+                                                      "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
+                                                   backgroundPosition:
+                                                      "center right 50px",
+                                                   backgroundSize: "cover",
+                                                }}
+                                             >
+                                                <img
+                                                   style={{
+                                                      width: "55px",
+                                                      height: "55px",
+                                                   }}
+                                                   className="h-3 w-3 rounded-full"
+                                                   src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+                                                   alt=""
+                                                />
+                                                <p
+                                                   className="text-sm"
+                                                   style={{
+                                                      marginBottom: 0,
+                                                      color: "#ff9424",
+                                                      fontWeight: "bold",
+                                                   }}
+                                                >
+                                                   You must log in to add an
+                                                   item to the shopping cart
+                                                </p>
+                                             </div>
+                                          ))
+                                       }}
+                                    />
+                                 </div>
+                              )}
+                           </>
+                        )}
                      </div>
                   </div>
                </div>
@@ -189,16 +301,22 @@ const ArticlePage = (props) => {
                      }}
                   ></div>
                </div>
-               <h3 className="articleRelatedTittle">Products related</h3>
+               <div className="divArticlesRelated">
+               <h3 className="articleRelatedTittle">
+                  Products <span className="spanCeleste">related</span> !
+               </h3>
                <div className="relatedArticles">
                   {loadingRelated ? (
-                     <Preloader />
+                     <PreloaderFilter />
                   ) : (
                      <ArticleRelated
+                        match={props.match}
                         history={props.history}
                         relatedArticles={relatedArticles}
                      />
                   )}
+               </div>
+
                </div>
                <Footer />
             </div>

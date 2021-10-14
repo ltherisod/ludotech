@@ -20,22 +20,26 @@ const ToastTest = () => {
                padding: "5px 10px",
                borderRadius: "15px",
                backgroundImage:
-                  "url('https://i.postimg.cc/T17d2Kn8/fondo-test.png')",
-               backgroundPosition: "top",
+                  "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
+               backgroundPosition: "center right 50px",
                backgroundSize: "cover",
             }}
          >
             <img
-               style={{ width: "60px", height: "60px" }}
-               className="h-4 w-4 rounded-full"
+               style={{ width: "55px", height: "55px" }}
+               // className="h-3 w-3 rounded-full"
                src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
                alt=""
             />
             <p
                className="text-sm"
-               style={{ marginBottom: 0, color: "purple", fontWeight: "bold" }}
+               style={{
+                  marginBottom: 0,
+                  color: "#ff9424",
+                  fontWeight: "bold",
+               }}
             >
-               Prueba toast
+               You must log in to see your wish list
             </p>
          </div>
       ))

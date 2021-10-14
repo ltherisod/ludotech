@@ -11,12 +11,13 @@ import Cart from "../screens/Cart"
 import SignIn from "../screens/SignIn"
 import SignUp from "../screens/SignUp"
 import LogOut from "../screens/LogOut"
+import NotWishList from "../screens/NotWishlist"
 import WishList from "../screens/WishList"
 import { connect, useSelector } from "react-redux"
 import { useLoginLS } from "../hooks/usersHooks"
 import { Image, ImageBackground, StyleSheet } from "react-native"
 import NavigationBottom from "./navigationBottom"
-import Paypal from "../screens/Paypal"
+import Stripe from "../screens/Stripe"
 const Drawer = createDrawerNavigator()
 
 const Navigator = (props) => {
@@ -75,16 +76,21 @@ const Navigator = (props) => {
         component={Articles}
         options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
       />
-      <Drawer.Screen
+      {user && <Drawer.Screen
         name="Cart"
         component={Cart}
         options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
-      />
-      <Drawer.Screen
+      />}
+      {user && <Drawer.Screen
         name="Wish List"
         component={WishList}
         option={{ headerTitle: (props) => <LogoTitle {...props} /> }}
-      />
+      />}
+      {!user && <Drawer.Screen
+        name="Wish List"
+        component={NotWishList}
+        option={{ headerTitle: (props) => <LogoTitle {...props} /> }}
+      />}
       {!user && (
         <>
           <Drawer.Screen
@@ -100,7 +106,7 @@ const Navigator = (props) => {
         </>
       )}
       {user && <Drawer.Screen name="Log Out" component={LogOut} />}
-      <Drawer.Screen name="Paypal" component={Paypal} />
+      <Drawer.Screen name="Stripe" component={Stripe} />
     </Drawer.Navigator>
   )
 }

@@ -25,7 +25,14 @@ const Filter = (props) => {
    }, [loading])
 
    useEffect(() => {
-      props.filterArticles(articles)
+      props.filterArticles(
+         articles ?? {
+            articles: [],
+            page: 1,
+            totalCounts: null,
+            totalPages: 1,
+         }
+      )
    }, [articles])
 
    const renderOptions = (options) => {
@@ -51,7 +58,9 @@ const Filter = (props) => {
             style={{ width: "80%", display: "flex", color: "white" }}
          >
             <div className="search">
-               <label htmlFor="name">Search a product</label>
+               <label htmlFor="name">
+                  Search <span className="spanOrange">a</span> product
+               </label>
                <input
                   type="search"
                   id="name"
@@ -62,7 +71,9 @@ const Filter = (props) => {
             <>
                <div className="filtersBox">
                   <div className="filterOption">
-                     <label htmlFor="price">Price:</label>
+                     <label htmlFor="price">
+                        <span className="spanCeleste">Price</span>
+                     </label>
                      <select name="price" id="price" onChange={inputPrice}>
                         <option>all</option>
                         <option value="0-10">0 - $10</option>
@@ -76,7 +87,7 @@ const Filter = (props) => {
                      </select>
                   </div>
                   <div className="filterOption">
-                     <label htmlFor="minAge">Min age:</label>
+                     <label htmlFor="minAge">Min age</label>
                      <select name="minAge" id="minAge" onChange={inputMinAge}>
                         <option>all</option>
                         <option value="three">3</option>
@@ -87,7 +98,9 @@ const Filter = (props) => {
                      </select>
                   </div>
                   <div className="filterOption">
-                     <label htmlFor="players">Players:</label>
+                     <label htmlFor="players">
+                        <span className="spanCeleste">Players</span>
+                     </label>
                      <select
                         name="players"
                         id="players"
@@ -101,7 +114,7 @@ const Filter = (props) => {
                      </select>
                   </div>
                   <div className="filterOption">
-                     <label htmlFor="size">Size:</label>
+                     <label htmlFor="size">Size</label>
                      <select name="size" id="size" onChange={inputHandle}>
                         <option value="">all</option>
                         <option value="Small">Small</option>
@@ -110,21 +123,25 @@ const Filter = (props) => {
                      </select>
                   </div>
                   <div className="filterOption">
-                     <label htmlFor="brand">Brand:</label>
+                     <label htmlFor="brand">
+                        <span className="spanCeleste">Brand</span>
+                     </label>
                      <select name="brand" id="brand" onChange={inputHandle}>
                         <option value="">all</option>
                         {renderOptions(brands)}
                      </select>
                   </div>
                   <div className="filterOption">
-                     <label htmlFor="genre">Genre:</label>
+                     <label htmlFor="genre">Genre</label>
                      <select name="genres" id="genre" onChange={inputHandle}>
                         <option value="">all</option>
                         {renderOptions(genres)}
                      </select>
                   </div>
                   <div className="filterOption">
-                     <label htmlFor="gameType">Game type:</label>
+                     <label htmlFor="gameType">
+                        <span className="spanCeleste">Game type</span>
+                     </label>
                      <select
                         name="gameType"
                         id="gameType"
@@ -136,7 +153,9 @@ const Filter = (props) => {
                   </div>
                </div>
                <div className="filterDiscount">
-                  <label htmlFor="hasDiscount">With discount</label>
+                  <label htmlFor="hasDiscount">
+                     <span className="spanOrange">With discount</span>
+                  </label>
                   <input
                      type="checkbox"
                      id="hasDiscount"

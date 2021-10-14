@@ -2,11 +2,11 @@ import MostWanted from "../components/MostWanted"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 import { Link } from "react-router-dom"
-import { TinyButton as ScrollUpButton } from "react-scroll-up-button"
 import { useEffect } from "react"
 import Bot from "../components/bot/Bot"
 import "animate.css"
-const Home = () => {
+import NewArticlesCarousel from "../components/NewArticlesCarousel"
+const Home = (props) => {
    useEffect(() => {
       window.scrollTo(0, 0)
    }, [])
@@ -51,21 +51,10 @@ const Home = () => {
                      style={{ backgroundImage: "url('/assets/rubik.png')" }}
                   ></div>
                </div>
-               <MostWanted />
+               <MostWanted history={props.history} />
+               <h2 className="mostWantedTittle" style={{textAlign: 'center', marginTop: '15vh'}}><span>Latest</span> products</h2>
+               <NewArticlesCarousel history={props.history} />
             </main>
-            <ScrollUpButton
-               style={{
-                  backgroundColor: "#5ccfd8",
-                  fill: "white",
-                  paddingBottom: "3px",
-                  paddingLeft: "3px",
-                  paddingRight: "3px",
-                  borderRadius: "50%",
-               }}
-               AnimationDuration={500}
-               EasingType="easeOutCubic"
-               StopPosition={0}
-            />
             <Footer />
          </div>
       </>

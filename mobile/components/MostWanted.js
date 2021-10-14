@@ -30,25 +30,29 @@ const MostWanted = (props) => {
     
   return (
     <>
-      <Text style={styles.mainText}>Most wanted products</Text>
-      <View>
-        <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card2.png" }}>
-          <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[0].iconPhotos }}></ImageBackground>
-          <Text style={styles.gameName}>{mostVisitArticles[0].name}</Text>
-        </ImageBackground>
+      <View style={styles.containerTitle} >
+        <Text style={styles.mainText}>Most</Text>
+        <Text style={styles.mainTextSpan}>{' '}wanted</Text> 
+        <Text style={styles.mainText}>{' '}products</Text>
       </View>
-      <View>
-        <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card1.png" }}>
-          <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[1].iconPhotos }}></ImageBackground>
-          <Text style={styles.gameName}>{mostVisitArticles[1].name}</Text>
-        </ImageBackground>
-      </View>
-      <View>
-        <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card2.png" }}>
-          <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[2].iconPhotos}}></ImageBackground>
-          <Text style={styles.gameName}>{mostVisitArticles[2].name}</Text>
-        </ImageBackground>
-      </View>
+      <TouchableOpacity onPress={() => props.navigation.navigate('ArticleStack', {id: mostVisitArticles[0]._id})}>
+          <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card2.png" }}>
+            <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[0].iconPhotos }}></ImageBackground>
+            <Text style={styles.gameName}>{mostVisitArticles[0].name}</Text>
+          </ImageBackground>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => props.navigation.navigate('ArticleStack', {id: mostVisitArticles[1]._id})}>
+          <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card1.png" }}>
+            <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[1].iconPhotos }}></ImageBackground>
+            <Text style={styles.gameName}>{mostVisitArticles[1].name}</Text>
+          </ImageBackground>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => props.navigation.navigate('ArticleStack', {id: mostVisitArticles[2]._id})}>
+          <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card2.png" }}>
+            <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[2].iconPhotos}}></ImageBackground>
+            <Text style={styles.gameName}>{mostVisitArticles[2].name}</Text>
+          </ImageBackground>
+      </TouchableOpacity>
     </>
   );
 };
@@ -66,9 +70,20 @@ export default connect(null,mapDispatchToProps)(MostWanted)
 // export default connect(null, mapDispatchToProps)(MostWanted)
 
 const styles = StyleSheet.create({
+  containerTitle: {
+    flexDirection: "row",
+    marginTop: '20%'
+  },
   mainText: {
     color: "white",
-    fontSize: 18,
+    fontSize: 28,
+    paddingTop: 20,
+    alignSelf: 'center',
+    fontFamily: 'Poppins_700Bold'
+  },
+  mainTextSpan: {
+    color: '#6aefcf',
+    fontSize: 28,
     paddingTop: 20,
     alignSelf: 'center',
     fontFamily: 'Poppins_700Bold'

@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js"
 import { usePurchase } from "../hooks/usersHooks"
 import axios from "axios"
@@ -6,19 +7,28 @@ const HOST = "https://lodotechgames.herokuapp.com"
 const Stripe = ({ formik, user, history }) => {
   const stripe = useStripe()
   const elements = useElements()
-
-  const [purchase, loading, error] = usePurchase()
+  const [cardReady, setCardReady] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const [purchase, loadingPurchase, errorPurchase] = usePurchase()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-
+    setLoading(true)
+    setError(null)
     if (!stripe || !elements) {
+      setLoading(false)
       return
     }
-
     const cardElement = elements.getElement(CardElement)
+    if (!cardElement._complete) {
+      setError("You must fill all the credit card data.")
+      setLoading(false)
+      return
+    }
+    //  const cardElement = elements.getElement(CardElement)
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
+    const { paymentError, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: cardElement,
       billing_details: {
@@ -36,8 +46,9 @@ const Stripe = ({ formik, user, history }) => {
       },
     })
 
-    if (error) {
-      console.log("[error]", error)
+    if (paymentError || !paymentMethod) {
+      setError(paymentError)
+      setLoading(false)
     } else {
       try {
         const authorization = await axios.post(
@@ -49,6 +60,8 @@ const Stripe = ({ formik, user, history }) => {
             },
           }
         )
+        if (!authorization.data.success)
+          throw new Error(authorization.data.error)
         const details = {
           direction: formik.values,
           paymentDetails: {
@@ -58,25 +71,26 @@ const Stripe = ({ formik, user, history }) => {
           },
         }
         const res = await purchase(details)
-        console.log(res)
         // aquí termina la compra... hacer checkout
+        setLoading(false)
         history.push({ pathname: "/checkout", state: res })
       } catch (e) {
-        console.log(e)
+        setError(e.message)
+        setLoading(false)
       }
     }
   }
-
   return (
     <form
       onSubmit={handleSubmit}
-      style={{ display: "flex", flexDirection: "column", width: "30vw" }}
+      style={{ display: "flex", flexDirection: "column", width: "40vw" }}
     >
       <CardElement
+        className="mb-5"
         options={{
           style: {
             base: {
-              fontSize: "18px",
+              fontSize: "23px",
               color: "#424770",
               "::placeholder": {
                 color: "gray",
@@ -88,12 +102,18 @@ const Stripe = ({ formik, user, history }) => {
           },
         }}
       />
-      <button className="profileButton"
-                                    style={{
-                                       backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
-                                     }}type="submit" disabled={!stripe || loading}>
-        Pay
+      <button
+        className="profileButton"
+        style={{
+          backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,width:'100%'
+        }}
+        type="submit"
+        disabled={!stripe || loading}
+      >
+        Finalize your purchase
       </button>
+      {error && <p style={{ textAlign: "center", color: "red" }}>{error}</p>}
+      {/* Mostramos el error acá o lo manejamos con tostada? */}
     </form>
   )
 }

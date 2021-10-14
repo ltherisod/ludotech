@@ -7,11 +7,11 @@ import usersActions from "../redux/actions/usersActions"
 import { connect } from "react-redux"
 import YoutubePlayer from "react-native-youtube-iframe"
 import ArticleCarousel from "../components/ArticleCarousel"
+import MostRealted from "../components/MostRealted"
 
 const Article = (props) => {
   const [modalVisible, setModalVisible] = useState(false)
  
-
   const [article, loading] = useArticle(props.route.params.id)
   const {
     brand,
@@ -37,6 +37,8 @@ const Article = (props) => {
     videoId,
  } = article
 
+ const [relatedArticles, loadingRelated] = useRelatedArticles(genres)
+
  const [playing, setPlaying] = useState(false)
 
  const onStateChange = useCallback((state) => {
@@ -54,6 +56,20 @@ const Article = (props) => {
     <ScrollView>
       <ImageBackground style={{width:"100%", alignItems:"center"}} source={{ uri: "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png" }} resizeMode="cover">
         <HeroPages />
+        <View style={styles.backButtonContainer} >
+          <TouchableOpacity>
+            <View style={styles.backButton}>
+              <Text
+                style={styles.backButtonText}
+                onPress={() => {
+                props.navigation.navigate("ArticlesStack");
+                }}
+                >
+                Go back to articles
+                </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
         {/* <Image source={{uri: photos[0]}} style={{width:300, height:300}}/> */}
           <ArticleCarousel photosArticle={photos}/>
         <View style={styles.articlePresentation} >
@@ -152,6 +168,13 @@ const Article = (props) => {
           <ImageBackground style={styles.articleDecoImgThree} source={{ uri: `${decoPhotos ? decoPhotos[2] : [] }` }} >
           </ImageBackground>
         </View>
+
+        <MostRealted 
+          relatedArticles={relatedArticles}
+          articleId={props.route.params.id}
+          navigation={props.navigation}
+        />
+        
     
       </ImageBackground>
     </ScrollView>
@@ -290,7 +313,7 @@ const styles = StyleSheet.create({
     elevation: 5
   },
   button: {
-    borderRadius: 20,
+    borderRadius: 5,
     padding: 10,
     elevation: 2
   },
@@ -310,8 +333,27 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     fontFamily:"Poppins_600SemiBold",
     color:"gray",
+  },
+  backButtonContainer: {
+    width: '100%',
+    marginBottom: '20%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },  
+  backButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '70%',
+    backgroundColor: '#660099',
+    borderRadius: 80,
+    paddingHorizontal: 16,
+    paddingVertical: 10,
+    marginVertical: 10,
+  },
+  backButtonText: {
+    fontFamily: 'Poppins_700Bold',
+    fontSize: 16, 
+    color: 'white' 
   }
-
-  
 
 })

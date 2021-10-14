@@ -1,83 +1,84 @@
 .botContainer {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  z-index: 10;
-  display: flex;
-  align-items: flex-end;
+   position: fixed;
+   bottom: 40px;
+   right: 40px;
+   z-index: 10;
+   display: flex;
+   align-items: flex-end;
 }
 
 .buttonRenderBot {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  margin-left: 10px;
+   width: 120px;
+   height: 120px;
+   border-radius: 50%;
+   margin-left: 10px;
 }
 
 .botGif {
-  width: 100%;
-  height: 100%;
+   height: 100%;
 }
 
 .optionsBot {
-  display: flex;
-  justify-content: space-evenly;
+   display: flex;
+   justify-content: space-evenly;
+   flex-wrap: wrap;
 }
 
 .optionsBotButton {
-  padding: 5px;
-  background-color: #e052c1;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  width: 100px;
+   padding: 5px;
+   background-color: #e052c1;
+   color: white;
+   border: none;
+   border-radius: 3px;
+   width: 100px;
+   margin: 5px 0px;
 }
 
 /*custom class from chat*/
 
 .react-chatbot-kit-chat-container {
-  height: 480px;
+   height: 480px;
 }
 
 .react-chatbot-kit-chat-inner-container {
-  height: 100%;
+   height: 100%;
 }
 .react-chatbot-kit-chat-header {
-  background-color: #e052c1;
-  color: white;
+   background-color: #e052c1;
+   color: white;
 }
 .react-chatbot-kit-chat-btn-send {
-  background-color: #e052c1;
+   background-color: #e052c1;
 }
 
 .react-chatbot-kit-chat-bot-avatar-container {
-  background-color: #660099;
+   background-color: #660099;
 }
 .react-chatbot-kit-user-avatar-container {
-  background-color: gray;
+   background-color: gray;
 }
 .react-chatbot-kit-user-chat-message {
-  background-color: rgba(231, 231, 231, 0.596);
+   background-color: rgba(231, 231, 231, 0.596);
 }
 
 .react-chatbot-kit-user-chat-message-arrow {
-  border-left: 8px solid rgba(231, 231, 231, 0.596);
+   border-left: 8px solid rgba(231, 231, 231, 0.596);
 }
 
 .react-chatbot-kit-chat-bot-avatar-letter {
-  color: white;
+   color: white;
 }
 .react-chatbot-kit-chat-bot-message {
-  background-color: #6aefcf;
+   background-color: #6aefcf;
 }
 
 .react-chatbot-kit-chat-bot-message-arrow {
-  border-right: 8px solid #6aefcf;
+   border-right: 8px solid #6aefcf;
 }
 .react-chatbot-kit-chat-input {
-  border-top: none;
-  background-color: whitesmoke;
-  outline: none;
+   border-top: none;
+   background-color: whitesmoke;
+   outline: none;
 }
 
 #chatbot-loader #chatbot-loader-dot2 {

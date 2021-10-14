@@ -22,7 +22,7 @@ const Articles = (props) => {
 
    return (
       <>
-         <Bot/>
+         <Bot />
          <div
             className="signInBody"
             style={{
@@ -32,7 +32,9 @@ const Articles = (props) => {
             <HeroPages />
             <Header />
             <div className="bodyArticles">
-               <h2>Articles</h2>
+               <h2 className="pb-3">
+                  Art<span>i</span>cles
+               </h2>
                <div className="filterContainer">
                   <Filter
                      filterArticles={(e) => filterArticles(e)}
@@ -43,7 +45,7 @@ const Articles = (props) => {
                   <div className="containerArticles" id="containerArticles">
                      {loadingArticles ? (
                         <PreloaderFilter />
-                     ) : (
+                     ) : articles.articles.length ? (
                         articles.articles.map((article) => {
                            return (
                               <Article
@@ -53,9 +55,12 @@ const Articles = (props) => {
                               />
                            )
                         })
+                     ) : (
+                        <p>No articles found.</p>
+                        // dejar bonito acá también jjj
                      )}
                   </div>
-                  {articles.totalPages > 1 && (
+                  {articles?.totalPages > 1 && (
                      <div
                         style={{
                            display: "flex",
@@ -64,9 +69,10 @@ const Articles = (props) => {
                         }}
                      >
                         {currentPage > 1 && (
-                           <button
+                           <button className="profileButton" style={{
+                              backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                           }}
                               type="button"
-                              style={{ padding: ".3rem 1.2rem" }}
                               onClick={() => {
                                  window.scrollBy({
                                     top: -document.getElementById(
@@ -91,8 +97,9 @@ const Articles = (props) => {
                            Current page: {currentPage}/{articles.totalPages}
                         </p>
                         {currentPage < articles.totalPages && (
-                           <button
-                              style={{ padding: ".3rem 1.2rem" }}
+                           <button className="profileButton" style={{
+                              backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                           }}
                               type="button"
                               onClick={() => {
                                  window.scrollBy({
