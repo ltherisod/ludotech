@@ -14,12 +14,13 @@ const Purchases = () => {
 
    useEffect(() => {
       axios
-         .get(`http://localhost:4000/api/user/purchases/${user._id}`)
+         .get(`http://localhost:4000/api/user/purchases/${user._id}`, { headers: { Authorization: "Bearer " + user.token }})
          .then((res) => {
             setPurchases(res.data.response)
             setSearched(res.data.response)
          })
          .catch((e) => console.log(e))
+          // eslint-disable-next-line
    }, [])
 
    const searchPurchase = (value) => {
@@ -33,7 +34,7 @@ const Purchases = () => {
       )
    }
 
-   console.log(purchases)
+   // console.log(purchases)
 
    return (
       <div
@@ -79,6 +80,7 @@ const Purchase = ({ purchase }) => {
       purchase.status === "cancelled" && setColor("red")
       purchase.status === "shipping" && setColor("orange")
       purchase.status === "completed" && setColor("green")
+       // eslint-disable-next-line
    }, [])
 
    return (

@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
         fontFamily:"Poppins_700Bold",
         fontSize:45,
         textAlign:"center",
+        marginTop:-35,
     },
     backButtonContainer: {
         width: '100%',

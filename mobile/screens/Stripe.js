@@ -60,7 +60,8 @@ const Stripe = () => {
           },
         }
       )
-      if (!authorization.data.success) throw new Error(authorization.data.error)
+      if (!authorization.data.success)
+        throw new Error("Error processing the transaction.")
       const details = {
         direction: values,
         paymentDetails: {
@@ -117,11 +118,11 @@ const Stripe = () => {
             }}
           />
         </DirectionsForm>
-        {/* {error && (
+        {error && (
           <View>
             <Text style={{ color: "red" }}>{error}</Text>
           </View>
-        )} */}
+        )}
       </ScrollView>
     </View>
   )

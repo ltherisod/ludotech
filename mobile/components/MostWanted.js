@@ -22,6 +22,7 @@ const MostWanted = (props) => {
         }
       }
       mostVisitArticles()
+       // eslint-disable-next-line
     }, [])
 
     if (loading) {

@@ -14,6 +14,7 @@ const Team = () => {
                 setMembers(res.data.response)
             })
             .catch(e => console.log(e))
+            // eslint-disable-next-line
     },[])
 
     const getUser = () => {

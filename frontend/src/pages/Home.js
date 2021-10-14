@@ -9,6 +9,7 @@ import NewArticlesCarousel from "../components/NewArticlesCarousel"
 const Home = (props) => {
    useEffect(() => {
       window.scrollTo(0, 0)
+      // eslint-disable-next-line
    }, [])
 
    return (

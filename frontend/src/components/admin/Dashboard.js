@@ -35,6 +35,7 @@ const Dashboard = ({render}) => {
             {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
             .then(res=> setRegistered(res.data.response))
             .catch(e => console.log(e))
+            // eslint-disable-next-line
     },[])
 
     return (
@@ -150,6 +151,7 @@ const Purchase = ({purchase}) => {
         purchase.status === 'cancelled' && setColor('red')
         purchase.status === 'shipping' && setColor('orange')
         purchase.status === 'completed' && setColor('green')
+        // eslint-disable-next-line
     }, [])
 
     return (

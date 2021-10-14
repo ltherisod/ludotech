@@ -11,19 +11,21 @@ import Cart from "../screens/Cart"
 import SignIn from "../screens/SignIn"
 import SignUp from "../screens/SignUp"
 import LogOut from "../screens/LogOut"
-import Checkout from "../screens/Checkout"
 import NotWishList from "../screens/NotWishlist"
 import WishList from "../screens/WishList"
-import { connect, useSelector } from "react-redux"
+import { connect, useSelector, useDispatch } from "react-redux"
 import { useLoginLS } from "../hooks/usersHooks"
 import { Image, ImageBackground, StyleSheet } from "react-native"
 import NavigationBottom from "./navigationBottom"
+import Checkout from "../screens/Checkout"
 import Stripe from "../screens/Stripe"
+import usersActions from "../redux/actions/usersActions"
 const Drawer = createDrawerNavigator()
 
 const Navigator = (props) => {
    useLoginLS()
    const user = useSelector((state) => state.users.user)
+   const dispatch = useDispatch()
    function LogoTitle() {
       return (
          <Image
@@ -50,6 +52,13 @@ const Navigator = (props) => {
                   }}
                />
                <DrawerItemList {...props} />
+               {user && (
+                  <DrawerItem
+                     labelStyle={styles.logoutButton}
+                     label="Log Out"
+                     onPress={() => dispatch(usersActions.logOut())}
+                  />
+               )}
             </DrawerContentScrollView>
          </ImageBackground>
       )
@@ -73,13 +82,13 @@ const Navigator = (props) => {
             options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
          />
          <Drawer.Screen
-            name="Checkout"
-            component={Checkout}
+            name="Articles"
+            component={Articles}
             options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
          />
          <Drawer.Screen
-            name="Articles"
-            component={Articles}
+            name="Checkout"
+            component={Checkout}
             options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
          />
          {user && (
@@ -106,7 +115,7 @@ const Navigator = (props) => {
          {!user && (
             <>
                <Drawer.Screen
-                  name="Sign In"
+                  name="Log In"
                   component={SignIn}
                   options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
                />
@@ -117,7 +126,6 @@ const Navigator = (props) => {
                />
             </>
          )}
-         {user && <Drawer.Screen name="Log Out" component={LogOut} />}
          <Drawer.Screen name="Stripe" component={Stripe} />
       </Drawer.Navigator>
    )
@@ -126,6 +134,11 @@ const Navigator = (props) => {
 const styles = StyleSheet.create({
    drawerCustom: {
       flex: 1,
+   },
+   logoutButton: {
+      fontFamily: "Poppins_700Bold",
+      fontSize: 20,
+      marginTop: 15,
    },
 })
 
