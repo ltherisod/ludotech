@@ -30,3 +30,22 @@ const styles = StyleSheet.create({
     flex:1
   }
 })
+
+
+// <ScrollView>
+//       <ImageBackground
+//         style={{ width: "100%", minHeight: 400 }}
+//         source={{ uri: "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png" }}
+//       >
+//         <HeroPages />
+//         <Text style={styles.profileTittle}>Profile</Text>
+//         <View
+//           style={{
+//             justifyContent: "center",
+//             alignItems: "center",
+//             marginVertical: 15,
+//           }}
+//         ></View>
+//       </ImageBackground>
+//     </ScrollView>
+//   )
