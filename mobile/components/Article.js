@@ -55,20 +55,20 @@ const Article = (props) => {
               <Icon
                 name="heart"
                 style={{
-                  fontSize: 30,
+                  fontSize: 32,
                   color: "red",
                   alignSelf: "flex-end",
-                  margin: 10,
+                  margin: 5,
                 }}
               />
             ) : (
               <Icon
                 name="heart"
                 style={{
-                  fontSize: 30,
+                  fontSize: 32,
                   color: "pink",
                   alignSelf: "flex-end",
-                  margin: 10,
+                  margin: 5,
                 }}
               />
             )}
@@ -84,8 +84,9 @@ const Article = (props) => {
             </>
           )}
         </View>
-        <Text style={styles.articleName}>{name}</Text>
-
+        <View style={styles.nameLines}>
+          <Text style={styles.articleName}>{name}</Text>
+        </View>
         <View>
           <View style={styles.gameDataBox}>
             <View style={styles.gameDataLine}>
@@ -99,20 +100,14 @@ const Article = (props) => {
                 </Text>
               ))}
             </View>
-            <View style={styles.gameDataLine}>
-              <Image
-                style={styles.icons}
-                source={require("../assets/type.png")}
-              />
-              <Text style={styles.dataText}>{gameType.name}</Text>
-            </View>
+
             <View style={styles.gameDataLastLine}>
               <View style={styles.gameDataLine}>
                 <Image
                   style={styles.icons}
-                  source={require("../assets/age.png")}
+                  source={require("../assets/type.png")}
                 />
-                <Text style={styles.dataText}>{minAge}</Text>
+                <Text style={styles.dataText}>{gameType.name}</Text>
               </View>
               <Pressable onPress={(e) => addToCart(e, _id)}>
                 <Image
@@ -143,32 +138,22 @@ export default connect(mapStateToProps, mapDispatchToProps)(Article);
 
 const styles = StyleSheet.create({
   borderCard: {
-    borderWidth: 10,
-    borderColor: "#e052c1",
-    width: 320,
-    height: 465,
+    backgroundColor: "rgb(212, 212, 212)",
+    width: 348,
+    height: 492,
     alignSelf: "center",
-    borderRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 25,
     margin: 5,
     marginTop: 15,
   },
   articleCard: {
     width: 320,
     height: 465,
-    borderRadius: 20,
+    borderRadius: 25,
     alignSelf: "center",
     backgroundColor: "white",
-  },
-  heart: {
-    backgroundColor: "red",
-  },
-  articleIcon: {
-    width: 260,
-    height: 260,
-    alignSelf: "center",
-    /* borderRadius: 18,
-    backgroundColor: "white",
-    padding: 10, */
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -178,6 +163,15 @@ const styles = StyleSheet.create({
     shadowRadius: 6.0,
     elevation: 24,
   },
+  heart: {
+    backgroundColor: "red",
+  },
+  articleIcon: {
+    width: 280,
+    height: 250,
+    alignSelf: "center",
+    marginTop: 15,
+  },
   articleName: {
     fontFamily: "Poppins_700Bold",
     textAlign: "center",
@@ -185,8 +179,15 @@ const styles = StyleSheet.create({
     color: "gray",
     marginTop: 5,
   },
+  nameLines: {
+    borderBottomColor: "#d8d8d8",
+    borderBottomWidth: 2,
+    borderTopColor: "#d8d8d8",
+    borderTopWidth: 2,
+    paddingVertical: 5,
+    paddingBottom: 10
+  },
   priceBox: {
-    marginTop: 10,
     flexDirection: "row",
     alignSelf: "center",
   },
@@ -207,16 +208,18 @@ const styles = StyleSheet.create({
   },
   icons: {
     marginRight: 15,
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35,
+    borderRadius: 20,
   },
   photoArticle: {
     alignSelf: "flex-start",
   },
   gameDataBox: {
-    width: "75%",
+    width: "80%",
     alignSelf: "center",
     alignItems: "flex-start",
+    paddingTop: 5,
   },
   gameDataLine: {
     marginVertical: 4,

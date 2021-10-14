@@ -301,6 +301,7 @@ const ArticlePage = (props) => {
                      }}
                   ></div>
                </div>
+               <div className="divArticlesRelated">
                <h3 className="articleRelatedTittle">
                   Products <span className="spanCeleste">related</span> !
                </h3>
@@ -314,6 +315,8 @@ const ArticlePage = (props) => {
                         relatedArticles={relatedArticles}
                      />
                   )}
+               </div>
+
                </div>
                <Footer />
             </div>
