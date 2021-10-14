@@ -15,7 +15,6 @@ const Checkout = (props) => {
 
    const { purchase } = props.location.state.response
    const { articles, direction, status, timestamp, paymentDetails } = purchase
-   console.log(purchase)
 
    return (
       <div
@@ -102,20 +101,7 @@ const Checkout = (props) => {
                   })}
                   <div className="d-flex justify-content-between">
                      <h4>Total: </h4>
-                     {/* {!article.hasDiscount ? ( */}
                      <h4>${purchase.total.toFixed(2)} USD</h4>
-                     {/* ) : (
-                                 <h4>
-                                    $
-                                    {(
-                                       article.quantity *
-                                       (article.hasDiscount
-                                          ? article.discountPrice
-                                          : article.price)
-                                    ).toFixed(2)}{" "}
-                                    USD
-                                 </h4>
-                              )} */}
                   </div>
                   <hr style={{ height: "5px" }}></hr>
                   <h3>Send to:</h3>
