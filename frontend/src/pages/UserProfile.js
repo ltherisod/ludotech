@@ -153,9 +153,11 @@ const UserProfile = () => {
                <div className="addresses">
                   <h2 className="profileTitles">Addresses:</h2>
                   <div>
-                     <div className="adressesAdded">
+                     <div>
                         {!directions || directions.length === 0 ? (
-                           <p>There are no addresses added.</p>
+                           <div className="containerDataProfile">
+                              <p>There are no addresses added.</p>
+                              </div>
                         ) : (
                           <div>
                              { directions.map((direction) => {

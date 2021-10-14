@@ -102,7 +102,7 @@ const Stripe = ({ formik, user, history }) => {
           },
         }}
       />
-      <button
+      <button id="finalizeYourPurchase"
         className="profileButton"
         style={{
           backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,width:'100%'

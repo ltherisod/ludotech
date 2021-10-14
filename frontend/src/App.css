@@ -1699,7 +1699,7 @@ h2.articles {
 }
 
 .relatedArticles {
-  width: 80%;
+  width: 100%;
   align-self: center;
   display: flex;
   justify-content: center;
@@ -2510,6 +2510,9 @@ h2.articles {
   border-width: 20px;
   margin-left: -25px;
 }
+#finalizeYourPurchase {
+  margin-left: 0;
+}
 
 /* MEDIAQUERIES */
 
@@ -2732,6 +2735,56 @@ h2.articles {
    position: relative;
    bottom: 230px;
  }
+ /*Profile*/
+ .divProfile {
+  width: 95vw;
+}
+.profileFirstData {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 20px;
+}
+.profileFirstData h3 {
+  font-size: 2.8rem;
+}
+.titleProfile {
+  font-size: 10vmin;
+  font-weight: 700;
+}
+.profileTitles {
+  right: 1rem;
+}
+.containerDataProfile {
+  width: 80vw;
+}
+
+.addressAddedCard {
+  width: 100%;
+}
+.inputsAdd {
+  width: 100%;
+}
+.phone p,
+.addressAddedCard p {
+  font-size: large;
+  }
+  .profileButton {
+    font-size: 3.6vmin;
+  }
+
+  /*Wishlist*/
+  .mainWishlist {
+    padding: 0 40px
+  }
+  .mainWishlist h2 {
+    font-size: 60px;
+  }
+  .searchbarWishlist input {
+    width: 100%;
+  }
+  .searchbarWishlist p {
+    font-size: large;
+  }
 }
 
 @media (max-width: 450px) {
@@ -2796,6 +2849,23 @@ h2.articles {
  }
  .adTerms {
    font-size: 3vmin;
+  }
+
+  /*Profile*/
+  .divProfile {
+    width: 98vw;
+  }
+  .titleProfile {
+    font-size: 12vmin;
+  }
+  .profileFirstData h3 {
+    font-size: 2.5rem;
+  }
+  .profileTitles {
+    right: 0rem;
+  }
+  .profileButton {
+    font-size: 4.2vmin;
   }
 }
 
