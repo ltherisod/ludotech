@@ -20,7 +20,8 @@ import Address from "../components/Address"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import Icon from "react-native-vector-icons/FontAwesome"
-const Profile = () => {
+
+const Profile = (props) => {
   const user = useSelector((state) => state.users.user)
   const { directions, email, firstname, lastname, photo, phone } = user
   let userPhone = phone ? phone : "No phone number added"
@@ -73,6 +74,8 @@ const Profile = () => {
     setVisiblePhone(!visiblePhone)
   }
 
+
+console.log(props)
   return (
     <ScrollView>
       <ImageBackground
@@ -242,6 +245,15 @@ const Profile = () => {
                     }}
                   >
                     {addAddress}
+                  </Text>
+                </ImageBackground>
+              </TouchableOpacity>
+            </View>
+            <View style={{ marginVertical: 20 }}>
+              <TouchableOpacity onPress={() => props.navigation.navigate('PurchasesStack')} >
+                <ImageBackground style={{ width: 230, padding: 10, alignSelf: "center" }} source={{ uri: "https://i.postimg.cc/mD7r09R8/button-Back.png", }} imageStyle={{ borderRadius: 5 }} >
+                  <Text style={{ color: "white", fontFamily: "Poppins_600SemiBold", alignSelf: "center", fontSize: 16, }} >
+                    Purchases
                   </Text>
                 </ImageBackground>
               </TouchableOpacity>
