@@ -11,35 +11,41 @@ const buildPDF = (dataCallback, endCallback, data) => {
   doc.fontSize(10).text(`Date: ${today.getFullYear()}/${today.getMonth()}/${today.getDate()}`, {
     align: 'right'
   })
-  doc.fontSize(28).text(`Ludotech`, {
+  doc.image('./config/assets/ludotech_rubik.png', {
+    fit: [200,60],
     align: 'left',
-    lineBreak: true,
+    valign: 'center'
   })
+
+  // doc.fontSize(28).text(`Ludotech`, {
+  //   align: 'left',
+  //   lineBreak: true,
+  // })
   doc.fillColor('lightgray').fontSize(17).text('_________________________________________________', { lineBreak: true })
   // doc.save().lineTo(100,300)
   // pdf body
   
-  doc.fillColor('black').fontSize(25).text(`Purchase Summary`, {
+  doc.fillColor('black').fontSize(25).text(`Purchase Summary`, 50, 175), {
     align: 'left'
-  })
+  }
   // // va una linea aca
   doc.fillColor('lightgray').fontSize(17).text('_________________________________________________', { lineBreak: true })
   data.articles.map(article => {
-    doc.fillColor('black').fontSize(15).text(`${article.name}  x ${article.quantity}U  $ ${article.hasDiscount ? article.price : ''}  $ ${article.hasDiscount ? article.discountPrice : article.price}` , {
-      align: 'justify'
-    })
+    doc.fillColor('black').fontSize(15).text(`${article.name}  x ${article.quantity}U`, { align: 'justify' })
+    doc.fillColor('black').fontSize(15).text(`${article.hasDiscount ? `$ ${article.price}` : ''} $ ${article.hasDiscount ? article.discountPrice : article.price}`, { align: 'right' })  
+ 
   })
   // va una linea delgada
   doc.fillColor('lightgray').fontSize(17).text('_________________________________________________', { lineBreak: true })
   doc.fillColor('black').fontSize(15).text(`Total: $ ${data.total}`, {
-    align: 'left'
+    align: 'right'
   })
   // va una linea 
   doc.fillColor('lightgray').fontSize(17).text('_________________________________________________', { lineBreak: true })
   doc.fillColor('black').fontSize(25).text(`Send to:`, { 
     align: 'left'
   })
-  doc.fontSize(12).text(`Street: ${data.direction.street}  Nº: ${data.direction.number} Department: ${data.direction.department}`, { 
+  doc.fontSize(12).text(`Address: ${data.direction.street} ${data.direction.number} ${data.direction.department}`, { 
     align: 'left'
   })
   doc.fontSize(12).text(`City: ${data.direction.city}  State: ${data.direction.state} Zip code: ${data.direction.zipCode}`, { 
