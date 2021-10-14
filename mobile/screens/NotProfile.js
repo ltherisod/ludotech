@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, ScrollView, View, ImageBackground } from 'react-native'
+import { StyleSheet, Text, ScrollView, View, ImageBackground , Image} from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import Footer from '../components/Footer'
 import HeroPages from '../components/HeroPages'
@@ -7,28 +7,33 @@ import HeroPages from '../components/HeroPages'
 const NotProfile = (props) => {
     return (
         <ScrollView>
-            <ImageBackground style={{width:"100%", flex: 1}} source={require("../assets/fondoVioleta.png")} resizeMode="cover">
+            <ImageBackground style={{width:"100%", flex: 1}} source={{uri: "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png" }} resizeMode="cover">
                 <HeroPages />
                 <View style={styles.container}>
-                    <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.title}>Create your</Text>
-                        <Text style={[styles.title, {color: "#67f2cb",}]}>{` `}profile!</Text>
-                    </View>
-                    <TouchableOpacity style={{borderWidth: 1, borderColor: 'rgba(0,0,0,0.2)', marginBottom: 20, borderRadius: 6}} onPress={() => props.navigation.navigate('SignUpStack')}>
-                        <ImageBackground  style={styles.button} imageStyle={{borderRadius: 5}} source={{uri: 'https://i.postimg.cc/mD7r09R8/button-Back.png'}}>
-                            <Text style={styles.textButton}>Sign up</Text>
-                        </ImageBackground>
-                    </TouchableOpacity> 
-                    <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.title}>Already have</Text>
-                        <Text style={[styles.title, {color: "#67f2cb",}]}>{` `}one?</Text>
-                    </View>
-                     <TouchableOpacity style={{borderWidth: 1, borderColor: 'rgba(0,0,0,0.2)', marginBottom: 20, borderRadius: 6}} onPress={() => props.navigation.navigate('SignInStack')}>
-                        <ImageBackground  style={styles.button} imageStyle={{borderRadius: 5}} source={{uri: 'https://i.postimg.cc/mD7r09R8/button-Back.png'}}>
-                            <Text style={styles.textButton}>Log in</Text>
-                        </ImageBackground>
-                    </TouchableOpacity>
-                </View>
+                    <View style={{width:360}}>
+                  <Text style={styles.title}>You must have an account to have a <Text style={{color: "#67f2cb"}}>Profile!</Text></Text>
+               </View> 
+               <Image style={{width:150, height:150}}source={{uri: "https://i.postimg.cc/qMFc101d/robot-Stars.png"}}/>    
+               <TouchableOpacity
+                  style={{
+                     borderWidth: 1,
+                     borderColor: "rgba(0,0,0,0.2)",
+                     marginBottom: 20,
+                     borderRadius: 6,
+                  }}
+                  onPress={() => props.navigation.navigate("SignUpStack")}
+               >
+                  <ImageBackground
+                     style={styles.button}
+                     imageStyle={{ borderRadius: 5 }}
+                     source={{
+                        uri: "https://i.postimg.cc/mD7r09R8/button-Back.png",
+                     }}
+                  >
+                     <Text style={styles.textButton}>Sign up</Text>
+                  </ImageBackground>
+               </TouchableOpacity>
+            </View>
                 <Footer />
             </ImageBackground>
         </ScrollView>
@@ -46,10 +51,10 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     title: {
-        fontWeight: 'bold',
-        fontSize: 28,
+        fontFamily:"Poppins_700Bold",
+        fontSize: 25,
         marginBottom: 30,
-        color: 'white'
+        color: 'purple'
     },
     button: {
         paddingVertical: 10,

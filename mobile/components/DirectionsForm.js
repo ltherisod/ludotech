@@ -134,7 +134,7 @@ const DirectionsForm = ({
           <View style={{ width: 0.8 * width }}>{children}</View>
           <TouchableOpacity onPress={formik.handleSubmit}>
             <ImageBackground
-              style={{ width: 0.7 * width, padding: 7, marginTop: 30, alignSelf:'center' }}
+              style={{ width: 0.7 * width, padding: 7, marginTop: 30, alignSelf:'center'}}
               source={{ uri: "https://i.postimg.cc/GhMnJB8K/button-PDF.png" }}
               imageStyle={{ borderRadius: 5 }}
             >
