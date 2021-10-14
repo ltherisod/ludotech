@@ -56,7 +56,6 @@ const Article = (props) => {
     <ScrollView>
       <ImageBackground style={{width:"100%", alignItems:"center"}} source={{ uri: "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png" }} resizeMode="cover">
         <HeroPages />
-        {/* <Image source={{uri: photos[0]}} style={{width:300, height:300}}/> */}
           <ArticleCarousel photosArticle={photos}/>
         <View style={styles.articlePresentation} >
           <View style={styles.articleCard} >
@@ -298,7 +297,7 @@ const styles = StyleSheet.create({
     elevation: 5
   },
   button: {
-    borderRadius: 20,
+    borderRadius: 5,
     padding: 10,
     elevation: 2
   },

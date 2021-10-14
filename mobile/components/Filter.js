@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import {View, Text, TextInput, TouchableOpacity, StyleSheet, Modal, Pressable, Dimensions} from "react-native"
+import {View, Text, TextInput, TouchableOpacity, StyleSheet, Modal, Pressable, Dimensions, ImageBackground} from "react-native"
 import { useArticles, useFilters, useUtils } from "../hooks/articlesHooks"
 
 const Filter = (props) => {
@@ -151,7 +151,7 @@ const Filter = (props) => {
                             <View style={styles.centeredView}>
                                 <Modal animationType="slide" transparent={true} visible={renderPriceModal} onRequestClose={() => {setRenderPriceModal(!renderPriceModal)}}>
                                     <View style={styles.centeredView}>
-                                        <View style={styles.modalView}>
+                                        <View style={styles.modalView2}>
                                             <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePrice("all")}}>
                                                 <Text style={styles.textStyle}>All</Text>
                                             </Pressable>
@@ -182,15 +182,17 @@ const Filter = (props) => {
                                         </View>
                                     </View>
                                 </Modal>
-                                <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => {setRenderPriceModal(!renderPriceModal)}}>
+                                <Pressable style={[styles.buttonPink, styles.buttonOpen, styles.position]} onPress={() => {setRenderPriceModal(!renderPriceModal)}}>
                                     <Text style={styles.textStyle}>Select price</Text>
                                 </Pressable>
-                                <Text>{filters.minPrice === undefined ? "all" : filters.maxPrice === undefined ? "$121 or more" : `$${filters.minPrice} - $${filters.maxPrice}`}</Text>
+                                <View style={styles.buttonAnswer}>
+                                <Text style={styles.buttonAnswerText}>{filters.minPrice === undefined ? "all" : filters.maxPrice === undefined ? "$121 or more" : `$${filters.minPrice} - $${filters.maxPrice}`}</Text>
+                                </View>
                             </View>
                             <View style={styles.centeredView}>
                                 <Modal animationType="slide" transparent={true} visible={renderMinAgeModal} onRequestClose={() => {setRenderMinAgeModal(!renderMinAgeModal)}}>
                                     <View style={styles.centeredView}>
-                                        <View style={styles.modalView}>
+                                        <View style={styles.modalView2}>
                                             <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeMinAge("all")}}>
                                                 <Text style={styles.textStyle}>All</Text>
                                             </Pressable>
@@ -212,15 +214,17 @@ const Filter = (props) => {
                                         </View>
                                     </View>
                                 </Modal>
-                                <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => {setRenderMinAgeModal(!renderMinAgeModal)}}>
+                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderMinAgeModal(!renderMinAgeModal)}}>
                                     <Text style={styles.textStyle}>Select min age</Text>
                                 </Pressable>
-                                <Text>{filters.minAge === undefined ? "all" : filters.minAge === 16 ? "16 or more" : filters.minAge}</Text>
+                                <View style={styles.buttonAnswer}>
+                                    <Text style={styles.buttonAnswerText}> {filters.minAge === undefined ? "all" : filters.minAge === 16 ? "16 or more" : filters.minAge}</Text>
+                                </View>
                             </View>
                             <View style={styles.centeredView}>
                                 <Modal animationType="slide" transparent={true} visible={renderPlayersModal} onRequestClose={() => {setRenderPlayersModal(!renderPlayersModal)}}>
                                     <View style={styles.centeredView}>
-                                        <View style={styles.modalView}>
+                                        <View style={styles.modalView2}>
                                             <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePlayers("all")}}>
                                                 <Text style={styles.textStyle}>All</Text>
                                             </Pressable>
@@ -239,15 +243,17 @@ const Filter = (props) => {
                                         </View>
                                     </View>
                                 </Modal>
-                                <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => {setRenderPlayersModal(!renderPlayersModal)}}>
-                                    <Text style={styles.textStyle}>Select amount of players</Text>
+                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderPlayersModal(!renderPlayersModal)}}>
+                                    <Text style={styles.textStyle}>Select players</Text>
                                 </Pressable>
-                                <Text>{filters.minPlayers === undefined ? "all" : filters.minPlayers === 1 ? "one" : filters.minPlayers === 9 ? "9 or more" : `${filters.minPlayers} - ${filters.maxPlayers}`}</Text>
+                                <View style={styles.buttonAnswer}>
+                                <Text style={styles.buttonAnswerText}>{filters.minPlayers === undefined ? "all" : filters.minPlayers === 1 ? "one" : filters.minPlayers === 9 ? "9 or more" : `${filters.minPlayers} - ${filters.maxPlayers}`}</Text>
+                               </View>
                             </View>
                             <View style={styles.centeredView}>
                                 <Modal animationType="slide" transparent={true} visible={renderSizeModal} onRequestClose={() => {setRenderSizeModal(!renderSizeModal)}}>
                                     <View style={styles.centeredView}>
-                                        <View style={styles.modalView}>
+                                        <View style={styles.modalView2}>
                                             <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeSize("")}}>
                                                 <Text style={styles.textStyle}>all</Text>
                                             </Pressable>
@@ -263,15 +269,17 @@ const Filter = (props) => {
                                         </View>
                                     </View>
                                 </Modal>
-                                <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => {setRenderSizeModal(!renderSizeModal)}}>
+                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderSizeModal(!renderSizeModal)}}>
                                     <Text style={styles.textStyle}>Select size</Text>
                                 </Pressable>
-                                <Text>{filters.size !== undefined ? filters.size : "all"}</Text>
+                                <View style={styles.buttonAnswer}>
+                                    <Text style={styles.buttonAnswerText}>{filters.size !== undefined ? filters.size : "All"}</Text>
+                               </View>
                             </View>
                             <View style={styles.centeredView}>
                                 <Modal animationType="slide" transparent={true} visible={renderBrandModal} onRequestClose={() => {setRenderBrandModal(!renderBrandModal)}}>
                                     <View style={styles.centeredView}>
-                                        <View style={styles.modalView}>
+                                        <View style={styles.modalView2}>
                                             <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeBrand("")}}>
                                                 <Text style={styles.textStyle}>All</Text>
                                             </Pressable>
@@ -279,15 +287,17 @@ const Filter = (props) => {
                                         </View>
                                     </View>
                                 </Modal>
-                                <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => {setRenderBrandModal(!renderBrandModal)}}>
+                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderBrandModal(!renderBrandModal)}}>
                                     <Text style={styles.textStyle}>Select brand</Text>
                                 </Pressable>
-                                <Text>{filters.brand !== undefined ? renderBrandName : "all"}</Text>
+                                <View style={styles.buttonAnswer}>
+                                <Text style={styles.buttonAnswerText}>{filters.brand !== undefined ? renderBrandName : "all"}</Text>
+                               </View>
                             </View>
                             <View style={styles.centeredView}>
                                 <Modal animationType="slide" transparent={true} visible={renderGenreModal} onRequestClose={() => {setRenderGenreModal(!renderGenreModal)}}>
                                     <View style={styles.centeredView}>
-                                        <View style={styles.modalView}>
+                                        <View style={styles.modalView2}>
                                             <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeGenre("")}}>
                                                 <Text style={styles.textStyle}>All</Text>
                                             </Pressable>
@@ -295,15 +305,17 @@ const Filter = (props) => {
                                         </View>
                                     </View>
                                 </Modal>
-                                <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => {setRenderGenreModal(!renderGenreModal)}}>
+                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderGenreModal(!renderGenreModal)}}>
                                     <Text style={styles.textStyle}>Select genre</Text>
                                 </Pressable>
-                                <Text>{filters.genres !== undefined ? renderGenreName : "all"}</Text>
+                                <View style={styles.buttonAnswer}>
+                                    <Text style={styles.buttonAnswerText}>{filters.genres !== undefined ? renderGenreName : "all"}</Text>
+                                </View>
                             </View>
                             <View style={styles.centeredView}>
                                 <Modal animationType="slide" transparent={true} visible={renderGameTypeModal} onRequestClose={() => {setRenderGameTypeModal(!renderGameTypeModal)}}>
                                     <View style={styles.centeredView}>
-                                        <View style={styles.modalView}>
+                                        <View style={styles.modalView2}>
                                             <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeGameType("")}}>
                                                 <Text style={styles.textStyle}>All</Text>
                                             </Pressable>
@@ -311,15 +323,17 @@ const Filter = (props) => {
                                         </View>
                                     </View>
                                 </Modal>
-                                <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => {setRenderGameTypeModal(!renderGameTypeModal)}}>
-                                    <Text style={styles.textStyle}>Select type of game</Text>
+                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderGameTypeModal(!renderGameTypeModal)}}>
+                                    <Text style={styles.textStyle}>Select game type </Text>
                                 </Pressable>
-                                <Text>{filters.gameType !== undefined ? renderGameTypeName : "all"}</Text>
+                                <View style={styles.buttonAnswer}>
+                                 <Text style={styles. buttonAnswerText}>{filters.gameType !== undefined ? renderGameTypeName : "all"}</Text>
+                                </View>
                             </View>
                             <View style={styles.centeredView}>
                                 <Modal animationType="slide" transparent={true} visible={renderDiscountModal} onRequestClose={() => {setRenderDiscountModal(!renderDiscountModal)}}>
                                     <View style={styles.centeredView}>
-                                        <View style={styles.modalView}>
+                                        <View style={styles.modalView2}>
                                             <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeDiscount(true)}}>
                                                 <Text style={styles.textStyle}>yes</Text>
                                             </Pressable>
@@ -329,10 +343,12 @@ const Filter = (props) => {
                                         </View>
                                     </View>
                                 </Modal>
-                                <Pressable style={[styles.button, styles.buttonOpen]} onPress={() => {setRenderDiscountModal(!renderDiscountModal)}}>
+                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderDiscountModal(!renderDiscountModal)}}>
                                     <Text style={styles.textStyle}>With discount?</Text>
                                 </Pressable>
-                                <Text>{filters.hasDiscount !== undefined ? "yes" : "all"}</Text>
+                                <View style={styles.buttonAnswer}>
+                                    <Text style={styles. buttonAnswerText}>{filters.hasDiscount !== undefined ? "yes" : "all"}</Text>
+                               </View>
                             </View>
                             <View style={styles.filterButtons}>
                                 <Pressable style={[styles.button, styles.buttonClose]} onPress={(e) => {changeAllFilters(e)}}>
@@ -344,41 +360,79 @@ const Filter = (props) => {
                             </View>
                         </View>
                     </Modal>
-                <TouchableOpacity onPress={(e) => {submitFilters(e)}}><Text>Filter</Text></TouchableOpacity>
-                <TouchableOpacity onPress={() => {openFilter()}}><Text>More filters</Text></TouchableOpacity>
+                <TouchableOpacity onPress={(e) => {submitFilters(e)}}>
+                <ImageBackground
+              style={styles.filterButton1}
+              source={{ uri: "https://i.postimg.cc/mD7r09R8/button-Back.png" }}
+              imageStyle={{ borderRadius: 5 }}
+            >
+                    <Text style={styles.filterButtonText}>Filter</Text>
+                 </ImageBackground>
+                </TouchableOpacity>
             </View>
+                <TouchableOpacity onPress={() => {openFilter()}}>
+                <ImageBackground
+              style={styles.filterButton2}
+              source={{ uri: "https://i.postimg.cc/xTX0x8Gh/cuboIcon.png" }}
+              imageStyle={{ borderRadius: 7 }}
+            >
+                <Text style={styles.filterButtonText}> + filters</Text>
+                </ImageBackground>
+                </TouchableOpacity>
         </View>
     )
 }
 
 export default Filter
 
-const {height} = Dimensions.get("window")
 const styles = StyleSheet.create({
     filterUltracontainer: {
 
     },
     filterBoxContainer: {
-
+        flexDirection:"row",
+        alignItems:"center",
+        justifyContent:"center"
     },
     search: {
-
+        width: 250,
+        borderColor: "lightgray",
+        marginBottom: 2,
+        borderWidth: 1,
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+        borderRadius: 5,
+        backgroundColor: "white",
+        alignSelf:"center",
     },
     filtersBox: {
 
     },
     principalInternalModal: {
-        minHeight: height,
-        backgroundColor: "red",
-        justifyContent: "space-evenly"
+        width:'80%',
+        minHeight: 500,
+        backgroundColor: "white",
+        position:"relative",
+        top:100,
+        left:40,
+        borderRadius:20,
+        padding:20,
+        shadowColor: "#000",
+        shadowOffset: {
+	    width: 0,
+	    height: 12,
+        },
+        shadowOpacity: 0.58,
+        shadowRadius: 6.00,
+        elevation: 24,
     },
     filterButtons: {
+        alignSelf:"center",
         flexDirection: "row",
-        justifyContent: "space-evenly"
     },
     centeredView: {
         flexDirection: "row",
-        justifyContent: "center",
+        justifyContent: "space-between",
         alignItems: "center",
     },
     modalView: {
@@ -396,10 +450,11 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
     },
-    button: {
-        borderRadius: 20,
+    buttonPink: {
+        borderRadius: 5,
         padding: 10,
-        elevation: 2
+        elevation: 2,
+        marginVertical:5,
     },
     buttonOpen: {
         backgroundColor: "#e561ae",
@@ -411,5 +466,61 @@ const styles = StyleSheet.create({
         color: "white",
         fontWeight: "bold",
         textAlign: "center"
-    },    
+    },
+    filterButton1: {
+        alignSelf: "center",
+        paddingVertical: 7,
+        paddingHorizontal: 10,
+        width: 70,
+        marginLeft:5
+    },
+    filterButtonText: {
+        color: "white",
+        textAlign: "center",
+        fontFamily: "Poppins_700Bold",
+      },  
+      filterButton2: {
+        alignSelf: "center",
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+        width: 90,
+        marginHorizontal:15, 
+      }, 
+      buttonAnswer:{
+        backgroundColor:"#67f2cb", 
+        paddingVertical:7, 
+        paddingHorizontal:15, 
+        borderRadius:5,
+      },
+      buttonAnswerText:{
+        color:"white",
+        fontWeight:"bold",
+        textTransform:"capitalize"
+      },
+      button:{
+        borderRadius: 5,
+        padding: 10,
+        elevation: 2,
+        marginVertical:5,
+        marginHorizontal:10,
+      },
+      modalView2: {
+        width:300, 
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+        position:"relative",
+        top:70,
+        left:27
+    },
 })
