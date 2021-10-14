@@ -60,7 +60,10 @@ const Stripe = (props) => {
                   Authorization: `Bearer ${user.token}`,
                },
             }
-         )
+            )
+            console.log(authorization.data)
+
+
          if (!authorization.data.success)
             throw new Error("Error processing the transaction.")
          const details = {

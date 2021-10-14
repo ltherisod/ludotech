@@ -3,14 +3,15 @@ import {View, Text, TextInput, TouchableOpacity, StyleSheet, Modal, Pressable, I
 import { useArticles, useFilters, useUtils } from "../hooks/articlesHooks"
 import { Switch } from 'react-native-paper'
 import SelectDropdown from 'react-native-select-dropdown'
+import FontAwesome from "react-native-vector-icons/FontAwesome"
 
 const Filter = (props) => {
     const [{ brands, genres, gameTypes }] = useUtils()
     const [submit, setSubmit] = useState(false)
     const [renderAllFilters, setRenderAllFilters] = useState(false)
-    const [renderBrandName, setRenderBrandName] = useState("Select brand")
-    const [renderGenreName, setRenderGenreName] = useState("Select genre")
-    const [renderGameTypeName, setRenderGameTypeName] = useState("Select game type")
+    const [renderBrandName, setRenderBrandName] = useState("Brand")
+    const [renderGenreName, setRenderGenreName] = useState("Genre")
+    const [renderGameTypeName, setRenderGameTypeName] = useState("Game Type")
     const [prefilter, setPrefilter] = useState({})
     const [preFilterBrand, setPrefilterBrand] = useState("")
     const [preFilterGenre, setPrefilterGenre] = useState("")
@@ -136,7 +137,7 @@ const Filter = (props) => {
                             <View style={styles.centeredView}>
                                 <SelectDropdown
                                     data={pricesToRender}
-                                    defaultButtonText={filters.minPrice === undefined ? "Select price" : filters.maxPrice === undefined ? "$121 or more" : `$${filters.minPrice} - $${filters.maxPrice}`}
+                                    defaultButtonText={filters.minPrice === undefined ? "Price" : filters.maxPrice === undefined ? "$121 or more" : `$${filters.minPrice} - $${filters.maxPrice}`}
                                     onSelect={priceObject => {
                                         inputPrice(priceObject.value)                                
                                     }}
@@ -146,12 +147,20 @@ const Filter = (props) => {
                                     rowTextForSelection={priceObject => {
                                         return priceObject.title
                                     }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
                                 />
                             </View>
                             <View style={styles.centeredView}>
                                 <SelectDropdown
                                     data={minAgeToRender}
-                                    defaultButtonText={filters.minAge === undefined ? "Select min age" : filters.minAge === 16 ? "16 or more" : filters.minAge}
+                                    defaultButtonText={filters.minAge === undefined ? "Min Age" : filters.minAge === 16 ? "16 or more" : filters.minAge}
                                     onSelect={minAgeObject => {         
                                         inputMinAge(minAgeObject.value)
                                     }}
@@ -161,12 +170,20 @@ const Filter = (props) => {
                                     rowTextForSelection={minAgeObject => {
                                         return minAgeObject.title
                                     }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
                                 />
                             </View>
                             <View style={styles.centeredView}>
                                 <SelectDropdown
                                     data={playersToRender}
-                                    defaultButtonText={filters.minPlayers === undefined ? "Select players" : filters.minPlayers === 1 ? "one" : filters.minPlayers === 9 ? "9 or more" : `${filters.minPlayers} - ${filters.maxPlayers}`}
+                                    defaultButtonText={filters.minPlayers === undefined ? "Players" : filters.minPlayers === 1 ? "one" : filters.minPlayers === 9 ? "9 or more" : `${filters.minPlayers} - ${filters.maxPlayers}`}
                                     onSelect={playersObject => {
                                         inputPlayers(playersObject.value)                                
                                     }}
@@ -176,12 +193,20 @@ const Filter = (props) => {
                                     rowTextForSelection={playersObject => {
                                         return playersObject.title
                                     }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
                                 />
                             </View>
                             <View style={styles.centeredView}>
                                 <SelectDropdown
                                     data={sizeToRender}
-                                    defaultButtonText={filters.size === undefined ? "Select size" : filters.size}
+                                    defaultButtonText={filters.size === undefined ? "Size" : filters.size}
                                     onSelect={sizeObject => {
                                         inputSize(sizeObject.value)                                
                                     }}
@@ -191,6 +216,14 @@ const Filter = (props) => {
                                     rowTextForSelection={sizeObject => {
                                         return sizeObject.title
                                     }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
                                 />
                             </View>
                             <View style={styles.centeredView}>
@@ -207,6 +240,14 @@ const Filter = (props) => {
                                     rowTextForSelection={brandObject => {
                                         return brandObject.name
                                     }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
                                 />
                             </View>
                             <View style={styles.centeredView}>
@@ -223,6 +264,14 @@ const Filter = (props) => {
                                     rowTextForSelection={genreObject => {
                                         return genreObject.name
                                     }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
                                 />
                             </View>
                             <View style={styles.centeredView}>
@@ -239,18 +288,26 @@ const Filter = (props) => {
                                     rowTextForSelection={gameTypeObject => {
                                         return gameTypeObject.name
                                     }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
                                 />
                             </View>
-                            <View style={styles.centeredView}>
-                               <Text>With discount?</Text>
+                            <View style={styles.centeredView2}>
+                               <Text style={{fontFamily: "Poppins_500Medium", letterSpacing:.5}}>With Discount </Text>
                                <Switch value={filters.hasDiscount === undefined ? false : true} onValueChange={changeDiscount} />
                             </View>
                             <View style={styles.filterButtons}>
                                 <Pressable style={[styles.button, styles.buttonClose]} onPress={(e) => {changeAllFilters(e)}}>
                                     <Text style={styles.textStyle}>Filter</Text>
                                 </Pressable>
-                                <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {closeFilters()}}>
-                                    <Text style={styles.textStyle}>Close filters</Text>
+                                <Pressable style={[styles.button, styles.buttonClose1]} onPress={() => {closeFilters()}}>
+                                    <Text style={styles.textStyle}>Close</Text>
                                 </Pressable>
                             </View>
                         </View>
@@ -313,6 +370,7 @@ const styles = StyleSheet.create({
         borderRadius:20,
         padding:20,
         shadowColor: "#000",
+        alignItems:'center',
         shadowOffset: {
 	    width: 0,
 	    height: 12,
@@ -326,9 +384,12 @@ const styles = StyleSheet.create({
         flexDirection: "row",
     },
     centeredView: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
+        marginVertical:5,
+    },
+    centeredView2: {
+        marginVertical:5,
+        flexDirection:'row',
+        alignItems:'center'
     },
     modalView: {
         margin: 20,
@@ -357,10 +418,15 @@ const styles = StyleSheet.create({
     buttonClose: {
         backgroundColor: "#7c51b0",
     },
+    buttonClose1: {
+        backgroundColor: "#c3286c",
+    },
+
     textStyle: {
         color: "white",
-        fontWeight: "bold",
-        textAlign: "center"
+        fontFamily: "Poppins_700Bold",
+        textAlign: "center",
+        letterSpacing:1,
     },
     filterButton1: {
         alignSelf: "center",
@@ -418,4 +484,20 @@ const styles = StyleSheet.create({
         top:70,
         left:27
     },
+    dropdown1BtnStyle:{
+        height: 40,
+        width: 260,
+        padding: 10,
+        borderRadius: 2,
+        borderColor: "#dad8d8",
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderRadius: 10,
+        backgroundColor:'whitesmoke'
+    },
+    dropdown1BtnTxtStyle:{
+        fontFamily: "Poppins_500Medium",
+        letterSpacing:.5,
+        
+    }
 })

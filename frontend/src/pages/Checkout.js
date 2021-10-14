@@ -3,9 +3,10 @@ import Header from "../components/Header"
 import HeroPages from "../components/HeroPages"
 import usersActions from "../redux/actions/usersActions"
 import { useDispatch } from "react-redux"
-import { useEffect } from "react"
+import {useEffect} from "react"
 
 const Checkout = (props) => {
+   
    useEffect(() => {
       window.scrollTo(0, 0)
       // eslint-disable-next-line
@@ -15,6 +16,8 @@ const Checkout = (props) => {
 
    const { purchase } = props.location.state.response
    const { articles, direction, status, timestamp, paymentDetails } = purchase
+
+  
 
    return (
       <div
@@ -172,7 +175,7 @@ const Checkout = (props) => {
                                  .slice(4, 23)}
                            </p>
                            <div className="bg}warning">
-                              <a target="_blank" href={paymentDetails.receipt}>
+                              <a href={paymentDetails.receipt}>
                                  See additional receipt
                               </a>
                            </div>
