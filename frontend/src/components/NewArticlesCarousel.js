@@ -216,27 +216,10 @@ const NewArticlesCarousel = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-  
-  }
-}
-
 const mapDispatchToProps = {
   getLastArticles: articlesActions.getLastArticles,
   updateCart: articlesActions.updateCart,
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewArticlesCarousel)
-
-
- {/* <div 
-                        style={{backgroundImage: `url("${img}")`, backgroundSize:'cover', height:'100%'}} 
-                        alt={`slide SLIDE 1`} 
-                        key={`slide-${index}`} 
-                        className="" >
-                        <div className=""> 
-                            <h2>SLIDE 1</h2>
-                        </div>
-                    </div> */}
+export default connect(null, mapDispatchToProps)(NewArticlesCarousel)
