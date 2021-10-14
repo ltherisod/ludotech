@@ -36,8 +36,8 @@ const SignIn = (props) => {
       <>
          <Bot />
          <div
-            className="signInBody"
-            style={{ height: "100vh", 
+            className="signInBodyCorrection"
+            style={{  
                backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`,
             }}
          >

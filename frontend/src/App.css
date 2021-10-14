@@ -1,691 +1,699 @@
 * {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
-   font-family: "Poppins", sans-serif;
-   text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
 }
 
 body {
-   display: flex;
-   flex-direction: column;
-   min-height: 100vh;
-   justify-content: space-between;
-   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  text-align: center;
 }
 
 .scrollButton {
-   position: fixed;
-   width: 100%;
-   left: 96%;
-   bottom: 0.3rem;
-   font-size: 2.3rem;
-   z-index: 1;
-   cursor: pointer;
-   color: #5ccfd8;
+  position: fixed;
+  width: 100%;
+  left: 96%;
+  bottom: 0.3rem;
+  font-size: 2.3rem;
+  z-index: 1;
+  cursor: pointer;
+  color: #5ccfd8;
 }
 
 /* HEADER */
 
 #mainNav {
-   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-   background-color: #fff;
-   transition: background-color 0.2s ease;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  transition: background-color 0.2s ease;
 }
 #mainNav .navbar-brand {
-   font-weight: 600;
-   color: #212529;
+  font-weight: 600;
+  color: #212529;
 }
 #mainNav .navbar-nav .nav-item .nav-link {
-   color: #666363;
-   font-weight: 600;
-   font-size: 1rem;
-   padding: 0.75rem 0;
+  color: #666363;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 0;
 }
 #mainNav .navbar-nav .nav-item .nav-link:hover,
 #mainNav .navbar-nav .nav-item .nav-link:active {
-   color: #f43ad5;
+  color: #f43ad5;
 }
 #mainNav .navbar-nav .nav-item .nav-link.active {
-   color: #f046cb !important;
+  color: #f046cb !important;
 }
 
 #navLogo {
-   font-family: "Fredoka One", cursive;
-   font-size: 2rem;
+  font-family: "Fredoka One", cursive;
+  font-size: 2rem;
 }
 
 .logoCheckout {
-   font-family: "Fredoka One", cursive;
-   font-size: 2.8rem;
-   padding-right: 25px;
+  font-family: "Fredoka One", cursive;
+  font-size: 2.8rem;
+  padding-right: 25px;
 }
 
 .imgLogoCheckout {
-   height: 65px;
-   margin-bottom: 20px;
+  height: 65px;
+  margin-bottom: 20px;
 }
 
 .spanViolet {
-   color: #4c0073;
-   font-family: "Fredoka One", cursive;
+  color: #4c0073;
+  font-family: "Fredoka One", cursive;
 }
 
 .spanRed {
-   color: #ce2a73;
-   font-family: "Fredoka One", cursive;
+  color: #ce2a73;
+  font-family: "Fredoka One", cursive;
 }
 
 .spanGreen {
-   color: #6aefcf;
-   font-family: "Fredoka One", cursive;
+  color: #6aefcf;
+  font-family: "Fredoka One", cursive;
 }
 
 .spanOrangi {
-   color: #ff8924;
-   font-family: "Fredoka One", cursive;
+  color: #ff8924;
+  font-family: "Fredoka One", cursive;
 }
 
 .spanViolet2 {
-   color: #660099;
-   font-family: "Fredoka One", cursive;
+  color: #660099;
+  font-family: "Fredoka One", cursive;
 }
 
 .profileLogout {
-   color: black !important;
+  color: black !important;
 }
 
 .settings {
-   background-color: #ce2a73 !important;
+  background-color: #ce2a73 !important;
 }
 
 .containerLogoUser {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logoUser {
-   background-position: center;
-   width: 2.3em;
-   height: 2.3em;
-   background-size: cover;
-   border-radius: 100%;
-   margin: 0px 15px;
+  background-position: center;
+  width: 2.3em;
+  height: 2.3em;
+  background-size: cover;
+  border-radius: 100%;
+  margin: 0px 15px;
 }
 
 /* ESTILOS */
 
 .body {
-   background-position: center;
-   background-size: cover;
+  background-position: center;
+  background-size: cover;
 }
 header {
-   width: 100%;
-   background-color: transparent;
+  width: 100%;
+  background-color: transparent;
 }
 footer {
-   width: 100%;
-   height: 50px;
-   background-color: transparent;
-   color: white;
+  width: 100%;
+  height: 50px;
+  background-color: transparent;
+  color: white;
 }
 .hero {
-   width: 100%;
-   height: 100vh;
-   color: white;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   background-position: bottom;
-   background-size: cover;
-   margin-bottom: 20px;
-   padding: 0px 10vw;
+  width: 100%;
+  height: 100vh;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-position: bottom;
+  background-size: cover;
+  margin-bottom: 20px;
+  padding: 0px 10vw;
 }
 .heroDescription {
-   text-align: left;
+  text-align: left;
 }
 #welcome {
-   font-weight: 700;
-   font-size: 45px;
+  font-weight: 700;
+  font-size: 45px;
 }
 .heroDescription button {
-   padding: 10px 20px;
-   border-radius: 50px;
-   border: none;
-   font-weight: 700;
-   color: #d12a74;
-   margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: none;
+  font-weight: 700;
+  color: #d12a74;
+  margin-top: 10px;
 }
 .logo {
-   font-family: "Fredoka One", cursive;
-   font-size: 3.5rem;
+  font-family: "Fredoka One", cursive;
+  font-size: 3.5rem;
 }
 
 .logoNav {
-   width: 150px;
-   height: 40px;
-   /* background-position: center;
+  width: 150px;
+  height: 40px;
+  /* background-position: center;
    background-size: cover; */
 }
 
 main h2 {
-   color: white;
+  color: white;
 }
 .cube {
-   background-position: center;
-   background-size: cover;
-   height: 460px;
-   min-width: 460px;
-   margin-bottom: 60px;
+  background-position: center;
+  background-size: cover;
+  height: 460px;
+  min-width: 460px;
+  margin-bottom: 60px;
 }
 
 /* SEBA: Sign UP */
 
 .flex,
 .headerLogo {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .headerLogo {
-   height: 10vh;
-   /* background-color: #8646d4; */
-   border-bottom: 1px solid #3022428f;
-   color: white;
-   font-size: 3vmin;
+  height: 10vh;
+  /* background-color: #8646d4; */
+  border-bottom: 1px solid #3022428f;
+  color: white;
+  font-size: 3vmin;
 }
 
 .main-sign {
-   width: 35%;
-   display: grid;
-   grid-template-columns: repeat(1, 1fr);
-   gap: 3vmin;
-   margin: 4vh 0;
+  width: 35%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 3vmin;
+  margin: 4vh 0;
 }
 
 .main-sign h2 {
-   font-size: 6vmin;
-   font-weight: 600;
-   text-align: center;
-   color: white;
+  font-size: 6vmin;
+  font-weight: 600;
+  text-align: center;
+  color: white;
 }
 
 .main-sign h2 + p {
-   text-align: start;
-   color: white;
+  text-align: start;
+  color: white;
 }
 
 .errorSign {
-   color: #de4a34;
+  color: #de4a34;
 }
 
 .buttonGoogle {
-   height: 50px;
-   border-radius: 3px;
-   cursor: pointer;
-   color: white;
-   font-size: 2.5vmin;
-   display: flex;
-   align-items: center;
-   justify-content: space-around;
-   padding: 0 2vmin;
-   width: 100%;
+  height: 50px;
+  border-radius: 3px;
+  cursor: pointer;
+  color: white;
+  font-size: 2.5vmin;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 2vmin;
+  width: 100%;
 }
 
 .purchaseTitle {
-   font-size: 6vmin;
-   font-weight: 600;
-   text-align: center;
-   color: white;
+  font-size: 6vmin;
+  font-weight: 600;
+  text-align: center;
+  color: white;
 }
 
 .buttonGoogle p {
-   width: 100%;
-   margin-bottom: 0;
-   text-align: center;
+  width: 100%;
+  margin-bottom: 0;
+  text-align: center;
 }
 
 .signupEmailOption {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   font-size: 2.2vmin;
-   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2.2vmin;
+  color: white;
 }
 
 .signupEmailOption p {
-   margin: 0 3vmin;
+  margin: 0 3vmin;
 }
 
 .signupEmailOption div {
-   flex: 1;
-   height: 1px;
-   border-bottom: 1px solid white;
+  flex: 1;
+  height: 1px;
+  border-bottom: 1px solid white;
 }
 
 .inputContainer {
-   display: grid;
-   grid-template-columns: repeat(1, 1fr);
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
 }
 
 .main-sign input {
-   height: 40px;
-   padding-left: 1vmin;
-   outline: none;
-   border: 1px solid white;
-   border-radius: 3px;
+  height: 40px;
+  padding-left: 1vmin;
+  outline: none;
+  border: 1px solid white;
+  border-radius: 3px;
 }
 .inputfile {
-   background-color: white;
+  background-color: white;
 }
 
 .fifi {
-   width: 35vw;
+  width: 35vw;
 }
 
 .inputsAdd {
-   display: flex;
-   flex-direction: column;
-   width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .inputsAdd input {
-   height: 40px;
-   padding-left: 1vmin;
-   outline: none;
-   border: 1px solid white;
-   border-radius: 3px;
-   box-shadow: 1px 1px 5px rgba(163, 157, 157, 0.3);
+  height: 40px;
+  padding-left: 1vmin;
+  outline: none;
+  border: 1px solid white;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px rgba(163, 157, 157, 0.3);
 }
 
 .main-sign label {
-   color: white;
-   text-align: start;
-   font-size: 2.3vmin;
-   margin-bottom: 0.5vmin;
-   font-weight: bolder;
-   letter-spacing: 1px;
+  color: white;
+  text-align: start;
+  font-size: 2.3vmin;
+  margin-bottom: 0.5vmin;
+  font-weight: bolder;
+  letter-spacing: 1px;
 }
 
 .adTerms {
-   font-size: 1.8vmin;
-   color: white;
+  font-size: 1.8vmin;
+  color: white;
 }
 
 .signupButtonSignup,
 .signinButtonSignup {
-   width: 100%;
-   font-size: 2.5vmin;
-   border-radius: 3px;
-   height: 50px;
-   font-weight: 600;
-   cursor: pointer;
+  width: 100%;
+  font-size: 2.5vmin;
+  border-radius: 3px;
+  height: 50px;
+  font-weight: 600;
+  cursor: pointer;
 }
 .signinButtonSignupText {
-   text-align: center;
-   font-weight: bold;
-   font-size: 2.5vmin;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.5vmin;
 }
 
 .signinButtonSignup,
 .signinButtonSignupText {
-   color: white;
+  color: white;
 }
 
 .signinButtonSignupText span,
 h2 span {
-   color: #67f2cb;
+  color: #67f2cb;
 }
 
 .spanCeleste {
-   color: #67f2cb;
+  color: #67f2cb;
 }
 
 .spanOrange {
-   color: #ff9424;
-   font-size: 18px;
+  color: #ff9424;
+  font-size: 18px;
 }
 
 .signupButtonSignup {
-   border: none;
-   color: white;
+  border: none;
+  color: white;
 }
 .signUpBody,
 .signInBody {
-   background-position: top;
-   background-repeat: no-repeat;
-   background-size: cover;
-   width: 100%;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+.signInBodyCorrection {
+  min-height: 100vh;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
 }
 
 .accountLink {
-   text-decoration: none;
+  text-decoration: none;
 }
 .signNoErrors,
 .signErrors {
-   margin-top: 0.5px;
-   text-align: center;
-   font-size: 2vmin;
-   letter-spacing: 2px;
-   margin-bottom: -0.5em;
+  margin-top: 0.5px;
+  text-align: center;
+  font-size: 2vmin;
+  letter-spacing: 2px;
+  margin-bottom: -0.5em;
 }
 
 .main-sign input {
-   padding: 1em;
-   height: 3em;
+  padding: 1em;
+  height: 3em;
 }
 
 .signNoErrors {
-   color: transparent;
+  color: transparent;
 }
 
 .signErrors {
-   color: red;
+  color: red;
 }
 
 .titleProfile {
-   text-align: center;
-   font-size: 8vmin;
-   font-weight: 700;
-   color: #660099;
+  text-align: center;
+  font-size: 8vmin;
+  font-weight: 700;
+  color: #660099;
 }
 
 /*Pagina Articulos*/
 
 .heroArticles {
-   width: 100%;
-   height: 20vh;
-   color: white;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   background-position: bottom;
-   background-size: cover;
-   margin-bottom: 20px;
-   padding: 0px 10vw;
+  width: 100%;
+  height: 20vh;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-position: bottom;
+  background-size: cover;
+  margin-bottom: 20px;
+  padding: 0px 10vw;
 }
 .containerArticles {
-   display: flex;
-   flex-wrap: wrap;
-   margin: 0px 3rem;
-   justify-content: center;
-   padding: 0vh 6vw;
-   margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 3rem;
+  justify-content: center;
+  padding: 0vh 6vw;
+  margin-top: 30px;
 }
 .filterContainer {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .filterBoxContainer {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .search {
-   padding: 10px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   width: 35%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35%;
 }
 .search label {
-   color: white;
-   text-align: start;
-   font-size: 2.3vmin;
-   margin-bottom: 0.5vmin;
-   font-weight: bolder;
-   letter-spacing: 1px;
-   padding-right: 10px;
+  color: white;
+  text-align: start;
+  font-size: 2.3vmin;
+  margin-bottom: 0.5vmin;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  padding-right: 10px;
 }
 
 .search input {
-   height: 3em;
-   width: 35vw;
-   padding-left: 1vmin;
-   outline: none;
-   border: 1px solid white;
-   border-radius: 3px;
+  height: 3em;
+  width: 35vw;
+  padding-left: 1vmin;
+  outline: none;
+  border: 1px solid white;
+  border-radius: 3px;
 }
 
 .searchButton {
-   width: 100%;
-   font-size: 2.5vmin;
-   border-radius: 3px;
-   height: 50px;
-   font-weight: 600;
-   cursor: pointer;
-   border: none;
-   color: white;
-   width: 200px;
-   margin-top: 10px;
+  width: 100%;
+  font-size: 2.5vmin;
+  border-radius: 3px;
+  height: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  color: white;
+  width: 200px;
+  margin-top: 10px;
 }
 #searchButton text {
-   text-align: center;
-   font-weight: bold;
-   font-size: 2.5vmin;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2.5vmin;
 }
 .filtersBox {
-   padding: 10px;
-   display: flex;
-   flex-wrap: wrap;
-   margin-left: 10px;
-   justify-content: center;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 10px;
+  justify-content: center;
 }
 .filterOption {
-   padding: 0px 10px;
-   display: flex;
-   flex-direction: column;
+  padding: 0px 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .filterOption select {
-   width: 120px;
-   border-radius: 3px;
-   padding-left: 6px;
-   color: gray;
+  width: 120px;
+  border-radius: 3px;
+  padding-left: 6px;
+  color: gray;
 }
 
 .filterDiscount label {
-   padding: 0px 10px;
+  padding: 0px 10px;
 }
 
 .filterUltracontainer {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .filterView {
-   border: none;
-   padding: 10px 20px;
-   background-color: transparent;
-   color: #6aefcf;
+  border: none;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #6aefcf;
 }
 .bodyArticles {
-   text-align: center;
+  text-align: center;
 }
 .bodyArticles h2 {
-   color: white;
-   font-size: 6vmin;
-   font-weight: 600;
-   text-align: center;
-   margin-top: 2rem;
+  color: white;
+  font-size: 6vmin;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 2rem;
 }
 
 .cardArticle {
-   width: 320px;
-   height: 465px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   background-color: #fefefe;
-   border-radius: 20px;
-   background-position: bottom left;
-   background-size: cover;
-   box-shadow: rgb(85, 85, 85) 0px 3px 7px 0px;
+  width: 320px;
+  height: 465px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fefefe;
+  border-radius: 20px;
+  background-position: bottom left;
+  background-size: cover;
+  box-shadow: rgb(85, 85, 85) 0px 3px 7px 0px;
 }
 .cardArticleBorder {
-   background-color: rgb(212, 212, 212);
-   margin: 20px 28px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   border-radius: 27px;
-   width: 350px;
-   height: 494px;
+  background-color: rgb(212, 212, 212);
+  margin: 20px 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 27px;
+  width: 350px;
+  height: 494px;
 }
 .cardArticleBorder:hover {
-   background-color: #e052c1;
+  background-color: #e052c1;
 }
 
 .photosArticle {
-   background-position: center;
-   background-size: cover;
-   min-height: 248px;
-   width: 280px;
-   display: flex;
-   justify-content: flex-end;
-   align-items: flex-start;
-   margin-top: 15px;
+  background-position: center;
+  background-size: cover;
+  min-height: 248px;
+  width: 280px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-top: 15px;
 }
 
 .price {
-   text-align: center;
-   margin-top: 10px;
+  text-align: center;
+  margin-top: 10px;
 }
 .priceCard {
-   text-align: center;
-   margin-top: 4px;
+  text-align: center;
+  margin-top: 4px;
 }
 .priceArticle {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .priceArticleCard {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   border-bottom: #d8d8d8 3px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: #d8d8d8 3px solid;
 }
 .priceArticleCardDiscount {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   background-color: orange;
-   margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: orange;
+  margin-top: 20px;
 }
 .gameInfo {
-   color: gray;
-   width: 100%;
+  color: gray;
+  width: 100%;
 }
 
 .gameInfoRelated {
-   width: 80%;
-   text-align: center;
-   position: relative;
-   bottom: 40px;
+  width: 80%;
+  text-align: center;
+  position: relative;
+  bottom: 40px;
 }
 
 .iconsNav {
-   color: rgba(216, 16, 133, 0.664);
-   font-size: 22px;
-   margin: 0px 10px;
-   cursor: pointer;
+  color: rgba(216, 16, 133, 0.664);
+  font-size: 22px;
+  margin: 0px 10px;
+  cursor: pointer;
 }
 
 .iconsNav:hover {
-   color: rgb(216, 16, 133);
-   font-size: 22px;
-   margin-left: 10px;
-   cursor: pointer;
+  color: rgb(216, 16, 133);
+  font-size: 22px;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .backFavArticle {
-   display: flex;
-   justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .title {
-   display: flex;
-   background-color: red;
+  display: flex;
+  background-color: red;
 }
 .circleFav {
-   background-color: rgba(236, 236, 236, 0.877);
-   border-radius: 100%;
-   height: 45px;
-   width: 45px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   cursor: pointer;
-   color: rgba(196, 29, 126, 0.616);
-   font-size: 25px;
+  background-color: rgba(236, 236, 236, 0.877);
+  border-radius: 100%;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: rgba(196, 29, 126, 0.616);
+  font-size: 25px;
 }
 
 .circleFav:hover {
-   color: rgb(247, 51, 165);
+  color: rgb(247, 51, 165);
 }
 
 .gameDetails {
-   text-align: start;
-   width: 100;
-   padding: 0px 30px;
+  text-align: start;
+  width: 100;
+  padding: 0px 30px;
 }
 
 .buyLine {
-   display: flex;
-   justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .gameName {
-   width: 100%;
-   height: 65px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border-bottom: 2px solid gray;
-   margin-bottom: 10px;
-   padding: 16px 15px 6px 15px;
-   border-bottom: #d8d8d8 3px solid;
+  width: 100%;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid gray;
+  margin-bottom: 10px;
+  padding: 16px 15px 6px 15px;
+  border-bottom: #d8d8d8 3px solid;
 }
 .gameName h4 {
-   font-weight: 700;
+  font-weight: 700;
 }
 
 #buy {
-   cursor: pointer;
-   color: #660099;
-   font-size: 38px;
-   align-self: flex-end;
-   padding-bottom: 5px;
+  cursor: pointer;
+  color: #660099;
+  font-size: 38px;
+  align-self: flex-end;
+  padding-bottom: 5px;
 }
 #buy2 {
-   cursor: pointer;
-   color: rgba(255, 255, 255, 0.719);
-   font-size: 30px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.719);
+  font-size: 30px;
 }
 #buy2:hover {
-   cursor: pointer;
-   color: rgb(255, 255, 255);
-   font-size: 30px;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-size: 30px;
 }
 #buy:hover {
-   color: #a32bdf;
+  color: #a32bdf;
 }
 
 #buyNoStock {
-   color: #4d4d4d;
-   font-size: 38px;
+  color: #4d4d4d;
+  font-size: 38px;
 }
 .gameDetailsIcons {
-   margin: 3px;
-   border-radius: 20px;
-   width: 25px;
+  margin: 3px;
+  border-radius: 20px;
+  width: 25px;
 }
 /* #buy {
    width: 150px;
@@ -693,700 +701,700 @@ h2 span {
 /*Most Wanted*/
 
 .mostWantedConteiner {
-   width: 100%;
-   min-height: 100vh;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .mostWantedTittle {
-   font-weight: 700;
-   font-size: 60px;
-   padding-bottom: 5rem;
+  font-weight: 700;
+  font-size: 60px;
+  padding-bottom: 5rem;
 }
 
 .mostWantedCard {
-   align-self: center;
-   width: 80%;
-   min-height: 60vh;
-   background-size: contain;
-   background-repeat: no-repeat;
-   background-position: center;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  align-self: center;
+  width: 80%;
+  min-height: 60vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .mostWantedGame {
-   width: 250px;
-   height: 250px;
-   background-size: cover;
-   background-repeat: no-repeat;
-   align-self: flex-end;
+  width: 250px;
+  height: 250px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-self: flex-end;
 }
 
 .mostWantedGameConteiner,
 .mostWantedGameConteinerLeft {
-   padding-right: 3rem;
-   align-self: center;
-   width: 90%;
-   min-height: 20vh;
-   display: flex;
-   justify-content: space-around;
-   align-items: flex-end;
+  padding-right: 3rem;
+  align-self: center;
+  width: 90%;
+  min-height: 20vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
 }
 
 .mostWantedGameConteinerLeft {
-   padding-left: 3rem;
+  padding-left: 3rem;
 }
 .mostWantedGameBrand {
-   margin: 2em;
-   align-self: center;
-   font-size: 7vmin;
-   font-weight: bolder;
-   color: #120045;
+  margin: 2em;
+  align-self: center;
+  font-size: 7vmin;
+  font-weight: bolder;
+  color: #120045;
 }
 
 /*Home swiper*/
 .homeSwiperBox {
-   width: 100%;
-   display: flex;
-   justify-content: center;
-   background-color: #e052c1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #e052c1;
 }
 /*Footer*/
 
 .footerContainer {
-   width: 100%;
-   height: 57vh;
-   background-size: cover;
-   background-position: bottom;
-   display: flex;
-   align-items: center;
-   justify-content: flex-end;
-   flex-direction: column;
+  width: 100%;
+  height: 57vh;
+  background-size: cover;
+  background-position: bottom;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
 }
 
 .logoFooter {
-   height: 5rem;
-   margin-bottom: 1rem;
+  height: 5rem;
+  margin-bottom: 1rem;
 }
 
 .socialMediaContainer {
-   padding: 2em;
-   width: 20%;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+  padding: 2em;
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .footerRights {
-   font-weight: bolder;
-   word-spacing: 3px;
-   letter-spacing: 0.5px;
-   font-size: 2.5vmin;
-   padding-bottom: 1em;
+  font-weight: bolder;
+  word-spacing: 3px;
+  letter-spacing: 0.5px;
+  font-size: 2.5vmin;
+  padding-bottom: 1em;
 }
 
 .footerInsta,
 .footerFace,
 .footerTwit {
-   width: 3em;
+  width: 3em;
 }
 
 /*Hero Pages*/
 .heroPageCont {
-   width: 100%;
-   min-height: 40vh;
-   background-size: cover;
-   background-repeat: no-repeat;
-   background-position: top;
-   position: absolute;
-   z-index: 1;
+  width: 100%;
+  min-height: 40vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  position: absolute;
+  z-index: 1;
 }
 
 .separator {
-   height: 25vh;
+  height: 25vh;
 }
 
 /* ADMIN  */
 
 .mainTeamPanel p {
-   margin: 0;
+  margin: 0;
 }
 
 .containerButtonFilter {
-   width: 100%;
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-start;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 /* PANEL ADMIN */
 
 .navbarPanelContainer {
-   width: 20vw;
-   min-height: 100vh;
-   background-color: #8165ff;
-   padding: 0 2vmin;
-   padding-top: 5vmin;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
+  width: 20vw;
+  min-height: 100vh;
+  background-color: #8165ff;
+  padding: 0 2vmin;
+  padding-top: 5vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .itemNavbarPanel {
-   display: flex;
-   color: white;
-   font-weight: 700;
-   padding: 2vmin;
-   margin: 3vmin 0;
+  display: flex;
+  color: white;
+  font-weight: 700;
+  padding: 2vmin;
+  margin: 3vmin 0;
 }
 
 .itemNavbarPanel svg {
-   width: 3.5vmin;
-   height: 3.5vmin;
-   margin: 0 2vmin;
-   cursor: pointer;
+  width: 3.5vmin;
+  height: 3.5vmin;
+  margin: 0 2vmin;
+  cursor: pointer;
 }
 .itemNavbarPanel p {
-   cursor: pointer;
-   margin: 0;
+  cursor: pointer;
+  margin: 0;
 }
 
 .profileNavbarPanel {
-   background-color: white;
-   margin-bottom: 2vmin;
-   padding: 1vmin;
-   border-radius: 5px;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  background-color: white;
+  margin-bottom: 2vmin;
+  padding: 1vmin;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
 }
 
 .userProfileNavbarPanel {
-   display: flex;
-   align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .buttonsProfileNavbarPanel {
-   display: grid;
-   grid-template-columns: repeat(2, 1fr);
-   gap: 1vmin;
-   text-align: center;
-   margin-top: 1vmin;
-   font-size: 13px;
-   font-weight: bold;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1vmin;
+  text-align: center;
+  margin-top: 1vmin;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .buttonsProfileNavbarPanel p,
 .buttonsProfileNavbarPanel a {
-   margin: 0;
-   text-decoration: none;
+  margin: 0;
+  text-decoration: none;
 }
 
 .nameNavbarPanel {
-   margin: 0;
-   margin-left: 2vmin;
+  margin: 0;
+  margin-left: 2vmin;
 }
 
 .picture {
-   height: 7vh;
-   width: 7vh;
-   background-color: rgba(155, 7, 93, 0.664);
-   border-radius: 50%;
-   background-size: cover;
-   background-position: center;
+  height: 7vh;
+  width: 7vh;
+  background-color: rgba(155, 7, 93, 0.664);
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
 }
 
 .signoutPanel {
-   padding: 0.5vmin 1vmin;
-   background-color: rgb(190, 84, 84);
-   border-radius: 5px;
-   color: white;
-   cursor: pointer;
+  padding: 0.5vmin 1vmin;
+  background-color: rgb(190, 84, 84);
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
 }
 
 .settingsButtonPanel {
-   padding: 0.5vmin 1vmin;
-   background-color: #ff8924;
-   color: white;
-   border-radius: 5px;
-   cursor: pointer;
-   text-decoration: none;
+  padding: 0.5vmin 1vmin;
+  background-color: #ff8924;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 /* team panel admin seba */
 
 .mainTeamPanel {
-   width: 80%;
-   max-height: 100vh;
-   overflow-y: scroll;
-   padding: 3vmin;
-   /* background-color: #faf9ff; */
-   background-color: #fafafa;
+  width: 80%;
+  max-height: 100vh;
+  overflow-y: scroll;
+  padding: 3vmin;
+  /* background-color: #faf9ff; */
+  background-color: #fafafa;
 }
 
 .userFoundTeam p {
-   margin: 0;
+  margin: 0;
 }
 
 .mainTeamPanel h2 {
-   font-size: 5vmin;
-   color: #3f323c;
-   font-weight: bold;
+  font-size: 5vmin;
+  color: #3f323c;
+  font-weight: bold;
 }
 
 .searchbarTeam {
-   width: 50%;
-   height: 40px;
-   background-color: white;
-   border-radius: 5px;
-   /* border: 1px solid rgba(0, 0, 0, 0.2); */
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-   display: flex;
-   align-items: center;
+  width: 50%;
+  height: 40px;
+  background-color: white;
+  border-radius: 5px;
+  /* border: 1px solid rgba(0, 0, 0, 0.2); */
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
 }
 
 .searchUserTeam input {
-   width: 92%;
-   height: 30px;
-   padding: 0 2vmin;
-   outline: none;
-   border: none;
+  width: 92%;
+  height: 30px;
+  padding: 0 2vmin;
+  outline: none;
+  border: none;
 }
 
 .searchbarTeam svg {
-   background-color: rgba(0, 0, 0, 0.3);
-   width: 8%;
-   height: 100%;
-   padding: 1vmin;
-   color: white;
-   border-radius: 0 5px 5px 0;
-   cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 8%;
+  height: 100%;
+  padding: 1vmin;
+  color: white;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
 }
 
 .userFoundTeam {
-   width: 50%;
-   display: flex;
-   align-items: center;
-   padding: 1vmin;
-   background-color: white;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-   border-radius: 5px;
-   margin: 3vmin 0;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 1vmin;
+  background-color: white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin: 3vmin 0;
 }
 
 .userFoundTeam .bold {
-   font-weight: lighter;
-   font-size: 2.5vmin;
-   margin: 0;
-   padding: 0;
-   color: black;
+  font-weight: lighter;
+  font-size: 2.5vmin;
+  margin: 0;
+  padding: 0;
+  color: black;
 }
 
 .saveTeam {
-   padding: 0.5vmin 1vmin;
-   cursor: pointer;
-   color: white;
-   background-color: rgb(63, 189, 63);
-   border-radius: 5px;
-   border: none;
-   display: flex;
-   align-items: center;
-   margin-right: -2vmin;
+  padding: 0.5vmin 1vmin;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(63, 189, 63);
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  align-items: center;
+  margin-right: -2vmin;
 }
 
 .deleteTeam {
-   padding: 0.5vmin 1vmin;
-   cursor: pointer;
-   color: white;
-   background-color: rgb(194, 78, 63);
-   border-radius: 5px;
-   border: none;
-   display: flex;
-   align-items: center;
-   margin-right: -2vmin;
+  padding: 0.5vmin 1vmin;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(194, 78, 63);
+  border-radius: 5px;
+  border: none;
+  display: flex;
+  align-items: center;
+  margin-right: -2vmin;
 }
 
 .userFoundTeam p {
-   font-weight: lighter;
-   color: gray;
-   font-size: 2.5vmin;
+  font-weight: lighter;
+  color: gray;
+  font-size: 2.5vmin;
 }
 
 .userPicFoundTeam {
-   border-radius: 50%;
-   border: 1px solid rgba(0, 0, 0, 0.1);
-   width: 8vh;
-   height: 8vh;
-   background-color: rgba(248, 0, 0, 0.3);
-   background-size: cover;
-   background-position: center;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 8vh;
+  height: 8vh;
+  background-color: rgba(248, 0, 0, 0.3);
+  background-size: cover;
+  background-position: center;
 }
 
 .detailsUserFound {
-   flex: 1;
-   margin: 0 2vmin;
-   display: flex;
-   gap: 3vmin;
-   justify-content: space-between;
+  flex: 1;
+  margin: 0 2vmin;
+  display: flex;
+  gap: 3vmin;
+  justify-content: space-between;
 }
 
 .userDontFoundTeam {
-   width: 50%;
-   height: 40px;
-   padding: 0 2vmin;
-   background-color: white;
-   border-radius: 5px;
-   margin-top: 1vmin;
-   color: rgba(248, 0, 0, 0.3);
-   border: 1px solid rgba(248, 0, 0, 0.3);
-   display: flex;
-   align-items: center;
+  width: 50%;
+  height: 40px;
+  padding: 0 2vmin;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 1vmin;
+  color: rgba(248, 0, 0, 0.3);
+  border: 1px solid rgba(248, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
 }
 
 .subtitleTeam {
-   font-size: 4vmin;
-   font-weight: bold;
-   margin-top: 3vmin;
+  font-size: 4vmin;
+  font-weight: bold;
+  margin-top: 3vmin;
 }
 
 .cardsTeam {
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 2vmin;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2vmin;
 }
 
 .cardTeam {
-   display: flex;
-   /* height: 37vh; */
-   padding: 2vmin;
-   background-color: #fff;
-   border-radius: 5px;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  /* height: 37vh; */
+  padding: 2vmin;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
 }
 
 .picCardTeam {
-   width: 7vh;
-   height: 7vh;
-   background-color: #3f323c;
-   border-radius: 50%;
-   background-size: cover;
-   background-position: center;
-   padding: 1vmin;
-   display: flex;
-   justify-content: flex-end;
-   margin-right: 2vmin;
+  width: 7vh;
+  height: 7vh;
+  background-color: #3f323c;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  padding: 1vmin;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2vmin;
 }
 
 .detailsCardTeam {
-   padding: 1vmin;
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-   justify-content: center;
+  padding: 1vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .detailsCardTeam p {
-   font-weight: bold;
-   margin: 0;
-   margin-bottom: -1vmin;
-   font-size: 3vmin;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: -1vmin;
+  font-size: 3vmin;
 }
 
 .detailsCardTeam span {
-   font-size: 2vmin;
+  font-size: 2vmin;
 }
 
 /* purchases page*/
 
 .purchasesContainerPanel {
-   color: #4f5961;
-   padding: 2vmin;
-   margin: 5vh 0;
-   width: 100%;
+  color: #4f5961;
+  padding: 2vmin;
+  margin: 5vh 0;
+  width: 100%;
 }
 
 .changeStatus {
-   display: flex;
-   align-items: center;
-   width: 60%;
+  display: flex;
+  align-items: center;
+  width: 60%;
 }
 
 .containerChangeBuyer {
-   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-   padding: 2vmin;
-   display: flex;
-   align-items: center;
-   gap: 2vmin;
-   justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 2vmin;
+  display: flex;
+  align-items: center;
+  gap: 2vmin;
+  justify-content: space-between;
 }
 
 .buyer {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: flex-start;
-   margin-left: 2vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 2vmin;
 }
 
 .buyer span {
-   font-size: 2vmin;
-   color: rgb(104, 101, 101);
+  font-size: 2vmin;
+  color: rgb(104, 101, 101);
 }
 
 .buyer p {
-   margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .containerChangeBuyer p {
-   margin: 0;
+  margin: 0;
 }
 
 .changeStatus select {
-   outline: none;
-   font-size: 2.2vmin;
-   height: 30px;
-   width: 40%;
-   margin: 0 2vmin;
+  outline: none;
+  font-size: 2.2vmin;
+  height: 30px;
+  width: 40%;
+  margin: 0 2vmin;
 }
 
 .articlesFoundPanel {
-   margin-top: 2vmin;
-   margin-bottom: 1vmin;
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 2vmin;
+  margin-top: 2vmin;
+  margin-bottom: 1vmin;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2vmin;
 }
 
 .purchasesContainerPanel p {
-   margin: 0;
+  margin: 0;
 }
 
 .titlesPurchasesPanel,
 .theadArticlesPanel {
-   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-   color: rgba(0, 0, 0, 0.5);
-   font-weight: 700;
-   padding-bottom: 3vmin;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  padding-bottom: 3vmin;
 }
 
 .titlesPurchasesPanel,
 .purchaseContainerPanel {
-   display: flex;
-   align-items: center;
-   display: grid;
-   grid-template-columns: 8% 10% 40% 15% 10% 15%;
+  display: flex;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 8% 10% 40% 15% 10% 15%;
 }
 
 .closePurchase {
-   position: absolute;
-   top: 2vmin;
-   right: 2vmin;
-   width: 3vmin;
-   height: 3vmin;
-   color: rgba(0, 0, 0, 0.5);
-   cursor: pointer;
+  position: absolute;
+  top: 2vmin;
+  right: 2vmin;
+  width: 3vmin;
+  height: 3vmin;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
 
 .purchasesPanel,
 .productsPanel {
-   display: grid;
-   grid-template-columns: repeat(1, 1fr);
-   /* gap: 1vmin; */
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  /* gap: 1vmin; */
 }
 
 .purchaseContainerPanel {
-   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-   padding: 2vmin 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 2vmin 0;
 }
 
 .purchaseContainerPanel > div {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .addressPurchasePanel {
-   align-items: flex-start;
+  align-items: flex-start;
 }
 
 .purchaseContainerPanel:hover {
-   background-color: rgba(0, 0, 0, 0.05);
-   cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
 }
 
 .purchasePhotoPanel {
-   border-radius: 5px;
-   width: 50%;
-   height: 10vmin;
-   background-size: cover;
-   background-position: center;
+  border-radius: 5px;
+  width: 50%;
+  height: 10vmin;
+  background-size: cover;
+  background-position: center;
 }
 
 .statusPurchasePanel {
-   width: 100%;
-   padding: 1vmin 2vmin;
-   border-radius: 20px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+  width: 100%;
+  padding: 1vmin 2vmin;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .green {
-   background-color: #e1ffed;
-   color: #1fb260;
+  background-color: #e1ffed;
+  color: #1fb260;
 }
 
 .red {
-   background-color: #ffc8c3;
-   color: #f26d6f;
+  background-color: #ffc8c3;
+  color: #f26d6f;
 }
 
 .orange {
-   background-color: #ffd5b9;
-   color: #ee9a37;
+  background-color: #ffd5b9;
+  color: #ee9a37;
 }
 
 .blue {
-   background-color: #cac9fd;
-   color: #3768ee;
+  background-color: #cac9fd;
+  color: #3768ee;
 }
 
 .purple {
-   background-color: #d6b6f3;
-   color: #7d37ee;
+  background-color: #d6b6f3;
+  color: #7d37ee;
 }
 
 .statusPurchasePanel p {
-   margin: 0;
+  margin: 0;
 }
 
 .numberArticlesPanel {
-   width: 80%;
-   padding: 1vmin 0;
-   background-size: cover;
-   background-position: center;
-   color: white;
-   position: relative;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   background-color: rgb(179, 135, 214);
-   /* border: 1px solid rgb(216, 174, 212); */
-   border-radius: 5px;
-   cursor: pointer;
-   font-size: 2vmin;
+  width: 80%;
+  padding: 1vmin 0;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(179, 135, 214);
+  /* border: 1px solid rgb(216, 174, 212); */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 2vmin;
 }
 
 .containerProductsPanel {
-   position: absolute;
-   background-color: white;
-   border-radius: 5px;
-   /* width: 50vmin; */
-   padding: 1vmin;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-   position: absolute;
-   top: 100%;
-   left: 0;
-   z-index: 120;
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-   gap: 2vmin;
+  position: absolute;
+  background-color: white;
+  border-radius: 5px;
+  /* width: 50vmin; */
+  padding: 1vmin;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 120;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2vmin;
 }
 
 .productRow {
-   width: 100%;
-   display: flex;
-   justify-content: flex-start;
-   background-color: rgba(0, 0, 0, 0.05);
-   border-radius: 5px;
-   padding: 1vmin;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  padding: 1vmin;
 }
 
 .productRowtPicture {
-   width: 8vh;
-   height: 7vh;
-   margin-right: 2vmin;
-   background-size: cover;
-   background-position: center;
+  width: 8vh;
+  height: 7vh;
+  margin-right: 2vmin;
+  background-size: cover;
+  background-position: center;
 }
 
 .nameProductPanel {
-   font-weight: bold;
-   font-size: 2.5vmin;
-   margin: 0;
-   width: 100%;
+  font-weight: bold;
+  font-size: 2.5vmin;
+  margin: 0;
+  width: 100%;
 }
 
 .productRow span {
-   width: 100%;
-   display: flex;
-   align-items: center;
-   color: gray;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: gray;
 }
 .detailsProductPanel {
-   width: 100%;
-   color: #000;
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
+  width: 100%;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 h2.articles {
-   color: white;
-   margin: 0;
+  color: white;
+  margin: 0;
 }
 
 .containerProductsPanel div {
-   background-color: white;
+  background-color: white;
 }
 
 .textArticlesPanel {
-   border-top: 1px solid rgba(255, 255, 255, 0.596);
-   padding-top: 3vmin;
+  border-top: 1px solid rgba(255, 255, 255, 0.596);
+  padding-top: 3vmin;
 }
 
 .theadArticlesPanel,
 .rowStockPanel {
-   display: grid;
-   grid-template-columns: 7% 20% 8% 8% 15% 15% 7% 17%;
+  display: grid;
+  grid-template-columns: 7% 20% 8% 8% 15% 15% 7% 17%;
 }
 
 .rowStockPanel p {
-   height: 7vh;
-   display: flex;
-   align-items: center;
-   margin: 0;
-   color: white;
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: white;
 }
 
 .textPanell {
-   color: white;
+  color: white;
 }
 
 .rowStockPanel {
-   border-bottom: 1px solid rgba(43, 42, 42, 0.466);
-   padding: 2vmin 0;
+  border-bottom: 1px solid rgba(43, 42, 42, 0.466);
+  padding: 2vmin 0;
 }
 .theadArticlesPanel {
-   margin-top: 3vmin;
-   color: #ff8924;
-   font-weight: bold;
-   padding-bottom: 2vmin;
+  margin-top: 3vmin;
+  color: #ff8924;
+  font-weight: bold;
+  padding-bottom: 2vmin;
 }
 
 .buttonAdd {
-   margin-top: 5vmin;
-   margin-right: 5vmin;
-   width: 30%;
-   padding: 2vmin 5vmin;
-   border-radius: 5px;
-   background-color: rgba(83, 255, 83, 0.63);
-   border: 1px solid rgba(83, 255, 83, 0.63);
-   color: white;
+  margin-top: 5vmin;
+  margin-right: 5vmin;
+  width: 30%;
+  padding: 2vmin 5vmin;
+  border-radius: 5px;
+  background-color: rgba(83, 255, 83, 0.63);
+  border: 1px solid rgba(83, 255, 83, 0.63);
+  color: white;
 }
 
 .divDeleteAdmin {
@@ -1396,19 +1404,19 @@ h2.articles {
 }
 
 .buttonsAdminB {
-   background-color: rgba(255, 94, 0, 0.822);
-   padding: 5px 15px;
-   margin: 4px;
-   border-radius: 5px;
-   color: white;
+  background-color: rgba(255, 94, 0, 0.822);
+  padding: 5px 15px;
+  margin: 4px;
+  border-radius: 5px;
+  color: white;
 }
 
 .buttonsAdminC {
-   background-color: rgba(255, 40, 40, 0.493);
-   padding: 5px 15px;
-   margin: 4px;
-   color: white;
-   border-radius: 5px;
+  background-color: rgba(255, 40, 40, 0.493);
+  padding: 5px 15px;
+  margin: 4px;
+  color: white;
+  border-radius: 5px;
 }
 
 .buttonsAdminD {
@@ -1422,1662 +1430,1671 @@ h2.articles {
 /* // edit ARTICLE */
 
 .logoNavPanel {
-   width: 80%;
-   height: 7vh;
-   background-size: cover;
+  width: 80%;
+  height: 7vh;
+  background-size: cover;
 }
 
 .inputEdit {
-   height: 40px;
+  height: 40px;
 }
 
 .mainTeamPanel.edit h2 {
-   color: white;
+  color: white;
 }
 .inputsConrainerAdm {
-   display: flex;
-   flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .addProduct,
 .addProduct2 {
-   width: 30%;
-   padding: 1vmin 0;
-   border-radius: 5px;
-   border: none;
-   cursor: pointer;
-   background-size: cover;
-   color: white;
+  width: 30%;
+  padding: 1vmin 0;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-size: cover;
+  color: white;
 }
 
 .addProductButtonContainer {
-   align-self: center;
-   width: 80%;
-   display: flex;
-   justify-content: space-between;
+  align-self: center;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
 }
 .addProduct {
-   width: 11rem;
+  width: 11rem;
 }
 
 .addProduct2 {
-   color: #67f2cb;
+  color: #67f2cb;
 }
 
 .genresEditProduct {
-   display: flex;
-   gap: 4vmin;
+  display: flex;
+  gap: 4vmin;
 }
 
 .selectsEditProduct {
-   display: grid;
-   grid-template-columns: repeat(2, 1fr);
-   gap: 2vmin;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2vmin;
 }
 
 .numberOptions {
-   gap: 1vmin;
-   display: grid;
-   grid-template-columns: repeat(6, 15%);
+  gap: 1vmin;
+  display: grid;
+  grid-template-columns: repeat(6, 15%);
 }
 
 .numberAddOptions {
-   gap: 1vmin;
-   display: grid;
-   grid-template-columns: repeat(5, 19.48%);
+  gap: 1vmin;
+  display: grid;
+  grid-template-columns: repeat(5, 19.48%);
 }
 
 .inputEditProduct {
-   width: 100%;
-   display: flex;
-   flex-direction: column;
-   color: white;
-   justify-content: center;
-   margin: 7px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  justify-content: center;
+  margin: 7px 0;
 }
 
 .divPrice {
-   display: grid;
-   grid-template-columns: repeat(3, 32%);
-   gap: 2vmin;
+  display: grid;
+  grid-template-columns: repeat(3, 32%);
+  gap: 2vmin;
 }
 
 .inputEditProduct input,
 .inputEditProduct select {
-   background-color: white;
-   padding: 0 2vmin;
-   outline: none;
-   box-shadow: 1px 1px 5px rgba(163, 157, 157, 0.3);
-   border: none;
-   border-radius: 5px;
+  background-color: white;
+  padding: 0 2vmin;
+  outline: none;
+  box-shadow: 1px 1px 5px rgba(163, 157, 157, 0.3);
+  border: none;
+  border-radius: 5px;
 }
 
 .inputEditProduct label {
-   color: #ff8924;
+  color: #ff8924;
 }
 
 .inputEditProduct label.white {
-   color: white;
-   margin-right: 1vmin;
+  color: white;
+  margin-right: 1vmin;
 }
 
 .purchaseFound {
-   margin-top: 3vmin;
-   background-color: white;
-   border-radius: 5px;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
-   padding: 1vmin 2vmin;
-   border: none;
+  margin-top: 3vmin;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+  padding: 1vmin 2vmin;
+  border: none;
 }
 
 /* Article Page */
 
 .bodyArticle {
-   width: 100%;
-   background-repeat: no-repeat;
-   background-position: top;
-   background-size: cover;
-   display: flex;
-   flex-direction: column;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
 }
 
 .containerData {
-   width: 400px;
-   background-color: white;
-   border-radius: 20px;
-   padding: 15px;
-   margin-top: 20px;
-   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 400px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 15px;
+  margin-top: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 .containerData h3 {
-   color: gray;
-   font-weight: 700;
+  color: gray;
+  font-weight: 700;
 }
 
 .containerDataProfile {
-   width: 40vw;
-   background-color: white;
-   border-radius: 10px;
-   padding: 15px;
-   display: flex;
-   align-items: center;
-   justify-content: space-around;
-   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 40vw;
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 .containerDataProfile p {
-   font-size: 22px;
+  font-size: 22px;
 }
 
 .checkoutContainer {
-   background-color: white;
-   border-radius: 20px;
-   padding: 3rem;
-   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-   width: 60%;
+  background-color: white;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 60%;
 }
 
 .textQuantity {
-   color: #f77903;
-   font-weight: bold;
+  color: #f77903;
+  font-weight: bold;
 }
 
 .containerData p {
-   color: gray;
-   line-height: 1;
+  color: gray;
+  line-height: 1;
 }
 
 .containerData h3 {
-   text-align: center;
-   margin-top: 15px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+  text-align: center;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .articleData {
-   align-self: center;
-   width: 60%;
-   display: flex;
-   justify-content: space-around;
-   align-items: center;
-   flex-wrap: wrap;
+  align-self: center;
+  width: 60%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .articlePhoto {
-   width: 42%;
-   height: 50vh;
-   background-size: cover;
-   background-repeat: no-repeat;
-   background-position: center;
+  width: 42%;
+  height: 50vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .articleName h2 {
-   font-size: 6.5vmin;
-   text-transform: uppercase;
-   font-weight: bold;
-   letter-spacing: -3px;
-   color: #16054b;
+  font-size: 6.5vmin;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: -3px;
+  color: #16054b;
 }
 
 .articleNameContainer {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .articlesNames {
-   display: flex;
-   align-self: center;
-   width: 100%;
-   justify-content: center;
+  display: flex;
+  align-self: center;
+  width: 100%;
+  justify-content: center;
 }
 
 .articleName {
-   width: 40%;
-   display: flex;
-   flex-direction: column;
-   align-items: flex-end;
-   padding-right: 20px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 20px;
 }
 .articleName2 {
-   width: 40%;
-   display: flex;
-   flex-direction: column;
-   padding-left: 20px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
 }
 
 .brandPrice {
-   display: flex;
-   justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .articleDescription {
-   align-self: center;
-   width: 40%;
-   text-align: justify;
-   color: gray;
-   font-weight: bold;
-   font-size: 3vmin;
-   letter-spacing: 1px;
-   position: relative;
-   bottom: 130px;
+  align-self: center;
+  width: 40%;
+  text-align: justify;
+  color: gray;
+  font-weight: bold;
+  font-size: 3vmin;
+  letter-spacing: 1px;
+  position: relative;
+  bottom: 130px;
 }
 .articleDeco {
-   width: 30%;
-   height: 30vh;
-   background-size: contain;
-   background-repeat: no-repeat;
-   background-position: center;
+  width: 30%;
+  height: 30vh;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .articleDecoDown {
-   display: flex;
-   position: relative;
-   bottom: 350px;
+  display: flex;
+  position: relative;
+  bottom: 350px;
 }
 .articleDecoRight {
-   padding-right: 8em;
-   display: flex;
-   justify-content: flex-end;
-   position: relative;
-   bottom: 140px;
+  padding-right: 8em;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  bottom: 140px;
 }
 
 .articleVideo {
-   align-self: center;
-   display: flex;
-   padding-bottom: 120px;
-   flex-wrap: wrap;
-   position: relative;
-   bottom: 100px;
+  align-self: center;
+  display: flex;
+  padding-bottom: 120px;
+  flex-wrap: wrap;
+  position: relative;
+  bottom: 100px;
 }
 .divArticlesRelated {
-   position: relative;
-   bottom: 300px;
-   display: flex;
-   flex-direction: column;
+  position: relative;
+  bottom: 300px;
+  display: flex;
+  flex-direction: column;
 }
 .articleQuantity {
-   width: 4em;
-   padding: 0.3em;
+  width: 4em;
+  padding: 0.3em;
 }
 
 .articleShopCont {
-   align-self: center;
-   padding: 5px;
+  align-self: center;
+  padding: 5px;
 }
 
 /*Article Related */
 
 .articleRelatedTittle {
-   font-size: 6.5vmin;
-   font-weight: 600;
-   text-align: center;
-   color: #ff9424;
-   margin-bottom: 5rem;
+  font-size: 6.5vmin;
+  font-weight: 600;
+  text-align: center;
+  color: #ff9424;
+  margin-bottom: 5rem;
 }
 
 .relatedArticles {
-   width: 100%;
-   align-self: center;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-wrap: wrap;
+  width: 100%;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .cardArticleRelated {
-   width: 330px;
-   height: 360px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   border-radius: 12px;
-   background-position: bottom;
-   background-size: cover;
-   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-   margin: 10px 40px;
+  width: 330px;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  background-position: bottom;
+  background-size: cover;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  margin: 10px 40px;
 }
 
 .photosArticleRelated {
-   background-position: center;
-   background-size: cover;
-   min-height: 230px;
-   width: 250px;
-   margin-top: 20px;
+  background-position: center;
+  background-size: cover;
+  min-height: 230px;
+  width: 250px;
+  margin-top: 20px;
 }
 
 .buyLineRelated {
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .buyLineRelated h5 {
-   font-weight: 700;
-   font-size: 21px;
-   color: gray;
-   text-align: left;
+  font-weight: 700;
+  font-size: 21px;
+  color: gray;
+  text-align: left;
 }
 .priceRelated {
-   text-align: center;
-   margin-top: 45px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  text-align: center;
+  margin-top: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Swiper */
 
 .swiperBox {
-   width: 400px;
-   height: 400px;
+  width: 400px;
+  height: 400px;
 }
 
 .swiper {
-   width: 100%;
-   height: 100%;
-   color: #000;
-   border-top-left-radius: 0.5rem;
-   border-bottom-left-radius: 0.5rem;
-   text-align: center;
+  width: 100%;
+  height: 100%;
+  color: #000;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  text-align: center;
 }
 
 .swiperSlide {
-   width: 400px;
-   height: 100%;
-   background-position: center;
-   background-size: contain;
-   align-self: center;
+  width: 400px;
+  height: 100%;
+  background-position: center;
+  background-size: contain;
+  align-self: center;
 }
 .swiper-button-next,
 .swiper-button-prev {
-   color: gray !important;
-   padding: 20px;
-   padding-top: 238px;
-   width: 30px;
-   transform: scale(0.65);
+  color: gray !important;
+  padding: 20px;
+  padding-top: 238px;
+  width: 30px;
+  transform: scale(0.65);
 }
 
 /* Cart */
 
 .bodyCart {
-   display: flex;
-   flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .bodyCart h2 {
-   color: gray;
-   font-size: 7vmin;
-   font-weight: 600;
-   text-align: center;
-   margin: 2rem 0;
+  color: gray;
+  font-size: 7vmin;
+  font-weight: 600;
+  text-align: center;
+  margin: 2rem 0;
 }
 .cartSection1 {
-   width: 70vw;
-   text-align: center;
-   align-self: center;
-   color: white;
+  width: 70vw;
+  text-align: center;
+  align-self: center;
+  color: white;
 }
 .product {
-   text-align: left;
-   padding-left: 10px;
+  text-align: left;
+  padding-left: 10px;
 }
 .subtotal {
-   text-align: right;
-   padding-right: 5%;
+  text-align: right;
+  padding-right: 5%;
 }
 .cartSection1 tr {
-   background-color: transparent;
-   border-bottom: solid 1px rgb(204, 204, 204);
-   color: gray;
+  background-color: transparent;
+  border-bottom: solid 1px rgb(204, 204, 204);
+  color: gray;
 }
 
 .cartSection1 th {
-   color: gray;
-   background-color: transparent;
-   font-weight: 600;
-   font-size: large;
+  color: gray;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: large;
 }
 .cartSection2 {
-   text-align: right;
-   display: flex;
-   justify-content: flex-end;
-   padding: 20px 0px;
-   color: gray;
-   width: 70vw;
-   align-self: center;
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0px;
+  color: gray;
+  width: 70vw;
+  align-self: center;
 }
 .cartSection2 div {
-   display: flex;
-   justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 .cartSection2 p {
-   text-align: right;
-   font-weight: 600;
-   padding-left: 10px;
+  text-align: right;
+  font-weight: 600;
+  padding-left: 10px;
 }
 .cartArticle {
-   display: flex;
-   justify-content: flex-start;
-   align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 .quantity {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .quantity div {
-   margin: 0px 10px;
+  margin: 0px 10px;
 }
 .cartContainer {
-   align-self: center;
-   display: flex;
-   flex-direction: column;
-   justify-content: flex-end;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .cartSection1 tbody tr td:first-child {
-   width: 15%;
-   padding-left: 20px;
+  width: 15%;
+  padding-left: 20px;
 }
 .cartSection1 tbody tr td:nth-child(2) {
-   width: 30%;
-   text-align: left;
-   padding-left: 10px;
+  width: 30%;
+  text-align: left;
+  padding-left: 10px;
 }
 .cartSection1 tbody tr td:nth-child(3) {
-   width: 10%;
+  width: 10%;
 }
 .cartSection1 tbody tr td:nth-child(4) {
-   width: 20%;
+  width: 20%;
 }
 .cartSection1 tbody tr td:nth-child(4) p {
-   margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 .cartSection1 tbody tr td:nth-child(5) {
-   width: 20%;
-   text-align: right;
-   padding-right: 5%;
+  width: 20%;
+  text-align: right;
+  padding-right: 5%;
 }
 .quantity button {
-   padding: 0px 7px;
-   background-color: #6aefcf;
-   border: none;
-   border-radius: 50px;
-   text-align: center;
-   color: white;
+  padding: 0px 7px;
+  background-color: #6aefcf;
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  color: white;
 }
 .delete button {
-   padding: 2px 7px;
-   background-color: rgb(160, 160, 160);
-   border: none;
-   border-radius: 20px;
-   color: white;
-   font-size: small;
+  padding: 2px 7px;
+  background-color: rgb(160, 160, 160);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: small;
 }
 .totalsCard {
-   background-color: white;
-   align-self: flex-end;
-   width: 35%;
-   border-radius: 0px 0px 20px 20px;
-   padding: 15px;
-   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  background-color: white;
+  align-self: flex-end;
+  width: 35%;
+  border-radius: 0px 0px 20px 20px;
+  padding: 15px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 #hidden {
-   visibility: hidden;
+  visibility: hidden;
 }
 
 #visible {
-   visibility: visible;
+  visibility: visible;
 }
 .cartAddressInputs {
-   text-align: center;
+  text-align: center;
 }
 .cartAddressInputs input {
-   height: 40px;
-   outline: none;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-   width: 100%;
-   padding: 0 2vmin;
-   border-radius: 5px;
-   border: none;
+  height: 40px;
+  outline: none;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  padding: 0 2vmin;
+  border-radius: 5px;
+  border: none;
 }
 .chooseAnAddress {
-   color: gray;
-   font-weight: 600;
-   margin: 2rem 0;
+  color: gray;
+  font-weight: 600;
+  margin: 2rem 0;
 }
 
 .emptyCart {
-   width: 100%;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttonShop {
-   width: 10rem;
-   padding: 1em;
-   border-radius: 0.5rem;
-   background-size: cover;
-   background-position: center;
-   justify-content: center;
-   align-items: center;
+  width: 10rem;
+  padding: 1em;
+  border-radius: 0.5rem;
+  background-size: cover;
+  background-position: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .shopLink {
-   text-align: center;
-   text-decoration: none;
-   color: white;
-   letter-spacing: 1px;
-   font-family: "Poppins", sans-serif;
-   font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  letter-spacing: 1px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
 }
 
 .shopLink:hover {
-   color: white;
+  color: white;
 }
 
 .ludoGif {
-   width: 25%;
+  width: 25%;
 }
 #formStripeForResponsive {
-   width: 40vw;
+  width: 40vw;
 }
 /* PROFILE  */
 
 .divProfile {
-   width: 70vw;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logoUserProfile {
-   background-position: center;
-   width: 7em;
-   height: 7em;
-   border-radius: 50%;
-   background-size: cover;
-   margin: 20px 50px 20px 5px;
+  background-position: center;
+  width: 7em;
+  height: 7em;
+  border-radius: 50%;
+  background-size: cover;
+  margin: 20px 50px 20px 5px;
 }
 .profileFirstData {
-   display: flex;
-   justify-content: flex-start;
-   align-items: center;
-   margin-top: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2rem;
 }
 .profileFirstData h3 {
-   color: #660099;
-   font-weight: 600;
-   font-size: 3rem;
+  color: #660099;
+  font-weight: 600;
+  font-size: 3rem;
 }
 .profileFirstData p {
-   color: #45f0bf;
-   font-weight: 500;
-   font-size: 1.5rem;
+  color: #45f0bf;
+  font-weight: 500;
+  font-size: 1.5rem;
 }
 .phoneProfile {
-   display: flex;
-   align-items: center;
+  display: flex;
+  align-items: center;
 }
 .phone {
-   display: flex;
-   justify-content: center;
-   width: 50vw;
+  display: flex;
+  justify-content: center;
+  width: 50vw;
 }
 .profileTitles {
-   margin: 1.5rem 0;
-   font-weight: 600;
-   color: #660099;
-   align-self: flex-start;
-   position: relative;
-   right: 5rem;
+  margin: 1.5rem 0;
+  font-weight: 600;
+  color: #660099;
+  align-self: flex-start;
+  position: relative;
+  right: 5rem;
 }
 .phone p,
 .addressAddedCard p {
-   color: gray;
-   margin-right: 10px;
-   font-size: larger;
-   margin-bottom: 0;
+  color: gray;
+  margin-right: 10px;
+  font-size: larger;
+  margin-bottom: 0;
 }
 
 .addresses {
-   display: flex;
-   flex-direction: column;
-   flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .addresses p {
-   color: rgb(158, 157, 157);
-   font-size: 25px;
-   margin-bottom: 1rem;
+  color: rgb(158, 157, 157);
+  font-size: 25px;
+  margin-bottom: 1rem;
 }
 
 .dataAddres {
-   font-weight: 600;
-   font-size: 30;
-   color: gray;
-   margin-right: 7px;
+  font-weight: 600;
+  font-size: 30;
+  color: gray;
+  margin-right: 7px;
 }
 
 .orAdaAdress {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .adressesAdded {
-   display: flex;
-   width: 100%;
-   padding: 20px 0px 20px 20px;
-   align-content: flex-start;
-   justify-content: flex-start;
+  display: flex;
+  width: 100%;
+  padding: 20px 0px 20px 20px;
+  align-content: flex-start;
+  justify-content: flex-start;
 }
 .addressAddedCard {
-   padding-right: 10px;
-   padding-bottom: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
 }
 .addressAddedCard input {
-   width: 100%;
+  width: 100%;
 }
 .addressAddedCard button {
-   padding: 0px 7px;
-   background-color: #6aefcf;
-   border: none;
-   border-radius: 50px;
-   text-align: center;
-   color: white;
-   margin: 10px;
+  padding: 0px 7px;
+  background-color: #6aefcf;
+  border: none;
+  border-radius: 50px;
+  text-align: center;
+  color: white;
+  margin: 10px;
 }
 
 .dataCard {
-   text-align: start;
+  text-align: start;
 }
 
 .dataCard p {
-   font-family: "Poppins", sans-serif;
-   color: gray;
-   font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: gray;
+  font-weight: 600;
 }
 .checkoutContainerCard {
-   width: 25vw;
-   background-color: white;
-   border-radius: 20px;
-   padding: 3rem;
-   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-   margin: 1em;
+  width: 25vw;
+  background-color: white;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  margin: 1em;
 }
 .selectAddress {
-   width: 12rem;
-   padding: 0.5em;
-   border-radius: 0.5em;
-   color: white;
-   font-family: "Poppins", sans-serif;
-   border: none;
+  width: 12rem;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  border: none;
 }
 .profileButton {
-   padding: 0px 20px;
-   color: white;
-   border: none;
-   border-radius: 3px;
-   font-weight: 600;
-   cursor: pointer;
-   font-size: 2.5vmin;
-   height: 50px;
-   margin-left: 20px;
+  padding: 0px 20px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 2.5vmin;
+  height: 50px;
+  margin-left: 20px;
 }
 
 .editProfile,
 .deleteProfile {
-   width: 10rem;
-   border-radius: 0.3em !important;
+  width: 10rem;
+  border-radius: 0.3em !important;
 }
 
 .addressInputs {
-   margin: 10px;
+  margin: 10px;
 }
 .inputContainer2 {
-   display: flex;
+  display: flex;
 }
 .phoneInput {
-   display: flex;
-   flex-direction: column;
-   padding-top: 19px;
-   width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 19px;
+  width: 60%;
 }
 
 .main-sign input {
-   height: 40px;
-   padding-left: 1vmin;
-   outline: none;
-   border: 1px solid white;
-   border-radius: 3px;
+  height: 40px;
+  padding-left: 1vmin;
+  outline: none;
+  border: 1px solid white;
+  border-radius: 3px;
 }
 
 .phoneInput input {
-   height: 40px;
-   padding-left: 1vmin;
-   outline: none;
-   border: 1px solid white;
-   border-radius: 3px;
-   box-shadow: 1px 1px 5px rgba(163, 157, 157, 0.3);
+  height: 40px;
+  padding-left: 1vmin;
+  outline: none;
+  border: 1px solid white;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px rgba(163, 157, 157, 0.3);
 }
 .inputsAddAddress {
-   padding-top: 20px;
-   text-align: center;
+  padding-top: 20px;
+  text-align: center;
 }
 .inputsAddAddress input {
-   width: 100%;
+  width: 100%;
 }
 .inputsAddAddress button {
-   padding: 0px 20px;
-   color: white;
-   border: none;
-   border-radius: 3px;
-   font-weight: 600;
-   cursor: pointer;
-   font-size: 2.5vmin;
-   height: 50px;
-   background-color: #e052c1;
-   margin-top: 10px;
+  padding: 0px 20px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 2.5vmin;
+  height: 50px;
+  background-color: #e052c1;
+  margin-top: 10px;
 }
 .signNoErrorsDir {
-   color: transparent;
+  color: transparent;
 }
 .signErrorsDir {
-   color: red;
+  color: red;
 }
 .signNoErrorsPhone {
-   color: transparent;
+  color: transparent;
 }
 .signErrorsPhone {
-   color: red;
+  color: red;
 }
 /* WISHLIST  seba */
 
 .mainWishlist {
-   min-height: 90vh;
-   margin-top: 10vmin;
+  min-height: 90vh;
+  margin-top: 10vmin;
 }
 
 .mainWishlist h2 {
-   font-weight: 700;
-   font-size: 70px;
-   padding-bottom: 5rem;
-   align-self: center;
-   text-align: center;
+  font-weight: 700;
+  font-size: 70px;
+  padding-bottom: 5rem;
+  align-self: center;
+  text-align: center;
 }
 
 .searchbarWishlist {
-   width: 100%;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   color: white;
-   margin-bottom: 10vmin;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  margin-bottom: 10vmin;
 }
 
 .searchbarWishlist input {
-   height: 40px;
-   outline: none;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-   width: 50%;
-   padding: 0 2vmin;
-   border-radius: 5px;
-   border: none;
+  height: 40px;
+  outline: none;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  width: 50%;
+  padding: 0 2vmin;
+  border-radius: 5px;
+  border: none;
 }
 
 /*Preloader*/
 
 .preloaderBack {
-   width: 100%;
-   height: 100vh;
-   background-size: cover;
-   background-position: top;
-   justify-content: center;
-   align-items: center;
-   display: flex;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: top;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .rubikPreloader {
-   align-self: center;
-   width: 40%;
+  align-self: center;
+  width: 40%;
 }
 
 /* DASHBOARD */
 
 .dashboardMain {
-   flex: 1;
-   padding: 3vmin;
-   background-color: #fafafa;
-   min-height: 100vh;
-   overflow-y: scroll;
-   display: grid;
-   grid-template-columns: 60% 38%;
-   gap: 2%;
+  flex: 1;
+  padding: 3vmin;
+  background-color: #fafafa;
+  min-height: 100vh;
+  overflow-y: scroll;
+  display: grid;
+  grid-template-columns: 60% 38%;
+  gap: 2%;
 }
 
 .dashboardMain p {
-   margin: 0;
-   padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .recentOrdersContainer {
-   width: 100%;
-   background-color: white;
-   border-radius: 5px;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-   padding: 2vmin;
-   margin-top: 3vmin;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  padding: 2vmin;
+  margin-top: 3vmin;
 }
 
 .titlesRecentOrders,
 .recentOrder {
-   padding: 0 2vmin;
-   display: grid;
-   grid-template-columns: 17% 18% 22% 18% 24%;
+  padding: 0 2vmin;
+  display: grid;
+  grid-template-columns: 17% 18% 22% 18% 24%;
 }
 
 .titlesRecentOrders {
-   padding-bottom: 2vmin;
-   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-   color: rgba(0, 0, 0, 0.7);
+  padding-bottom: 2vmin;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .recentOrders {
-   padding-top: 2vmin;
-   gap: 2vmin;
-   display: flex;
-   flex-direction: column;
+  padding-top: 2vmin;
+  gap: 2vmin;
+  display: flex;
+  flex-direction: column;
 }
 
 .recentOrder {
-   color: rgba(0, 0, 0, 0.5);
-   padding: 2vmin 2vmin;
-   border: 1px solid rgba(0, 0, 0, 0.1);
-   border-radius: 5px;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 2vmin 2vmin;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
 .recentOrder:hover {
-   background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .recentOrder div {
-   display: flex;
-   align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .articleDashboard {
-   height: 7vh;
-   width: 7vh;
-   background-size: cover;
-   background-position: center;
+  height: 7vh;
+  width: 7vh;
+  background-size: cover;
+  background-position: center;
 }
 
 .statistics {
-   margin-top: 1vmin;
-   width: 100%;
-   gap: 2vmin;
-   background-color: white;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-   border-radius: 5px;
-   padding: 1vmin;
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
+  margin-top: 1vmin;
+  width: 100%;
+  gap: 2vmin;
+  background-color: white;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 1vmin;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .boxDash {
-   display: flex;
-   align-items: center;
-   gap: 2vmin;
+  display: flex;
+  align-items: center;
+  gap: 2vmin;
 }
 
 .boxDash span {
-   font-size: 2.2vmin;
-   color: gray;
+  font-size: 2.2vmin;
+  color: gray;
 }
 
 .boxDash p {
-   font-size: 3.5vmin;
-   font-weight: bold;
+  font-size: 3.5vmin;
+  font-weight: bold;
 }
 
 .miniboxDash {
-   /* background-color: blue; */
-   height: 8vh;
-   width: 8vh;
-   border-radius: 10px;
-   display: flex;
-   align-items: center;
-   justify-content: center;
+  /* background-color: blue; */
+  height: 8vh;
+  width: 8vh;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .activePanel {
-   background-color: white;
-   border-radius: 5px;
-   color: #8165ff;
+  background-color: white;
+  border-radius: 5px;
+  color: #8165ff;
 }
 
 .miniboxDash svg {
-   width: 50%;
-   height: 50%;
+  width: 50%;
+  height: 50%;
 }
 
 .other {
-   margin: 1vmin 0;
-   gap: 3vmin;
+  margin: 1vmin 0;
+  gap: 3vmin;
 }
 
 .lastAddedProducts {
-   width: 100%;
-   background-color: white;
-   border-radius: 5px;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-   padding: 2vmin;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  padding: 2vmin;
 }
 
 .box2 {
-   width: 100%;
-   background-color: white;
-   border-radius: 5px;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-   padding: 2vmin;
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  padding: 2vmin;
 }
 
 /* PURCHASES USER */
 
 .userFoundPurchase {
-   background-color: white;
-   border-radius: 5px;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-   margin: 0 10%;
-   padding: 2vmin;
-   /* margin-top: -5vmin; */
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  margin: 0 10%;
+  padding: 2vmin;
+  /* margin-top: -5vmin; */
 }
 
 .containerPurchase {
-   border: 1px solid rgba(0, 0, 0, 0.1);
-   border-radius: 5px;
-   padding: 2vmin;
-   flex: 1;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 2vmin;
+  flex: 1;
 }
 
 .containerPurchase p {
-   margin: 0;
+  margin: 0;
 }
 
 .titlesPurchasesUser,
 .detailsPurchaseUser {
-   display: grid;
-   grid-template-columns: 26% 35% 10% 10% 13%;
+  display: grid;
+  grid-template-columns: 26% 35% 10% 10% 13%;
 }
 
 .titlesPurchasesUser {
-   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-   padding-bottom: 2vmin;
-   /* color: gray; */
-   font-weight: 600;
-   /* padding-left: 2vmin; */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 2vmin;
+  /* color: gray; */
+  font-weight: 600;
+  /* padding-left: 2vmin; */
 }
 
 .detailsPurchaseUser > div {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .detailsPurchaseUser {
-   padding: 2vmin;
-   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-   color: gray;
+  padding: 2vmin;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: gray;
 }
 
 .purchasesUserContainer {
-   margin-top: -7vmin;
-   display: grid;
-   grid: repeat(1, 1fr);
-   gap: 2vmin;
+  margin-top: -7vmin;
+  display: grid;
+  grid: repeat(1, 1fr);
+  gap: 2vmin;
 }
 
 /* NOTIFICACIONES */
 
 .relative {
-   position: relative;
+  position: relative;
 }
 
 .notification {
-   position: absolute;
-   top: -5px;
-   right: 5px;
-   background-color: red;
-   border: 1px solid white;
-   border-radius: 50%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   color: white;
-   width: 16px;
-   height: 16px;
-   font-size: 11px;
-   font-weight: lighter;
+  position: absolute;
+  top: -5px;
+  right: 5px;
+  background-color: red;
+  border: 1px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 16px;
+  height: 16px;
+  font-size: 11px;
+  font-weight: lighter;
 }
 
 .notificationsHeader {
-   background-color: white;
-   /* box-shadow: 1px 1px 1px 5px rgba(0, 0, 0, 0.1); */
-   border-radius: 5px;
-   width: 30vw;
-   margin: 3vmin;
-   padding: 2vmin;
-   display: flex;
-   flex-direction: column;
-   gap: 2vmin;
-   position: absolute;
-   /* border: 3px solid #e3e3e3; */
-   top: 110%;
-   right: -500%;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  /* box-shadow: 1px 1px 1px 5px rgba(0, 0, 0, 0.1); */
+  border-radius: 5px;
+  width: 30vw;
+  margin: 3vmin;
+  padding: 2vmin;
+  display: flex;
+  flex-direction: column;
+  gap: 2vmin;
+  position: absolute;
+  /* border: 3px solid #e3e3e3; */
+  top: 110%;
+  right: -500%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .notificationsHeader h5 {
-   margin: 0;
+  margin: 0;
 }
 
 .notificationHeader {
-   display: flex;
-   align-items: center;
-   border-radius: 5px;
-   border: 1px solid rgba(0, 0, 0, 0.1);
-   padding: 1vmin;
-   gap: 2vmin;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1vmin;
+  gap: 2vmin;
 }
 
 .notificationsHeader p {
-   margin: 0;
-   flex: 1;
-   color: rgba(0, 0, 0, 0.7);
+  margin: 0;
+  flex: 1;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .iconNoti {
-   height: 4vw;
-   width: 4vw;
-   background-size: cover;
-   background-position: center;
+  height: 4vw;
+  width: 4vw;
+  background-size: cover;
+  background-position: center;
 }
 
 .notificationsHeader:after,
 .notificationsHeader:before {
-   bottom: 100%;
-   left: 50%;
-   border: solid transparent;
-   content: " ";
-   height: 0;
-   width: 0;
-   position: absolute;
-   pointer-events: none;
+  bottom: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
 }
 .notificationsHeader:after {
-   border-color: rgba(136, 183, 213, 0);
-   border-bottom-color: #ffffff;
-   border-width: 16px;
-   margin-left: -21px;
+  border-color: rgba(136, 183, 213, 0);
+  border-bottom-color: #ffffff;
+  border-width: 16px;
+  margin-left: -21px;
 }
 .notificationsHeader:before {
-   border-color: rgba(194, 225, 245, 0);
-   border-bottom-color: #5a585815;
-   border-width: 20px;
-   margin-left: -25px;
+  border-color: rgba(194, 225, 245, 0);
+  border-bottom-color: #5a585815;
+  border-width: 20px;
+  margin-left: -25px;
 }
 #finalizeYourPurchase {
-   margin-left: 0;
+  margin-left: 0;
+}
+#addressFormForResponsive {
+   width: 35vw;
 }
 
 /* MEDIAQUERIES */
 
 @media (max-width: 992px) {
-   .hero {
-      padding-top: 200px;
-      flex-wrap: wrap;
-      justify-content: center;
-   }
-   .mostWantedTittle {
-      padding-top: 100px;
-   }
-   .mostWantedGame {
-      width: 180px;
-      height: 180px;
-      background-size: cover;
-      background-repeat: no-repeat;
-      align-self: center;
-   }
-   .mostWantedGameBrand {
-      margin: 1em;
-      font-size: 5vmin;
-   }
-   .socialMediaContainer {
-      width: 25%;
-   }
-   .heroPageCont {
-      min-height: 30vh;
-   }
-   .main-sign {
-      width: 60%;
-   }
-   .scrollButton {
-      left: 94%;
-   }
+  .hero {
+    padding-top: 200px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .mostWantedTittle {
+    padding-top: 100px;
+  }
+  .mostWantedGame {
+    width: 180px;
+    height: 180px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    align-self: center;
+  }
+  .mostWantedGameBrand {
+    margin: 1em;
+    font-size: 5vmin;
+  }
+  .socialMediaContainer {
+    width: 25%;
+  }
+  .heroPageCont {
+    min-height: 30vh;
+  }
+  .main-sign {
+    width: 60%;
+  }
+  .scrollButton {
+    left: 94%;
+  }
 
-   /*ArticlesPage*/
+  /*ArticlesPage*/
 
-   .articleDescription {
-      width: 55%;
-   }
-   .articleDeco {
-      width: 22%;
-      height: 22vh;
-   }
-   .articleDecoRight {
-      padding-right: 2em;
-   }
+  .articleDescription {
+    width: 55%;
+  }
+  .articleDeco {
+    width: 22%;
+    height: 22vh;
+  }
+  .articleDecoRight {
+    padding-right: 2em;
+  }
 }
 
 @media (min-width: 992px) {
-   #mainNav {
-      box-shadow: none;
-      background-color: transparent;
-   }
-   #mainNav .navbar-brand {
-      color: rgba(255, 255, 255, 0.85);
-   }
-   #mainNav .navbar-brand:hover {
-      color: #fff;
-   }
-   #mainNav .navbar-nav .nav-item .nav-link {
-      color: rgba(255, 255, 255, 0.95);
-      padding: 0 1rem;
-   }
-   #mainNav .navbar-nav .nav-item .nav-link:hover {
-      color: #fff;
-   }
-   #mainNav .navbar-nav .nav-item:last-child .nav-link {
-      padding-right: 0;
-   }
-   #mainNav.navbar-shrink {
-      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-      background-color: #fff;
-   }
-   #mainNav.navbar-shrink .navbar-brand {
-      color: #212529;
-   }
-   #mainNav.navbar-shrink .navbar-brand:hover {
-      color: #6cdece;
-   }
-   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
-      color: #212529;
-   }
-   #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
-      color: #6cdece;
-   }
+  #mainNav {
+    box-shadow: none;
+    background-color: transparent;
+  }
+  #mainNav .navbar-brand {
+    color: rgba(255, 255, 255, 0.85);
+  }
+  #mainNav .navbar-brand:hover {
+    color: #fff;
+  }
+  #mainNav .navbar-nav .nav-item .nav-link {
+    color: rgba(255, 255, 255, 0.95);
+    padding: 0 1rem;
+  }
+  #mainNav .navbar-nav .nav-item .nav-link:hover {
+    color: #fff;
+  }
+  #mainNav .navbar-nav .nav-item:last-child .nav-link {
+    padding-right: 0;
+  }
+  #mainNav.navbar-shrink {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+  }
+  #mainNav.navbar-shrink .navbar-brand {
+    color: #212529;
+  }
+  #mainNav.navbar-shrink .navbar-brand:hover {
+    color: #6cdece;
+  }
+  #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link {
+    color: #212529;
+  }
+  #mainNav.navbar-shrink .navbar-nav .nav-item .nav-link:hover {
+    color: #6cdece;
+  }
 }
 
 @media (max-width: 576px) {
-   .hero {
-      padding-top: 180px;
-   }
-   .cube {
-      height: 400px;
-      width: 400px;
-      margin-bottom: 60px;
-   }
-   .mostWantedTittle {
-      padding-top: 60px;
-      padding-bottom: 50px;
-      font-size: 38px;
-   }
-   .mostWantedGame {
-      width: 300px;
-      height: 300px;
-      position: relative;
-      bottom: 55px;
-   }
-   .mostWantedGameBrand {
-      margin: 0em;
-      font-size: 6vmin;
-      text-align: center;
-      position: relative;
-      bottom: 75px;
-   }
-   .mostWantedCard {
-      width: 85%;
-   }
-   .mostWantedGameConteiner,
-   .mostWantedGameConteinerLeft {
-      padding-right: 0rem;
-      align-self: flex-start;
-      width: 90%;
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: flex-start;
-   }
-   .mostWantedGameConteinerLeft {
-      padding-left: 0rem !important;
-      flex-direction: column !important;
-   }
-   .socialMediaContainer {
-      width: 50%;
-   }
+  .hero {
+    padding-top: 180px;
+  }
+  .cube {
+    height: 400px;
+    width: 400px;
+    margin-bottom: 60px;
+  }
+  .mostWantedTittle {
+    padding-top: 60px;
+    padding-bottom: 50px;
+    font-size: 38px;
+  }
+  .mostWantedGame {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    bottom: 55px;
+  }
+  .mostWantedGameBrand {
+    margin: 0em;
+    font-size: 6vmin;
+    text-align: center;
+    position: relative;
+    bottom: 75px;
+  }
+  .mostWantedCard {
+    width: 85%;
+  }
+  .mostWantedGameConteiner,
+  .mostWantedGameConteinerLeft {
+    padding-right: 0rem;
+    align-self: flex-start;
+    width: 90%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .mostWantedGameConteinerLeft {
+    padding-left: 0rem !important;
+    flex-direction: column !important;
+  }
+  .socialMediaContainer {
+    width: 50%;
+  }
 
-   .footerRights {
-      font-size: 3.3vmin;
-      padding-bottom: 1em;
-   }
+  .footerRights {
+    font-size: 3.3vmin;
+    padding-bottom: 1em;
+  }
 
-   /* Filter */
+  /* Filter */
 
-   .search {
-      width: 100%;
-   }
-   .search label {
-      text-align: center;
-      font-size: 4.5vmin;
-   }
+  .search {
+    width: 100%;
+  }
+  .search label {
+    text-align: center;
+    font-size: 4.5vmin;
+  }
 
-   .search input {
-      height: 3em;
-      width: 100%;
-   }
-   .cartSection2 div {
-      justify-content: center;
-   }
-   .quantity div {
-      margin: 0px 5px;
-   }
+  .search input {
+    height: 3em;
+    width: 100%;
+  }
+  .cartSection2 div {
+    justify-content: center;
+  }
+  .quantity div {
+    margin: 0px 5px;
+  }
 
-   .searchButton {
-      font-size: 4.5vmin;
-      width: 250px;
-   }
-   .filtersBox {
-      margin-left: 0px;
-   }
+  .searchButton {
+    font-size: 4.5vmin;
+    width: 250px;
+  }
+  .filtersBox {
+    margin-left: 0px;
+  }
 
-   .filterOption select {
-      width: 180px;
-   }
-   .heroPageCont {
-      min-height: 20vh;
-   }
-   .main-sign {
-      width: 80%;
-   }
-   .scrollButton {
-      left: 91%;
-   }
-   .buttonGoogle {
-      font-size: 3.5vmin;
-   }
-   .signupEmailOption {
-      font-size: 3vmin;
-   }
-   .main-sign label {
-      font-size: 3.2vmin;
-   }
-   .signupButtonSignup,
-   .signinButtonSignup {
-      font-size: 4vmin;
-   }
-   .main-sign h2 {
-      font-size: 7vmin;
-   }
-   .signinButtonSignupText {
-      font-size: 3vmin;
-   }
-   .adTerms {
-      font-size: 2.5vmin;
-   }
-   .articleData {
-      width: 85%;
-   }
-   .containerData {
-      width: 450px;
-   }
+  .filterOption select {
+    width: 180px;
+  }
+  .heroPageCont {
+    min-height: 20vh;
+  }
+  .main-sign {
+    width: 80%;
+  }
+  .scrollButton {
+    left: 91%;
+  }
+  .buttonGoogle {
+    font-size: 3.5vmin;
+  }
+  .signupEmailOption {
+    font-size: 3vmin;
+  }
+  .main-sign label {
+    font-size: 3.2vmin;
+  }
+  .signupButtonSignup,
+  .signinButtonSignup {
+    font-size: 4vmin;
+  }
+  .main-sign h2 {
+    font-size: 7vmin;
+  }
+  .signinButtonSignupText {
+    font-size: 3vmin;
+  }
+  .adTerms {
+    font-size: 2.5vmin;
+  }
+  .articleData {
+    width: 85%;
+  }
+  .containerData {
+    width: 450px;
+  }
 
-   .articleDescription {
-      width: 80%;
-      bottom: 30px;
-   }
+  .articleDescription {
+    width: 80%;
+    bottom: 30px;
+  }
 
-   .articleDecoRight {
-      padding-right: 2em;
-      bottom: 80px;
-   }
-   .articleDecoDown {
-      position: relative;
-      bottom: 230px;
-   }
-   /*Profile*/
-   .divProfile {
-      width: 95vw;
-   }
-   .profileFirstData {
-      display: flex;
-      flex-direction: column;
-      padding: 0px 20px;
-   }
-   .profileFirstData h3 {
-      font-size: 2.8rem;
-   }
-   .titleProfile {
-      font-size: 10vmin;
-      font-weight: 700;
-   }
-   .profileTitles {
-      right: 1rem;
-   }
-   .containerDataProfile {
-      width: 80vw;
-   }
+  .articleDecoRight {
+    padding-right: 2em;
+    bottom: 80px;
+  }
+  .articleDecoDown {
+    position: relative;
+    bottom: 230px;
+  }
+  /*Profile*/
+  .divProfile {
+    width: 95vw;
+  }
+  .profileFirstData {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+  }
+  .profileFirstData h3 {
+    font-size: 2.8rem;
+  }
+  .titleProfile {
+    font-size: 10vmin;
+    font-weight: 700;
+  }
+  .profileTitles {
+    right: 1rem;
+  }
+  .containerDataProfile {
+    width: 80vw;
+  }
 
-   .addressAddedCard {
-      width: 100%;
-   }
-   .inputsAdd {
-      width: 100%;
-   }
-   .phone p,
-   .addressAddedCard p {
-      font-size: large;
-   }
-   .profileButton {
-      font-size: 3.6vmin;
-   }
+  .addressAddedCard {
+    width: 100%;
+  }
+  .inputsAdd {
+    width: 100%;
+  }
+  .phone p,
+  .addressAddedCard p {
+    font-size: large;
+  }
+  .profileButton {
+    font-size: 3.6vmin;
+  }
+  .fifi {
+    width: 100%;
+  }
 
-   /*Wishlist*/
-   .mainWishlist {
-      padding: 0 40px;
-   }
-   .mainWishlist h2 {
-      font-size: 60px;
-   }
-   .searchbarWishlist input {
-      width: 100%;
-   }
-   .searchbarWishlist p {
-      font-size: large;
-   }
+  /*Wishlist*/
+  .mainWishlist {
+    padding: 0 40px;
+  }
+  .mainWishlist h2 {
+    font-size: 60px;
+  }
+  .searchbarWishlist input {
+    width: 100%;
+  }
+  .searchbarWishlist p {
+    font-size: large;
+  }
 
-   /* Cart */
+  /* Cart */
 
-   .bodyCart h2 {
-      font-size: 8vmin;
-   }
-   .cartSection1 {
-      width: 100vw;
-   }
+  .bodyCart h2 {
+    font-size: 8vmin;
+  }
+  .cartSection1 {
+    width: 100vw;
+  }
 
-   .cartSection2 {
-      width: 100vw;
-   }
+  .cartSection2 {
+    width: 100vw;
+  }
 
-   .quantity div {
-      margin: 0px 5px;
-   }
+  .quantity div {
+    margin: 0px 5px;
+  }
 
-   .cartSection1 tbody tr td:first-child {
-      width: 8%;
-      padding-left: 0px;
-   }
-   .cartSection1 tbody tr td:nth-child(2) {
-      width: 22%;
-      padding-left: 0px;
-   }
-   .cartSection1 tbody tr td:nth-child(3) {
-      width: 10%;
-   }
-   .cartSection1 tbody tr td:nth-child(4) {
-      width: 15%;
-   }
-   .cartSection1 tbody tr td:nth-child(4) p {
-      margin-bottom: 0px;
-   }
-   .cartSection1 tbody tr td:nth-child(5) {
-      width: 10%;
-      text-align: right;
-      padding-right: 0%;
-   }
-   .quantity button {
-      padding: 0px 7px;
-   }
-   .delete button {
-      margin: 0px 2px;
-   }
-   .totalsCard {
-      align-self: center;
-      width: 100%;
-      margin: 0px 20px;
-   }
-   #cartLastSection {
-      width: 100%;
-      align-self: center;
-   }
-   .chooseAnAddress {
-      text-align: center;
-   }
-   #formStripeForResponsive {
-      width: 80vw;
-   }
+  .cartSection1 tbody tr td:first-child {
+    width: 8%;
+    padding-left: 0px;
+  }
+  .cartSection1 tbody tr td:nth-child(2) {
+    width: 22%;
+    padding-left: 0px;
+  }
+  .cartSection1 tbody tr td:nth-child(3) {
+    width: 10%;
+  }
+  .cartSection1 tbody tr td:nth-child(4) {
+    width: 15%;
+  }
+  .cartSection1 tbody tr td:nth-child(4) p {
+    margin-bottom: 0px;
+  }
+  .cartSection1 tbody tr td:nth-child(5) {
+    width: 10%;
+    text-align: right;
+    padding-right: 0%;
+  }
+  .quantity button {
+    padding: 0px 7px;
+  }
+  .delete button {
+    margin: 0px 2px;
+  }
+  .totalsCard {
+    align-self: center;
+    width: 100%;
+    margin: 0px 20px;
+  }
+  #cartLastSection {
+    width: 100%;
+    align-self: center;
+  }
+  .chooseAnAddress {
+    text-align: center;
+  }
+  #formStripeForResponsive {
+    width: 80vw;
+  }
+  .checkoutContainerCard {
+   width: 85vw;
+ }
+ #addressFormForResponsive {
+    width: 85vw;
+ }
+ .checkoutContainer {
+   width: 85%;
+ }
+  /* Purchases*/
+  .userFoundPurchase {
+    margin: 0;
+    width: 86vw;
+    }
 
-   /* .cartAddressInputs {
-   text-align: center;
-}
-.cartAddressInputs input {
-   height: 40px;
-   outline: none;
-   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-   width: 100%;
-   padding: 0 2vmin;
-   border-radius: 5px;
-   border: none;
-}
-.chooseAnAddress {
-   color: gray;
-   font-weight: 600;
-   margin: 2rem 0;
-}
-
-.emptyCart {
-   width: 100%;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-}
-
-.buttonShop {
-   width: 10rem;
-   padding: 1em;
-   border-radius: 0.5rem;
-   background-size: cover;
-   background-position: center;
-   justify-content: center;
-   align-items: center;
-}
-
-.shopLink {
-   text-align: center;
-   text-decoration: none;
-   color: white;
-   letter-spacing: 1px;
-   font-family: "Poppins", sans-serif;
-   font-weight: bold;
-}
-
-.shopLink:hover {
-   color: white;
-}
-
-.ludoGif {
-   width: 25%;
-} */
+  .containerPurchase {
+    flex-wrap: wrap;
+    display: flex;
+    align-content: flex-start;
+  }
+  .titlesPurchasesUser {
+     display: table-row;
+     padding-top: 10px;
+     width: 15%;
+  }
+  .detailsPurchaseUser {
+     display: table-row;
+     width: 85%;
+  }
+  .statusPurchasePanel {
+   width: 30%;
+ }
+  #noneForResponsive {
+     display: none;
+  }
 }
 
 @media (max-width: 450px) {
-   .cube {
-      height: 350px;
-      min-width: 350px;
-      margin-top: 30px;
-      margin-bottom: 10px;
-   }
-   .mostWantedTittle {
-      padding-top: 35px;
-      padding-bottom: 50px;
-      font-size: 28px;
-   }
-   .mostWantedGame {
-      width: 290px;
-      height: 290px;
-      bottom: 55px;
-   }
-   .mostWantedGameBrand {
-      bottom: 62px;
-   }
-   .socialMediaContainer {
-      width: 60%;
-   }
+  .cube {
+    height: 350px;
+    min-width: 350px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  .mostWantedTittle {
+    padding-top: 35px;
+    padding-bottom: 50px;
+    font-size: 28px;
+  }
+  .mostWantedGame {
+    width: 290px;
+    height: 290px;
+    bottom: 55px;
+  }
+  .mostWantedGameBrand {
+    bottom: 62px;
+  }
+  .socialMediaContainer {
+    width: 60%;
+  }
 
-   .search label {
-      font-size: 6vmin;
-   }
-   .searchButton {
-      font-size: 6vmin;
-      width: 100%;
-   }
+  .search label {
+    font-size: 6vmin;
+  }
+  .searchButton {
+    font-size: 6vmin;
+    width: 100%;
+  }
 
-   .filterOption select {
-      width: 250px;
-   }
-   .main-sign {
-      width: 85%;
-   }
-   .scrollButton {
-      left: 88%;
-   }
-   .buttonGoogle {
-      font-size: 4vmin;
-   }
-   .signupEmailOption {
-      font-size: 3.5vmin;
-   }
-   .main-sign label {
-      font-size: 4vmin;
-   }
-   .signupButtonSignup,
-   .signinButtonSignup {
-      font-size: 4.5vmin;
-   }
-   .main-sign h2 {
-      font-size: 8.5vmin;
-   }
-   .signinButtonSignupText {
-      font-size: 3.5vmin;
-   }
-   .adTerms {
-      font-size: 3vmin;
-   }
+  .filterOption select {
+    width: 250px;
+  }
+  .main-sign {
+    width: 85%;
+  }
+  .scrollButton {
+    left: 88%;
+  }
+  .buttonGoogle {
+    font-size: 4vmin;
+  }
+  .signupEmailOption {
+    font-size: 3.5vmin;
+  }
+  .main-sign label {
+    font-size: 4vmin;
+  }
+  .signupButtonSignup,
+  .signinButtonSignup {
+    font-size: 4.5vmin;
+  }
+  .main-sign h2 {
+    font-size: 8.5vmin;
+  }
+  .signinButtonSignupText {
+    font-size: 3.5vmin;
+  }
+  .adTerms {
+    font-size: 3vmin;
+  }
 
-   /*Profile*/
-   .divProfile {
-      width: 98vw;
+  .mainWishlist h2 {
+   font-size: 55px;
+ }
+  /*Profile*/
+  .divProfile {
+    width: 98vw;
+  }
+  .titleProfile {
+    font-size: 12vmin;
+  }
+  .profileFirstData h3 {
+    font-size: 2.5rem;
+  }
+  .profileTitles {
+    right: 0rem;
+  }
+  .profileButton {
+    font-size: 4.2vmin;
+  }
+  /*Purchases*/
+  .userFoundPurchase {
+     width: 82vw;
    }
-   .titleProfile {
-      font-size: 12vmin;
-   }
-   .profileFirstData h3 {
-      font-size: 2.5rem;
-   }
-   .profileTitles {
-      right: 0rem;
-   }
-   .profileButton {
-      font-size: 4.2vmin;
-   }
+ .titlesPurchasesUser {
+    width: 25%;
+ }
+ .detailsPurchaseUser {
+    width: 75%;
+ }
+ .statusPurchasePanel {
+  width: 50%;
+}
 }
 
 @media (max-width: 415px) {
-   .mostWantedTittle {
-      margin-top: 70px;
-   }
-   .mostWantedGame {
-      width: 270px;
-      height: 270px;
-   }
-   .signupEmailOption {
-      font-size: 4.2vmin;
-   }
-   .main-sign label {
-      font-size: 4.3vmin;
-   }
-}
-
-@media (max-width: 411px) {
-   .mostWantedTittle {
-      margin-top: 60px;
-   }
-   .mostWantedGame {
-      width: 260px;
-      height: 260px;
-   }
+  .mostWantedTittle {
+    margin-top: 70px;
+  }
+  .mostWantedGame {
+    width: 270px;
+    height: 270px;
+  }
+  .signupEmailOption {
+    font-size: 4.2vmin;
+  }
+  .main-sign label {
+    font-size: 4.3vmin;
+  }
+   /*Purchases*/
+   .userFoundPurchase {
+      width: 80vw;
+    }
+  .titlesPurchasesUser {
+     width: 25%;
+     font-size: smaller;
+  }
+  .detailsPurchaseUser {
+     width: 75%;
+     font-size: smaller;
+  }
+  .statusPurchasePanel {
+   width: 50%;
+ }
 }
 
 @media (max-width: 375px) {
-   .cube {
-      height: 320px;
-      min-width: 320px;
-   }
-   .mostWantedTittle {
-      margin-top: 10px;
-   }
-   .mostWantedGame {
-      width: 220px;
-      height: 220px;
-      position: relative;
-      bottom: 0px;
-   }
-   .mostWantedGameBrand {
-      text-align: center;
-      position: relative;
-      bottom: 0px;
-   }
-   .socialMediaContainer {
-      width: 70%;
-   }
+  .cube {
+    height: 320px;
+    min-width: 320px;
+  }
+  .mostWantedTittle {
+    margin-top: 10px;
+  }
+  .mostWantedGame {
+    width: 220px;
+    height: 220px;
+    position: relative;
+    bottom: 0px;
+  }
+  .mostWantedGameBrand {
+    text-align: center;
+    position: relative;
+    bottom: 0px;
+  }
+  .socialMediaContainer {
+    width: 70%;
+  }
 
-   .footerRights {
-      font-size: 4vmin;
-      text-align: center;
-      padding: 0px 10px;
-   }
-   .buttonGoogle {
-      font-size: 4.5vmin;
-   }
-   .signupButtonSignup,
-   .signinButtonSignup {
-      font-size: 5vmin;
-   }
-   .main-sign h2 {
-      font-size: 10vmin;
-   }
-   .signinButtonSignupText {
-      font-size: 4vmin;
-   }
-   .adTerms {
-      font-size: 3.5vmin;
-   }
+  .footerRights {
+    font-size: 4vmin;
+    text-align: center;
+    padding: 0px 10px;
+  }
+  .buttonGoogle {
+    font-size: 4.5vmin;
+  }
+  .signupButtonSignup,
+  .signinButtonSignup {
+    font-size: 5vmin;
+  }
+  .main-sign h2 {
+    font-size: 10vmin;
+  }
+  .signinButtonSignupText {
+    font-size: 4vmin;
+  }
+  .adTerms {
+    font-size: 3.5vmin;
+  }
 }

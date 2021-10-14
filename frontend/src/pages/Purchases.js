@@ -99,7 +99,7 @@ const Purchase = ({ purchase }) => {
                </div>
                <div>
                   <p>1074 Av. Rivadavia 23454 4B</p>
-                  <p>Buenos Aires, CABA</p>
+                  <p id="noneForResponsive">Buenos Aires, CABA</p>
                </div>
                <div>
                   <p>2021-10-11</p>

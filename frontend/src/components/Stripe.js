@@ -2,7 +2,7 @@ import { useState } from "react"
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js"
 import { usePurchase } from "../hooks/usersHooks"
 import axios from "axios"
-const HOST = "http://localhost:4000"
+const HOST = "https://lodotechgames.herokuapp.com"
 
 const Stripe = ({ formik, user, history }) => {
   const stripe = useStripe()
