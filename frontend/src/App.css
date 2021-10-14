@@ -1828,7 +1828,8 @@ h2.articles {
    justify-content: flex-end;
    padding: 20px 0px;
    color: gray;
-   width: 100%;
+   width: 70vw;
+   align-self: center;
 }
 .cartSection2 div {
    display: flex;
@@ -1900,7 +1901,7 @@ h2.articles {
 .totalsCard {
    background-color: white;
    align-self: flex-end;
-   width: 20vw;
+   width: 30%;
    border-radius: 0px 0px 20px 20px;
    padding: 15px;
    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
@@ -1965,6 +1966,9 @@ h2.articles {
 
 .ludoGif {
    width: 25%;
+}
+#formStripeForResponsive {
+   width: 40vw;
 }
 /* PROFILE  */
 
@@ -2786,6 +2790,123 @@ h2.articles {
   .searchbarWishlist p {
     font-size: large;
   }
+
+  /* Cart */
+
+.bodyCart h2 {
+   font-size: 8vmin;
+}
+.cartSection1 {
+   width: 100vw;
+}
+
+.cartSection2 {
+   width: 100vw;
+}
+
+.quantity div {
+   margin: 0px 5px;
+}
+
+.cartSection1 tbody tr td:first-child {
+   width: 8%;
+   padding-left: 0px;
+}
+.cartSection1 tbody tr td:nth-child(2) {
+   width: 22%;
+   padding-left: 0px;
+}
+.cartSection1 tbody tr td:nth-child(3) {
+   width: 10%;
+}
+.cartSection1 tbody tr td:nth-child(4) {
+   width: 15%;
+}
+.cartSection1 tbody tr td:nth-child(4) p {
+   margin-bottom: 0px;
+}
+.cartSection1 tbody tr td:nth-child(5) {
+   width: 10%;
+   text-align: right;
+   padding-right: 0%;
+}
+.quantity button {
+   padding: 0px 7px;
+}
+.delete button {
+   margin: 0px 2px
+}
+.totalsCard {
+   align-self: center;
+   width: 100%;
+   margin: 0px 20px
+}
+#cartLastSection {
+   width: 100%;
+   align-self: center;
+}
+.chooseAnAddress {
+   text-align: center;
+}
+#formStripeForResponsive {
+   width: 80vw;
+}
+
+
+
+/* .cartAddressInputs {
+   text-align: center;
+}
+.cartAddressInputs input {
+   height: 40px;
+   outline: none;
+   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+   width: 100%;
+   padding: 0 2vmin;
+   border-radius: 5px;
+   border: none;
+}
+.chooseAnAddress {
+   color: gray;
+   font-weight: 600;
+   margin: 2rem 0;
+}
+
+.emptyCart {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.buttonShop {
+   width: 10rem;
+   padding: 1em;
+   border-radius: 0.5rem;
+   background-size: cover;
+   background-position: center;
+   justify-content: center;
+   align-items: center;
+}
+
+.shopLink {
+   text-align: center;
+   text-decoration: none;
+   color: white;
+   letter-spacing: 1px;
+   font-family: "Poppins", sans-serif;
+   font-weight: bold;
+}
+
+.shopLink:hover {
+   color: white;
+}
+
+.ludoGif {
+   width: 25%;
+} */
+
 }
 
 @media (max-width: 450px) {

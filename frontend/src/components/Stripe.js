@@ -81,9 +81,9 @@ const Stripe = ({ formik, user, history }) => {
     }
   }
   return (
-    <form
+    <form id="formStripeForResponsive"
       onSubmit={handleSubmit}
-      style={{ display: "flex", flexDirection: "column", width: "40vw" }}
+      style={{ display: "flex", flexDirection: "column" }}
     >
       <CardElement
         className="mb-5"

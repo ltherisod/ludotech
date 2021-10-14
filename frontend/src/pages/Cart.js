@@ -194,8 +194,8 @@ const Cart = (props) => {
                                                    backgroundImage: `url(${article.article.photos[0]})`,
                                                    backgroundPosition: "center",
                                                    backgroundSize: "cover",
-                                                   width: "100px",
-                                                   height: "100px",
+                                                   width: "80px",
+                                                   height: "80px",
                                                    margin: "10px",
                                                 }}
                                              ></div>
@@ -318,7 +318,7 @@ const Cart = (props) => {
                                     </p>
                                  </div>
                                  <div className="d-flex justify-content-center">
-                                    <button
+                                    <button 
                                        className="profileButton "
                                        style={{
                                           backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
@@ -340,7 +340,7 @@ const Cart = (props) => {
                               </article>
                            </section>
                            <section
-                              className="d-flex justify-content-center align-items-center flex-column"
+                              className="d-flex justify-content-center align-items-center flex-column" id="cartLastSection"
                               style={{ width: "90vw" }}
                            >
                               {viewMethod && (
@@ -388,7 +388,7 @@ const Cart = (props) => {
                                           </div>
                                        )}
                                        {!viewButtons && (
-                                          <button
+                                          <button id="finalizeYourPurchase"
                                              className="profileButton"
                                              style={{
                                                 backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
