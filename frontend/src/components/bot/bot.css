@@ -1,7 +1,7 @@
 .botContainer {
    position: fixed;
    bottom: 40px;
-   right: 40px;
+   right: 55px;
    z-index: 10;
    display: flex;
    align-items: flex-end;

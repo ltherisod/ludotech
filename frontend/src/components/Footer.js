@@ -41,9 +41,12 @@ const Footer = () => {
                />
             </a>
          </div>
-         <p className="footerRights">
-            LudoTech © All rights reserved || Mindhub 2021
-         </p>
+         <img
+            className="logoFooter"
+            src="https://i.postimg.cc/sfqQZZsH/logo-Mindhub.png"
+            alt="logoM"
+         />
+         <p className="footerRights">LudoTech © All rights reserved 2021</p>
       </footer>
    )
 }
