@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { StyleSheet, Text, View, ScrollView } from "react-native"
+import { StyleSheet, Text, View, ScrollView, ImageBackground } from "react-native"
 import { CardField, createPaymentMethod } from "@stripe/stripe-react-native"
 import DirectionsForm from "../components/DirectionsForm"
 import axios from "axios"
@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux"
 import { ActivityIndicator, Button, Colors } from "react-native-paper"
 import usersActions from "../redux/actions/usersActions"
 import Preloader from "../components/Preloader"
+import HeroPages from "../components/HeroPages"
+import Footer from "../components/Footer"
 
 const HOST = "https://lodotechgames.herokuapp.com"
 
@@ -100,13 +102,15 @@ const Stripe = (props) => {
    return (
       <View>
          <ScrollView>
+            <ImageBackground style={{flex:1}}source={{uri : "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png"}}>
+               <HeroPages/>
             <DirectionsForm
                initialValues={initialValues}
                submitCallback={(values) => {
                   purchaseHandler(values)
                }}
                alias={false}
-               buttonText="Pay"
+               buttonText="Finalize your purchase"
             >
                <CardField
                   postalCodeEnabled={false}
@@ -115,10 +119,14 @@ const Stripe = (props) => {
                   }}
                   cardStyle={{
                      backgroundColor: "white",
+                     borderColor: "lightgray",
+                     borderWidth: 1,
+                     borderRadius:5,
                   }}
                   style={{
                      width: "100%",
                      height: 50,
+                    
                   }}
                   onCardChange={(cardDetails) => {
                      setCardDetails(cardDetails)
@@ -130,6 +138,8 @@ const Stripe = (props) => {
                   <Text style={{ color: "red" }}>{error}</Text>
                </View>
             )}
+            <Footer/>
+            </ImageBackground>
          </ScrollView>
       </View>
    )

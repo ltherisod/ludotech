@@ -17,6 +17,7 @@ import {
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import HeroPages from "../components/HeroPages"
+import FontAwesome from "react-native-vector-icons/FontAwesome"
 
 const Cart = (props) => {
    console.log(props)
@@ -179,8 +180,15 @@ const Cart = (props) => {
                         </View>
                      </View>
                      <TouchableOpacity onPress={submitSell}>
-                        <Text>Buy</Text>
-                     </TouchableOpacity>
+                <ImageBackground
+              style={styles.cartButton2}
+              source={{ uri: "https://i.postimg.cc/mD7r09R8/button-Back.png" }}
+              imageStyle={{ borderRadius: 5 }}
+            >
+                <FontAwesome name="credit-card" color={"white"} size={15} />
+                <Text style={styles.cartButtonText}> Buy </Text>
+                </ImageBackground>
+                </TouchableOpacity>
                   </View>
                </View>
                <Footer />
@@ -343,4 +351,21 @@ const styles = StyleSheet.create({
       fontSize: 16,
       fontFamily: "Poppins_600SemiBold",
    },
+   cartButton2: {
+      alignSelf: "center",
+      paddingVertical: 5,
+      paddingHorizontal: 10,
+      width: 80,
+      margin:5,
+      flexDirection:'row', 
+      alignItems:'center',
+      justifyContent:'center'
+
+    }, 
+    cartButtonText: {
+      color: "white",
+      textAlign: "center",
+      fontFamily: "Poppins_700Bold",
+      marginLeft:4,
+    },  
 })

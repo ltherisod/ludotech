@@ -134,8 +134,8 @@ const DirectionsForm = ({
           <View style={{ width: 0.8 * width }}>{children}</View>
           <TouchableOpacity onPress={formik.handleSubmit}>
             <ImageBackground
-              style={{ width: 0.8 * width, padding: 7, marginVertical: 30 }}
-              source={{ uri: "https://i.postimg.cc/256ZjvPG/back-Button.png" }}
+              style={{ width: 0.7 * width, padding: 7, marginTop: 30, alignSelf:'center' }}
+              source={{ uri: "https://i.postimg.cc/GhMnJB8K/button-PDF.png" }}
               imageStyle={{ borderRadius: 5 }}
             >
               <Text
@@ -144,6 +144,7 @@ const DirectionsForm = ({
                   fontFamily: "Poppins_600SemiBold",
                   alignSelf: "center",
                   letterSpacing: 1,
+                  fontSize:17,
                 }}
               >
                 {buttonText}
@@ -168,6 +169,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     borderRadius: 5,
     backgroundColor: "white",
+    fontFamily:'Poppins_500Medium'
   },
 })
 
