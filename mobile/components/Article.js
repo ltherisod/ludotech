@@ -56,7 +56,7 @@ const Article = (props) => {
                 name="heart"
                 style={{
                   fontSize: 32,
-                  color: "red",
+                  color: "#e561ae",
                   alignSelf: "flex-end",
                   margin: 5,
                 }}
