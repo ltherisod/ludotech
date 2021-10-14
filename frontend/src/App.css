@@ -1901,7 +1901,7 @@ h2.articles {
 .totalsCard {
    background-color: white;
    align-self: flex-end;
-   width: 30%;
+   width: 35%;
    border-radius: 0px 0px 20px 20px;
    padding: 15px;
    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
@@ -2550,10 +2550,6 @@ h2.articles {
    .main-sign {
       width: 60%;
    }
-   .signUpBody,
-   .signInBody {
-      background-position: cover;
-   }
    .scrollButton {
       left: 94%;
    }
@@ -2804,6 +2800,9 @@ h2.articles {
    width: 100vw;
 }
 
+.cartSection2 div {
+   justify-content: center;
+}
 .quantity div {
    margin: 0px 5px;
 }
