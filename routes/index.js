@@ -62,9 +62,9 @@ router
     usersControllers.getAccounts
   )
 
-router
-  .route("/stripe/get-payment-method/:id")
-  .get(purchaseControllers.stripeTest)
+// router
+//   .route("/stripe/get-payment-method/:id")
+//   .get(purchaseControllers.stripeTest)
 
 router
   .route("/stripe/payment-intent")
@@ -72,7 +72,9 @@ router
     passport.authenticate("jwt", { session: false }),
     purchaseControllers.stripePaymentIntent
   )
+
 router.route("/receipt/:id").get(purchaseControllers.createPurchasePDF)
+
 router
   .route("/user/purchase")
   .post(
@@ -123,7 +125,9 @@ router
 
 router.route("/mostvisitarticles").get(articlesControllers.getMostVisitArticles)
 
-router.route("/article").post(articlesControllers.addArticle)
+router
+  .route("/article")
+  .post(articleValidator.articleValidator, articlesControllers.addArticle)
 
 // ARTICLESUTILS ROUTES
 router
@@ -149,18 +153,7 @@ router
   )
 
 router.route("/article/related/:genreId").get(articlesControllers.getRelated)
-router
-  .route("/article/:id")
-  .get(articlesControllers.getArticle)
-  .put(
-    articleValidator.articleUpdateValidator,
-    articlesControllers.updateArticle
-  )
-  .delete(articlesControllers.deleteArticle)
 
-router
-  .route("/article")
-  .post(articleValidator.articleValidator, articlesControllers.addArticle)
 
 // SEND EMAIL
 router.route("/confirmation-email").post(usersControllers.sendConfirmationEmail)

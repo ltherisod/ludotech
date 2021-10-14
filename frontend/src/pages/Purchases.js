@@ -14,7 +14,7 @@ const Purchases = () => {
 
    useEffect(() => {
       axios
-         .get(`http://localhost:4000/api/user/purchases/${user._id}`)
+         .get(`http://localhost:4000/api/user/purchases/${user._id}`, { headers: { Authorization: "Bearer " + user.token }})
          .then((res) => {
             setPurchases(res.data.response)
             setSearched(res.data.response)
@@ -33,7 +33,7 @@ const Purchases = () => {
       )
    }
 
-   console.log(purchases)
+   // console.log(purchases)
 
    return (
       <div
