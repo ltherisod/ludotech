@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   StyleSheet,
+  Dimensions,
 } from "react-native"
 const DirectionsForm = ({
   submitCallback,
@@ -130,10 +131,10 @@ const DirectionsForm = ({
           <Text style={{ color: "transparent" }}>NoErrors</Text>
         )}
         <View style={buttonStyle}>
-          <View>{children}</View>
+          <View style={{ width: 0.8 * width }}>{children}</View>
           <TouchableOpacity onPress={formik.handleSubmit}>
             <ImageBackground
-              style={{ width: 30, padding: 3, marginVertical: 10 }}
+              style={{ width: 0.8 * width, padding: 7, marginVertical: 30 }}
               source={{ uri: "https://i.postimg.cc/256ZjvPG/back-Button.png" }}
               imageStyle={{ borderRadius: 5 }}
             >
@@ -155,11 +156,13 @@ const DirectionsForm = ({
   )
 }
 
+const { width } = Dimensions.get("screen")
+
 const styles = StyleSheet.create({
   inputText: {
-    width: 250,
+    width: 0.8 * width,
     borderColor: "lightgray",
-    marginTop: 10,
+    marginTop: 5,
     borderWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 5,

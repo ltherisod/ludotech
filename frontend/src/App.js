@@ -17,28 +17,28 @@ import Purchases from "./pages/Purchases"
 import Notifications from "./components/Notifications"
 
 const App = (props) => {
-   useLoginLS()
-   const user = useSelector((state) => state.users.user)
-   return (
-      <BrowserRouter>
-         <Switch>
-            <Route exact path="/" component={Home} />
-            {user && <Route path="/paypal" component={Paypal} />}
-            <Route path="/articles" component={Articles} />
-            <Route path="/article/:id" component={ArticlePage} />
-            {!user && <Route path="/signin" component={SignIn} />}
-            {!user && <Route path="/signup" component={SignUp} />}
-            {user && <Route path="/admin" component={PanelAdmin} />}
-            {user && <Route path="/profile" component={UserProfile} />}
-            {user && <Route path="/cart" component={Cart} />}
-            {user && <Route path="/checkout" component={Checkout} />}
-            {user && <Route path="/wishlist" component={Wishlist} />}
-            {user && <Route path="/mypurchases" component={Purchases} />}
-            <Route path="/notifications" component={Notifications} />
-            <Redirect to="/" />
-         </Switch>
-      </BrowserRouter>
-   )
+  useLoginLS()
+  const user = useSelector((state) => state.users.user)
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        {user && <Route path="/paypal" component={Paypal} />}
+        <Route path="/articles" component={Articles} />
+        <Route path="/article/:id" component={ArticlePage} />
+        {!user && <Route path="/signin" component={SignIn} />}
+        {!user && <Route path="/signup" component={SignUp} />}
+        {user?.isAdmin && <Route path="/admin" component={PanelAdmin} />}
+        {user && <Route path="/profile" component={UserProfile} />}
+        {user && <Route path="/cart" component={Cart} />}
+        {user && <Route path="/checkout" component={Checkout} />}
+        {user && <Route path="/wishlist" component={Wishlist} />}
+        {user && <Route path="/mypurchases" component={Purchases} />}
+        <Route path="/notifications" component={Notifications} />
+        <Redirect to="/" />
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
 export default App

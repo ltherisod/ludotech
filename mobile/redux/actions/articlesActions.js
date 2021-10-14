@@ -140,7 +140,7 @@ const articlesActions = {
   getMostVisitArticles: () => {
     return async () => {
       try {
-        const response = await axios.get(`https://lodotechgames.herokuapp.com/api/mostvisitarticles`)
+        const response = await axios.get(`${HOST}/api/mostvisitarticles`)
         if (!response.data.success) throw new Error(response.data.error)
         return {
           success: true,
@@ -156,7 +156,7 @@ const articlesActions = {
     return async (dispatch) => {
       try {
         const response = await axios.get(
-          `https://lodotechgames.herokuapp.com/api/article/related/${genreId}`
+          `${HOST}/api/article/related/${genreId}`
         ) //cambiar por axios
         if (!response.data.success) throw new Error(response.data.error)
         return {
@@ -171,15 +171,15 @@ const articlesActions = {
   },
   getLastArticles: () => {
     return async () => {
-       try {
-          let response = await axios.get(`${HOST}/api/last-articles`)
-          if (!response.data.success) throw new Error(response.data.error)
-          return { success: true, response: response.data.response, error: null }
-       } catch (e) {
-          return { success: false, response: null, error: e.message }
-       }
+      try {
+        let response = await axios.get(`${HOST}/api/last-articles`)
+        if (!response.data.success) throw new Error(response.data.error)
+        return { success: true, response: response.data.response, error: null }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
     }
-  }
+  },
 }
 
 export default articlesActions
