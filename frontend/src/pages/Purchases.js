@@ -14,7 +14,7 @@ const Purchases = () => {
 
    useEffect(() => {
       axios
-         .get(`http://localhost:4000/api/user/purchases/${user._id}`)
+         .get(`https://lodotechgames.herokuapp.com/api/user/purchases/${user._id}`)
          .then((res) => {
             setPurchases(res.data.response)
             setSearched(res.data.response)
