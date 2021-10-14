@@ -131,19 +131,38 @@ const Cart = (props) => {
             ) : (
                <div className="bodyCart">
                   {props.shoppingCart.length === 0 ? (
-                     <div className='emptyCart'>
+                     <div className="emptyCart">
                         <div>
-                           <h2>Your cart is <span>empty</span></h2>
-                           <h2 style ={{fontSize:'5vmin', marginTop:'-.5em'}}>Let's <span>start</span> buying!</h2>
+                           <h2>
+                              Your cart is <span>empty</span>
+                           </h2>
+                           <h2
+                              style={{ fontSize: "5vmin", marginTop: "-.5em" }}
+                           >
+                              Let's <span>start</span> buying!
+                           </h2>
                         </div>
-                          <Link className="shopLink" to="/articles" onClick={() => window.scrollTo(0, 0)}> 
-                           <div className="buttonShop"style={{backgroundImage:"url('https://i.postimg.cc/256ZjvPG/back-Button.png')"}}>
+                        <Link
+                           className="shopLink"
+                           to="/articles"
+                           onClick={() => window.scrollTo(0, 0)}
+                        >
+                           <div
+                              className="buttonShop"
+                              style={{
+                                 backgroundImage:
+                                    "url('https://i.postimg.cc/256ZjvPG/back-Button.png')",
+                              }}
+                           >
                               Shop Now!
                            </div>
-                          </Link>
-                           <img alt="ludoCel" className="ludoGif" src="/assets/mascotSelfie.gif"/>
+                        </Link>
+                        <img
+                           alt="ludoCel"
+                           className="ludoGif"
+                           src="/assets/mascotSelfie.gif"
+                        />
                      </div>
-                   
                   ) : (
                      <>
                         <h2>Cart</h2>
@@ -320,7 +339,10 @@ const Cart = (props) => {
                                  </div>
                               </article>
                            </section>
-                           <section className="d-flex justify-content-center align-items-center flex-column" style={{width:"90vw"}}>
+                           <section
+                              className="d-flex justify-content-center align-items-center flex-column"
+                              style={{ width: "90vw" }}
+                           >
                               {viewMethod && (
                                  <>
                                     <h3 className="chooseAnAddress">
@@ -349,7 +371,7 @@ const Cart = (props) => {
                                                    )
                                                 })
                                              )}
-                                            
+
                                              <h3 className="chooseAnAddress">
                                                 Or add a{" "}
                                                 <span className="spanCeleste">
