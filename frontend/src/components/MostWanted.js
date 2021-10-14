@@ -25,6 +25,7 @@ const MostWanted = (props) => {
                Most <span>wanted</span> products
             </h2>
             <div
+               data-aos="fade-right"
                className="mostWantedCard"
                style={{
                   backgroundImage:
@@ -49,6 +50,7 @@ const MostWanted = (props) => {
                </div>
             </div>
             <div
+               data-aos="fade-left"
                className="mostWantedCard"
                style={{
                   backgroundImage:
@@ -74,6 +76,7 @@ const MostWanted = (props) => {
             </div>
             <div
                className="mostWantedCard"
+               data-aos="fade-right"
                style={{
                   backgroundImage:
                      "url('https://i.postimg.cc/5yHSybcS/card-Style56left.png')",

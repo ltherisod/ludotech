@@ -114,7 +114,7 @@ const ArticlePage = (props) => {
                               textAlign: "center",
                            }}
                         >
-                           ${price.toFixed(2)} USD
+                           ${price && price.toFixed(2)} USD
                         </p>
                      ) : (
                         <div className="priceArticle">
@@ -256,7 +256,7 @@ const ArticlePage = (props) => {
                      </div>
                   </div>
                </div>
-               <div className="articleDecoUp">
+               <div className="articleDecoUp" data-aos="fade-right" data-aos-duration="1500">
                   <div
                      className="articleDeco"
                      style={{
@@ -272,6 +272,8 @@ const ArticlePage = (props) => {
                <div className="articleDecoRight">
                   <div
                      className="articleDeco"
+                     data-aos="fade-left"
+                     data-aos-duration="1500"
                      style={{
                         backgroundImage: `url(${
                            decoPhotos ? decoPhotos[1] : []
@@ -294,6 +296,8 @@ const ArticlePage = (props) => {
                <div className="articleDecoDown">
                   <div
                      className="articleDeco"
+                     data-aos="fade-right"
+                     data-aos-duration="1500"
                      style={{
                         backgroundImage: `url(${
                            decoPhotos ? decoPhotos[2] : []

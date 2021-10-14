@@ -67,7 +67,7 @@ const NewArticlesCarousel = (props) => {
 
 
   return (
-    <div>
+    <div data-aos="fade-up">
       <Swiper
         style={{width:'80%', height:'60vh', margin:'5vh auto', marginTop:'10vh', }}
         className='swiperHomeLastArticles'
@@ -79,7 +79,7 @@ const NewArticlesCarousel = (props) => {
         loop={true}
         autoplay={{"dealy": 3500, "disableOnInteraction": false, pauseOnMouseEnter: false}}
         >
-        {lastArticles.map((article, index) => (
+        {lastArticles && lastArticles.map((article, index) => (
             <SwiperSlide key={`slide-${index}`}>
               <div className="swiperHomeSlide" style={{height:'100%',  }}>
                 <div

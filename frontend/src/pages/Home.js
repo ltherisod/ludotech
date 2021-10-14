@@ -6,6 +6,7 @@ import { useEffect } from "react"
 import Bot from "../components/bot/Bot"
 import "animate.css"
 import NewArticlesCarousel from "../components/NewArticlesCarousel"
+
 const Home = (props) => {
    useEffect(() => {
       window.scrollTo(0, 0)

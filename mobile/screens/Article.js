@@ -9,8 +9,12 @@ import YoutubePlayer from "react-native-youtube-iframe"
 import ArticleCarousel from "../components/ArticleCarousel"
 import MostRealted from "../components/MostRealted"
 import Toast from 'react-native-toast-message';
+import * as Animatable from 'react-native-animatable'
 
 const Article = (props) => {
+
+  const scrollRef = useRef()
+
   const [modalVisible, setModalVisible] = useState(false)
  
   const [article, loading] = useArticle(props.route.params.id)
@@ -70,7 +74,7 @@ const Article = (props) => {
   }
 }
   return (
-    <ScrollView>
+    <ScrollView  ref={scrollRef}>
       <ImageBackground style={{width:"100%", alignItems:"center"}} source={{ uri: "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png" }} resizeMode="cover">
         <HeroPages />
         <View style={styles.backButtonContainer} >
@@ -136,10 +140,10 @@ const Article = (props) => {
           </View>
         </View>
 
-        <View style={{alignSelf:"flex-start", marginLeft:30}} >
+        <Animatable.View animation='fadeInLeft' style={{alignSelf:"flex-start", marginLeft:30}} >
           <ImageBackground style={styles.articleDecoImgOne} source={{ uri: `${decoPhotos ? decoPhotos[0] : [] }` }} >
           </ImageBackground>
-        </View>
+        </Animatable.View>
         <View style={styles.centeredView}>
       <Modal
         animationType="slide"
@@ -169,19 +173,21 @@ const Article = (props) => {
         <Text style={styles.textStyle}>Game Description</Text>
       </Pressable>
     </View>
+        <Animatable.View  animation='fadeInRight'>
           <ImageBackground style={styles.articleDecoImgTwo} source={{ uri: `${decoPhotos ? decoPhotos[1] : [] }` }} >
           </ImageBackground>
+        </Animatable.View>
         <View style={{alignItems:"center", marginVertical:10}} >
-           <YoutubePlayer
-        height={300}
-        width={350}
-        play={playing}
-        videoId={videoId}
-        onChangeState={onStateChange}
-      />
+          <YoutubePlayer
+            height={300}
+            width={350}
+            play={playing}
+            videoId={videoId}
+            onChangeState={onStateChange}
+          />
         </View>
 
-        <View style={{alignSelf:"flex-start", marginTop:-50, marginLeft:30}} >
+        <View  animation='fadeInLeft' style={{alignSelf:"flex-start", marginTop:-50, marginLeft:30}} >
           <ImageBackground style={styles.articleDecoImgThree} source={{ uri: `${decoPhotos ? decoPhotos[2] : [] }` }} >
           </ImageBackground>
         </View>
@@ -190,6 +196,7 @@ const Article = (props) => {
           relatedArticles={relatedArticles}
           articleId={props.route.params.id}
           navigation={props.navigation}
+          scrollRef={scrollRef}
         />
         
     

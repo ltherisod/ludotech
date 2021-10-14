@@ -16,7 +16,11 @@ import Checkout from "./pages/Checkout"
 import Purchases from "./pages/Purchases"
 import Notifications from "./components/Notifications"
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const App = (props) => {
+  AOS.init();
   useLoginLS()
   const user = useSelector((state) => state.users.user)
   return (
