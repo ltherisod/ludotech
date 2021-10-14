@@ -81,6 +81,13 @@
    outline: none;
 }
 
+@media (max-width: 576px) {
+.botContainer {
+   bottom: 5px;
+   right: 20px;
+}
+}
+
 #chatbot-loader #chatbot-loader-dot2 {
 }
 
