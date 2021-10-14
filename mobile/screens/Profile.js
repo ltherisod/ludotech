@@ -68,8 +68,8 @@ const Profile = () => {
     state: "",
   }
 
-  const phoneEdition = () => {
-    formik.handleSubmit
+  const phoneEdition = (e) => {
+    formik.handleSubmit(e)
     setVisiblePhone(!visiblePhone)
   }
 
@@ -92,7 +92,7 @@ const Profile = () => {
             style={{ width: 50, height: 50, borderRadius: 50 }}
             source={{ uri: photo }}
           />
-          <View style={{alignSelf:"center" }}>
+          <View style={{ alignSelf: "center" }}>
             <Text style={styles.userName}>
               {firstname} {lastname}
             </Text>
@@ -100,125 +100,162 @@ const Profile = () => {
           </View>
         </View>
         <View>
-          <View style={{  alignItems: "flex-start", marginLeft:20}}>
-              <Text style={{color: "purple",fontFamily: "Poppins_600SemiBold",fontSize: 15,}}>
-                Phone number:
-              </Text>
-              </View>
-              <View style={styles.phoneCard}>
-                    <Text style={{marginLeft: 10,color: "gray",fontFamily: "Poppins_600SemiBold",fontSize: 13,}}>
-                      {userPhone}
-                    </Text>   
-                  {!visiblePhone && (
-                    <TouchableOpacity onPress={() => setVisiblePhone(!visiblePhone)}>
-                      <ImageBackground
-                        style={{marginLeft:30, width:40, padding:5}}
-                        source={{uri: "https://i.postimg.cc/mD7r09R8/button-Back.png",}}imageStyle={{ borderRadius: 5 }}>
-                        <Text
-                          style={{ color: "white",fontFamily: "Poppins_600SemiBold", alignSelf: "center",fontSize: 10, }}>
-                          {editPhone}
-                        </Text>
-                      </ImageBackground>
-                    </TouchableOpacity>
-                  )}
-              </View>
-              
-        
-         <View style={{ flexDirection: "row",alignItems: "center",justifyContent: "center"}}>
+          <View style={{ alignItems: "flex-start", marginLeft: 20 }}>
+            <Text
+              style={{
+                color: "purple",
+                fontFamily: "Poppins_600SemiBold",
+                fontSize: 15,
+              }}
+            >
+              Phone number:
+            </Text>
+          </View>
+          <View style={styles.phoneCard}>
+            <Text
+              style={{
+                marginLeft: 10,
+                color: "gray",
+                fontFamily: "Poppins_600SemiBold",
+                fontSize: 13,
+              }}
+            >
+              {userPhone}
+            </Text>
+            {!visiblePhone && (
+              <TouchableOpacity onPress={() => setVisiblePhone(!visiblePhone)}>
+                <ImageBackground
+                  style={{ marginLeft: 30, width: 40, padding: 5 }}
+                  source={{
+                    uri: "https://i.postimg.cc/mD7r09R8/button-Back.png",
+                  }}
+                  imageStyle={{ borderRadius: 5 }}
+                >
+                  <Text
+                    style={{
+                      color: "white",
+                      fontFamily: "Poppins_600SemiBold",
+                      alignSelf: "center",
+                      fontSize: 10,
+                    }}
+                  >
+                    {editPhone}
+                  </Text>
+                </ImageBackground>
+              </TouchableOpacity>
+            )}
+          </View>
+
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             {visiblePhone && (
               <>
-                  <View>
-                    <TextInput
-                      placeholder="+234 455 5353"
-                      name="phone"
-                      type="number"
-                      value={formik.values.phone}
-                      onChangeText={formik.handleChange("phone")}
-                      onBlur={formik.handleBlur("phone")}
-                      style={styles.inputText}
-                    />
-                    <TouchableOpacity  onPress={phoneEdition}>
-                      <ImageBackground style={[styles.userButtonCheck, { position: "relative", marginLeft:10 }]} source={{ uri: "https://i.postimg.cc/mD7r09R8/button-Back.png",}} imageStyle={{ borderRadius: 5 }}>
-                          <Icon name="check" color="white" size={12} />
-                      </ImageBackground>
+                <View>
+                  <TextInput
+                    placeholder="+234 455 5353"
+                    name="phone"
+                    type="number"
+                    value={formik.values.phone}
+                    onChangeText={formik.handleChange("phone")}
+                    onBlur={formik.handleBlur("phone")}
+                    style={styles.inputText}
+                  />
+                  <TouchableOpacity onPress={phoneEdition}>
+                    <ImageBackground
+                      style={[
+                        styles.userButtonCheck,
+                        { position: "relative", marginLeft: 10 },
+                      ]}
+                      source={{
+                        uri: "https://i.postimg.cc/mD7r09R8/button-Back.png",
+                      }}
+                      imageStyle={{ borderRadius: 5 }}
+                    >
+                      <Icon name="check" color="white" size={12} />
+                    </ImageBackground>
                   </TouchableOpacity>
                 </View>
               </>
-             )}
+            )}
           </View>
-                {formik.touched.phone && formik.errors.phone ? (
-                    <Text style={{alignSelf:"center", color:"red"}}>{formik.errors.phone}</Text>
-                  ) : (
-                    <Text style={{ color: "transparent" }}>NoErrors</Text>
-                  )}
-            <View>
-              <View style={{width:"100%"}}>
-                <Text
-                  style={{
-                    color: "purple",
-                    fontFamily: "Poppins_600SemiBold",
-                    fontSize: 15,
-                    alignSelf:"flex-start",
-                    paddingLeft:20
-                  }}
-                >
-                  Addresses:
-                </Text>
-                <View>
-                  {!directions || directions.length === 0 ? (
-                    <Text
-                      style={{
-                        color: "gray",
-                        fontFamily: "Poppins_600SemiBold",
-                        fontSize: 12,
-                        marginLeft:60
-                      }}
-                    >
-                      There are no addresses added
-                    </Text>
-                  ) : (
-                    directions.map((direction) => {
-                      return (
-                        <Address direction={direction} key={direction._id} />
-                      )
-                    })
-                  )}
-                </View>
-              </View>
-              <View style={{marginVertical:20}}>
-                <TouchableOpacity
-                  onPress={() => setVisibleDirectionForm(!visibleDirectionForm)}
-                >
-                  <ImageBackground
-                    style={{width:230, padding:10, alignSelf:"center"}}
-                    source={{
-                      uri: "https://i.postimg.cc/mD7r09R8/button-Back.png",
+          {formik.touched.phone && formik.errors.phone ? (
+            <Text style={{ alignSelf: "center", color: "red" }}>
+              {formik.errors.phone}
+            </Text>
+          ) : (
+            <Text style={{ color: "transparent" }}>NoErrors</Text>
+          )}
+          <View>
+            <View style={{ width: "100%" }}>
+              <Text
+                style={{
+                  color: "purple",
+                  fontFamily: "Poppins_600SemiBold",
+                  fontSize: 15,
+                  alignSelf: "flex-start",
+                  paddingLeft: 20,
+                }}
+              >
+                Addresses:
+              </Text>
+              <View>
+                {!directions || directions.length === 0 ? (
+                  <Text
+                    style={{
+                      color: "gray",
+                      fontFamily: "Poppins_600SemiBold",
+                      fontSize: 12,
+                      marginLeft: 60,
                     }}
-                    imageStyle={{ borderRadius: 5 }}
                   >
-                    <Text
-                      style={{
-                        color: "white",
-                        fontFamily: "Poppins_600SemiBold",
-                        alignSelf: "center",
-                        fontSize: 16,
-                      }}
-                    >
-                      {addAddress}
-                    </Text>
-                  </ImageBackground>
-                </TouchableOpacity>
+                    There are no addresses added
+                  </Text>
+                ) : (
+                  directions.map((direction) => {
+                    return <Address direction={direction} key={direction._id} />
+                  })
+                )}
               </View>
-              {visibleDirectionForm && (
-                <DirectionsForm
-                  submitCallback={addDirectionHandler}
-                  initialValues={initialValues}
-                  buttonText="Add +"
-                />
-              )}
             </View>
+            <View style={{ marginVertical: 20 }}>
+              <TouchableOpacity
+                onPress={() => setVisibleDirectionForm(!visibleDirectionForm)}
+              >
+                <ImageBackground
+                  style={{ width: 230, padding: 10, alignSelf: "center" }}
+                  source={{
+                    uri: "https://i.postimg.cc/mD7r09R8/button-Back.png",
+                  }}
+                  imageStyle={{ borderRadius: 5 }}
+                >
+                  <Text
+                    style={{
+                      color: "white",
+                      fontFamily: "Poppins_600SemiBold",
+                      alignSelf: "center",
+                      fontSize: 16,
+                    }}
+                  >
+                    {addAddress}
+                  </Text>
+                </ImageBackground>
+              </TouchableOpacity>
+            </View>
+            {visibleDirectionForm && (
+              <DirectionsForm
+                submitCallback={addDirectionHandler}
+                initialValues={initialValues}
+                buttonText="Add +"
+              />
+            )}
           </View>
-        <Footer/>
+        </View>
+        <Footer />
       </ImageBackground>
     </ScrollView>
   )
@@ -231,21 +268,21 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_800ExtraBold",
     textAlign: "center",
     marginTop: -60,
-    letterSpacing:1
+    letterSpacing: 1,
   },
   userName: {
     textTransform: "capitalize",
     fontFamily: "Poppins_600SemiBold",
     color: "purple",
     fontSize: 20,
-    textAlign:"center"
+    textAlign: "center",
   },
 
   userEmail: {
     fontFamily: "Poppins_600SemiBold",
     fontSize: 15,
     color: "#6aefcf",
-    textAlign:"center"
+    textAlign: "center",
   },
   userButton: {
     alignSelf: "center",
@@ -271,30 +308,30 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: "white",
   },
-  userButton2:{
+  userButton2: {
     alignSelf: "center",
     paddingVertical: 5,
     paddingHorizontal: 15,
     width: 70,
   },
-  phoneCard:{
-    backgroundColor:"white",
-    flexDirection:"row",
-    alignSelf:"center",
-    borderRadius:10,
-    padding:20,
+  phoneCard: {
+    backgroundColor: "white",
+    flexDirection: "row",
+    alignSelf: "center",
+    borderRadius: 10,
+    padding: 20,
     shadowColor: "#000",
     shadowOffset: {
-	    width: 0,
-	    height: 11,
+      width: 0,
+      height: 11,
     },
-    shadowOpacity: 0.60,
-    shadowRadius: 6.00,
+    shadowOpacity: 0.6,
+    shadowRadius: 6.0,
     elevation: 24,
-    alignItems:"center",
-    alignSelf:"center",
-    marginVertical:5
-  }
+    alignItems: "center",
+    alignSelf: "center",
+    marginVertical: 5,
+  },
 })
 
 export default Profile
