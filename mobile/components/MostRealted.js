@@ -20,7 +20,7 @@ const MostRealted = ({relatedArticles, articleId, navigation}) => {
     const renderItem = ({item}) => {
         return (
             <TouchableOpacity onPress={() => {
-                console.log(`oprimi para ir a ${item.name}`)
+                // console.log(`oprimi para ir a ${item.name}`)
                 navigation.navigate('ArticleStack', { id: item._id })}
             }>
                 <ImageBackground imageStyle={{ borderRadius: 10}} style={styles.bg} source={{uri: 'https://i.postimg.cc/sftdwcnd/article.png'}}>
