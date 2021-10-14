@@ -3,14 +3,18 @@ import {useDispatch, useSelector} from 'react-redux'
 import { ImageBackground, Text, View, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native'
 import Carousel from 'react-native-snap-carousel'
 import articlesActions from '../redux/actions/articlesActions'
+import { useToast } from "react-native-toast-notifications";
 
 const MostRealted = ({relatedArticles, articleId, navigation}) => {
+    const toast = useToast();
 
     const user = useSelector((state) => state.users.user)
     const dispatch = useDispatch()
 
     const addToCart = (e, id, value) => {
+        e.stopPropagation();
         dispatch(articlesActions.updateCart("add", id))
+        toast.show("Added product");
     }
     
     const relatedArticlesNoRepeat = relatedArticles.filter(
