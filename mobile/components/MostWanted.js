@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
     height: 275,
     alignSelf: 'center',
   },
+
   gameName: {
       alignSelf: 'center',
       fontSize: 20,
@@ -105,5 +106,7 @@ const styles = StyleSheet.create({
       position: 'relative',
       bottom: 43,
       fontFamily: 'Poppins_700Bold'
-  }
-});
+  },
+  
+
+})

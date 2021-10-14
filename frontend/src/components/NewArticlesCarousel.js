@@ -81,7 +81,7 @@ const NewArticlesCarousel = (props) => {
         >
         {lastArticles.map((article, index) => (
             <SwiperSlide key={`slide-${index}`}>
-              <div className="" style={{height:'100%',  }}>
+              <div className="swiperHomeSlide" style={{height:'100%',  }}>
                 <div
                   key={article._id}
                   style={{ textDecoration: "none", cursor: "pointer" }}

@@ -78,7 +78,7 @@ const Paypal = ({ formik, user, history }) => {
 
   return (
     <div className="container d-flex flex-column align-items-center justify-content-center">
-      <div style={{ width: "40vw" }} ref={paypal}></div>
+      <div id="formStripeForResponsive" ref={paypal}></div>
     </div>
   )
 }

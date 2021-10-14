@@ -1,7 +1,7 @@
 .botContainer {
    position: fixed;
    bottom: 40px;
-   right: 40px;
+   right: 55px;
    z-index: 10;
    display: flex;
    align-items: flex-end;
@@ -79,6 +79,13 @@
    border-top: none;
    background-color: whitesmoke;
    outline: none;
+}
+
+@media (max-width: 576px) {
+.botContainer {
+   bottom: 5px;
+   right: 20px;
+}
 }
 
 #chatbot-loader #chatbot-loader-dot2 {

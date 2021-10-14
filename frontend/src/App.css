@@ -759,13 +759,18 @@ h2 span {
 
 .footerContainer {
    width: 100%;
-   height: 69vh;
+   height: 57vh;
    background-size: cover;
    background-position: bottom;
    display: flex;
    align-items: center;
    justify-content: flex-end;
    flex-direction: column;
+}
+
+.logoFooter {
+   height: 5rem;
+   margin-bottom: 1rem;
 }
 
 .socialMediaContainer {
@@ -1700,12 +1705,12 @@ h2.articles {
 }
 
 .relatedArticles {
-  width: 100%;
-  align-self: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+   width: 100%;
+   align-self: center;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-wrap: wrap;
 }
 
 .cardArticleRelated {
@@ -1901,7 +1906,7 @@ h2.articles {
 .totalsCard {
    background-color: white;
    align-self: flex-end;
-   width: 30%;
+   width: 35%;
    border-radius: 0px 0px 20px 20px;
    padding: 15px;
    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
@@ -2516,7 +2521,7 @@ h2.articles {
    margin-left: -25px;
 }
 #finalizeYourPurchase {
-  margin-left: 0;
+   margin-left: 0;
 }
 
 /* MEDIAQUERIES */
@@ -2549,10 +2554,6 @@ h2.articles {
    }
    .main-sign {
       width: 60%;
-   }
-   .signUpBody,
-   .signInBody {
-      background-position: cover;
    }
    .scrollButton {
       left: 94%;
@@ -2612,249 +2613,253 @@ h2.articles {
 }
 
 @media (max-width: 576px) {
-  .hero {
-    padding-top: 180px;
-  }
-  .cube {
-    height: 400px;
-    width: 400px;
-    margin-bottom: 60px;
-  }
-  .mostWantedTittle {
-    padding-top: 60px;
-    padding-bottom: 50px;
-    font-size: 38px;
-  }
-  .mostWantedGame {
-    width: 300px;
-    height: 300px;
-    position: relative;
-    bottom: 55px;
-  }
-  .mostWantedGameBrand {
-    margin: 0em;
-    font-size: 6vmin;
-    text-align: center;
-    position: relative;
-    bottom: 75px;
-  }
-  .mostWantedCard {
-    width: 85%;
-  }
-  .mostWantedGameConteiner,
-  .mostWantedGameConteinerLeft {
-    padding-right: 0rem;
-    align-self: flex-start;
-    width: 90%;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: flex-start;
-  }
-  .mostWantedGameConteinerLeft {
-    padding-left: 0rem !important;
-    flex-direction: column !important;
-  }
-  .socialMediaContainer {
-    width: 50%;
-  }
+   .hero {
+      padding-top: 180px;
+   }
+   .cube {
+      height: 400px;
+      width: 400px;
+      margin-bottom: 60px;
+   }
+   .mostWantedTittle {
+      padding-top: 60px;
+      padding-bottom: 50px;
+      font-size: 38px;
+   }
+   .mostWantedGame {
+      width: 300px;
+      height: 300px;
+      position: relative;
+      bottom: 55px;
+   }
+   .mostWantedGameBrand {
+      margin: 0em;
+      font-size: 6vmin;
+      text-align: center;
+      position: relative;
+      bottom: 75px;
+   }
+   .mostWantedCard {
+      width: 85%;
+   }
+   .mostWantedGameConteiner,
+   .mostWantedGameConteinerLeft {
+      padding-right: 0rem;
+      align-self: flex-start;
+      width: 90%;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-start;
+   }
+   .mostWantedGameConteinerLeft {
+      padding-left: 0rem !important;
+      flex-direction: column !important;
+   }
+   .socialMediaContainer {
+      width: 50%;
+   }
 
-  .footerRights {
-    font-size: 3.3vmin;
-    padding-bottom: 1em;
-  }
+   .footerRights {
+      font-size: 3.3vmin;
+      padding-bottom: 1em;
+   }
 
-  /* Filter */
+   /* Filter */
 
-  .search {
-    width: 100%;
-  }
-  .search label {
-    text-align: center;
-    font-size: 4.5vmin;
-  }
+   .search {
+      width: 100%;
+   }
+   .search label {
+      text-align: center;
+      font-size: 4.5vmin;
+   }
 
-  .search input {
-    height: 3em;
-    width: 100%;
-  }
-
-  .searchButton {
-    font-size: 4.5vmin;
-    width: 250px;
-  }
-  .filtersBox {
-    margin-left: 0px;
-  }
-
-  .filterOption select {
-    width: 180px;
-  }
-  .heroPageCont {
-    min-height: 20vh;
-  }
-  .main-sign {
-    width: 80%;
-  }
-  .scrollButton {
-    left: 91%;
-  }
-  .buttonGoogle {
-    font-size: 3.5vmin;
-  }
-  .signupEmailOption {
-    font-size: 3vmin;
-  }
-  .main-sign label {
-    font-size: 3.2vmin;
-  }
-  .signupButtonSignup,
-  .signinButtonSignup {
-    font-size: 4vmin;
-  }
-  .main-sign h2 {
-   font-size: 7vmin;
- }
- .signinButtonSignupText {
-   font-size: 3vmin;
- }
- .adTerms {
-   font-size: 2.5vmin;
-  }
-  .articleData {
-   width: 85%;
-  }
-  .containerData {
-   width: 450px;
- }
-
- .articleDescription {
-   width: 80%;
-   bottom: 30px;
- }
-
- .articleDecoRight {
-   padding-right: 2em;
-   bottom: 80px;
- }
- .articleDecoDown {
-   position: relative;
-   bottom: 230px;
- }
- /*Profile*/
- .divProfile {
-  width: 95vw;
+   .search input {
+      height: 3em;
+      width: 100%;
+   }
+.cartSection2 div {
+   justify-content: center;
 }
-.profileFirstData {
-  display: flex;
-  flex-direction: column;
-  padding: 0px 20px;
-}
-.profileFirstData h3 {
-  font-size: 2.8rem;
-}
-.titleProfile {
-  font-size: 10vmin;
-  font-weight: 700;
-}
-.profileTitles {
-  right: 1rem;
-}
-.containerDataProfile {
-  width: 80vw;
-}
-
-.addressAddedCard {
-  width: 100%;
-}
-.inputsAdd {
-  width: 100%;
-}
-.phone p,
-.addressAddedCard p {
-  font-size: large;
-  }
-  .profileButton {
-    font-size: 3.6vmin;
-  }
-
-  /*Wishlist*/
-  .mainWishlist {
-    padding: 0 40px
-  }
-  .mainWishlist h2 {
-    font-size: 60px;
-  }
-  .searchbarWishlist input {
-    width: 100%;
-  }
-  .searchbarWishlist p {
-    font-size: large;
-  }
-
-  /* Cart */
-
-.bodyCart h2 {
-   font-size: 8vmin;
-}
-.cartSection1 {
-   width: 100vw;
-}
-
-.cartSection2 {
-   width: 100vw;
-}
-
 .quantity div {
    margin: 0px 5px;
 }
 
-.cartSection1 tbody tr td:first-child {
-   width: 8%;
-   padding-left: 0px;
-}
-.cartSection1 tbody tr td:nth-child(2) {
-   width: 22%;
-   padding-left: 0px;
-}
-.cartSection1 tbody tr td:nth-child(3) {
-   width: 10%;
-}
-.cartSection1 tbody tr td:nth-child(4) {
-   width: 15%;
-}
-.cartSection1 tbody tr td:nth-child(4) p {
-   margin-bottom: 0px;
-}
-.cartSection1 tbody tr td:nth-child(5) {
-   width: 10%;
-   text-align: right;
-   padding-right: 0%;
-}
-.quantity button {
-   padding: 0px 7px;
-}
-.delete button {
-   margin: 0px 2px
-}
-.totalsCard {
-   align-self: center;
-   width: 100%;
-   margin: 0px 20px
-}
-#cartLastSection {
-   width: 100%;
-   align-self: center;
-}
-.chooseAnAddress {
-   text-align: center;
-}
-#formStripeForResponsive {
-   width: 80vw;
-}
+   .searchButton {
+      font-size: 4.5vmin;
+      width: 250px;
+   }
+   .filtersBox {
+      margin-left: 0px;
+   }
 
+   .filterOption select {
+      width: 180px;
+   }
+   .heroPageCont {
+      min-height: 20vh;
+   }
+   .main-sign {
+      width: 80%;
+   }
+   .scrollButton {
+      left: 91%;
+   }
+   .buttonGoogle {
+      font-size: 3.5vmin;
+   }
+   .signupEmailOption {
+      font-size: 3vmin;
+   }
+   .main-sign label {
+      font-size: 3.2vmin;
+   }
+   .signupButtonSignup,
+   .signinButtonSignup {
+      font-size: 4vmin;
+   }
+   .main-sign h2 {
+      font-size: 7vmin;
+   }
+   .signinButtonSignupText {
+      font-size: 3vmin;
+   }
+   .adTerms {
+      font-size: 2.5vmin;
+   }
+   .articleData {
+      width: 85%;
+   }
+   .containerData {
+      width: 450px;
+   }
 
+   .articleDescription {
+      width: 80%;
+      bottom: 30px;
+   }
 
-/* .cartAddressInputs {
+   .articleDecoRight {
+      padding-right: 2em;
+      bottom: 80px;
+   }
+   .articleDecoDown {
+      position: relative;
+      bottom: 230px;
+   }
+   /*Profile*/
+   .divProfile {
+      width: 95vw;
+   }
+   .profileFirstData {
+      display: flex;
+      flex-direction: column;
+      padding: 0px 20px;
+   }
+   .profileFirstData h3 {
+      font-size: 2.8rem;
+   }
+   .titleProfile {
+      font-size: 10vmin;
+      font-weight: 700;
+   }
+   .profileTitles {
+      right: 1rem;
+   }
+   .containerDataProfile {
+      width: 80vw;
+   }
+
+   .addressAddedCard {
+      width: 100%;
+   }
+   .inputsAdd {
+      width: 100%;
+   }
+   .phone p,
+   .addressAddedCard p {
+      font-size: large;
+   }
+   .profileButton {
+      font-size: 3.6vmin;
+   }
+
+   /*Wishlist*/
+   .mainWishlist {
+      padding: 0 40px;
+   }
+   .mainWishlist h2 {
+      font-size: 60px;
+   }
+   .searchbarWishlist input {
+      width: 100%;
+   }
+   .searchbarWishlist p {
+      font-size: large;
+   }
+
+   /* Cart */
+
+   .bodyCart h2 {
+      font-size: 8vmin;
+   }
+   .cartSection1 {
+      width: 100vw;
+   }
+
+   .cartSection2 {
+      width: 100vw;
+   }
+
+   .quantity div {
+      margin: 0px 5px;
+   }
+
+   .cartSection1 tbody tr td:first-child {
+      width: 8%;
+      padding-left: 0px;
+   }
+   .cartSection1 tbody tr td:nth-child(2) {
+      width: 22%;
+      padding-left: 0px;
+   }
+   .cartSection1 tbody tr td:nth-child(3) {
+      width: 10%;
+   }
+   .cartSection1 tbody tr td:nth-child(4) {
+      width: 15%;
+   }
+   .cartSection1 tbody tr td:nth-child(4) p {
+      margin-bottom: 0px;
+   }
+   .cartSection1 tbody tr td:nth-child(5) {
+      width: 10%;
+      text-align: right;
+      padding-right: 0%;
+   }
+   .quantity button {
+      padding: 0px 7px;
+   }
+   .delete button {
+      margin: 0px 2px;
+   }
+   .totalsCard {
+      align-self: center;
+      width: 100%;
+      margin: 0px 20px;
+   }
+   #cartLastSection {
+      width: 100%;
+      align-self: center;
+   }
+   .chooseAnAddress {
+      text-align: center;
+   }
+   #formStripeForResponsive {
+      width: 80vw;
+   }
+
+   /* .cartAddressInputs {
    text-align: center;
 }
 .cartAddressInputs input {
@@ -2906,89 +2911,88 @@ h2.articles {
 .ludoGif {
    width: 25%;
 } */
-
 }
 
 @media (max-width: 450px) {
-  .cube {
-    height: 350px;
-    min-width: 350px;
-    margin-top: 30px;
-    margin-bottom: 10px;
-  }
-  .mostWantedTittle {
-    padding-top: 35px;
-    padding-bottom: 50px;
-    font-size: 28px;
-  }
-  .mostWantedGame {
-    width: 290px;
-    height: 290px;
-    bottom: 55px;
-  }
-  .mostWantedGameBrand {
-    bottom: 62px;
-  }
-  .socialMediaContainer {
-    width: 60%;
-  }
+   .cube {
+      height: 350px;
+      min-width: 350px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+   }
+   .mostWantedTittle {
+      padding-top: 35px;
+      padding-bottom: 50px;
+      font-size: 28px;
+   }
+   .mostWantedGame {
+      width: 290px;
+      height: 290px;
+      bottom: 55px;
+   }
+   .mostWantedGameBrand {
+      bottom: 62px;
+   }
+   .socialMediaContainer {
+      width: 60%;
+   }
 
-  .search label {
-    font-size: 6vmin;
-  }
-  .searchButton {
-    font-size: 6vmin;
-    width: 100%;
-  }
+   .search label {
+      font-size: 6vmin;
+   }
+   .searchButton {
+      font-size: 6vmin;
+      width: 100%;
+   }
 
-  .filterOption select {
-    width: 250px;
-  }
-  .main-sign {
-    width: 85%;
-  }
-  .scrollButton {
-    left: 88%;
-  }
-  .buttonGoogle {
-    font-size: 4vmin;
-  }
-  .signupEmailOption {
-    font-size: 3.5vmin;
-  }
-  .main-sign label {
-    font-size: 4vmin;
-  }
-  .signupButtonSignup,
-  .signinButtonSignup {
-    font-size: 4.5vmin;
-  }
-  .main-sign h2 {
-   font-size: 8.5vmin;
- }
- .signinButtonSignupText {
-   font-size: 3.5vmin;
- }
- .adTerms {
-   font-size: 3vmin;
-  }
+   .filterOption select {
+      width: 250px;
+   }
+   .main-sign {
+      width: 85%;
+   }
+   .scrollButton {
+      left: 88%;
+   }
+   .buttonGoogle {
+      font-size: 4vmin;
+   }
+   .signupEmailOption {
+      font-size: 3.5vmin;
+   }
+   .main-sign label {
+      font-size: 4vmin;
+   }
+   .signupButtonSignup,
+   .signinButtonSignup {
+      font-size: 4.5vmin;
+   }
+   .main-sign h2 {
+      font-size: 8.5vmin;
+   }
+   .signinButtonSignupText {
+      font-size: 3.5vmin;
+   }
+   .adTerms {
+      font-size: 3vmin;
+   }
 
-  /*Profile*/
-  .divProfile {
-    width: 98vw;
-  }
-  .titleProfile {
-    font-size: 12vmin;
-  }
-  .profileFirstData h3 {
-    font-size: 2.5rem;
-  }
-  .profileTitles {
-    right: 0rem;
-  }
-  .profileButton {
-    font-size: 4.2vmin;
-  }
+   /*Profile*/
+   .divProfile {
+      width: 98vw;
+   }
+   .titleProfile {
+      font-size: 12vmin;
+   }
+   .profileFirstData h3 {
+      font-size: 2.5rem;
+   }
+   .profileTitles {
+      right: 0rem;
+   }
+   .profileButton {
+      font-size: 4.2vmin;
+   }
 }
 
 @media (max-width: 415px) {

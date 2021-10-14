@@ -322,15 +322,29 @@ const Filter = (props) => {
                  </ImageBackground>
                 </TouchableOpacity>
             </View>
-                <TouchableOpacity onPress={() => {openFilter()}}>
+            <View style={{flexDirection:'row', justifyContent:'center'}}>
+            <TouchableOpacity onPress={() => {openFilter()}}>
                 <ImageBackground
               style={styles.filterButton2}
-              source={{ uri: "https://i.postimg.cc/xTX0x8Gh/cuboIcon.png" }}
-              imageStyle={{ borderRadius: 7 }}
+              source={{ uri: "https://i.postimg.cc/5tbgdDLK/back-Button.png" }}
+              imageStyle={{ borderRadius: 5 }}
             >
-                <Text style={styles.filterButtonText}> + filters</Text>
+                <Text style={styles.filterButtonText}> + Filters</Text>
                 </ImageBackground>
                 </TouchableOpacity>
+
+                 <TouchableOpacity>
+                <ImageBackground
+              style={styles.filterButton2}
+              source={{ uri: "https://i.postimg.cc/KcfDB9Xt/back-Button2.png" }}
+              imageStyle={{ borderRadius: 5 }}
+            >
+                <Text style={styles.filterButtonText}> Reset</Text>
+                </ImageBackground>
+                </TouchableOpacity>                       
+            </View>
+           
+                
         </View>
     )
 }
@@ -444,8 +458,8 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         paddingVertical: 5,
         paddingHorizontal: 10,
-        width: 90,
-        marginHorizontal:15, 
+        width: 80,
+        margin:5
       }, 
       buttonAnswer:{
         backgroundColor:"#67f2cb", 
