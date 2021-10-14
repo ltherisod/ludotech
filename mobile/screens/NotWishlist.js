@@ -14,7 +14,7 @@ const NotWishlist = (props) => {
                         <Text style={styles.title}>See your</Text>
                         <Text style={[styles.title, {color: "#67f2cb",}]}>{` `}wishlist</Text>
                     </View>
-                    <TouchableOpacity style={{borderWidth: 1, borderColor: 'rgba(0,0,0,0.2)', marginBottom: 20, borderRadius: 6}} onPress={() => props.navigation.navigate('SignInStack')}>
+                    {/* <TouchableOpacity style={{borderWidth: 1, borderColor: 'rgba(0,0,0,0.2)', marginBottom: 20, borderRadius: 6}} onPress={() => props.navigation.navigate('SignInStack')}>
                         <ImageBackground  style={styles.button} imageStyle={{borderRadius: 5}} source={{uri: 'https://i.postimg.cc/mD7r09R8/button-Back.png'}}>
                             <Text style={styles.textButton}>Log in</Text>
                         </ImageBackground>
@@ -23,7 +23,7 @@ const NotWishlist = (props) => {
                         <ImageBackground  style={styles.button} imageStyle={{borderRadius: 5}} source={{uri: 'https://i.postimg.cc/mD7r09R8/button-Back.png'}}>
                             <Text style={styles.textButton}>Sign up</Text>
                         </ImageBackground>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
                 <Footer />
             </ImageBackground>
