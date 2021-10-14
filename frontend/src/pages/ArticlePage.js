@@ -269,10 +269,9 @@ const ArticlePage = (props) => {
                <div className="articleDescription">
                   <p>{description}</p>
                </div>
-               <div className="articleVideo">
-               <div >
+               <div className="articleDecoRight">
                   <div
-                     className="articleDeco2"
+                     className="articleDeco"
                      style={{
                         backgroundImage: `url(${
                            decoPhotos ? decoPhotos[1] : []
@@ -280,7 +279,7 @@ const ArticlePage = (props) => {
                      }}
                   ></div>
                </div>
-
+               <div className="articleVideo">
                   <iframe
                      width="580"
                      height="325"
@@ -291,9 +290,10 @@ const ArticlePage = (props) => {
                      allowfullscreen
                      style={{ alignSelf: "center" }}
                   ></iframe>
-                                 <div >
+               </div>
+               <div className="articleDecoDown">
                   <div
-                     className="articleDeco3"
+                     className="articleDeco"
                      style={{
                         backgroundImage: `url(${
                            decoPhotos ? decoPhotos[2] : []
@@ -301,8 +301,7 @@ const ArticlePage = (props) => {
                      }}
                   ></div>
                </div>
-
-               </div>
+               <div className="divArticlesRelated">
                <h3 className="articleRelatedTittle">
                   Products <span className="spanCeleste">related</span> !
                </h3>
@@ -316,6 +315,8 @@ const ArticlePage = (props) => {
                         relatedArticles={relatedArticles}
                      />
                   )}
+               </div>
+
                </div>
                <Footer />
             </div>

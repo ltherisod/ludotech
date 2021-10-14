@@ -138,7 +138,7 @@ const SignUp = (props) => {
                      <label className="labelSign" htmlFor="email">
                         Profile Photo
                      </label>
-                     <input
+                     <input className="inputfile"
                         placeholder="Profile Photo"
                         name="photo"
                         type="file"
