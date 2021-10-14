@@ -230,8 +230,23 @@ const purchase = {
                             </View>
                              <View style={styles.pdfContainer}>
                                 <TouchableOpacity
-                                    onPress={() => {
-                                        Linking.openURL(`https://lodotechgames.herokuapp.com/api/receipt/${purchase._id}`)}} style={{marginTop:5, alignSelf:'center'}}>
+                                    onPress={async () => {
+                                        const supported = await Linking.canOpenURL(
+                                          "https://lodotechgames.herokuapp.com/api/receipt/616303fa20a28f91964a2b73"
+                                        )
+                            
+                                        if (supported) {
+                                          // Opening the link with some app, if the URL scheme is "http" the web link should be opened
+                                          // by some browser in the mobile
+                                          await Linking.openURL(
+                                            "https://lodotechgames.herokuapp.com/api/receipt/616303fa20a28f91964a2b73"
+                                          )
+                                        } else {
+                                          Alert.alert(
+                                            `Don't know how to open this URL: https://lodotechgames.herokuapp.com/api/receipt/616303fa20a28f91964a2b73`
+                                          )
+                                        }
+                                      }} style={{marginTop:5, alignSelf:'center'}}>
                                             <ImageBackground style={{ width:120, padding:3}} source={{uri: "https://i.postimg.cc/GhMnJB8K/button-PDF.png",}} imageStyle={{ borderRadius: 5 }}>
                                     <Text style={{ color: "white",fontFamily: "Poppins_600SemiBold", alignSelf: "center",fontSize: 13, }}>Download PDF</Text>
                                     </ImageBackground>
