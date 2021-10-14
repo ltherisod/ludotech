@@ -5,7 +5,7 @@ import Carousel from 'react-native-snap-carousel'
 import articlesActions from '../redux/actions/articlesActions'
 import Toast from 'react-native-toast-message'
 
-const MostRealted = ({relatedArticles, articleId, navigation}) => {
+const MostRealted = ({relatedArticles, articleId, navigation, scrollRef}) => {
 
     const user = useSelector((state) => state.users.user)
     const dispatch = useDispatch()
@@ -38,19 +38,19 @@ const MostRealted = ({relatedArticles, articleId, navigation}) => {
     const renderItem = ({item}) => {
         return (
             <TouchableOpacity onPress={() => {
-                // console.log(`oprimi para ir a ${item.name}`)
-                navigation.navigate('ArticleStack', { id: item._id })}
-            }>
+                navigation.navigate('ArticleStack', { id: item._id })
+                scrollRef.current.scrollTo({ y: 0, animated: true })
+            }}>
                 <ImageBackground imageStyle={{ borderRadius: 10}} style={styles.bg} source={{uri: 'https://i.postimg.cc/sftdwcnd/article.png'}}>
-                <Image style={styles.photo} source={{uri: item.photos[0]}} />
-                <Text style={styles.price}>${item.price}.00 USD</Text>
-                <View style={styles.flex}>
-                    <Text style={styles.name}>{item.name}</Text>
-                    <TouchableOpacity onPress={(e) => addToCart(e, item._id, item.name)}>
-                        <Image style={styles.cart} source={require("../assets/buy.png")} />
-                    </TouchableOpacity>
-                </View>
-            </ImageBackground>
+                    <Image style={styles.photo} source={{uri: item.photos[0]}} />
+                    <Text style={styles.price}>${item.price}.00 USD</Text>
+                    <View style={styles.flex}>
+                        <Text style={styles.name}>{item.name}</Text>
+                        <TouchableOpacity onPress={(e) => addToCart(e, item._id, item.name)}>
+                            <Image style={styles.cart} source={require("../assets/buy.png")} />
+                        </TouchableOpacity>
+                    </View>
+                </ImageBackground>
             </TouchableOpacity>
         )
     }   
