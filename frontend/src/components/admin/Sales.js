@@ -13,7 +13,8 @@ const Sales = ({scroll}) => {
     const [newStatus, setNewStatus] = useState('')
 
     useEffect(() => {
-        axios.get('https://lodotechgames.herokuapp.com/api/purchases')
+        axios.get('https://lodotechgames.herokuapp.com/api/purchases',
+        {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
         .then(res=> setPurchases(res.data.response.reverse()))
         .catch(e => console.log(e))
     }, [purchaseFound])
