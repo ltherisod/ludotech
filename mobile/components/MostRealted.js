@@ -3,18 +3,30 @@ import {useDispatch, useSelector} from 'react-redux'
 import { ImageBackground, Text, View, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native'
 import Carousel from 'react-native-snap-carousel'
 import articlesActions from '../redux/actions/articlesActions'
-import { useToast } from "react-native-toast-notifications";
+import Toast from 'react-native-toast-message'
 
 const MostRealted = ({relatedArticles, articleId, navigation}) => {
-    const toast = useToast();
 
     const user = useSelector((state) => state.users.user)
     const dispatch = useDispatch()
 
     const addToCart = (e, id, value) => {
-        e.stopPropagation();
-        dispatch(articlesActions.updateCart("add", id))
-        toast.show("Added product");
+        if(user) {
+            e.stopPropagation();
+            dispatch(articlesActions.updateCart("add", id))
+            Toast.show({
+              type: 'success',
+              text1: `${value} added🤩`,
+              text2: 'Press cart icon to see your cart',
+              onPress: () => navigation.navigate('cart')
+            })
+          } else {
+            Toast.show({
+              type: 'error',
+              text1: `You need to be logged 😢`,
+              text2: 'Go to sign in now to add a product in your cart'
+            })
+          }
     }
     
     const relatedArticlesNoRepeat = relatedArticles.filter(

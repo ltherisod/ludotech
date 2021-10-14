@@ -8,6 +8,7 @@ import { connect } from "react-redux"
 import YoutubePlayer from "react-native-youtube-iframe"
 import ArticleCarousel from "../components/ArticleCarousel"
 import MostRealted from "../components/MostRealted"
+import Toast from 'react-native-toast-message';
 
 const Article = (props) => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -49,8 +50,22 @@ const Article = (props) => {
 }, []);
 
  const addToCart = (e, id) => {
-  e.stopPropagation()
-  props.updateCart("add", id)
+  if(props.user) {
+    e.stopPropagation();
+    props.updateCart("add", id);
+    Toast.show({
+      type: 'success',
+      text1: `${name} added🤩`,
+      text2: 'Press cart icon to see your cart',
+      onPress: () => props.navigation.navigate('cart')
+    })
+  } else {
+    Toast.show({
+      type: 'error',
+      text1: `You need to be logged 😢`,
+      text2: 'Go to sign in now to add a product in your cart'
+    })
+  }
 }
   return (
     <ScrollView>
@@ -184,6 +199,7 @@ const Article = (props) => {
 const mapStateToProps = (state) => {
   return {
       wishList: state.users.wishList,
+      user: state.users.user
   }
 }
 

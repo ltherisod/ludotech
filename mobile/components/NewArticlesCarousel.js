@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, ImageBackground } from
 import Swiper from 'react-native-swiper'
 import { connect, useSelector } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
+import Toast from 'react-native-toast-message'
 
 
 const NewArticlesCarousel = (props) => {
@@ -23,9 +24,23 @@ const NewArticlesCarousel = (props) => {
      // eslint-disable-next-line
   }, [])
 
-  const addToCart = (e, id) => {
-    e.stopPropagation()
-    props.updateCart("add", id)
+  const addToCart = (e, id, name) => {
+    if(user) {
+      e.stopPropagation();
+      props.updateCart("add", id);
+      Toast.show({
+        type: 'success',
+        text1: `${name} added🤩`,
+        text2: 'Press cart icon to see your cart',
+        onPress: () => props.navigation.navigate('cart')
+      })
+    } else {
+      Toast.show({
+        type: 'error',
+        text1: `You need to be logged 😢`,
+        text2: 'Go to sign in now to add a product in your cart'
+      })
+    }
   }
 
   return (
@@ -53,7 +68,7 @@ const NewArticlesCarousel = (props) => {
                 <Text style={styles.price}>${article.price}.00 USD</Text>
                 <View style={styles.flex}>
                   <Text style={styles.name}>{article.name}</Text>
-                  <TouchableOpacity onPress={(e) => addToCart(e, article._id)}>
+                  <TouchableOpacity onPress={(e) => addToCart(e, article._id, article.name)}>
                     <Image style={styles.cart} source={require("../assets/buy.png")} />
                   </TouchableOpacity>
                 </View>

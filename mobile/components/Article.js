@@ -1,32 +1,64 @@
 import React from "react";
-import {
-  View,
-  Text,
-  ImageBackground,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  Pressable,
-} from "react-native";
+import {View, Text, ImageBackground, Image, TouchableOpacity, StyleSheet, Pressable} from "react-native";
 import { connect } from "react-redux";
 import articlesActions from "../redux/actions/articlesActions";
 import usersActions from "../redux/actions/usersActions";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { useToast } from "react-native-toast-notifications";
+import Toast from 'react-native-toast-message';
 
 const Article = (props) => {
-  const toast = useToast();
 
   const addToCart = (e, id) => {
-    e.stopPropagation();
-    props.updateCart("add", id);
-    toast.show("Added product to your cart", {type: 'custom', data: {color: 'red', title: 'hola'}});
+    if(props.user) {
+      e.stopPropagation();
+      props.updateCart("add", id);
+      Toast.show({
+        type: 'success',
+        text1: `${name} added🤩`,
+        text2: 'Press here to see your cart',
+        onPress: () => props.navigation.navigate('cart')
+      })
+    } else {
+      Toast.show({
+        type: 'error',
+        text1: `You need to be logged 😢`,
+        text2: 'Go to sign in now to add a product in your cart'
+      })
+    }
   };
 
   const addToWishlist = (e, id) => {
-    e.stopPropagation();
-    props.toggleWishList(id);
-    toast.show("Added product to your wishlist");
+    let status = props.wishList.some((i) => {
+      return i._id === _id;
+    })
+    
+    if(props.user && status) {
+      e.stopPropagation();
+      props.toggleWishList(id);
+      Toast.show({
+        type: 'success',
+        text1: `${name} removed😞`,
+        text2: 'Press here to see your wishlist',
+        onPress: () => props.navigation.navigate('wishlist')
+      })
+    } else if (props.user && !status) {
+      e.stopPropagation();
+      props.toggleWishList(id);
+      Toast.show({
+        type: 'success',
+        text1: `${name} added🤩`,
+        text2: 'Press here to see your wishlist',
+        onPress: () => props.navigation.navigate('wishlist')
+      })
+    }
+    
+    if(!props.user) {
+      Toast.show({
+        type: 'error',
+        text1: `You need to be logged 😢`,
+        text2: 'Go to sign in now to add a product in your wishist'
+      })
+    }
   };
 
   const {
@@ -131,6 +163,7 @@ const Article = (props) => {
 const mapStateToProps = (state) => {
   return {
     wishList: state.users.wishList,
+    user: state.users.user
   };
 };
 
