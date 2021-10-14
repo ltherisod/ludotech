@@ -11,20 +11,19 @@ const usersActions = {
         const response = await axios.post(`${HOST}/api/${action}`, data)
         if (!response.data.success) throw new Error(response.data.error)
         localStorage.setItem("token", response.data.response.token)
-        if (response.data.success) {
-          if (action === "signup") {
-            let body = response.data.response
-            await axios.post(`${HOST}/api/welcome-email`, body, {
-              headers: {
-                Authorization: "Bearer " + response.data.response.token,
-              },
-            })
-          } // falta cachear??
-        }
         dispatch({
           type: "LOGIN_OR_SIGNUP",
           payload: response.data.response,
         })
+        if (response.data.success && action === "signup") {
+          let body = response.data.response
+          await axios.post(`${HOST}/api/welcome-email`, body, {
+            headers: {
+              Authorization: "Bearer " + response.data.response.token,
+            },
+          })
+          // falta cachear??
+        }
         return { success: true, error: null }
       } catch (e) {
         return { success: false, error: e.message }
