@@ -37,7 +37,7 @@ const purchaseControllers = {
       // calcular total (?)
       const total = user.shoppingCart.reduce(
         (total, item) =>
-          item.hasDiscount
+          item.article.hasDiscount
             ? total + item.quantity * item.article.discountPrice
             : total + item.quantity * item.article.price,
         0
