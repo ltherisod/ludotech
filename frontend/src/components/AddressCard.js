@@ -1,7 +1,7 @@
 const AddressCard = ({ direction, formik }) => {
    const { alias, _id, ...directionNoAlias } = direction
    return (
-      <div>
+      <div >
          <div>
             <div className="checkoutContainerCard">
                <div className="dataCard">

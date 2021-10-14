@@ -43,7 +43,7 @@ const App = () => {
       <Provider store={globalStore}>
         <StripeProvider
           publishableKey={
-            "pk_test_51Ji6QGLXO1yt6E5TrzSlNMus3jsfhpwkHVkVuoa8hyNm7T868IUnXyP3m23bba4GhdLRdHx2ZrGLvATupFy4Oa4N00bt9D3tFF"
+            "pk_test_51JkDbaJ0EgYdzOiaQQrCLVFVSFDVPFNbqYxCDyig97ePOGiE10seuI8bQWjoVvHeLbBCBTd0XWXhYa8VVS7aUB5I00CTqCoMtt"
           }
         >
           <NavigationContainer>

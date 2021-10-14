@@ -361,15 +361,13 @@ const Cart = (props) => {
                                                    There are no addresses added
                                                 </p>
                                              ) : (
-                                                directions.map((direction) => {
+                                               <div style={{display:"flex", flexWrap:"wrap"}}>
+                                                  { directions.map((direction) => {
                                                    return (
-                                                      <AddressCard
-                                                         direction={direction}
-                                                         key={direction._id}
-                                                         formik={formik}
-                                                      />
+                                                      <AddressCard direction={direction}  key={direction._id} formik={formik}/>
                                                    )
-                                                })
+                                                })}
+                                                  </div>
                                              )}
 
                                              <h3 className="chooseAnAddress">
@@ -382,7 +380,7 @@ const Cart = (props) => {
                                              <FormCart formik={formik} />
                                           </div>
                                        ) : (
-                                          <div>
+                                          <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
                                              <h4 className="chooseAnAddress">
                                                 Add address
                                              </h4>

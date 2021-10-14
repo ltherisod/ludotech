@@ -45,7 +45,6 @@ const NavBar = ({render, history, show}) => {
                     </div>
                 </div>
                 <div className='buttonsProfileNavbarPanel'>
-                    <p className='settingsButtonPanel'>Settings</p>
                     <Link to='/'><p className='settingsButtonPanel' style={{backgroundColor: '#6AEFCF', color: 'black'}}>Home</p></Link>
                     <Link to='/'><p className='signoutPanel' onClick={() => {
                       window.scrollTo(0, 0)

@@ -137,7 +137,7 @@ const ArticlesAdmin = () => {
                         {currentPage > 1 && (
                            <button
                               type="button"
-                              style={{ padding: ".3rem 1.2rem" }}
+                              style={{ padding: ".3rem 1.2rem", backgroundColor:"#e051c1", color:"white", border:'none', borderRadius:'.3em' }}
                               onClick={() => setCurrentPage(currentPage - 1)}
                            >
                               Prev
@@ -154,7 +154,7 @@ const ArticlesAdmin = () => {
                         </p>
                         {currentPage < search.totalPages && (
                            <button
-                              style={{ padding: ".3rem 1.2rem" }}
+                              style={{ padding: ".3rem 1.2rem", backgroundColor:"#e051c1", color:"white",  border:'none', borderRadius:'.3em'  }}
                               type="button"
                               onClick={() => setCurrentPage(currentPage + 1)}
                            >

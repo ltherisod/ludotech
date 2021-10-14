@@ -52,6 +52,7 @@ const Home = (props) => {
                   ></div>
                </div>
                <MostWanted history={props.history} />
+               <h2 className="mostWantedTittle" style={{textAlign: 'center', marginTop: '15vh'}}><span>Latest</span> products</h2>
                <NewArticlesCarousel history={props.history} />
             </main>
             <Footer />

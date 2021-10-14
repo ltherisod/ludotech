@@ -30,7 +30,11 @@ const MostWanted = (props) => {
     
   return (
     <>
-      <Text style={styles.mainText}>Most wanted products</Text>
+      <View style={styles.containerTitle} >
+        <Text style={styles.mainText}>Most</Text>
+        <Text style={styles.mainTextSpan}>{' '}wanted</Text> 
+        <Text style={styles.mainText}>{' '}products</Text>
+      </View>
       <TouchableOpacity onPress={() => props.navigation.navigate('ArticleStack', {id: mostVisitArticles[0]._id})}>
           <ImageBackground style={styles.cardImg} source={{ uri: "https://i.postimg.cc/gJb32QpL/card2.png" }}>
             <ImageBackground style={styles.gameImg} source={{ uri: mostVisitArticles[0].iconPhotos }}></ImageBackground>
@@ -66,9 +70,20 @@ export default connect(null,mapDispatchToProps)(MostWanted)
 // export default connect(null, mapDispatchToProps)(MostWanted)
 
 const styles = StyleSheet.create({
+  containerTitle: {
+    flexDirection: "row",
+    marginTop: '20%'
+  },
   mainText: {
-    color: "orange",
-    fontSize: 20,
+    color: "white",
+    fontSize: 28,
+    paddingTop: 20,
+    alignSelf: 'center',
+    fontFamily: 'Poppins_700Bold'
+  },
+  mainTextSpan: {
+    color: '#6aefcf',
+    fontSize: 28,
     paddingTop: 20,
     alignSelf: 'center',
     fontFamily: 'Poppins_700Bold'
