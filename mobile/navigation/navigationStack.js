@@ -8,6 +8,7 @@ import SignUp from "../screens/SignUp"
 import Article from "../screens/Article"
 import Profile from "../screens/Profile"
 import WishList from "../screens/WishList"
+import PurchasesScreen from "../screens/PurchasesScreen"
 
 import { useSelector } from "react-redux"
 
@@ -56,6 +57,13 @@ const navigationStack = () => {
             <Stack.Screen
                name="ProfileStack"
                component={Profile}
+               options={{ headerShown: false }}
+            />
+         )}
+         {user && (
+            <Stack.Screen
+               name="PurchasesStack"
+               component={PurchasesScreen}
                options={{ headerShown: false }}
             />
          )}
