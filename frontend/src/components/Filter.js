@@ -22,6 +22,7 @@ const Filter = (props) => {
 
    useEffect(() => {
       props.setLoadingArticles?.(loading)
+      // eslint-disable-next-line
    }, [loading])
 
    useEffect(() => {
@@ -33,6 +34,7 @@ const Filter = (props) => {
             totalPages: 1,
          }
       )
+      // eslint-disable-next-line
    }, [articles])
 
    const renderOptions = (options) => {

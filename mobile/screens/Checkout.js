@@ -3,8 +3,9 @@ import Footer from "../components/Footer"
 import HeroPages from "../components/HeroPages"
 import usersActions from "../redux/actions/usersActions"
 import { useDispatch } from "react-redux"
-import {View, Text, TouchableOpacity, StyleSheet, Image, ScrollView} from "react-native"
+import {View, Text, TouchableOpacity, StyleSheet, Image, ScrollView, ImageBackground} from "react-native"
 import {Linking} from "react-native"
+
 
 const Checkout = (props) => {
 
@@ -73,36 +74,31 @@ const purchase = {
     const dispatch = useDispatch()
     // const { purchase } = props.location.state.response
     const { articles, direction, status, timestamp, paymentDetails } = purchase.response.purchase
-    console.log(articles[0]._id)
+    // console.log(articles[0]._id)
     return (
         <ScrollView>
-            <View style={{backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`, ...styles.body}}>
-            <HeroPages />
-            <Text style={styles.purchaseTitle}>
-                Purchase <Text style={styles.purchaseSecondTitle}>Summary</Text>
-            </Text>
-            <View style={styles.checkoutPrincipalContainer}>
+            <ImageBackground style={{width:"100%", flex: 1}} source={{ uri:"https://i.postimg.cc/4NwFMLWs/fondo-Violeta.png" }}>
+                <HeroPages />
+                <View style={{flexDirection:"row", justifyContent:'center'}}>
+                <Text style={styles.purchaseTitle}>Purchase </Text>
+                <Text style={styles.purchaseSecondTitle}>Summary</Text>
+                </View>
+                <View style={styles.checkoutPrincipalContainer}>
                     <View style={styles.checkoutContainer}>
                         <Text style={styles.textDate}>
                             Date: {timestamp.slice(0, 10).replace(/-/g, " / ")}
                         </Text>
                         <View style={styles.divlogoCheckout}>
-                            <Text style={styles.logoCheckout}>
-                                <Text style={styles.spanViolet}>ludo</Text>
-                                <Text style={styles.spanRed}>t</Text>
-                                <Text style={styles.spanGreen}>e</Text>
-                                <Text style={styles.spanOrangi}>c</Text>
-                                <Text style={styles.spanViolet2}>h</Text>
-                            </Text>
-                            <Image source={{uri: "https://i.postimg.cc/FFjzhxf6/rubik-solo.png"}} style={styles.imgLogoCheckout} alt="ludoLogo"/>
+                            <Image source={require('../assets/logoSumary.png')} style={{width:160, height:55}} alt="ludoLogo" resizeMode='contain'/>
                         </View>
+                        <View style={{backgroundColor:'#c8c9ca', width:250, height:3}}></View>
                         <View>
                             {articles.map((article) => {
                                 return (
                                     <View key={article._id}>
                                         <View style={styles.articleContainer}>
                                             <View style={styles.leftCheckout}>
-                                                <Text style={styles.leftCheckoutText}>{article.name}</Text>
+                                                <Text style={styles.leftCheckoutText1}>{article.name}</Text>
                                                 <Text style={styles.leftCheckoutText}>{article.brand}</Text>
                                             </View>
                                             <View style={styles.rightCheckout}>
@@ -236,7 +232,7 @@ const purchase = {
                     </TouchableOpacity>
             </View>
             <Footer />
-            </View>
+            </ImageBackground>
         </ScrollView>
     )
 }
@@ -248,19 +244,31 @@ const styles = StyleSheet.create({
 
     },
     purchaseTitle: {
-
+        color:"white",
+        fontFamily:"Poppins_700Bold",
+        fontSize:27,
+        textAlign:"center",
     },
     purchaseSecondTitle: {
-
+        color: "#67f2cb",
+        fontFamily:"Poppins_700Bold",
+        fontSize:27,
+        textAlign:"center",
     },
     checkoutPrincipalContainer: {
 
     },
     checkoutContainer: {
-
+        backgroundColor:'white',
+        width:'80%',
+        alignSelf:'center',
+        borderRadius:10,
+        padding:20
     },
     textDate: {
-
+        fontFamily:"Poppins_400Regular",
+        fontSize:12,
+        alignSelf:'flex-end'
     },
     addProduct: {
 
@@ -295,9 +303,15 @@ const styles = StyleSheet.create({
     leftCheckout: {
 
     },
-    leftCheckoutText: {
-
+    leftCheckoutText1: {
+        fontFamily:"Poppins_500Medium",
+        fontSize:15
     },
+    leftCheckoutText: {
+        fontFamily:"Poppins_400Regular",
+        fontSize:12
+    },
+    
     rightCheckout: {
 
     },

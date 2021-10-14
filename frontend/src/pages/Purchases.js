@@ -20,6 +20,7 @@ const Purchases = () => {
             setSearched(res.data.response)
          })
          .catch((e) => console.log(e))
+          // eslint-disable-next-line
    }, [])
 
    const searchPurchase = (value) => {
@@ -79,6 +80,7 @@ const Purchase = ({ purchase }) => {
       purchase.status === "cancelled" && setColor("red")
       purchase.status === "shipping" && setColor("orange")
       purchase.status === "completed" && setColor("green")
+       // eslint-disable-next-line
    }, [])
 
    return (

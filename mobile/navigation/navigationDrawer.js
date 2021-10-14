@@ -17,6 +17,7 @@ import { connect, useSelector, useDispatch } from "react-redux"
 import { useLoginLS } from "../hooks/usersHooks"
 import { Image, ImageBackground, StyleSheet } from "react-native"
 import NavigationBottom from "./navigationBottom"
+import Checkout from '../screens/Checkout'
 import Stripe from "../screens/Stripe"
 import usersActions from "../redux/actions/usersActions"
 const Drawer = createDrawerNavigator()
@@ -77,6 +78,11 @@ const Navigator = (props) => {
       <Drawer.Screen
         name="Articles"
         component={Articles}
+        options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
+      />
+       <Drawer.Screen
+        name="Checkout"
+        component={Checkout}
         options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
       />
       {user && <Drawer.Screen

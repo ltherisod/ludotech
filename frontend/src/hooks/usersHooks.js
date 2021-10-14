@@ -92,6 +92,7 @@ export const useLoginLS = () => {
    const dispatch = useDispatch()
    useEffect(() => {
       loginLS()
+      // eslint-disable-next-line
    }, [])
 
    const loginLS = async () => {
