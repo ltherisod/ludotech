@@ -6,11 +6,11 @@ import usersActions from "../redux/actions/usersActions"
 import toast from "react-hot-toast"
 
 const Header = (props) => {
-   const iconUser = "https://i.postimg.cc/pd1gvVR7/iconuser1.png"
-   const HOST = "https://lodotechgames.herokuapp.com"
-   const user = useSelector((state) => state.users.user)
-   const dispatch = useDispatch()
-   const [changeTitle, setChangeTitle] = useState(false)
+  const iconUser = "https://i.postimg.cc/pd1gvVR7/iconuser1.png"
+  const HOST = "https://lodotechgames.herokuapp.com"
+  const user = useSelector((state) => state.users.user)
+  const dispatch = useDispatch()
+  const [changeTitle, setChangeTitle] = useState(false)
 
   const toggleTitle = () => {
     const scrolled = document.documentElement.scrollTop
@@ -188,7 +188,11 @@ const Header = (props) => {
               <Link to="/wishlist">
                 <FaHeart className="iconsNav" />
               </Link>
-              <Link to="/cart" onClick={() => window.scrollTo(0, 0)}>
+              <Link
+                to="/cart"
+                id={user ? "cart_loggedin" : "cart_loggedout"}
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 <FaShoppingCart className="iconsNav" />
               </Link>
             </>
