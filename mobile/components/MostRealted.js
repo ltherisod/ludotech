@@ -17,7 +17,7 @@ const MostRealted = ({relatedArticles, articleId, navigation, scrollRef}) => {
             Toast.show({
               type: 'success',
               text1: `${value} added🤩`,
-              text2: 'Press cart icon to see your cart',
+              text2: 'Press here to see your cart',
               onPress: () => navigation.navigate('cart'),
               position: 'bottom'
             })

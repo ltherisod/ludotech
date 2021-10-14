@@ -31,7 +31,7 @@ const NewArticlesCarousel = (props) => {
       Toast.show({
         type: 'success',
         text1: `${name} added🤩`,
-        text2: 'Press cart icon to see your cart',
+        text2: 'Press here to see your cart',
         onPress: () => props.navigation.navigate('cart'),
         position: 'bottom'
       })
