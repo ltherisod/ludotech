@@ -34,7 +34,7 @@ const Address = (props) => {
 
   const deleteAddress = async (id) => {
     const res = await dispatch(usersActions.deleteDirection(id))
-    console.log(res)
+    // console.log(res)
   }
 
   return (
