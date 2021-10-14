@@ -15,6 +15,7 @@
     "@react-navigation/drawer": "^6.1.6",
     "@react-navigation/native": "^6.0.4",
     "@react-navigation/native-stack": "^6.2.2",
+    "@stripe/stripe-react-native": "0.1.4",
     "axios": "^0.22.0",
     "expo": "~42.0.1",
     "expo-app-loading": "^1.1.2",
@@ -40,8 +41,7 @@
     "react-redux": "^7.2.5",
     "redux": "^4.1.1",
     "redux-thunk": "^2.3.0",
-    "yup": "^0.32.9",
-    "@stripe/stripe-react-native": "0.1.4"
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
