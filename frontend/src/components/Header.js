@@ -177,14 +177,6 @@ const Header = (props) => {
           </div>
           {user ? (
             <>
-              <div className="relative">
-                <FaBell
-                  className="iconsNav"
-                  onClick={() => setShowNoti(!showNoti)}
-                />
-                <div className="notification">2</div>
-                {showNoti && <Notifications show={setShowNoti} />}
-              </div>
               <Link to="/wishlist">
                 <FaHeart className="iconsNav" />
               </Link>
@@ -198,46 +190,6 @@ const Header = (props) => {
             </>
           ) : (
             <>
-              <FaBell
-                className="iconsNav"
-                onClick={() =>
-                  toast.custom((t) => (
-                    <div
-                      className={`${
-                        t.visible ? "animate-enter" : "animate-leave"
-                      } bg-white flex`}
-                      style={{
-                        display: "flex",
-                        alignContent: "center",
-                        alignItems: "center",
-                        padding: "5px 10px",
-                        borderRadius: "15px",
-                        backgroundImage:
-                          "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
-                        backgroundPosition: "center right 50px",
-                        backgroundSize: "cover",
-                      }}
-                    >
-                      <img
-                        style={{ width: "55px", height: "55px" }}
-                        className="h-3 w-3 rounded-full"
-                        src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
-                        alt=""
-                      />
-                      <p
-                        className="text-sm"
-                        style={{
-                          marginBottom: 0,
-                          color: "#ff9424",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        You must log in to see your notifications
-                      </p>
-                    </div>
-                  ))
-                }
-              />{" "}
               <FaHeart
                 className="iconsNav"
                 onClick={() =>

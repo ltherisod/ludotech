@@ -4,6 +4,7 @@ import { connect, useSelector } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
 import { FaCartPlus } from "react-icons/fa"
 import toast from "react-hot-toast"
+import {useMediaQuery} from "react-responsive"
 
 const NewArticlesCarousel = (props) => {
 
@@ -64,7 +65,7 @@ const NewArticlesCarousel = (props) => {
     ))
  }
 
-
+ const isMobile = useMediaQuery({query:"(max-width:576px)"})
 
   return (
     <div>
@@ -75,7 +76,7 @@ const NewArticlesCarousel = (props) => {
         navigation={true}
         pagination={false}
         spaceBetween={30} 
-        slidesPerView={3}
+        slidesPerView={isMobile ? 1 : 3}
         loop={true}
         autoplay={{"dealy": 3500, "disableOnInteraction": false, pauseOnMouseEnter: false}}
         >

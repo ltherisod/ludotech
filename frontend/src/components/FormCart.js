@@ -1,6 +1,6 @@
 const FormCart = ({ formik }) => {
    return (
-      <div style={{ width: "35%" }}>
+      <div id="addressFormForResponsive">
          <input
             name="receiver"
             value={formik.values.receiver}
