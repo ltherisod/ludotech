@@ -20,6 +20,7 @@ const NewArticlesCarousel = (props) => {
       }
     }
     getLastArticles()
+     // eslint-disable-next-line
   }, [])
 
   const addToCart = (e, id) => {

@@ -11,19 +11,23 @@ const NotProfile = (props) => {
                 <HeroPages />
                 <View style={styles.container}>
                     <View style={{flexDirection: 'row'}}>
-                        <Text style={styles.title}>See your</Text>
-                        <Text style={[styles.title, {color: "#67f2cb",}]}>{` `}profile</Text>
+                        <Text style={styles.title}>Create your</Text>
+                        <Text style={[styles.title, {color: "#67f2cb",}]}>{` `}profile!</Text>
                     </View>
-                    {/* <TouchableOpacity style={{borderWidth: 1, borderColor: 'rgba(0,0,0,0.2)', marginBottom: 20, borderRadius: 6}} onPress={() => props.navigation.navigate('SignInStack')}>
-                        <ImageBackground  style={styles.button} imageStyle={{borderRadius: 5}} source={{uri: 'https://i.postimg.cc/mD7r09R8/button-Back.png'}}>
-                            <Text style={styles.textButton}>Log in</Text>
-                        </ImageBackground>
-                    </TouchableOpacity>
                     <TouchableOpacity style={{borderWidth: 1, borderColor: 'rgba(0,0,0,0.2)', marginBottom: 20, borderRadius: 6}} onPress={() => props.navigation.navigate('SignUpStack')}>
                         <ImageBackground  style={styles.button} imageStyle={{borderRadius: 5}} source={{uri: 'https://i.postimg.cc/mD7r09R8/button-Back.png'}}>
                             <Text style={styles.textButton}>Sign up</Text>
                         </ImageBackground>
-                    </TouchableOpacity> */}
+                    </TouchableOpacity> 
+                    <View style={{flexDirection: 'row'}}>
+                        <Text style={styles.title}>Already have</Text>
+                        <Text style={[styles.title, {color: "#67f2cb",}]}>{` `}one?</Text>
+                    </View>
+                     <TouchableOpacity style={{borderWidth: 1, borderColor: 'rgba(0,0,0,0.2)', marginBottom: 20, borderRadius: 6}} onPress={() => props.navigation.navigate('SignInStack')}>
+                        <ImageBackground  style={styles.button} imageStyle={{borderRadius: 5}} source={{uri: 'https://i.postimg.cc/mD7r09R8/button-Back.png'}}>
+                            <Text style={styles.textButton}>Log in</Text>
+                        </ImageBackground>
+                    </TouchableOpacity>
                 </View>
                 <Footer />
             </ImageBackground>
@@ -48,8 +52,8 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     button: {
-        paddingVertical: 20,
-        width: 300,
+        paddingVertical: 10,
+        width: 150,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius:5

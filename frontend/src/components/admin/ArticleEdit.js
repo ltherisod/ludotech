@@ -122,6 +122,7 @@ const ArticleEdit = (props) => {
             .then((res) => setUtilities(res.response))
       }
       traer()
+      // eslint-disable-next-line
    }, [])
 
    const { brands, genres, gameTypes } = utilities

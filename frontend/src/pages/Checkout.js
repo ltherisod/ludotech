@@ -3,13 +3,22 @@ import Header from "../components/Header"
 import HeroPages from "../components/HeroPages"
 import usersActions from "../redux/actions/usersActions"
 import { useDispatch } from "react-redux"
+import {useEffect} from "react"
 
 const Checkout = (props) => {
+   useEffect(() => {
+      window.scrollTo(0, 0)
+      // eslint-disable-next-line
+   }, [])
+
    const dispatch = useDispatch()
 
    const { purchase } = props.location.state.response
    const { articles, direction, status, timestamp, paymentDetails } = purchase
    console.log(purchase)
+
+  
+
    return (
       <div
          className="body"

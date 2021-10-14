@@ -47,6 +47,7 @@ const Test = () => {
         setInfo(info)
       })
       .catch((e) => console.log(e.message))
+      // eslint-disable-next-line
   }, [])
   return (
     <div>

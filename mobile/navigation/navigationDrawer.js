@@ -18,6 +18,7 @@ import { useLoginLS } from "../hooks/usersHooks"
 import { Image, ImageBackground, StyleSheet } from "react-native"
 import NavigationBottom from "./navigationBottom"
 import Stripe from "../screens/Stripe"
+import Checkout from "../screens/Checkout"
 const Drawer = createDrawerNavigator()
 
 const Navigator = (props) => {
@@ -74,6 +75,11 @@ const Navigator = (props) => {
       <Drawer.Screen
         name="Articles"
         component={Articles}
+        options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
+      />
+       <Drawer.Screen
+        name="Checkout"
+        component={Checkout}
         options={{ headerTitle: (props) => <LogoTitle {...props} /> }}
       />
       {user && <Drawer.Screen

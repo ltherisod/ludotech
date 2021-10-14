@@ -60,6 +60,7 @@ export const useUtils = () => {
 
   useEffect(() => {
     getUtils()
+    // eslint-disable-next-line
   }, [])
 
   const getUtils = async () => {
