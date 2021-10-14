@@ -8,20 +8,22 @@ const indexEmail = require("../config/emailsBody/indexEmail")
 const usersControllers = {
   getUsersCount: async (req, res) => {
     try {
-       let usersCount = await User.find().countDocuments()
-      res.json({success: true, response: usersCount, error: null})
-    } catch(e) {
-      res.json({success: false, response: null, error: e.message})
+      let usersCount = await User.find().countDocuments()
+      res.json({ success: true, response: usersCount, error: null })
+    } catch (e) {
+      res.json({ success: false, response: null, error: e.message })
     }
   },
   getLastUsers: async (req, res) => {
     try {
-      let users = await  User.find().sort('-_id').limit(3)
-        .select('firstname lastname email photo')
-      res.json({success: true, response: users, error: null})
-    } catch(e){
+      let users = await User.find()
+        .sort("-_id")
+        .limit(3)
+        .select("firstname lastname email photo")
+      res.json({ success: true, response: users, error: null })
+    } catch (e) {
       console.log(e)
-      res.json({success: false, response: null, error: e.message})
+      res.json({ success: false, response: null, error: e.message })
     }
   },
   logIn: async (req, res) => {
@@ -128,6 +130,8 @@ const usersControllers = {
       const { firstname, lastname, email, password, phone } = req.body
       const photo = req.files?.photo
       const newEmailInUse = await User.findOne({ email })
+      if (!req.user._id.toString() === req.params._id.toString())
+        throw new Error("Unauthorized.")
       if (
         newEmailInUse &&
         newEmailInUse._id.toString() !== req.user._id.toString()
@@ -568,7 +572,9 @@ const usersControllers = {
     let mailOptions = {
       from: "Ludotehc <ludotechweb@gmail.com>",
       to: `<${req.body.user.email}`,
-      subject: `Success purchase by ${req.body.user.firstname + ' ' + req.body.user.lastname}`,
+      subject: `Success purchase by ${
+        req.body.user.firstname + " " + req.body.user.lastname
+      }`,
       text: indexEmail.SuccessPurchase(req.body),
       html: indexEmail.SuccessPurchase(req.body),
     }
@@ -650,7 +656,6 @@ const usersControllers = {
       }
     })
   },
-  
 }
 
 module.exports = usersControllers
