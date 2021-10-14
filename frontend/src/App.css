@@ -1700,12 +1700,12 @@ h2.articles {
 }
 
 .relatedArticles {
-   width: 80%;
-   align-self: center;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   flex-wrap: wrap;
+  width: 100%;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .cardArticleRelated {
@@ -2511,6 +2511,9 @@ h2.articles {
    border-width: 20px;
    margin-left: -25px;
 }
+#finalizeYourPurchase {
+  margin-left: 0;
+}
 
 /* MEDIAQUERIES */
 
@@ -2605,199 +2608,266 @@ h2.articles {
 }
 
 @media (max-width: 576px) {
-   .hero {
-      padding-top: 180px;
-   }
-   .cube {
-      height: 400px;
-      width: 400px;
-      margin-bottom: 60px;
-   }
-   .mostWantedTittle {
-      padding-top: 60px;
-      padding-bottom: 50px;
-      font-size: 38px;
-   }
-   .mostWantedGame {
-      width: 300px;
-      height: 300px;
-      position: relative;
-      bottom: 55px;
-   }
-   .mostWantedGameBrand {
-      margin: 0em;
-      font-size: 6vmin;
-      text-align: center;
-      position: relative;
-      bottom: 75px;
-   }
-   .mostWantedCard {
-      width: 85%;
-   }
-   .mostWantedGameConteiner,
-   .mostWantedGameConteinerLeft {
-      padding-right: 0rem;
-      align-self: flex-start;
-      width: 90%;
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: flex-start;
-   }
-   .mostWantedGameConteinerLeft {
-      padding-left: 0rem !important;
-      flex-direction: column !important;
-   }
-   .socialMediaContainer {
-      width: 50%;
-   }
+  .hero {
+    padding-top: 180px;
+  }
+  .cube {
+    height: 400px;
+    width: 400px;
+    margin-bottom: 60px;
+  }
+  .mostWantedTittle {
+    padding-top: 60px;
+    padding-bottom: 50px;
+    font-size: 38px;
+  }
+  .mostWantedGame {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    bottom: 55px;
+  }
+  .mostWantedGameBrand {
+    margin: 0em;
+    font-size: 6vmin;
+    text-align: center;
+    position: relative;
+    bottom: 75px;
+  }
+  .mostWantedCard {
+    width: 85%;
+  }
+  .mostWantedGameConteiner,
+  .mostWantedGameConteinerLeft {
+    padding-right: 0rem;
+    align-self: flex-start;
+    width: 90%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .mostWantedGameConteinerLeft {
+    padding-left: 0rem !important;
+    flex-direction: column !important;
+  }
+  .socialMediaContainer {
+    width: 50%;
+  }
 
-   .footerRights {
-      font-size: 3.3vmin;
-      padding-bottom: 1em;
-   }
+  .footerRights {
+    font-size: 3.3vmin;
+    padding-bottom: 1em;
+  }
 
-   /* Filter */
+  /* Filter */
 
-   .search {
-      width: 100%;
-   }
-   .search label {
-      text-align: center;
-      font-size: 4.5vmin;
-   }
+  .search {
+    width: 100%;
+  }
+  .search label {
+    text-align: center;
+    font-size: 4.5vmin;
+  }
 
-   .search input {
-      height: 3em;
-      width: 100%;
-   }
+  .search input {
+    height: 3em;
+    width: 100%;
+  }
 
-   .searchButton {
-      font-size: 4.5vmin;
-      width: 250px;
-   }
-   .filtersBox {
-      margin-left: 0px;
-   }
+  .searchButton {
+    font-size: 4.5vmin;
+    width: 250px;
+  }
+  .filtersBox {
+    margin-left: 0px;
+  }
 
-   .filterOption select {
-      width: 180px;
-   }
-   .heroPageCont {
-      min-height: 20vh;
-   }
-   .main-sign {
-      width: 80%;
-   }
-   .scrollButton {
-      left: 91%;
-   }
-   .buttonGoogle {
-      font-size: 3.5vmin;
-   }
-   .signupEmailOption {
-      font-size: 3vmin;
-   }
-   .main-sign label {
-      font-size: 3.2vmin;
-   }
-   .signupButtonSignup,
-   .signinButtonSignup {
-      font-size: 4vmin;
-   }
-   .main-sign h2 {
-      font-size: 7vmin;
-   }
-   .signinButtonSignupText {
-      font-size: 3vmin;
-   }
-   .adTerms {
-      font-size: 2.5vmin;
-   }
-   .articleData {
-      width: 85%;
-   }
-   .containerData {
-      width: 450px;
-   }
+  .filterOption select {
+    width: 180px;
+  }
+  .heroPageCont {
+    min-height: 20vh;
+  }
+  .main-sign {
+    width: 80%;
+  }
+  .scrollButton {
+    left: 91%;
+  }
+  .buttonGoogle {
+    font-size: 3.5vmin;
+  }
+  .signupEmailOption {
+    font-size: 3vmin;
+  }
+  .main-sign label {
+    font-size: 3.2vmin;
+  }
+  .signupButtonSignup,
+  .signinButtonSignup {
+    font-size: 4vmin;
+  }
+  .main-sign h2 {
+   font-size: 7vmin;
+ }
+ .signinButtonSignupText {
+   font-size: 3vmin;
+ }
+ .adTerms {
+   font-size: 2.5vmin;
+  }
+  .articleData {
+   width: 85%;
+  }
+  .containerData {
+   width: 450px;
+ }
 
-   .articleDescription {
-      width: 80%;
-      bottom: 30px;
-   }
+ .articleDescription {
+   width: 80%;
+   bottom: 30px;
+ }
 
-   .articleDecoRight {
-      padding-right: 2em;
-      bottom: 80px;
-   }
-   .articleDecoDown {
-      position: relative;
-      bottom: 230px;
-   }
+ .articleDecoRight {
+   padding-right: 2em;
+   bottom: 80px;
+ }
+ .articleDecoDown {
+   position: relative;
+   bottom: 230px;
+ }
+ /*Profile*/
+ .divProfile {
+  width: 95vw;
+}
+.profileFirstData {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 20px;
+}
+.profileFirstData h3 {
+  font-size: 2.8rem;
+}
+.titleProfile {
+  font-size: 10vmin;
+  font-weight: 700;
+}
+.profileTitles {
+  right: 1rem;
+}
+.containerDataProfile {
+  width: 80vw;
+}
+
+.addressAddedCard {
+  width: 100%;
+}
+.inputsAdd {
+  width: 100%;
+}
+.phone p,
+.addressAddedCard p {
+  font-size: large;
+  }
+  .profileButton {
+    font-size: 3.6vmin;
+  }
+
+  /*Wishlist*/
+  .mainWishlist {
+    padding: 0 40px
+  }
+  .mainWishlist h2 {
+    font-size: 60px;
+  }
+  .searchbarWishlist input {
+    width: 100%;
+  }
+  .searchbarWishlist p {
+    font-size: large;
+  }
 }
 
 @media (max-width: 450px) {
-   .cube {
-      height: 350px;
-      min-width: 350px;
-      margin-top: 30px;
-      margin-bottom: 10px;
-   }
-   .mostWantedTittle {
-      padding-top: 35px;
-      padding-bottom: 50px;
-      font-size: 28px;
-   }
-   .mostWantedGame {
-      width: 290px;
-      height: 290px;
-      bottom: 55px;
-   }
-   .mostWantedGameBrand {
-      bottom: 62px;
-   }
-   .socialMediaContainer {
-      width: 60%;
-   }
+  .cube {
+    height: 350px;
+    min-width: 350px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  .mostWantedTittle {
+    padding-top: 35px;
+    padding-bottom: 50px;
+    font-size: 28px;
+  }
+  .mostWantedGame {
+    width: 290px;
+    height: 290px;
+    bottom: 55px;
+  }
+  .mostWantedGameBrand {
+    bottom: 62px;
+  }
+  .socialMediaContainer {
+    width: 60%;
+  }
 
-   .search label {
-      font-size: 6vmin;
-   }
-   .searchButton {
-      font-size: 6vmin;
-      width: 100%;
-   }
+  .search label {
+    font-size: 6vmin;
+  }
+  .searchButton {
+    font-size: 6vmin;
+    width: 100%;
+  }
 
-   .filterOption select {
-      width: 250px;
-   }
-   .main-sign {
-      width: 85%;
-   }
-   .scrollButton {
-      left: 88%;
-   }
-   .buttonGoogle {
-      font-size: 4vmin;
-   }
-   .signupEmailOption {
-      font-size: 3.5vmin;
-   }
-   .main-sign label {
-      font-size: 4vmin;
-   }
-   .signupButtonSignup,
-   .signinButtonSignup {
-      font-size: 4.5vmin;
-   }
-   .main-sign h2 {
-      font-size: 8.5vmin;
-   }
-   .signinButtonSignupText {
-      font-size: 3.5vmin;
-   }
-   .adTerms {
-      font-size: 3vmin;
-   }
+  .filterOption select {
+    width: 250px;
+  }
+  .main-sign {
+    width: 85%;
+  }
+  .scrollButton {
+    left: 88%;
+  }
+  .buttonGoogle {
+    font-size: 4vmin;
+  }
+  .signupEmailOption {
+    font-size: 3.5vmin;
+  }
+  .main-sign label {
+    font-size: 4vmin;
+  }
+  .signupButtonSignup,
+  .signinButtonSignup {
+    font-size: 4.5vmin;
+  }
+  .main-sign h2 {
+   font-size: 8.5vmin;
+ }
+ .signinButtonSignupText {
+   font-size: 3.5vmin;
+ }
+ .adTerms {
+   font-size: 3vmin;
+  }
+
+  /*Profile*/
+  .divProfile {
+    width: 98vw;
+  }
+  .titleProfile {
+    font-size: 12vmin;
+  }
+  .profileFirstData h3 {
+    font-size: 2.5rem;
+  }
+  .profileTitles {
+    right: 0rem;
+  }
+  .profileButton {
+    font-size: 4.2vmin;
+  }
 }
 
 @media (max-width: 415px) {
