@@ -135,15 +135,15 @@ const Stripe = (props) => {
 export default Stripe
 
 const styles = StyleSheet.create({
-   // card: {
-   //   // backgroundColor: "#FFFFFF",
-   //   width: "100%",
-   // },
-   // cardField: {
-   //   width: "100%",
-   //   height: 50,
-   //   color: "#000000",
-   //   backgroundColor: "#FFFFFF",
-   //   width: "100%",
-   // },
+  // card: {
+  //   // backgroundColor: "#FFFFFF",
+  //   width: "100%",
+  // },
+  // cardField: {
+  //   width: "100%",
+  //   height: 50,
+  //   color: "#000000",
+  //   backgroundColor: "#FFFFFF",
+  //   width: "100%",
+  // },
 })
