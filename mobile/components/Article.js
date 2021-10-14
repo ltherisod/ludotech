@@ -16,13 +16,15 @@ const Article = (props) => {
         type: 'success',
         text1: `${name} added🤩`,
         text2: 'Press here to see your cart',
-        onPress: () => props.navigation.navigate('cart')
+        onPress: () => props.navigation.navigate('cart'),
+        position: 'bottom'
       })
     } else {
       Toast.show({
         type: 'error',
         text1: `You need to be logged 😢`,
-        text2: 'Go to sign in now to add a product in your cart'
+        text2: 'Go to sign in now to add a product in your cart',
+        position: 'bottom'
       })
     }
   };
@@ -39,7 +41,8 @@ const Article = (props) => {
         type: 'success',
         text1: `${name} removed😞`,
         text2: 'Press here to see your wishlist',
-        onPress: () => props.navigation.navigate('wishlist')
+        onPress: () => props.navigation.navigate('wishlist'),
+        position: 'bottom'
       })
     } else if (props.user && !status) {
       e.stopPropagation();
@@ -48,7 +51,8 @@ const Article = (props) => {
         type: 'success',
         text1: `${name} added🤩`,
         text2: 'Press here to see your wishlist',
-        onPress: () => props.navigation.navigate('wishlist')
+        onPress: () => props.navigation.navigate('wishlist'),
+        position: 'bottom'
       })
     }
     
@@ -56,7 +60,8 @@ const Article = (props) => {
       Toast.show({
         type: 'error',
         text1: `You need to be logged 😢`,
-        text2: 'Go to sign in now to add a product in your wishist'
+        text2: 'Go to sign in now to add a product in your wishist',
+        position: 'bottom'
       })
     }
   };

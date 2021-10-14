@@ -32,13 +32,15 @@ const NewArticlesCarousel = (props) => {
         type: 'success',
         text1: `${name} added🤩`,
         text2: 'Press cart icon to see your cart',
-        onPress: () => props.navigation.navigate('cart')
+        onPress: () => props.navigation.navigate('cart'),
+        position: 'bottom'
       })
     } else {
       Toast.show({
         type: 'error',
         text1: `You need to be logged 😢`,
-        text2: 'Go to sign in now to add a product in your cart'
+        text2: 'Go to sign in now to add a product in your cart',
+        position: 'bottom'
       })
     }
   }
