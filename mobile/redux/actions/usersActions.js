@@ -206,6 +206,20 @@ const usersActions = {
       }
     }
   },
+  getPurchaseByUser: (userId) => {
+    return async (dispatch) => {
+      try {
+        let response = await axios.get(`http://localhost:4000/api/user/purchases/${userId}`, { headers: { Authorization: "Bearer " + user.token }})
+        if (response.data.success) {
+          return { success: true, response: response.data.response, error: null }
+        } else {
+          throw new Error(response.data.error)
+        }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
+    }
+  }
 }
 
 export default usersActions
