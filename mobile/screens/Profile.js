@@ -208,16 +208,19 @@ console.log(props)
               </Text>
               <View>
                 {!directions || directions.length === 0 ? (
-                  <Text
-                    style={{
-                      color: "gray",
-                      fontFamily: "Poppins_600SemiBold",
-                      fontSize: 12,
-                      marginLeft: 60,
-                    }}
-                  >
-                    There are no addresses added
-                  </Text>
+                  <View style={styles.phoneCard}>
+                        <Text
+                        style={{
+                          color: "gray",
+                          fontFamily: "Poppins_600SemiBold",
+                          fontSize: 14,
+                    
+                        }}
+                      >
+                        There are no addresses added
+                      </Text>
+                  </View>
+                 
                 ) : (
                   directions.map((direction) => {
                     return <Address direction={direction} key={direction._id} />
@@ -262,7 +265,7 @@ console.log(props)
               <DirectionsForm
                 submitCallback={addDirectionHandler}
                 initialValues={initialValues}
-                buttonText="Add +"
+                buttonText="Add Address"
               />
             )}
           </View>

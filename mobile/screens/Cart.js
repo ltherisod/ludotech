@@ -18,9 +18,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import HeroPages from "../components/HeroPages"
 import FontAwesome from "react-native-vector-icons/FontAwesome"
-
 const Cart = (props) => {
-   console.log(props)
    let totalCost = props.shoppingCart.reduce((count, item) => {
       return (
          count +
@@ -58,18 +56,35 @@ const Cart = (props) => {
                }}
             >
                <HeroPages />
-               <View style={styles.CartMain}>
-                  <Text style={styles.cartTitle}>Cart</Text>
-                  <View>
-                     <View>
-                        {props.shoppingCart.map((article) => {
-                           return (
-                              <View
-                                 style={styles.productCard}
-                                 key={article.article._id}
-                              >
-                                 <View style={styles.firstLine}>
-                                    <Image
+                  {props.shoppingCart.length === 0 
+                     ? <>
+                       <View style={{width:"100%", justifyContent:"center", alignItems:"center"}}>
+                        <Text style={styles.title}>Your cart is <Text style={{color: "#67f2cb"}}>empty!</Text></Text>
+                        <Text style={styles.title}>Let's <Text style={{color: "#67f2cb"}}>start</Text> buying!</Text>
+                         <Image style={{width:300, height:300, alignSelf:"center"}} source={require("../assets/mascotSelfie.gif")}/>
+                           <TouchableOpacity  style={{ alignSelf: "center", borderWidth: 1, borderColor: "rgba(0,0,0,0.2)"}}  onPress={() => props.navigation.navigate("ArticlesStack")} >
+                        <ImageBackground style={styles.button} source={{ uri: "https://i.postimg.cc/GhMnJB8K/button-PDF.png"}} imageStyle={{ borderRadius: 5 }}>
+                    <Text style={{color: "white", fontFamily: "Poppins_600SemiBold",alignSelf: "center",fontSize: 16,}}>
+                        Shop Now!
+                     </Text>
+                   </ImageBackground>
+               </TouchableOpacity>
+        </View>
+                     </>
+                     :(
+                        <>
+                             <View style={styles.CartMain}>
+                         <Text style={styles.cartTitle}>Cart</Text>
+                        <View>
+                           <View>
+                              {props.shoppingCart.map((article) => {
+                                 return (
+                                          <View
+                                             style={styles.productCard}
+                                             key={article.article._id}
+                                                          >
+                                          <View style={styles.firstLine}>
+                                           <Image
                                        style={styles.productImg}
                                        source={{
                                           uri: article.article.photos[0],
@@ -191,6 +206,8 @@ const Cart = (props) => {
                 </TouchableOpacity>
                   </View>
                </View>
+                        </>
+                     ) }
                <Footer />
             </ImageBackground>
          </View>
@@ -368,4 +385,23 @@ const styles = StyleSheet.create({
       fontFamily: "Poppins_700Bold",
       marginLeft:4,
     },  
+    title: {
+      fontFamily:"Poppins_700Bold",
+      fontSize: 25,
+      color: "purple",
+      textAlign:'center'
+   },
+   button: {
+      paddingVertical: 10,
+      width: 150,
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 5,
+     
+   },
+   textButton: {
+      fontSize: 20,
+      color: "white",
+      fontWeight: "bold",
+   },
 })

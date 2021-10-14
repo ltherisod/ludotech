@@ -10,6 +10,7 @@ import usersActions from "../redux/actions/usersActions"
 import Preloader from "../components/Preloader"
 import HeroPages from "../components/HeroPages"
 import Footer from "../components/Footer"
+import PreloaderBack from "../components/PreloaderBack"
 
 const HOST = "https://lodotechgames.herokuapp.com"
 
@@ -96,7 +97,7 @@ const Stripe = (props) => {
                color={Colors.purple800}
                size="large"
             /> */}
-            <Preloader />
+            <PreloaderBack />
          </View>
       )
    return (
@@ -104,6 +105,7 @@ const Stripe = (props) => {
          <ScrollView>
             <ImageBackground style={{flex:1}}source={{uri : "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png"}}>
                <HeroPages/>
+               <Text style={{textAlign:'center', fontFamily:'Poppins_800ExtraBold', fontSize:25, color:'gray' }}>Pay with <Text style={{color:'#67f2cb'}}> Credit Card</Text> </Text>
             <DirectionsForm
                initialValues={initialValues}
                submitCallback={(values) => {
@@ -135,7 +137,7 @@ const Stripe = (props) => {
             </DirectionsForm>
             {error && (
                <View>
-                  <Text style={{ color: "red" }}>{error}</Text>
+                  <Text style={{ color: "red", textAlign:'center' }}>{error}</Text>
                </View>
             )}
             <Footer/>
