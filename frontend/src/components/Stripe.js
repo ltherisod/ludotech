@@ -105,12 +105,12 @@ const Stripe = ({ formik, user, history }) => {
       <button
         className="profileButton"
         style={{
-          backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+          backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,width:'100%'
         }}
         type="submit"
         disabled={!stripe || loading}
       >
-        Finalize purchase
+        Finalize your purchase
       </button>
       {error && <p style={{ textAlign: "center", color: "red" }}>{error}</p>}
       {/* Mostramos el error acá o lo manejamos con tostada? */}

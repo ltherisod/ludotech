@@ -101,9 +101,9 @@ const Address = (props) => {
                {!edit && (
                   <button
                      style={{
-                        backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                        backgroundImage: `url(" https://i.postimg.cc/256ZjvPG/back-Button.png")`,
                      }}
-                     className="profileButton mt-5"
+                     className="profileButton editProfile"
                      type="button"
                      onClick={() => setEdit(!edit)}
                   >
@@ -111,9 +111,9 @@ const Address = (props) => {
                   </button>
                )}
                <button
-                  className="profileButton"
+                  className="profileButton deleteProfile" 
                   style={{
-                     backgroundColor: "#ce2a73",
+                     backgroundImage: `url("https://i.postimg.cc/L6km2Sc6/back-Google.png")`,
                   }}
                   type="button"
                   onClick={() => deleteAddress(direction._id)}

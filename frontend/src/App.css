@@ -855,7 +855,7 @@ h2 span {
 
 .buttonsProfileNavbarPanel {
    display: grid;
-   grid-template-columns: repeat(3, 1fr);
+   grid-template-columns: repeat(2, 1fr);
    gap: 1vmin;
    text-align: center;
    margin-top: 1vmin;
@@ -2094,6 +2094,11 @@ font-weight: 700;
    font-size: 2.5vmin;
    height: 50px;
    margin-left: 20px;
+}
+
+.editProfile, .deleteProfile {
+   width: 10rem;
+   border-radius: .3em !important;
 }
 
 .addressInputs {

@@ -24,8 +24,17 @@ const Articles = (props) => {
         <ScrollView>
             <ImageBackground style={{width:"100%"}} source={require("../assets/fondoVioleta.png")} resizeMode="cover">
                 <HeroPages/>
+                <View style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
+        <Text style={styles.articlesTittle}>Art</Text>
+        <Text style={styles.articlesTittleIn}>i</Text>
+        <Text style={styles.articlesTittle}>cles</Text>
+        </View>
                 <View style={styles.articlesMain}>
-                    <Text style={styles.articlesTitle}>Articles</Text>
+
                     <Filter
                         filterArticles={(e) => filterArticles(e)}
                         currentPage={currentPage}
@@ -58,10 +67,18 @@ const styles = StyleSheet.create({
        minHeight:130
     },
 
-    articlesTitle:{
+    articlesTittle:{
         color:"white",
         fontFamily:"Poppins_700Bold",
-        fontSize:25,
+        fontSize:45,
         textAlign:"center",
+        marginTop:-35,
+    },
+    articlesTittleIn:{
+        color: "#67f2cb",
+        fontFamily:"Poppins_700Bold",
+        fontSize:45,
+        textAlign:"center",
+        marginTop:-35,
     }
 })
