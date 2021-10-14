@@ -128,9 +128,10 @@ const usersControllers = {
   updateAccount: async (req, res) => {
     try {
       const { firstname, lastname, email, password, phone } = req.body
+      console.log(req.params)
       const photo = req.files?.photo
       const newEmailInUse = await User.findOne({ email })
-      if (!req.user._id.toString() === req.params._id.toString())
+      if (!req.user._id.toString() === req.params.id.toString())
         throw new Error("Unauthorized.")
       if (
         newEmailInUse &&

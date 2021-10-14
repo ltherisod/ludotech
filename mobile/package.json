@@ -35,6 +35,8 @@
     "react-native-select-dropdown": "^1.2.0",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-swiper": "^1.6.0",
+    "react-native-toast-message": "^1.6.0",
+    "react-native-toast-notifications": "^3.2.2",
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.13.12",
     "react-native-webview": "^11.14.0",

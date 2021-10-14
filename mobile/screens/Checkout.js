@@ -91,12 +91,12 @@ const purchase = {
                         <View style={styles.divlogoCheckout}>
                             <Image source={require('../assets/logoSumary.png')} style={{width:160, height:55}} alt="ludoLogo" resizeMode='contain'/>
                         </View>
-                        <View style={{backgroundColor:'#c8c9ca', width:250, height:3}}></View>
+                        <View style={{backgroundColor:'#c8c9ca', width:285, height:3, marginVertical:8}}></View>
                         <View>
                             {articles.map((article) => {
                                 return (
                                     <View key={article._id}>
-                                        <View style={styles.articleContainer}>
+                                        <View style={{flexDirection:'row'}}>
                                             <View style={styles.leftCheckout}>
                                                 <Text style={styles.leftCheckoutText1}>{article.name}</Text>
                                                 <Text style={styles.leftCheckoutText}>{article.brand}</Text>
@@ -106,14 +106,14 @@ const purchase = {
                                                     x <Text style={styles.textQuantity}>{article.quantity}</Text>u
                                                 </Text>
                                                 {article.hasDiscount === false ? (
-                                                    <Text style={styles.price}>${article.price.toFixed(2)} USD</Text>
+                                                    <Text style={{fontFamily:'Poppins_400Regular'}}>${article.price.toFixed(2)} USD</Text>
                                                 ) : (
-                                                    <View style={styles.priceContainer}>
-                                                        <Text>
+                                                    <View style={{flexDirection:'row', marginLeft:5 }}>
+                                                        <Text style={{fontFamily:'Poppins_500Medium',fontSize:12,marginTop:3, textDecorationLine:'line-through', color:'gray'}}>
                                                             ${article.price.toFixed(2)}
                                                         </Text>
-                                                        <Text>
-                                                            <Text style={{color: "green"}}>
+                                                        <Text style={{fontFamily:'Poppins_500Medium',fontSize:13, marginTop:2, marginLeft:2.5}}>
+                                                            <Text style={{fontFamily:'Poppins_500Medium',fontSize:13, color:'green'}}>
                                                             ${article.discountPrice.toFixed(2)}
                                                             </Text>
                                                             USD
@@ -122,12 +122,13 @@ const purchase = {
                                                 )}
                                             </View>
                                         </View>
-                                        <View style={styles.totalPriceContainer}>
-                                            <Text>Total: </Text>
+                                        <View style={{backgroundColor:'#c8c9ca', width:285, height:2, marginVertical:8}}></View>
+                                        <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                                            <Text style={{fontFamily:'Poppins_500Medium',fontSize:15}}>Total: </Text>
                                             {!article.hasDiscount ? (
-                                            <Text>${purchase.total.toFixed(2)} USD</Text>
+                                            <Text style={{fontFamily:'Poppins_500Medium',fontSize:15}}>${purchase.total.toFixed(2)} USD</Text>
                                             ) : (
-                                            <Text>
+                                            <Text style={{fontFamily:'Poppins_500Medium',fontSize:15}}>
                                                 $
                                                 {(
                                                     article.quantity *
@@ -142,48 +143,65 @@ const purchase = {
                                     </View>
                                 )
                             })}
-                            <Text>Send to:</Text>
+                            <View style={{backgroundColor:'#c8c9ca', width:285, height:3, marginVertical:8}}></View>
+                            <Text style={{fontFamily:'Poppins_500Medium',fontSize:15}} >Send to:</Text>
                             <View style={styles.personalData}>
-                                <Text>
+                                <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                                    <Text style={{fontFamily:'Poppins_400Regular'}}>
                                     Street: 
                                     <Text style={{ color: "gray", marginRight: "10px" }}>
-                                        {direction.street}
+                                    {``} {direction.street}
                                     </Text>
+                                    </Text>
+                                    <Text style={{fontFamily:'Poppins_400Regular'}}>
                                     N° 
                                     <Text style={{ color: "gray", marginRight: "10px" }}>
-                                        {direction.number}
+                                    {``}  {direction.number}
                                     </Text>
-                                    Department: 
-                                    <Text style={{ color: "gray", marginRight: "10px" }}>
-                                        {direction.department}
                                     </Text>
-                                </Text>
-                                <Text>
+                                </View>
+                                <View style={{flexDirection:'row'}}>
+                                <Text style={{ fontFamily:'Poppins_400Regular'}}>Department: </Text>
+                                    <Text style={{ color: "gray", fontFamily:'Poppins_400Regular'}}>
+                                      {direction.department}
+                                    </Text>
+                                  </View> 
+                                <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                                    <Text style={{fontFamily:'Poppins_400Regular'}}>
                                     City: 
                                     <Text style={{ color: "gray", marginRight: "10px" }}>
-                                        {direction.city}
+                                    {``} {direction.city}
                                     </Text>
+                                    </Text>
+                                    <Text style={{fontFamily:'Poppins_400Regular'}}>
                                     State: 
                                     <Text style={{ color: "gray", marginRight: "10px" }}>
-                                        {direction.state}
+                                    {``}  {direction.state}
                                     </Text>
-                                    Zip Code: 
+                                    </Text>
+                                   
+                                </View>
+                                <View style={{flexDirection:'row', justifyContent:'space-between'}}>
+                                    <Text style={{fontFamily:'Poppins_400Regular'}}>
+                                     Zip Code: 
                                     <Text style={{ color: "gray", marginRight: "10px" }}>
-                                        {direction.zipCode}
+                                    {``}  {direction.zipCode}
                                     </Text>
-                                </Text>
-                                <Text>
-                                    Receiver: 
+                                    </Text>
+                                    <Text style={{fontFamily:'Poppins_400Regular'}}>Receiver: 
                                     <Text style={{ color: "gray", marginRight: "10px" }}>
-                                        {direction.receiver}
+                                    {``}  {direction.receiver}
                                     </Text>
-                                </Text>
+                                    </Text>
+                                </View>
+                                <View style={{backgroundColor:'#c8c9ca', width:285, height:3, marginVertical:8}}></View>
                             </View>
-                            <View style={styles.statusContainer}>
-                            <Text>Status: </Text>
-                            <Text style={{ color: "orange" }}>{status}</Text>
+                            <View style={{flexDirection:'row', justifyContent:'space-between', alignItems:'center'}}>
+                            <Text style={{fontFamily:'Poppins_500Medium'}}>Status: </Text>
+                            <Text style={{ color: "orange", fontFamily:'Poppins_500Medium' }}>{status}</Text>
                             </View>
-                            <Text>Selected payment method: 
+                            <View style={{backgroundColor:'#c8c9ca', width:285, height:3, marginVertical:8}}></View>
+                            <Text style={{fontFamily:'Poppins_400Regular', fontSize:11, alignSelf:'center'}}>Selected payment method: 
                                 <Text style={{ color: "darkgreen" }}>
                                     {paymentDetails.method === "PAYPAL"
                                         ? "PAYPAL"
@@ -191,44 +209,44 @@ const purchase = {
                                 </Text>
                             </Text>
                             <View style={styles.paymentDetailsContainer}>
-                                <Image style={styles.paymentDetailsImage} source={{uri: "https://i.postimg.cc/xC3sq7tJ/pngkey-com-bar-code-png-131088.png"}} alt="codeBar"/>
+                                <Image style={{width:200, height:100, alignSelf:'center', }} source={{uri: "https://i.postimg.cc/xC3sq7tJ/pngkey-com-bar-code-png-131088.png"}} alt="codeBar" resizeMode='contain'/>
                                 {paymentDetails.method === "PAYPAL" && (
-                                    <Text>{paymentDetails.orderId}</Text>
+                                    <Text style={{ textAlign:'center'}}>{paymentDetails.orderId}</Text>
                                 )}
                                 {paymentDetails.method === "STRIPE" && (
                                     <>
-                                        <Text>
-                                            {paymentDetails.orderId
+                                        <Text style={{ textAlign:'center', fontSize:11}} >
+                                            000001111{paymentDetails.orderId
                                             .replace(/[a-zA-Z]/g, 0)
                                             .slice(4, 23)}
                                         </Text>
-                                        <View className="bg}warning">
+                                        <View>
                                             <TouchableOpacity onPress={() => {Linking.openURL(paymentDetails.receipt)}}>
-                                                <Text>See additional receipt</Text>
+                                                <Text style={{fontFamily:'Poppins_500Medium', fontSize:13, alignSelf:'center', textDecorationLine:'underline', color:'blue'}}>See additional receipt</Text>
                                             </TouchableOpacity>
                                         </View>
                                     </>
                                 )}
                             </View>
-                            {/* <View style={styles.pdfContainer}>
+                             <View style={styles.pdfContainer}>
                                 <TouchableOpacity
                                     onPress={() => {
-                                        Linking.openURL(`https://lodotechgames.herokuapp.com/api/receipt/${purchase._id}`)
-                                    }}
-                                    style={{
-                                        backgroundImage: `url("https://i.postimg.cc/GhMnJB8K/button-PDF.png")`,
-                                    }}
-                                >
-                                    <Text>Download PDF</Text>
+                                        Linking.openURL(`https://lodotechgames.herokuapp.com/api/receipt/${purchase._id}`)}} style={{marginTop:5, alignSelf:'center'}}>
+                                            <ImageBackground style={{ width:120, padding:3}} source={{uri: "https://i.postimg.cc/GhMnJB8K/button-PDF.png",}} imageStyle={{ borderRadius: 5 }}>
+                                    <Text style={{ color: "white",fontFamily: "Poppins_600SemiBold", alignSelf: "center",fontSize: 13, }}>Download PDF</Text>
+                                    </ImageBackground>
                                 </TouchableOpacity>
-                            </View> */}
+                            </View> 
                         </View>
                     </View>
                     <TouchableOpacity
-                        onPress={() => props.navigation.navigate("Home")}
-                        style={{backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`, ...styles.addProduct}}
+                        onPress={() => props.navigation.navigate("Home")} style={{marginTop:20, alignSelf:'center'}}
                     >
-                        <Text>BACK TO HOME</Text>
+                        <ImageBackground
+                        style={{ width:150, padding:5}}
+                        source={{uri: "https://i.postimg.cc/mD7r09R8/button-Back.png",}}imageStyle={{ borderRadius: 5 }}>
+                        <Text  style={{ color: "white",fontFamily: "Poppins_600SemiBold", alignSelf: "center",fontSize: 13, }}>BACK TO HOME</Text>
+                        </ImageBackground>
                     </TouchableOpacity>
             </View>
             <Footer />
@@ -256,11 +274,11 @@ const styles = StyleSheet.create({
         textAlign:"center",
     },
     checkoutPrincipalContainer: {
-
+        alignItems:'center'
     },
     checkoutContainer: {
         backgroundColor:'white',
-        width:'80%',
+        width:'90%',
         alignSelf:'center',
         borderRadius:10,
         padding:20
@@ -313,13 +331,15 @@ const styles = StyleSheet.create({
     },
     
     rightCheckout: {
-
+        flexDirection:'row',
     },
     rightCheckoutText: {
-
+        fontFamily:"Poppins_400Regular",
+        fontSize:15
     },
     textQuantity: {
-
+        fontFamily:"Poppins_500Medium",
+        color:'orange'
     },
     price: {
 
