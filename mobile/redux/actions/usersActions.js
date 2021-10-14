@@ -63,6 +63,7 @@ const usersActions = {
             },
           }
         )
+        console.log(response)
         if (!response.data.success) throw new Error(response.data.error)
         dispatch({
           type: "LOGIN_OR_SIGNUP",
@@ -188,23 +189,23 @@ const usersActions = {
   },
   getReceipt: (purchaseId) => {
     return async (dispatch) => {
-       try {
-          const res = await axios({
-             url: `${HOST}/api/receipt/${purchaseId}`,
-             method: "GET",
-             responseType: "blob",
-          })
-          if (!res.data) {
-             throw new Error(res.data.error)
-          }
+      try {
+        const res = await axios({
+          url: `${HOST}/api/receipt/${purchaseId}`,
+          method: "GET",
+          responseType: "blob",
+        })
+        if (!res.data) {
+          throw new Error(res.data.error)
+        }
 
-          fileDownload(res.data, `${purchaseId}.pdf`)
-          return { success: true, response: "Todo bien", error: null }
-       } catch (e) {
-          return { success: false, response: null, error: e.message }
-       }
+        fileDownload(res.data, `${purchaseId}.pdf`)
+        return { success: true, response: "Todo bien", error: null }
+      } catch (e) {
+        return { success: false, response: null, error: e.message }
+      }
     }
- },
+  },
 }
 
 export default usersActions
