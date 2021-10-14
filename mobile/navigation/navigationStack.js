@@ -8,7 +8,7 @@ import SignUp from "../screens/SignUp"
 import Article from "../screens/Article"
 import Profile from "../screens/Profile"
 import WishList from "../screens/WishList"
-import Checkout from "../screens/Checkout"
+
 import { useSelector } from "react-redux"
 
 const Stack = createNativeStackNavigator()
@@ -36,11 +36,6 @@ const navigationStack = () => {
          <Stack.Screen
             name="CartStack"
             component={Cart}
-            options={{ headerShown: false }}
-         />
-         <Stack.Screen
-            name="Checkout"
-            component={Checkout}
             options={{ headerShown: false }}
          />
          {!user && (

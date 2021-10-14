@@ -3,7 +3,7 @@ import Header from "../components/Header"
 import HeroPages from "../components/HeroPages"
 import usersActions from "../redux/actions/usersActions"
 import { useDispatch } from "react-redux"
-import {useEffect} from "react"
+import { useEffect } from "react"
 
 const Checkout = (props) => {
    useEffect(() => {
@@ -16,8 +16,6 @@ const Checkout = (props) => {
    const { purchase } = props.location.state.response
    const { articles, direction, status, timestamp, paymentDetails } = purchase
    console.log(purchase)
-
-  
 
    return (
       <div
@@ -99,11 +97,14 @@ const Checkout = (props) => {
                               </div>
                            </div>
                            <hr style={{ height: "2px" }}></hr>
-                           <div className="d-flex justify-content-between">
-                              <h4>Total: </h4>
-                              {!article.hasDiscount ? (
-                                 <h4>${purchase.total.toFixed(2)} USD</h4>
-                              ) : (
+                        </>
+                     )
+                  })}
+                  <div className="d-flex justify-content-between">
+                     <h4>Total: </h4>
+                     {/* {!article.hasDiscount ? ( */}
+                     <h4>${purchase.total.toFixed(2)} USD</h4>
+                     {/* ) : (
                                  <h4>
                                     $
                                     {(
@@ -114,11 +115,8 @@ const Checkout = (props) => {
                                     ).toFixed(2)}{" "}
                                     USD
                                  </h4>
-                              )}
-                           </div>
-                        </>
-                     )
-                  })}
+                              )} */}
+                  </div>
                   <hr style={{ height: "5px" }}></hr>
                   <h3>Send to:</h3>
                   <div>
@@ -188,7 +186,7 @@ const Checkout = (props) => {
                                  .slice(4, 23)}
                            </p>
                            <div className="bg}warning">
-                              <a href={paymentDetails.receipt}>
+                              <a target="_blank" href={paymentDetails.receipt}>
                                  See additional receipt
                               </a>
                            </div>

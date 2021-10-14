@@ -12,6 +12,7 @@ import { useLoginLS } from "../hooks/usersHooks"
 import usersActions from "../redux/actions/usersActions"
 import NotProfile from "../screens/NotProfile"
 import NotWishlist from "../screens/NotWishlist"
+import navigationStacKStripe from "./navigationStacKStripe"
 const bottom = createBottomTabNavigator()
 const HOST = "https://lodotechgames.herokuapp.com"
 
@@ -95,7 +96,7 @@ const NavigationBottom = (props) => {
          {user && (
             <bottom.Screen
                name="cart"
-               component={Cart}
+               component={navigationStacKStripe}
                options={{
                   tabBarIcon: ({ color, size }) => (
                      <Icon name="cart-plus" size={35} color={"#7c51b0"} />
