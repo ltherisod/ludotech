@@ -85,6 +85,7 @@ router
     passport.authenticate("jwt", { session: false }),
     purchaseControllers.stripePaymentIntent
   )
+
 router.route("/receipt/:id").get(purchaseControllers.createPurchasePDF)
 
 router
