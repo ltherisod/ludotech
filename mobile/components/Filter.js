@@ -72,8 +72,16 @@ const Filter = (props) => {
         setRenderGameTypeName(preFilterGameType)
     }
 
+    const resetFilters = (e) => {
+        setFilters({})
+        setRenderBrandName("Brand")
+        setRenderGenreName("Genre")
+        setRenderGameTypeName("Game Type")
+        submitFilters(e)
+    }
+
     const pricesToRender = [
-        {title: "Select price", value: "all"},
+        {title: "Price", value: "all"},
         {title: "$0 - $10", value: "0-10"},
         {title: "$11 - $20", value: "11-20"},
         {title: "$21 - $40", value: "21-40"},
@@ -85,7 +93,7 @@ const Filter = (props) => {
     ]
 
     const minAgeToRender = [
-        {title: "Select min age", value: "all"},
+        {title: "Min age", value: "all"},
         {title: "3", value: "three"},
         {title: "6", value: "six"},
         {title: "9", value: "nine"},
@@ -94,7 +102,7 @@ const Filter = (props) => {
     ]
 
     const playersToRender = [
-        {title: "Select players", value: "all"},
+        {title: "Players", value: "all"},
         {title: "one", value: "one"},
         {title: "2 - 4", value: "2-4"},
         {title: "5 - 8", value: "5-8"},
@@ -102,24 +110,24 @@ const Filter = (props) => {
     ]
 
     const sizeToRender = [
-        {title: "Select size", value: ""},
+        {title: "Size", value: ""},
         {title: "Small", value: "Small"},
         {title: "Medium", value: "Medium"},
         {title: "Large", value: "Large"},
     ]
 
     const brandsPlus = [
-        {name: "Select brand", _id: ""},
+        {name: "Brand", _id: ""},
         ...brands
     ]
 
     const genresPlus = [
-        {name: "Select genre", _id: ""},
+        {name: "Genre", _id: ""},
         ...genres
     ]
 
     const gameTypePlus = [
-        {name: "Select game type", _id: ""},
+        {name: "Game type", _id: ""},
         ...gameTypes
     ]
 
@@ -131,7 +139,7 @@ const Filter = (props) => {
     return(
         <View style={styles.filterUltracontainer}>
             <View style={styles.filterBoxContainer}>
-                <TextInput placeholder="Search a product" style={styles.search} onChangeText={(e) => {inputHandle(e)}}/>
+                <TextInput placeholder="Search a product" defaultValue={filters.name === undefined ? "" : filters.name} style={styles.search} onChangeText={(e) => {inputHandle(e)}}/>
                     <Modal animationType="slide" transparent={true} visible={renderAllFilters} onRequestClose={() => {setRenderAllFilters(!renderAllFilters)}}>
                         <View style={styles.principalInternalModal}>
                             <View style={styles.centeredView}>
@@ -313,38 +321,35 @@ const Filter = (props) => {
                         </View>
                     </Modal>
                 <TouchableOpacity onPress={(e) => {submitFilters(e)}}>
-                <ImageBackground
-              style={styles.filterButton1}
-              source={{ uri: "https://i.postimg.cc/mD7r09R8/button-Back.png" }}
-              imageStyle={{ borderRadius: 5 }}
-            >
-                    <Text style={styles.filterButtonText}>Filter</Text>
-                 </ImageBackground>
+                    <ImageBackground
+                        style={styles.filterButton1}
+                        source={{ uri: "https://i.postimg.cc/mD7r09R8/button-Back.png" }}
+                        imageStyle={{ borderRadius: 5 }}
+                    >
+                        <Text style={styles.filterButtonText}>Filter</Text>
+                    </ImageBackground>
                 </TouchableOpacity>
             </View>
             <View style={{flexDirection:'row', justifyContent:'center'}}>
-            <TouchableOpacity onPress={() => {openFilter()}}>
-                <ImageBackground
-              style={styles.filterButton2}
-              source={{ uri: "https://i.postimg.cc/5tbgdDLK/back-Button.png" }}
-              imageStyle={{ borderRadius: 5 }}
-            >
-                <Text style={styles.filterButtonText}> + Filters</Text>
-                </ImageBackground>
+                <TouchableOpacity onPress={() => {openFilter()}}>
+                    <ImageBackground
+                        style={styles.filterButton2}
+                        source={{ uri: "https://i.postimg.cc/5tbgdDLK/back-Button.png" }}
+                        imageStyle={{ borderRadius: 5 }}
+                    >
+                        <Text style={styles.filterButtonText}> + Filters</Text>
+                    </ImageBackground>
                 </TouchableOpacity>
-
-                 <TouchableOpacity>
-                <ImageBackground
-              style={styles.filterButton2}
-              source={{ uri: "https://i.postimg.cc/KcfDB9Xt/back-Button2.png" }}
-              imageStyle={{ borderRadius: 5 }}
-            >
-                <Text style={styles.filterButtonText}> Reset</Text>
-                </ImageBackground>
-                </TouchableOpacity>                       
-            </View>
-           
-                
+                <TouchableOpacity onPress={(e) => {resetFilters(e)}}>
+                    <ImageBackground
+                        style={styles.filterButton2}
+                        source={{ uri: "https://i.postimg.cc/KcfDB9Xt/back-Button2.png" }}
+                        imageStyle={{ borderRadius: 5 }}
+                    >
+                        <Text style={styles.filterButtonText}> Reset</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+            </View>       
         </View>
     )
 }
