@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux"
 import articlesActions from "../../redux/actions/articlesActions"
 import Filter from "../Filter"
 import PreloaderFilter from "../PreloaderFilter"
+import toast from "react-hot-toast"
 
 const ArticlesAdmin = () => {
    const [typeAction, setTypeAction] = useState("")
@@ -17,10 +18,56 @@ const ArticlesAdmin = () => {
    const dispatch = useDispatch()
    const deleteHandler = async (id) => {
       const res = await dispatch(articlesActions.deleteArticle(id))
-      // if (!res.success) setError(res.error)
-      // setLoading(false)
-      console.log(res)
+      if (!res.success) {
+         console.log(error)
+      }
       setTypeAction(typeAction + "r")
+   }
+
+   const confirm = (id) => {
+      return toast.custom((t) => (
+         <div
+            className={`${
+               t.visible ? "animate-enter" : "animate-leave"
+            } bg-black flex`}
+            style={{
+               display: "flex",
+               alignContent: "center",
+               alignItems: "center",
+               padding: "15px 20px",
+               borderRadius: "35px",
+            }}
+         >
+            <p
+               className="text-sm font-medium text-white"
+               style={{ marginBottom: 0 }}
+            >
+               Delete article?
+            </p>
+            <button
+               onClick={() => deleteHandler(id)}
+               style={{
+                  backgroundColor: "rgb(189, 151, 81)",
+                  color: "white",
+                  padding: "5px",
+                  margin: "2px",
+               }}
+            >
+               Yes
+            </button>
+            <button
+               onClick={() => toast.dismiss(t.id)}
+               style={{
+                  backgroundColor: "rgb(189, 151, 81)",
+                  color: "white",
+                  padding: "5px",
+                  margin: "2px",
+               }}
+            >
+               No
+            </button>
+         </div>
+      ))
    }
 
    const [currentPage, setCurrentPage] = useState(1)
@@ -75,7 +122,7 @@ const ArticlesAdmin = () => {
                </div>
 
                <>
-                  <div class="theadArticlesPanel">
+                  <div className="theadArticlesPanel">
                      <p>Photo</p>
                      <p>Name</p>
                      <p>Brand</p>
@@ -117,7 +164,7 @@ const ArticlesAdmin = () => {
                                  <span
                                     type="button"
                                     className="buttonsAdminC"
-                                    onClick={() => deleteHandler(article._id)}
+                                    onClick={() => confirm(article._id)}
                                  >
                                     DELETE
                                  </span>
@@ -137,7 +184,13 @@ const ArticlesAdmin = () => {
                         {currentPage > 1 && (
                            <button
                               type="button"
-                              style={{ padding: ".3rem 1.2rem", backgroundColor:"#e051c1", color:"white", border:'none', borderRadius:'.3em' }}
+                              style={{
+                                 padding: ".3rem 1.2rem",
+                                 backgroundColor: "#e051c1",
+                                 color: "white",
+                                 border: "none",
+                                 borderRadius: ".3em",
+                              }}
                               onClick={() => setCurrentPage(currentPage - 1)}
                            >
                               Prev
@@ -154,7 +207,13 @@ const ArticlesAdmin = () => {
                         </p>
                         {currentPage < search.totalPages && (
                            <button
-                              style={{ padding: ".3rem 1.2rem", backgroundColor:"#e051c1", color:"white",  border:'none', borderRadius:'.3em'  }}
+                              style={{
+                                 padding: ".3rem 1.2rem",
+                                 backgroundColor: "#e051c1",
+                                 color: "white",
+                                 border: "none",
+                                 borderRadius: ".3em",
+                              }}
                               type="button"
                               onClick={() => setCurrentPage(currentPage + 1)}
                            >

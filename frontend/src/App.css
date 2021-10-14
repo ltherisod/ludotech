@@ -391,6 +391,7 @@ h2 span {
    font-weight: 700;
    color: #660099;
 }
+
 /*Pagina Articulos*/
 
 .heroArticles {
@@ -1388,6 +1389,12 @@ h2.articles {
    color: white;
 }
 
+.divDeleteAdmin {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
 .buttonsAdminB {
    background-color: rgba(255, 94, 0, 0.822);
    padding: 5px 15px;
@@ -1398,6 +1405,14 @@ h2.articles {
 
 .buttonsAdminC {
    background-color: rgba(255, 40, 40, 0.493);
+   padding: 5px 15px;
+   margin: 4px;
+   color: white;
+   border-radius: 5px;
+}
+
+.buttonsAdminD {
+   background-color: rgba(13, 245, 13, 0.493);
    padding: 5px 15px;
    margin: 4px;
    color: white;
@@ -2678,12 +2693,12 @@ h2.articles {
       height: 3em;
       width: 100%;
    }
-.cartSection2 div {
-   justify-content: center;
-}
-.quantity div {
-   margin: 0px 5px;
-}
+   .cartSection2 div {
+      justify-content: center;
+   }
+   .quantity div {
+      margin: 0px 5px;
+   }
 
    .searchButton {
       font-size: 4.5vmin;
