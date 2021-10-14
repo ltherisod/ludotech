@@ -15,9 +15,21 @@ router.route("/login").post(usersControllers.logIn)
 
 router.route("/signup").post(usersControllers.signUp)
 
-router.route("/users-count").get(usersControllers.getUsersCount)
+router
+  .route("/users-count")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    usersControllers.getUsersCount
+  )
 
-router.route("/last-registered").get(usersControllers.getLastUsers)
+router
+  .route("/last-registered")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    usersControllers.getLastUsers
+  )
 
 router
   .route("/user/verifyToken")
@@ -59,12 +71,13 @@ router
   .route("/users")
   .get(
     passport.authenticate("jwt", { session: false }),
+    isAdmin,
     usersControllers.getAccounts
   )
 
-router
-  .route("/stripe/get-payment-method/:id")
-  .get(purchaseControllers.stripeTest)
+// router
+//   .route("/stripe/get-payment-method/:id")
+//   .get(purchaseControllers.stripeTest)
 
 router
   .route("/stripe/payment-intent")
@@ -72,7 +85,9 @@ router
     passport.authenticate("jwt", { session: false }),
     purchaseControllers.stripePaymentIntent
   )
+
 router.route("/receipt/:id").get(purchaseControllers.createPurchasePDF)
+
 router
   .route("/user/purchase")
   .post(
@@ -81,14 +96,38 @@ router
     purchaseControllers.handlePurchase
   )
 
-router.route("/purchases").get(purchaseControllers.getPurchases)
+router
+  .route("/purchases")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    purchaseControllers.getPurchases
+  )
 
-router.route("/user/purchase/:id")
-  .get(purchaseControllers.getPurchaseById)
-  .put(purchaseControllers.updateStatus)
-  .delete(purchaseControllers.deletePurchase) // only dev stage!
+router
+  .route("/user/purchase/:id")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    purchaseControllers.getPurchaseById
+  )
+  .put(
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    purchaseControllers.updateStatus
+  )
+  .delete(
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    purchaseControllers.deletePurchase
+  ) // only dev stage!
 
-router.route("/user/purchases/:userId").get(purchaseControllers.getPurchasesByUserId)
+router
+  .route("/user/purchases/:userId")
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    purchaseControllers.getPurchasesByUserId
+  )
 
 // USER DIRECTIONS ROUTES
 router
@@ -118,56 +157,60 @@ router.route("/last-articles").get(articlesControllers.getLastArticles)
 router
   .route("/article/:id")
   .get(articlesControllers.getArticle)
-  .put(articlesControllers.updateArticle)
-  .delete(articlesControllers.deleteArticle)
+  .put(
+    articleValidator.articleUpdateValidator,
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    articlesControllers.updateArticle
+  )
+  .delete(
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    articlesControllers.deleteArticle
+  )
 
 router.route("/mostvisitarticles").get(articlesControllers.getMostVisitArticles)
 
-router.route("/article").post(articlesControllers.addArticle)
+router
+  .route("/article")
+  .post(
+    articleValidator.articleValidator,
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    articlesControllers.addArticle
+  )
 
 // ARTICLESUTILS ROUTES
 router
   .route("/utils")
   .get(articlesUtilitiesControllers.getArticlesUtilities)
   .post(
-    // passport.authenticate("jwt", { session: false }),
-    // isAdmin,
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
     articlesUtilitiesControllers.addArticlesUtility
   )
 
 router
   .route("/util/:id")
   .put(
-    // passport.authenticate("jwt", { session: false }),
-    // isAdmin,
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
     articlesUtilitiesControllers.updateArticlesUtility
   )
   .delete(
-    // passport.authenticate("jwt", { session: false }),
-    // isAdmin,
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
     articlesUtilitiesControllers.deleteArticlesUtility
   )
 
 router.route("/article/related/:genreId").get(articlesControllers.getRelated)
-router
-  .route("/article/:id")
-  .get(articlesControllers.getArticle)
-  .put(
-    articleValidator.articleUpdateValidator,
-    articlesControllers.updateArticle
-  )
-  .delete(articlesControllers.deleteArticle)
-
-router
-  .route("/article")
-  .post(articleValidator.articleValidator, articlesControllers.addArticle)
 
 // SEND EMAIL
-router.route("/confirmation-email").post(usersControllers.sendConfirmationEmail)
+// router.route("/confirmation-email").post(usersControllers.sendConfirmationEmail)
 
-router
-  .route("/resend-confirmation-email")
-  .post(usersControllers.sendReSendConfirmationEmail)
+// router
+//   .route("/resend-confirmation-email")
+//   .post(usersControllers.sendReSendConfirmationEmail)
 
 router
   .route("/welcome-email")
@@ -176,26 +219,26 @@ router
     usersControllers.sendWelcomeEmail
   )
 
-router
-  .route("/reset-password-confirmation")
-  .post(
-    passport.authenticate("jwt", { session: false }),
-    usersControllers.sendResetPaswordConfirmation
-  )
+// router
+//   .route("/reset-password-confirmation")
+//   .post(
+//     passport.authenticate("jwt", { session: false }),
+//     usersControllers.sendResetPaswordConfirmation
+//   )
 
-router
-  .route("/new-password")
-  .post(
-    passport.authenticate("jwt", { session: false }),
-    usersControllers.sendNewPassword
-  )
+// router
+//   .route("/new-password")
+//   .post(
+//     passport.authenticate("jwt", { session: false }),
+//     usersControllers.sendNewPassword
+//   )
 
-router
-  .route("/fail-purchase")
-  .post(
-    passport.authenticate("jwt", { session: false }),
-    usersControllers.sendFailPurchase
-  )
+// router
+//   .route("/fail-purchase")
+//   .post(
+//     passport.authenticate("jwt", { session: false }),
+//     usersControllers.sendFailPurchase
+//   )
 
 router
   .route("/success-purchase")
@@ -204,31 +247,35 @@ router
     usersControllers.sendSuccessPurchase
   )
 
-router
-  .route("/user-bill-checkout")
-  .post(
-    passport.authenticate("jwt", { session: false }),
-    usersControllers.sendUserBillCheckout
-  )
+// router
+//   .route("/user-bill-checkout")
+//   .post(
+//     passport.authenticate("jwt", { session: false }),
+//     usersControllers.sendUserBillCheckout
+//   )
 
-router
-  .route("/delete-account-confirmation")
-  .post(
-    passport.authenticate("jwt", { session: false }),
-    usersControllers.sendDeleteAccountConfirmation
-  )
+// router
+//   .route("/delete-account-confirmation")
+//   .post(
+//     passport.authenticate("jwt", { session: false }),
+//     usersControllers.sendDeleteAccountConfirmation
+//   )
 
-router
-  .route("/delete-account")
-  .post(
-    passport.authenticate("jwt", { session: false }),
-    usersControllers.sendDeleteAccount
-  )
+// router
+//   .route("/delete-account")
+//   .post(
+//     passport.authenticate("jwt", { session: false }),
+//     usersControllers.sendDeleteAccount
+//   )
 
 //admin routes
 router
   .route("/admin")
-  .get(usersControllers.getAdmins)
+  .get(
+    passport.authenticate("jwt", { session: false }),
+    isAdmin,
+    usersControllers.getAdmins
+  )
   .post(usersControllers.getUserByEmail)
 router
   .route("/admin/set-admin")

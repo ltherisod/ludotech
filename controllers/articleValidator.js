@@ -1,26 +1,26 @@
-const joi = require('joi')
+const joi = require("joi")
 
-const articleValidator = (req,res,next) => {
+const articleValidator = (req, res, next) => {
   const schema = joi.object({
     name: joi.string().trim().min(2).required().messages({
-      'any.required': 'The name of the game is required.',
-      'string.empty': 'The name of the game is required.',
-      'string.min': 'The name of the game must be at least 2 characters long.'
+      "any.required": "The name of the game is required.",
+      "string.empty": "The name of the game is required.",
+      "string.min": "The name of the game must be at least 2 characters long.",
     }),
     brand: joi.string().trim().min(2).required().messages({
-      'any.required': 'The brand of the game is required.',
-      'string.empty': 'The brand of the game is required.',
-      'string.min': 'The brand of the game must be at least 2 characters long.'
+      "any.required": "The brand of the game is required.",
+      "string.empty": "The brand of the game is required.",
+      "string.min": "The brand of the game must be at least 2 characters long.",
     }),
     price: joi.number().min(2).required().messages({
-      'any.required': 'The price of the game is required.',
-      'number.empty': 'The price of the game is required.',
-      'number.min': 'The price of the game must be at least 2 characters long.'
+      "any.required": "The price of the game is required.",
+      "number.empty": "The price of the game is required.",
+      "number.min": "The price of the game must be at least 2 characters long.",
     }),
     stock: joi.number().min(2).required().messages({
-      'any.required': 'The stock of the game is required.',
-      'number.empty': 'The stock of the game is required.',
-      'number.min': 'The stock of the game must be at least 2 characters long.'
+      "any.required": "The stock of the game is required.",
+      "number.empty": "The stock of the game is required.",
+      "number.min": "The stock of the game must be at least 2 characters long.",
     }),
     hasDiscount: joi.bool().optional(),
     discountPrice: joi.number().optional(),
@@ -30,8 +30,15 @@ const articleValidator = (req,res,next) => {
     minPlayers: joi.number().optional(),
     maxPlayers: joi.number().optional(),
     minAge: joi.number().optional(),
-    size: joi.string().optional(),   //revisar
+    size: joi.string().optional(), //revisar
     weight: joi.number().optional(),
+    video: joi.string(),
+    iconPhotos: joi.string(),
+    decoPhotos: joi.any().optional(),
+    visitsCount: joi.number(),
+    videoId: joi.string(),
+    description: joi.string(),
+    playingTime: joi.number(),
   })
 
   const validations = schema.validate(req.body, { abortEarly: false })
@@ -42,29 +49,29 @@ const articleValidator = (req,res,next) => {
   }
 }
 
-const articleUpdateValidator = (req,res,next) => {
+const articleUpdateValidator = (req, res, next) => {
   const schema = joi.object({
     name: joi.string().trim().min(2).required().messages({
-      'any.required': 'The name of the game is required.',
-      'string.empty': 'The name of the game is required.',
+      "any.required": "The name of the game is required.",
+      "string.empty": "The name of the game is required.",
       // 'string.base': 'The name of the game must be a string',
-      'string.min': 'The name of the game must be at least 2 characters long.'
+      "string.min": "The name of the game must be at least 2 characters long.",
     }),
     brand: joi.string().trim().min(2).required().messages({
-      'any.required': 'The brand of the game is required.',
-      'string.empty': 'The brand of the game is required.',
+      "any.required": "The brand of the game is required.",
+      "string.empty": "The brand of the game is required.",
       // 'string.base': 'The name of the game must be a string',
-      'string.min': 'The brand of the game must be at least 2 characters long.'
+      "string.min": "The brand of the game must be at least 2 characters long.",
     }),
     price: joi.number().min(2).required().messages({
-      'any.required': 'The price of the game is required.',
-      'number.empty': 'The price of the game is required.',
-      'number.min': 'The price of the game must be at least 2 characters long.'
+      "any.required": "The price of the game is required.",
+      "number.empty": "The price of the game is required.",
+      "number.min": "The price of the game must be at least 2 characters long.",
     }),
     stock: joi.number().min(2).required().messages({
-      'any.required': 'The price of the game is required.',
-      'number.empty': 'The stock of the game is required.',
-      'number.min': 'The price of the game must be at least 2 characters long.'
+      "any.required": "The price of the game is required.",
+      "number.empty": "The stock of the game is required.",
+      "number.min": "The price of the game must be at least 2 characters long.",
     }),
     hasDiscount: joi.bool().optional(),
     discountPrice: joi.number().optional(),
@@ -74,8 +81,15 @@ const articleUpdateValidator = (req,res,next) => {
     minPlayers: joi.number().optional(),
     maxPlayers: joi.number().optional(),
     minAge: joi.number().optional(),
-    size: joi.string().optional(),   //revisar
+    size: joi.string().optional(), //revisar
     weight: joi.number().optional(),
+    video: joi.string(),
+    iconPhotos: joi.string(),
+    decoPhotos: joi.any().optional(),
+    visitsCount: joi.number(),
+    videoId: joi.string(),
+    description: joi.string(),
+    playingTime: joi.number(),
   })
 
   const validations = schema.validate(req.body, { abortEarly: false })

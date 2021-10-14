@@ -73,6 +73,7 @@ const Paypal = ({ formik, user, history }) => {
         },
       })
       .render(paypal.current)
+      // eslint-disable-next-line
   }, [])
 
   return (
