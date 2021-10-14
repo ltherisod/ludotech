@@ -12,16 +12,21 @@ import { connect } from "react-redux";
 import articlesActions from "../redux/actions/articlesActions";
 import usersActions from "../redux/actions/usersActions";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { useToast } from "react-native-toast-notifications";
 
 const Article = (props) => {
+  const toast = useToast();
+
   const addToCart = (e, id) => {
     e.stopPropagation();
     props.updateCart("add", id);
+    toast.show("Added product to your cart", {type: 'custom', data: {color: 'red', title: 'hola'}});
   };
 
   const addToWishlist = (e, id) => {
     e.stopPropagation();
     props.toggleWishList(id);
+    toast.show("Added product to your wishlist");
   };
 
   const {
