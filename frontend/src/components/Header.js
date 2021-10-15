@@ -161,7 +161,8 @@ const Header = (props) => {
               </li>
             )}
           </ul>
-          <div className="d-flex justify-content-center align-items-center">
+          <div className="d-flex align-items-center">
+            <div className="d-flex">
             <div
               className="logoUser"
               style={{
@@ -272,6 +273,7 @@ const Header = (props) => {
               />
             </>
           )}
+            </div>
         </div>
       </div>
     </nav>

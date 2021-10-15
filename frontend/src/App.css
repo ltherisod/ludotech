@@ -103,6 +103,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: left;
 }
 
 .logoUser {
@@ -165,8 +166,6 @@ footer {
 .logoNav {
   width: 150px;
   height: 40px;
-  /* background-position: center;
-   background-size: cover; */
 }
 
 main h2 {
@@ -191,7 +190,6 @@ main h2 {
 
 .headerLogo {
   height: 10vh;
-  /* background-color: #8646d4; */
   border-bottom: 1px solid #3022428f;
   color: white;
   font-size: 3vmin;
@@ -276,9 +274,6 @@ main h2 {
   outline: none;
   border: 1px solid white;
   border-radius: 3px;
-}
-.inputfile {
-  background-color: white;
 }
 
 .fifi {
@@ -378,11 +373,6 @@ h2 span {
   font-size: 2vmin;
   letter-spacing: 2px;
   margin-bottom: -0.5em;
-}
-
-.main-sign input {
-  padding: 1em;
-  height: 3em;
 }
 
 .signNoErrors {
@@ -695,9 +685,7 @@ h2 span {
   border-radius: 20px;
   width: 25px;
 }
-/* #buy {
-   width: 150px;
-} */
+
 /*Most Wanted*/
 
 .mostWantedConteiner {
@@ -757,13 +745,6 @@ h2 span {
   color: #120045;
 }
 
-/*Home swiper*/
-.homeSwiperBox {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-color: #e052c1;
-}
 /*Footer*/
 
 .footerContainer {
@@ -931,7 +912,6 @@ h2 span {
   max-height: 100vh;
   overflow-y: scroll;
   padding: 3vmin;
-  /* background-color: #faf9ff; */
   background-color: #fafafa;
 }
 
@@ -950,7 +930,6 @@ h2 span {
   height: 40px;
   background-color: white;
   border-radius: 5px;
-  /* border: 1px solid rgba(0, 0, 0, 0.2); */
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
@@ -1068,7 +1047,6 @@ h2 span {
 
 .cardTeam {
   display: flex;
-  /* height: 37vh; */
   padding: 2vmin;
   background-color: #fff;
   border-radius: 5px;
@@ -1202,7 +1180,6 @@ h2 span {
 .productsPanel {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  /* gap: 1vmin; */
 }
 
 .purchaseContainerPanel {
@@ -1282,7 +1259,6 @@ h2 span {
   align-items: center;
   justify-content: center;
   background-color: rgb(179, 135, 214);
-  /* border: 1px solid rgb(216, 174, 212); */
   border-radius: 5px;
   cursor: pointer;
   font-size: 2vmin;
@@ -1292,7 +1268,6 @@ h2 span {
   position: absolute;
   background-color: white;
   border-radius: 5px;
-  /* width: 50vmin; */
   padding: 1vmin;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
   position: absolute;
@@ -1398,9 +1373,9 @@ h2.articles {
 }
 
 .divDeleteAdmin {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttonsAdminB {
@@ -1420,11 +1395,11 @@ h2.articles {
 }
 
 .buttonsAdminD {
-   background-color: rgba(13, 245, 13, 0.493);
-   padding: 5px 15px;
-   margin: 4px;
-   color: white;
-   border-radius: 5px;
+  background-color: rgba(13, 245, 13, 0.493);
+  padding: 5px 15px;
+  margin: 4px;
+  color: white;
+  border-radius: 5px;
 }
 
 /* // edit ARTICLE */
@@ -2090,6 +2065,7 @@ h2.articles {
 .addressAddedCard {
   padding-right: 10px;
   padding-bottom: 10px;
+  padding-top: 10px;
 }
 .addressAddedCard input {
   width: 100%;
@@ -2167,6 +2143,30 @@ h2.articles {
   outline: none;
   border: 1px solid white;
   border-radius: 3px;
+}
+
+.inputfile {
+  height: 40px;
+  padding-left: 1vmin;
+  outline: none;
+  border: 1px solid white;
+  border-radius: 3px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.uploadPictureButton {
+  width: 200px;
+  border: none;
+  font-weight: 400;
+  font-size: medium;
+  border-radius: 3px;
+  height: 80%;
+  color: white;
+  cursor: pointer;
+  padding-left: 12px;
+  padding-top: 3px;
 }
 
 .phoneInput input {
@@ -2358,7 +2358,6 @@ h2.articles {
 }
 
 .miniboxDash {
-  /* background-color: blue; */
   height: 8vh;
   width: 8vh;
   border-radius: 10px;
@@ -2407,7 +2406,6 @@ h2.articles {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
   margin: 0 10%;
   padding: 2vmin;
-  /* margin-top: -5vmin; */
 }
 
 .containerPurchase {
@@ -2430,9 +2428,7 @@ h2.articles {
 .titlesPurchasesUser {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 2vmin;
-  /* color: gray; */
   font-weight: 600;
-  /* padding-left: 2vmin; */
 }
 
 .detailsPurchaseUser > div {
@@ -2479,7 +2475,6 @@ h2.articles {
 
 .notificationsHeader {
   background-color: white;
-  /* box-shadow: 1px 1px 1px 5px rgba(0, 0, 0, 0.1); */
   border-radius: 5px;
   width: 30vw;
   margin: 3vmin;
@@ -2488,7 +2483,6 @@ h2.articles {
   flex-direction: column;
   gap: 2vmin;
   position: absolute;
-  /* border: 3px solid #e3e3e3; */
   top: 110%;
   right: -500%;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
@@ -2547,9 +2541,12 @@ h2.articles {
   margin-left: 0;
 }
 #addressFormForResponsive {
-   width: 35vw;
+  width: 35vw;
 }
-
+.headerFlex {
+  display: flex;
+  background-color: #e052c1;
+}
 /* MEDIAQUERIES */
 
 @media (max-width: 992px) {
@@ -2888,19 +2885,19 @@ h2.articles {
     width: 80vw;
   }
   .checkoutContainerCard {
-   width: 85vw;
- }
- #addressFormForResponsive {
     width: 85vw;
- }
- .checkoutContainer {
-   width: 85%;
- }
+  }
+  #addressFormForResponsive {
+    width: 85vw;
+  }
+  .checkoutContainer {
+    width: 85%;
+  }
   /* Purchases*/
   .userFoundPurchase {
     margin: 0;
     width: 86vw;
-    }
+  }
 
   .containerPurchase {
     flex-wrap: wrap;
@@ -2908,20 +2905,33 @@ h2.articles {
     align-content: flex-start;
   }
   .titlesPurchasesUser {
-     display: table-row;
-     padding-top: 10px;
-     width: 15%;
+    display: table-row;
+    padding-top: 10px;
+    width: 15%;
   }
   .detailsPurchaseUser {
-     display: table-row;
-     width: 85%;
+    display: table-row;
+    width: 85%;
   }
   .statusPurchasePanel {
-   width: 30%;
- }
-  #noneForResponsive {
-     display: none;
+    width: 30%;
   }
+  #noneForResponsive {
+    display: none;
+  }
+ 
+.swiperHomeSlide {
+  padding-left: 46px;
+}
+.cardArticleRelated {
+  width: 280px;
+  height: 310px;
+  margin: 10px 40px;
+}
+.photosArticleRelated {
+  min-height: 170px;
+  width: 190px;
+ }
 }
 
 @media (max-width: 450px) {
@@ -2989,8 +2999,8 @@ h2.articles {
   }
 
   .mainWishlist h2 {
-   font-size: 55px;
- }
+    font-size: 55px;
+  }
   /*Profile*/
   .divProfile {
     width: 98vw;
@@ -3009,17 +3019,20 @@ h2.articles {
   }
   /*Purchases*/
   .userFoundPurchase {
-     width: 82vw;
-   }
- .titlesPurchasesUser {
+    width: 82vw;
+  }
+  .titlesPurchasesUser {
     width: 25%;
- }
- .detailsPurchaseUser {
+  }
+  .detailsPurchaseUser {
     width: 75%;
- }
- .statusPurchasePanel {
-  width: 50%;
-}
+  }
+  .statusPurchasePanel {
+    width: 50%;
+  }
+  .swiperHomeSlide {
+    padding-left: 0px;
+  }
 }
 
 @media (max-width: 415px) {
@@ -3036,21 +3049,21 @@ h2.articles {
   .main-sign label {
     font-size: 4.3vmin;
   }
-   /*Purchases*/
-   .userFoundPurchase {
-      width: 80vw;
-    }
+  /*Purchases*/
+  .userFoundPurchase {
+    width: 80vw;
+  }
   .titlesPurchasesUser {
-     width: 25%;
-     font-size: smaller;
+    width: 25%;
+    font-size: smaller;
   }
   .detailsPurchaseUser {
-     width: 75%;
-     font-size: smaller;
+    width: 75%;
+    font-size: smaller;
   }
   .statusPurchasePanel {
-   width: 50%;
- }
+    width: 50%;
+  }
 }
 
 @media (max-width: 375px) {
@@ -3097,4 +3110,13 @@ h2.articles {
   .adTerms {
     font-size: 3.5vmin;
   }
+  .cardArticleRelated {
+    width: 250px;
+    height: 280px;
+    margin-left: 25px
+  }
+  .photosArticleRelated {
+    min-height: 140px;
+    width: 160px;
+   }
 }

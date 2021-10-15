@@ -138,6 +138,21 @@ const SignUp = (props) => {
                      <label className="labelSign" htmlFor="email">
                         Profile Photo
                      </label>
+                     <label htmlFor="filePicker" className="inputfile"><div className="uploadPictureButton" style={{
+                        backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                     }}><span>Upload your picture</span></div></label>
+                     <input id="filePicker" style={{visibility:"hidden"}}
+                        placeholder="Profile Photo"
+                        name="photo"
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) =>
+                           setFieldValue({ photo: e.target.files[0] })
+                        }
+                     />
+                     {/* <label className="labelSign" htmlFor="email">
+                        Profile Photo
+                     </label>
                      <input className="inputfile"
                         placeholder="Profile Photo"
                         name="photo"
@@ -145,12 +160,7 @@ const SignUp = (props) => {
                         onChange={(e) =>
                            setFieldValue({ photo: e.target.files[0] })
                         }
-                     />
-                     {/* {formik.touched.email && formik.errors.email ? (
-              <small className="signErrors">{formik.errors.email}</small>
-            ) : (
-              <small className="signNoErrors">NoErrors</small>
-            )} */}
+                     /> */}
                   </div>
                   <div className="inputContainer">
                      <label className="labelSign" htmlFor="password">

@@ -6,7 +6,6 @@ import Article from "../components/Article"
 import HeroPages from "../components/HeroPages"
 
 const Wishlist = (props) => {
-   document.title = "My wishlist"
 
    const wishlist = useSelector((state) => state.users.wishList)
    const [searched, setSearched] = useState([])
