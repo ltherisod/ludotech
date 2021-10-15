@@ -4,9 +4,51 @@ import Header from "../components/Header"
 import { useSignup } from "../hooks/usersHooks"
 import HeroPages from "../components/HeroPages"
 import Bot from "../components/bot/Bot"
+import {useEffect} from 'react'
+import toast from "react-hot-toast"
 
 const SignUp = (props) => {
    const [formik, responseGoogle, setFieldValue, loading, error] = useSignup()
+
+   // useEffect(() => {
+   //    toast.custom((t) => (
+   //       <div
+   //          className={`${
+   //             t.visible ? "animate-enter" : "animate-leave"
+   //          } bg-white flex`}
+   //          style={{
+   //             display: "flex",
+   //             alignContent: "center",
+   //             alignItems: "center",
+   //             padding: "5px 10px",
+   //             borderRadius: "15px",
+   //             backgroundImage:
+   //                "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
+   //             backgroundPosition: "center right 50px",
+   //             backgroundSize: "cover",
+   //          }}
+   //       >
+   //          <img
+   //             style={{ width: "55px", height: "55px" }}
+   //             className="h-3 w-3 rounded-full"
+   //             src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+   //             alt=""
+   //          />
+   //          <p
+   //             className="text-sm"
+   //             style={{
+   //                marginBottom: 0,
+   //                color: "#ff9424",
+   //                fontWeight: "bold",
+   //             }}
+   //          >
+   //             {error}
+   //          </p>
+   //       </div>
+   //    ))
+
+   //    return toast.custom()
+   // }, [error])
 
    return (
       <>
@@ -133,11 +175,6 @@ const SignUp = (props) => {
                            setFieldValue({ photo: e.target.files[0] })
                         }
                      />
-                     {/* {formik.touched.email && formik.errors.email ? (
-              <small className="signErrors">{formik.errors.email}</small>
-            ) : (
-              <small className="signNoErrors">NoErrors</small>
-            )} */}
                   </div>
                   <div className="inputContainer">
                      <label className="labelSign" htmlFor="password">

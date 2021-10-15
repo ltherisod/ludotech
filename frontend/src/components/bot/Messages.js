@@ -1,5 +1,5 @@
 const Messages = [
-    {command: "payment methods", response: "The available payment methods are credit card, debit card and paypal", id: 1},
+    {command: "payments", response: "You can pay with credit card, debit card and paypal", id: 1},
     {command: "order", response: "When you make an order we will get in touch to confirm the delivery", id: 2},
     {command: "profile", response: "You can click on profile to change your personal data", id: 3},
     {command: "refund", response: "If you need to refund a purchase, get in touch with our team on ludotechweb@gmail.com", id: 4},

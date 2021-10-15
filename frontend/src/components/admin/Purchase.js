@@ -32,7 +32,7 @@ const Purchase = ({purchase, showPurchase}) => {
             <div className=''>
                 {purchase.timestamp && <p>{purchase.timestamp.split('T')[0]}</p>}
             </div>
-            <p>${purchase.total}.00</p>
+            <p>${purchase.total.toFixed(2)}</p>
             <div className={`statusPurchasePanel ${color}`}>
                 <p>{purchase.status}</p>
             </div>
