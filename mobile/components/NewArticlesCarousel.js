@@ -59,14 +59,13 @@ const NewArticlesCarousel = (props) => {
           showsPagination={false} 
           showsButtons={false}
           spaceBetween={0} 
-
         >
           {lastArticles.map((article, index) => ( 
             <TouchableOpacity key={`slide-${index}`} onPress={() => {
               props.navigation.navigate('ArticleStack', { id: article._id })}}
             >
               <ImageBackground imageStyle={{ borderRadius: 10}} style={styles.bg} source={{uri: 'https://i.postimg.cc/FRMgBC4D/ar2ticlecard.png'}}>
-                <Image style={styles.photo} source={{uri: article.iconPhotos }} />
+                <Image style={styles.photo} source={{uri: article.photos[0] }} />
                 <Text style={styles.price}>${article.price}.00 USD</Text>
                 <View style={styles.flex}>
                   <Text style={styles.name}>{article.name}</Text>
@@ -119,7 +118,7 @@ const styles = StyleSheet.create({
   },
   swiperTag: {
     overflow: 'visible',
-    paddingHorizontal: '17%',
+    paddingHorizontal: '10%',
   },
 
   bg: {

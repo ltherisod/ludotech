@@ -54,7 +54,8 @@ const styles = StyleSheet.create({
         fontFamily:"Poppins_700Bold",
         fontSize: 25,
         marginBottom: 30,
-        color: 'purple'
+        color: 'purple',
+        textAlign: 'center',
     },
     button: {
         paddingVertical: 10,
