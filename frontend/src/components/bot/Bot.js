@@ -22,7 +22,7 @@ const Bot = () => {
                 validator={validateInputBot}
             />
             }
-            <div onClick={() => {setRenderBot(!renderBot)}} className="buttonRenderBot">
+            <div style={{cursor: 'pointer'}} onClick={() => {setRenderBot(!renderBot)}} className="buttonRenderBot">
                 <img className="botGif" src="/assets/mascotSearch.gif" alt="botGif"/>
             </div>
         </div>

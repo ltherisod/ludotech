@@ -103,7 +103,7 @@ const DirectionsForm = ({ submitCallback, initialValues, buttonText }) => {
          <div className="text-center">
             <button
                onClick={formik.handleSubmit}
-               className="profileButton"
+               className="profileButton editProfile"
                style={{
                   backgroundColor: "#45f0bf",
                }}

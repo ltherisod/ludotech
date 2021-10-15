@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
 import { usePurchase } from "../hooks/usersHooks"
 // vendedor: sb-uomjv7984205@business.example.com, Yj6x|.ZF
@@ -63,7 +63,7 @@ const Paypal = ({ formik, user, history }) => {
             paymentDetails: { method: "PAYPAL", orderId: order.id },
           }
           const res = await purchase(details)
-          console.log({ res, data, details })
+          // console.log({ res, data, details })
           if (res.success) {
             checkout(res)
           }
@@ -73,12 +73,12 @@ const Paypal = ({ formik, user, history }) => {
         },
       })
       .render(paypal.current)
-      // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [])
 
   return (
     <div className="container d-flex flex-column align-items-center justify-content-center">
-      <div style={{ width: "40vw" }} ref={paypal}></div>
+      <div id="formStripeForResponsive" ref={paypal}></div>
     </div>
   )
 }

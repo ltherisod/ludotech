@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import { FaHeart, FaRegHeart, FaCartPlus } from "react-icons/fa"
 
 import { useDispatch, useSelector } from "react-redux"

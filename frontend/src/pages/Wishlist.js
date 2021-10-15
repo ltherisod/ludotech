@@ -3,10 +3,11 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import { useSelector } from "react-redux"
 import Article from "../components/Article"
+import Bot from "../components/bot/Bot"
 import HeroPages from "../components/HeroPages"
+import { Link } from "react-router-dom"
 
 const Wishlist = (props) => {
-   document.title = "My wishlist"
 
    const wishlist = useSelector((state) => state.users.wishList)
    const [searched, setSearched] = useState([])
@@ -33,15 +34,49 @@ const Wishlist = (props) => {
             backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`,
          }}
       >
+         <Bot />
          <HeroPages />
          <Header />
          {searched.length === 0 ? (
             <main className="mainWishlist">
-               <h3>Your wishlist is empty</h3>
+               <div className="emptyCart">
+                  <div>
+                     <h3 className="titleWish">
+                        Your wishlist is{" "}
+                        <span className="spanCeleste">empty</span>
+                     </h3>
+                     <h3 className="titleWish2">
+                        Let's start{" "}
+                        <span className="spanCeleste">searching!</span>
+                     </h3>
+                  </div>
+                  <Link
+                     className="shopLink"
+                     to="/articles"
+                     onClick={() => window.scrollTo(0, 0)}
+                  >
+                     <div
+                        className="buttonShop"
+                        style={{
+                           backgroundImage:
+                              "url('https://i.postimg.cc/256ZjvPG/back-Button.png')",
+                        }}
+                     >
+                        Shop Now!
+                     </div>
+                  </Link>
+                  <img
+                     alt="ludoCel"
+                     className="ludoGif"
+                     src="/assets/mascotSelfie.gif"
+                  />
+               </div>
             </main>
          ) : (
             <main className="mainWishlist">
-               <h2>Wish<span>list</span></h2>
+               <h2>
+                  Wish<span>list</span>
+               </h2>
                <div className="searchbarWishlist">
                   <p>
                      If you have many products in your wishlist, you can search

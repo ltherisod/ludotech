@@ -1,24 +1,21 @@
 import React, { useState, useEffect } from "react"
-import {View, Text, TextInput, TouchableOpacity, StyleSheet, Modal, Pressable, Dimensions, ImageBackground} from "react-native"
+import {View, Text, TextInput, TouchableOpacity, StyleSheet, Modal, Pressable, ImageBackground} from "react-native"
 import { useArticles, useFilters, useUtils } from "../hooks/articlesHooks"
+import { Switch } from 'react-native-paper'
+import SelectDropdown from 'react-native-select-dropdown'
+import FontAwesome from "react-native-vector-icons/FontAwesome"
 
 const Filter = (props) => {
     const [{ brands, genres, gameTypes }] = useUtils()
     const [submit, setSubmit] = useState(false)
     const [renderAllFilters, setRenderAllFilters] = useState(false)
-    const [renderPriceModal, setRenderPriceModal] = useState(false)
-    const [renderMinAgeModal, setRenderMinAgeModal] = useState(false)
-    const [renderPlayersModal, setRenderPlayersModal] = useState(false)
-    const [renderSizeModal, setRenderSizeModal] = useState(false)
-    const [renderBrandModal, setRenderBrandModal] = useState(false)
-    const [renderGenreModal, setRenderGenreModal] = useState(false)
-    const [renderGameTypeModal, setRenderGameTypeModal] = useState(false)
-    const [renderBrandName, setRenderBrandName] = useState("all")
-    const [renderGenreName, setRenderGenreName] = useState("all")
-    const [renderGameTypeName, setRenderGameTypeName] = useState("all")
-
+    const [renderBrandName, setRenderBrandName] = useState("Brand")
+    const [renderGenreName, setRenderGenreName] = useState("Genre")
+    const [renderGameTypeName, setRenderGameTypeName] = useState("Game Type")
     const [prefilter, setPrefilter] = useState({})
-
+    const [preFilterBrand, setPrefilterBrand] = useState("")
+    const [preFilterGenre, setPrefilterGenre] = useState("")
+    const [preFilterGameType, setPrefilterGameType] = useState("")
     const [renderDiscountModal, setRenderDiscountModal] = useState(false)
     const {
        filters,
@@ -62,323 +59,297 @@ const Filter = (props) => {
     const openFilter = () => {
         setRenderAllFilters(!renderAllFilters)
         setPrefilter({...filters})
+        setPrefilterBrand(renderBrandName)
+        setPrefilterGenre(renderGenreName)
+        setPrefilterGameType(renderGameTypeName)
     }
 
     const closeFilters = () => {
         setRenderAllFilters(!renderAllFilters)
         setFilters({...prefilter})
+        setRenderBrandName(preFilterBrand)
+        setRenderGenreName(preFilterGenre)
+        setRenderGameTypeName(preFilterGameType)
     }
 
-    const changePrice = (newValue) => {
-        setRenderPriceModal(!renderPriceModal)
-        inputPrice(newValue)
+    const resetFilters = (e) => {
+        setFilters({})
+        setRenderBrandName("Brand")
+        setRenderGenreName("Genre")
+        setRenderGameTypeName("Game Type")
+        submitFilters(e)
     }
 
-    const changeMinAge = (newValue) => {
-        setRenderMinAgeModal(!renderMinAgeModal)
-        inputMinAge(newValue)
-    }
+    const pricesToRender = [
+        {title: "Price", value: "all"},
+        {title: "$0 - $10", value: "0-10"},
+        {title: "$11 - $20", value: "11-20"},
+        {title: "$21 - $40", value: "21-40"},
+        {title: "$41 - $60", value: "41-60"},
+        {title: "$61 - $80", value: "61-80"},
+        {title: "$81 - $100", value: "81-100"},
+        {title: "$101 - $120", value: "101-120"},
+        {title: "$121 or more", value: "121orMore"},
+    ]
 
-    const changePlayers = (newValue) => {
-        setRenderPlayersModal(!renderPlayersModal)
-        inputPlayers(newValue)
-    }
+    const minAgeToRender = [
+        {title: "Min age", value: "all"},
+        {title: "3", value: "three"},
+        {title: "6", value: "six"},
+        {title: "9", value: "nine"},
+        {title: "12", value: "twelve"},
+        {title: "16 or more", value: "sexteenOrMore"},
+    ]
 
-    const changeSize = (newValue) => {
-        setRenderSizeModal(!renderSizeModal)
-        inputSize(newValue)
-    }
+    const playersToRender = [
+        {title: "Players", value: "all"},
+        {title: "one", value: "one"},
+        {title: "2 - 4", value: "2-4"},
+        {title: "5 - 8", value: "5-8"},
+        {title: "9 or more", value: "nineOrMore"},
+    ]
 
-    const changeBrand = (newValue, name) => {
-        setRenderBrandModal(!renderBrandModal)
-        setRenderBrandName(name)
-        inputBrand(newValue)
-    }
+    const sizeToRender = [
+        {title: "Size", value: ""},
+        {title: "Small", value: "Small"},
+        {title: "Medium", value: "Medium"},
+        {title: "Large", value: "Large"},
+    ]
 
-    const changeGenre = (newValue, name) => {
-        setRenderGenreModal(!renderGenreModal)
-        setRenderGenreName(name)
-        inputGenre(newValue)
-    }
+    const brandsPlus = [
+        {name: "Brand", _id: ""},
+        ...brands
+    ]
 
-    const changeGameType = (newValue, name) => {
-        setRenderGameTypeModal(!renderGameTypeModal)
-        setRenderGameTypeName(name)
-        inputGameType(newValue)
-    }
+    const genresPlus = [
+        {name: "Genre", _id: ""},
+        ...genres
+    ]
+
+    const gameTypePlus = [
+        {name: "Game type", _id: ""},
+        ...gameTypes
+    ]
 
     const changeDiscount = (newValue) => {
         setRenderDiscountModal(!renderDiscountModal)
         inputBoolean(newValue)
     }
 
-    const renderOptionsBrands = () => {
-        return brands.map(brand => {
-            return (
-                <Pressable key={brand._id} style={[styles.button, styles.buttonClose]} onPress={() => {changeBrand(brand._id, brand.name)}}>
-                    <Text style={styles.textStyle}>{brand.name}</Text>
-                </Pressable>
-            )
-        })
-    }
-
-    const renderOptionsGenres = () => {
-        return genres.map(genre => {
-            return (
-                <Pressable key={genre._id} style={[styles.button, styles.buttonClose]} onPress={() => {changeGenre(genre._id, genre.name)}}>
-                    <Text style={styles.textStyle}>{genre.name}</Text>
-                </Pressable>
-            )
-        })
-    }
-
-    const renderOptionsGameTypes = () => {
-        return gameTypes.map(gameType => {
-            return (
-                <Pressable key={gameType._id} style={[styles.button, styles.buttonClose]} onPress={() => {changeGameType(gameType._id, gameType.name)}}>
-                    <Text style={styles.textStyle}>{gameType.name}</Text>
-                </Pressable>
-            )
-        })
-    }
-// console.log(brands)
     return(
         <View style={styles.filterUltracontainer}>
             <View style={styles.filterBoxContainer}>
-                <TextInput placeholder="Search a product" style={styles.search} onChangeText={(e) => {inputHandle(e)}}/>
+                <TextInput placeholder="Search a product" defaultValue={filters.name === undefined ? "" : filters.name} style={styles.search} onChangeText={(e) => {inputHandle(e)}}/>
                     <Modal animationType="slide" transparent={true} visible={renderAllFilters} onRequestClose={() => {setRenderAllFilters(!renderAllFilters)}}>
                         <View style={styles.principalInternalModal}>
                             <View style={styles.centeredView}>
-                                <Modal animationType="slide" transparent={true} visible={renderPriceModal} onRequestClose={() => {setRenderPriceModal(!renderPriceModal)}}>
-                                    <View style={styles.centeredView}>
-                                        <View style={styles.modalView2}>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePrice("all")}}>
-                                                <Text style={styles.textStyle}>All</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePrice("0-10")}}>
-                                                <Text style={styles.textStyle}>0 - $10</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePrice("11-20")}}>
-                                                <Text style={styles.textStyle}>$11 - $20</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePrice("21-40")}}>
-                                                <Text style={styles.textStyle}>$21 - $40</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePrice("41-60")}}>
-                                                <Text style={styles.textStyle}>$41 - $60</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePrice("61-80")}}>
-                                                <Text style={styles.textStyle}>$61 - $80</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePrice("81-100")}}>
-                                                <Text style={styles.textStyle}>$81 - $100</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePrice("101-120")}}>
-                                                <Text style={styles.textStyle}>$101 - $120</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePrice("121orMore")}}>
-                                                <Text style={styles.textStyle}>$121 or more</Text>
-                                            </Pressable>
-                                        </View>
-                                    </View>
-                                </Modal>
-                                <Pressable style={[styles.buttonPink, styles.buttonOpen, styles.position]} onPress={() => {setRenderPriceModal(!renderPriceModal)}}>
-                                    <Text style={styles.textStyle}>Select price</Text>
-                                </Pressable>
-                                <View style={styles.buttonAnswer}>
-                                <Text style={styles.buttonAnswerText}>{filters.minPrice === undefined ? "all" : filters.maxPrice === undefined ? "$121 or more" : `$${filters.minPrice} - $${filters.maxPrice}`}</Text>
-                                </View>
+                                <SelectDropdown
+                                    data={pricesToRender}
+                                    defaultButtonText={filters.minPrice === undefined ? "Price" : filters.maxPrice === undefined ? "$121 or more" : `$${filters.minPrice} - $${filters.maxPrice}`}
+                                    onSelect={priceObject => {
+                                        inputPrice(priceObject.value)                                
+                                    }}
+                                    buttonTextAfterSelection={priceObject => {
+                                        return priceObject.title
+                                    }}
+                                    rowTextForSelection={priceObject => {
+                                        return priceObject.title
+                                    }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
+                                />
                             </View>
                             <View style={styles.centeredView}>
-                                <Modal animationType="slide" transparent={true} visible={renderMinAgeModal} onRequestClose={() => {setRenderMinAgeModal(!renderMinAgeModal)}}>
-                                    <View style={styles.centeredView}>
-                                        <View style={styles.modalView2}>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeMinAge("all")}}>
-                                                <Text style={styles.textStyle}>All</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeMinAge("three")}}>
-                                                <Text style={styles.textStyle}>3</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeMinAge("six")}}>
-                                                <Text style={styles.textStyle}>6</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeMinAge("nine")}}>
-                                                <Text style={styles.textStyle}>9</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeMinAge("twelve")}}>
-                                                <Text style={styles.textStyle}>12</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeMinAge("sexteenOrMore")}}>
-                                                <Text style={styles.textStyle}>16 or more</Text>
-                                            </Pressable>
-                                        </View>
-                                    </View>
-                                </Modal>
-                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderMinAgeModal(!renderMinAgeModal)}}>
-                                    <Text style={styles.textStyle}>Select min age</Text>
-                                </Pressable>
-                                <View style={styles.buttonAnswer}>
-                                    <Text style={styles.buttonAnswerText}> {filters.minAge === undefined ? "all" : filters.minAge === 16 ? "16 or more" : filters.minAge}</Text>
-                                </View>
+                                <SelectDropdown
+                                    data={minAgeToRender}
+                                    defaultButtonText={filters.minAge === undefined ? "Min Age" : filters.minAge === 16 ? "16 or more" : filters.minAge}
+                                    onSelect={minAgeObject => {         
+                                        inputMinAge(minAgeObject.value)
+                                    }}
+                                    buttonTextAfterSelection={minAgeObject => {
+                                        return minAgeObject.title
+                                    }}
+                                    rowTextForSelection={minAgeObject => {
+                                        return minAgeObject.title
+                                    }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
+                                />
                             </View>
                             <View style={styles.centeredView}>
-                                <Modal animationType="slide" transparent={true} visible={renderPlayersModal} onRequestClose={() => {setRenderPlayersModal(!renderPlayersModal)}}>
-                                    <View style={styles.centeredView}>
-                                        <View style={styles.modalView2}>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePlayers("all")}}>
-                                                <Text style={styles.textStyle}>All</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePlayers("one")}}>
-                                                <Text style={styles.textStyle}>one</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePlayers("2-4")}}>
-                                                <Text style={styles.textStyle}>2 - 4</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePlayers("5-8")}}>
-                                                <Text style={styles.textStyle}>5 - 8</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changePlayers("nineOrMore")}}>
-                                                <Text style={styles.textStyle}>9 or more</Text>
-                                            </Pressable>
-                                        </View>
-                                    </View>
-                                </Modal>
-                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderPlayersModal(!renderPlayersModal)}}>
-                                    <Text style={styles.textStyle}>Select players</Text>
-                                </Pressable>
-                                <View style={styles.buttonAnswer}>
-                                <Text style={styles.buttonAnswerText}>{filters.minPlayers === undefined ? "all" : filters.minPlayers === 1 ? "one" : filters.minPlayers === 9 ? "9 or more" : `${filters.minPlayers} - ${filters.maxPlayers}`}</Text>
-                               </View>
+                                <SelectDropdown
+                                    data={playersToRender}
+                                    defaultButtonText={filters.minPlayers === undefined ? "Players" : filters.minPlayers === 1 ? "one" : filters.minPlayers === 9 ? "9 or more" : `${filters.minPlayers} - ${filters.maxPlayers}`}
+                                    onSelect={playersObject => {
+                                        inputPlayers(playersObject.value)                                
+                                    }}
+                                    buttonTextAfterSelection={playersObject => {
+                                        return playersObject.title
+                                    }}
+                                    rowTextForSelection={playersObject => {
+                                        return playersObject.title
+                                    }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
+                                />
                             </View>
                             <View style={styles.centeredView}>
-                                <Modal animationType="slide" transparent={true} visible={renderSizeModal} onRequestClose={() => {setRenderSizeModal(!renderSizeModal)}}>
-                                    <View style={styles.centeredView}>
-                                        <View style={styles.modalView2}>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeSize("")}}>
-                                                <Text style={styles.textStyle}>all</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeSize("Small")}}>
-                                                <Text style={styles.textStyle}>Small</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeSize("Medium")}}>
-                                                <Text style={styles.textStyle}>Medium</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeSize("Large")}}>
-                                                <Text style={styles.textStyle}>Large</Text>
-                                            </Pressable>
-                                        </View>
-                                    </View>
-                                </Modal>
-                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderSizeModal(!renderSizeModal)}}>
-                                    <Text style={styles.textStyle}>Select size</Text>
-                                </Pressable>
-                                <View style={styles.buttonAnswer}>
-                                    <Text style={styles.buttonAnswerText}>{filters.size !== undefined ? filters.size : "All"}</Text>
-                               </View>
+                                <SelectDropdown
+                                    data={sizeToRender}
+                                    defaultButtonText={filters.size === undefined ? "Size" : filters.size}
+                                    onSelect={sizeObject => {
+                                        inputSize(sizeObject.value)                                
+                                    }}
+                                    buttonTextAfterSelection={sizeObject => {
+                                        return sizeObject.title
+                                    }}
+                                    rowTextForSelection={sizeObject => {
+                                        return sizeObject.title
+                                    }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
+                                />
                             </View>
                             <View style={styles.centeredView}>
-                                <Modal animationType="slide" transparent={true} visible={renderBrandModal} onRequestClose={() => {setRenderBrandModal(!renderBrandModal)}}>
-                                    <View style={styles.centeredView}>
-                                        <View style={styles.modalView2}>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeBrand("")}}>
-                                                <Text style={styles.textStyle}>All</Text>
-                                            </Pressable>
-                                            {renderOptionsBrands()}
-                                        </View>
-                                    </View>
-                                </Modal>
-                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderBrandModal(!renderBrandModal)}}>
-                                    <Text style={styles.textStyle}>Select brand</Text>
-                                </Pressable>
-                                <View style={styles.buttonAnswer}>
-                                <Text style={styles.buttonAnswerText}>{filters.brand !== undefined ? renderBrandName : "all"}</Text>
-                               </View>
+                                <SelectDropdown
+                                    data={brandsPlus}
+                                    defaultButtonText={renderBrandName}
+                                    onSelect={brandObject => {
+                                        setRenderBrandName(brandObject.name)
+                                        inputBrand(brandObject._id)                                
+                                    }}
+                                    buttonTextAfterSelection={brandObject => {
+                                        return brandObject.name
+                                    }}
+                                    rowTextForSelection={brandObject => {
+                                        return brandObject.name
+                                    }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
+                                />
                             </View>
                             <View style={styles.centeredView}>
-                                <Modal animationType="slide" transparent={true} visible={renderGenreModal} onRequestClose={() => {setRenderGenreModal(!renderGenreModal)}}>
-                                    <View style={styles.centeredView}>
-                                        <View style={styles.modalView2}>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeGenre("")}}>
-                                                <Text style={styles.textStyle}>All</Text>
-                                            </Pressable>
-                                            {renderOptionsGenres()}
-                                        </View>
-                                    </View>
-                                </Modal>
-                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderGenreModal(!renderGenreModal)}}>
-                                    <Text style={styles.textStyle}>Select genre</Text>
-                                </Pressable>
-                                <View style={styles.buttonAnswer}>
-                                    <Text style={styles.buttonAnswerText}>{filters.genres !== undefined ? renderGenreName : "all"}</Text>
-                                </View>
+                                <SelectDropdown
+                                    data={genresPlus}
+                                    defaultButtonText={renderGenreName}
+                                    onSelect={genreObject => {
+                                        setRenderGenreName(genreObject.name)
+                                        inputGenre(genreObject._id)                                
+                                    }}
+                                    buttonTextAfterSelection={genreObject => {
+                                        return genreObject.name
+                                    }}
+                                    rowTextForSelection={genreObject => {
+                                        return genreObject.name
+                                    }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
+                                />
                             </View>
                             <View style={styles.centeredView}>
-                                <Modal animationType="slide" transparent={true} visible={renderGameTypeModal} onRequestClose={() => {setRenderGameTypeModal(!renderGameTypeModal)}}>
-                                    <View style={styles.centeredView}>
-                                        <View style={styles.modalView2}>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeGameType("")}}>
-                                                <Text style={styles.textStyle}>All</Text>
-                                            </Pressable>
-                                            {renderOptionsGameTypes()}
-                                        </View>
-                                    </View>
-                                </Modal>
-                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderGameTypeModal(!renderGameTypeModal)}}>
-                                    <Text style={styles.textStyle}>Select game type </Text>
-                                </Pressable>
-                                <View style={styles.buttonAnswer}>
-                                 <Text style={styles. buttonAnswerText}>{filters.gameType !== undefined ? renderGameTypeName : "all"}</Text>
-                                </View>
+                                <SelectDropdown
+                                    data={gameTypePlus}
+                                    defaultButtonText={renderGameTypeName}
+                                    onSelect={gameTypeObject => {
+                                        setRenderGameTypeName(gameTypeObject.name)
+                                        inputGameType(gameTypeObject._id)                                
+                                    }}
+                                    buttonTextAfterSelection={gameTypeObject => {
+                                        return gameTypeObject.name
+                                    }}
+                                    rowTextForSelection={gameTypeObject => {
+                                        return gameTypeObject.name
+                                    }}
+                                    buttonStyle={styles.dropdown1BtnStyle} 
+                                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                                    renderDropdownIcon={() => {
+                                        return (
+                                          <FontAwesome name="chevron-down" color={"gray"} size={15} />
+                                        )
+                                      }}
+                                      dropdownIconPosition={"right"}
+                                />
                             </View>
-                            <View style={styles.centeredView}>
-                                <Modal animationType="slide" transparent={true} visible={renderDiscountModal} onRequestClose={() => {setRenderDiscountModal(!renderDiscountModal)}}>
-                                    <View style={styles.centeredView}>
-                                        <View style={styles.modalView2}>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeDiscount(true)}}>
-                                                <Text style={styles.textStyle}>yes</Text>
-                                            </Pressable>
-                                            <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {changeDiscount(false)}}>
-                                                <Text style={styles.textStyle}>no</Text>
-                                            </Pressable>
-                                        </View>
-                                    </View>
-                                </Modal>
-                                <Pressable style={[styles.buttonPink, styles.buttonOpen]} onPress={() => {setRenderDiscountModal(!renderDiscountModal)}}>
-                                    <Text style={styles.textStyle}>With discount?</Text>
-                                </Pressable>
-                                <View style={styles.buttonAnswer}>
-                                    <Text style={styles. buttonAnswerText}>{filters.hasDiscount !== undefined ? "yes" : "all"}</Text>
-                               </View>
+                            <View style={styles.centeredView2}>
+                               <Text style={{fontFamily: "Poppins_500Medium", letterSpacing:.5}}>With Discount </Text>
+                               <Switch value={filters.hasDiscount === undefined ? false : true} onValueChange={changeDiscount} />
                             </View>
                             <View style={styles.filterButtons}>
                                 <Pressable style={[styles.button, styles.buttonClose]} onPress={(e) => {changeAllFilters(e)}}>
                                     <Text style={styles.textStyle}>Filter</Text>
                                 </Pressable>
-                                <Pressable style={[styles.button, styles.buttonClose]} onPress={() => {closeFilters()}}>
-                                    <Text style={styles.textStyle}>Close filters</Text>
+                                <Pressable style={[styles.button, styles.buttonClose1]} onPress={() => {closeFilters()}}>
+                                    <Text style={styles.textStyle}>Close</Text>
                                 </Pressable>
                             </View>
                         </View>
                     </Modal>
                 <TouchableOpacity onPress={(e) => {submitFilters(e)}}>
-                <ImageBackground
-              style={styles.filterButton1}
-              source={{ uri: "https://i.postimg.cc/mD7r09R8/button-Back.png" }}
-              imageStyle={{ borderRadius: 5 }}
-            >
-                    <Text style={styles.filterButtonText}>Filter</Text>
-                 </ImageBackground>
+                    <ImageBackground
+                        style={styles.filterButton1}
+                        source={{ uri: "https://i.postimg.cc/mD7r09R8/button-Back.png" }}
+                        imageStyle={{ borderRadius: 5 }}
+                    >
+                        <Text style={styles.filterButtonText}>Filter</Text>
+                    </ImageBackground>
                 </TouchableOpacity>
             </View>
+            <View style={{flexDirection:'row', justifyContent:'center'}}>
                 <TouchableOpacity onPress={() => {openFilter()}}>
-                <ImageBackground
-              style={styles.filterButton2}
-              source={{ uri: "https://i.postimg.cc/xTX0x8Gh/cuboIcon.png" }}
-              imageStyle={{ borderRadius: 7 }}
-            >
-                <Text style={styles.filterButtonText}> + filters</Text>
-                </ImageBackground>
+                    <ImageBackground
+                        style={styles.filterButton2}
+                        source={{ uri: "https://i.postimg.cc/5tbgdDLK/back-Button.png" }}
+                        imageStyle={{ borderRadius: 5 }}
+                    >
+                        <Text style={styles.filterButtonText}> + Filters</Text>
+                    </ImageBackground>
                 </TouchableOpacity>
+                <TouchableOpacity onPress={(e) => {resetFilters(e)}}>
+                    <ImageBackground
+                        style={styles.filterButton2}
+                        source={{ uri: "https://i.postimg.cc/KcfDB9Xt/back-Button2.png" }}
+                        imageStyle={{ borderRadius: 5 }}
+                    >
+                        <Text style={styles.filterButtonText}> Reset</Text>
+                    </ImageBackground>
+                </TouchableOpacity>
+            </View>       
         </View>
     )
 }
@@ -418,6 +389,7 @@ const styles = StyleSheet.create({
         borderRadius:20,
         padding:20,
         shadowColor: "#000",
+        alignItems:'center',
         shadowOffset: {
 	    width: 0,
 	    height: 12,
@@ -431,9 +403,12 @@ const styles = StyleSheet.create({
         flexDirection: "row",
     },
     centeredView: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
+        marginVertical:5,
+    },
+    centeredView2: {
+        marginVertical:5,
+        flexDirection:'row',
+        alignItems:'center'
     },
     modalView: {
         margin: 20,
@@ -462,10 +437,15 @@ const styles = StyleSheet.create({
     buttonClose: {
         backgroundColor: "#7c51b0",
     },
+    buttonClose1: {
+        backgroundColor: "#c3286c",
+    },
+
     textStyle: {
         color: "white",
-        fontWeight: "bold",
-        textAlign: "center"
+        fontFamily: "Poppins_700Bold",
+        textAlign: "center",
+        letterSpacing:1,
     },
     filterButton1: {
         alignSelf: "center",
@@ -483,8 +463,8 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         paddingVertical: 5,
         paddingHorizontal: 10,
-        width: 90,
-        marginHorizontal:15, 
+        width: 80,
+        margin:5
       }, 
       buttonAnswer:{
         backgroundColor:"#67f2cb", 
@@ -523,4 +503,20 @@ const styles = StyleSheet.create({
         top:70,
         left:27
     },
+    dropdown1BtnStyle:{
+        height: 40,
+        width: 260,
+        padding: 10,
+        borderRadius: 2,
+        borderColor: "#dad8d8",
+        borderStyle: "solid",
+        borderWidth: 2,
+        borderRadius: 10,
+        backgroundColor:'whitesmoke'
+    },
+    dropdown1BtnTxtStyle:{
+        fontFamily: "Poppins_500Medium",
+        letterSpacing:.5,
+        
+    }
 })

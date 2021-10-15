@@ -4,10 +4,11 @@ import Header from "../components/Header"
 import { useSignup } from "../hooks/usersHooks"
 import HeroPages from "../components/HeroPages"
 import Bot from "../components/bot/Bot"
+import {useEffect} from 'react'
+import toast from "react-hot-toast"
 
 const SignUp = (props) => {
    const [formik, responseGoogle, setFieldValue, loading, error] = useSignup()
-
    return (
       <>
          <Bot />
@@ -100,20 +101,6 @@ const SignUp = (props) => {
                         <small className="signNoErrors">NoErrors</small>
                      )}
                   </div>
-                  {/* <div className='inputContainer'>
-                    <label className='labelSign' htmlFor='photo'>Photo</label>
-                    <input 
-                        name='photo'
-                        placeholder='Must be an url'
-                        type='text'
-                        value={formik.values.photo}
-                        onChange={formik.handleChange('photo')}
-                        onBlur={formik.handleBlur('photo')}
-                    />
-                    {formik.touched.photo && formik.errors.photo && (
-                        <p>{formik.errors.photo}</p>
-                    )}
-                </div> */}
                   <div className="inputContainer">
                      <label className="labelSign" htmlFor="email">
                         Email
@@ -135,7 +122,22 @@ const SignUp = (props) => {
                      )}
                   </div>
                   <div className="inputContainer">
-                     <label className="labelSign" htmlFor="email">
+                     {/* <label className="labelSign" htmlFor="photo">
+                        Profile Photo
+                     </label>
+                     <label htmlFor="filePicker" className="inputfile"><div className="uploadPictureButton" style={{
+                        backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
+                     }}><span>Upload your picture</span></div></label> */}
+                     {/* <input id="filePicker" style={{visibility:"hidden"}}
+                        placeholder="Profile Photo"
+                        name="photo"
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) =>
+                           setFieldValue({ photo: e.target.files[0] })
+                        }
+                     /> */}
+                      <label className="labelSign" htmlFor="email">
                         Profile Photo
                      </label>
                      <input className="inputfile"
@@ -145,12 +147,7 @@ const SignUp = (props) => {
                         onChange={(e) =>
                            setFieldValue({ photo: e.target.files[0] })
                         }
-                     />
-                     {/* {formik.touched.email && formik.errors.email ? (
-              <small className="signErrors">{formik.errors.email}</small>
-            ) : (
-              <small className="signNoErrors">NoErrors</small>
-            )} */}
+                     /> 
                   </div>
                   <div className="inputContainer">
                      <label className="labelSign" htmlFor="password">

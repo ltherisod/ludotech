@@ -6,6 +6,7 @@ import { useEffect } from "react"
 import Bot from "../components/bot/Bot"
 import "animate.css"
 import NewArticlesCarousel from "../components/NewArticlesCarousel"
+
 const Home = (props) => {
    useEffect(() => {
       window.scrollTo(0, 0)
@@ -38,7 +39,7 @@ const Home = (props) => {
                            className="animate__animated animate__fadeInUp animate__delay-3s"
                            id="welcome"
                         >
-                           Welcome to the land of the game
+                           Welcome to the land of the games
                         </h1>
                         <Link to="/articles">
                            <button className="animate__animated animate__fadeInUp animate__delay-4s">

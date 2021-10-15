@@ -73,7 +73,7 @@ const Dashboard = ({render}) => {
                             </div>
                             <div>
                                 <span>Total revenue</span>
-                                <p>${revenue}</p>
+                                <p>${revenue.toFixed(0)}</p>
                             </div>
                         </div>
                 
@@ -122,7 +122,6 @@ const Dashboard = ({render}) => {
                         <h5>Last registered</h5>
                     </div>
                     {registered.map(user => {
-                        console.log(user.photo)
                         return (
                             <div key={user._id} className='productRow' style={{marginBottom: '2vmin'}}>
                                 <div className='productRowtPicture' style={{backgroundImage: `url("${user.photo}")`, borderRadius: '50%'}}></div>

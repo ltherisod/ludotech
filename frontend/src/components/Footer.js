@@ -6,6 +6,12 @@ const Footer = () => {
             backgroundImage: `url("https://i.postimg.cc/90sJmPWq/footer.png")`,
          }}
       >
+         
+         <img
+            className="logoFooter"
+            src="https://i.postimg.cc/sfqQZZsH/logo-Mindhub.png"
+            alt="logoM"
+         />
          <div className="socialMediaContainer">
             <a
                href="https://www.instagram.com"
@@ -41,9 +47,7 @@ const Footer = () => {
                />
             </a>
          </div>
-         <p className="footerRights">
-            LudoTech © All rights reserved || Mindhub 2021
-         </p>
+         <p className="footerRights">LudoTech © All rights reserved 2021</p>
       </footer>
    )
 }

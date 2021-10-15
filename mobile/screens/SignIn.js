@@ -15,6 +15,7 @@ import { useLogin } from "../hooks/usersHooks"
 import HeroPages from "../components/HeroPages"
 import Footer from "../components/Footer"
 import * as Google from "expo-google-app-auth"
+import Toast from 'react-native-toast-message'
 
 const SignIn = (props) => {
   const [formik, responseGoogle, loading, error] = useLogin()
@@ -29,7 +30,6 @@ const SignIn = (props) => {
 
       if (type === "success") {
         responseGoogle(user)
-        console.log(user)
       }
     } catch (error) {
       console.error(error)

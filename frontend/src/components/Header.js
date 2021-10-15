@@ -6,11 +6,11 @@ import usersActions from "../redux/actions/usersActions"
 import toast from "react-hot-toast"
 
 const Header = (props) => {
-   const iconUser = "https://i.postimg.cc/pd1gvVR7/iconuser1.png"
-   const HOST = "https://lodotechgames.herokuapp.com"
-   const user = useSelector((state) => state.users.user)
-   const dispatch = useDispatch()
-   const [changeTitle, setChangeTitle] = useState(false)
+  const iconUser = "https://i.postimg.cc/pd1gvVR7/iconuser1.png"
+  const HOST = "https://lodotechgames.herokuapp.com"
+  const user = useSelector((state) => state.users.user)
+  const dispatch = useDispatch()
+  const [changeTitle, setChangeTitle] = useState(false)
 
   const toggleTitle = () => {
     const scrolled = document.documentElement.scrollTop
@@ -161,7 +161,8 @@ const Header = (props) => {
               </li>
             )}
           </ul>
-          <div className="d-flex justify-content-center align-items-center">
+          <div className="d-flex align-items-center">
+            <div className="d-flex">
             <div
               className="logoUser"
               style={{
@@ -177,63 +178,20 @@ const Header = (props) => {
           </div>
           {user ? (
             <>
-              <div className="relative">
-                <FaBell
-                  className="iconsNav"
-                  onClick={() => setShowNoti(!showNoti)}
-                />
-                <div className="notification">2</div>
-                {showNoti && <Notifications show={setShowNoti} />}
-              </div>
-              <Link to="/wishlist">
+              <Link to="/wishlist"  onClick={() => window.scrollTo(0, 0)}>
                 <FaHeart className="iconsNav" />
+                
               </Link>
-              <Link to="/cart" onClick={() => window.scrollTo(0, 0)}>
+              <Link
+                to="/cart"
+                id={user ? "cart_loggedin" : "cart_loggedout"}
+                onClick={() => window.scrollTo(0, 0)}
+              >
                 <FaShoppingCart className="iconsNav" />
               </Link>
             </>
           ) : (
             <>
-              <FaBell
-                className="iconsNav"
-                onClick={() =>
-                  toast.custom((t) => (
-                    <div
-                      className={`${
-                        t.visible ? "animate-enter" : "animate-leave"
-                      } bg-white flex`}
-                      style={{
-                        display: "flex",
-                        alignContent: "center",
-                        alignItems: "center",
-                        padding: "5px 10px",
-                        borderRadius: "15px",
-                        backgroundImage:
-                          "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
-                        backgroundPosition: "center right 50px",
-                        backgroundSize: "cover",
-                      }}
-                    >
-                      <img
-                        style={{ width: "55px", height: "55px" }}
-                        className="h-3 w-3 rounded-full"
-                        src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
-                        alt=""
-                      />
-                      <p
-                        className="text-sm"
-                        style={{
-                          marginBottom: 0,
-                          color: "#ff9424",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        You must log in to see your notifications
-                      </p>
-                    </div>
-                  ))
-                }
-              />{" "}
               <FaHeart
                 className="iconsNav"
                 onClick={() =>
@@ -316,6 +274,7 @@ const Header = (props) => {
               />
             </>
           )}
+            </div>
         </div>
       </div>
     </nav>

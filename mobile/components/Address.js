@@ -34,7 +34,6 @@ const Address = (props) => {
 
   const deleteAddress = async (id) => {
     const res = await dispatch(usersActions.deleteDirection(id))
-    console.log(res)
   }
 
   return (
@@ -84,12 +83,12 @@ const Address = (props) => {
               <DirectionsForm
                 submitCallback={updateDirectionHandler}
                 initialValues={initialValues}
-                buttonText="OK"
+                buttonText="Edit"
               />
               <View>
-                <TouchableOpacity  onPress={() => setEdit(!edit)}>
-                <ImageBackground style={{width:30, padding:3}} source={{ uri: "https://i.postimg.cc/L6km2Sc6/back-Google.png",}} imageStyle={{ borderRadius: 5 }}>
-                    <Text style={{color:"white",fontFamily:'Poppins_700Bold', alignSelf:"center"}}>X</Text>
+                <TouchableOpacity  onPress={() => setEdit(!edit)} style={{alignSelf:'center', marginTop:5}}>
+                <ImageBackground style={{width:125, padding:8}} source={{ uri: "https://i.postimg.cc/L6km2Sc6/back-Google.png",}} imageStyle={{ borderRadius: 5 }}>
+                    <Text style={{color:"white",fontFamily:'Poppins_700Bold', alignSelf:"center", fontSize:15}}>Cancel</Text>
                 </ImageBackground>
                 </TouchableOpacity>
               </View>
@@ -115,7 +114,7 @@ const Address = (props) => {
 }
 const styles = StyleSheet.create({
   addressCard:{
-    width:"70%",
+    width:"90%",
     backgroundColor:"white",
     minHeight: 130,
     borderRadius:10,

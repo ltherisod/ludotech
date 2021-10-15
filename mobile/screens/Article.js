@@ -8,8 +8,13 @@ import { connect } from "react-redux"
 import YoutubePlayer from "react-native-youtube-iframe"
 import ArticleCarousel from "../components/ArticleCarousel"
 import MostRealted from "../components/MostRealted"
+import Toast from 'react-native-toast-message';
+import * as Animatable from 'react-native-animatable'
 
 const Article = (props) => {
+
+  const scrollRef = useRef()
+
   const [modalVisible, setModalVisible] = useState(false)
  
   const [article, loading] = useArticle(props.route.params.id)
@@ -49,28 +54,29 @@ const Article = (props) => {
 }, []);
 
  const addToCart = (e, id) => {
-  e.stopPropagation()
-  props.updateCart("add", id)
+  if(props.user) {
+    e.stopPropagation();
+    props.updateCart("add", id);
+    Toast.show({
+      type: 'success',
+      text1: `${name} added🤩`,
+      text2: 'Press here to see your cart',
+      onPress: () => props.navigation.navigate('cart'),
+      position: 'bottom'
+    })
+  } else {
+    Toast.show({
+      type: 'error',
+      text1: `You need to be logged 😢`,
+      text2: 'Go to sign in now to add a product in your cart',
+      position: 'bottom'
+    })
+  }
 }
   return (
-    <ScrollView>
+    <ScrollView  ref={scrollRef}>
       <ImageBackground style={{width:"100%", alignItems:"center"}} source={{ uri: "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png" }} resizeMode="cover">
         <HeroPages />
-        <View style={styles.backButtonContainer} >
-          <TouchableOpacity>
-            <View style={styles.backButton}>
-              <Text
-                style={styles.backButtonText}
-                onPress={() => {
-                props.navigation.navigate("ArticlesStack");
-                }}
-                >
-                Go back to articles
-                </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-        {/* <Image source={{uri: photos[0]}} style={{width:300, height:300}}/> */}
           <ArticleCarousel photosArticle={photos}/>
         <View style={styles.articlePresentation} >
           <View style={styles.articleCard} >
@@ -119,10 +125,10 @@ const Article = (props) => {
           </View>
         </View>
 
-        <View style={{alignSelf:"flex-start", marginLeft:30}} >
+        <Animatable.View animation='fadeInLeft' style={{alignSelf:"flex-start", marginLeft:30}} >
           <ImageBackground style={styles.articleDecoImgOne} source={{ uri: `${decoPhotos ? decoPhotos[0] : [] }` }} >
           </ImageBackground>
-        </View>
+        </Animatable.View>
         <View style={styles.centeredView}>
       <Modal
         animationType="slide"
@@ -152,19 +158,21 @@ const Article = (props) => {
         <Text style={styles.textStyle}>Game Description</Text>
       </Pressable>
     </View>
+        <Animatable.View  animation='fadeInRight'>
           <ImageBackground style={styles.articleDecoImgTwo} source={{ uri: `${decoPhotos ? decoPhotos[1] : [] }` }} >
           </ImageBackground>
+        </Animatable.View>
         <View style={{alignItems:"center", marginVertical:10}} >
-           <YoutubePlayer
-        height={300}
-        width={350}
-        play={playing}
-        videoId={videoId}
-        onChangeState={onStateChange}
-      />
+          <YoutubePlayer
+            height={300}
+            width={350}
+            play={playing}
+            videoId={videoId}
+            onChangeState={onStateChange}
+          />
         </View>
 
-        <View style={{alignSelf:"flex-start", marginTop:-50, marginLeft:30}} >
+        <View  animation='fadeInLeft' style={{alignSelf:"flex-start", marginTop:-50, marginLeft:30}} >
           <ImageBackground style={styles.articleDecoImgThree} source={{ uri: `${decoPhotos ? decoPhotos[2] : [] }` }} >
           </ImageBackground>
         </View>
@@ -173,9 +181,22 @@ const Article = (props) => {
           relatedArticles={relatedArticles}
           articleId={props.route.params.id}
           navigation={props.navigation}
+          scrollRef={scrollRef}
         />
-        
-    
+        <View style={styles.backButtonContainer} >
+          <TouchableOpacity>
+            <View style={styles.backButton}>
+              <Text
+                style={styles.backButtonText}
+                onPress={() => {
+                props.navigation.navigate("ArticlesStack");
+                }}
+                >
+                Go back to articles
+                </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
     </ScrollView>
   )
@@ -184,6 +205,7 @@ const Article = (props) => {
 const mapStateToProps = (state) => {
   return {
       wishList: state.users.wishList,
+      user: state.users.user
   }
 }
 
@@ -336,9 +358,9 @@ const styles = StyleSheet.create({
   },
   backButtonContainer: {
     width: '100%',
-    marginBottom: '20%',
     justifyContent: 'center',
     alignItems: 'center',
+    color:'red'
   },  
   backButton: {
     justifyContent: 'center',
@@ -354,6 +376,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins_700Bold',
     fontSize: 16, 
     color: 'white' 
-  }
+  },
+  
 
 })

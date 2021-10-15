@@ -85,7 +85,6 @@ export const useLogin = () => {
 
   const loginHandler = async (values) => {
     const res = await dispatch(usersActions.logInOrSignUp(values, "login"))
-    console.log(res)
     if (!res.success) setError(res.error)
     setLoading(false)
   }
