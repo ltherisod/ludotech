@@ -1,7 +1,7 @@
 import React from "react"
 import { connect, useSelector } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
-import { FaHeart, FaRegHeart, FaCartPlus } from "react-icons/fa"
+import { FaCartPlus } from "react-icons/fa"
 import toast from "react-hot-toast"
 
 const ArticleRelated = (props) => {

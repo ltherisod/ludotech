@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
 import { usePurchase } from "../hooks/usersHooks"
 // vendedor: sb-uomjv7984205@business.example.com, Yj6x|.ZF
