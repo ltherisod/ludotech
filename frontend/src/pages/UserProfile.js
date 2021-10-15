@@ -168,7 +168,6 @@ const UserProfile = () => {
                                     key={direction._id}
                                  />
                                  </div>
-                                 
                               )
                            })}
                           </div>

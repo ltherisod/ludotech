@@ -112,7 +112,7 @@ const Stripe = (props) => {
                   purchaseHandler(values)
                }}
                alias={false}
-               buttonText="Finalize your purchase"
+               buttonText="Purchase"
             >
                <CardField
                   postalCodeEnabled={false}

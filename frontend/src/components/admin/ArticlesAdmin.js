@@ -29,28 +29,35 @@ const ArticlesAdmin = () => {
          <div
             className={`${
                t.visible ? "animate-enter" : "animate-leave"
-            } bg-black flex`}
+            } bg-white flex`}
             style={{
                display: "flex",
                alignContent: "center",
                alignItems: "center",
                padding: "15px 20px",
-               borderRadius: "35px",
+               borderRadius: "10px",
+               backgroundImage:
+               "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
+                backgroundPosition: "center right 50px",
+                   backgroundSize: "cover",
             }}
          >
             <p
-               className="text-sm font-medium text-white"
-               style={{ marginBottom: 0 }}
+               className="text-sm font-medium"
+               style={{ marginBottom: 0 , color:'purple'}}
             >
                Delete article?
             </p>
             <button
                onClick={() => deleteHandler(id)}
                style={{
-                  backgroundColor: "rgb(189, 151, 81)",
+                  backgroundColor: "rgb(224, 81, 193)",
                   color: "white",
                   padding: "5px",
                   margin: "2px",
+                  border:'none', 
+                  borderRadius:'5px',
+                  fontWeight:'bold'
                }}
             >
                Yes
@@ -58,10 +65,13 @@ const ArticlesAdmin = () => {
             <button
                onClick={() => toast.dismiss(t.id)}
                style={{
-                  backgroundColor: "rgb(189, 151, 81)",
+                  backgroundColor: "rgb(224, 81, 193)",
                   color: "white",
-                  padding: "5px",
+                  padding: "6px",
                   margin: "2px",
+                  border:'none', 
+                  borderRadius:'5px',
+                  fontWeight:'bold'
                }}
             >
                No

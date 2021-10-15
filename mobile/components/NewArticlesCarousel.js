@@ -48,8 +48,8 @@ const NewArticlesCarousel = (props) => {
   return (
     <>
       <View style={styles.containerTitle} >
-          <Text style={styles.mainTextSpan}>Latest</Text>
-          <Text style={styles.mainText}>{' '}products</Text> 
+          <Text style={styles.mainTextSpan}>Newest</Text>
+          <Text style={styles.mainText}>{' '}Products</Text> 
         </View>
       <View style={styles.container}>
         <Swiper style={styles.swiperTag} 
@@ -65,8 +65,8 @@ const NewArticlesCarousel = (props) => {
             <TouchableOpacity key={`slide-${index}`} onPress={() => {
               props.navigation.navigate('ArticleStack', { id: article._id })}}
             >
-              <ImageBackground imageStyle={{ borderRadius: 10}} style={styles.bg} source={{uri: 'https://i.postimg.cc/sftdwcnd/article.png'}}>
-                <Image style={styles.photo} source={{uri: article.photos[0]}} />
+              <ImageBackground imageStyle={{ borderRadius: 10}} style={styles.bg} source={{uri: 'https://i.postimg.cc/FRMgBC4D/ar2ticlecard.png'}}>
+                <Image style={styles.photo} source={{uri: article.iconPhotos }} />
                 <Text style={styles.price}>${article.price}.00 USD</Text>
                 <View style={styles.flex}>
                   <Text style={styles.name}>{article.name}</Text>
@@ -99,14 +99,14 @@ const styles = StyleSheet.create({
   },
   mainText: {
     color: "white",
-    fontSize: 28,
+    fontSize: 40,
     paddingTop: 20,
     alignSelf: 'center',
     fontFamily: 'Poppins_700Bold'
   },
   mainTextSpan: {
     color: '#ff9424',
-    fontSize: 28,
+    fontSize: 40,
     paddingTop: 20,
     alignSelf: 'center',
     fontFamily: 'Poppins_700Bold'
@@ -125,8 +125,8 @@ const styles = StyleSheet.create({
   bg: {
     padding: 20,
     backgroundColor: 'white',
-    width: 250,
-    height: 250,
+    width: 300,
+    height: 300,
     resizeMode: 'cover',
     alignItems: 'center',
     shadowColor: "#000",
@@ -144,15 +144,15 @@ const styles = StyleSheet.create({
       marginBottom: 10
   },
   price: {
-      color: 'green',
+      color: 'lightgreen',
       fontSize: 16,
-      fontWeight: '600'
+      fontFamily:'Poppins_700Bold'
   },
   name: {
       flex: 1,
       color: 'gray',
       fontSize: 18,
-      fontWeight: '600'
+      fontFamily:'Poppins_700Bold'
   },
   cart: {
       // marginRight: 10,
