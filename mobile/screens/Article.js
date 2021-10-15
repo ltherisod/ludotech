@@ -243,7 +243,9 @@ const styles = StyleSheet.create({
   articleDecoImgTwo: {
     width: 100,
     height: 100,
-    alignSelf:"flex-end"
+    alignSelf:"flex-end",
+    position:'relative',
+    left:120
   },
   articleDecoImgThree: {
     width: 100,
