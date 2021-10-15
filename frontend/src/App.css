@@ -2159,8 +2159,7 @@ h2.articles {
   border: 1px solid white;
   border-radius: 3px;
   background-color: white;
-  display: flex;
-  align-items: center;
+  padding-top: 4px;
 }
 
 .uploadPictureButton {
