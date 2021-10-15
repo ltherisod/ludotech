@@ -41,7 +41,6 @@ const Sales = ({ scroll }) => {
   }
 
   const changeStatus = () => {
-    console.log(newStatus)
     if (newStatus !== "Select a new status") {
       axios
         .put(

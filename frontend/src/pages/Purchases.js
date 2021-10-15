@@ -34,8 +34,6 @@ const Purchases = () => {
       )
    }
 
-   // console.log(purchases)
-
    return (
       <div
          style={{

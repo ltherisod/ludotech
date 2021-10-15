@@ -27,10 +27,8 @@ const PurchasesScreen = (props) => {
     let dateFormat = date.slice(0, 9)
     return dateFormat
    }
-  //  console.log("DESDE ACA PARA QUE SE VEA", searched)
-  //  console.log(purchases)
 
-  return (
+   return (
     <ScrollView>
       <ImageBackground
         style={{ width: "100%", minHeight: 400 }}

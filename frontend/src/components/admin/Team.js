@@ -35,7 +35,6 @@ const Team = () => {
     }
 
     const changeRol = () => {
-        console.log(members)
         axios.post(
             'https://lodotechgames.herokuapp.com/api/admin/set-admin', 
             {email: userFound.email},
@@ -49,7 +48,6 @@ const Team = () => {
                     let membersFiltered = members.filter(member => {
                         return member.email !== userFound.email
                     })
-                    console.log(membersFiltered)
                     setMembers(membersFiltered)
                 }
             })

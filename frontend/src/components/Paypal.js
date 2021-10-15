@@ -63,7 +63,7 @@ const Paypal = ({ formik, user, history }) => {
             paymentDetails: { method: "PAYPAL", orderId: order.id },
           }
           const res = await purchase(details)
-          console.log({ res, data, details })
+          // console.log({ res, data, details })
           if (res.success) {
             checkout(res)
           }

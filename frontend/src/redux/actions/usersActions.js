@@ -121,7 +121,6 @@ const usersActions = {
             Authorization: `Bearer ${getState().users.user.token}`,
           },
         })
-        // console.log(res.data)
         if (!res.data.success) throw new Error(res.data.error)
         if (res.data.success) {
           let body = {

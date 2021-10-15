@@ -44,7 +44,6 @@ const articlesActions = {
             Authorization: `Bearer ${getState().users.user.token}`,
           },
         })
-        console.log(response.data)
         if (!response.data.success) throw new Error(response.data.error)
         return {
           success: true,
@@ -113,7 +112,6 @@ const articlesActions = {
             },
           }
         )
-        console.log(response.data)
         if (!response.data.success) throw new Error(response.data.error)
         dispatch({ type: "UPDATE_CART", payload: response.data.response })
         return { success: true, error: null }

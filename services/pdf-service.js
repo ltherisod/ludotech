@@ -2,7 +2,6 @@ const PDFDocument = require("pdfkit")
 
 const buildPDF = (dataCallback, endCallback, data) => {
   const today = new Date()
-  // console.log(data)
   const doc = new PDFDocument()
   doc.on("data", dataCallback)
   doc.on("end", endCallback)
@@ -78,12 +77,6 @@ const buildPDF = (dataCallback, endCallback, data) => {
   doc.fillColor('black').fontSize(12).text(`${data._id}`, { 
     align: 'center'
   })
-
-
-
-
-
-
 
   doc.end()
 }

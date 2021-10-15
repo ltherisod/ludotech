@@ -42,7 +42,6 @@ const purchaseControllers = {
                   : total + item.quantity * item.article.price,
             0
          )
-         console.log(user.shoppingCart)
 
          // parsear el shopping cart a la forma en que lo toma el modelo purchase.
          const parsedShoppingCart = user.shoppingCart.map((item) => ({
