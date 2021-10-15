@@ -8,7 +8,6 @@ import HeroPages from "../components/HeroPages"
 import { Link } from "react-router-dom"
 
 const Wishlist = (props) => {
-   document.title = "My wishlist"
 
    const wishlist = useSelector((state) => state.users.wishList)
    const [searched, setSearched] = useState([])

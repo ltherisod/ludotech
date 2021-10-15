@@ -73,6 +73,7 @@ const Header = (props) => {
                         Articles
                      </NavLink>
                   </li>
+<<<<<<< HEAD
                   {user.isAdmin && (
                      <li className="nav-item">
                         <NavLink
@@ -281,6 +282,129 @@ const Header = (props) => {
          </div>
       </nav>
    )
+=======
+                </ul>
+              </li>
+            )}
+          </ul>
+          <div className="d-flex align-items-center">
+            <div className="d-flex">
+            <div
+              className="logoUser"
+              style={{
+                backgroundImage: `url('${
+                  user
+                    ? user.google
+                      ? user.photo
+                      : `${HOST}/${user.photo}`
+                    : iconUser
+                }')`,
+              }}
+            ></div>
+          </div>
+          {user ? (
+            <>
+              <Link to="/wishlist">
+                <FaHeart className="iconsNav" />
+              </Link>
+              <Link
+                to="/cart"
+                id={user ? "cart_loggedin" : "cart_loggedout"}
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                <FaShoppingCart className="iconsNav" />
+              </Link>
+            </>
+          ) : (
+            <>
+              <FaHeart
+                className="iconsNav"
+                onClick={() =>
+                  toast.custom((t) => (
+                    <div
+                      className={`${
+                        t.visible ? "animate-enter" : "animate-leave"
+                      } bg-white flex`}
+                      style={{
+                        display: "flex",
+                        alignContent: "center",
+                        alignItems: "center",
+                        padding: "5px 10px",
+                        borderRadius: "15px",
+                        backgroundImage:
+                          "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
+                        backgroundPosition: "center right 50px",
+                        backgroundSize: "cover",
+                      }}
+                    >
+                      <img
+                        style={{ width: "55px", height: "55px" }}
+                        className="h-3 w-3 rounded-full"
+                        src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+                        alt=""
+                      />
+                      <p
+                        className="text-sm"
+                        style={{
+                          marginBottom: 0,
+                          color: "#ff9424",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        You must log in to see your wish list
+                      </p>
+                    </div>
+                  ))
+                }
+              />{" "}
+              <FaShoppingCart
+                className="iconsNav"
+                onClick={() =>
+                  toast.custom((t) => (
+                    <div
+                      className={`${
+                        t.visible ? "animate-enter" : "animate-leave"
+                      } bg-white flex`}
+                      style={{
+                        display: "flex",
+                        alignContent: "center",
+                        alignItems: "center",
+                        padding: "5px 10px",
+                        borderRadius: "15px",
+                        backgroundImage:
+                          "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
+                        backgroundPosition: "center right 50px",
+                        backgroundSize: "cover",
+                      }}
+                    >
+                      <img
+                        style={{ width: "55px", height: "55px" }}
+                        className="h-3 w-3 rounded-full"
+                        src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
+                        alt=""
+                      />
+                      <p
+                        className="text-sm"
+                        style={{
+                          marginBottom: 0,
+                          color: "#ff9424",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        You must log in to see your shopping cart
+                      </p>
+                    </div>
+                  ))
+                }
+              />
+            </>
+          )}
+            </div>
+        </div>
+      </div>
+    </nav>
+  )
+>>>>>>> origin/meri
 }
 
 window.addEventListener("DOMContentLoaded", () => {

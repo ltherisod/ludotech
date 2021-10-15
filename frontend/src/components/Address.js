@@ -85,7 +85,7 @@ const Address = (props) => {
                         buttonText="✔"
                      />
                      <button
-                        className="profileButton"
+                        className="profileButton deleteProfile"
                         style={{
                            backgroundColor: "#ce2a73",
                            width: "3.53rem",
