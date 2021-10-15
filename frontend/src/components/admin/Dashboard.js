@@ -73,7 +73,7 @@ const Dashboard = ({render}) => {
                             </div>
                             <div>
                                 <span>Total revenue</span>
-                                <p>${revenue}</p>
+                                <p>${revenue.toFixed(0)}</p>
                             </div>
                         </div>
                 

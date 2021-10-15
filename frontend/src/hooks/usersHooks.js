@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import { useFormik } from "formik"
 import * as Yup from "yup"
+import toast from "react-hot-toast"
 
 export const useSignup = () => {
    const [loading, setLoading] = useState(false)
@@ -40,11 +41,49 @@ export const useSignup = () => {
       formData.append("photo", fieldValue.photo)
       setLoading(true)
       const res = await dispatch(usersActions.logInOrSignUp(formData, "signup"))
-      if (!res.success) setError(res.error)
-      setLoading(false)
+      if (!res.success) {
+         setError(res.error)
+         setLoading(false)
+         toast.custom((t) => (
+            <div
+               className={`${
+                  t.visible ? "animate-enter" : "animate-leave"
+               } bg-white flex`}
+               style={{
+                  display: "flex",
+                  alignContent: "center",
+                  alignItems: "center",
+                  padding: "5px 10px",
+                  borderRadius: "15px",
+                  backgroundImage:
+                     "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
+                  backgroundPosition: "center right 50px",
+                  backgroundSize: "cover",
+               }}
+            >
+               <img
+                  style={{ width: "55px", height: "55px" }}
+                  className="h-3 w-3 rounded-full"
+                  src="https://i.postimg.cc/nLjP3043/robot-Error.png"
+                  alt=""
+               />
+               <p
+                  className="text-sm"
+                  style={{
+                     marginBottom: 0,
+                     color: "#ff9424",
+                     fontWeight: "bold",
+                  }}
+               >
+                  {res.error}
+               </p>
+            </div>
+         ))
+      }
+
    }
 
-   const responseGoogle = (res) => {
+   const responseGoogle = async (res) => {
       let newUserGoogle = {
          firstname: res.profileObj.givenName,
          lastname: res.profileObj.familyName,
@@ -54,7 +93,46 @@ export const useSignup = () => {
          google: true,
       }
 
-      dispatch(usersActions.logInOrSignUp(newUserGoogle, "signup"))
+      const response = await dispatch(usersActions.logInOrSignUp(newUserGoogle, "signup"))
+      if(!res.success) {
+         setError(response.error)
+         setLoading(false)
+         toast.custom((t) => (
+            <div
+               className={`${
+                  t.visible ? "animate-enter" : "animate-leave"
+               } bg-white flex`}
+               style={{
+                  display: "flex",
+                  alignContent: "center",
+                  alignItems: "center",
+                  padding: "5px 10px",
+                  borderRadius: "15px",
+                  backgroundImage:
+                     "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
+                  backgroundPosition: "center right 50px",
+                  backgroundSize: "cover",
+               }}
+            >
+               <img
+                  style={{ width: "55px", height: "55px" }}
+                  className="h-3 w-3 rounded-full"
+                  src="https://i.postimg.cc/nLjP3043/robot-Error.png"
+                  alt=""
+               />
+               <p
+                  className="text-sm"
+                  style={{
+                     marginBottom: 0,
+                     color: "#ff9424",
+                     fontWeight: "bold",
+                  }}
+               >
+                  {response.error}
+               </p>
+            </div>
+         ))
+      }
    }
 
    return [formik, responseGoogle, setFieldValue, loading, error]
@@ -78,8 +156,11 @@ export const useLogin = async () => {
 
    const loginHandler = async (values) => {
       const res = await dispatch(usersActions.logInOrSignUp(values, "login"))
-      if (!res.success) setError(res.error)
-      setLoading(false)
+      if (!res.success) {
+         setError(res.error)
+         setLoading(false)
+         console.log(res.error)
+      }
    }
 
    return [formik, loading, error]

@@ -46,7 +46,8 @@ const Sales = ({ scroll }) => {
       axios
         .put(
           `https://lodotechgames.herokuapp.com/api/user/purchase/${purchaseFound._id}`,
-          { status: newStatus }
+          { status: newStatus }, 
+          {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}}
         )
         .then((res) => {
           setPurchaseFound(res.data.response)
