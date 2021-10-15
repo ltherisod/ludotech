@@ -5,8 +5,8 @@ import ArticleEdit from "./ArticleEdit"
 import { useDispatch } from "react-redux"
 import articlesActions from "../../redux/actions/articlesActions"
 import Filter from "../Filter"
-import PreloaderFilter from "../PreloaderFilter"
 import toast from "react-hot-toast"
+import PreloaderAdmin from "../PreloaderAdmin"
 
 const ArticlesAdmin = () => {
    const [typeAction, setTypeAction] = useState("")
@@ -84,14 +84,7 @@ const ArticlesAdmin = () => {
          )
       default:
          if (loading) {
-            return (
-               <div
-                  style={{ width: "80vw" }}
-                  className="d-flex justify-content-center align-items-center"
-               >
-                  <PreloaderFilter />
-               </div>
-            )
+            return <PreloaderAdmin />
          }
          return (
             <div

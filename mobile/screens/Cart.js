@@ -56,158 +56,231 @@ const Cart = (props) => {
                }}
             >
                <HeroPages />
-                  {props.shoppingCart.length === 0 
-                     ? <>
-                       <View style={{width:"100%", justifyContent:"center", alignItems:"center"}}>
-                        <Text style={styles.title}>Your cart is <Text style={{color: "#67f2cb"}}>empty!</Text></Text>
-                        <Text style={styles.title}>Let's <Text style={{color: "#67f2cb"}}>start</Text> buying!</Text>
-                         <Image style={{width:300, height:300, alignSelf:"center"}} source={require("../assets/mascotSelfie.gif")}/>
-                           <TouchableOpacity  style={{ alignSelf: "center", borderWidth: 1, borderColor: "rgba(0,0,0,0.2)"}}  onPress={() => props.navigation.navigate("ArticlesStack")} >
-                        <ImageBackground style={styles.button} source={{ uri: "https://i.postimg.cc/GhMnJB8K/button-PDF.png"}} imageStyle={{ borderRadius: 5 }}>
-                    <Text style={{color: "white", fontFamily: "Poppins_600SemiBold",alignSelf: "center",fontSize: 16,}}>
-                        Shop Now!
-                     </Text>
-                   </ImageBackground>
-               </TouchableOpacity>
-        </View>
-                     </>
-                     :(
-                        <>
-                             <View style={styles.CartMain}>
-                         <Text style={styles.cartTitle}>Cart</Text>
+               {props.shoppingCart.length === 0 ? (
+                  <>
+                     <View
+                        style={{
+                           width: "100%",
+                           justifyContent: "center",
+                           alignItems: "center",
+                        }}
+                     >
+                        <Text style={styles.title}>
+                           Your cart is{" "}
+                           <Text style={{ color: "#67f2cb" }}>empty!</Text>
+                        </Text>
+                        <Text style={styles.title}>
+                           Let's <Text style={{ color: "#67f2cb" }}>start</Text>{" "}
+                           buying!
+                        </Text>
+                        <Image
+                           style={{
+                              width: 300,
+                              height: 300,
+                              alignSelf: "center",
+                           }}
+                           source={require("../assets/mascotSelfie.gif")}
+                        />
+                        <TouchableOpacity
+                           style={{
+                              alignSelf: "center",
+                              borderWidth: 1,
+                              borderColor: "rgba(0,0,0,0.2)",
+                           }}
+                           onPress={() =>
+                              props.navigation.navigate("ArticlesStack")
+                           }
+                        >
+                           <ImageBackground
+                              style={styles.button}
+                              source={{
+                                 uri: "https://i.postimg.cc/GhMnJB8K/button-PDF.png",
+                              }}
+                              imageStyle={{ borderRadius: 5 }}
+                           >
+                              <Text
+                                 style={{
+                                    color: "white",
+                                    fontFamily: "Poppins_600SemiBold",
+                                    alignSelf: "center",
+                                    fontSize: 16,
+                                 }}
+                              >
+                                 Shop Now!
+                              </Text>
+                           </ImageBackground>
+                        </TouchableOpacity>
+                     </View>
+                  </>
+               ) : (
+                  <>
+                     <View style={styles.CartMain}>
+                        <Text style={styles.cartTitle}>Cart</Text>
                         <View>
                            <View>
                               {props.shoppingCart.map((article) => {
                                  return (
-                                          <View
-                                             style={styles.productCard}
-                                             key={article.article._id}
-                                                          >
-                                          <View style={styles.firstLine}>
-                                           <Image
-                                       style={styles.productImg}
-                                       source={{
-                                          uri: article.article.photos[0],
-                                       }}
-                                    />
-                                    <Text style={styles.productName}>
-                                       {article.article.name}
-                                    </Text>
-                                    <TouchableOpacity
-                                       style={styles.delete}
-                                       onPress={() => {
-                                          updateCartFunction(
-                                             "delete",
-                                             article.article._id
-                                          )
-                                       }}
+                                    <View
+                                       style={styles.productCard}
+                                       key={article.article._id}
                                     >
-                                       <Text style={styles.deleteText}>x</Text>
-                                    </TouchableOpacity>
-                                 </View>
+                                       <View style={styles.firstLine}>
+                                          <Image
+                                             style={styles.productImg}
+                                             source={{
+                                                uri: article.article.photos[0],
+                                             }}
+                                          />
+                                          <Text style={styles.productName}>
+                                             {article.article.name}
+                                          </Text>
+                                          <TouchableOpacity
+                                             style={styles.delete}
+                                             onPress={() => {
+                                                updateCartFunction(
+                                                   "delete",
+                                                   article.article._id
+                                                )
+                                             }}
+                                          >
+                                             <Text style={styles.deleteText}>
+                                                x
+                                             </Text>
+                                          </TouchableOpacity>
+                                       </View>
 
-                                 <View style={styles.secondLine}>
-                                    <View style={styles.secondLineView}>
-                                       <Text style={styles.innerTitle}>
-                                          Quantity:
-                                       </Text>
-                                       <TouchableOpacity
-                                          style={styles.quantity}
-                                          onPress={() => {
-                                             updateCartFunction(
-                                                "decrement",
-                                                article.article._id
-                                             )
-                                          }}
-                                       >
-                                          <Text style={styles.quantityText}>
-                                             {"<"}
-                                          </Text>
-                                       </TouchableOpacity>
-                                       <Text style={styles.quantityNumber}>
-                                          {article.quantity}
-                                       </Text>
-                                       <TouchableOpacity
-                                          style={styles.quantity}
-                                          onPress={() => {
-                                             updateCartFunction(
-                                                "increment",
-                                                article.article._id
-                                             )
-                                          }}
-                                       >
-                                          <Text style={styles.quantityText}>
-                                             {">"}
-                                          </Text>
-                                       </TouchableOpacity>
-                                    </View>
-                                    <View style={styles.secondLineView}>
-                                       <Text style={styles.innerTitle}>
-                                          Price:
-                                       </Text>
-                                       {article.article.hasDiscount ===
-                                       false ? (
-                                          <Text style={styles.price}>
-                                             ${article.article.price}
-                                          </Text>
-                                       ) : (
-                                          <>
-                                             <Text style={styles.discountPrice}>
-                                                ${article.article.discountPrice}
+                                       <View style={styles.secondLine}>
+                                          <View style={styles.secondLineView}>
+                                             <Text style={styles.innerTitle}>
+                                                Quantity:
                                              </Text>
-                                             <Text style={styles.price}>
-                                                ${article.article.price}
+                                             <TouchableOpacity
+                                                style={styles.quantity}
+                                                onPress={() => {
+                                                   updateCartFunction(
+                                                      "decrement",
+                                                      article.article._id
+                                                   )
+                                                }}
+                                             >
+                                                <Text
+                                                   style={styles.quantityText}
+                                                >
+                                                   {"<"}
+                                                </Text>
+                                             </TouchableOpacity>
+                                             <Text
+                                                style={styles.quantityNumber}
+                                             >
+                                                {article.quantity}
                                              </Text>
-                                          </>
-                                       )}
+                                             <TouchableOpacity
+                                                style={styles.quantity}
+                                                onPress={() => {
+                                                   updateCartFunction(
+                                                      "increment",
+                                                      article.article._id
+                                                   )
+                                                }}
+                                             >
+                                                <Text
+                                                   style={styles.quantityText}
+                                                >
+                                                   {">"}
+                                                </Text>
+                                             </TouchableOpacity>
+                                          </View>
+                                          <View style={styles.secondLineView}>
+                                             <Text style={styles.innerTitle}>
+                                                Price:
+                                             </Text>
+                                             {article.article.hasDiscount ===
+                                             false ? (
+                                                <Text style={styles.price}>
+                                                   ${article.article.price}
+                                                </Text>
+                                             ) : (
+                                                <>
+                                                   <Text
+                                                      style={
+                                                         styles.discountPrice
+                                                      }
+                                                   >
+                                                      $
+                                                      {
+                                                         article.article
+                                                            .discountPrice
+                                                      }
+                                                   </Text>
+                                                   <Text style={styles.price}>
+                                                      $
+                                                      {article.article.price.toFixed(
+                                                         2
+                                                      )}{" "}
+                                                   </Text>
+                                                </>
+                                             )}
+                                          </View>
+                                       </View>
+                                       <View style={styles.thirdLine}>
+                                          <Text style={styles.innerTitle}>
+                                             Subtotal:
+                                          </Text>
+                                          <Text style={styles.subtotal}>
+                                             $
+                                             {article.quantity *
+                                                (article.article.hasDiscount
+                                                   ? article.article
+                                                        .discountPrice
+                                                   : article.article.price
+                                                ).toFixed(2)}{" "}
+                                          </Text>
+                                       </View>
                                     </View>
-                                 </View>
-                                 <View style={styles.thirdLine}>
-                                    <Text style={styles.innerTitle}>
-                                       Subtotal:
-                                    </Text>
-                                    <Text style={styles.subtotal}>
-                                       $
-                                       {article.quantity *
-                                          (article.article.hasDiscount
-                                             ? article.article.discountPrice
-                                             : article.article.price)}
-                                    </Text>
-                                 </View>
+                                 )
+                              })}
+                           </View>
+                        </View>
+                        <View style={styles.totalsCard}>
+                           <View>
+                              <View style={styles.totals}>
+                                 <Text style={styles.totalsText}>
+                                    Total w/ discounts:
+                                 </Text>
+                                 <Text style={styles.discountPrice}>
+                                    ${totalWithoutDiscounts.toFixed(2)} USD
+                                 </Text>
                               </View>
-                           )
-                        })}
-                     </View>
-                  </View>
-                  <View style={styles.totalsCard}>
-                     <View>
-                        <View style={styles.totals}>
-                           <Text style={styles.totalsText}>
-                              Total without discounts:
-                           </Text>
-                           <Text style={styles.discountPrice}>
-                              ${totalWithoutDiscounts}
-                           </Text>
+                              <View style={styles.totals}>
+                                 <Text style={styles.totalsText}>Total:</Text>
+                                 <Text style={styles.price}>
+                                    ${totalCost.toFixed(2)} USD
+                                 </Text>
+                              </View>
+                           </View>
+                           <TouchableOpacity onPress={submitSell}>
+                              <ImageBackground
+                                 style={styles.cartButton2}
+                                 source={{
+                                    uri: "https://i.postimg.cc/mD7r09R8/button-Back.png",
+                                 }}
+                                 imageStyle={{ borderRadius: 5 }}
+                              >
+                                 <FontAwesome
+                                    name="credit-card"
+                                    color={"white"}
+                                    size={15}
+                                 />
+                                 <Text style={styles.cartButtonText}>
+                                    {" "}
+                                    Buy{" "}
+                                 </Text>
+                              </ImageBackground>
+                           </TouchableOpacity>
                         </View>
-                        <View style={styles.totals}>
-                           <Text style={styles.totalsText}>Total:</Text>
-                           <Text style={styles.price}>${totalCost}</Text>
-                        </View>
                      </View>
-                     <TouchableOpacity onPress={submitSell}>
-                <ImageBackground
-              style={styles.cartButton2}
-              source={{ uri: "https://i.postimg.cc/mD7r09R8/button-Back.png" }}
-              imageStyle={{ borderRadius: 5 }}
-            >
-                <FontAwesome name="credit-card" color={"white"} size={15} />
-                <Text style={styles.cartButtonText}> Buy </Text>
-                </ImageBackground>
-                </TouchableOpacity>
-                  </View>
-               </View>
-                        </>
-                     ) }
+                  </>
+               )}
                <Footer />
             </ImageBackground>
          </View>
@@ -326,7 +399,7 @@ const styles = StyleSheet.create({
       backgroundColor: "white",
       borderBottomLeftRadius: 20,
       borderBottomRightRadius: 20,
-      padding: 10,
+      paddingVertical: 20,
       shadowColor: "gray",
       shadowOpacity: 10,
       shadowOffset: { width: 0, height: 5 },
@@ -342,24 +415,24 @@ const styles = StyleSheet.create({
    },
    totals: {
       flexDirection: "row",
-      padding: 5,
-      alignSelf: "center",
+      paddingVertical: 5,
+      justifyContent: "space-between",
    },
    totalsText: {
       fontFamily: "Poppins_600SemiBold",
       color: "gray",
-      paddingRight: 5,
       fontSize: 16,
+      marginRight: 50,
    },
    price: {
       color: "green",
       fontSize: 16,
       fontFamily: "Poppins_600SemiBold",
+      marginStart: 10,
    },
    discountPrice: {
       color: "gray",
       textDecorationLine: "line-through",
-      marginRight: 10,
       fontSize: 16,
       fontFamily: "Poppins_600SemiBold",
    },
@@ -373,23 +446,22 @@ const styles = StyleSheet.create({
       paddingVertical: 5,
       paddingHorizontal: 10,
       width: 80,
-      margin:5,
-      flexDirection:'row', 
-      alignItems:'center',
-      justifyContent:'center'
-
-    }, 
-    cartButtonText: {
+      margin: 5,
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+   },
+   cartButtonText: {
       color: "white",
       textAlign: "center",
       fontFamily: "Poppins_700Bold",
-      marginLeft:4,
-    },  
-    title: {
-      fontFamily:"Poppins_700Bold",
+      marginLeft: 4,
+   },
+   title: {
+      fontFamily: "Poppins_700Bold",
       fontSize: 25,
       color: "purple",
-      textAlign:'center'
+      textAlign: "center",
    },
    button: {
       paddingVertical: 10,
@@ -397,7 +469,6 @@ const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
       borderRadius: 5,
-     
    },
    textButton: {
       fontSize: 20,

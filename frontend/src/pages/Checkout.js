@@ -2,11 +2,11 @@ import Footer from "../components/Footer"
 import Header from "../components/Header"
 import HeroPages from "../components/HeroPages"
 import usersActions from "../redux/actions/usersActions"
+import Bot from "../components/bot/Bot"
 import { useDispatch } from "react-redux"
-import {useEffect} from "react"
+import { useEffect } from "react"
 
 const Checkout = (props) => {
-   
    useEffect(() => {
       window.scrollTo(0, 0)
       // eslint-disable-next-line
@@ -17,8 +17,6 @@ const Checkout = (props) => {
    const { purchase } = props.location.state.response
    const { articles, direction, status, timestamp, paymentDetails } = purchase
 
-  
-
    return (
       <div
          className="body"
@@ -26,6 +24,7 @@ const Checkout = (props) => {
             backgroundImage: `url("https://i.postimg.cc/3wVXYt59/back-Ludo3.png")`,
          }}
       >
+         <Bot />
          <HeroPages />
          <Header />
          <h2 className="purchaseTitle mt-5">

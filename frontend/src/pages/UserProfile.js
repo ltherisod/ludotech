@@ -7,6 +7,7 @@ import HeroPages from "../components/HeroPages"
 import usersActions from "../redux/actions/usersActions"
 import { useDispatch } from "react-redux"
 import Address from "../components/Address"
+import Bot from "../components/bot/Bot"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 
@@ -63,7 +64,10 @@ const UserProfile = () => {
             backgroundImage: `url("/assets/fondoblanco2.png")`,
          }}
       >
+         <Bot />
+
          <HeroPages />
+
          <Header />
          <div className="flex mt-2">
             <div className="divProfile">
@@ -157,21 +161,20 @@ const UserProfile = () => {
                         {!directions || directions.length === 0 ? (
                            <div className="containerDataProfile">
                               <p>There are no addresses added.</p>
-                              </div>
+                           </div>
                         ) : (
-                          <div>
-                             { directions.map((direction) => {
-                              return (
-                                 <div className="containerDataProfile mb-5">
-                                    <Address
-                                    direction={direction}
-                                    key={direction._id}
-                                 />
-                                 </div>
-                                 
-                              )
-                           })}
-                          </div>
+                           <div>
+                              {directions.map((direction) => {
+                                 return (
+                                    <div className="containerDataProfile mb-5">
+                                       <Address
+                                          direction={direction}
+                                          key={direction._id}
+                                       />
+                                    </div>
+                                 )
+                              })}
+                           </div>
                         )}
                      </div>
                   </div>

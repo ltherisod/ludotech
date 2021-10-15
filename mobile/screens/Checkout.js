@@ -26,7 +26,14 @@ const Checkout = (props) => {
             source={{ uri: "https://i.postimg.cc/4NwFMLWs/fondo-Violeta.png" }}
          >
             <HeroPages />
-            <View style={{ flexDirection: "row", justifyContent: "center" }}>
+            <View
+               style={{
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  position: "relative",
+                  bottom: 30,
+               }}
+            >
                <Text style={styles.purchaseTitle}>Purchase </Text>
                <Text style={styles.purchaseSecondTitle}>Summary</Text>
             </View>
@@ -46,7 +53,7 @@ const Checkout = (props) => {
                   <View
                      style={{
                         backgroundColor: "#c8c9ca",
-                        width: 285,
+                        width: "100%",
                         height: 3,
                         marginVertical: 8,
                      }}
@@ -124,9 +131,9 @@ const Checkout = (props) => {
                                                 $
                                                 {article.discountPrice.toFixed(
                                                    2
-                                                )}
+                                                )}{" "}
+                                                USD
                                              </Text>
-                                             USD
                                           </Text>
                                        </View>
                                     )}
@@ -135,7 +142,7 @@ const Checkout = (props) => {
                               <View
                                  style={{
                                     backgroundColor: "#c8c9ca",
-                                    width: 285,
+                                    width: "100%",
                                     height: 2,
                                     marginVertical: 8,
                                  }}
@@ -169,7 +176,7 @@ const Checkout = (props) => {
                      <View
                         style={{
                            backgroundColor: "#c8c9ca",
-                           width: 285,
+                           width: "100%",
                            height: 3,
                            marginVertical: 8,
                         }}
@@ -268,7 +275,7 @@ const Checkout = (props) => {
                         <View
                            style={{
                               backgroundColor: "#c8c9ca",
-                              width: 285,
+                              width: "100%",
                               height: 3,
                               marginVertical: 8,
                            }}
@@ -296,7 +303,7 @@ const Checkout = (props) => {
                      <View
                         style={{
                            backgroundColor: "#c8c9ca",
-                           width: 285,
+                           width: "100%",
                            height: 3,
                            marginVertical: 8,
                         }}
@@ -306,6 +313,7 @@ const Checkout = (props) => {
                            fontFamily: "Poppins_400Regular",
                            fontSize: 11,
                            alignSelf: "center",
+                           marginVertical: 10,
                         }}
                      >
                         Selected payment method:
@@ -356,6 +364,7 @@ const Checkout = (props) => {
                                           alignSelf: "center",
                                           textDecorationLine: "underline",
                                           color: "blue",
+                                          marginVertical: 10,
                                        }}
                                     >
                                        See additional receipt

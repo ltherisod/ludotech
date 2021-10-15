@@ -100,20 +100,6 @@ const SignUp = (props) => {
                         <small className="signNoErrors">NoErrors</small>
                      )}
                   </div>
-                  {/* <div className='inputContainer'>
-                    <label className='labelSign' htmlFor='photo'>Photo</label>
-                    <input 
-                        name='photo'
-                        placeholder='Must be an url'
-                        type='text'
-                        value={formik.values.photo}
-                        onChange={formik.handleChange('photo')}
-                        onBlur={formik.handleBlur('photo')}
-                    />
-                    {formik.touched.photo && formik.errors.photo && (
-                        <p>{formik.errors.photo}</p>
-                    )}
-                </div> */}
                   <div className="inputContainer">
                      <label className="labelSign" htmlFor="email">
                         Email
@@ -135,10 +121,11 @@ const SignUp = (props) => {
                      )}
                   </div>
                   <div className="inputContainer">
-                     <label className="labelSign" htmlFor="email">
+                     <label className="labelSign" htmlFor="photo">
                         Profile Photo
                      </label>
-                     <input className="inputfile"
+                     <input
+                        className="inputfile"
                         placeholder="Profile Photo"
                         name="photo"
                         type="file"

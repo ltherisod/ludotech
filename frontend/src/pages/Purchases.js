@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import Bot from "../components/bot/Bot"
 import HeroPages from "../components/HeroPages"
 import axios from "axios"
 import { useSelector } from "react-redux"
@@ -14,13 +15,15 @@ const Purchases = () => {
 
    useEffect(() => {
       axios
-         .get(`http://localhost:4000/api/user/purchases/${user._id}`, { headers: { Authorization: "Bearer " + user.token }})
+         .get(`http://localhost:4000/api/user/purchases/${user._id}`, {
+            headers: { Authorization: "Bearer " + user.token },
+         })
          .then((res) => {
             setPurchases(res.data.response)
             setSearched(res.data.response)
          })
          .catch((e) => console.log(e))
-          // eslint-disable-next-line
+      // eslint-disable-next-line
    }, [])
 
    const searchPurchase = (value) => {
@@ -44,10 +47,13 @@ const Purchases = () => {
             backgroundSize: "cover",
          }}
       >
+         <Bot />
          <Header />
          <HeroPages />
          <div className="mainWishlist">
-            <h2 style={{ color: "white" }}><span>My</span> Purchases</h2>
+            <h2 style={{ color: "white" }}>
+               <span>My</span> Purchases
+            </h2>
             <div className="searchbarWishlist">
                <p>
                   If you have a lot purchases, you can search each one of them
@@ -80,11 +86,17 @@ const Purchase = ({ purchase }) => {
       purchase.status === "cancelled" && setColor("red")
       purchase.status === "shipping" && setColor("orange")
       purchase.status === "completed" && setColor("green")
-       // eslint-disable-next-line
+      // eslint-disable-next-line
    }, [])
 
    return (
-      <div className="userFoundPurchase" style={{backgroundImage:"url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')"}}>
+      <div
+         className="userFoundPurchase"
+         style={{
+            backgroundImage:
+               "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
+         }}
+      >
          <div className="containerPurchase">
             <div className="titlesPurchasesUser">
                <p>Order ID</p>
