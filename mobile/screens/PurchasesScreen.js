@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, ImageBackground, TouchableOpacity }
 import HeroPages from '../components/HeroPages'
 import { connect } from 'react-redux'
 import usersActions from "../redux/actions/usersActions"
+import Footer from "../components/Footer"
 
 const PurchasesScreen = (props) => {
 
@@ -27,21 +28,19 @@ const PurchasesScreen = (props) => {
     let dateFormat = date.slice(0, 9)
     return dateFormat
    }
-  //  console.log("DESDE ACA PARA QUE SE VEA", searched)
-  //  console.log(purchases)
-
+ 
+ 
   return (
     <ScrollView>
       <ImageBackground
-        style={{ width: "100%", minHeight: 400 }}
+        style={{ width: "100%", minHeight: 600 }}
         source={{ uri: "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png" }}
       >
         <HeroPages />
-        <Text style={styles.purchasesTitle}>My purchases</Text>
+        <Text style={styles.purchasesTitle}> <Text style={{color:"#67f2cb"}}>My</Text> purchases</Text>
         <View style={{ justifyContent: "center", alignItems: "center", marginVertical: 15, }} >
           {purchases.map((purchase, index) => (
             <View key={index} style={styles.purchaseCard} >
-              
               <View style={styles.purchaseOrderId} >
                 <Text style={styles.purchaseOrderIdText} >Order ID: </Text>
                 <Text style={styles.purchaseOrderIdTextTwo} >{purchase._id} </Text>
@@ -82,10 +81,10 @@ const PurchasesScreen = (props) => {
                 <Text style={styles.purchaseStatusText} >Status:</Text>
                 <Text style={styles.purchaseStatusTextTwo} >{purchase.status}</Text>
               </View>
-
             </View>
           ))}
         </View>
+        <Footer/>
       </ImageBackground>
     </ScrollView>
   )
@@ -117,14 +116,21 @@ const styles = StyleSheet.create({
   },
 
   purchaseCard: {
-    width: '95%',
-    marginBottom: 40,
+    marginVertical:10,
+    width: '90%',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
-    padding: 5,
-    borderColor: 'black',
-    borderWidth: 1,
-    borderRadius: 5,
+    backgroundColor: 'white',
+    padding: 15,
+    borderRadius: 10,
+    alignSelf:"center",
+    shadowColor: "#000",
+    shadowOffset: {
+	    width: 0,
+	    height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 6.00,
+    elevation: 24,
   },
 
   purchaseOrderId: {
@@ -134,59 +140,60 @@ const styles = StyleSheet.create({
   },
   purchaseOrderIdText: {
     marginRight: 5,
-    fontSize: 18,
+    fontSize: 15,
     fontFamily: "Poppins_600SemiBold",
-    fontWeight: 'bold',
     color: 'gray'
   },
   purchaseOrderIdTextTwo: {
     marginRight: 25,
-    fontSize: 16,
+    fontSize: 13,
     fontFamily: "Poppins_600SemiBold",
+    color:'gray',
+    letterSpacing:.5
   },
 
   purchaseDateAmountLine: {
     flexDirection: 'row',
     marginTop: 5,
-    paddingHorizontal: 10,
+    
   },  
   purchaseDate: {
     width: '50%',
     flexDirection: 'row',
+    alignItems:'center',
   },
   purchaseDateText: {
     marginRight: 10,
     fontFamily: "Poppins_600SemiBold",
-    fontWeight: 'bold',
     color: 'gray'
   },
   purchaseDateTextTwo: {
     fontFamily: "Poppins_600SemiBold",
-    fontWeight: 'bold',
+    fontSize:13,
+    color:'gray'
   },
   purchaseAmount: {
     width: '50%',
     flexDirection: 'row',
+    alignItems:'center'
   },
   purchaseAmountText: {
     marginRight: 10,
     fontFamily: "Poppins_600SemiBold",
-    fontWeight: 'bold',
     color: 'gray'
   },
   purchaseAmountTextTwo: {
     fontFamily: "Poppins_600SemiBold",
-    fontWeight: 'bold',
+    fontSize:13,
+    color:'gray'
   },
 
   purchaseArticle: {
     width: '100%',
     marginTop: 10,
     flexDirection: 'row',
-    backgroundColor: 'white',
+    backgroundColor: 'whitesmoke',
     padding: 5,
-    borderColor: 'black',
-    borderWidth: 1,
     borderRadius: 5,
   },
   purchaseArticlePhoto: {
@@ -201,17 +208,23 @@ const styles = StyleSheet.create({
   },
   purchaseArticleBoxText: {
     fontFamily: "Poppins_600SemiBold",
-    fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 17,
     textAlign: 'center',
+    color:'purple',
   },
   purchaseArticleBoxTwo: {
     flexDirection: 'row',
+    alignItems:'center',
   },
   purchaseArticleBoxTwoText:{
     marginRight: 25,
+    fontFamily:"Poppins_600SemiBold",
+    color:'gray',
   },
-
+  purchaseArticleBoxTwoTextTwo:{
+    fontFamily:"Poppins_600SemiBold",
+    color:'gray',
+  },
   purchaseAddress:{
     marginTop: 10,
     width: '100%',
@@ -220,33 +233,31 @@ const styles = StyleSheet.create({
   purchaseAddressText: {
     marginRight: 10,
     fontFamily: "Poppins_600SemiBold",
-    fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 15,
     color: 'gray',
   },
   purchaseAddressTextTwoText: {
     fontFamily: "Poppins_600SemiBold",
-    fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 13,
+    color:'gray'
   },
 
   purchaseStatus: {
     width: '100%',
     marginTop: 10,
     flexDirection: 'row',
+    alignItems:'center'
   },
   purchaseStatusText: {
     marginRight: 28,
     fontFamily: "Poppins_600SemiBold",
-    fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 15,
     color: 'gray',
   },
   purchaseStatusTextTwo: {
     fontFamily: "Poppins_600SemiBold",
-    fontWeight: 'bold',
-    fontSize: 18,
-
+    fontSize: 13,
+    color:'orange'
   }
 
 
@@ -255,20 +266,3 @@ const styles = StyleSheet.create({
 })
 
 
-// <ScrollView>
-//       <ImageBackground
-//         style={{ width: "100%", minHeight: 400 }}
-//         source={{ uri: "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png" }}
-//       >
-//         <HeroPages />
-//         <Text style={styles.profileTittle}>Profile</Text>
-//         <View
-//           style={{
-//             justifyContent: "center",
-//             alignItems: "center",
-//             marginVertical: 15,
-//           }}
-//         ></View>
-//       </ImageBackground>
-//     </ScrollView>
-//   )

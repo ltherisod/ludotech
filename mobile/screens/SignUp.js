@@ -20,7 +20,7 @@ import Footer from "../components/Footer"
 import HeroPages from "../components/HeroPages"
 import { useSignup } from "../hooks/usersHooks"
 import * as Google from "expo-google-app-auth"
-
+import FontAwesome from "react-native-vector-icons/FontAwesome"
 const SignUp = (props) => {
   const [formik, setFieldValue, responseGoogle, loading, error] = useSignup()
   const [fieldError, setFieldError] = useState(null)
@@ -152,7 +152,7 @@ const SignUp = (props) => {
           )}
           <Text style={styles.label}>Profile photo</Text>
           <Text style={styles.imagePicker} onPress={() => pickImage("gallery")}>
-            Pick an image from gallery
+           Pick an image from gallery
           </Text>
           <Text style={styles.imagePicker} onPress={() => pickImage("camera")}>
             Take a photo
@@ -186,7 +186,6 @@ const SignUp = (props) => {
               style={{
                 color: "#67f2cb",
                 fontFamily: "Poppins_700Bold",
-                marginBottom: -50,
               }}
             >
               Sign In
@@ -225,12 +224,12 @@ const styles = StyleSheet.create({
   imagePicker: {
     width: 250,
     borderColor: "lightgray",
-    marginBottom: 2,
+    marginBottom: 8,
     borderWidth: 1,
     paddingVertical: 12,
     paddingHorizontal: 10,
     borderRadius: 5,
-    backgroundColor: "white",
+    backgroundColor: "whitesmoke",
     color: "gray",
   },
   inputText: {

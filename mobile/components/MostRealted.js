@@ -84,7 +84,7 @@ export default MostRealted
 
 const styles = StyleSheet.create({
     container: {
-        marginVertical: 40,
+        marginTop: 20,
     },
     most: {
         color: '#FF9424',

@@ -77,21 +77,6 @@ const Article = (props) => {
     <ScrollView  ref={scrollRef}>
       <ImageBackground style={{width:"100%", alignItems:"center"}} source={{ uri: "https://i.postimg.cc/0Q7FDTVz/fondoconfeti.png" }} resizeMode="cover">
         <HeroPages />
-        <View style={styles.backButtonContainer} >
-          <TouchableOpacity>
-            <View style={styles.backButton}>
-              <Text
-                style={styles.backButtonText}
-                onPress={() => {
-                props.navigation.navigate("ArticlesStack");
-                }}
-                >
-                Go back to articles
-                </Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-        {/* <Image source={{uri: photos[0]}} style={{width:300, height:300}}/> */}
           <ArticleCarousel photosArticle={photos}/>
         <View style={styles.articlePresentation} >
           <View style={styles.articleCard} >
@@ -198,8 +183,20 @@ const Article = (props) => {
           navigation={props.navigation}
           scrollRef={scrollRef}
         />
-        
-    
+        <View style={styles.backButtonContainer} >
+          <TouchableOpacity>
+            <View style={styles.backButton}>
+              <Text
+                style={styles.backButtonText}
+                onPress={() => {
+                props.navigation.navigate("ArticlesStack");
+                }}
+                >
+                Go back to articles
+                </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </ImageBackground>
     </ScrollView>
   )
@@ -361,9 +358,9 @@ const styles = StyleSheet.create({
   },
   backButtonContainer: {
     width: '100%',
-    marginBottom: '20%',
     justifyContent: 'center',
     alignItems: 'center',
+    color:'red'
   },  
   backButton: {
     justifyContent: 'center',
@@ -379,6 +376,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins_700Bold',
     fontSize: 16, 
     color: 'white' 
-  }
+  },
+  
 
 })

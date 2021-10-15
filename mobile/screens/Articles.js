@@ -37,20 +37,6 @@ const Articles = (props) => {
             resizeMode="cover"
          >
             <HeroPages />
-            <View style={styles.backButtonContainer}>
-               <TouchableOpacity>
-                  <View style={styles.backButton}>
-                     <Text
-                        style={styles.backButtonText}
-                        onPress={() => {
-                           props.navigation.navigate("HomeStack")
-                        }}
-                     >
-                        Go back home
-                     </Text>
-                  </View>
-               </TouchableOpacity>
-            </View>
             <View
                style={{
                   flexDirection: "row",
@@ -128,6 +114,20 @@ const Articles = (props) => {
                   </View>
                )}
             </View>
+            <View style={styles.backButtonContainer}>
+               <TouchableOpacity>
+                  <View style={styles.backButton}>
+                     <Text
+                        style={styles.backButtonText}
+                        onPress={() => {
+                           props.navigation.navigate("HomeStack")
+                        }}
+                     >
+                        Go back home
+                     </Text>
+                  </View>
+               </TouchableOpacity>
+            </View>
             <Footer />
          </ImageBackground>
       </ScrollView>
@@ -156,8 +156,8 @@ const styles = StyleSheet.create({
       marginTop: -35,
    },
    backButtonContainer: {
+      marginTop:50,
       width: "100%",
-      marginBottom: "20%",
       justifyContent: "center",
       alignItems: "center",
    },
