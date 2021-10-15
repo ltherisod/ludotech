@@ -9,47 +9,6 @@ import toast from "react-hot-toast"
 
 const SignUp = (props) => {
    const [formik, responseGoogle, setFieldValue, loading, error] = useSignup()
-
-   // useEffect(() => {
-   //    toast.custom((t) => (
-   //       <div
-   //          className={`${
-   //             t.visible ? "animate-enter" : "animate-leave"
-   //          } bg-white flex`}
-   //          style={{
-   //             display: "flex",
-   //             alignContent: "center",
-   //             alignItems: "center",
-   //             padding: "5px 10px",
-   //             borderRadius: "15px",
-   //             backgroundImage:
-   //                "url('https://i.postimg.cc/WzHpV97Z/testtoastop70.png')",
-   //             backgroundPosition: "center right 50px",
-   //             backgroundSize: "cover",
-   //          }}
-   //       >
-   //          <img
-   //             style={{ width: "55px", height: "55px" }}
-   //             className="h-3 w-3 rounded-full"
-   //             src="https://i.postimg.cc/jSsTk02Z/robot-Cell.png"
-   //             alt=""
-   //          />
-   //          <p
-   //             className="text-sm"
-   //             style={{
-   //                marginBottom: 0,
-   //                color: "#ff9424",
-   //                fontWeight: "bold",
-   //             }}
-   //          >
-   //             {error}
-   //          </p>
-   //       </div>
-   //    ))
-
-   //    return toast.custom()
-   // }, [error])
-
    return (
       <>
          <Bot />
@@ -163,18 +122,13 @@ const SignUp = (props) => {
                      )}
                   </div>
                   <div className="inputContainer">
-                     <label className="labelSign" htmlFor="photo">
+                     {/* <label className="labelSign" htmlFor="photo">
                         Profile Photo
                      </label>
-<<<<<<< HEAD
-                     <input
-                        className="inputfile"
-=======
                      <label htmlFor="filePicker" className="inputfile"><div className="uploadPictureButton" style={{
                         backgroundImage: `url("https://i.postimg.cc/mD7r09R8/button-Back.png")`,
-                     }}><span>Upload your picture</span></div></label>
-                     <input id="filePicker" style={{visibility:"hidden"}}
->>>>>>> origin/meri
+                     }}><span>Upload your picture</span></div></label> */}
+                     {/* <input id="filePicker" style={{visibility:"hidden"}}
                         placeholder="Profile Photo"
                         name="photo"
                         type="file"
@@ -182,10 +136,8 @@ const SignUp = (props) => {
                         onChange={(e) =>
                            setFieldValue({ photo: e.target.files[0] })
                         }
-                     />
-<<<<<<< HEAD
-=======
-                     {/* <label className="labelSign" htmlFor="email">
+                     /> */}
+                      <label className="labelSign" htmlFor="email">
                         Profile Photo
                      </label>
                      <input className="inputfile"
@@ -195,8 +147,7 @@ const SignUp = (props) => {
                         onChange={(e) =>
                            setFieldValue({ photo: e.target.files[0] })
                         }
-                     /> */}
->>>>>>> origin/meri
+                     /> 
                   </div>
                   <div className="inputContainer">
                      <label className="labelSign" htmlFor="password">

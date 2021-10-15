@@ -174,7 +174,7 @@ const Checkout = (props) => {
                                  .slice(4, 23)}
                            </p>
                            <div className="bg}warning">
-                              <a href={paymentDetails.receipt}>
+                              <a target='_blank' href={paymentDetails.receipt}>
                                  See additional receipt
                               </a>
                            </div>
