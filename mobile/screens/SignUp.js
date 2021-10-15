@@ -158,7 +158,7 @@ const SignUp = (props) => {
             Take a photo
           </Text>
           {imageName ? (
-            <Text style={{ color: "black" }}>{imageName}</Text>
+            <Text style={{ color: "gray" }}>{imageName.slice(0,25)}...</Text>
           ) : fieldError ? (
             <Text style={styles.errorText}>{fieldError}</Text>
           ) : (

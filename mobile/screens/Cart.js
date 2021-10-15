@@ -37,7 +37,6 @@ const Cart = (props) => {
       props
          .updateCart(action, articleId)
          .then((res) => {
-            console.log(res)
          })
          .catch((e) => console.log(e))
    }

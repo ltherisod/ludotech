@@ -480,7 +480,6 @@ const usersControllers = {
     }
   },
   sendConfirmationEmail: async (req, res) => {
-    // console.log("controller", req.body)
     let mailOptions = {
       from: "Ludotehc <ludotechweb@gmail.com>",
       to: `<${req.body.email}`,
@@ -515,18 +514,19 @@ const usersControllers = {
     })
   },
   sendWelcomeEmail: (req, res) => {
-    // console.log(req.body)
     let mailOptions = {
       from: "Ludotehc <ludotechweb@gmail.com>",
       to: `<${req.body.email}`,
-      subject: `Welcome ${req.body.name}`,
+      subject: `Welcome ${req.body.firstname} ${req.body.lastname}`,
       text: indexEmail.Welcome(req.body),
       html: indexEmail.Welcome(req.body),
     }
     transporter.sendMail(mailOptions, (e, data) => {
       if (!e) {
+        console.lgo('entro al if de success email welcome')
         res.json({ success: true, response: data, error: null })
       } else {
+        console.log('entro al else', e.message)
         res.json({ success: false, response: null, error: e.message })
         console.log(e)
       }
@@ -567,8 +567,6 @@ const usersControllers = {
     })
   },
   sendSuccessPurchase: (req, res) => {
-    // console.log("success", req.body.user)
-    // console.log("success", req.body.purchase)
     let mailOptions = {
       from: "Ludotehc <ludotechweb@gmail.com>",
       to: `<${req.body.user.email}`,
@@ -588,7 +586,6 @@ const usersControllers = {
     })
   },
   sendFailPurchase: (req, res) => {
-    // console.log("fail", req.body)
     // let mailOptions = {
     //   from: "Ludotehc <ludotechweb@gmail.com>",
     //   to: `<${req.body.email}`,

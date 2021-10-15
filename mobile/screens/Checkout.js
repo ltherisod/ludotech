@@ -17,7 +17,6 @@ import { Linking } from "react-native"
 const Checkout = (props) => {
    const { articles, direction, status, timestamp, paymentDetails, total } =
       props.route.params.purchase
-   console.log(articles)
 
    return (
       <ScrollView>

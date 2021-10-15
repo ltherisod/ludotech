@@ -24,7 +24,6 @@ const NewArticlesCarousel = (props) => {
     // eslint-disable-next-line
   }, [])
 
-  // console.log(lastArticles)
   const addToCart = (e, id, value) => {
     e.stopPropagation()
     props.updateCart("add", id)

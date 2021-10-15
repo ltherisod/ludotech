@@ -15,7 +15,6 @@ const WishList = (props) => {
   }, [wishList])
 
   const inputFilterHandler = (e) => {
-    // console.log(e.nativeEvent.text)
     setSearched(wishList.filter(product => product.name.replace(/ /g, '').toLowerCase().startsWith(e.nativeEvent.text.replace(/ /g, '').toLowerCase())))
   }
 
@@ -67,7 +66,6 @@ const WishList = (props) => {
                 keyExtractor={(product) => product._id}
                 renderItem={( product => (
                     <TouchableOpacity onPress={() => props.navigation.navigate('ArticleStack', { id: product.item._id })}>
-                      {console.log("en la lsita", product)}
                       <Article 
                         article={product.item} 
                         history={props.history} 

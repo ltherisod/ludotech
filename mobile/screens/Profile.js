@@ -75,7 +75,6 @@ const Profile = (props) => {
   }
 
 
-console.log(props)
   return (
     <ScrollView>
       <ImageBackground

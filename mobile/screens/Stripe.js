@@ -64,8 +64,6 @@ const Stripe = (props) => {
                },
             }
             )
-            console.log(authorization.data)
-
 
          if (!authorization.data.success)
             throw new Error("Error processing the transaction.")
@@ -78,7 +76,6 @@ const Stripe = (props) => {
             },
          }
          const res = await purchase(details)
-         console.log(res)
          setLoading(false) // en realidad, este setLoading no es necesario.
          props.navigation.navigate("Checkout", {
             purchase: res.response.purchase,

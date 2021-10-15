@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Link, NavLink } from "react-router-dom"
-import { FaShoppingCart, FaBell, FaHeart } from "react-icons/fa"
+import { FaShoppingCart, FaHeart } from "react-icons/fa"
 import { useSelector, useDispatch } from "react-redux"
 import usersActions from "../redux/actions/usersActions"
 import toast from "react-hot-toast"

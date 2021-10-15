@@ -41,14 +41,11 @@ const Sales = ({ scroll }) => {
   }
 
   const changeStatus = () => {
-    console.log(newStatus)
     if (newStatus !== "Select a new status") {
       axios
         .put(
           `https://lodotechgames.herokuapp.com/api/user/purchase/${purchaseFound._id}`,
-          { status: newStatus }, 
-          {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}}
-        )
+          { status: newStatus }, {headers: { Authorization: `Bearer ${localStorage.getItem("token")}`}})
         .then((res) => {
           setPurchaseFound(res.data.response)
         })

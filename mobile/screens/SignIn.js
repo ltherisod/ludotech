@@ -30,7 +30,6 @@ const SignIn = (props) => {
 
       if (type === "success") {
         responseGoogle(user)
-        console.log(user)
       }
     } catch (error) {
       console.error(error)

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
 import { usePurchase } from "../hooks/usersHooks"
 // vendedor: sb-uomjv7984205@business.example.com, Yj6x|.ZF
@@ -63,7 +63,7 @@ const Paypal = ({ formik, user, history }) => {
             paymentDetails: { method: "PAYPAL", orderId: order.id },
           }
           const res = await purchase(details)
-          console.log({ res, data, details })
+          // console.log({ res, data, details })
           if (res.success) {
             checkout(res)
           }

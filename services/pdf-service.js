@@ -2,12 +2,12 @@ const PDFDocument = require("pdfkit")
 
 const buildPDF = (dataCallback, endCallback, data) => {
   const today = new Date()
-  // console.log(data)
   const doc = new PDFDocument()
   doc.on("data", dataCallback)
   doc.on("end", endCallback)
   
   // pdf header
+  
   doc.fontSize(10).text(`Date: ${today.getFullYear()}/${today.getMonth()}/${today.getDate()}`, {
     align: 'right'
   })
@@ -72,18 +72,16 @@ const buildPDF = (dataCallback, endCallback, data) => {
   doc.image('./config/assets/pngkey.com-bar-code-png-131088.png', {
     fit: [490,70],
     align: 'center',
-    valign: 'center' 
+    valign: 'center',
+    ineBreak: true
   })
   doc.fillColor('transparent').fontSize(5).text(' ')
   doc.fillColor('black').fontSize(12).text(`${data._id}`, { 
     align: 'center'
   })
-
-
-
-
-
-
+  // doc.fillColor('black').fontSize(12).text(`${data._id}`, 50, 185, { 
+  //   align: 'center'
+  // })
 
   doc.end()
 }

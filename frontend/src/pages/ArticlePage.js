@@ -9,7 +9,7 @@ import { connect, useSelector } from "react-redux"
 import articlesActions from "../redux/actions/articlesActions"
 import Preloader from "../components/Preloader"
 import Bot from "../components/bot/Bot"
-import { FaHeart, FaRegHeart, FaCartPlus } from "react-icons/fa"
+import { FaCartPlus } from "react-icons/fa"
 import toast from "react-hot-toast"
 import PreloaderFilter from "../components/PreloaderFilter"
 
