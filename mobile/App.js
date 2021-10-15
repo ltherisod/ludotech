@@ -23,7 +23,8 @@ import NavigationBottom from "./navigation/navigationBottom"
 import { StripeProvider } from "@stripe/stripe-react-native"
 import Toast from "react-native-toast-message"
 import { StatusBar } from "react-native"
-
+import { LogBox } from "react-native"
+LogBox.ignoreAllLogs(true)
 const globalStore = createStore(rootReducer, applyMiddleware(thunk))
 
 const App = () => {
