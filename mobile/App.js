@@ -1,9 +1,12 @@
 import React from "react"
+import { LogBox } from 'react-native'
 import { NavigationContainer } from "@react-navigation/native"
 import Navigator from "./navigation/navigationDrawer"
 import { applyMiddleware, createStore } from "redux"
 import { Provider } from "react-redux"
 import AppLoading from "expo-app-loading"
+LogBox.ignoreAllLogs(true)
+
 
 import {
    useFonts,
