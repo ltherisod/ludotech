@@ -39,7 +39,7 @@ Este proyecto fue realizado por las siguientes tecnologías
 
 
 
-## ✏️ Primer Challenge Grupal desarrollado por :
+## ✏️ Segundo Challenge Grupal desarrollado por :
  * [Laura Therisod](https://github.com/ltherisod/)
  * [Jonathan Mardones](https://github.com/jmardones94)
  * [Franco Quattrini](https://github.com/franqodev)
